@@ -3,8 +3,8 @@
 
 #include "VisualObjectModelStorage.h"
 
-#include <assert.h>
-#include <string.h>
+#include <cassert>
+#include <cstring>
 
 #include "../ui/VisualObjectModel.h"
 #include "../container/LinkedList.h"
@@ -15,19 +15,20 @@ namespace game
 {
 	VisualObjectModelStorage::VisualObjectModelStorage()
 	{
-		models = new LinkedList();
+		models = new LinkedList<VisualObjectModel*>();
 	}
 
 	VisualObjectModelStorage::~VisualObjectModelStorage()
 	{
 		clear();
+		delete models;
 	}
 
 	void VisualObjectModelStorage::clear()
 	{
 		while (!models->isEmpty())
 		{
-			VisualObjectModel *vom = (VisualObjectModel *)models->popLast();
+			VisualObjectModel *vom = models->popLast();
 			delete vom;
 		}
 	}
@@ -35,10 +36,10 @@ namespace game
 	VisualObjectModel *VisualObjectModelStorage::getVisualObjectModel(const char *filename)
 	{
 		// TODO: optimize? is it necessary?
-		LinkedListIterator iter = LinkedListIterator(models);
+		LinkedListIterator<VisualObjectModel*> iter(models);
 		while (iter.iterateAvailable())
 		{
-			VisualObjectModel *vom = (VisualObjectModel *)iter.iterateNext();
+			VisualObjectModel *vom = iter.iterateNext();
 			if (filename == NULL && vom->getFilename() == NULL)
 				return vom;
 			if (vom->getFilename() != NULL && filename != NULL 

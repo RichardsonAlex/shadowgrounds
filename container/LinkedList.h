@@ -1,10 +1,6 @@
 #ifndef container_LinkedList_h
 #define container_LinkedList_h
 
-#ifdef _MSC_VER
-#pragma warning( disable : 4290 ) 
-#endif
-
 //
 // (Two way) linked list class
 // Copyright(C) Jukka Kokkonen, 2000-2002
@@ -15,117 +11,333 @@
 // v1.1 - 14.6.2002 - added seperate iterator classes
 //
 
-#include <stdlib.h>
+#include <cassert>
+#include <list>
 // #include "csp/compat.h"
 #include "EmptyLinkedListException.h"
 #include "EmptyIteratorException.h"
 
-#define throws(x) throw(x)
-#define null NULL
-
-// proto...
-class LinkedList;
-class LinkedListIterator;
-class SafeLinkedListIterator;
+template<typename T> class LinkedList;
+template<typename T> class ListNode;
+template<typename T> class LinkedListIterator;
+template<typename T> class SafeLinkedListIterator;
 
 
-// just to clean up the linkedlist node pool after use.
-// if pool not in use, does nothing.
-extern void uninitLinkedListNodePool();
-
-
-#ifdef LINKEDLIST_USE_NODE_POOL
+template<typename T>
 class ListNode
 {
   public:
-    ListNode();
-    int poolIndex;
-    ListNode(void *ptr);
+    ListNode(const T& itm);
 
     ListNode *next;
     ListNode *prev;
-    void *item;
+    T item;
 
-  friend class LinkedList;
-  friend class LinkedListIterator;
-  friend class SafeLinkedListIterator;
+  friend class LinkedList<T>;
+  friend class LinkedListIterator<T>;
+  friend class SafeLinkedListIterator<T>;
 };
 
-#else
-
-class ListNode
-{
-  public:
-    ListNode(void *ptr);
-
-    ListNode *next;
-    ListNode *prev;
-    void *item;
-
-  friend class LinkedList;
-  friend class LinkedListIterator;
-  friend class SafeLinkedListIterator;
-};
-
-#endif
-
+template<typename T>
 class LinkedList
 {
   private:
-    ListNode *first;
-    ListNode *last;
-    ListNode *walk_node;
+    ListNode<T> *first;
+    ListNode<T> *last;
+    ListNode<T> *walk_node;
 
     int remove_count;
-    friend class LinkedListIterator;
+    friend class LinkedListIterator<T>;
 
   public:
     LinkedList();
     ~LinkedList();
-    void prepend(void *ptr);
-    void append(void *ptr);
-    void remove(void *ptr);
-    void *popFirst() throws (EmptyLinkedListException *);
-    void *popLast() throws (EmptyLinkedListException *);
-    void *peekFirst() throws (EmptyLinkedListException *);
-    void *peekLast() throws (EmptyLinkedListException *);
+    void prepend(const T& itm);
+    void append(const T& itm);
+    void remove(const T& itm);
+    T popFirst() throw (EmptyLinkedListException*);
+    T popLast() throw (EmptyLinkedListException*);
+    T& peekFirst() throw (EmptyLinkedListException*);
+    T& peekLast() throw (EmptyLinkedListException*);
     bool isEmpty();
 
     // these are for real hacking... usually not recommended
-    const ListNode *getFirstNode() const;
-    const ListNode *getLastNode() const;
-    void removeNode(const ListNode *node);
+    ListNode<T>* getFirstNode() const;
+    ListNode<T>* getLastNode() const;
+    void removeNode(const ListNode<T>* node);
 
     // iteration
     // deprecated: use the seperate iterators instead
-    void *iterateNext() throws (EmptyIteratorException *);
+    //TODO remove
+    T& iterateNext() throw (EmptyIteratorException *);
     bool iterateAvailable();
     void resetIterate();
 };
 
 // basic iterator
 // items should not be deleted from the list while using iterator.
+template<typename T>
 class LinkedListIterator
 {
   private:
-    const LinkedList *linkedList;
-    const ListNode *walk_node;
+    const LinkedList<T>* linkedList;
+    ListNode<T>* walk_node;
     int remove_count;
 
   public:
-    LinkedListIterator(const LinkedList *linkedList);
+    LinkedListIterator(const LinkedList<T>& ll);
+    LinkedListIterator(const LinkedList<T>* llp);
+    LinkedListIterator(const LinkedListIterator<T>& other);
     ~LinkedListIterator();
-    inline bool iterateAvailable()
-    {
-      if (walk_node == null)
-        return false;
-      else
-        return true;
-    }
-    inline void *iterateNext()
-    {
-      void *ret;
+    bool iterateAvailable();
+    T& iterateNext() throw (EmptyIteratorException*);
+};
 
+// safe iterator, keeps an internal copy of the linked list, making it
+// possible to delete items from the list safely while using iterator.
+// not very effective though.
+template<typename T>
+class SafeLinkedListIterator
+    {
+  private:
+    LinkedList<T> linkedList;
+    ListNode<T>* walk_node;
+
+  public:
+    SafeLinkedListIterator(const LinkedList<T>& ll);
+    SafeLinkedListIterator(const LinkedList<T>* ll);
+    SafeLinkedListIterator(const SafeLinkedListIterator<T>& other);
+    ~SafeLinkedListIterator();
+    bool iterateAvailable() const;
+    T& iterateNext() throw (EmptyIteratorException*);
+};
+
+//TODO enable pool or replace with std::list and pool allocator
+template<typename T>
+inline ListNode<T>::ListNode(const T& itm) : next(0), prev(0), item(itm) {}
+
+template<typename T>
+inline LinkedList<T>::LinkedList() : first(0), last(0), walk_node(0), remove_count(0) {}
+
+template<typename T>
+inline LinkedList<T>::~LinkedList()
+{
+  while (!isEmpty())
+  {
+    popFirst();
+  }
+}
+
+template<typename T>
+inline void LinkedList<T>::append(const T& itm)
+{
+  ListNode<T>* node = new ListNode<T>(itm);
+  if (isEmpty())
+  {
+    first = node;
+    last = node;
+  } else {
+    node->next = 0;
+    node->prev = last;
+    last->next = node;
+    last = node;
+  }
+    }
+
+template<typename T>
+inline void LinkedList<T>::prepend(const T& itm)
+    {
+  ListNode<T>* node = new ListNode<T>(itm);
+
+  if (isEmpty())
+  {
+    first = node;
+    last = node;
+  } else {
+    node->next = first;
+    node->prev = 0;
+    first->prev = node;
+    first = node;
+  }
+}
+
+template<typename T>
+inline void LinkedList<T>::remove(const T& itm)
+{
+  ListNode<T> *tmp = first;
+
+  while (tmp != 0)
+  {
+    if (tmp->item == itm)
+    {
+      if (first == tmp) first = tmp->next;
+      if (last == tmp) last = tmp->prev;
+      if (tmp->prev != NULL) (tmp->prev)->next = tmp->next;
+      if (tmp->next != NULL) (tmp->next)->prev = tmp->prev;
+
+      delete tmp;
+      remove_count++;
+      break;
+    }
+    tmp = tmp->next;
+  }
+}
+template<typename T>
+inline T LinkedList<T>::popFirst() throw (EmptyLinkedListException*)
+{
+  ListNode<T>* tmp = first;
+
+  if (!tmp)
+  {
+    throw(new EmptyLinkedListException());
+  }
+
+  //if (last->prev == first) last->prev = NULL;
+  if (first->next != NULL)
+    (first->next)->prev = NULL;
+  first = tmp->next;
+  if (first == NULL)
+    last = NULL;
+
+  T ret = tmp->item;
+  delete tmp;
+  remove_count++;
+  return ret;
+}
+template<typename T>
+inline T LinkedList<T>::popLast() throw (EmptyLinkedListException *)
+{
+  ListNode<T>* tmp = last;
+  if (!tmp)
+  {
+    throw(new EmptyLinkedListException());
+  }
+
+  //if (first->next == last) first->next = NULL;
+  if (last->prev != NULL)
+    (last->prev)->next = NULL;
+  last = tmp->prev;
+  if (last == NULL)
+    first = NULL;
+
+  T ret = tmp->item;
+  delete tmp;
+  remove_count++;
+  return ret;
+}
+
+template<typename T>
+inline T& LinkedList<T>::peekFirst() throw (EmptyLinkedListException*)
+{
+  if (!first)
+  {
+    throw(new EmptyLinkedListException());
+  }
+  return first->item;
+}
+
+template<typename T>
+inline T& LinkedList<T>::peekLast() throw (EmptyLinkedListException*)
+{
+  if (!last)
+  {
+    throw(new EmptyLinkedListException());
+  }
+  return last->item;
+}
+
+template<typename T>
+inline bool LinkedList<T>::isEmpty()
+{
+  return first == NULL;
+}
+
+template<typename T>
+inline ListNode<T>* LinkedList<T>::getFirstNode() const
+{
+  return first;
+}
+
+template<typename T>
+inline ListNode<T>* LinkedList<T>::getLastNode() const
+{
+  return last;
+}
+
+template<typename T>
+inline void LinkedList<T>::removeNode(const ListNode<T>* node)
+{
+  #ifdef _DEBUG
+  ListNode<T> *tmp = first;
+
+  while (tmp != 0)
+  {
+    if (tmp == node)
+    {
+      break;
+    }
+    tmp = tmp->next;
+  }
+  if (tmp == 0)
+  {
+    abort();
+  }
+  #endif
+  assert(node != NULL);
+  if (node == first) first = first->next;
+  if (node == last) last = last->prev;
+  if (node->prev != 0) (node->prev)->next = node->next;
+  if (node->next != 0) (node->next)->prev = node->prev;
+  delete node;
+  remove_count++;
+}
+
+template<typename T>
+inline T& LinkedList<T>::iterateNext() throw (EmptyIteratorException*)
+{
+  if (!walk_node)
+  {
+    throw(new EmptyIteratorException());
+  }
+
+  T& ret = walk_node->item;
+  walk_node = walk_node->next;
+  return ret;
+}
+
+template<typename T>
+inline bool LinkedList<T>::iterateAvailable()
+{
+  return walk_node != NULL;
+}
+
+template<typename T>
+inline void LinkedList<T>::resetIterate()
+{
+  walk_node = first;
+}
+
+template<typename T>
+inline LinkedListIterator<T>::LinkedListIterator(const LinkedList<T>& ll): linkedList(&ll)
+{
+  walk_node = linkedList->getFirstNode();
+  remove_count = linkedList->remove_count;
+}
+
+template<typename T>
+inline LinkedListIterator<T>::LinkedListIterator(const LinkedList<T>* llp): linkedList(llp)
+{
+  walk_node = linkedList->getFirstNode();
+  remove_count = linkedList->remove_count;
+}
+
+
+template<typename T>
+inline LinkedListIterator<T>::~LinkedListIterator() {}
+
+template<typename T>
+inline T& LinkedListIterator<T>::iterateNext() throw (EmptyIteratorException*)
+{
       #ifdef _DEBUG
         // this is to catch unsafe node removals while iterating.
         // (as that may cause undefined behaviour)
@@ -135,32 +347,84 @@ class LinkedListIterator
         }
       #endif
   
-      if (walk_node == null)
+  if (!walk_node)
       { 
         throw(new EmptyIteratorException());
       }
   
-      ret = walk_node->item;
+  T& ret = walk_node->item;
       walk_node = walk_node->next;
+  return ret;
+}
+
+template<typename T>
+inline bool LinkedListIterator<T>::iterateAvailable()
+{
+  return walk_node != NULL;
+}
+
+template<typename T>
+inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const LinkedList<T>& ll)
+{
+  const ListNode<T> *tmp = ll.getFirstNode();
+  while (tmp != NULL)
+  {
+    linkedList.append(tmp->item);
+    tmp = tmp->next;
+  }
+  walk_node = linkedList.getFirstNode();
+}
   
+template<typename T>
+inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const LinkedList<T>* ll)
+{
+  const ListNode<T> *tmp = ll->getFirstNode();
+  while (tmp != NULL)
+  {
+    linkedList.append(tmp->item);
+    tmp = tmp->next;
+  }
+  walk_node = linkedList.getFirstNode();
+}
+
+template<typename T>
+inline SafeLinkedListIterator<T>::~SafeLinkedListIterator() {}
+
+template<typename T>
+inline T& SafeLinkedListIterator<T>::iterateNext() throw (EmptyIteratorException*)
+{
+  if (!walk_node)
+  {
+    throw(new EmptyIteratorException());
+  }
+
+  T& ret = walk_node->item;
+  walk_node = walk_node->next;
       return ret;
     }
-};
 
-// safe iterator, keeps an internal copy of the linked list, making it 
-// possible to delete items from the list safely while using iterator.
-// not very effective though.
-class SafeLinkedListIterator
+template<typename T>
+inline bool SafeLinkedListIterator<T>::iterateAvailable() const
 {
-  private:
-    LinkedList *linkedList;
-    const ListNode *walk_node;
+  return walk_node != NULL;
+}
 
-  public:
-    SafeLinkedListIterator(const LinkedList *linkedList);
-    ~SafeLinkedListIterator();
-    bool iterateAvailable();
-    void *iterateNext() throws (EmptyIteratorException *);
-};
+template<typename T>
+inline LinkedListIterator<T>::LinkedListIterator(const LinkedListIterator<T>& other)
+    : linkedList(other.linkedList), walk_node(other.walk_node), remove_count(other.remove_count)
+{
+}
+
+template<typename T>
+inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const SafeLinkedListIterator<T>& other)
+{
+    const ListNode<T> *tmp = other.linkedList->getFirstNode();
+    while (tmp != NULL)
+    {
+      linkedList.append(tmp->item);
+      tmp = tmp->next;
+    }
+    walk_node = linkedList.getFirstNode();
+}
 
 #endif

@@ -1644,8 +1644,6 @@ try {
 
 	SystemRandom::cleanInstance();
 
-	uninitLinkedListNodePool();
-
 	Timer::uninit();
 
 	Logger::getInstance()->debug("Cleanup done, exiting.");

@@ -12,7 +12,7 @@
 #include "GameConfigs.h"
 #include "GameOption.h"
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace game
 {
@@ -37,7 +37,7 @@ namespace game
 
 		GameOption *getOptionById(int id);
 
-		const LinkedList *getOptionsList();
+		const LinkedList<GameOption*> *getOptionsList();
 
 		const char *getOptionNameForId(int id);
 
@@ -46,7 +46,7 @@ namespace game
 
 		GameConfigs *gameConf;
 
-		LinkedList *options;
+		LinkedList<GameOption*> *options;
 		GameOption *optionsById[DH_OPT_AMOUNT];
 
 

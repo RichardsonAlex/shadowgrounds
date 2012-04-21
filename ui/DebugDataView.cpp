@@ -26,7 +26,6 @@
 
 
 // HACK:
-extern ListNode *linkedListNodePool;
 extern int nextLinkedListPoolNode;
 extern int linkedListNodePoolAlloced;
 
@@ -696,37 +695,6 @@ namespace ui
 										}
 									}
 								}
-#ifdef LINKEDLIST_USE_NODE_POOL
-								if (show_nodepool)
-								{									
-									int nodeIndex = (x & 511) + (y * 512);
-									if (x < 512 && y < 512
-										&& nodeIndex >= 0 && nodeIndex < linkedListNodePoolAlloced)
-									{
-										if (nodeIndex == nextLinkedListPoolNode)
-										{
-											impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 0] = 255;
-											impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 1] = 0;
-											impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 2] = 0;
-										} else {
-											if (linkedListNodePool[nodeIndex].item != linkedListNodePool)
-											{
-												impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 0] = 0;
-												impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 1] = 0;
-												impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 2] = 255;
-											} else {
-												impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 0] = 0;
-												impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 1] = 0;
-												impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 2] = 32;
-											}
-										}
-									} else {
-										impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 0] = 0;
-										impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 1] = 0;
-										impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 2] = 0;
-									}
-								}
-#endif  // LINKEDLIST_USE_NODE_POOL
 								impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 3] = (unsigned char)((int)(255 * viewAlpha) / 100);	
 							}
 						}
@@ -734,11 +702,11 @@ namespace ui
 
 					if (show_paths)
 					{
-						LinkedList *ulist = impl->game->units->getAllUnits();
-						LinkedListIterator uiter(ulist);
+						LinkedList<game::Unit*> *ulist = impl->game->units->getAllUnits();
+						LinkedListIterator<game::Unit*> uiter(ulist);
 						while (uiter.iterateAvailable())
 						{
-							game::Unit *u = (game::Unit *)uiter.iterateNext();
+							game::Unit *u = uiter.iterateNext();
 							if (u->isActive())
 							{
 								if (!u->isDestroyed())

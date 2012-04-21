@@ -34,7 +34,7 @@ namespace game
     static GameObjectList *constructorList;
 
   protected:
-    const ListNode *listSelfPointer;
+    const ListNode<GameObject*>* listSelfPointer;
     GameObjectList *gameObjectList;
 
   public:

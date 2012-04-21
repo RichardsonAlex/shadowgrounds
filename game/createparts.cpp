@@ -159,10 +159,10 @@ namespace game
   {
 		PartTypeParser::clearLoadedList(".dhp");
 
-    SafeLinkedListIterator iter = SafeLinkedListIterator(&partTypeIds);
+    SafeLinkedListIterator<PartType*> iter(partTypeIds);
     while (iter.iterateAvailable())
     {
-      PartType *pt = (PartType *)iter.iterateNext();
+      PartType *pt = iter.iterateNext();
       delete pt;
     }
   }
@@ -170,20 +170,20 @@ namespace game
 
   void reloadPartTypeVisuals()
   {
-    LinkedListIterator iter = LinkedListIterator(&partTypeIds);
+    LinkedListIterator<PartType*> iter(partTypeIds);
     while (iter.iterateAvailable())
     {
-      PartType *pt = (PartType *)iter.iterateNext();
+      PartType *pt = iter.iterateNext();
       pt->deleteVisual();
     }
   }
 
   void restorePartTypeOriginals()
   {
-    LinkedListIterator iter = LinkedListIterator(&partTypeIds);
+    LinkedListIterator<PartType*> iter(partTypeIds);
     while (iter.iterateAvailable())
     {
-      PartType *pt = (PartType *)iter.iterateNext();
+      PartType *pt = iter.iterateNext();
       pt->restoreOriginals();
     }
 	}

@@ -46,9 +46,9 @@
 namespace game
 {
 	class Unit;
-
+	class UnitType;
 	// don't use directly, externed only for cleanup
-	extern LinkedList unitTypeIds;
+	extern LinkedList<UnitType*> unitTypeIds;
 
 	/////////////////////////////////////////////////////////////////////////////
 

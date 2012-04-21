@@ -320,7 +320,7 @@ namespace game
     PartTypeAvailabilityList *partTypesAvailable;
 
     // game requests that have been timed by master (thus being orders)
-    LinkedList *orderQueue;
+    LinkedList<GameRequest*> *orderQueue;
 
     GameMap *gameMap;
 
@@ -399,7 +399,7 @@ namespace game
 
 		EnvironmentalEffectManager *environmentalEffectManager;
 
-		LinkedList *customScriptProcesses;
+		LinkedList<util::ScriptProcess*> *customScriptProcesses;
 
 		void applyPendingLoad();
 

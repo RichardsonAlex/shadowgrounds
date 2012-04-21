@@ -45,7 +45,7 @@ namespace game
 	SaveData *Unit::getSaveData() const
 	{
 		// TODO
-		return null;
+		return 0;
 	}
 
 	const char *Unit::getStatusInfo() const
@@ -1370,11 +1370,11 @@ namespace game
 
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{
-				Part *p = (Part *)tempStack.popFirst();
+				Part *p = tempStack.popFirst();
 				PartType *pt = p->getType();
 				if (pt->isInherited(powerParentType))
 				{
@@ -1488,11 +1488,11 @@ namespace game
 
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{
-				Part *p = (Part *)tempStack.popFirst();
+				Part *p = tempStack.popFirst();
 				weight += p->getType()->getWeight();
 				int slotAmount = p->getType()->getSlotAmount();
 				for (int i = 0; i < slotAmount; i++)
@@ -1513,11 +1513,11 @@ namespace game
 
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{
-				Part *p = (Part *)tempStack.popFirst();
+				Part *p = tempStack.popFirst();
 				runningValue += p->getType()->getRunningEffect();
 				int slotAmount = p->getType()->getSlotAmount();
 				for (int i = 0; i < slotAmount; i++)
@@ -1538,11 +1538,11 @@ namespace game
 
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{
-				Part *p = (Part *)tempStack.popFirst();
+				Part *p = tempStack.popFirst();
 				stealthValue += p->getType()->getStealthEffect();
 				int slotAmount = p->getType()->getSlotAmount();
 				for (int i = 0; i < slotAmount; i++)
@@ -1563,11 +1563,11 @@ namespace game
 
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{
-				Part *p = (Part *)tempStack.popFirst();
+				Part *p = tempStack.popFirst();
 				reconValue += p->getType()->getReconEffect();
 				int slotAmount = p->getType()->getSlotAmount();
 				for (int i = 0; i < slotAmount; i++)
@@ -1591,11 +1591,11 @@ namespace game
 
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{
-				Part *p = (Part *)tempStack.popFirst();
+				Part *p = tempStack.popFirst();
 				maxHeat += p->getType()->getMaxHeat();
 				int slotAmount = p->getType()->getSlotAmount();
 				for (int i = 0; i < slotAmount; i++)
@@ -2187,11 +2187,11 @@ namespace game
 	{
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{
-				Part *p = (Part *)tempStack.popFirst();
+				Part *p = tempStack.popFirst();
 				PartType *pt = p->getType();
 				if (pt == partType)
 				{
@@ -2227,7 +2227,7 @@ namespace game
 
 		if (rootPart != NULL)
 		{
-			LinkedList tempStack = LinkedList();
+			LinkedList<Part*> tempStack;
 			tempStack.append(rootPart);
 			while (!tempStack.isEmpty())
 			{

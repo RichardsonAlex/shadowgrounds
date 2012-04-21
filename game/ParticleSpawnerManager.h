@@ -2,7 +2,7 @@
 #ifndef PARTICLESPAWNERMANAGER_H
 #define PARTICLESPAWNERMANAGER_H
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 #include <DatatypeDef.h>
 
@@ -37,7 +37,7 @@ namespace game
     private:
       Game *game;
 
-      LinkedList *spawnerList;
+      LinkedList<ParticleSpawner*> *spawnerList;
 
 			VC3 playerPosition;
 

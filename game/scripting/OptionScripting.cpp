@@ -104,11 +104,11 @@ namespace game
 		case GS_CMD_LISTOPTIONS:
 			{
 				game::GameOptionManager *oman = game::GameOptionManager::getInstance();
-				const LinkedList *optlist = oman->getOptionsList();
-				LinkedListIterator iter(optlist);
+				const LinkedList<game::GameOption*>  *optlist = oman->getOptionsList();
+				LinkedListIterator<game::GameOption*>  iter(optlist);
 				while (iter.iterateAvailable())
 				{
-					game::GameOption *opt = (game::GameOption *)iter.iterateNext();
+					game::GameOption *opt = iter.iterateNext();
 					Logger::getInstance()->warning(oman->getOptionNameForId(opt->getId()));
 				}
 			}

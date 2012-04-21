@@ -24,11 +24,11 @@ namespace game
   {
     unitsSelected = 0;
 
-    LinkedList *ulist = unitList->getOwnedUnits(player);
-    LinkedListIterator iter = LinkedListIterator(ulist);
+    LinkedList<Unit*> *ulist = unitList->getOwnedUnits(player);
+    LinkedListIterator<Unit*> iter(ulist);
     while (iter.iterateAvailable())
     { 
-      Unit *u = (Unit *)iter.iterateNext();
+      Unit *u = iter.iterateNext();
       if (u->isSelected())
       {
         unitsSelected++;
@@ -68,11 +68,11 @@ namespace game
 
   void UnitSelections::selectAllUnits(bool selected)
   {
-    LinkedList *ulist = unitList->getOwnedUnits(player);
-    LinkedListIterator iter = LinkedListIterator(ulist);
+    LinkedList<Unit*> *ulist = unitList->getOwnedUnits(player);
+    LinkedListIterator<Unit*> iter(ulist);
     while (iter.iterateAvailable())
     { 
-      Unit *u = (Unit *)iter.iterateNext();
+      Unit *u = iter.iterateNext();
 			if (u->isActive())
 			{
 				if (u->isSelected() && !selected)

@@ -24,7 +24,7 @@ namespace game
 			AniManagerImpl(GameScripting *gameScripting)
 			{
 				this->gameScripting = gameScripting;
-				anis = new LinkedList();
+				anis = new LinkedList<Ani*>();
 				currentScriptAni = NULL;
 				aniPaused = false;
 			}
@@ -33,13 +33,13 @@ namespace game
 			{
 				while (!anis->isEmpty())
 				{
-					delete (Ani *) anis->popLast();
+					delete anis->popLast();
 				}
 				delete anis;
 			}
 
 			static AniManager *instance;
-			LinkedList *anis;
+			LinkedList<Ani*> *anis;
 			Ani *currentScriptAni;
 			GameScripting *gameScripting;
 			bool aniPaused;
@@ -115,10 +115,10 @@ namespace game
 	{
 		if (!impl->aniPaused)
 		{
-			LinkedListIterator iter(impl->anis);
+			LinkedListIterator<Ani*> iter(impl->anis);
 			while (iter.iterateAvailable())
 			{
-				Ani *ani = (Ani *)iter.iterateNext();
+				Ani *ani = iter.iterateNext();
 				this->setCurrentScriptAni(ani);
 				ani->run();
 			}
@@ -159,10 +159,10 @@ namespace game
 			return NULL;
 
 		// TODO: what if there are multiple anis with same name?
-		LinkedListIterator iter(impl->anis);
+		LinkedListIterator<Ani*> iter(impl->anis);
 		while (iter.iterateAvailable())
 		{
-			Ani *ani = (Ani *)iter.iterateNext();
+			Ani *ani = iter.iterateNext();
 			const char *tmp = ani->getName();
 			if (tmp != NULL)
 			{
@@ -180,10 +180,10 @@ namespace game
 	// returns true if all ani plays have ended
 	bool AniManager::isAllAniComplete()
 	{
-		LinkedListIterator iter(impl->anis);
+		LinkedListIterator<Ani*> iter(impl->anis);
 		while (iter.iterateAvailable())
 		{
-			Ani *ani = (Ani *)iter.iterateNext();
+			Ani *ani = iter.iterateNext();
 			if (!ani->hasPlayEnded())
 				return false;
 		}
@@ -214,10 +214,10 @@ namespace game
 
 	void AniManager::stopAniForUnit(Unit *unit)
 	{
-		SafeLinkedListIterator iter(impl->anis);
+		SafeLinkedListIterator<Ani*> iter(impl->anis);
 		while (iter.iterateAvailable())
 		{
-			Ani *ani = (Ani *)iter.iterateNext();
+			Ani *ani = iter.iterateNext();
 			if (ani->getUnit() == unit)
 			{
 				if (!ani->hasPlayEnded())
@@ -229,10 +229,10 @@ namespace game
 
 	void AniManager::stopAllAniPlay()
 	{
-		LinkedListIterator iter(impl->anis);
+		LinkedListIterator<Ani*> iter(impl->anis);
 		while (iter.iterateAvailable())
 		{
-			Ani *ani = (Ani *)iter.iterateNext();
+			Ani *ani = iter.iterateNext();
 			if (!ani->hasPlayEnded())
 				ani->stopPlay();
 		}
@@ -240,7 +240,7 @@ namespace game
 
 	void AniManager::leapAllAniPlayToEnd()
 	{
-		LinkedListIterator iter(impl->anis);
+		LinkedListIterator<Ani*> iter(impl->anis);
 		while (iter.iterateAvailable())
 		{
 			Ani *ani = (Ani *)iter.iterateNext();

@@ -195,8 +195,7 @@ namespace ui
 		minY /= 768.0f;
 		maxY /= 768.0f;
 
-    LinkedListIterator iter = LinkedListIterator(
-      game->units->getOwnedUnits(player));
+    LinkedListIterator<Unit*> iter (game->units->getOwnedUnits(player));
 
 		switch(type) {
 		case SelectionBox::BOX_SELECT:
@@ -209,7 +208,7 @@ namespace ui
 
       while (iter.iterateAvailable())
       {
-        Unit *u = (Unit *)iter.iterateNext();
+        Unit *u = iter.iterateNext();
 
 				VC3 position=u->getPosition();
 
@@ -253,7 +252,7 @@ namespace ui
 		case SelectionBox::BOX_ADD_SELECTION:
       while (iter.iterateAvailable())
       {
-        Unit *u = (Unit *)iter.iterateNext();
+        Unit *u = iter.iterateNext();
  			//for (i = 0; i < COMBATW_UNITS; i++) {
 			//	Unit *u = solveUnitForNumber(i);
 				VC3 position=u->getPosition();

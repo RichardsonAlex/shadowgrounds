@@ -234,13 +234,13 @@ namespace game
 				if (strcmp(stringData, "nearest_to_position") == 0)
 				{
 					unit->targeting.clearTarget();
-					LinkedList *ntplist = game->units->getAllUnits();
-					LinkedListIterator ntpiter(ntplist);
+					LinkedList<Unit*> *ntplist = game->units->getAllUnits();
+					LinkedListIterator<Unit*> ntpiter(ntplist);
 					Unit *closest = NULL;
 					float closestDistSq = 0;
 					while (ntpiter.iterateAvailable())
 					{
-						Unit *ntpu = (Unit *)ntpiter.iterateNext();
+						Unit *ntpu = ntpiter.iterateNext();
 						if (ntpu != unit && ntpu->isActive() && !ntpu->isDestroyed())
 						{
 							VC3 distVec = ntpu->getPosition() - unit->getPosition();
@@ -259,13 +259,13 @@ namespace game
 				if (strcmp(stringData, "nearest_of_player_to_position") == 0)
 				{
 					unit->targeting.clearTarget();
-					LinkedList *ntplist = game->units->getOwnedUnits(gsd->player);
-					LinkedListIterator ntpiter(ntplist);
+					LinkedList<Unit*> *ntplist = game->units->getOwnedUnits(gsd->player);
+					LinkedListIterator<Unit*> ntpiter(ntplist);
 					Unit *closest = NULL;
 					float closestDistSq = 0;
 					while (ntpiter.iterateAvailable())
 					{
-						Unit *ntpu = (Unit *)ntpiter.iterateNext();
+						Unit *ntpu = ntpiter.iterateNext();
 						if (ntpu != unit && ntpu->isActive() && !ntpu->isDestroyed())
 						{
 							VC3 distVec = ntpu->getPosition() - unit->getPosition();
@@ -4219,12 +4219,12 @@ namespace game
 		case GS_CMD_FINDDOORCOUNTERPART:
 			if (unit != NULL)
 			{
-				LinkedList *ulist = game->units->getOwnedUnits(unit->getOwner());
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getOwnedUnits(unit->getOwner());
+				LinkedListIterator<Unit*> iter(ulist);
 				bool foundit = false;
 				while (iter.iterateAvailable())
 				{ 		
-					Unit *other = (Unit *)iter.iterateNext();
+					Unit *other = iter.iterateNext();
 					// TODO: some treshold to the position...?
 					if (other != unit 
 						&& other->getSpawnCoordinates().x == unit->getSpawnCoordinates().x
@@ -4804,12 +4804,12 @@ namespace game
 				{
 					if (game->units->getOwnedUnitAmount(gsd->player) > 0)
 					{
-						LinkedList *ulist = game->units->getOwnedUnits(gsd->player);
-						LinkedList ulistfixed;
-						LinkedListIterator iter(ulist);
+						LinkedList<Unit*> *ulist = game->units->getOwnedUnits(gsd->player);
+						LinkedList<Unit*> ulistfixed;
+						LinkedListIterator<Unit*> iter(ulist);
 						while (iter.iterateAvailable())
 						{
-							Unit *tmp = (Unit *)iter.iterateNext();
+							Unit *tmp = iter.iterateNext();
 							if (tmp->isActive() && !tmp->isDestroyed())
 							{
 								ulistfixed.append(tmp);
@@ -5100,11 +5100,11 @@ namespace game
 
 		case GS_CMD_STOPALLHOSTILES:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed()
 						&& game->isHostile(gsd->player, u->getOwner()))
 					{
@@ -5118,11 +5118,11 @@ namespace game
 
 		case GS_CMD_CLEARTARGETFORALLHOSTILES:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed()
 						&& game->isHostile(gsd->player, u->getOwner()))
 					{
@@ -5134,11 +5134,11 @@ namespace game
 
 		case GS_CMD_HIDEALLHOSTILES:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed()
 						&& game->isHostile(gsd->player, u->getOwner()))
 					{
@@ -5153,11 +5153,11 @@ namespace game
 
 		case GS_CMD_HIDEALLUNITS:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed())
 					{
 						if (u->getVisualObject() != NULL)
@@ -5240,11 +5240,11 @@ namespace game
 
 		case GS_CMD_DISABLEUNITAITEMPORARILYFORALLHOSTILES:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed()
 						&& game->isHostile(gsd->player, u->getOwner()))
 					{
@@ -5260,11 +5260,11 @@ namespace game
 
 		case GS_CMD_ENABLEUNITAITEMPORARILYFORALLHOSTILES:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed()
 						&& game->isHostile(gsd->player, u->getOwner()))
 					{
@@ -5280,11 +5280,11 @@ namespace game
 
 		case GS_CMD_SHOWALLHOSTILES:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed()
 						&& game->isHostile(gsd->player, u->getOwner()))
 					{
@@ -5299,11 +5299,11 @@ namespace game
 
 		case GS_CMD_SHOWALLUNITS:
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed())
 					{
 						if (u->getVisualObject() != NULL)
@@ -6037,15 +6037,15 @@ namespace game
 							redoObstacles = true;
 						}
 
-						LinkedList removedObstaclesList;
+						LinkedList<Unit*> removedObstaclesList;
 
 						if (redoObstacles)
 						{
-							LinkedList *ulist = game->units->getAllUnits();
-							LinkedListIterator iter(ulist);
+							LinkedList<Unit*> *ulist = game->units->getAllUnits();
+							LinkedListIterator<Unit*> iter(ulist);
 							while (iter.iterateAvailable())
 							{
-								Unit *u = (Unit *)iter.iterateNext();
+								Unit *u = iter.iterateNext();
 								if (u->getUnitType() == unit->getUnitType())
 								{
 									if (u->obstacleExists)
@@ -6067,7 +6067,7 @@ namespace game
 						{
 							while (!removedObstaclesList.isEmpty())
 							{
-								Unit *u = (Unit *)removedObstaclesList.popLast();
+								Unit *u = removedObstaclesList.popLast();
 								UnitActor *ua = getUnitActorForUnit(u);
 								ua->addUnitObstacle(u);
 							}
@@ -7274,11 +7274,11 @@ namespace game
 
 	bool UnitScripting::findGroup(Game *game, Unit *unit)
 	{
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed() 
 				&& u->getOwner() == unit->getOwner())
 			{
@@ -7315,11 +7315,11 @@ namespace game
 		bool passedFrom = false;
 		Unit *first = NULL;
 		// notice: getAllUnits if friendly, not owned.
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u == fromUnit)
 			{
 				passedFrom = true;
@@ -7350,14 +7350,14 @@ namespace game
 	{
 		int amount = game->units->getOwnedUnitAmount(player);
 		if (amount <= 0) return NULL;
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		int randNum = game->gameRandom->nextInt() % amount;
 		int num = 0;
 		Unit *beforeUnit = NULL;
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 //				&& u->getOwner() == player)
 			{
@@ -7378,11 +7378,11 @@ namespace game
 	{
 		Unit *closest = NULL;
 		float closestRangeSq = 0;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed() 
 				&& game->isHostile(player, u->getOwner()))
 			{
@@ -7404,11 +7404,11 @@ namespace game
 	{
 		Unit *closest = NULL;
 		float closestRangeSq = 0;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed() 
 				&& !game->isHostile(player, u->getOwner()))
 			{
@@ -7430,11 +7430,11 @@ namespace game
 	{
 		Unit *closest = NULL;
 		float closestRangeSq = 0;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed() 
 				&& player == u->getOwner())
 			{
@@ -7454,11 +7454,11 @@ namespace game
 
 	Unit *UnitScripting::findUnitByCharacterName(Game *game, const char *charname)
 	{
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && u->getCharacter() != NULL)
 			{
 				if (u->getCharacter()->getName() == NULL)
@@ -7480,11 +7480,11 @@ namespace game
 	{
 		float closestDistSq = 999999.0f;
 		Unit *closest = NULL;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() 
 				&& !u->isDestroyed()
 				&& u->getUnitType()->getName() != NULL)
@@ -7508,14 +7508,14 @@ namespace game
 	{
 		float closestDistSq = 999999.0f;
 		Unit *closest = NULL;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 
 		int varid = UnitVariables::getVariableNumberByName(unitvar);
 
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() 
 				&& !u->isDestroyed())
 			{
@@ -7540,8 +7540,8 @@ namespace game
 	{
 		float closestDistSq = 999999.0f;
 		Unit *closest = NULL;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 
 		int varid = UnitVariables::getVariableNumberByName(unitvar);
 

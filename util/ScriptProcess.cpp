@@ -28,8 +28,12 @@ namespace util
  
 	ScriptProcess::ScriptProcess()
 	{
-		ipStack = new LinkedList();
-		userStack = new LinkedList();
+		ipStack = new LinkedList<intptr_t>();
+#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
+		userStack = new LinkedList<CheckedIntValue>();
+#else
+		userStack = new LinkedList<int>();
+#endif
 		userStackSize = 0;
 		script = NULL;
 		ip = 0;
@@ -163,21 +167,28 @@ namespace util
 		this->ip = otherScriptProcess->ip;
 		this->lastValue = otherScriptProcess->lastValue;
 		{
-			LinkedListIterator iter(otherScriptProcess->ipStack);
+			LinkedListIterator<intptr_t> iter(otherScriptProcess->ipStack);
 			while (iter.iterateAvailable())
 			{
-				// WARNING: unsafe cast - is this really an int??? (i think it is :)
-				intptr_t val = (intptr_t)iter.iterateNext();
-				this->ipStack->append((void *)val);
+				intptr_t val = iter.iterateNext();
+				this->ipStack->append(val);
 			}
 		}
 		{
-			LinkedListIterator iter(otherScriptProcess->userStack);
+#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
+			LinkedListIterator<CheckedIntValue> iter(otherScriptProcess->userStack);
+#else
+			LinkedListIterator<int> iter(otherScriptProcess->userStack);
+#endif
 			while (iter.iterateAvailable())
 			{
-				// WARNING: unsafe cast - is this really an int??? (i think it is :)
-				intptr_t val = (intptr_t)iter.iterateNext();
-				this->userStack->append((void *)val);
+#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
+                CheckedIntValue val = iter.iterateNext();
+
+#else
+                int val = iter.iterateNext();
+#endif
+				this->userStack->append(val);
 			}
 			this->userStackSize = otherScriptProcess->userStackSize;
 		}

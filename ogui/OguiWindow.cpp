@@ -119,14 +119,14 @@ OguiWindow::OguiWindow(Ogui *ogui, int x, int y, int sizex, int sizey, IOguiImag
 	this->movingIn = false;
 	this->movingOut = false;
 
-	buttonList = new LinkedList();
+	buttonList = new LinkedList<OguiButton*>();
 }
 
 OguiWindow::~OguiWindow()
 {
 	while (!buttonList->isEmpty())
 	{
-		OguiButton *b = (OguiButton *)buttonList->popLast();
+		OguiButton *b = buttonList->popLast();
 		delete b;
 	}
 	delete buttonList;

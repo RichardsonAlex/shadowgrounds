@@ -238,7 +238,7 @@ namespace game
   // inited only once)
   bool PartType::setRootData(const char *key, char *value)
   {
-    // the über sophisticated data parsing ;)
+    // the ï¿½ber sophisticated data parsing ;)
 
     if (atSub == PARTTYPE_SUB_NONE)
     {
@@ -778,15 +778,15 @@ namespace game
   PartType partType = PartType();
 
   // TODO: more optimal data structure for searches
-  LinkedList partTypeIds = LinkedList();
+  LinkedList<PartType*> partTypeIds = LinkedList<PartType*>();
 
 
   PartType *getPartTypeById(int id)
   {
-    LinkedListIterator iter = LinkedListIterator(&partTypeIds);
+    LinkedListIterator<PartType*> iter(partTypeIds);
     while (iter.iterateAvailable())
     {
-      PartType *pt = (PartType *)iter.iterateNext();
+      PartType *pt = iter.iterateNext();
       if (pt->getPartTypeId() == id) return pt;
     }
     return NULL;

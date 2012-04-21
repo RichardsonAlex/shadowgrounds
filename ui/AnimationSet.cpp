@@ -251,7 +251,7 @@ namespace ui
 		"***"
   };
 
-  LinkedList *AnimationSet::setFilenames = NULL;
+  LinkedList<AnimationSet*> *AnimationSet::setFilenames = NULL;
   
   AnimationSet *AnimationSet::getSetByName(char *setName)
   {
@@ -265,7 +265,7 @@ namespace ui
 			}
 
       Logger::getInstance()->debug("AnimationSet::getSetByName - Reading the animation set list.");
-      setFilenames = new LinkedList();
+      setFilenames = new LinkedList<AnimationSet*>();
 
       util::SimpleParser parser = util::SimpleParser();
 #ifdef LEGACY_FILES
@@ -293,10 +293,10 @@ namespace ui
     }
 
     // TODO, replace with a more efficient structure (hashmap maybe).
-    LinkedListIterator iter = LinkedListIterator(setFilenames);
+    LinkedListIterator<AnimationSet*> iter(setFilenames);
     while (iter.iterateAvailable())
     {
-      AnimationSet *tmp = (AnimationSet *)iter.iterateNext();
+      AnimationSet *tmp = iter.iterateNext();
       if (strcmp(tmp->name, setName) == 0)
       {
         return tmp;

@@ -68,7 +68,7 @@ struct EnvironmentalEffectManagerImpl
 {
 	Game *game;
 	ui::VisualEffectManager *visualEffectManager;
-	boost::scoped_ptr<LinkedList> effects;
+	boost::scoped_ptr<LinkedList<EnvironmentalEffect*> > effects;
 
 	bool sunlightEnabled;
 	VC3 sunlightDirection;
@@ -82,7 +82,7 @@ struct EnvironmentalEffectManagerImpl
 	EnvironmentalEffectManagerImpl(Game *game_, ui::VisualEffectManager *visualEffectManager_)
 	:	game(game_),
 		visualEffectManager(visualEffectManager_),
-		effects(new LinkedList()),
+		effects(new LinkedList<EnvironmentalEffect*>()),
 		fadeTime(10000)
 	{
 		sunlightDirection = VC3(0,-1,0);
@@ -95,7 +95,7 @@ struct EnvironmentalEffectManagerImpl
 	{
 		while (!effects->isEmpty())
 		{
-			delete (EnvironmentalEffect *)effects->popLast();
+			delete effects->popLast();
 		}
 	}
 
@@ -282,10 +282,10 @@ void EnvironmentalEffectManager::addParticleEffect(const char *particleFilename,
 
 void EnvironmentalEffectManager::removeParticleEffectByFilename(const char *particleFilename, bool fade)
 {
-	LinkedListIterator iter(impl->effects.get());
+	LinkedListIterator<EnvironmentalEffect*> iter(impl->effects.get());
 	while (iter.iterateAvailable())
 	{
-		EnvironmentalEffect *eff = (EnvironmentalEffect *)iter.iterateNext();
+		EnvironmentalEffect *eff = iter.iterateNext();
 		if(eff->filename == particleFilename)
 		{
 			if(fade)
@@ -306,7 +306,7 @@ void EnvironmentalEffectManager::removeAllParticleEffects()
 {
 	while(!impl->effects->isEmpty())
 	{
-		EnvironmentalEffect *eff = (EnvironmentalEffect *)impl->effects->popLast();
+		EnvironmentalEffect *eff = impl->effects->popLast();
 		impl->deleteEnvironmentalEffect(eff);
 	}
 }
@@ -314,10 +314,10 @@ void EnvironmentalEffectManager::removeAllParticleEffects()
 void EnvironmentalEffectManager::fadeOutAllParticleEffects(int time)
 {
 	if(time < 0) time = impl->fadeTime; 
-	LinkedListIterator iter(impl->effects.get());
+	LinkedListIterator<EnvironmentalEffect*> iter(impl->effects.get());
 	while (iter.iterateAvailable())
 	{
-		EnvironmentalEffect *eff = (EnvironmentalEffect *)iter.iterateNext();
+		EnvironmentalEffect *eff = iter.iterateNext();
 		eff->fadeOut(time);
 	}
 }
@@ -325,10 +325,10 @@ void EnvironmentalEffectManager::fadeOutAllParticleEffects(int time)
 void EnvironmentalEffectManager::fadeInAllParticleEffects(int time)
 {
 	if(time < 0) time = impl->fadeTime;
-	LinkedListIterator iter(impl->effects.get());
+	LinkedListIterator<EnvironmentalEffect*> iter(impl->effects.get());
 	while (iter.iterateAvailable())
 	{
-		EnvironmentalEffect *eff = (EnvironmentalEffect *)iter.iterateNext();
+		EnvironmentalEffect *eff = iter.iterateNext();
 		eff->fadeIn(time);
 	}
 }
@@ -362,7 +362,7 @@ void EnvironmentalEffectManager::run()
 			effectPosition = impl->game->gameUI->getFirstPerson(0)->getPosition();
 	}
 
-	SafeLinkedListIterator iter(impl->effects.get());
+	SafeLinkedListIterator<EnvironmentalEffect*> iter(impl->effects.get());
 	while(iter.iterateAvailable())
 	{
 		EnvironmentalEffect *eff = (EnvironmentalEffect *)iter.iterateNext();

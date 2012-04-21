@@ -35,15 +35,15 @@
 namespace game
 {
 
-static LinkedList *temp_player_and_allies_list = NULL;
+static LinkedList<Unit*> *temp_player_and_allies_list = NULL;
 static int temp_player_and_allies_list_amount = 0;
-static LinkedList *temp_empty_list = NULL;
+static LinkedList<Unit*> *temp_empty_list = NULL;
 
 
 UnitVisibilityChecker::UnitVisibilityChecker(game::Game *game)
 {
   this->game = game;
-  unitIterator = new LinkedListIterator(game->units->getAllUnits());
+  unitIterator = new LinkedListIterator<Unit*> (game->units->getAllUnits());
   otherUnitIterator = NULL;
   totalUnits = 0;
   unitsInPass = 0;
@@ -72,13 +72,13 @@ UnitVisibilityChecker::~UnitVisibilityChecker()
 
 void UnitVisibilityChecker::restart()
 {
-  LinkedList *allUnitsList = game->units->getAllUnits();
+  LinkedList<Unit*> *allUnitsList = game->units->getAllUnits();
 
   // nobody sees nobody... except own units
-  LinkedListIterator allIter = LinkedListIterator(allUnitsList);
+  LinkedListIterator<Unit*>  allIter = LinkedListIterator<Unit*> (allUnitsList);
   while (allIter.iterateAvailable())
 	{
-	  Unit *unit = (Unit *)allIter.iterateNext();
+	  Unit *unit = allIter.iterateNext();
     for (int i = 0; i < ABS_MAX_PLAYERS; i++)
     {
       if (unit->getOwner() == i)
@@ -98,10 +98,10 @@ void UnitVisibilityChecker::restart()
   }
 
   delete unitIterator;
-  unitIterator = new LinkedListIterator(game->units->getAllUnits());
+  unitIterator = new LinkedListIterator<Unit*> (game->units->getAllUnits());
   if (otherUnitIterator != NULL)
     delete otherUnitIterator;
-  otherUnitIterator = new LinkedListIterator(game->units->getAllUnits());
+  otherUnitIterator = new LinkedListIterator<Unit*> (game->units->getAllUnits());
   totalUnits = game->units->getAllUnitAmount();
   unitsInPass = totalUnits / VISIBILITY_CHECK_IN_PASSES;
   passCount = VISIBILITY_CHECK_IN_PASSES;
@@ -149,7 +149,7 @@ bool UnitVisibilityChecker::runCheckImpl()
     int unitCount = 0;
     while (otherUnitIterator->iterateAvailable())
 	  {
-	    Unit *other = (Unit *)otherUnitIterator->iterateNext();
+	    Unit *other = otherUnitIterator->iterateNext();
 
       // skip the the current unit, friendly units 
 			// and already seen dead units
@@ -312,11 +312,11 @@ bool UnitVisibilityChecker::runCheckImpl()
 						// TEMP!
 						// ignore all small units (1.5m) of that target player...
 						// except the one we're trying to hit
-						LinkedList *oul = game->units->getOwnedUnits(other->getOwner());
-						LinkedListIterator iter = LinkedListIterator(oul);
+						LinkedList<Unit*> *oul = game->units->getOwnedUnits(other->getOwner());
+						LinkedListIterator<Unit*>  iter = LinkedListIterator<Unit*> (oul);
 						while (iter.iterateAvailable())
 						{
-							Unit *ou = (Unit *)iter.iterateNext();
+							Unit *ou = iter.iterateNext();
 							if (ou != other && ou->getVisualObject() != NULL
 								&& ou->isActive() && ou->getUnitType()->getSize() <= 1.5f)
 								ou->getVisualObject()->setCollidable(false);
@@ -325,10 +325,10 @@ bool UnitVisibilityChecker::runCheckImpl()
 						if (other->getOwner() != u->getOwner())
 						{
 							oul = game->units->getOwnedUnits(u->getOwner());
-							iter = LinkedListIterator(oul);
+							iter = LinkedListIterator<Unit*> (oul);
 							while (iter.iterateAvailable())
 							{
-								Unit *ou = (Unit *)iter.iterateNext();
+								Unit *ou = iter.iterateNext();
 								if (ou != u && ou->isActive() 
 									&& ou->getUnitType()->getSize() <= 1.5f)
 									ou->getVisualObject()->setCollidable(false);
@@ -402,10 +402,10 @@ bool UnitVisibilityChecker::runCheckImpl()
 						// TEMP!
 						// restore them all...
 						oul = game->units->getOwnedUnits(other->getOwner());
-						iter = LinkedListIterator(oul);
+						iter = LinkedListIterator<Unit*> (oul);
 						while (iter.iterateAvailable())
 						{
-							Unit *ou = (Unit *)iter.iterateNext();
+							Unit *ou = iter.iterateNext();
 							if (ou != other 
 								&& ou->isActive()
 								&& ou->getUnitType()->getSize() <= 1.5f)
@@ -415,10 +415,10 @@ bool UnitVisibilityChecker::runCheckImpl()
 						if (other->getOwner() != u->getOwner())
 						{
 							oul = game->units->getOwnedUnits(u->getOwner());
-							iter = LinkedListIterator(oul);
+							iter = LinkedListIterator<Unit*> (oul);
 							while (iter.iterateAvailable())
 							{
-								Unit *ou = (Unit *)iter.iterateNext();
+								Unit *ou = iter.iterateNext();
 								if (ou != u 
 									&& ou->isActive()
 									&& ou->getUnitType()->getSize() <= 1.5f)
@@ -484,11 +484,11 @@ bool UnitVisibilityChecker::runCheckImpl()
       }
 
       // take new visibilities into use
-      LinkedList *allUnitsList = game->units->getAllUnits();
-      LinkedListIterator allIter = LinkedListIterator(allUnitsList);
+      LinkedList<Unit*> *allUnitsList = game->units->getAllUnits();
+      LinkedListIterator<Unit*>  allIter = LinkedListIterator<Unit*> (allUnitsList);
       while (allIter.iterateAvailable())
 	    {
-	      Unit *unit = (Unit *)allIter.iterateNext();
+	      Unit *unit = allIter.iterateNext();
 				bool wasSeenByPlayer = unit->visibility.isSeenByPlayer(game->singlePlayerNumber);
         unit->visibility.useToBeSeenByPlayer();
         unit->useToBeSeenUnit();
@@ -556,7 +556,7 @@ bool UnitVisibilityChecker::runCheckImpl()
       // reset iteration to first unit
 
       delete unitIterator;
-      unitIterator = new LinkedListIterator(allUnitsList);
+      unitIterator = new LinkedListIterator<Unit*> (allUnitsList);
 
 			// recount units
 			totalUnits = game->units->getAllUnitAmount();
@@ -573,7 +573,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 			// then try to find another unit to check
       while (unitIterator->iterateAvailable())
       {
-	      currentUnit = (Unit *)unitIterator->iterateNext();
+	      currentUnit = unitIterator->iterateNext();
         if (currentUnit->isActive() && !currentUnit->isDestroyed())
         {
           break;
@@ -592,7 +592,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 				if (currentUnit->getOwner() == 0)
 				{
 					// player vs hostiles
-					otherUnitIterator = new LinkedListIterator(game->units->getOwnedUnits(1));
+					otherUnitIterator = new LinkedListIterator<Unit*> (game->units->getOwnedUnits(1));
 				}
 				else if (currentUnit->getOwner() == 1)
 				{
@@ -604,42 +604,42 @@ bool UnitVisibilityChecker::runCheckImpl()
 							delete temp_player_and_allies_list;
 
 						temp_player_and_allies_list_amount = game->units->getOwnedUnitAmount(0) + game->units->getOwnedUnitAmount(3);
-						temp_player_and_allies_list = new LinkedList();
-						LinkedListIterator pliter(game->units->getOwnedUnits(0));
-						LinkedListIterator allyiter(game->units->getOwnedUnits(3));
+						temp_player_and_allies_list = new LinkedList<Unit*>();
+						LinkedListIterator<Unit*>  pliter(game->units->getOwnedUnits(0));
+						LinkedListIterator<Unit*>  allyiter(game->units->getOwnedUnits(3));
 						while (pliter.iterateAvailable())
 						{
-							Unit *copyuptr = (Unit *)pliter.iterateNext();
+							Unit *copyuptr = pliter.iterateNext();
 							temp_player_and_allies_list->append(copyuptr);
 						}
 						while (allyiter.iterateAvailable())
 						{
-							Unit *copyuptr = (Unit *)allyiter.iterateNext();
+							Unit *copyuptr = allyiter.iterateNext();
 							temp_player_and_allies_list->append(copyuptr);
 						}
 					}
-					otherUnitIterator = new LinkedListIterator(temp_player_and_allies_list);
+					otherUnitIterator = new LinkedListIterator<Unit*> (temp_player_and_allies_list);
 				}
 				else if (currentUnit->getOwner() == 2)
 				{
 					// neutrals vs none
 					if (temp_empty_list == NULL) 
 					{
-						temp_empty_list = new LinkedList();
+						temp_empty_list = new LinkedList<Unit*>();
 					}
-					otherUnitIterator = new LinkedListIterator(temp_empty_list);
+					otherUnitIterator = new LinkedListIterator<Unit*> (temp_empty_list);
 				}
 				else if (currentUnit->getOwner() == 3)
 				{
 					// allies vs hostiles
-					otherUnitIterator = new LinkedListIterator(game->units->getOwnedUnits(1));
+					otherUnitIterator = new LinkedListIterator<Unit*> (game->units->getOwnedUnits(1));
 				} else {
 					// some other side???
 					assert(!"UnitVisibilityChecker - unsupported unit owner.");
-					otherUnitIterator = new LinkedListIterator(game->units->getAllUnits());
+					otherUnitIterator = new LinkedListIterator<Unit*> (game->units->getAllUnits());
 				}
 			} else {
-				otherUnitIterator = new LinkedListIterator(game->units->getAllUnits());
+				otherUnitIterator = new LinkedListIterator<Unit*> (game->units->getAllUnits());
 			}
     }
   }

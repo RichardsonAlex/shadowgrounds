@@ -2,7 +2,7 @@
 #ifndef VISUALOBJECTMODELSTORAGE_H
 #define VISUALOBJECTMODELSTORAGE_H
 
-class LinkedList;
+template<typename T> class LinkedList;
 namespace ui
 {
 	class VisualObjectModel;
@@ -22,7 +22,7 @@ namespace game
 			ui::VisualObjectModel *getVisualObjectModel(const char *filename);
 
 		private:
-			LinkedList *models;
+			LinkedList<ui::VisualObjectModel*>* models;
 	};
 }
 

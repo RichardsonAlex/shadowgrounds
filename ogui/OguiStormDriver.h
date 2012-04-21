@@ -43,7 +43,7 @@ public:
   IStorm3D_VideoStreamer* video;
   //int stormGeneration;
   OguiStormDriver *parent;
-  const ListNode *listNode;
+  const ListNode<OguiStormImage*> *listNode;
 	int renderTargetIndex;
 	
 	bool deleteVideoOnDestruction;
@@ -74,7 +74,7 @@ public:
   IStorm3D_Texture *tex;
   //int stormGeneration;
   OguiStormDriver *parent;
-  const ListNode *listNode;
+  const ListNode<OguiStormFont*> *listNode;
 
   int cols;
   int rows;
@@ -130,14 +130,14 @@ public:
 
 	void updateVideos();
 
-  void removeImageByNode(const ListNode *node);
-  void removeFontByNode(const ListNode *node);
+  void removeImageByNode(const ListNode<OguiStormImage*> *node);
+  void removeFontByNode(const ListNode<OguiStormFont*> *node);
 
 private:
   int stormGeneration;
-  LinkedList *fonts;
-  LinkedList *images;
-  LinkedList *videos;
+  LinkedList<OguiStormFont*> *fonts;
+  LinkedList<OguiStormImage*> *images;
+  //LinkedList *videos;
 	std::vector<std::string> fontResources;
 
 	frozenbyte::TextureCache *textureCache;

@@ -56,6 +56,7 @@ SET( GLOBAL_LIBRARIES
     ${GLEW_LIBRARY}
     ${ZLIB_LIBRARIES}
     ${OPENAL_LIBRARY}
+    vorbisfile
 )
 
 INCLUDE_DIRECTORIES( BEFORE SYSTEM
@@ -66,7 +67,7 @@ INCLUDE_DIRECTORIES( BEFORE SYSTEM
 )
 
 # List of all libraries
-SET ( SG_MODULES container convert game_ui editor system ogui storm util filesystem util_common sound particlesystem )
+SET ( SG_MODULES convert game_ui editor system ogui storm util filesystem util_common sound particlesystem )
 # game < editor
 # game < util < sound
 # ui < ogui
@@ -111,7 +112,7 @@ IF( NOT SURVIVOR_DATA_PATH )
     SET( SURVIVOR_DATA_PATH "${CMAKE_DATA_PATH}/survivor" CACHE PATH "Path to Shadowgrounds Survivor data files" FORCE )
 ENDIF( NOT SURVIVOR_DATA_PATH )
 
-OPTION( LINKEDLIST_USE_NODE_POOL "Keep linkedlist nodes in pool, less dynamic memory allocations" ON )
+#OPTION( LINKEDLIST_USE_NODE_POOL "Keep linkedlist nodes in pool, less dynamic memory allocations" ON )
 OPTION( CRIMSON_MODE "The new non-rts, pure action game - \"crimson mode\"" ON )
 OPTION( BUILDINGMAP_SHOW_LOADINGMESSAGE "Show rebuilding binaries loading message for buildingmaps" OFF )
 OPTION( BUILDINGMAP_USE_OPTIONS "Make buildingmap use game's options (force/auto recreate, etc.)" ON )
@@ -120,7 +121,8 @@ OPTION( PATHFIND_DEBUG "Make debug view map of pathfinding" OFF )
 IF( NOT LIGHT_MAX_AMOUNT )
     SET( LIGHT_MAX_AMOUNT "5" CACHE STRING "Amount of light or what? Integer" FORCE )   # cmake doesn't support integers
 ENDIF( NOT LIGHT_MAX_AMOUNT )
-MARK_AS_ADVANCED( LINKEDLIST_USE_NODE_POOL BUILDINGMAP_SHOW_LOADINGMESSAGE LIGHT_MAX_AMOUNT )
+#MARK_AS_ADVANCED( LINKEDLIST_USE_NODE_POOL BUILDINGMAP_SHOW_LOADINGMESSAGE LIGHT_MAX_AMOUNT )
+MARK_AS_ADVANCED( BUILDINGMAP_SHOW_LOADINGMESSAGE LIGHT_MAX_AMOUNT )
 CONFIGURE_FILE( project_common/configuration.h.in project_common/configuration.h )
 
 
@@ -140,10 +142,6 @@ CompileSrcList( convert convert
     str2int.cpp
 )
 
-CompileSrcList( container container
-    LinkedList.cpp Stack.cpp
-)
-
 CompileSrcList( editor editor
     file_wrapper.cpp parser.cpp
 )
@@ -161,7 +159,7 @@ CompileSrcList( game_ui game
     Character.cpp CheckpointChecker.cpp ConnectionChecker.cpp CoverFinder.cpp CoverMap.cpp createparts.cpp
     DHLocaleManager.cpp DifficultyManager.cpp direct_controls.cpp DirectWeapon.cpp EngineMetaValues.cpp
     EnvironmentalEffect.cpp EnvironmentalEffectManager.cpp Flashlight.cpp FoobarAI.cpp Forcewear.cpp GameConfigs.cpp
-    Game.cpp GameMap.cpp GameObject.cpp GameObjectFactoryList.cpp GameObjectList.cpp GameOption.cpp
+    Game.cpp GameMap.cpp GameObject.cpp GameObjectList.cpp GameObjectFactoryList.cpp GameOption.cpp
     GameOptionManager.cpp GameProfiles.cpp GameProfilesEnumeration.cpp GameRandom.cpp GameScene.cpp GameStats.cpp
     GameUI.cpp GameWorldFold.cpp goretypedefs.cpp Head.cpp HideMap.cpp IndirectWeapon.cpp Item.cpp ItemList.cpp
     ItemManager.cpp ItemPack.cpp ItemType.cpp Leg.cpp LightBlinker.cpp LineOfJumpChecker.cpp MaterialManager.cpp

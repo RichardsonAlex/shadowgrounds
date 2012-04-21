@@ -4,7 +4,7 @@
 
 #include "GameObject.h"
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace game
 {
@@ -32,7 +32,7 @@ namespace game
 
 		int getAllProjectileAmount();
 
-		LinkedList *getAllProjectiles();
+		LinkedList<Projectile*> *getAllProjectiles();
 
 		void addProjectile(Projectile *projectile);
 		void removeProjectile(Projectile *projectile);
@@ -40,7 +40,7 @@ namespace game
 		Projectile *getProjectileByHandle(int handle);
 
 	private:
-		LinkedList *allProjectiles;
+		LinkedList<Projectile*> *allProjectiles;
 	};
 
 }

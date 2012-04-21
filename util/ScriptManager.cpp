@@ -60,11 +60,11 @@ namespace util
 		keywords = NULL;
 		keywordDatatypes = NULL;
 
-		allScripts = new LinkedList();
+		allScripts = new LinkedList<Script*>();
 
 		clearInternalPreprocessorMacros();
 #ifdef LEGACY_FILES
-		loadInternalPreprocessorMacros("Data/Scripts/internal_macros.dhh");
+		loadInternalPreprocessorMacros("data/scripts/internal_macros.dhh");
 #else
 		loadInternalPreprocessorMacros("data/script/internal_macros.dhh");
 #endif
@@ -1329,7 +1329,7 @@ namespace util
 		int ret = 0;
 		if (allScripts != NULL)
 		{
-			LinkedListIterator iter(allScripts);
+			LinkedListIterator<Script*> iter(allScripts);
 			while (iter.iterateAvailable())
 			{
 				iter.iterateNext();
@@ -1390,10 +1390,10 @@ namespace util
 		int scriptSum = 0;
 		if (allScripts != NULL)
 		{
-			LinkedListIterator iter(allScripts);
+			LinkedListIterator<Script*> iter(allScripts);
 			while (iter.iterateAvailable())
 			{
-				Script *s = (Script *)iter.iterateNext();
+				Script *s = iter.iterateNext();
 				ret += s->getName();
 				ret += "\r\n";
 				commandSum += s->commandAmount;

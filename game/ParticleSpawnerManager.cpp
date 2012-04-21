@@ -26,7 +26,7 @@ namespace game
 	ParticleSpawnerManager::ParticleSpawnerManager(Game *game)
 	{
 		this->game = game;
-		this->spawnerList = new LinkedList();
+		this->spawnerList = new LinkedList<ParticleSpawner*>();
 		this->playerPosition = VC3(0,0,0);
 	}	
 
@@ -66,10 +66,10 @@ namespace game
 
   void ParticleSpawnerManager::disableAllParticleSpawners()
 	{
-		LinkedListIterator iter(spawnerList);
+		LinkedListIterator<ParticleSpawner*> iter(spawnerList);
 		while (iter.iterateAvailable())
 		{
-			ParticleSpawner *s = (ParticleSpawner *)iter.iterateNext();
+			ParticleSpawner *s = iter.iterateNext();
 			s->disable();
 		}
 	}
@@ -78,7 +78,7 @@ namespace game
 	int ParticleSpawnerManager::getParticleSpawnerAmount()
 	{
 		int ret = 0;
-		LinkedListIterator iter(spawnerList);
+		LinkedListIterator<ParticleSpawner*> iter(spawnerList);
 		while (iter.iterateAvailable())
 		{
 			iter.iterateNext();
@@ -90,10 +90,10 @@ namespace game
 
   ParticleSpawner *ParticleSpawnerManager::getParticleSpawnerByName(const char *name)
 	{
-		LinkedListIterator iter(spawnerList);
+		LinkedListIterator<ParticleSpawner*> iter(spawnerList);
 		while (iter.iterateAvailable())
 		{
-			ParticleSpawner *s = (ParticleSpawner *)iter.iterateNext();
+			ParticleSpawner *s = iter.iterateNext();
 			if (s->getName() != NULL)
 			{
 				if (strcmp(s->getName(), name) == 0)
@@ -111,10 +111,10 @@ namespace game
 		IStorm3D_Camera *camera = (scene) ? scene->GetCamera() : 0;
 		int effectLevel = game::SimpleOptions::getInt(DH_OPT_I_PARTICLE_EFFECTS_LEVEL);
 
-		LinkedListIterator iter(spawnerList);
+		LinkedListIterator<ParticleSpawner*> iter(spawnerList);
 		while (iter.iterateAvailable())
 		{
-			ParticleSpawner *s = (ParticleSpawner *)iter.iterateNext();
+			ParticleSpawner *s = iter.iterateNext();
 
 			VC3 posDiff = s->position;
 			posDiff -= playerPosition;

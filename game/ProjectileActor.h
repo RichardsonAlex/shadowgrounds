@@ -60,7 +60,7 @@ private:
 
   bool doGore(Projectile *projectile, Unit *hitUnit, bool onlyPartial, float probabilityFactor, int additionalProbability);
 	
-  void getCollisionDisableList(Unit *shooter, LinkedList &noCollUnits, const VC3 &weaponPosition);
+  void getCollisionDisableList(Unit *shooter, LinkedList<Unit*> &noCollUnits, const VC3 &weaponPosition);
 
 };
 

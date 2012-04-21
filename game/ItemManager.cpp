@@ -158,11 +158,11 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 	{
 		clearAllSpawners();
 
-		LinkedList *items = game->items->getAllItems();
+		LinkedList<Item*> *items = game->items->getAllItems();
 
 		while(!items->isEmpty())
 		{
-			Item *item = (Item *)items->popLast();
+			Item *item = items->popLast();
 			delete item;
 		}
 
@@ -365,13 +365,13 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 
 	void ItemManager::run()
 	{
-		LinkedList *ilist = game->items->getAllItems();
+		LinkedList<Item*> *ilist = game->items->getAllItems();
 		// NOTE: need to use safe iterator, as running an item script may
 		// delete it.
-		SafeLinkedListIterator iter(ilist);
+		SafeLinkedListIterator<Item*> iter(ilist);
 		while(iter.iterateAvailable())
 		{
-			Item *item = (Item *)iter.iterateNext();
+			Item *item = iter.iterateNext();
 
 			if (item->advanceReEnable())
 			{
@@ -441,11 +441,11 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 					if (it->isExecutable() && (item->getCustomTipText() || it->getTipText() != NULL))
 					{
 
-						LinkedList *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
-						LinkedListIterator uiter(ulist);
+						LinkedList<Unit*> *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
+						LinkedListIterator<Unit*> uiter(ulist);
 						while (uiter.iterateAvailable())
 						{
-							Unit *u = (Unit *)uiter.iterateNext();
+							Unit *u = uiter.iterateNext();
 
 							if (u->isActive() && !u->isDestroyed())
 							{
@@ -502,11 +502,11 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 					// TODO: balance load properly.
 					if ((game->gameTimer & (ITEM_CHECK_INTERVAL-1)) == 0)
 					{
-						LinkedList *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
-						LinkedListIterator uiter(ulist);
+						LinkedList<Unit*> *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
+						LinkedListIterator<Unit*> uiter(ulist);
 						while (uiter.iterateAvailable())
 						{
-							Unit *u = (Unit *)uiter.iterateNext();
+							Unit *u = uiter.iterateNext();
 
 							if (u->isActive() && !u->isDestroyed())
 							{
@@ -604,11 +604,11 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 		float closestRangeSq = 999999.0f;
 		Item *closestItem = NULL;
 
-		LinkedList *ilist = game->items->getAllItems();
-		LinkedListIterator iter(ilist);
+		LinkedList<Item*> *ilist = game->items->getAllItems();
+		LinkedListIterator<Item*> iter(ilist);
 		while(iter.iterateAvailable())
 		{
-			Item *item = (Item *)iter.iterateNext();
+			Item *item = iter.iterateNext();
 			if (item->getItemTypeId() == itemTypeId)
 			{
 				VC3 diffVec = item->getPosition() - position;
@@ -630,11 +630,11 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 	{
 		float modLighting = float(SimpleOptions::getInt(DH_OPT_I_ITEM_MIN_LIGHTING)) / 100.0f;
 
-		LinkedList *ilist = game->items->getAllItems();
-		LinkedListIterator iter(ilist);
+		LinkedList<Item*> *ilist = game->items->getAllItems();
+		LinkedListIterator<Item*> iter(ilist);
 		while(iter.iterateAvailable())
 		{
-			Item *item = (Item *)iter.iterateNext();
+			Item *item = iter.iterateNext();
 
 			if(game->gameMap->colorMap)
 			{				
@@ -907,13 +907,13 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 
 		bool didExecute = false;
 
-		LinkedList *ilist = game->items->getAllItems();
+		LinkedList<Item*> *ilist = game->items->getAllItems();
 		// NOTE: need to use safe iterator, as running an item script may
 		// delete it.
-		SafeLinkedListIterator iter(ilist);
+		SafeLinkedListIterator<Item*> iter(ilist);
 		while(iter.iterateAvailable())
 		{
-			Item *item = (Item *)iter.iterateNext();
+			Item *item = iter.iterateNext();
 
 			// run executes...
 			if (item->isEnabled())
@@ -922,7 +922,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 				//LinkedListIterator uiter(ulist);
 				//while (uiter.iterateAvailable())
 				//{
-				//	Unit *u = (Unit *)uiter.iterateNext();
+				//	Unit *u = uiter.iterateNext();
 					Unit *u = unit;
 
 					if (u->isActive() && !u->isDestroyed())
@@ -957,12 +957,12 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 
 	void ItemManager::deleteAllLongTimeDisabledItems()
 	{
-		LinkedList *ilist = game->items->getAllItems();
+		LinkedList<Item*> *ilist = game->items->getAllItems();
 		// NOTE: need to use safe iterator, as this may delete items
-		SafeLinkedListIterator iter(ilist);
+		SafeLinkedListIterator<Item*> iter(ilist);
 		while(iter.iterateAvailable())
 		{
-			Item *item = (Item *)iter.iterateNext();
+			Item *item = iter.iterateNext();
 
 			// run executes...
 			if (!item->isEnabled())
@@ -978,11 +978,11 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 
 	void ItemManager::reEnableAllTimeDisabledItems()
 	{
-		LinkedList *ilist = game->items->getAllItems();
-		LinkedListIterator iter(ilist);
+		LinkedList<Item*> *ilist = game->items->getAllItems();
+		LinkedListIterator<Item*> iter(ilist);
 		while(iter.iterateAvailable())
 		{
-			Item *item = (Item *)iter.iterateNext();
+			Item *item = iter.iterateNext();
 
 			// run executes...
 			if (!item->isEnabled())

@@ -85,7 +85,7 @@ namespace game
 
 		void updateAreaTracker();
 
-		void addAreaTrigger(Unit *unit, const VC3 &position, float range, int clipMask, const LinkedList *unitToTrack);
+		void addAreaTrigger(Unit *unit, const VC3 &position, float range, int clipMask, const LinkedList<Unit*>* unitToTrack);
 
 		virtual void activate(int circleId, void *data);
 

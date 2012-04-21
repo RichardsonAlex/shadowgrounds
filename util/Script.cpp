@@ -256,7 +256,7 @@ namespace util
 		// "null" data, references (jumps) to this are always invalid.
 		addCommand("null", NULL);
 
-		loopNumBuf = new LinkedList();
+		loopNumBuf = new LinkedList<int>();
 	}
 
 	Script::~Script()
@@ -583,15 +583,14 @@ namespace util
 								sp->error("Script::run - Call stack empty, internal error while executing _externCallReturnMultiple.");
 								sp->finished = true;
 							} else {
-								// WARNING: void * -> int casts
-								if ((intptr_t)sp->ipStack->popLast())
+								if (sp->ipStack->popLast())
 									sp->thenBranch = true;
 								else
 									sp->thenBranch = false;
 								assert(!sp->ipStack->isEmpty());
-								sp->ifDepth = (intptr_t)sp->ipStack->popLast();
+								sp->ifDepth = sp->ipStack->popLast();
 								assert(!sp->ipStack->isEmpty());
-								intptr_t valueCheck = (intptr_t)sp->ipStack->popLast();
+								intptr_t valueCheck = sp->ipStack->popLast();
 								if (valueCheck != -1)
 								{
 									sp->error("Script::run - Wrong type of stack data, internal error while executing _externCallReturnMultiple.");
@@ -664,8 +663,7 @@ namespace util
 						sp->lastValue = UNITIALIZED_MAGIC_VALUE;
 					}
 #endif
-					// WARNING: int -> void * casts
-					sp->userStack->append((void *)sp->lastValue);
+					sp->userStack->append(sp->lastValue);
 					sp->userStackSize++;
 
 					if (sp->userStackSize == 50)
@@ -1107,12 +1105,12 @@ namespace util
 				case SCRIPT_CMD_EXTERNCALLPUSH:
 					// WARNING: nasty casts here
 					//sp->ipStack->append((void *)ip);
-					sp->ipStack->append((void *)-1);
-					sp->ipStack->append((void *)sp->ifDepth);
+					sp->ipStack->append(-1);
+					sp->ipStack->append(sp->ifDepth);
 					if (sp->thenBranch)
-						sp->ipStack->append((void *)1);
+						sp->ipStack->append(1);
 					else
-						sp->ipStack->append((void *)0);
+						sp->ipStack->append(0);
 					sp->ifDepth = 0;
 					sp->thenBranch = false;
 					// don't do this here. _externCallPush/Pop should not affect scope
@@ -1173,13 +1171,12 @@ namespace util
 
 						if (makeCall)
 						{
-							// WARNING: int -> void * casts
-							sp->ipStack->append((void *)ip);
-							sp->ipStack->append((void *)sp->ifDepth);
+							sp->ipStack->append(ip);
+							sp->ipStack->append(sp->ifDepth);
 							if (sp->thenBranch)
-								sp->ipStack->append((void *)1);
+								sp->ipStack->append(1);
 							else
-								sp->ipStack->append((void *)0);
+								sp->ipStack->append(0);
 							sp->ifDepth = 0;
 							sp->thenBranch = false;
 
@@ -2200,7 +2197,7 @@ namespace util
 					int num = commandAmount;
 
 					// WARNING: int -> void * cast
-					loopNumBuf->append((void *)num);
+					loopNumBuf->append(num);
 
 					// don't overwrite this one.
 					commandAmount++;
@@ -4401,9 +4398,9 @@ namespace util
 	}
 
 	// NOTE: returns a list to _const_ char pointers...
-	LinkedList *Script::getGlobalVariableList(bool permanentOnly)
+	LinkedList<const char*> *Script::getGlobalVariableList(bool permanentOnly)
 	{
-		LinkedList *ret = new LinkedList();
+		LinkedList<const char*> *ret = new LinkedList<const char*>();
 
 		VariableHashType::iterator iter = globalVariableHash->begin();
 

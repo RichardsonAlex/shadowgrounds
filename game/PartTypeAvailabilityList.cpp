@@ -11,10 +11,10 @@ namespace game
 
   PartTypeAvailabilityList::PartTypeAvailabilityList()
   {
-    ownedPartTypes = new LinkedList *[ABS_MAX_PLAYERS];
+    ownedPartTypes = new LinkedList<PartType*> *[ABS_MAX_PLAYERS];
     for (int i = 0; i < ABS_MAX_PLAYERS; i++)
     {
-      ownedPartTypes[i] = new LinkedList();
+      ownedPartTypes[i] = new LinkedList<PartType*>();
     }
   }
 
@@ -58,7 +58,7 @@ namespace game
 
   // returns a linked list containing PartType objects
   // (may want to change in future - to contain avail.amount for each type)
-  LinkedList *PartTypeAvailabilityList::getAvailablePartTypes(int player)
+  LinkedList<PartType*> *PartTypeAvailabilityList::getAvailablePartTypes(int player)
   {
     return ownedPartTypes[player];
   }
@@ -69,7 +69,7 @@ namespace game
     ownedPartTypes[player]->resetIterate();
     while (ownedPartTypes[player]->iterateAvailable())
     {
-      PartType *tmp = (PartType *)ownedPartTypes[player]->iterateNext();
+      PartType *tmp = ownedPartTypes[player]->iterateNext();
       if (tmp == partType) return true;
     }
     return false;

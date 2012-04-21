@@ -396,11 +396,11 @@ namespace game
 			distanceForOthers = distance * 2 / 3;
 		}
 
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u == NULL)
 			{
 				Logger::getInstance()->error("GameScripting::makeAlert - Fatal internal error. Unit list contains null unit pointer.");
@@ -640,11 +640,11 @@ namespace game
 			&& unit->getUnitType()->hasDoorExecute())
 		{
 			gs_dont_propagate_hitscript = true;
-			LinkedList *ulist = game->units->getOwnedUnits(unit->getOwner());
-			LinkedListIterator iter(ulist);
+			LinkedList<Unit*> *ulist = game->units->getOwnedUnits(unit->getOwner());
+			LinkedListIterator<Unit*> iter(ulist);
 			while (iter.iterateAvailable())
 			{ 		
-				Unit *other = (Unit *)iter.iterateNext();
+				Unit *other = iter.iterateNext();
 				// TODO: some treshold to the position...?
 				if (other != unit 
 					&& other->getSpawnCoordinates().x == unit->getSpawnCoordinates().x
@@ -703,11 +703,11 @@ namespace game
 			&& strcmp(unit->getUnitType()->getName(), "Door") == 0)
 		{
 			gs_dont_propagate_hitscript = true;
-			LinkedList *ulist = game->units->getOwnedUnits(unit->getOwner());
-			LinkedListIterator iter(ulist);
+			LinkedList<Unit*> *ulist = game->units->getOwnedUnits(unit->getOwner());
+			LinkedListIterator<Unit*> iter(ulist);
 			while (iter.iterateAvailable())
 			{ 		
-				Unit *other = (Unit *)iter.iterateNext();
+				Unit *other = iter.iterateNext();
 				// TODO: some treshold to the position...?
 				if (other != unit 
 					&& other->getSpawnCoordinates().x == unit->getSpawnCoordinates().x
@@ -1360,7 +1360,7 @@ namespace game
 		delete sp;
 	}
 
-	void GameScripting::addAreaTrigger(Unit *unit, const VC3 &position, float range, int clipMask, const LinkedList *unitsToTrack)
+	void GameScripting::addAreaTrigger(Unit *unit, const VC3 &position, float range, int clipMask, const LinkedList<Unit*> *unitsToTrack)
 	{
 		//char buf[256];
 		//sprintf(buf, "%f,%f - range %f - clip %d", position.x, position.z, range, clipMask);
@@ -1376,10 +1376,10 @@ namespace game
 		unit->setAreaTriggered(false);
 		ClippedCircle circle(position, range, clipMask);
 		int circleId = this->areaTracker->addCircleTrigger(circle, this, unit);
-		LinkedListIterator iter(unitsToTrack);
+		LinkedListIterator<Unit*> iter(unitsToTrack);
 		while (iter.iterateAvailable())
 		{
-			Unit *trackable = (Unit *)iter.iterateNext();
+			Unit *trackable = iter.iterateNext();
 
 			// TEMP
 			const char *idstr = trackable->getIdString();

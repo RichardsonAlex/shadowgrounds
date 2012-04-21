@@ -14,7 +14,7 @@ class Ogui;
 class OguiWindow;
 class OguiButton;
 class IOguiImage;
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace ui
 {
@@ -46,7 +46,7 @@ namespace ui
 			IOguiImage *leftImage;
 			IOguiImage *rightImage;
 
-			LinkedList *checkUnits;
+			LinkedList<game::Unit*> *checkUnits;
 
 			int pointedUnitsAmount;
 			OguiButton **pointerButs;

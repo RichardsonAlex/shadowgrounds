@@ -406,10 +406,10 @@ namespace game
 
 				// TODO: this is _very_ inefficient, iterating thru all projectiles...
 				// however, currently only gasoline pool uses this - thus, effectivess not important
-				LinkedListIterator piter(game->projectiles->getAllProjectiles());
+				LinkedListIterator<Projectile*> piter(game->projectiles->getAllProjectiles());
 				while (piter.iterateAvailable())
 				{
-					Projectile *other = (Projectile *)piter.iterateNext();
+					Projectile *other = piter.iterateNext();
 
 					// HACK: !!!
 					// UBERHACK: flamethrower (B_Flam... & B_FExt...) ignite it!!!
@@ -519,11 +519,11 @@ namespace game
 
 					// TODO: disable collisions for building and stuff,
 					// do for units only!!!
-					LinkedList *blist = game->buildings->getAllBuildings();
-					LinkedListIterator biter(blist);
+					LinkedList<Building*> *blist = game->buildings->getAllBuildings();
+					LinkedListIterator<Building*> biter(blist);
 					while (biter.iterateAvailable())
 					{
-						Building *b = (Building *)biter.iterateNext();
+						Building *b = biter.iterateNext();
 						if (b->getVisualObject() != NULL)
 							b->getVisualObject()->setCollidable(false);
 					}
@@ -533,7 +533,7 @@ namespace game
 					// that should not be allowed happen - should disable collision for that
 					// unit instead of shooter)
 
-					LinkedList disableCollUnits;
+					LinkedList<Unit*> disableCollUnits;
 					getCollisionDisableList(projectile->getShooter(), disableCollUnits, projectile->getPosition());
 
 					if (projectile->getShooter() != NULL
@@ -553,14 +553,14 @@ namespace game
 					// restore collision check for those units that got collision disabled
 					while (!disableCollUnits.isEmpty())
 					{
-						Unit *ownu = (Unit *)disableCollUnits.popLast();
+						Unit *ownu = disableCollUnits.popLast();
 						ownu->getVisualObject()->setCollidable(true);
 					}
 
-					LinkedListIterator biter2(blist);
+					LinkedListIterator<Building*> biter2(blist);
 					while (biter2.iterateAvailable())
 					{
-						Building *b = (Building *)biter2.iterateNext();
+						Building *b = biter2.iterateNext();
 						if (b->getVisualObject() != NULL)
 							b->getVisualObject()->setCollidable(true);
 					}
@@ -879,11 +879,11 @@ if (ltime < 1) ltime = 1;
 					float checkDist = projectile->getBulletType()->getProximityRange();
 					float checkDistSq = checkDist * checkDist;
 
-					LinkedList *ulist = game->units->getAllUnits();
-					LinkedListIterator uiter = LinkedListIterator(ulist);
+					LinkedList<Unit*> *ulist = game->units->getAllUnits();
+					LinkedListIterator<Unit*> uiter(ulist);
 					while (uiter.iterateAvailable())
 					{
-						Unit *u = (Unit *)uiter.iterateNext();
+						Unit *u = uiter.iterateNext();
 						if (projectile->getShooter() != NULL
 //							&& u->getOwner() != projectile->getShooter()->getOwner()
 							&& game->isHostile(projectile->getShooter()->getOwner(), u->getOwner())
@@ -1055,7 +1055,7 @@ if (ltime < 1) ltime = 1;
 					VC3 ppos = projectile->getPosition();
 					while (uiter->iterateAvailable())
 					{
-						Unit *u = (Unit *)uiter->iterateNext();
+						Unit *u = uiter->iterateNext();
 						if (u->isActive()
 							&& (!projectile->getBulletType()->doesNoSelfDamage()
 								|| u != projectile->getShooter())
@@ -1646,7 +1646,7 @@ if (ltime < 1) ltime = 1;
 
 		while (iter->iterateAvailable())
 		{
-			Unit *u = (Unit *)iter->iterateNext();
+			Unit *u = iter->iterateNext();
 			if (u->isActive() && !u->isDestroyed()
 				&& game->isHostile(u->getOwner(), shooterOwner)
 				&& u != hitUnit && u != shooter)
@@ -2979,7 +2979,7 @@ if (ltime < 1) ltime = 1;
 	}
 
 
-	void ProjectileActor::getCollisionDisableList(Unit *shooter, LinkedList &noCollUnits,
+	void ProjectileActor::getCollisionDisableList(Unit *shooter, LinkedList<Unit*> &noCollUnits,
 		const VC3 &weaponPosition)
 	{
 		Unit *unit = shooter;
@@ -2996,11 +2996,11 @@ if (ltime < 1) ltime = 1;
 #ifdef PROJECT_CLAW_PROTO
 			{
 				// don't let cops to kill each other	
-				LinkedList *unitList = game->units->getAllUnits();
-				LinkedListIterator unitListIter = LinkedListIterator(unitList);
+				LinkedList<Unit*> *unitList = game->units->getAllUnits();
+				LinkedListIterator<Unit*> unitListIter = LinkedListIterator(unitList);
 				while (unitListIter.iterateAvailable())
 				{
-					Unit *unit = (Unit *)unitListIter.iterateNext();
+					Unit *unit = unitListIter.iterateNext();
 					if( unit->getUnitTypeId() == shooter->getUnitTypeId() )
 					{
 						noCollUnits.append(unit);
@@ -3035,7 +3035,7 @@ if (ltime < 1) ltime = 1;
 
 					while (ownUnitsIter->iterateAvailable())
 					{
-						Unit *ownu = (Unit *)ownUnitsIter->iterateNext();
+						Unit *ownu = ownUnitsIter->iterateNext();
 						
 						if(ignore_all_but_self && ownu != unit) continue;
 
@@ -3060,11 +3060,11 @@ if (ltime < 1) ltime = 1;
 		}
 		// TEMP:
 		// HACK: disable collision for destroyed units!
-		LinkedList *deadlist = game->units->getAllUnits();
-		LinkedListIterator deadUnitsIter = LinkedListIterator(deadlist);
+		LinkedList<Unit*> *deadlist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> deadUnitsIter(deadlist);
 		while (deadUnitsIter.iterateAvailable())
 		{
-			Unit *deadu = (Unit *)deadUnitsIter.iterateNext();
+			Unit *deadu = deadUnitsIter.iterateNext();
 			if (deadu->isActive() && deadu->isDestroyed())
 			{
 				// NEW: only units that have been destroyed for a few seconds or so?
@@ -3107,18 +3107,18 @@ if (ltime < 1) ltime = 1;
 		GameCollisionInfo cinfo;
 
 		// actually, "collision disabled units"
-		LinkedList ownUnitsNear;
+		LinkedList<Unit*> ownUnitsNear;
 
 		if (bulletType != NULL 
 			&& bulletType->getSplitRaytrace() > 1)
 		{
 			// disable collision to _all_ units!
 			// (bullet handles the hits later on)
-			LinkedList *alllist = game->units->getAllUnits();
-			LinkedListIterator allUnitsIter = LinkedListIterator(alllist);
+			LinkedList<Unit*> *alllist = game->units->getAllUnits();
+			LinkedListIterator<Unit*> allUnitsIter(alllist);
 			while (allUnitsIter.iterateAvailable())
 			{
-				Unit *allu = (Unit *)allUnitsIter.iterateNext();
+				Unit *allu = allUnitsIter.iterateNext();
 				if (allu->isActive())
 				{
 					// NEW: but ignore doors that are in ~3 meter radius...
@@ -3230,7 +3230,7 @@ if (ltime < 1) ltime = 1;
 		// restore collision check for nearby own units
 		while (!ownUnitsNear.isEmpty())
 		{
-			Unit *ownu = (Unit *)ownUnitsNear.popLast();
+			Unit *ownu = ownUnitsNear.popLast();
 			ownu->getVisualObject()->setCollidable(true);
 		}
 

@@ -502,11 +502,11 @@ if (unit->isActive())
 		{
 			if (game->isHostile(p, game->singlePlayerNumber))
 			{
-				LinkedList *ulist = game->units->getOwnedUnits(p);
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getOwnedUnits(p);
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive())
 					{
 						if (!u->isDestroyed())
@@ -527,11 +527,11 @@ if (unit->isActive())
 		{
 			if (game->isHostile(p, game->singlePlayerNumber))
 			{
-				LinkedList *ulist = game->units->getOwnedUnits(p);
-				LinkedListIterator iter(ulist);
+				LinkedList<Unit*> *ulist = game->units->getOwnedUnits(p);
+				LinkedListIterator<Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive())
 					{
 						bool returnToSpawn = false;
@@ -583,12 +583,12 @@ if (unit->isActive())
 	Unit *UnitSpawner::findReusableUnit(Game *game, UnitType *unitType, int playerSide)
 	{
 
-		LinkedList *ulist = game->units->getOwnedUnits(playerSide);
-		LinkedListIterator uiter(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(playerSide);
+		LinkedListIterator<Unit*> uiter(ulist);
 
 		while (uiter.iterateAvailable())
 		{
-			Unit *u = (Unit *)uiter.iterateNext();
+			Unit *u = uiter.iterateNext();
 			
 			// NOTE: relying on the silly getCurrentVisibilityFadeValue to tell us when the unit has actually
 			// disappeared...

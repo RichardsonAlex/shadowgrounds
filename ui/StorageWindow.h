@@ -50,7 +50,7 @@ namespace ui
     int cursorMode;
 
     OguiWindow *win;
-    LinkedList *buttons;
+    LinkedList<OguiButton*> *buttons;
 
     OguiButton *closeBut;
     OguiButton *buyBut;

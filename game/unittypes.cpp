@@ -197,10 +197,10 @@ namespace game
 
   void deleteUnitTypes()
   {
-    SafeLinkedListIterator iter = SafeLinkedListIterator(&unitTypeIds);
+    SafeLinkedListIterator<UnitType*> iter(unitTypeIds);
     while (iter.iterateAvailable())
     {
-      UnitType *ut = (UnitType *)iter.iterateNext();
+      UnitType *ut = iter.iterateNext();
       delete ut;
     }
   }

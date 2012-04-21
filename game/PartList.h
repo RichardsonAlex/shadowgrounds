@@ -23,15 +23,15 @@ namespace game
     int getAllPartAmount();
     int getOwnedPartAmount(int player);
 
-    LinkedList *getAllParts();
-    LinkedList *getOwnedParts(int player);
+    LinkedList<Part*> *getAllParts();
+    LinkedList<Part*> *getOwnedParts(int player);
 
     void addPart(Part *part);
     void removePart(Part *part);
 
   private:
-    LinkedList *allParts;
-    LinkedList **ownedParts;
+    LinkedList<Part*> *allParts;
+    LinkedList<Part*> **ownedParts;
   };
 
 }

@@ -531,17 +531,17 @@ void TargetDisplayWindowUpdator::onDestruction( game::Item* item )
 void TargetDisplayWindowUpdator::updateUpdatables()
 {
 	{
-		LinkedList* list = game->items->getAllItems();
+		LinkedList<Item*>* list = game->items->getAllItems();
 		
 		itemsToBeUpdated.clear();
 
 		float updateDistance = updateItemsInsideDistance * updateItemsInsideDistance;
 
-		SafeLinkedListIterator i( list );
+		SafeLinkedListIterator<Item*> i( list );
 
 		while( i.iterateAvailable() )
 		{
-			Item* item = (Item*)i.iterateNext();
+			Item* item = i.iterateNext();
 			VC3 pos = item->getPosition();
 		
 
@@ -584,7 +584,7 @@ void TargetDisplayWindowUpdator::updateUpdatables()
 		IUnitListIterator *iter = game->units->getNearbyAllUnits(cam_pos, updateDistance);
 		while (iter->iterateAvailable())
 		{
-			Unit *unit = (Unit *)iter->iterateNext();
+			Unit *unit = iter->iterateNext();
 			// VC3 pos = unit->getPosition();
 
 

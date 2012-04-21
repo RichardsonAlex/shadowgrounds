@@ -107,13 +107,14 @@ namespace game
 
   class Part;
   class PartTypeParser;
+  class PartType;
 
   
   // list of data file based part types
   // these are not objects with actual C++ classes, but objects with PartType
   // class. they however have an id number to identify
   // don't use directly, externed only for cleanup
-  extern LinkedList partTypeIds;
+  extern LinkedList<PartType*> partTypeIds;
 
 
   class PartType

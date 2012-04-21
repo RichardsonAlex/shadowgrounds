@@ -9,7 +9,7 @@
 #include "Script.h"
 #include "IScriptProcessor.h"
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace util
 {
@@ -76,7 +76,7 @@ namespace util
 
 		std::vector<std::pair<std::string, std::string> > internalMacros;
 
-		LinkedList *allScripts;
+		LinkedList<Script*> *allScripts;
 
 // TEMP: argh.
 // FIXME: oh please, get rid of this.

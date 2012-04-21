@@ -4,7 +4,7 @@
 
 #include <string>
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace game
 {
@@ -71,10 +71,10 @@ namespace game
 			void interpolateCameraPosition(int cameraDumpNumber);
 
 			// returns a new list, delete once done with it!
-			LinkedList *getCameraDumpList();
+			LinkedList<const char*> *getCameraDumpList();
 
 			// returns a new list, delete once done with it!
-			LinkedList *getUnitList();
+			LinkedList<Unit*> *getUnitList();
 
 			void addUndoHistory(const char *description);
 			void undo();

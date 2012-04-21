@@ -13,7 +13,7 @@ namespace game
 
 	ItemList::ItemList()
 	{
-		allItems = new LinkedList();
+		allItems = new LinkedList<Item*>();
 	}
 
 	// NOTE, does not delete the items inside this but just the list of them
@@ -50,7 +50,7 @@ namespace game
 		return count;
 	}
 
-	LinkedList *ItemList::getAllItems()
+	LinkedList<Item*> *ItemList::getAllItems()
 	{
 		return allItems;
 	}

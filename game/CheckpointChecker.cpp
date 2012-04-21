@@ -13,12 +13,12 @@ namespace game
 	bool CheckpointChecker::isEveryUnitNearCheckpoint(Game *game, float range,
 		int player)
 	{
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 			{
 				if (!game->checkpoints->isNearCheckpoint(0, u->getPosition(), range))
@@ -32,12 +32,12 @@ namespace game
 	bool CheckpointChecker::isAnyUnitNearCheckpoint(Game *game, float range,
 		int player)
 	{
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 			{
 				if (game->checkpoints->isNearCheckpoint(0, u->getPosition(), range))

@@ -11,7 +11,7 @@ namespace game
 
   BuildingList::BuildingList()
   {
-    allBuildings = new LinkedList();
+    allBuildings = new LinkedList<Building*>();
   }
 
   // NOTE, does not delete the buildings inside this but just the list of them
@@ -48,7 +48,7 @@ namespace game
     return count;
   }
 
-  LinkedList *BuildingList::getAllBuildings()
+  LinkedList<Building*> *BuildingList::getAllBuildings()
   {
     return allBuildings;
   }

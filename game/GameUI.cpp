@@ -280,7 +280,7 @@ namespace game
 
 		this->ambientSoundManager = new AmbientSoundManager(this, soundLooper);
 
-		this->uiStateStack = new LinkedList();
+		this->uiStateStack = new LinkedList<UIState*>();
 
 		this->effects = new UIEffects(ogui, s3d);
 
@@ -593,7 +593,7 @@ namespace game
 
 		while (!uiStateStack->isEmpty())
 		{
-			UIState *tmp = (UIState *)uiStateStack->popLast();
+			UIState *tmp = uiStateStack->popLast();
 			char str[256];
 			sprintf(str, "UIState with ID %i left unpopped", tmp->id);
 			Logger::getInstance()->error(str);
@@ -999,7 +999,7 @@ namespace game
 		// clear uistack to be safe
 		while (!uiStateStack->isEmpty())
 		{
-			UIState *tmp = (UIState *)uiStateStack->popLast();
+			UIState *tmp = uiStateStack->popLast();
 			char str[256];
 			sprintf(str, "UIState with ID %i left unpopped", tmp->id);
 			Logger::getInstance()->error(str);
@@ -1072,20 +1072,20 @@ namespace game
 		}
 
 		// detach projectiles from visual effects
-		LinkedList *projlist = game->projectiles->getAllProjectiles();
-		LinkedListIterator projiter = LinkedListIterator(projlist);
+		LinkedList<Projectile*> *projlist = game->projectiles->getAllProjectiles();
+		LinkedListIterator<Projectile*> projiter(projlist);
 		while (projiter.iterateAvailable())
 		{
-			Projectile *proj = (Projectile *)projiter.iterateNext();
+			Projectile *proj = projiter.iterateNext();
 			proj->setVisualEffect(NULL);
 		}
 
 		// detach units from visual effects
-		LinkedList *unitlist = game->units->getAllUnits();
-		LinkedListIterator unititer = LinkedListIterator(unitlist);
+		LinkedList<Unit*> *unitlist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> unititer(unitlist);
 		while (unititer.iterateAvailable())
 		{
-			Unit *u = (Unit *)unititer.iterateNext();
+			Unit *u = unititer.iterateNext();
 			u->setMuzzleflashVisualEffect(NULL, 0);
 			u->setPointerVisualEffect(NULL);
 			u->setPointerHitVisualEffect(NULL);
@@ -3106,16 +3106,16 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 					}
 				}
 
-				LinkedList restoreColl; 
+				LinkedList<Unit*> restoreColl;
 
 				// disable hits to units (if specific unit hitting option is not on)
 				if (!SimpleOptions::getBool(DH_OPT_B_GUI_CURSOR_RAYTRACE_HITS_UNITS))
 				{
-					LinkedList *ulist = game->units->getAllUnits();
-					LinkedListIterator iter = LinkedListIterator(ulist);
+					LinkedList<Unit*> *ulist = game->units->getAllUnits();
+					LinkedListIterator<Unit*> iter(ulist);
 					while (iter.iterateAvailable())
 					{
-						Unit *u = (Unit *)iter.iterateNext();
+						Unit *u = iter.iterateNext();
 						if (u->isActive())
 						{
 							if (u->getVisualObject() != NULL)
@@ -3234,7 +3234,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 				// restore destroyed units collidable
 				while (!restoreColl.isEmpty())
 				{
-					Unit *u = (Unit *)restoreColl.popLast();
+					Unit *u = restoreColl.popLast();
 					u->getVisualObject()->setCollidable(true);
 				}
 
@@ -3329,11 +3329,11 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 				interpolate_factor = (Timer::getTime() - game->lastTickTime) / (1000.0f / (float) GAME_TICKS_PER_SECOND);
 			}
 
-			LinkedList *ulist = game->units->getAllUnits();
-			LinkedListIterator unititer = LinkedListIterator(ulist);
+			LinkedList<Unit*> *ulist = game->units->getAllUnits();
+			LinkedListIterator<Unit*> unititer(ulist);
 			while (unititer.iterateAvailable())
 			{
-				Unit *unit = (Unit *)unititer.iterateNext();
+				Unit *unit = unititer.iterateNext();
 				VisualObject *vo = unit->getVisualObject();
 				if (vo != NULL)
 				{
@@ -3785,11 +3785,11 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 				}
 			}
 
-			LinkedList *blist = game->buildings->getAllBuildings();
-			LinkedListIterator biter = LinkedListIterator(blist);
+			LinkedList<Building*> *blist = game->buildings->getAllBuildings();
+			LinkedListIterator<Building*> biter(blist);
 			while (biter.iterateAvailable())
 			{
-				Building *building = (Building *)biter.iterateNext();
+				Building *building = biter.iterateNext();
 				VisualObject *vo = building->getVisualObject();
 				if (vo != NULL)
 				{
@@ -3926,11 +3926,11 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 					firstPerson[0] = NULL;
 
 				} else {
-					LinkedList *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
-					LinkedListIterator iter = LinkedListIterator(ulist);
+					LinkedList<Unit*> *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
+					LinkedListIterator<Unit*> iter(ulist);
 					while (iter.iterateAvailable())
 					{
-						Unit *u = (Unit *)iter.iterateNext();
+						Unit *u = iter.iterateNext();
 						if (u->isActive() && !u->isDestroyed())
 						{
 							if (u->isSelected())
@@ -4558,8 +4558,8 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 			}
 			if (gameCamera->isFollowingUnit())
 			{
-				LinkedList *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
-				LinkedListIterator iter = LinkedListIterator(ulist);
+				LinkedList<Unit*> *ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
+				LinkedListIterator<Unit*> iter(ulist);
 				int amount = 0;
 				int amount2 = 0;
 				float x = 0; // selected units
@@ -4568,7 +4568,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 				float y2 = 0;
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					if (u->isActive() && !u->isDestroyed())
 					{
 						if (u->isSelected())
@@ -4783,15 +4783,15 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 				buildingHandler.beginUpdate();
 			
-				LinkedList *unitList = game->units->getOwnedUnits(game->singlePlayerNumber);
+				LinkedList<Unit*> *unitList = game->units->getOwnedUnits(game->singlePlayerNumber);
 				// hostiles seen inside buildings no longer remove roof
 				//LinkedList *unitList = game->units->getAllUnits();
-				LinkedListIterator unitIterator = LinkedListIterator(unitList);
+				LinkedListIterator<Unit*> unitIterator(unitList);
 				bool removeRoofs = false;
 
 				while(unitIterator.iterateAvailable())
 				{
-					Unit *unit = (Unit *)unitIterator.iterateNext();
+					Unit *unit = unitIterator.iterateNext();
 
 					if (unit->getOwner() == game->singlePlayerNumber)
 					// hostiles seen inside buildings no longer remove roof
@@ -5558,11 +5558,11 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 			// TODO: isn't this just a horrible waste of performance...?
 			// optimize, use the model's custom data to solve the visual object or something!
-			LinkedList *ulist = game->units->getAllUnits();
+			LinkedList<Unit*> *ulist = game->units->getAllUnits();
 			ulist->resetIterate();
 			while (ulist->iterateAvailable())
 			{
-				Unit *u = (Unit *)ulist->iterateNext();
+				Unit *u = ulist->iterateNext();
 				if (u->getVisualObject() != NULL)
 				{
 					if (u->getVisualObject()->model == cinfo.model)
@@ -6444,7 +6444,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		int id = 0;
 		if (!uiStateStack->isEmpty())
 		{
-			UIState *tmp = (UIState*)uiStateStack->peekLast();
+			UIState *tmp = uiStateStack->peekLast();
 			id = tmp->id + 1;
 
 			char str[1024];
@@ -6481,7 +6481,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		bool ret = true;
 		if (!uiStateStack->isEmpty())
 		{
-			UIState *tmp = (UIState *)uiStateStack->popLast();
+			UIState *tmp = uiStateStack->popLast();
 			if(tmp->id != 0)
 			{
 				char str[1024];
@@ -7272,7 +7272,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		// update pointlights to buildings...
 		{
 			assert(lightManager != NULL);
-			LinkedListIterator builditer(game->buildings->getAllBuildings());
+			LinkedListIterator<Building*> builditer(game->buildings->getAllBuildings());
 			while (builditer.iterateAvailable())
 			{
 				Building *b = (Building *)builditer.iterateNext();

@@ -377,10 +377,10 @@ int getMaterialFromString( const std::string& string )
 			unitTypeIds.remove(this);
 		}
 		this->unitTypeId = unitTypeId;
-		LinkedListIterator iter(&unitTypeIds);
+		LinkedListIterator<UnitType*> iter(unitTypeIds);
 		while (iter.iterateAvailable())
 		{
-			UnitType *tmp = (UnitType *)iter.iterateNext();
+			UnitType *tmp = iter.iterateNext();
 			if (tmp->getUnitTypeId() == unitTypeId)
 			{
 				Logger::getInstance()->warning("UnitType::setUnitTypeId - Duplicate unit type id number.");
@@ -1218,15 +1218,15 @@ int getMaterialFromString( const std::string& string )
 
 
 	// TODO: more optimal data structure for searches
-	LinkedList unitTypeIds = LinkedList();
+	LinkedList<UnitType*> unitTypeIds;
 
 
 	UnitType *getUnitTypeById(int id)
 	{
-		LinkedListIterator iter = LinkedListIterator(&unitTypeIds);
+		LinkedListIterator<UnitType*> iter(unitTypeIds);
 		while (iter.iterateAvailable())
 		{
-			UnitType *ut = (UnitType *)iter.iterateNext();
+			UnitType *ut = iter.iterateNext();
 			if (ut->getUnitTypeId() == id) return ut;
 		}
 		return NULL;
@@ -1234,10 +1234,10 @@ int getMaterialFromString( const std::string& string )
 
 	UnitType *getUnitTypeByName(const char *name)
 	{
-		LinkedListIterator iter = LinkedListIterator(&unitTypeIds);
+		LinkedListIterator<UnitType*> iter(unitTypeIds);
 		while (iter.iterateAvailable())
 		{
-			UnitType *ut = (UnitType *)iter.iterateNext();
+			UnitType *ut = iter.iterateNext();
 			if (strcmp(ut->getName(), name) == 0) return ut;
 		}
 		return NULL;

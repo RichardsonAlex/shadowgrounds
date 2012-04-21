@@ -677,7 +677,7 @@ namespace game
 	GameOptionManager::GameOptionManager(GameConfigs *gameConfigs)
 	{
 		this->gameConf = gameConfigs;
-		this->options = new LinkedList();
+		this->options = new LinkedList<GameOption*>();
 		for (int i = 0; i < DH_OPT_AMOUNT; i++)
 		{
 			optionsById[i] = NULL;
@@ -692,7 +692,7 @@ namespace game
 
 		while (!options->isEmpty())
 		{
-			GameOption *tmp = (GameOption *)options->popLast();
+			GameOption *tmp = options->popLast();
 			delete tmp;
 		}
 		delete options;
@@ -991,7 +991,7 @@ namespace game
 	}
 
 
-	const LinkedList *GameOptionManager::getOptionsList()
+	const LinkedList<GameOption*> *GameOptionManager::getOptionsList()
 	{
 		return options;
 	}

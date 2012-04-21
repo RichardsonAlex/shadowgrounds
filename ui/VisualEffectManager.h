@@ -9,7 +9,7 @@
 #include <boost/shared_ptr.hpp>
 #endif
 
-class LinkedList;
+template<typename T> class LinkedList;
 class IStorm3D;
 class IStorm3D_Scene;
 class IStorm3D_Terrain;
@@ -48,6 +48,7 @@ namespace ui
 	class ParticleCollision;
 	class FluidParticleCollision;
 	class ParticleArea;
+	class ManagedVisualEffectEntry;
 
 	class VisualEffectManager
 	{
@@ -113,7 +114,7 @@ namespace ui
 			frozenbyte::particle::ParticleEffectManager *getParticleEffectManager();
 
 		private:
-			LinkedList *visualEffects;
+			LinkedList<VisualEffect*> *visualEffects;
 
 			IStorm3D *storm3d;
 			IStorm3D_Scene *scene;
@@ -128,7 +129,7 @@ namespace ui
 
 			//ParticleManager *particleManager;
 
-			LinkedList *managedEffects;
+			LinkedList<ManagedVisualEffectEntry*> *managedEffects;
 
 			boost::shared_ptr<ParticleCollision> particleCollision;
 			boost::shared_ptr<FluidParticleCollision> fluidParticleCollision;

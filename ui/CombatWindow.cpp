@@ -1347,11 +1347,11 @@ int getNumberOfPlayers()
 			|| gameController->wasKeyClicked(DH_CTRL_STOP_AND_CEASE_FIRE))
 		{
 			std::vector<Unit *> unitVector;
-			LinkedList *ulist = game->units->getOwnedUnits(player);
+			LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
 			ulist->resetIterate();
 			while (ulist->iterateAvailable())
 			{
-				Unit *u = (Unit *)ulist->iterateNext();
+				Unit *u = ulist->iterateNext();
 				if (u->isActive() && u->isSelected())
 				{
 					unitVector.push_back(u);
@@ -1368,14 +1368,14 @@ int getNumberOfPlayers()
 
 		if (gameController->wasKeyClicked(DH_CTRL_SELECT_NEXT_UNIT))
 		{
-			LinkedList *ulist = game->units->getOwnedUnits(player);
+			LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
 			ulist->resetIterate();
 			bool passedCurrent = false;
 			bool foundSome = false;
 			Unit *firstOne = NULL;
 			while(ulist->iterateAvailable())
 			{
-				Unit *u = (Unit *)ulist->iterateNext();
+				Unit *u = ulist->iterateNext();
 				if (u->isActive())
 				{					
 					if (passedCurrent)
@@ -2321,11 +2321,11 @@ int getNumberOfPlayers()
 											game->gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY), 
 											sel->scaledMapY);
 										std::vector<Unit *> unitVector;
-										LinkedList *ulist = game->units->getOwnedUnits(player);
+										LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
 										ulist->resetIterate();
 										while (ulist->iterateAvailable())
 										{
-											Unit *u = (Unit *)ulist->iterateNext();
+											Unit *u = ulist->iterateNext();
 											if (u->isActive() && u->isSelected())
 											{
 												unitVector.push_back(u);
@@ -2507,11 +2507,11 @@ int getNumberOfPlayers()
 		}
 		*/
 		std::vector<Unit *> unitVector;
-		LinkedList *ulist = game->units->getOwnedUnits(player);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
 		ulist->resetIterate();
 		while (ulist->iterateAvailable())
 		{
-			Unit *u = (Unit *)ulist->iterateNext();
+			Unit *u = ulist->iterateNext();
 			if (u->isActive() && u->isSelected())
 			{
 				unitVector.push_back(u);
@@ -2573,11 +2573,11 @@ int getNumberOfPlayers()
 	void CombatWindow::doAllUnitSelection()
 	{
 		bool selectAll = false;
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u != NULL)
 			{
 				if (!u->isSelected() && !u->isDestroyed()
@@ -2638,7 +2638,7 @@ int getNumberOfPlayers()
 		}
 #endif
 		
-		LinkedList *ulist;
+		LinkedList<Unit*> *ulist;
 		// cheat?
 		if (SimpleOptions::getBool(DH_OPT_B_SHOW_ENEMY_TACTICAL))
 		{
@@ -2647,10 +2647,10 @@ int getNumberOfPlayers()
 		} else {
 			ulist = game->units->getOwnedUnits(game->singlePlayerNumber);
 		}
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u != NULL && u->isActive())
 			{
 #ifdef CRIMSON_MODE
@@ -2805,10 +2805,10 @@ int getNumberOfPlayers()
 
 		// others than player...				
 		ulist = game->units->getAllUnits();
-		iter = LinkedListIterator(ulist);
+		iter = LinkedListIterator<Unit*>(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 			{
 				if (u->getOwner() != player 

@@ -51,7 +51,7 @@
 
 #define OGUI_SCALE_MULTIPLIER 1024
 
-class LinkedList;
+template<typename T> class LinkedList;
 class IStorm3D_StreamBuilder;
 class IStorm3D_VideoStreamer;
 

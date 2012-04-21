@@ -224,8 +224,8 @@ OguiStormDriver::OguiStormDriver(IStorm3D *storm3d, IStorm3D_Scene *stormScene)
 	og_setRendererScene(stormScene);
 	init_orvgui();
  
-	fonts = new LinkedList();
-	images = new LinkedList();
+	fonts = new LinkedList<OguiStormFont*>();
+	images = new LinkedList<OguiStormImage*>();
 
 	stormGeneration = 0;
 
@@ -788,10 +788,10 @@ void OguiStormDriver::nextStormGeneration(IStorm3D_Scene *stormScene)
 	// reload all fonts
 	//fonts->resetIterate();
 	//while (fonts->iterateAvailable())
-	LinkedListIterator it(fonts);
+	LinkedListIterator<OguiStormFont*> it(fonts);
 	while(it.iterateAvailable())
 	{
-		OguiStormFont *fnt = (OguiStormFont *)it.iterateNext();
+		OguiStormFont *fnt = it.iterateNext();
 		if(!fnt)
 			continue;
 
@@ -799,10 +799,10 @@ void OguiStormDriver::nextStormGeneration(IStorm3D_Scene *stormScene)
 		{
 			IStorm3D_Font *stormfnt = 0;
 
-			LinkedListIterator it2(fonts);
+			LinkedListIterator<OguiStormFont*> it2(fonts);
 			while(it2.iterateAvailable())
 			{
-				OguiStormFont *fnt2 = (OguiStormFont *)it2.iterateNext();
+				OguiStormFont *fnt2 = it2.iterateNext();
 				if(!fnt2 || !fnt2->isUnicode || !fnt2->fnt)
 					continue;
 
@@ -949,7 +949,7 @@ void OguiStormDriver::updateVideos()
 	images->resetIterate();
 	while (images->iterateAvailable())
 	{
-		OguiStormImage *img = (OguiStormImage *)images->iterateNext();
+		OguiStormImage *img = images->iterateNext();
 
 		if( img->video != NULL )
 		{
@@ -959,13 +959,13 @@ void OguiStormDriver::updateVideos()
 }
 
 
-void OguiStormDriver::removeImageByNode(const ListNode *node)
+void OguiStormDriver::removeImageByNode(const ListNode<OguiStormImage*> *node)
 {
 	images->removeNode(node);
 	// videos->removeNode(node);
 }
 
-void OguiStormDriver::removeFontByNode(const ListNode *node)
+void OguiStormDriver::removeFontByNode(const ListNode<OguiStormFont*> *node)
 {
 	fonts->removeNode(node);
 }

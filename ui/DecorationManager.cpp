@@ -20,7 +20,7 @@ namespace ui
   
 	DecorationManager::DecorationManager()
   {
-    decorList = new LinkedList();
+    decorList = new LinkedList<Decoration*>();
   }
 
 
@@ -28,7 +28,7 @@ namespace ui
   {
 		while (!decorList->isEmpty())
 		{
-			Decoration *d = (Decoration *)decorList->popLast();
+			Decoration *d = decorList->popLast();
 			delete d;
 		}
 		delete decorList;
@@ -52,10 +52,10 @@ namespace ui
 
   Decoration *DecorationManager::getDecorationByName(const char *name) const
   {
-		LinkedListIterator iter = LinkedListIterator(decorList);
+		LinkedListIterator<Decoration*> iter(decorList);
 		while (iter.iterateAvailable())
 		{
-			Decoration *decor = (Decoration *)iter.iterateNext();
+			Decoration *decor = iter.iterateNext();
 			if (decor->name != NULL && strcmp(decor->name, name) == 0)
 			{
 				return decor;
@@ -67,10 +67,10 @@ namespace ui
 
   void DecorationManager::run()
   {
-		LinkedListIterator iter = LinkedListIterator(decorList);
+		LinkedListIterator<Decoration*> iter(decorList);
 		while (iter.iterateAvailable())
 		{
-			Decoration *decor = (Decoration *)iter.iterateNext();
+			Decoration *decor = iter.iterateNext();
 			decor->run();
 		}
   }
@@ -78,10 +78,10 @@ namespace ui
 
   void DecorationManager::synchronizeAllDecorations() const
   {
-		LinkedListIterator iter = LinkedListIterator(decorList);
+		LinkedListIterator<Decoration*> iter(decorList);
 		while (iter.iterateAvailable())
 		{
-			Decoration *decor = (Decoration *)iter.iterateNext();
+			Decoration *decor = iter.iterateNext();
 			for (int i = 0; i < DECORATION_MAX_EFFECTS; i++)
 				decor->effectValue[i] = 0;
 		}		
@@ -89,7 +89,7 @@ namespace ui
 
 	void DecorationManager::updateDecorationIllumination(util::ColorMap *colorMap)
 	{
-		LinkedListIterator iter = LinkedListIterator(decorList);
+		LinkedListIterator<Decoration*> iter(decorList);
 		while (iter.iterateAvailable())
 		{
 			Decoration *decor = (Decoration *)iter.iterateNext();
@@ -109,10 +109,10 @@ namespace ui
 
 		int i = DECORID_LOWEST_POSSIBLE_VALUE;
 
-		LinkedListIterator iter(decorList);
+		LinkedListIterator<Decoration*> iter(decorList);
 		while (iter.iterateAvailable())
 		{
-			Decoration *d = (Decoration *)iter.iterateNext();
+			Decoration *d = iter.iterateNext();
 			if (decor == d) return i;
 			i++;
 		}
@@ -125,10 +125,10 @@ namespace ui
 	{
 		int i = DECORID_LOWEST_POSSIBLE_VALUE;
 
-		LinkedListIterator iter(decorList);
+		LinkedListIterator<Decoration*> iter(decorList);
 		while (iter.iterateAvailable())
 		{
-			Decoration *d = (Decoration *)iter.iterateNext();
+			Decoration *d = iter.iterateNext();
 			if (i == id) return d;
 			i++;
 		}

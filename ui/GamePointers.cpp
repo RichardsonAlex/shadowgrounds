@@ -152,7 +152,7 @@ namespace ui
       }
     }
 
-    pointers = new LinkedList();
+    pointers = new LinkedList<GamePointerImpl*>();
   }
 
 
@@ -327,7 +327,7 @@ namespace ui
   {
     while (!pointers->isEmpty())
     {
-      GamePointerImpl *gp = (GamePointerImpl *)pointers->popLast();
+      GamePointerImpl *gp = pointers->popLast();
       VisualObject *vo = gp->visualObject;
       if (vo != NULL)
         delete vo;
@@ -357,10 +357,10 @@ namespace ui
 
   void GamePointers::updatePositions()
   {
-    LinkedListIterator iter = LinkedListIterator(pointers);
+    LinkedListIterator<GamePointerImpl*> iter(pointers);
     while (iter.iterateAvailable())
     {
-      GamePointerImpl *gp = (GamePointerImpl *)iter.iterateNext();
+      GamePointerImpl *gp = iter.iterateNext();
       if (gp->lockedTo != NULL)
       {
 				VC3 pos = gp->lockedTo->getPointerPosition();
@@ -385,10 +385,10 @@ namespace ui
 
   void GamePointers::prepareForRender()
   {
-    LinkedListIterator iter = LinkedListIterator(pointers);
+    LinkedListIterator<GamePointerImpl*> iter(pointers);
     while (iter.iterateAvailable())
     {
-      GamePointerImpl *gp = (GamePointerImpl *)iter.iterateNext();
+      GamePointerImpl *gp = iter.iterateNext();
       gp->visualObject->prepareForRender();
     }
   }

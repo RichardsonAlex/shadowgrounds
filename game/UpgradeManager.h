@@ -5,8 +5,6 @@
 #include <DatatypeDef.h>
 #include <vector>
 
-class LinkedList;
-
 namespace game
 {
 	class Game;

@@ -7,6 +7,7 @@
 
 namespace game
 {
+  class GameObjectFactoryNode;
 
   class GameObjectFactoryList
   {
@@ -18,7 +19,7 @@ namespace game
     IGameObjectFactory *getById(int id);
 
   private:
-    LinkedList *factories;
+    LinkedList<GameObjectFactoryNode*> *factories;
 
   };
 

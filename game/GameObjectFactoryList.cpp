@@ -26,7 +26,7 @@ namespace game
 
   GameObjectFactoryList::GameObjectFactoryList()
   {
-    factories = new LinkedList();
+    factories = new LinkedList<GameObjectFactoryNode*>();
   }
 
   GameObjectFactoryList::~GameObjectFactoryList()
@@ -55,7 +55,7 @@ namespace game
     while (factories->iterateAvailable())
     {
       GameObjectFactoryNode *tmp = 
-        (GameObjectFactoryNode *)factories->iterateNext();
+        factories->iterateNext();
       if (tmp->id == id)
       {
         return tmp->factory;

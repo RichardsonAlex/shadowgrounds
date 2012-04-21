@@ -58,11 +58,11 @@ namespace ui
 
 		// loop thru all owned active units (that are not dead)
 		bool firstUnit = true;
-		LinkedList *ulist = unitList->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = unitList->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 			{
 				VC3 pos = u->getPosition();

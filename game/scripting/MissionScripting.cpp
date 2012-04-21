@@ -528,11 +528,11 @@ namespace game
 	int MissionScripting::calculateAliveUnits(Game *game, int player)
 	{
 		int ret = 0;
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 			{
 				ret++;
@@ -546,11 +546,11 @@ namespace game
 	int MissionScripting::calculateConsciousUnits(Game *game, int player)
 	{
 		int ret = 0;
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed()
 				&& u->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
 			{
@@ -565,11 +565,11 @@ namespace game
 	int MissionScripting::calculateAliveHostileUnits(Game *game, int player)
 	{
 		int ret = 0;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed()
 				&& u->getOwner() != player
 				&& game->isHostile(player, u->getOwner()))
@@ -585,11 +585,11 @@ namespace game
 	int MissionScripting::countHostilesInRange(Game *game, const VC3 &position, int player, int range, bool consciousOnly)
 	{
 		int amount = 0;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed() 
 				&& game->isHostile(player, u->getOwner())
 				&& (u->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS
@@ -611,11 +611,11 @@ namespace game
 	int MissionScripting::countFriendlysInRange(Game *game, const VC3 &position, int player, int range)
 	{
 		int amount = 0;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed() 
 				&& !game->isHostile(player, u->getOwner()))
 			{
@@ -635,11 +635,11 @@ namespace game
 	int MissionScripting::countOwnedInRange(Game *game, const VC3 &position, int player, int range)
 	{
 		int amount = 0;
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed() 
 				&& player == u->getOwner())
 			{
@@ -659,11 +659,11 @@ namespace game
 	bool MissionScripting::isEveryUnitNearPosition(Game *game, int player, 
 		float range, const VC3 &position)
 	{
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && u->isDestroyed())
 			{
 				VC3 pos2 = u->getPosition();
@@ -682,11 +682,11 @@ namespace game
 	bool MissionScripting::isAnyUnitNearPosition(Game *game, int player, 
 		float range, const VC3 &position)
 	{
-		LinkedList *ulist = game->units->getOwnedUnits(player);
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && u->isDestroyed())
 			{
 				VC3 pos2 = u->getPosition();
@@ -704,12 +704,12 @@ namespace game
 
 	bool MissionScripting::playerUnitsInAction(Game *game, int player)
 	{
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		bool hostilesNear = false;
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 			{ 							
 				if (u->getOwner() == player)

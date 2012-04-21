@@ -30,13 +30,13 @@ namespace game
 
     int getAllBuildingAmount();
 
-    LinkedList *getAllBuildings();
+    LinkedList<Building*> *getAllBuildings();
 
     void addBuilding(Building *building);
     void removeBuilding(Building *building);
 
   private:
-    LinkedList *allBuildings;
+    LinkedList<Building*> *allBuildings;
   };
 
 }

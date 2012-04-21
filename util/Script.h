@@ -271,7 +271,7 @@ namespace util
 
 		static void resetNonPermanentGlobalVariables();
 
-		static LinkedList *getGlobalVariableList(bool permanentOnly);
+		static LinkedList<const char*> *getGlobalVariableList(bool permanentOnly);
 		static VariableHashType *getGlobalVariableHash();
 
 		// prevents "forced pause" when a script seems to be misbehaving
@@ -318,7 +318,7 @@ namespace util
 		char **stringDataArray;
 		VarOptimizeData **varOptimizeDataArray;
 
-		LinkedList *loopNumBuf;
+		LinkedList<int> *loopNumBuf;
 
 		bool noForcedPause;
 

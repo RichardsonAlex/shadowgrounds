@@ -674,11 +674,11 @@ void Ogui::UpdateEffects(int timeDelta)
 			// bool winStillExists = win->buttonList->isEmpty();
 
 			bool sendEvent = false;
-			SafeLinkedListIterator i( win->buttonList );
+			SafeLinkedListIterator<OguiButton*> i( win->buttonList );
 			while( i.iterateAvailable() )
 			{
 				
-				OguiButton* button = (OguiButton*)i.iterateNext();
+				OguiButton* button = i.iterateNext();
 				
 				if( button->SetText( button->text.substr( 0, (unsigned int)( value * button->text.size() ) ).c_str() ) )
 				{
@@ -731,10 +731,10 @@ void Ogui::UpdateEffects(int timeDelta)
 			std::map< int, OguiButton* > buttons;
 
 			{
-				SafeLinkedListIterator i( win->buttonList );
+				SafeLinkedListIterator<OguiButton*> i( win->buttonList );
 				while( i.iterateAvailable() )
 				{
-					OguiButton* button = (OguiButton*)i.iterateNext();
+					OguiButton* button = i.iterateNext();
 					buttons.insert( std::pair< int, OguiButton* >( ( (orvgui_but*)( button->but ) )->put_y, button ) );
 					number_of_buttons++;
 				}

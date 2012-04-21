@@ -25,7 +25,7 @@
 #define GPOINTER_AMOUNT 17
 
 
-class LinkedList;
+template<typename T> class LinkedList;
 class IStorm3D_Material;
 
 namespace game
@@ -39,6 +39,7 @@ namespace ui
   class VisualObjectModel;
   class VisualObject;
   class IPointableObject;
+  class GamePointerImpl;
 
   /**
    * Class for showing 3d game pointers (selections, waypoints and stuff).
@@ -66,7 +67,7 @@ namespace ui
   private:
 		game::GameScene *gameScene;
 
-    LinkedList *pointers;
+    LinkedList<GamePointerImpl*> *pointers;
     VisualObjectModel **models;
     VisualObject **objects;
     IStorm3D_Material **materials;

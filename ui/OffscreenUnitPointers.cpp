@@ -34,7 +34,7 @@ namespace ui
 		this->win = window;
 		this->enabled = false;
 
-		checkUnits = new LinkedList();
+		checkUnits = new LinkedList<Unit*>();
 
 		pointedUnitsAmount = 0;
 		pointerButs = new OguiButton *[OFFSCREEN_UNIT_POINTERS_MAX_UNITS];
@@ -87,10 +87,10 @@ namespace ui
 
 	void OffscreenUnitPointers::addUnitForChecklist(game::Unit *unit)
 	{ 
-		LinkedListIterator iter = LinkedListIterator(checkUnits);
+		LinkedListIterator<Unit*> iter(checkUnits);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (unit == u)
 			{
 				assert(!"OffscreenUnitPointers - Unit already in checklist.");
@@ -116,7 +116,7 @@ namespace ui
 		// create pointers for all offscreen units in checklist...
 		// reusing existing buttons, or creating new ones if necessary.
 		int num = 0;
-		LinkedListIterator iter = LinkedListIterator(checkUnits);
+		LinkedListIterator<Unit*> iter(checkUnits);
 		while (iter.iterateAvailable())
 		{
 			// if not enabled, just break now.

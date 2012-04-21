@@ -175,11 +175,11 @@ namespace game
 
 	UnitList::UnitList()
 	{
-		allUnits = new LinkedList();
-		ownedUnits = new LinkedList *[ABS_MAX_PLAYERS];
+		allUnits = new LinkedList<Unit*>();
+		ownedUnits = new LinkedList<Unit*> *[ABS_MAX_PLAYERS];
 		for (int i = 0; i < ABS_MAX_PLAYERS; i++)
 		{
-			ownedUnits[i] = new LinkedList();
+			ownedUnits[i] = new LinkedList<Unit*>();
 			ownedUnitAmount[i] = 0;
 		}
 		allUnitAmount = 0;
@@ -259,12 +259,12 @@ namespace game
 		return ownedUnitAmount[player];
 	}
 
-	LinkedList *UnitList::getAllUnits()
+	LinkedList<Unit*> *UnitList::getAllUnits()
 	{
 		return allUnits;
 	}
 
-	LinkedList *UnitList::getOwnedUnits(int player)
+	LinkedList<Unit*> *UnitList::getOwnedUnits(int player)
 	{
 		return ownedUnits[player];
 	}
@@ -328,10 +328,10 @@ namespace game
 				unitlist_nextIdNumber = UNITID_LOWEST_POSSIBLE_VALUE;
 
 			bool alreadyTaken = false;
-			LinkedListIterator iter(allUnits);
+			LinkedListIterator<Unit*> iter(allUnits);
 			while (iter.iterateAvailable())
 			{
-				Unit *u = (Unit *)iter.iterateNext();
+				Unit *u = iter.iterateNext();
 				if (u->getIdNumber() == unitlist_nextIdNumber)
 				{
 					alreadyTaken = true;
@@ -428,10 +428,10 @@ namespace game
 	{
 		// TODO: optimize, need a hash map or something for this!
 
-		LinkedListIterator iter(allUnits);
+		LinkedListIterator<Unit*> iter(allUnits);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->getIdNumber() == id)
 				return u;
 		}
@@ -460,10 +460,10 @@ namespace game
 
 	Unit *UnitList::getUnitByIdString(const char *idString)
 	{
-		LinkedListIterator iter(allUnits);
+		LinkedListIterator<Unit*> iter(allUnits);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			const char *tmp = u->getIdString();
 			if (tmp != NULL)
 			{
@@ -478,10 +478,10 @@ namespace game
 
 	void UnitList::updateLists()
 	{
-		LinkedListIterator iter(allUnits);
+		LinkedListIterator<Unit*> iter(allUnits);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive())
 			{
 				UnitListEntity *ent = u->getUnitListEntity();
@@ -543,10 +543,10 @@ for (int i = 0; i < iter->foundUnits.size(); i++)
 		VC2	mmin(-size.x, -size.y);
 		VC2 mmax( size.x,  size.y);
 
-		LinkedListIterator iter(allUnits);
+		LinkedListIterator<Unit*> iter(allUnits);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->getUnitListEntity() != NULL)
 			{
 				delete u->getUnitListEntity();
@@ -556,10 +556,10 @@ for (int i = 0; i < iter->foundUnits.size(); i++)
 
 		impl->tree.reset(new UnitQTree(mmin, mmax));
 
-		iter = LinkedListIterator(allUnits);
+		iter = LinkedListIterator<Unit*>(allUnits);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			//assert(u->getUnitListEntity() != NULL);
 			//delete u->getUnitListEntity();
 

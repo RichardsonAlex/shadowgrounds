@@ -173,7 +173,7 @@ namespace ui
     descriptionArea = NULL;
 
     // all the other buttons get stored here
-    buttons = new LinkedList();
+    buttons = new LinkedList<OguiButton*>();
 
     // part selection window
     selectWindow = new ArmorPartSelectWindow(ogui, game, player);
@@ -184,7 +184,7 @@ namespace ui
     delete selectWindow;
     while (!buttons->isEmpty())
     {
-      delete (OguiButton *)buttons->popLast();
+      delete buttons->popLast();
     }
     delete buttons;
     if (closeBut != NULL)
@@ -999,12 +999,12 @@ namespace ui
     }
 
     // add unit buttons
-    LinkedList *ownu = game->units->getOwnedUnits(player);
+    LinkedList<Unit*> *ownu = game->units->getOwnedUnits(player);
     ownu->resetIterate();
     int count = 0;
     while (ownu->iterateAvailable())
     {
-      Unit *u = (Unit *)ownu->iterateNext();
+      Unit *u = ownu->iterateNext();
 
       // character name assigned to this unit (armor)
       const char *cname = NULL;

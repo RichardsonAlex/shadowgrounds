@@ -46,8 +46,8 @@ namespace game
     bool runCheckImpl();
 
     game::Game *game;
-    LinkedListIterator *unitIterator;
-    LinkedListIterator *otherUnitIterator;
+    LinkedListIterator<Unit*> *unitIterator;
+    LinkedListIterator<Unit*> *otherUnitIterator;
     int totalUnits;
     int unitsInPass;
     int passCount;

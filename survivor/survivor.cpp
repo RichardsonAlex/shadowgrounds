@@ -2133,8 +2133,6 @@ int main(int argc, char *argv[]) {
 
 	SystemRandom::cleanInstance();
 
-	uninitLinkedListNodePool();
-
 	Timer::uninit();
 
 	Logger::getInstance()->debug("Cleanup done, exiting.");

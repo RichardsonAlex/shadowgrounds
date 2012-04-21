@@ -36,19 +36,17 @@ namespace util
 		int ip;
 #ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
 		CheckedIntValue lastValue;
+        LinkedList<CheckedIntValue> *userStack;  // used to store user push- and popValues
+        CheckedIntValue secondaryValue;
 #else
 		intptr_t lastValue;
+        LinkedList<int> *userStack;  // used to store user push- and popValues
+        intptr_t secondaryValue;
 #endif
-		LinkedList *ipStack;	// used to store ip, ifDepth and thenBranch
-		LinkedList *userStack;	// used to store user push- and popValues
+		LinkedList<intptr_t> *ipStack;	// used to store ip, ifDepth and thenBranch
 		int userStackSize;
 		Script *script;
 		bool finished;
-#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
-		CheckedIntValue secondaryValue;
-#else
-		intptr_t secondaryValue;
-#endif
 		int misbehaveCounter;
 		
 		intptr_t ifDepth;

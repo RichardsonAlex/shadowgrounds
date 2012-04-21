@@ -641,15 +641,15 @@ namespace
 
 		VC3 unitPos = unit->getPosition();
 
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		Unit *nearest = NULL;
 		bool nearestAimVert = false;
 		bool nearestAimHoriz = false;
 		float nearestDistSq = AUTOAIM_MAX_DIST * AUTOAIM_MAX_DIST;
 		while (iter.iterateAvailable())
 		{
-			Unit *other = (Unit *)iter.iterateNext();
+			Unit *other = iter.iterateNext();
 			if (other->isActive() && !other->isDestroyed()
 				&& other != unit
 				&& game->isHostile(unit->getOwner(), other->getOwner()))
@@ -2941,7 +2941,7 @@ if (!unit->isDirectControl())
 	void UnitActor::actOutdoorBreathingSteam( Unit* unit )
 	{
 		
-		// höyryävä hengitys hack
+		// hï¿½yryï¿½vï¿½ hengitys hack
 		UnitType* ut = unit->getUnitType();
 		const float walkOnMaterialRange = 30.0f;
 		if( ut->getBreathingParticleEffect().empty() == false &&
@@ -3042,13 +3042,13 @@ if (!unit->isDirectControl())
 					// and if enemies near, no powerup at all.
 					if (unit->getMoveState() == Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
 					{
-						LinkedList *ulist = game->units->getAllUnits();
-						LinkedListIterator iter = LinkedListIterator(ulist);
+						LinkedList<Unit*> *ulist = game->units->getAllUnits();
+						LinkedListIterator<Unit*> iter(ulist);
 						bool friendsNear = false;
 						bool hostilesNear = false;
 						while (iter.iterateAvailable())
 						{
-							Unit *u = (Unit *)iter.iterateNext();
+							Unit *u = iter.iterateNext();
 							if (u->isActive() && !u->isDestroyed()
 								&& u->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
 							{								
@@ -3580,12 +3580,12 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 
 					// ignore friendly units that are withing certain range...
 					// note: actually owned units, not friendly
-					LinkedList ownUnitsNear;
-					LinkedList *ownulist = game->units->getOwnedUnits(unit->getOwner());
-					LinkedListIterator ownUnitsIter = LinkedListIterator(ownulist);
+					LinkedList<Unit*> ownUnitsNear;
+					LinkedList<Unit*> *ownulist = game->units->getOwnedUnits(unit->getOwner());
+					LinkedListIterator<Unit*> ownUnitsIter(ownulist);
 					while (ownUnitsIter.iterateAvailable())
 					{
-						Unit *ownu = (Unit *)ownUnitsIter.iterateNext();
+						Unit *ownu = ownUnitsIter.iterateNext();
 						VC3 posdiff = ownu->getPosition() - weaponPosition;
 						if (posdiff.GetSquareLength() < UNITACTOR_LOF_IGNORE_FRIENDLY_RANGE * UNITACTOR_LOF_IGNORE_FRIENDLY_RANGE)
 						{
@@ -3613,7 +3613,7 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 					// restore collision check for nearby own units
 					while (!ownUnitsNear.isEmpty())
 					{
-						Unit *ownu = (Unit *)ownUnitsNear.popLast();
+						Unit *ownu = ownUnitsNear.popLast();
 						ownu->getVisualObject()->setCollidable(true);
 					}
 
@@ -5614,11 +5614,11 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 				if (bulletType->doesParentToNextBullet())
 				{
-					LinkedList *projlist = game->projectiles->getAllProjectiles();
-					LinkedListIterator iter(projlist);
+					LinkedList<Projectile*> *projlist = game->projectiles->getAllProjectiles();
+					LinkedListIterator<Projectile*> iter(projlist);
 					while (iter.iterateAvailable())
 					{
-						Projectile *otherproj = (Projectile *)iter.iterateNext();
+						Projectile *otherproj = iter.iterateNext();
 						// TODO: make this projectile parent to previously fired projectile
 						// (if firing was not interrupted - there may be some variable for this? for minigun startup i think)
 						if (otherproj->getParentUnit() == unit
@@ -5791,13 +5791,13 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 				// NOTE: COPY & PASTED (AND MODIFIED) FROM ABOVE
 				VC3 ownPos = unit->getPosition();
 
-				LinkedList *fulist = game->units->getAllUnits();
-				LinkedListIterator iter(fulist);
+				LinkedList<Unit*> *fulist = game->units->getAllUnits();
+				LinkedListIterator<Unit*> iter(fulist);
 				assert(scaleX == scaleY);
 				float checkRad = (float)(unitType->getCollisionCheckRadius() - 1) * scaleX;
 				while (iter.iterateAvailable())
 				{
-					Unit *u = (Unit *)iter.iterateNext();
+					Unit *u = iter.iterateNext();
 					UnitType *ut2 = u->getUnitType();
 
 					//if (!u->isGhostOfFuture())
@@ -7768,11 +7768,11 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 
 		std::vector<Unit *> vec;
 
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while(iter.iterateAvailable())
 		{
-			Unit *other = (Unit *)iter.iterateNext();
+			Unit *other = iter.iterateNext();
 
 			vec.push_back(other);
 		}
@@ -7827,8 +7827,8 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 				if (unit->isWeaponActive(i) && w->isRemoteTrigger())
 				{
 					bool found = false;
-					LinkedList *projlist = game->projectiles->getAllProjectiles();
-					LinkedListIterator iter(projlist);
+					LinkedList<Projectile*> *projlist = game->projectiles->getAllProjectiles();
+					LinkedListIterator<Projectile*> iter(projlist);
 					while (iter.iterateAvailable())
 					{
 						Projectile *otherproj = (Projectile *)iter.iterateNext();
@@ -8183,7 +8183,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 															Animator::endBlendAnimation(unit, 2, true);
 														}
 
-// HACK: ÜBERHACK!!!
+// HACK: ï¿½BERHACK!!!
 // make sure aim animation is set before shoot anim, so the aim won't override the shoot 
 if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 	&& unit->getSelectedWeapon() != -1
@@ -8594,11 +8594,11 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 	{
 		int player = unit->getOwner();
 
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed()
 				&& game->isHostile(u->getOwner(), player)
 				&& u != unit)
@@ -9130,11 +9130,11 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 		Unit *lastUnit = unit->getLastTargetLockUnit();
 
 		// disable collision for all except enemies
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 		while (iter.iterateAvailable())
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			if (u->getVisualObject() != NULL && (u->getOwner() != 1 || !u->getUnitType()->doesAllowTargetLock()))
 			{
 				u->getVisualObject()->setCollidable(false);
@@ -9193,7 +9193,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 		}
 
 		// enable collision again
-		iter = LinkedListIterator(ulist);
+		iter = LinkedListIterator<Unit*>(ulist);
 		while (iter.iterateAvailable())
 		{
 			Unit *u = (Unit *)iter.iterateNext();

@@ -23,7 +23,7 @@ namespace ui
 		this->fadeoutTime = 0;
 		this->clickedButtonId = -1;
 
-    buttons = new LinkedList();
+    buttons = new LinkedList<OguiButton*>();
 
     win = ogui->CreateSimpleWindow((1024-sizeX)/2, (768-sizeY)/2, sizeX, sizeY, backgroundFilename);
     win->Raise();
@@ -59,7 +59,7 @@ namespace ui
 
     while (!buttons->isEmpty())
     {
-      delete (OguiButton *)buttons->popLast();
+      delete buttons->popLast();
     }
     delete buttons;
     if (textArea != NULL)

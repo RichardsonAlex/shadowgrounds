@@ -840,7 +840,7 @@ Logger::getInstance()->error(int2str(foo2));
       }
       delete object_iterator;
       */
-      LinkedList objlist;
+      LinkedList<IStorm3D_Model_Object*> objlist;
       Iterator<IStorm3D_Model_Object *> *object_iterator;
       for(object_iterator = model->ITObject->Begin(); !object_iterator->IsEnd(); object_iterator->Next())
       {
@@ -851,13 +851,13 @@ Logger::getInstance()->error(int2str(foo2));
       objlist.resetIterate();
       while (objlist.iterateAvailable())
       {
-        IStorm3D_Model_Object *object = (IStorm3D_Model_Object *)objlist.iterateNext();
+        IStorm3D_Model_Object *object = objlist.iterateNext();
         //delete object->GetMesh();
         // can't delete mesh, it may be shared?
         model->Object_Delete(object);
       }
 
-			LinkedList helpersList;
+			LinkedList<IStorm3D_Helper*> helpersList;
 			Iterator<IStorm3D_Helper *> *helper_iterator = 0;
       for(helper_iterator = model->ITHelper->Begin(); !helper_iterator->IsEnd(); helper_iterator->Next())
       {
@@ -996,7 +996,7 @@ Logger::getInstance()->error(int2str(foo2));
 
 	void VisualObject::createEffectLayer()
 	{
-		LinkedList copylist;
+		LinkedList<IStorm3D_Model_Object*> copylist;
 
 		Iterator<IStorm3D_Model_Object *> *object_iterator;
 		for (object_iterator = model->ITObject->Begin(); !object_iterator->IsEnd(); object_iterator->Next())
@@ -1034,7 +1034,7 @@ Logger::getInstance()->error(int2str(foo2));
 
 		while (!copylist.isEmpty())
 		{
-			IStorm3D_Model_Object *object = (IStorm3D_Model_Object *)copylist.popFirst();
+			IStorm3D_Model_Object *object = copylist.popFirst();
 
 			IStorm3D_Mesh *mesh = object->GetMesh();
 			if(mesh == NULL)
@@ -1064,7 +1064,7 @@ Logger::getInstance()->error(int2str(foo2));
 
 	void VisualObject::createEffectLayer2()
 	{
-		LinkedList copylist;
+		LinkedList<IStorm3D_Model_Object*> copylist;
 
 		Iterator<IStorm3D_Model_Object *> *object_iterator;
 		for (object_iterator = model->ITObject->Begin(); !object_iterator->IsEnd(); object_iterator->Next())
@@ -1102,7 +1102,7 @@ Logger::getInstance()->error(int2str(foo2));
 
 		while (!copylist.isEmpty())
 		{
-			IStorm3D_Model_Object *object = (IStorm3D_Model_Object *)copylist.popFirst();
+			IStorm3D_Model_Object *object = copylist.popFirst();
 
 			IStorm3D_Mesh *mesh = object->GetMesh();
 			if(mesh == NULL)

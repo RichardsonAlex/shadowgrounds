@@ -121,7 +121,7 @@ namespace game
 			int longestAniLength;
 			bool needScriptReload;
 
-			LinkedList *undoHistory[ANIRECORDER_MAX_UNDOS];
+			LinkedList<TextFileModifier*> *undoHistory[ANIRECORDER_MAX_UNDOS];
 			std::string undoHistoryDesc[ANIRECORDER_MAX_UNDOS];
 			int atHistory;
 			int endOfHistory;
@@ -207,7 +207,7 @@ namespace game
 		int delh = impl->atHistory;
 		while(delh != ((impl->endOfHistory + 1) % ANIRECORDER_MAX_UNDOS))
 		{
-			LinkedList *dellist = impl->undoHistory[delh];
+			LinkedList<TextFileModifier*> *dellist = impl->undoHistory[delh];
 			if (dellist != NULL)
 			{
 				impl->undoHistory[delh] = NULL;
@@ -215,7 +215,7 @@ namespace game
 
 				while (!dellist->isEmpty())
 				{
-					TextFileModifier *tfm = (TextFileModifier *)dellist->popLast();
+					TextFileModifier *tfm = dellist->popLast();
 					tfm->closeFile();
 					delete tfm;
 				}
@@ -224,7 +224,7 @@ namespace game
 			delh = (delh + 1) % ANIRECORDER_MAX_UNDOS;
 		}
 
-		LinkedList *newlist = new LinkedList();
+		LinkedList<TextFileModifier*> *newlist = new LinkedList<TextFileModifier*>();
 		frozenbyte::editor::FileWrapper fwbase(
 			std::string(impl->recordDir), std::string("*.dhs"));
 		std::vector<std::string> allBaseFiles = fwbase.getAllFiles();
@@ -258,12 +258,12 @@ namespace game
 		//assert(impl->undoHistory[prevHistory] != NULL);
 		assert(impl->undoHistory[impl->atHistory] != NULL);
 
-		LinkedList *fileDataList = impl->undoHistory[impl->atHistory];
-		LinkedListIterator iter(fileDataList);
+		LinkedList<TextFileModifier*> *fileDataList = impl->undoHistory[impl->atHistory];
+		LinkedListIterator<TextFileModifier*> iter(fileDataList);
 
 		while (iter.iterateAvailable())
 		{
-			TextFileModifier *tfm = (TextFileModifier *)iter.iterateNext();
+			TextFileModifier *tfm = iter.iterateNext();
 			tfm->saveFile();
 		}
 
@@ -1122,11 +1122,11 @@ namespace game
 		impl->game->gameUI->getGameCamera()->doMovement(1);
 	}
 
-	LinkedList *AniRecorder::getCameraDumpList()
+	LinkedList<const char*> *AniRecorder::getCameraDumpList()
 	{	
 		Logger::getInstance()->debug("AniRecorder::getCameraDumpList - About to parse camera dump file for list.");
 
-		LinkedList *ret = new LinkedList();
+		LinkedList<const char*> *ret = new LinkedList<const char*>();
 
 		util::TextFileModifier tfm;
 		bool loadok = tfm.loadFile(impl->cameraFile);
@@ -1144,7 +1144,7 @@ namespace game
 					//break;
 				} else {
 					char *namebuf = new char[32];
-					sprintf(namebuf, "%d", i);
+					snprintf(namebuf, 32, "%d", i);
 					ret->append(namebuf);
 				}
 			}
@@ -1153,9 +1153,9 @@ namespace game
 		return ret;
 	}
 
-	LinkedList *AniRecorder::getUnitList()
+	LinkedList<Unit*> *AniRecorder::getUnitList()
 	{
-		LinkedList *ret = new LinkedList();
+		LinkedList<Unit*> *ret = new LinkedList<Unit*>();
 
 		for (int i = 0; i < ANIRECORDER_MAX_ANIS; i++)
 		{

@@ -352,7 +352,7 @@ namespace {
 		projectiles = new ProjectileList();
 		partTypesAvailable = new PartTypeAvailabilityList();
 
-		orderQueue = new LinkedList();
+		orderQueue = new LinkedList<GameRequest*>();
 
 		gameMap = new GameMap();
 		formations.setGameMap(gameMap);
@@ -587,11 +587,11 @@ namespace {
 
 		stopAllCustomScriptProcesses();
 
-		LinkedList *uretlist = units->getAllUnits();
-		SafeLinkedListIterator uretiter = SafeLinkedListIterator(uretlist);
+		LinkedList<Unit*> *uretlist = units->getAllUnits();
+		SafeLinkedListIterator<Unit*> uretiter(uretlist);
 		while (uretiter.iterateAvailable())
 		{
-			Unit *u = (Unit *)uretiter.iterateNext();
+			Unit *u = uretiter.iterateNext();
 			UnitSpawner::deleteUnit(this, u);
 		}
 
@@ -668,14 +668,14 @@ namespace {
 			delete gameRandom;
 
 		// delete all units
-		LinkedList *ulist = units->getAllUnits();
-		SafeLinkedListIterator uiter = SafeLinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = units->getAllUnits();
+		SafeLinkedListIterator<Unit*> uiter(ulist);
 		while (uiter.iterateAvailable())
 		{
 			// NOTE: this should now be handled by UnitSpawner!
 			assert(!"Units still left alive at quit.");
 
-			Unit *u = (Unit *)uiter.iterateNext();
+			Unit *u = uiter.iterateNext();
 			// get rid of character
 			if (u->getCharacter() != NULL)
 			{
@@ -693,29 +693,29 @@ namespace {
 			delete u;
 		}
 		// delete parts in storage
-		LinkedList *plist = parts->getAllParts();
-		SafeLinkedListIterator piter = SafeLinkedListIterator(plist);
+		LinkedList<Part*> *plist = parts->getAllParts();
+		SafeLinkedListIterator<Part*> piter(plist);
 		while (piter.iterateAvailable())
 		{
-			Part *p = (Part *)piter.iterateNext();
+			Part *p = piter.iterateNext();
 			parts->removePart(p);
 			delete p;
 		}
 		// delete projectiles
-		LinkedList *projlist = projectiles->getAllProjectiles();
-		SafeLinkedListIterator projiter = SafeLinkedListIterator(projlist);
+		LinkedList<Projectile*> *projlist = projectiles->getAllProjectiles();
+		SafeLinkedListIterator<Projectile*> projiter(projlist);
 		while (projiter.iterateAvailable())
 		{
-			Projectile *proj = (Projectile *)projiter.iterateNext();
+			Projectile *proj = projiter.iterateNext();
 			projectiles->removeProjectile(proj);
 			delete proj;
 		}
 		// delete buildings
-		LinkedList *blist = buildings->getAllBuildings();
-		SafeLinkedListIterator biter = SafeLinkedListIterator(blist);
+		LinkedList<Building*> *blist = buildings->getAllBuildings();
+		SafeLinkedListIterator<Building*> biter(blist);
 		while (biter.iterateAvailable())
 		{
-			Building *b = (Building *)biter.iterateNext();
+			Building *b = biter.iterateNext();
 			buildings->removeBuilding(b);
 			delete b;
 		}
@@ -896,10 +896,10 @@ static VC3 last_attemptedPos = VC3(0,0,0);
 	{
 		// process game requests
 		while (!orderQueue->isEmpty() 
-			&& ((GameRequest *)orderQueue->peekFirst())->executeTime 
+			&& (orderQueue->peekFirst())->executeTime
 			<= gameTimer)
 		{
-			GameRequest *req = (GameRequest *)orderQueue->popFirst();
+			GameRequest *req = orderQueue->popFirst();
 			if (req->executeTime != gameTimer)
 			{
 				// we have skipped in time???
@@ -1041,15 +1041,15 @@ static VC3 last_attemptedPos = VC3(0,0,0);
 
 					UnitPhysicsUpdater::startStats();
 
-					LinkedList *ulist = units->getAllUnits();
-					LinkedListIterator unititer = LinkedListIterator(ulist);
+					LinkedList<Unit*> *ulist = units->getAllUnits();
+					LinkedListIterator<Unit*> unititer(ulist);
 					while (unititer.iterateAvailable())
 					{
 						bool lessActing = false;
 
 						unitActNum++;
 
-						Unit *unit = (Unit *)unititer.iterateNext();
+						Unit *unit = unititer.iterateNext();
 						if (unit->isActive())
 						{
 							// has been in acting range? (no act check counter value set)
@@ -1222,13 +1222,13 @@ Logger::getInstance()->error(int2str(slowNoActAmount));
 //					int projAmount = 0;
 
 					// move projectiles
-					LinkedList *projlist = projectiles->getAllProjectiles();
+					LinkedList<Projectile*> *projlist = projectiles->getAllProjectiles();
 					// projectiles may be deleted during combat, thus need to
 					// use safe iterator!
-					SafeLinkedListIterator projiter = SafeLinkedListIterator(projlist);
+					SafeLinkedListIterator<Projectile*> projiter(projlist);
 					while (projiter.iterateAvailable())
 					{
-						Projectile *proj = (Projectile *)projiter.iterateNext();
+						Projectile *proj = projiter.iterateNext();
 						ProjectileActor pa = ProjectileActor(this);
 						pa.act(proj);
 //						projAmount++;
@@ -1730,11 +1730,11 @@ this->currentMission.swap(foocrap2);
 
 			// update interpolation history for units...
 			{
-				LinkedList *ulist = units->getAllUnits();
-				LinkedListIterator unititer = LinkedListIterator(ulist);
+				LinkedList<Unit*> *ulist = units->getAllUnits();
+				LinkedListIterator<Unit*> unititer(ulist);
 				while (unititer.iterateAvailable())
 				{
-					Unit *unit = (Unit *)unititer.iterateNext();
+					Unit *unit = unititer.iterateNext();
 					if (unit->isActive())
 					{
 						if (unit->getVisualObject() != NULL)
@@ -1993,10 +1993,10 @@ bool game_in_start_combat = false;
 			physics->setIgnoreContacts(false);
 			gameUI->getTerrain()->setUseDynamicObstacles(usedDynamicObst);
 
-			LinkedListIterator biter(buildings->getAllBuildings());
+			LinkedListIterator<Building*> biter(buildings->getAllBuildings());
 			while (biter.iterateAvailable())
 			{
-				Building *b = (Building *)biter.iterateNext();
+				Building *b = biter.iterateNext();
 				b->deletePhysics(physics);
 			}
 
@@ -2010,10 +2010,10 @@ bool game_in_start_combat = false;
 				SimpleOptions::setBool(DH_OPT_B_PHYSICS_USE_HARDWARE, wasHardware);
 			}
 
-			LinkedListIterator biter2(buildings->getAllBuildings());
+			LinkedListIterator<Building*> biter2(buildings->getAllBuildings());
 			while (biter2.iterateAvailable())
 			{
-				Building *b = (Building *)biter2.iterateNext();
+				Building *b = biter2.iterateNext();
 				b->addPhysics(physics);
 			}
 
@@ -2083,11 +2083,11 @@ bool game_in_start_combat = false;
 
 		SHOW_LOADING_BAR(75);
 
-		LinkedList *ulist = units->getAllUnits();
-		LinkedListIterator uiter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = units->getAllUnits();
+		LinkedListIterator<Unit*> uiter(ulist);
 		while (uiter.iterateAvailable())
 		{
-			Unit *u = (Unit *)uiter.iterateNext();
+			Unit *u = uiter.iterateNext();
 			Part *p = u->getRootPart();
 			if (p != NULL)
 			{
@@ -2203,11 +2203,11 @@ gameUI->getTerrain()->calculateLighting();
 		Unit *fourthUnit = NULL;
 		if (SimpleOptions::getBool(DH_OPT_B_GAME_MODE_TOPDOWN_SHOOTER))
 		{
-			LinkedList *firstulist = units->getOwnedUnits(singlePlayerNumber);
-			LinkedListIterator iter(firstulist);
+			LinkedList<Unit*> *firstulist = units->getOwnedUnits(singlePlayerNumber);
+			LinkedListIterator<Unit*> iter(firstulist);
 			if(iter.iterateAvailable())
 			{
-				Unit *u = (Unit *)iter.iterateNext();
+				Unit *u = iter.iterateNext();
 				if (SimpleOptions::getBool(DH_OPT_B_1ST_PLAYER_ENABLED))
 				{
 					firstUnit = u;
@@ -2221,7 +2221,7 @@ gameUI->getTerrain()->calculateLighting();
 			}
 			if(iter.iterateAvailable())
 			{
-				Unit *u = (Unit *)iter.iterateNext();
+				Unit *u = iter.iterateNext();
 				if (SimpleOptions::getBool(DH_OPT_B_2ND_PLAYER_ENABLED))
 				{
 					secondUnit = u;
@@ -2235,7 +2235,7 @@ gameUI->getTerrain()->calculateLighting();
 			}
 			if(iter.iterateAvailable())
 			{
-				Unit *u = (Unit *)iter.iterateNext();
+				Unit *u = iter.iterateNext();
 				if (SimpleOptions::getBool(DH_OPT_B_3RD_PLAYER_ENABLED))
 				{
 					thirdUnit = u;
@@ -2249,7 +2249,7 @@ gameUI->getTerrain()->calculateLighting();
 			}
 			if(iter.iterateAvailable())
 			{
-				Unit *u = (Unit *)iter.iterateNext();
+				Unit *u = iter.iterateNext();
 				if (SimpleOptions::getBool(DH_OPT_B_4TH_PLAYER_ENABLED))
 				{
 					fourthUnit = u;
@@ -2265,10 +2265,10 @@ gameUI->getTerrain()->calculateLighting();
 #endif
 
 		// prepare all units' ai...
-		LinkedListIterator prepareiter = LinkedListIterator(ulist);
+		LinkedListIterator<Unit*> prepareiter(ulist);
 		while (prepareiter.iterateAvailable())
 		{
-			Unit *u = (Unit *)prepareiter.iterateNext();
+			Unit *u = prepareiter.iterateNext();
 			// WARNING: unsafe cast!
 			UnitLevelAI *ai = (UnitLevelAI *)u->getAI();
 			if (ai != NULL)
@@ -2441,11 +2441,11 @@ gameUI->getTerrain()->calculateLighting();
 		gameUI->detachVisualEffects();
 
 		// delete projectiles
-		LinkedList *projlist = projectiles->getAllProjectiles();
-		SafeLinkedListIterator projIter = SafeLinkedListIterator(projlist);
+		LinkedList<Projectile*> *projlist = projectiles->getAllProjectiles();
+		SafeLinkedListIterator<Projectile*> projIter(projlist);
 		while (projIter.iterateAvailable())
 		{
-			Projectile *p = (Projectile *)projIter.iterateNext();
+			Projectile *p = projIter.iterateNext();
 			projectiles->removeProjectile(p);
 			delete p;
 		}
@@ -2468,11 +2468,11 @@ gameUI->getTerrain()->calculateLighting();
 		gameUI->buildingHandler.setUpdateEnabled(true);
 
 		// delete buildings
-		LinkedList *blist = buildings->getAllBuildings();
-		SafeLinkedListIterator bIter = SafeLinkedListIterator(blist);
+		LinkedList<Building*> *blist = buildings->getAllBuildings();
+		SafeLinkedListIterator<Building*> bIter(blist);
 		while (bIter.iterateAvailable())
 		{
-			Building *b = (Building *)bIter.iterateNext();
+			Building *b = bIter.iterateNext();
 			buildings->removeBuilding(b);
 			delete b;
 		}
@@ -2508,11 +2508,11 @@ gameUI->getTerrain()->calculateLighting();
 		// clear spawn coordinates
 		// TODO: loot from destroyed ones?
 		// TODO: delete fully damaged parts
-		LinkedList *ulist = units->getAllUnits();
-		SafeLinkedListIterator uiter = SafeLinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = units->getAllUnits();
+		SafeLinkedListIterator<Unit*> uiter(ulist);
 		while (uiter.iterateAvailable())
 		{
-			Unit *u = (Unit *)uiter.iterateNext();
+			Unit *u = uiter.iterateNext();
 			UnitSpawner::retireUnit(this, u);
 		}
 
@@ -2667,10 +2667,10 @@ gameUI->getTerrain()->calculateLighting();
 		// TODO: only such custom script processes that are marked for non-ui (game) cycle...
 		if (customScriptProcesses != NULL)
 		{
-			SafeLinkedListIterator cspiter(customScriptProcesses);
+			SafeLinkedListIterator<util::ScriptProcess*> cspiter(customScriptProcesses);
 			while (cspiter.iterateAvailable())
 			{
-				util::ScriptProcess *sp = (util::ScriptProcess *)cspiter.iterateNext();
+				util::ScriptProcess *sp = cspiter.iterateNext();
 				fb_assert(sp != NULL);
 				if (sp->isFinished())
 				{
@@ -3008,7 +3008,7 @@ gameUI->getTerrain()->calculateLighting();
 		{
 
 #ifdef PROJECT_SURVIVOR
-			LinkedList *tmp;
+			LinkedList<const char*> *tmp;
 
 			// savegame formatting template
 			//
@@ -3075,7 +3075,7 @@ gameUI->getTerrain()->calculateLighting();
 
 				// create linked list of remaining variables
 				//
-				tmp = new LinkedList();
+				tmp = new LinkedList<const char*>();
 				{
 					std::map<int, util::VariableDataType *>::iterator iter = variablePointerHash.begin();
 					for (; iter != variablePointerHash.end(); ++iter)
@@ -3092,12 +3092,12 @@ gameUI->getTerrain()->calculateLighting();
 			}
 
 #else
-			LinkedList *tmp = util::Script::getGlobalVariableList(true);
+			LinkedList<const char*> *tmp = util::Script::getGlobalVariableList(true);
 #endif
 
 			while (!tmp->isEmpty())
 			{
-				const char *varname = (const char *)tmp->popLast();
+				const char *varname = tmp->popLast();
 				writeVariable(tfm, varname);
 			}
 
@@ -4257,14 +4257,14 @@ gameUI->getTerrain()->calculateLighting();
 		if (unit->isGhostOfFuture())
 			return NULL;
 
-		LinkedList *ulist = units->getAllUnits();
-		LinkedListIterator uiter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = units->getAllUnits();
+		LinkedListIterator<Unit*> uiter(ulist);
 
 		Unit *ghost = NULL;
 
 		while (uiter.iterateAvailable())
 		{
-			Unit *u = (Unit *)uiter.iterateNext();
+			Unit *u = uiter.iterateNext();
 			if (u->isGhostOfFuture() && u->getUnitType() == unit->getUnitType()
 				&& u->isDestroyed())
 			{
@@ -4369,7 +4369,7 @@ gameUI->getTerrain()->calculateLighting();
 	{
 		if (customScriptProcesses == NULL)
 		{
-			customScriptProcesses = new LinkedList();
+			customScriptProcesses = new LinkedList<util::ScriptProcess*>();
 		}
 		util::ScriptProcess *sp = NULL;
 		if (unit != NULL)
@@ -4391,7 +4391,7 @@ gameUI->getTerrain()->calculateLighting();
 	{
 		if (customScriptProcesses == NULL)
 		{
-			customScriptProcesses = new LinkedList();
+			customScriptProcesses = new LinkedList<util::ScriptProcess*>();
 		}
 		util::ScriptProcess *sp = NULL;
 		sp = gameScripting->startNonUnitScript(script, "main", paramStack);
@@ -4413,7 +4413,7 @@ gameUI->getTerrain()->calculateLighting();
 		{
 			while (!customScriptProcesses->isEmpty())
 			{
-				util::ScriptProcess *sp = (util::ScriptProcess *)customScriptProcesses->popLast();
+				util::ScriptProcess *sp = customScriptProcesses->popLast();
 				assert(sp != NULL);
 				delete static_cast<GameScriptData *> (sp->getData());
 				delete sp;
@@ -4429,7 +4429,7 @@ gameUI->getTerrain()->calculateLighting();
 		int ret = 0;
 		if (customScriptProcesses != NULL)
 		{
-			LinkedListIterator iter(customScriptProcesses);
+			LinkedListIterator<util::ScriptProcess*> iter(customScriptProcesses);
 			while (iter.iterateAvailable())
 			{
 				iter.iterateNext();
@@ -4443,10 +4443,10 @@ gameUI->getTerrain()->calculateLighting();
 	{
 		if (customScriptProcesses != NULL)
 		{
-			SafeLinkedListIterator iter(customScriptProcesses);
+			SafeLinkedListIterator<util::ScriptProcess*> iter(customScriptProcesses);
 			while (iter.iterateAvailable())
 			{
-				util::ScriptProcess *sp = (util::ScriptProcess *)iter.iterateNext();
+				util::ScriptProcess *sp = iter.iterateNext();
 				assert(sp != NULL);
 				util::Script *s = sp->getScript();
 				if (!s)
@@ -4475,10 +4475,10 @@ gameUI->getTerrain()->calculateLighting();
 
 		if (customScriptProcesses != NULL)
 		{
-			SafeLinkedListIterator iter(customScriptProcesses);
+			SafeLinkedListIterator<util::ScriptProcess*> iter(customScriptProcesses);
 			while (iter.iterateAvailable())
 			{
-				util::ScriptProcess *sp = (util::ScriptProcess *)iter.iterateNext();
+				util::ScriptProcess *sp = iter.iterateNext();
 				assert(sp != NULL);
 				if (sp->getId() == pid)
 				{
@@ -4939,7 +4939,7 @@ gameUI->getTerrain()->calculateLighting();
 		uint8_t *data_buf;
 
 		// would need a hashtable for this really
-		LinkedList parents = LinkedList();
+		LinkedList<SaveParentEntry*> parents;
 
 		// read version
 		fread(ver_buf, sizeof(char), 8, f);
@@ -4982,7 +4982,7 @@ gameUI->getTerrain()->calculateLighting();
 			GameObject *realparent = NULL;
 			if (parentptr != 0)
 			{
-				SaveParentEntry *tmp = (SaveParentEntry *)parents.peekLast();
+				SaveParentEntry *tmp = parents.peekLast();
 				if (tmp != NULL && tmp->saved == parentptr)
 				{
 					realparent = tmp->real;

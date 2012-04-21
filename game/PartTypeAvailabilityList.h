@@ -28,7 +28,7 @@ namespace game
 
     // returns a linked list containing PartType objects
     // (may want to change in future - to contain avail.amount for each type)
-    LinkedList *getAvailablePartTypes(int player);
+    LinkedList<PartType*> *getAvailablePartTypes(int player);
 
     bool isPartTypeAvailable(int player, PartType *partType);
 
@@ -36,7 +36,7 @@ namespace game
     void removePartType(int player, PartType *partType);
 
   private:
-    LinkedList **ownedPartTypes;
+    LinkedList<PartType*> **ownedPartTypes;
   };
 
 }

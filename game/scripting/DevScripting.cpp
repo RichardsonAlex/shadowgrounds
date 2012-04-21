@@ -371,11 +371,11 @@ namespace game
 
 		case GS_CMD_LISTGLOBALVARIABLES:
 			{
-				LinkedList *tmp = util::Script::getGlobalVariableList(false);
+				LinkedList<const char*> *tmp = util::Script::getGlobalVariableList(false);
 
 				while (!tmp->isEmpty())
 				{
-					const char *varname = (const char *)tmp->popLast();
+					const char *varname = tmp->popLast();
 					int varval = 0;
 					util::Script::getGlobalIntVariableValue(varname, &varval);
 

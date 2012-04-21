@@ -44,7 +44,7 @@ namespace ui
     int id;
     Ogui *ogui;
     OguiWindow *win;
-    LinkedList *buttons;
+    LinkedList<OguiButton*> *buttons;
     OguiTextLabel *textArea;
     IMessageBoxListener *listener;
 		int clickedButtonId;

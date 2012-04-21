@@ -18,7 +18,7 @@ namespace game
 WaterManager::WaterManager() 
 {
 
-   waterList = new LinkedList();
+   waterList = new LinkedList<Water*>();
    highest = 0.0f;
 
 }
@@ -54,7 +54,7 @@ void WaterManager::deleteWater(Water *water)
 	LinkedListIterator iter = LinkedListIterator(waterList);
 	while (iter.iterateAvailable())
 	{
-		Water *w = (Water *)iter.iterateNext();
+		Water *w = iter.iterateNext();
 		if(w == water) {
 			waterList->remove(w);
 			delete w;
@@ -70,10 +70,10 @@ void WaterManager::deleteWater(Water *water)
 Water *WaterManager::getWaterByName(const char *name) const 
 {
 
-	LinkedListIterator iter = LinkedListIterator(waterList);
+	LinkedListIterator<Water*> iter(waterList);
 	while (iter.iterateAvailable())
 	{
-		Water *water = (Water *)iter.iterateNext();
+		Water *water = iter.iterateNext();
 		if (water->name != NULL
 			&& strcmp(water->name, name) == 0)
 		{
@@ -92,10 +92,10 @@ float WaterManager::getWaterDepthAt(const VC3 &position) const
 		return 0.0f;
 	}
 	
-	LinkedListIterator iter = LinkedListIterator(waterList);
+	LinkedListIterator<Water*> iter(waterList);
 	while (iter.iterateAvailable())
 	{
-		Water *water = (Water *)iter.iterateNext();
+		Water *water = iter.iterateNext();
 		// if this point is in the are of this water?
 		if((position.y > water->minX) && (position.x < water->maxX) 
 			&& (position.z > water->minY) && (position.z < water->maxY)) 
@@ -126,7 +126,7 @@ void WaterManager::recalculate()
 	
 	// recalculate highest
 
-	LinkedListIterator iter = LinkedListIterator(waterList);
+	LinkedListIterator<Water*> iter = LinkedListIterator<Water*>(waterList);
 	if(iter.iterateAvailable()) {
 		Water *water = (Water *)iter.iterateNext();
 		highest = water->height;

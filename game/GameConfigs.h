@@ -8,7 +8,7 @@
 // (also defines the limit for the max id value)
 #define GAMECONFIGS_MAX_IDS 1024
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace game
 {
@@ -85,7 +85,7 @@ namespace game
 
 			// a rather unefficient solution, but so what
 			// this should be used only on non-time-critical code.
-			LinkedList *confList;
+      LinkedList<GameConfNodeImpl*> *confList;
 	};
 }
 

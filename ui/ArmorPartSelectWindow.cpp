@@ -225,11 +225,11 @@ namespace ui
             // use the one least damaged
             int lowestRepairPrice = 999999;
             Part *lowestRPPart = NULL;
-            LinkedList *storage = game->parts->getOwnedParts(player);
+            LinkedList<Part*> *storage = game->parts->getOwnedParts(player);
             storage->resetIterate();
             while (storage->iterateAvailable())
             {
-              Part *tmp = (Part *)storage->iterateNext();
+              Part *tmp = storage->iterateNext();
               if (tmp->getType() == pt)
               {
                 if (tmp->getRepairPrice() < lowestRepairPrice)
@@ -409,13 +409,13 @@ namespace ui
       buyPriceList->addItem("/DEL", "");
     }
 
-    LinkedList *avail = game->partTypesAvailable->
+    LinkedList<PartType*> *avail = game->partTypesAvailable->
       getAvailablePartTypes(player);
 
     avail->resetIterate();
     while (avail->iterateAvailable())
     {
-      PartType *pt = (PartType *)avail->iterateNext();
+      PartType *pt = avail->iterateNext();
       // check if the part is of correct type and level...
       // TODO: this is limited to part type's grand grand parent!
       // need to check further...
@@ -435,11 +435,11 @@ namespace ui
         // find out lowest repair price
         int storageAmount = 0;
         int lowestRepairPrice = 999999;
-        LinkedList *inStorage = game->parts->getOwnedParts(player);
+        LinkedList<Part*> *inStorage = game->parts->getOwnedParts(player);
         inStorage->resetIterate();
         while (inStorage->iterateAvailable())
         {
-          Part *p = (Part *)inStorage->iterateNext();
+          Part *p = inStorage->iterateNext();
           if (p->getType() == pt)
           {
             storageAmount++;

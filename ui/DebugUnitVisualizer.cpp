@@ -167,13 +167,13 @@ namespace ui
 	{
 		assert(units != NULL);
 
-		LinkedList *unitList = units->getAllUnits();
-		LinkedListIterator iter(unitList);
+		LinkedList<Unit*> *unitList = units->getAllUnits();
+		LinkedListIterator<Unit*> iter(unitList);
 
 		//int index = 0;
 		while (iter.iterateAvailable())
 		{
-			Unit *unit = (Unit *)iter.iterateNext();
+			Unit *unit = iter.iterateNext();
 
 			visualizeUnit(unit, cameraPosition, 0);
 

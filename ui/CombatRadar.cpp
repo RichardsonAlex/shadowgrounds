@@ -187,7 +187,7 @@ namespace ui
     int oldAmount = radarUnitsAmount;
     radarUnitsAmount = 0;
 
-		LinkedList *ulist;
+		LinkedList<Unit*> *ulist;
 
 		if (SimpleOptions::getBool(DH_OPT_B_GUI_RADAR_SHOW_ALL))
 		{
@@ -196,11 +196,11 @@ namespace ui
 			ulist = game->units->getOwnedUnits(1);
 		}
 
-    LinkedListIterator iter = LinkedListIterator(ulist);
+    LinkedListIterator<Unit*> iter(ulist);
 
     while (iter.iterateAvailable())
     {
-      Unit *u = (Unit *)iter.iterateNext();
+      Unit *u = iter.iterateNext();
       if (u->isActive() && !u->isDestroyed()
         && u->visibility.isInRadarByPlayer(player)
 //        && u->visibility.isSeenByPlayer(player)

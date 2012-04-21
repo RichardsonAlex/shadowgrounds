@@ -47,7 +47,7 @@ namespace ui
 
     this->cursorMode = STORAGEW_CURSOR_MODE_BUY;
 
-    buttons = new LinkedList();
+    buttons = new LinkedList<OguiButton*>();
 
     win = ogui->CreateSimpleWindow(0, 0, 1024, 768, "Data/GUI/Windows/storagewindow.dds");
     win->Hide();
@@ -320,13 +320,12 @@ namespace ui
     sellPriceList->scrollTo(0);
     buyPriceList->scrollTo(0);
 
-    LinkedList *avail = game->partTypesAvailable->
-      getAvailablePartTypes(player);
+    LinkedList<PartType*> *avail = game->partTypesAvailable->getAvailablePartTypes(player);
 
     avail->resetIterate();
     while (avail->iterateAvailable())
     {
-      PartType *pt = (PartType *)avail->iterateNext();
+      PartType *pt = avail->iterateNext();
       
       // PartType *secondPartType = NULL;
       //if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Pack")))
@@ -352,7 +351,7 @@ namespace ui
         // check how much we have these in storage...
         int storageAmount = 0;
         int lowestRepairPrice = 999999;
-        LinkedList *inStorage = game->parts->getOwnedParts(player);
+        LinkedList<Part*> *inStorage = game->parts->getOwnedParts(player);
         inStorage->resetIterate();
         while (inStorage->iterateAvailable())
         {
@@ -560,12 +559,12 @@ namespace ui
             int storageAmount = 0;
             int lowestRepairPrice = 999999;
             Part *lowestDamagedPart = NULL;
-            LinkedList *inStorage = game->parts->getOwnedParts(player);
+            LinkedList<Part*> *inStorage = game->parts->getOwnedParts(player);
             inStorage->resetIterate();
 
             while (inStorage->iterateAvailable())
             {
-              Part *p = (Part *)inStorage->iterateNext();
+              Part *p = inStorage->iterateNext();
               if (p->getType() == infoPartType)
               {
                 storageAmount++;

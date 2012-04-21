@@ -129,6 +129,7 @@ namespace ui
 	class MissionSelectionWindow;
 	class SurvivorUpgradeWindow;
 	class VehicleWindow;
+	class UIState;
 }
 
 
@@ -634,7 +635,7 @@ namespace game
 
 		float cameraRange;
 
-		LinkedList *uiStateStack;
+		LinkedList<ui::UIState*> *uiStateStack;
 
 		float cameraTimeFactor;
 

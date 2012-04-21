@@ -293,11 +293,11 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 			path = new frozenbyte::ai::Path();
 
 			// first remove all friendly unit obstacles...
-			LinkedList *ulist = game->units->getOwnedUnits(unit->getOwner());
-			LinkedListIterator iter = LinkedListIterator(ulist);
+			LinkedList<Unit*> *ulist = game->units->getOwnedUnits(unit->getOwner());
+			LinkedListIterator<Unit*> iter(ulist);
 			while (iter.iterateAvailable())
 			{
-				Unit *u = (Unit *)iter.iterateNext();
+				Unit *u = iter.iterateNext();
 				if (u != unit && u->isActive() && !u->isDestroyed())
 				{
 					UnitActor *ua = getUnitActorForUnit(u);
@@ -323,7 +323,7 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 				depth, lightAvoid);
 
 			// then restore the friendly unit obstacles...
-			iter = LinkedListIterator(ulist);
+			iter = LinkedListIterator<Unit*>(ulist);
 			while (iter.iterateAvailable())
 			{
 				Unit *u = (Unit *)iter.iterateNext();

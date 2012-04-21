@@ -1734,11 +1734,11 @@ namespace game
 
 		case GS_CMD_deleteAllProjectiles:
 			{
-				LinkedList *projlist = game->projectiles->getAllProjectiles();
-				SafeLinkedListIterator projIter = SafeLinkedListIterator(projlist);
+				LinkedList<Projectile*> *projlist = game->projectiles->getAllProjectiles();
+				SafeLinkedListIterator<Projectile*> projIter(projlist);
 				while (projIter.iterateAvailable())
 				{
-					Projectile *p = (Projectile *)projIter.iterateNext();
+					Projectile *p = projIter.iterateNext();
 					game->projectiles->removeProjectile(p);
 					delete p;
 				}

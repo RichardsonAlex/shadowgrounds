@@ -317,11 +317,11 @@ namespace ui
 		int matches = 0;
 		int smallestMatchLength = 0;
 		game::GameOptionManager *oman = game::GameOptionManager::getInstance();
-		const LinkedList *optlist = oman->getOptionsList();
-		LinkedListIterator iter(optlist);
+		const LinkedList<game::GameOption*> *optlist = oman->getOptionsList();
+		LinkedListIterator<game::GameOption*> iter(optlist);
 		while (iter.iterateAvailable())
 		{
-			game::GameOption *opt = (game::GameOption *)iter.iterateNext();
+			game::GameOption *opt = iter.iterateNext();
 			const char *optname = oman->getOptionNameForId(opt->getId());
 			if (strncmp(&inputBuf[optStart], optname, inputBufUsed - optStart) == 0)
 			{
@@ -357,10 +357,10 @@ namespace ui
 		if (matches >= 1)
 		{
 			errorWindow->logMessage("", LOGGER_LEVEL_ERROR);
-			LinkedListIterator iter2(optlist);
+			LinkedListIterator<game::GameOption*> iter2(optlist);
 			while (iter2.iterateAvailable())
 			{
-				game::GameOption *opt = (game::GameOption *)iter2.iterateNext();
+				game::GameOption *opt = iter2.iterateNext();
 				const char *optname = oman->getOptionNameForId(opt->getId());
 				if (strncmp(&inputBuf[optStart], optname, inputBufUsed - optStart) == 0)
 				{

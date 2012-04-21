@@ -27,7 +27,7 @@ namespace ui
 	IStorm3D *VisualObjectModel::visualStorm = NULL;
 	IStorm3D_Scene *VisualObjectModel::visualStormScene = NULL;
 
-	LinkedList visualObjectModelList;
+	LinkedList<VisualObjectModel*> visualObjectModelList;
 
 	int visual_object_model_allocations = 0;
 
@@ -159,7 +159,7 @@ namespace ui
 					if (hasObjectName)
 					{
 						// delete all objects except the one we want...
-						LinkedList objlist;
+						LinkedList<IStorm3D_Model_Object *> objlist;
 						Iterator<IStorm3D_Model_Object *> *object_iterator;
 						for(object_iterator = sharedModel->ITObject->Begin(); !object_iterator->IsEnd(); object_iterator->Next())
 						{
@@ -171,7 +171,7 @@ namespace ui
 						bool foundObject = false;
 						while (objlist.iterateAvailable())
 						{
-							IStorm3D_Model_Object *object = (IStorm3D_Model_Object *)objlist.iterateNext();
+							IStorm3D_Model_Object *object = objlist.iterateNext();
 							const char *objname = object->GetName();
 							if (objname == NULL
 								|| strcmp(&filename[objNamePart + 1], objname) != 0)

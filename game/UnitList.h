@@ -15,7 +15,7 @@
 //#define UNITID_LOWEST_POSSIBLE_VALUE 100000
 //#define UNITID_HIGHEST_POSSIBLE_VALUE 9999999
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace game
 {
@@ -35,8 +35,8 @@ namespace game
 		int getAllUnitAmount();
 		int getOwnedUnitAmount(int player);
 
-		LinkedList *getAllUnits();
-		LinkedList *getOwnedUnits(int player);
+		LinkedList<Unit*> *getAllUnits();
+		LinkedList<Unit*> *getOwnedUnits(int player);
 
 		void addUnit(Unit *unit);
 		void removeUnit(Unit *unit);
@@ -70,8 +70,8 @@ namespace game
 		// ---
 
 	private:
-		LinkedList *allUnits;
-		LinkedList **ownedUnits;
+		LinkedList<Unit*> *allUnits;
+		LinkedList<Unit*> **ownedUnits;
 		int allUnitAmount;
 		int ownedUnitAmount[ABS_MAX_PLAYERS];
 

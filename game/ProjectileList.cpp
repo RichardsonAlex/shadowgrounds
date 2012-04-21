@@ -13,7 +13,7 @@ namespace game
 
 	ProjectileList::ProjectileList()
 	{
-		allProjectiles = new LinkedList();
+		allProjectiles = new LinkedList<Projectile*>();
 	}
 
 	// NOTE, does not delete the projectiles inside this but just the list of them
@@ -50,7 +50,7 @@ namespace game
 		return count;
 	}
 
-	LinkedList *ProjectileList::getAllProjectiles()
+	LinkedList<Projectile*> *ProjectileList::getAllProjectiles()
 	{
 		return allProjectiles;
 	}

@@ -2,7 +2,7 @@
 #ifndef WATERMANAGER_H
 #define WATERMANAGER_H
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace game
 {
@@ -30,7 +30,7 @@ namespace game
       void recalculate();
 
     private:
-      LinkedList *waterList;
+      LinkedList<Water*> *waterList;
 
       // updated by the updateWater script command 
       // (which will also update the water's dimensions based on decoration)

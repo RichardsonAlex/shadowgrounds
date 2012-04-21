@@ -210,11 +210,11 @@ namespace ui
     bool notPaid = false;
     bool incompleteArmor = false;
     bool notAnyArmor = true;
-    LinkedList *ulist = game->units->getOwnedUnits(player);
-    LinkedListIterator iter = LinkedListIterator(ulist);
+    LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
+    LinkedListIterator<Unit*> iter = LinkedListIterator(ulist);
     while (iter.iterateAvailable())
     {
-      Unit *u = (Unit *)iter.iterateNext();
+      Unit *u = iter.iterateNext();
       if (u->getRootPart() == NULL && u->getCharacter() != NULL)
       {
         noArmor = true;

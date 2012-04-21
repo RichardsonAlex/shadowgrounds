@@ -4,7 +4,7 @@
 
 #include <DatatypeDef.h>
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace game
 {

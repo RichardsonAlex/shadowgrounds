@@ -27,8 +27,8 @@ namespace ui
 
 		char textbuf[128];
 
-		LinkedList *projectileList = projectiles->getAllProjectiles();
-		LinkedListIterator iter(projectileList);
+		LinkedList<Projectile*> *projectileList = projectiles->getAllProjectiles();
+		LinkedListIterator<Projectile*> iter(projectileList);
 
 		int foo2 = Timer::getTime();
 		GameRandom foo;
@@ -37,7 +37,7 @@ namespace ui
 		//int index = 0;
 		while (iter.iterateAvailable())
 		{
-			Projectile *projectile = (Projectile *)iter.iterateNext();
+			Projectile *projectile = iter.iterateNext();
 
 			COL col = COL(1,0.3f,0);
 

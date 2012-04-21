@@ -78,7 +78,7 @@ namespace ui
 
     OguiTextLabel *title;
     ArmorPartSelectWindow *selectWindow;
-    LinkedList *buttons;
+    LinkedList<OguiButton*> *buttons;
 
     OguiTextLabel *moneyText;
     OguiTextLabel *moneyValText;

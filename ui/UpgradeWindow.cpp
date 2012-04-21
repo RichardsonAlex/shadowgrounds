@@ -59,7 +59,7 @@ namespace ui
 		highlightedUpgradeId = -1;
 		highlightOn = false;
 
-		this->upgradesPending = new LinkedList();
+		this->upgradesPending = new LinkedList<intptr_t>();
 		this->upgradesPendingCost = 0;
 
 		assert(unit != NULL);
@@ -544,11 +544,11 @@ namespace ui
 
 					bool pending = false;
 
-					LinkedListIterator iter(this->upgradesPending);
+					LinkedListIterator<intptr_t> iter(this->upgradesPending);
 					while (iter.iterateAvailable())
 					{
 						// WARNING: void * -> int cast
-						intptr_t other = (intptr_t)iter.iterateNext();
+						intptr_t other = iter.iterateNext();
 						if (other == upgid)
 						{
 							pending = true;
@@ -737,11 +737,11 @@ namespace ui
 
 				bool alreadyPending = false;
 
-				LinkedListIterator iter(this->upgradesPending);
+				LinkedListIterator<intptr_t> iter(this->upgradesPending);
 				while (iter.iterateAvailable())
 				{
 					// WARNING: void * -> int cast
-					intptr_t other = (intptr_t)iter.iterateNext();
+					intptr_t other = iter.iterateNext();
 					if (other == upgid)
 					{
 						alreadyPending = true;
@@ -757,8 +757,7 @@ namespace ui
 						fb_assert(tmp > this->upgradesPendingCost);
 
 						//game->upgradeManager->upgrade(unit, upgid);
-						// WARNING: int -> void * cast
-						upgradesPending->append((void *)upgid);
+						upgradesPending->append(upgid);
 						this->upgradesPendingCost = tmp;
 
 						playDoneSound = true;
@@ -768,12 +767,12 @@ namespace ui
 				{
 					this->upgradesPendingCost -= game->upgradeManager->getUpgradePartCost( upgid );
 
-					LinkedListIterator iter(this->upgradesPending);
+					LinkedListIterator<intptr_t> iter(this->upgradesPending);
 					while (iter.iterateAvailable())
 					{
 						// WARNING: void * -> int cast
-						void* ptr = iter.iterateNext();
-						if ( (intptr_t)ptr == upgid)
+					    intptr_t ptr = iter.iterateNext();
+						if (ptr == upgid)
 						{
 							upgradesPending->remove( ptr );
 						}
@@ -824,7 +823,7 @@ namespace ui
 		while (!upgradesPending->isEmpty())
 		{
 			// WARNING: void * -> int cast!
-			intptr_t upgid = (intptr_t)upgradesPending->popLast();
+			intptr_t upgid = upgradesPending->popLast();
 
 			if (game->upgradeManager->canUpgrade(unit, upgid))
 			{

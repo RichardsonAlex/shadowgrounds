@@ -12,7 +12,7 @@
 #define MAX_TRANSITIONS 4
 #endif
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace util {
 	class SimpleParser;
@@ -116,7 +116,7 @@ namespace ui
 	  TransitionList *transitionTable;
 	//Ilkka addon end
 
-    static LinkedList *setFilenames;
+    static LinkedList<AnimationSet*> *setFilenames;
   };
 }
 

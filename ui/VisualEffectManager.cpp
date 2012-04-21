@@ -82,11 +82,11 @@ namespace ui
 
 	VisualEffectManager::VisualEffectManager(IStorm3D *storm3d, IStorm3D_Scene *scene)
 	{
-		visualEffects = new LinkedList();
+		visualEffects = new LinkedList<VisualEffect*>();
 		//particleManager = new ParticleManager(storm3d,
 		//	scene->GetParticleSystem());
 
-		managedEffects = new LinkedList();
+		managedEffects = new LinkedList<ManagedVisualEffectEntry*>();
 
 		particleEffectManager = new ParticleEffectManager(storm3d, scene);
 		if(game::SimpleOptions::getBool(DH_OPT_B_PHYSICS_ENABLED))
@@ -135,7 +135,7 @@ namespace ui
 	{
 		while (!managedEffects->isEmpty())
 		{
-			ManagedVisualEffectEntry *entry = (ManagedVisualEffectEntry*)managedEffects->popLast();
+			ManagedVisualEffectEntry *entry = managedEffects->popLast();
 
 			VisualEffect *vef = entry->visualEffect;
 			this->deleteVisualEffect(vef);
@@ -149,12 +149,12 @@ namespace ui
 	void VisualEffectManager::updateManagedEffects()
 	{
 		// optimization hack, no need to use safelinkedlistiterator...
-		LinkedList entryDeleteList;
+		LinkedList<ManagedVisualEffectEntry*> entryDeleteList;
 
-		LinkedListIterator iter(managedEffects);
+		LinkedListIterator<ManagedVisualEffectEntry*> iter(managedEffects);
 		while(iter.iterateAvailable())
 		{
-			ManagedVisualEffectEntry *entry = (ManagedVisualEffectEntry*)iter.iterateNext();
+			ManagedVisualEffectEntry *entry = iter.iterateNext();
 			entry->lifetimeInTicks--;
 			if (entry->lifetimeInTicks <= 0)
 			{
@@ -168,7 +168,7 @@ namespace ui
 
 		while (!entryDeleteList.isEmpty())
 		{
-			ManagedVisualEffectEntry *entry = (ManagedVisualEffectEntry*)entryDeleteList.popLast();
+			ManagedVisualEffectEntry *entry = entryDeleteList.popLast();
 			managedEffects->remove(entry);
 			delete entry;
 		}
@@ -183,7 +183,7 @@ namespace ui
 		// (call setTerrain with NULL param before deleting the terrain!)
 		while (!visualEffects->isEmpty())
 		{
-			VisualEffect *v = (VisualEffect *)visualEffects->popLast();
+			VisualEffect *v = visualEffects->popLast();
 			v->freeReference();
 		}
 		this->terrain = terrain;
@@ -192,10 +192,10 @@ namespace ui
 
 	void VisualEffectManager::detachVisualEffectsFromUnits()
 	{
-		LinkedListIterator iter = LinkedListIterator(visualEffects);
+		LinkedListIterator<VisualEffect*> iter(visualEffects);
 		while (iter.iterateAvailable())
 		{
-			VisualEffect *v = (VisualEffect *)iter.iterateNext();
+			VisualEffect *v = iter.iterateNext();
 			if (v->follow != NULL)
 			{
 				v->follow = NULL;
@@ -682,12 +682,12 @@ namespace ui
 				int randomVariation = (SystemRandom::getInstance()->nextInt() % (amountVariation * 2 + 1) - amountVariation);
 				decalAmount += randomVariation;
 
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator uiter(ulist);
+				LinkedList<game::Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<game::Unit*> uiter(ulist);
 
 				while (uiter.iterateAvailable())
 				{
-					game::Unit *u = (game::Unit *)uiter.iterateNext();
+					game::Unit *u = uiter.iterateNext();
 					if (u->getVisualObject() != NULL)
 					{
 						u->getVisualObject()->setCollidable(false);
@@ -728,11 +728,11 @@ namespace ui
 					}
 				}
 
-				uiter = LinkedListIterator(ulist);
+				uiter = LinkedListIterator<game::Unit*>(ulist);
 
 				while (uiter.iterateAvailable())
 				{
-					game::Unit *u = (game::Unit *)uiter.iterateNext();
+					game::Unit *u = uiter.iterateNext();
 					if (u->getVisualObject() != NULL)
 					{
 						u->getVisualObject()->setCollidable(true);
@@ -908,11 +908,11 @@ namespace ui
 		// be much more costly.
 
 		// create a list of effects to be deleted
-		LinkedList *delList = NULL;
-		LinkedListIterator iter = LinkedListIterator(visualEffects);
+		LinkedList<VisualEffect*> *delList = NULL;
+		LinkedListIterator<VisualEffect*> iter(visualEffects);
 		while (iter.iterateAvailable())
 		{
-			VisualEffect *v = (VisualEffect *)iter.iterateNext();
+			VisualEffect *v = iter.iterateNext();
 			if (v->isDeleteFlag())
 			{
 				if (v->deleteFrameCounter == 0)
@@ -969,7 +969,7 @@ namespace ui
 				if (v->deleteFrameCounter >= 5)
 				{
 					if (delList == NULL)
-						delList = new LinkedList();
+						delList = new LinkedList<VisualEffect*>();
 					delList->append(v);
 				}
 			}
@@ -989,7 +989,7 @@ namespace ui
 		}
 
 		// run each effect
-		LinkedListIterator iter2 = LinkedListIterator(visualEffects);
+		LinkedListIterator<VisualEffect*> iter2(visualEffects);
 		while (iter2.iterateAvailable())
 		{
 			VisualEffect *v = (VisualEffect *)iter2.iterateNext();
@@ -1030,10 +1030,10 @@ namespace ui
 		util::ColorMap *colorMap, ui::LightManager *lightManager)
 	{
 		// render each visual effect
-		LinkedListIterator iter = LinkedListIterator(visualEffects);
+		LinkedListIterator<VisualEffect*> iter(visualEffects);
 		while (iter.iterateAvailable())
 		{
-			VisualEffect *v = (VisualEffect *)iter.iterateNext();
+			VisualEffect *v = iter.iterateNext();
 			v->prepareForRender();
 			if (colorMap != NULL)
 			{

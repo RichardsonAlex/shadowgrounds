@@ -71,7 +71,7 @@ namespace game
 
 	GameConfigs::GameConfigs()
 	{
-		confList = new LinkedList();
+		confList = new LinkedList<GameConfNodeImpl*>();
 		for (int i = 0; i < GAMECONFIGS_MAX_IDS; i++)
 		{
 			idTable[i] = NULL;
@@ -83,7 +83,7 @@ namespace game
 	{
     while (!confList->isEmpty())
 		{
-			GameConfNodeImpl *n = (GameConfNodeImpl *)confList->popLast();
+			GameConfNodeImpl *n = confList->popLast();
 			delete [] (n->confName);
 			if (n->stringValue != NULL)
 				delete [] (n->stringValue);
@@ -502,7 +502,7 @@ namespace game
 		confList->resetIterate();
     while (confList->iterateAvailable())
 		{
-			GameConfNodeImpl *n = (GameConfNodeImpl *)confList->iterateNext();
+			GameConfNodeImpl *n = confList->iterateNext();
 			if (strcmp(n->confName, confname) == 0)
 			{
 				return n;

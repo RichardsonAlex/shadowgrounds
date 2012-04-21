@@ -72,12 +72,12 @@ std::list< LogEntry > LogManager::getCollectedLogs() const
 
 void LogManager::loadNewLogEntries()
 {
-	LinkedList* list = util::Script::getGlobalVariableList( true );
+	LinkedList<const char*>* list = util::Script::getGlobalVariableList( true );
 
-	SafeLinkedListIterator i( list );
+	SafeLinkedListIterator<const char*> i( list );
 	while( i.iterateAvailable() )
 	{
-		std::string name = (const char*)i.iterateNext();
+		std::string name = i.iterateNext();
  
 		if( name.substr( 0, 10 ) == "log_entry_" )
 		{

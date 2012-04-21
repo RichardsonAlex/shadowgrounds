@@ -858,11 +858,11 @@ namespace ui
 
 		clearLists();
 
-		LinkedList *units = this->aniRecorder->getUnitList();
+		LinkedList<game::Unit*> *units = this->aniRecorder->getUnitList();
 		int unitnum = 0;
 		while (!units->isEmpty())
 		{
-			game::Unit *u = (game::Unit *)units->popFirst();
+			game::Unit *u = units->popFirst();
 			char idbuf[64+1];
 			bool sel = false;
 			if (this->selectedUnit == u)
@@ -886,11 +886,11 @@ namespace ui
 		}
 		delete units;
 
-		LinkedList *cameras = this->aniRecorder->getCameraDumpList();
+		LinkedList<const char*> *cameras = this->aniRecorder->getCameraDumpList();
 		//int camnum = 0;
 		while (!cameras->isEmpty())
 		{
-			char *camnumstr = (char *)cameras->popFirst();
+			const char *camnumstr = cameras->popFirst();
 			int camnum = str2int(camnumstr);
 			char camname[32];
 			sprintf(camname, "Camera dump %d", camnum);
@@ -1346,20 +1346,20 @@ namespace ui
 
 			if (eve->triggerButton->GetId() == ANIRECW_ADDUNIT)
 			{
-				LinkedList *ulist = game->units->getAllUnits();
-				LinkedListIterator iter = LinkedListIterator(ulist);
+				LinkedList<game::Unit*> *ulist = game->units->getAllUnits();
+				LinkedListIterator<game::Unit*> iter(ulist);
 				while (iter.iterateAvailable())
 				{ 
-					game::Unit *u = (game::Unit *)iter.iterateNext();
+					game::Unit *u = iter.iterateNext();
 					if (u->isActive())
 					{
 						if (u->isSelected())
 						{
 							bool alreadyListed = false;
-							LinkedList *listedUnits = this->aniRecorder->getUnitList();
+							LinkedList<game::Unit*> *listedUnits = this->aniRecorder->getUnitList();
 							while (!listedUnits->isEmpty())
 							{
-								game::Unit *lu = (game::Unit *)listedUnits->popFirst();
+								game::Unit *lu = listedUnits->popFirst();
 								if (lu == u)
 								{
 									alreadyListed = true;
@@ -1718,12 +1718,12 @@ namespace ui
 
 	void AniRecorderWindow::updateUnitSelections()
 	{
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter(ulist);
+		LinkedList<game::Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<game::Unit*> iter(ulist);
 		bool unitWasSelected = false;
 		while (iter.iterateAvailable())
 		{
-			game::Unit *u = (game::Unit *)iter.iterateNext();
+			game::Unit *u = iter.iterateNext();
 			if (u->isSelected())
 			{
 				this->selectedUnit = u;
@@ -1740,11 +1740,11 @@ namespace ui
 		{
 			// int selectionNumber = 0;
 			bool selectionOk = false;
-			LinkedList *units = this->aniRecorder->getUnitList();
+			LinkedList<game::Unit*> *units = this->aniRecorder->getUnitList();
 			int unitnum = 0;
 			while (!units->isEmpty())
 			{
-				game::Unit *u = (game::Unit *)units->popFirst();
+				game::Unit *u = units->popFirst();
 				if (this->selectedUnit == u)
 				{
 					selectionOk = true;

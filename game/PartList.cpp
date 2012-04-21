@@ -11,11 +11,11 @@ namespace game
 
   PartList::PartList()
   {
-    allParts = new LinkedList();
-    ownedParts = new LinkedList *[ABS_MAX_PLAYERS];
+    allParts = new LinkedList<Part*>();
+    ownedParts = new LinkedList<Part*> *[ABS_MAX_PLAYERS];
     for (int i = 0; i < ABS_MAX_PLAYERS; i++)
     {
-      ownedParts[i] = new LinkedList();
+      ownedParts[i] = new LinkedList<Part*>();
     }
   }
 
@@ -75,12 +75,12 @@ namespace game
     return count;
   }
 
-  LinkedList *PartList::getAllParts()
+  LinkedList<Part*> *PartList::getAllParts()
   {
     return allParts;
   }
 
-  LinkedList *PartList::getOwnedParts(int player)
+  LinkedList<Part*> *PartList::getOwnedParts(int player)
   {
     return ownedParts[player];
   }

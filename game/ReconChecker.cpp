@@ -15,12 +15,12 @@ namespace game
 {
 	bool ReconChecker::isReconAvailableAtPosition(Game *game, int player, const VC3 &position)
 	{
-		LinkedList *ulist = game->units->getAllUnits();
-		LinkedListIterator iter = LinkedListIterator(ulist);
+		LinkedList<Unit*> *ulist = game->units->getAllUnits();
+		LinkedListIterator<Unit*> iter(ulist);
 
 		while (iter.iterateAvailable())		
 		{
-			Unit *u = (Unit *)iter.iterateNext();
+			Unit *u = iter.iterateNext();
 			
 			// unit is friendly towards player?
 			// (but player does not need to be friendly towards the unit ;)
@@ -45,11 +45,11 @@ namespace game
 				// TEMP!
 				// ignore all small own units (1.5m)...
 				// except the one we're trying to hit
-				LinkedList *oul = game->units->getOwnedUnits(u->getOwner());
-				LinkedListIterator iter = LinkedListIterator(oul);
+				LinkedList<Unit*> *oul = game->units->getOwnedUnits(u->getOwner());
+				LinkedListIterator<Unit*> iter(oul);
 				while (iter.iterateAvailable())
 				{
-					Unit *ou = (Unit *)iter.iterateNext();
+					Unit *ou = iter.iterateNext();
 					if (ou != u && ou->getUnitType()->getSize() <= 1.5f)
 						ou->getVisualObject()->setCollidable(false);
 				}
@@ -66,10 +66,10 @@ namespace game
 				// TEMP!
 				// restore them all...
 				oul = game->units->getOwnedUnits(u->getOwner());
-				iter = LinkedListIterator(oul);
+				iter = LinkedListIterator<Unit*>(oul);
 				while (iter.iterateAvailable())
 				{
-					Unit *ou = (Unit *)iter.iterateNext();
+					Unit *ou = iter.iterateNext();
 					if (ou != u && ou->getUnitType()->getSize() <= 1.5f)
 						ou->getVisualObject()->setCollidable(true);
 				}

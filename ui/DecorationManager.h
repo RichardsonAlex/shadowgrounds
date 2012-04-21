@@ -5,7 +5,7 @@
 #define DECORID_LOWEST_POSSIBLE_VALUE 100000
 #define DECORID_HIGHEST_POSSIBLE_VALUE 999999
 
-class LinkedList;
+template<typename T> class LinkedList;
 
 namespace util
 {
@@ -40,7 +40,7 @@ namespace ui
 			void updateDecorationIllumination(util::ColorMap *colorMap);
 
     private:
-      LinkedList *decorList;
+      LinkedList<Decoration*> *decorList;
   };
 }
 

@@ -4,14 +4,14 @@
 #include <assert.h>
 
 #include "GameObjectList.h"
+#include "GameObject.h"
 #include "../util/Debug_MemoryManager.h"
 
 namespace game
 {
 
-  GameObjectList::GameObjectList()
-  {
-    objects = new LinkedList();
+  GameObjectList::GameObjectList() {
+      objects = new LinkedList<GameObject*>();
   }
 
   GameObjectList::~GameObjectList()
@@ -21,12 +21,12 @@ namespace game
     // are invalid now, though.
 
     // Check that all game objects were deleted.
-    //assert(objects->isEmpty());
+    assert(objects.isEmpty());
 
     delete objects;
   }
     
-  const ListNode *GameObjectList::add(GameObject *obj)
+  const ListNode<GameObject*> *GameObjectList::add(GameObject *obj)
   {
     objects->append(obj);
     return objects->getLastNode();
@@ -37,7 +37,7 @@ namespace game
     objects->remove(obj);
   }
 
-  void GameObjectList::removeByNode(const ListNode *node, GameObject *obj)
+  void GameObjectList::removeByNode(const ListNode<GameObject*>* node, GameObject* obj)
   {
     // TODO, check that objects list really contain node, else bug
     // TODO, check that node really contains obj, else bug
@@ -59,7 +59,7 @@ namespace game
 
   GameObject *GameObjectList::iterateNext()
   {
-    return (GameObject *)objects->iterateNext();
+    return objects->iterateNext();
   }
 
 }

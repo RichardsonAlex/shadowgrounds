@@ -37,7 +37,7 @@
 
 
 class Ogui;
-class LinkedList;
+template<typename T> class LinkedList;
 
 
 class OguiWindow
@@ -135,7 +135,7 @@ private:
 
 	IOguiEffectListener *effectListener;
 
-	LinkedList *buttonList;
+	LinkedList<OguiButton*> *buttonList;
 
 	// some internal hacks 
 	// (the real orvgui window implementation is hidden behind this pointer)

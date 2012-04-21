@@ -19,7 +19,7 @@ namespace game
 	class Unit;
 }
 
-class LinkedList;
+template<typename T> class LinkedList;
 class Ogui;
 class OguiWindow;
 class OguiButton;
@@ -64,7 +64,7 @@ namespace ui
 			game::Unit *unit;
 			Ogui *ogui;
 
-			LinkedList *upgradesPending;
+			LinkedList<intptr_t> *upgradesPending;
 			int upgradesPendingCost;
 
 			GUIEffectWindow *effectWindow;
