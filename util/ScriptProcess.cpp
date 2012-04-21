@@ -30,7 +30,6 @@ namespace util
 	{
 		ipStack = new LinkedList<intptr_t>();
 		userStack = new LinkedList<ScriptLastValueType>();
-		userStack = new LinkedList<int>();
 		userStackSize = 0;
 		script = NULL;
 		ip = 0;

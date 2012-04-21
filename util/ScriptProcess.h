@@ -24,6 +24,7 @@ typedef intptr_t ScriptLastValueType;
 namespace game
 {
   class GameScripting;
+  class GameScriptData;
 }
 
 namespace util
@@ -46,7 +47,7 @@ namespace util
 
 		intptr_t ifDepth;
 		bool thenBranch;
-		void *data;
+		game::GameScriptData *data;
 
 		int *callParamStack;
 		int callParamStackUsed;
@@ -71,9 +72,9 @@ namespace util
 
 		inline Script *getScript() { return script; }
 
-		inline void setData(void *data) { this->data = data; }
+		inline void setData(game::GameScriptData *data) { this->data = data; }
 
-		inline void *getData() { return data; }
+		inline game::GameScriptData *getData() { return data; }
 
 		inline int getLastValue() { return lastValue; }
 

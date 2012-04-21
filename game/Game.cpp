@@ -2674,7 +2674,7 @@ gameUI->getTerrain()->calculateLighting();
 				fb_assert(sp != NULL);
 				if (sp->isFinished())
 				{
-					delete static_cast<GameScriptData *> (sp->getData());
+					delete sp->getData();
 					delete sp;
 					customScriptProcesses->remove(sp);
 				} else {
@@ -4153,8 +4153,7 @@ gameUI->getTerrain()->calculateLighting();
 		{
 			if (!cinematicScriptProcess->isFinished())
 			{
-				// WARNING: unsafe cast
-				GameScriptData *gsd = (GameScriptData *)cinematicScriptProcess->getData();
+				GameScriptData *gsd = cinematicScriptProcess->getData();
 				gsd->waitCounter = 0;
 				gsd->waitDestination = false;
 				gsd->waitCinematicScreen = false;
@@ -4398,8 +4397,7 @@ gameUI->getTerrain()->calculateLighting();
 		int pid = 0;
 		if (sp != NULL)
 		{
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			gsd->unifiedHandle = uh;
 			customScriptProcesses->append(sp);
 			pid = sp->getId();
@@ -4415,7 +4413,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				util::ScriptProcess *sp = customScriptProcesses->popLast();
 				assert(sp != NULL);
-				delete static_cast<GameScriptData *> (sp->getData());
+				delete sp->getData();
 				delete sp;
 			}
 			delete customScriptProcesses;
@@ -4455,7 +4453,7 @@ gameUI->getTerrain()->calculateLighting();
 				if(strcmp(s->getName(), script) != 0)
 					continue;
 
-				game::GameScriptData *gsd = (GameScriptData *)sp->getData();
+				game::GameScriptData *gsd = sp->getData();
 
 				if(!gsd)
 					continue;
@@ -4483,7 +4481,7 @@ gameUI->getTerrain()->calculateLighting();
 				if (sp->getId() == pid)
 				{
 					customScriptProcesses->remove(sp);
-					delete static_cast<GameScriptData *> (sp->getData());
+					delete sp->getData();
 					delete sp;
 					deletedProcesses++;
 				}

@@ -117,7 +117,7 @@ void UnitLevelAI::skipMainScriptWait()
     if (!mainScriptProcess->isFinished())
     {
 			// WARNING: unsafe cast
-			GameScriptData *gsd = (GameScriptData *)mainScriptProcess->getData();
+			GameScriptData *gsd = mainScriptProcess->getData();
 			gsd->waitCounter = 0;
 			gsd->waitDestination = false;
 			gsd->waitCinematicScreen = false;
@@ -134,7 +134,7 @@ void UnitLevelAI::terminateMainScript()
 {
   if (mainScriptProcess != NULL)
   {
-    GameScriptData *gsd = (GameScriptData *)mainScriptProcess->getData();
+    GameScriptData *gsd = mainScriptProcess->getData();
     if (gsd != NULL)
     {
       delete gsd;
@@ -154,7 +154,7 @@ void UnitLevelAI::runUnitAI()
 			if (isThisAndAllEnabled())
 			{
 	      game->gameScripting->runScriptProcess(mainScriptProcess, true);
-				GameScriptData *gsd = (GameScriptData *)mainScriptProcess->getData();
+				GameScriptData *gsd = mainScriptProcess->getData();
 				if (mainScriptProcess->isFinished())
 				{
 					if (!mainScriptProcess->isUserStackEmpty())
@@ -450,7 +450,7 @@ void UnitLevelAI::copyStateFrom(UnitLevelAI *otherAI)
 	} else {
 		if (mainScriptProcess != NULL)
 		{
-			GameScriptData *gsd = (GameScriptData *)mainScriptProcess->getData();
+			GameScriptData *gsd = mainScriptProcess->getData();
 			if (gsd != NULL)
 			{
 				delete gsd;

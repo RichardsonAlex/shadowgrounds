@@ -1217,8 +1217,7 @@ namespace game
 		this->leapToPosition(ANI_MAX_TICKS);
 		if (impl->scriptProcess != NULL)
 		{
-			// WARNING: unsafe cast
-			GameScriptData *gsd = (GameScriptData *)impl->scriptProcess->getData();
+			GameScriptData *gsd = impl->scriptProcess->getData();
 			if (gsd != NULL)
 			{
 				gsd->waitCounter = 0;

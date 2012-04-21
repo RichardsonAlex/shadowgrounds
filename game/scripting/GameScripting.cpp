@@ -140,8 +140,7 @@ namespace game
 	bool GameScripting::process(util::ScriptProcess *sp, int command, floatint intFloat,
 		char *stringData, ScriptLastValueType *lastValue)
 	{
-		// WARNING: unsafe cast!
-		GameScriptData *gsd = (GameScriptData *)sp->getData();
+		GameScriptData *gsd = sp->getData();
 
 		bool pause = false;
 		//bool pause = true;
@@ -318,8 +317,7 @@ namespace game
 
 	void GameScripting::runScriptProcess(util::ScriptProcess *sp, bool pausable)
 	{
-		// WARNING: unsafe cast!
-		GameScriptData *gsd = (GameScriptData *)sp->getData();
+		GameScriptData *gsd = sp->getData();
 		if (gsd->waitCounter > 0)
 		{
 			gsd->waitCounter--;
@@ -429,8 +427,7 @@ namespace game
 							// no such sub in script?
 							if (sp == NULL) return;
 
-							// WARNING: unsafe cast!
-							GameScriptData *gsd = (GameScriptData *)sp->getData();
+							GameScriptData *gsd = sp->getData();
 							assert(gsd != NULL);
 							gsd->alertUnit = unit;
 
@@ -468,8 +465,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return 0;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 
 			tracking::ITrackerObject *tracker = game->objectTracker->getTrackerByUnifiedHandle(trackerUnifiedHandle);
@@ -516,8 +512,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return 0;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 
 			gsd->unit = unit;
@@ -563,8 +558,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return 0;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 
 			gsd->unifiedHandle = uh;
@@ -603,8 +597,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 
 			int failCount = 0;
@@ -667,8 +660,7 @@ namespace game
 
 			didRun = true;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 			gsd->shooter = shooter;
 
@@ -726,8 +718,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 			gsd->shooter = shooter;
 
@@ -763,8 +754,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 			gsd->shooter = shooter;
 
@@ -796,8 +786,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 			gsd->shooter = shooter;
 
@@ -834,8 +823,7 @@ namespace game
 				return;
 			}
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 
 			int failCount = 0;
@@ -932,8 +920,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return false;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 
 			didRun = true;
@@ -985,8 +972,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 
 			int failCount = 0;
@@ -1020,8 +1006,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 			gsd->noisy = noisy;
 
@@ -1053,8 +1038,7 @@ namespace game
 			// no such sub in script?
 			if (sp == NULL) return;
 
-			// WARNING: unsafe cast!
-			GameScriptData *gsd = (GameScriptData *)sp->getData();
+			GameScriptData *gsd = sp->getData();
 			assert(gsd != NULL);
 			gsd->spottedUnit = spotted;
 
@@ -1352,8 +1336,7 @@ namespace game
 	{
 		assert(sp != NULL);
 
-		// WARNING: unsafe cast!
-		GameScriptData *gsd = (GameScriptData *)sp->getData();
+		GameScriptData *gsd = sp->getData();
 		assert(gsd != NULL);
 		if (gsd != NULL)
 			delete gsd;
@@ -1467,8 +1450,7 @@ namespace game
 			return;
 		}
 
-		// WARNING: unsafe cast!
-		GameScriptData *gsd = (GameScriptData *)sp->getData();
+		GameScriptData *gsd = sp->getData();
 		assert(gsd != NULL);
 
 		int failCount = 0;

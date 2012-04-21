@@ -497,8 +497,7 @@ namespace ui
 		}
 		if (sp != NULL)
 		{
-			// WARNING: unsafe cast!
-			game::GameScriptData *gsd = (game::GameScriptData *)sp->getData();
+			game::GameScriptData *gsd = sp->getData();
 			delete gsd;
 		}
 		delete sp;
