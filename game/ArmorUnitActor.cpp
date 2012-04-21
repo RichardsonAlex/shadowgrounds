@@ -147,13 +147,13 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 	// HACK: slowly moving units don't care so much about cover avoiding
 	// (most likely patrolling units)
 	if (coverAvoid > 2 && unit->getSpeed() == Unit::UNIT_SPEED_SLOW)
-		coverAvoid =- 1;
+		coverAvoid -= 1;
 
 	// HACK: sprinting units do care more about cover avoiding...
 	// WARNING: may cause some problems when destination in cover..?
 	// (may result into unability to reach that place)
 	if (unit->getSpeed() == Unit::UNIT_SPEED_SPRINT)
-		coverAvoid =+ 2;
+		coverAvoid += 2;
 
 	game->gameMap->keepWellInScaledBoundaries(&endPosition.x, &endPosition.z);
 

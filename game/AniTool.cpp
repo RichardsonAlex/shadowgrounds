@@ -70,14 +70,6 @@ namespace game
 				return tf.findOneOfMany("aniTick", tick);
 			}
 
-			int getTickCommandEndPosition(int position)
-			{
-				if (position == 0)
-				{
-					return 0;
-				}
-			}
-
 			void getParsedDataBuffers(bool **selected_out, VC3 **positions_out, VC3 **rotations_out, float **aims_out)
 			{
 				bool *selected = new bool[totalTicks];
@@ -231,7 +223,7 @@ namespace game
 						aims[i] = aims[i - 1];
 						selected[i] = false;
 					}
-					lasttickpos = nexttickpos;				
+					lasttickpos = nexttickpos;
 				}
 
 				if (selected_out == NULL)
@@ -485,7 +477,7 @@ namespace game
 							nexttickpos = tf->findNext("aniTick");
 						}
 					}
-					lasttickpos = nexttickpos;				
+					lasttickpos = nexttickpos;
 				}
 			}
 
@@ -672,7 +664,7 @@ namespace game
 
 		delete [] selected;
 		delete [] positionsNew;
-		delete [] positions;		
+		delete [] positions;
 	}
 
 	void AniTool::smoothMovement(int smoothAmount)
@@ -699,7 +691,7 @@ namespace game
 				int maxi = i + smoothAmount;
 				if (maxi > impl->totalTicks - 1)
 					maxi = impl->totalTicks - 1;
-				
+
 				positionsNew[i] = VC3(0,0,0);
 				if (mini < maxi)
 				{
@@ -721,7 +713,7 @@ namespace game
 
 		delete [] selected;
 		delete [] positionsNew;
-		delete [] positions;		
+		delete [] positions;
 	}
 
 	void AniTool::smoothRotation(int smoothAmount)
@@ -748,7 +740,7 @@ namespace game
 				int maxi = i + smoothAmount;
 				if (maxi > impl->totalTicks - 1)
 					maxi = impl->totalTicks - 1;
-				
+
 				rotationsNew[i] = VC3(0,0,0);
 				if (mini < maxi)
 				{
@@ -819,7 +811,7 @@ namespace game
 				int maxi = i + smoothAmount;
 				if (maxi > impl->totalTicks - 1)
 					maxi = impl->totalTicks - 1;
-				
+
 				aimsNew[i] = 0;
 				if (mini < maxi)
 				{
@@ -839,7 +831,7 @@ namespace game
 
 		/*
 		for (int fix360 = 0; fix360 < impl->totalTicks; fix360++)
-		{			
+		{
 			Logger::getInstance()->error(int2str(aimsNew[fix360]));
 		}
 		*/

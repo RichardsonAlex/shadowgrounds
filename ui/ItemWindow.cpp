@@ -57,9 +57,8 @@ ItemWindow::~ItemWindow()
 	for( i = itemWindows.begin(); i != itemWindows.end(); ++i )
 	{
 		delete i->second;
-		i->second;
 	}
-	
+
 	delete window;
 }
 
@@ -71,7 +70,7 @@ void ItemWindow::addItemWindow( const std::string& item_window_name )
 	int y		= getLocaleGuiInt( ( item_window_name + "_y" ).c_str(), 0  );
 	int add_x	= getLocaleGuiInt( ( item_window_name + "_add_x" ).c_str(), 0  );
 	int add_y	= getLocaleGuiInt( ( item_window_name + "_add_y" ).c_str(), 0  );
-	
+
 	x -= windowX;
 	y -= windowY;
 
@@ -86,13 +85,13 @@ void ItemWindow::addItemWindow( const std::string& item_window_name )
 void ItemWindow::addItem( const std::string& target, const Item& item )
 {
 	FB_ASSERT( itemWindows.find( target ) != itemWindows.end() );
-	
+
 	Item i( item );
 	if( i.image == NULL )
 	{
 		FB_ASSERT( ogui );
 		FB_ASSERT( window );
-		
+
 		i.image = ogui->CreateSimpleImageButton( window, 0, 0, item.w, item.h, NULL, NULL, NULL, item.imageFile.c_str(), 0 );
 		i.image->SetDisabled( true );
 	}
@@ -139,9 +138,9 @@ ItemWindow::ItemList::~ItemList()
 void ItemWindow::ItemList::addItem( const ItemWindow::Item& item )
 {
 	items.push_back( item );
-	
+
 	FB_ASSERT( item.image );
-	
+
 	if( item.image != NULL )
 		item.image->Move( curX, curY );
 
@@ -154,7 +153,7 @@ void ItemWindow::ItemList::addItem( const ItemWindow::Item& item )
 void ItemWindow::ItemList::removeItem( const ItemWindow::Item& item )
 {
 	std::list< ItemWindow::Item >::iterator i;
-	
+
 	for( i = items.begin(); i != items.end(); ++i )
 	{
 		if( *i == item )
