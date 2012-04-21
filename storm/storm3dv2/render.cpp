@@ -756,7 +756,7 @@ bool Framebuffer::validate() {
 		GLenum ret = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
 		if (ret != GL_FRAMEBUFFER_COMPLETE_EXT) {
 			igiosWarning("framebuffer not complete at %d: %x\n", __LINE__, ret);
-			*((char *) NULL) = '\0';
+			*((volatile char *) NULL) = '\0'; //TODO __builtin_trap() ?
 			igios_backtrace();
 
 			return false;
