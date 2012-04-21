@@ -29,11 +29,8 @@ namespace util
 	ScriptProcess::ScriptProcess()
 	{
 		ipStack = new LinkedList<intptr_t>();
-#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
-		userStack = new LinkedList<CheckedIntValue>();
-#else
+		userStack = new LinkedList<ScriptLastValueType>();
 		userStack = new LinkedList<int>();
-#endif
 		userStackSize = 0;
 		script = NULL;
 		ip = 0;
@@ -175,19 +172,10 @@ namespace util
 			}
 		}
 		{
-#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
-			LinkedListIterator<CheckedIntValue> iter(otherScriptProcess->userStack);
-#else
-			LinkedListIterator<int> iter(otherScriptProcess->userStack);
-#endif
+			LinkedListIterator<ScriptLastValueType> iter(otherScriptProcess->userStack);
 			while (iter.iterateAvailable())
 			{
-#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
-                CheckedIntValue val = iter.iterateNext();
-
-#else
-                int val = iter.iterateNext();
-#endif
+			    ScriptLastValueType val = iter.iterateNext();
 				this->userStack->append(val);
 			}
 			this->userStackSize = otherScriptProcess->userStackSize;

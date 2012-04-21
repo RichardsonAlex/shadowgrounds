@@ -34,15 +34,10 @@ namespace util
 	{
 	private:
 		int ip;
-#ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
-		CheckedIntValue lastValue;
-        LinkedList<CheckedIntValue> *userStack;  // used to store user push- and popValues
-        CheckedIntValue secondaryValue;
-#else
-		intptr_t lastValue;
-        LinkedList<int> *userStack;  // used to store user push- and popValues
-        intptr_t secondaryValue;
-#endif
+		ScriptLastValueType lastValue;
+		LinkedList<ScriptLastValueType> *userStack;  // used to store user push- and popValues
+		ScriptLastValueType secondaryValue;
+
 		LinkedList<intptr_t> *ipStack;	// used to store ip, ifDepth and thenBranch
 		int userStackSize;
 		Script *script;
