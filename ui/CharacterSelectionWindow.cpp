@@ -416,7 +416,7 @@ namespace ui
 
 						// set singleplayer unit id too
 						if(i == 0)
-							game->gameScripting->setGlobalIntVariableValue("singleplayer_unitid", game->units->getIdForUnit(unit));				
+							game->gameScripting->setGlobalIntVariableValue("singleplayer_unitid", game->units->getIdForUnit(unit));
 					}
 					else
 					{
@@ -448,7 +448,7 @@ namespace ui
 
 				// set singleplayer unit id too
 				if(i == 0)
-					game->gameScripting->setGlobalIntVariableValue("singleplayer_unitid", game->units->getIdForUnit(unit));				
+					game->gameScripting->setGlobalIntVariableValue("singleplayer_unitid", game->units->getIdForUnit(unit));
 			}
 			else
 			{
@@ -504,10 +504,10 @@ namespace ui
 	void CharacterSelectionWindow::chooseCharacterInDir(int dir, int player)
 	{
 		assert(player >= 0 && player < MAX_PLAYERS_PER_CLIENT);
-		
+
 		// already closing
 		if(readyToCloseTimer != INT_MAX) return;
-		
+
 		// locked
 		if(chosenCharacterLocked[player]) return;
 
@@ -543,8 +543,8 @@ namespace ui
 			chosenCharacter[player] = oldChoice;
 			game->gameUI->playGUISound(errorSound.c_str());
 		}
-		
-		
+
+
 		if(chosenCharacter[player] != oldChoice)
 		{
 			game->gameUI->playGUISound(chooseSound.c_str());
@@ -624,7 +624,7 @@ namespace ui
 			characterImages[charNum]->SetDisabled(true);
 		}
 	}
-	
+
 	void CharacterSelectionWindow::lockChosenCharacter(int player)
 	{
 		assert(player >= 0 && player < MAX_PLAYERS_PER_CLIENT);

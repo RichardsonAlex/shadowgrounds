@@ -21,7 +21,7 @@ extern bool apply_options_request;
 namespace game
 {
 	class Game;
-	
+
 }
 
 namespace ui
@@ -43,16 +43,16 @@ public:
 		COMMANDS_BUTTON_18 = 18,
 		COMMANDS_BUTTON_19 = 10,
 		COMMANDS_BUTTON_20 = 20,
-		
+
 		COMMANDS_JOYSTICK_MOVE_XAXIS,
 		COMMANDS_JOYSTICK_MOVE_YAXIS,
 		COMMANDS_JOYSTICK_DIR_XAXIS,
 		COMMANDS_JOYSTICK_DIR_YAXIS,
-		
+
 		COMMANDS_EASY = 50,
 		COMMANDS_NORMAL = 51,
 		COMMANDS_HARD = 52,
-		
+
 		COMMANDS_SLIDERMUSIC = 30,
 		COMMANDS_SLIDERSOUND = 31,
 		COMMANDS_SLIDERSPEECH = 32,
@@ -66,7 +66,7 @@ public:
 
 		COMMANDS_CLOSEME = 101,
 		COMMANDS_DEFAULTS,
-		
+
 	};
 
 	OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_gui, game::Game* game );
@@ -77,7 +77,7 @@ public:
 	int getType() const;
 
 	// bool wasQuitPressed() const;
-	
+
 	void closeMenu();
 	void openMenu( int m );
 	void applyChanges();
@@ -158,7 +158,7 @@ private:
 	void setControllerType(int i);
 	void updateControllerTypeText();
 
-	
+
 
 	std::vector< int >				controlNumArray;
 	std::vector< int >				keycodeArray;
@@ -200,21 +200,21 @@ private:
 	bool					joystickMenuOpen;
 	int						joystickUpdate;
 	int						currentController;
-	
+
 	//.........................................................................
 
-	
+
 	OguiTextLabel*					cooperativeBigText;
 	OguiSelectList*					cooperativeProfileList;
 	std::list< OguiButtonStyle* >	styles;
 	OguiSelectListStyle*			selectListStyle;
-	
+
 
 	//.........................................................................
 
 	MenuCollection*			menuCollection;
 	MenuCollection::Fonts*	fonts;
-	
+
 	bool					discartNextCursorEvent;
 	bool					fromGame;
 

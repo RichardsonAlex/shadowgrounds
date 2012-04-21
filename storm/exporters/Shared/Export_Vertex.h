@@ -51,11 +51,11 @@ public:
 	const FBVector &getNormal() const;
 	const FBVector2 &getUv() const;
 	const FBVector2 &getUv2() const;
-	
+
 	bool hasBoneWeights() const;
 	float getBoneWeight(int index) const;
 	int getBoneIndex(int index) const;
-	
+
 	void setPosition(const FBVector &position);
 	void setNormal(const FBVector &normal);
 	void setUv(const FBVector2 &uv);

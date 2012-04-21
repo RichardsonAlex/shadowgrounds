@@ -12,7 +12,7 @@ namespace game
 	{
 		public:
 			ProgressBar();
-			
+
 			~ProgressBar();
 
 			bool isProgressing() const;

@@ -28,7 +28,7 @@ void OguiTypeEffectListener::EffectEvent( OguiEffectEvent* eve )
 {
 	if( eve->eventType == OguiEffectEvent::EVENT_TYPE_TEXTTYPE )
 	{
-		game->gameUI->playGUISound( effectFile.c_str() );	
+		game->gameUI->playGUISound( effectFile.c_str() );
 	}
 }
 

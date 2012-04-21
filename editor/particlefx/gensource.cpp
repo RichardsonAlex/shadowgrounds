@@ -9,7 +9,7 @@ class GenParticleSource : public IParticleSource {
 		PSS_SPHERE,
 		PSS_BOX
 	};
-	
+
 	SHAPE shape;
 	VectorTrack mDirectionTrack;
 	FloatTrack mEmitRateTrack;
@@ -21,12 +21,12 @@ class GenParticleSource : public IParticleSource {
 public:
 	VectorTrack& getDirectionTrack();
 	FloatTrack& getEmitRateTrack();
-	
+
 	virtual void emit(ParticleGroup& group);
 };
 
 float GenParticleSource::getEmitTime() {
-	
+
 }
 
 float GenParticleSource::getEmitRate(float t) {
@@ -37,11 +37,11 @@ int GenParticleSource::emit(ParticleGroup& group, float t, const Matrix& tm, con
 
 	Vector pos, vel;
 	Vector dir = mDirectionTrack.eval(t);
-	
+
 	tm.TransformVector(dir);
 
 	for(int i = 0; i < n; i++) {
-		
+
 		if(shape == PSS_SPHERE) {
 			pos = boxMin + (boxMax - boxMin) * rnd;
 			pos += tm.GetTranslation();
@@ -49,7 +49,7 @@ int GenParticleSource::emit(ParticleGroup& group, float t, const Matrix& tm, con
 			vel = dir;
 			vel += velocity * velocityFactory;
 		}
-		
+
 		group.addParticle(pos, vel);
 	}
 

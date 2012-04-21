@@ -79,7 +79,7 @@ public:
 
 private:
 
-	
+
 	ParticleSystemType   type_;
 	Vector vector1_;
 	Vector vector2_;

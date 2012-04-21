@@ -53,7 +53,7 @@ namespace frozenbyte {
 namespace editor {
 
 extern std::string mission_id_global;
-	
+
 namespace {
 
 	void getStates(IStorm3D_Model &model, EditorObjectState &state)
@@ -201,7 +201,7 @@ struct TerrainObjectsData
 	ModelContainer models;
 
 	ObjectSettings objectSettings;
-	
+
 	typedef std::vector<boost::shared_ptr<CollisionModel> > CollisionList;
 	CollisionList collisions;
 
@@ -255,7 +255,7 @@ struct TerrainObjectsData
 
 		ui::PointLights lights;
 		lights.ambient = object.color + object.offset;
-		
+
 		{
 			std::string foofoo = fileName_;
 			for(unsigned int i = 0; i < foofoo.size(); ++i)
@@ -265,7 +265,7 @@ struct TerrainObjectsData
 				lights.ambient = COL();
 		}
 
-		
+
 //		tm.model->SetPosition (getTerrainPosition(object));
 //		tm.model->SetRotation (getRotation(object.rotation));
 
@@ -601,7 +601,7 @@ struct TerrainObjectsData
 						object.position.x = pos.x;
 						object.height = pos.y;
 						object.position.y = pos.z;
-						
+
 						pos.y += storm.terrain->getHeight(VC2(pos.x, pos.z));
 
 						storm.terrain->setInstancePosition(tm.terrainId, object.id, pos);
@@ -659,7 +659,7 @@ struct TerrainObjectsData
 
 		int height = int(objectData.height / storm.heightmapSize.y * 0xFFFF / 5);
 		height &= OBSTACLE_MAP_MASK_HEIGHT;
-	
+
 		int radiusX = int(objectData.radiusX / storm.heightmapSize.x * storm.heightmapResolution.x * 4);
 		int radiusZ = int(objectData.radiusZ / storm.heightmapSize.z * storm.heightmapResolution.y * 4);
 
@@ -766,7 +766,7 @@ struct TerrainObjectsData
 		{
 			// std::map< std::string, std::string >::iterator i;
 			filename = haxoredFilenames.getValue( filename, filename );
-			
+
 		}
 
 		return filename;
@@ -787,7 +787,7 @@ struct TerrainObjectsData
 		//std::fstream files( "missing_terrainobjects.txt", std::ios::out );
 		std::fstream files( outputFileName.c_str(), std::ios::out );
 		files << "// Missing terrain objects, rename this file as rename_terrainobjects.txt to fix these" << std::endl;
-	
+
 	}
 
 #endif
@@ -1498,7 +1498,7 @@ void TerrainObjects::copyObjects(const VC3 &position, float radius, GroupList::O
 void TerrainObjects::hideObjects()
 {
 	data->storm.terrain->removeModels();
-	
+
 	for(unsigned int i = 0; i < data->collisions.size(); ++i)
 		data->collisions[i]->hide();
 }
@@ -1643,7 +1643,7 @@ void TerrainObjects::doExport(Exporter &exporter) const
 		// Ensure export for models which have no instances (explosion objects etc)
 		{
 			ObjectData &objectData = data->objectSettings.getSettings((*it).first);
-			
+
 			const std::string &explosion = objectData.explosionObject;
 			if(explosion.empty() || explosion == "(disappear)")
 				continue;
@@ -1653,7 +1653,7 @@ void TerrainObjects::doExport(Exporter &exporter) const
 			{
 				if(models.find(explosion) == models.end())
 					models.insert(explosion);
-				
+
 				continue;
 			}
 
@@ -1698,7 +1698,7 @@ void TerrainObjects::doExport(Exporter &exporter) const
 			{
 				if(models.find(explosion) == models.end())
 					models.insert(explosion);
-				
+
 				break;
 			}
 

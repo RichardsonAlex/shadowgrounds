@@ -29,7 +29,7 @@ public:
 	FilePackageManager();
 	~FilePackageManager();
 
-	void addPackage(boost::shared_ptr<IFilePackage> filePackage, int priority);	
+	void addPackage(boost::shared_ptr<IFilePackage> filePackage, int priority);
 	boost::shared_ptr<IFileList> findFiles(const std::string &dir, const std::string &extension, bool caseSensitive = false);
 	InputStream getFile(const std::string &fileName);
 	unsigned int getCrc(const std::string &fileName);

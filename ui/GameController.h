@@ -261,7 +261,7 @@ public:
 	// returns relative mouse movement or joystick movement if autodetection is on
 	// (sets values pointed by given params)			- hacked by Pete
 	void getMouseDelta(int *deltaX, int *deltaY, int mouseID = MOUSEHANDLER_ALL_MOUSES_ID);
-	
+
 	// sets the autodetection on / off
 	void setMouseJoystickAutodetection( bool value );
 
@@ -328,7 +328,7 @@ public:
 
 	// converts key to other controller (joystick only)
 	int convertKeyToController( int key, CONTROLLER_TYPE type ) const;
-	
+
 	// returns the type of the controller
 	CONTROLLER_TYPE getControllerType() const;
 	bool controllerTypeHasMouse() const;

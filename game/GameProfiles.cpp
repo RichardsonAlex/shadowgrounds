@@ -123,7 +123,7 @@ namespace game
 
 			void setCurrentProfile( const std::string& profile, int player = 0 )
 			{
-				
+
 				/*if (currentProfile != NULL)
 				{
 					delete [] currentProfile;
@@ -274,7 +274,7 @@ namespace game
 				_mkdir( igios_mapUserDataPrefix("Profiles/"+profile ).c_str() );
 				_mkdir( igios_mapUserDataPrefix("Profiles/"+profile + "/Save" ).c_str() );
 				_mkdir( igios_mapUserDataPrefix("Profiles/"+profile + "/Config" ).c_str() );
-				
+
 				// should copy the default keybinds to the
 				// Profiles/"profile"/Config/
 #ifdef LEGACY_FILES
@@ -284,7 +284,7 @@ namespace game
 #endif
 
 			}
-			
+
 			void deleteProfile( const std::string& profile )
 			{
 				if( doesProfileExist( profile.c_str() ) )
@@ -345,7 +345,7 @@ namespace game
 				if( temp == NULL || strcmp(temp,"") == 0) return false;
 
 				std::string profile( igios_unmapUserDataPrefix(temp) );
-				
+
 				// if( doesProfileExist( temp ) )
 				//	return false;
 
@@ -449,7 +449,7 @@ namespace game
 		}
 
 		impl->newProfile( profile );
-		
+
 	}
 
 

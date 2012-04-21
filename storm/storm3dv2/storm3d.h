@@ -117,7 +117,7 @@ private:
 	bool enable_distortion;
 	bool high_quality_textures;
 	bool downscale_videos;
-	bool highcolorrange_videos;	
+	bool highcolorrange_videos;
 	bool use_reference_driver;
 
 	VC2I colorTargetSize;
@@ -275,7 +275,7 @@ public:
 	IStorm3D_Texture *CreateNewTexture(int width,int height,IStorm3D_Texture::TEXTYPE textype); // For dynamic textures
 
 
-	
+
 
 
 	// Material handling

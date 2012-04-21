@@ -68,7 +68,7 @@ namespace ui
 			int w = game::getLocaleGuiInt("gui_loadingbar_w",0);
 			int h = game::getLocaleGuiInt("gui_loadingbar_h",0);
 			bar_bg = ogui->CreateSimpleImageButton(win, x, y, w, h, game::getLocaleGuiString("gui_loadingbar_background"), NULL, NULL, 0);
-			
+
 			bar = ogui->CreateSimpleImageButton(win, x, y, loading_bar_value * w / 100, h, game::getLocaleGuiString("gui_loadingbar_foreground"), NULL, NULL, 0);
 
 			bar_num = ogui->CreateTextLabel(win, x, y, w, h, "");
@@ -82,7 +82,7 @@ namespace ui
 			bar_txt->SetFont(ui::defaultIngameFont);
 			bar_txt->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
 			bar_txt->SetTextVAlign(OguiButton::TEXT_V_ALIGN_MIDDLE);
-			bar_txt->SetText(loading_bar_text.c_str());			
+			bar_txt->SetText(loading_bar_text.c_str());
 		}
 
 		win->Raise();
@@ -99,7 +99,7 @@ namespace ui
 				it.Next();
 			}
 		}
-		
+
 		ogui->Run(1);
 		scene->RenderScene();
 

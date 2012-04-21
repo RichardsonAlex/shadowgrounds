@@ -74,7 +74,7 @@ namespace ui
 
 		OguiTextLabel*	headerText;
 		OguiTextLabel*	missionText;
-	
+
 		IOguiFont*	headerFont;
 		IOguiFont*	missionFont;
 		IOguiFont*	fontNormal;
@@ -86,7 +86,7 @@ namespace ui
 		IOguiFont*	fontButton;
 		IOguiFont*	fontButtonDisabled;
 		IOguiFont*	fontButtonHighlighted;
-		
+
 
 		std::string mission_brief2_locale;
 		OguiFormattedText *scrollingText;

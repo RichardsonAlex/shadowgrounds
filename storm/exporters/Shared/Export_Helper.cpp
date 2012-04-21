@@ -108,7 +108,7 @@ bool operator < (const Helper &lhs, const Helper &rhs)
 		return true;
 
 	return false;
-}	
+}
 
 } // end of namespace export
 } // end of namespace frozenbyte

@@ -10,7 +10,7 @@
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiSelectListEvent.h"
 #include "../ui/GUIEffectWindow.h"
-#include "../game/DHLocaleManager.h"	
+#include "../game/DHLocaleManager.h"
 #include "../util/assert.h"
 #include "../game/scripting/GameScripting.h"
 #include "../ui/uidefaults.h"
@@ -159,7 +159,7 @@ public:
 	void loadTypes( int type )
 	{
 		currentLogType = type;
-		
+
 		delete selectList;
 		selectList = NULL;
 
@@ -195,13 +195,13 @@ public:
 	{
 
 		game.gameScripting->setGlobalIntVariableValue( NEW_LOG_VARIABLE_NAME.c_str(), 0 );
-		
+
 		{
 			int x = getLocaleGuiInt( "gui_log_text_area_background_x", 0 );
 			int y = getLocaleGuiInt( "gui_log_text_area_background_y", 0 );
 			int w = getLocaleGuiInt( "gui_log_text_area_background_w", 0 );
 			int h = getLocaleGuiInt( "gui_log_text_area_background_h", 0 );
-			
+
 			textAreaBackground = ogui.CreateSimpleImageButton( window, x, y, w, h,
 				NULL, NULL, NULL, getLocaleGuiString( "gui_log_text_area_background_image" ), 0 );
 			if( textAreaBackground != NULL )
@@ -214,20 +214,20 @@ public:
 			int y = getLocaleGuiInt( "gui_log_selectlist_background_y", 0 );
 			int w = getLocaleGuiInt( "gui_log_selectlist_background_w", 0 );
 			int h = getLocaleGuiInt( "gui_log_selectlist_background_h", 0 );
-			
+
 			selectListBackground = ogui.CreateSimpleImageButton( window, x, y, w, h,
 				NULL, NULL, NULL, getLocaleGuiString( "gui_log_selectlist_background_image" ), 0 );
 			if( selectListBackground != NULL )
 				selectListBackground->SetDisabled( true );
 
 		}
-		
+
 		{
 			int x = getLocaleGuiInt( "gui_log_exit_x", 0 );
 			int y = getLocaleGuiInt( "gui_log_exit_y", 0 );
 			int w = getLocaleGuiInt( "gui_log_exit_w", 0 );
 			int h = getLocaleGuiInt( "gui_log_exit_h", 0 );
-			
+
 			exitButton = ogui.CreateSimpleTextButton( window, x, y, w, h,
 				getLocaleGuiString( "gui_log_exit_image" ), getLocaleGuiString( "gui_log_exit_image_down" ), getLocaleGuiString( "gui_log_exit_image_highlight" ), getLocaleGuiString( "gui_map_exit" ) );
 			exitButton->SetListener( this );
@@ -250,7 +250,7 @@ public:
 			selectListStyle = new OguiSelectListStyle( unselStyle, selStyle, newStyle, newUnStyle, scrollUpStyle, scrollDownStyle, unselStyle->sizeX, unselStyle->sizeY * num_of_elements, scrollUpStyle->sizeX, scrollUpStyle->sizeY );
 
 		}
-		
+
 		{
 			int x = getLocaleGuiInt( "gui_log_text_area_x", 0 );
 			int y = getLocaleGuiInt( "gui_log_text_area_y", 0 );
@@ -308,7 +308,7 @@ public:
 
 		delete textAreaBackground;
 		textAreaBackground = NULL;
-		
+
 		delete selectListBackground;
 		selectListBackground = NULL;
 
@@ -386,7 +386,7 @@ public:
 
 	std::list< OguiButtonStyle* >	styles;
 	std::vector< LogEntry >			entries;
-	
+
 	bool							shown;
 	bool							visible;
 

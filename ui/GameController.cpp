@@ -93,7 +93,7 @@ const char *ctrlName[DH_CTRL_AMOUNT + 1] =
 
 	"gui_radar_toggle",
 	"gui_units_toggle",
-	
+
 	"next_camera_mode",
 	"camera_look_mode",
 	"screenshot",
@@ -104,7 +104,7 @@ const char *ctrlName[DH_CTRL_AMOUNT + 1] =
 
 	"camera_move_fov_in",
 	"camera_move_fov_out",
-	
+
 	"next_camera_angle_boundary",
 	"special_move",
 	"stop",
@@ -234,7 +234,7 @@ const char *keycodeName[KEYCODE_NAME_AMOUNT] =
 	"joy3-but-7",	"joy3-but-8",	"joy3-but-9", "joy3-but-10", "joy3-but-11", "joy3-but-12", "joy3-but-13", "joy3-but-14",	"joy3-but-15",	"joy3-but-16",
 	"joy4-up",		"joy4-down",	"joy4-left", "joy4-right", "joy4-but-1", "joy4-but-2", "joy4-but-3", "joy4-but-4",			"joy4-but-5",	"joy4-but-6",
 	"joy4-but-7",	"joy4-but-8",	"joy4-but-9", "joy4-but-10", "joy4-but-11", "joy4-but-12", "joy4-but-13", "joy4-but-14",	"joy4-but-15",	"joy4-but-16",
-	
+
 	"", "", "", "", "", "", "", "",
 	"", "", "", "", "", "", "", "", "", "",
 
@@ -648,7 +648,7 @@ void GameController::saveConfiguration( const char *filename )
 	std::fstream file( filename, std::ios::out );
 
 	file << "// Extra padding for loading" << std::endl << std::endl;
-	
+
 	file << joystickMoveXAxisConfName << " = " << convertToString( joystickMoveXAxis ) << std::endl;
 	file << joystickMoveYAxisConfName << " = " << convertToString( joystickMoveYAxis ) << std::endl;
 	file << joystickDirXAxisConfName << " = " << convertToString( joystickDirXAxis ) << std::endl;
@@ -1053,10 +1053,10 @@ void GameController::getMouseDelta( int *deltaX, int *deltaY, int mouseID )
 
 void GameController::updateEnabledStatus()
 {
-	if (userControlsEnabled && keyreader == NULL) 	
+	if (userControlsEnabled && keyreader == NULL)
 		controlsEnabled = true;
 	else
-		controlsEnabled = false;	
+		controlsEnabled = false;
 
 	if (keyreader == NULL)
 		ogui->setHotkeysEnabled(true);
@@ -1366,7 +1366,7 @@ void GameController::startJoystickDetection()
 	if( abs( max->ry ) > max->ry )				max->ry = abs( max->ry );
 	if( abs( max->throttle ) > max->throttle )	max->throttle = abs( max->throttle );
 	if( abs( max->rudder ) > max->rudder )		max->rudder = abs( max->rudder );
-	
+
 	max->x = 0;
 	max->y = 0;
 	max->rx = 0;
@@ -1426,46 +1426,46 @@ GameController::JOYSTICK_AXIS	GameController::getDetectedAxis()
 				}
 			}
 
-			if( imax == 0 )					
+			if( imax == 0 )
 			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-x         " )  + boost::lexical_cast< std::string >( max->x ) + " != " + boost::lexical_cast< std::string >( temp.x ) ).c_str() );
-				max->x = temp.x;					
-				result = GameController::JOYSTICK_AXIS_X;			
-			}
-			
-			if( imax == 1 )					
-			{
-				// Logger::getInstance()->warning( ( std::string( "joy-axis-y         " )  + boost::lexical_cast< std::string >( max->y ) + " != " + boost::lexical_cast< std::string >( temp.y ) ).c_str() );
-				max->y = temp.y;					
-				result = GameController::JOYSTICK_AXIS_Y;			
+				max->x = temp.x;
+				result = GameController::JOYSTICK_AXIS_X;
 			}
 
-			if( imax == 2 )				
+			if( imax == 1 )
+			{
+				// Logger::getInstance()->warning( ( std::string( "joy-axis-y         " )  + boost::lexical_cast< std::string >( max->y ) + " != " + boost::lexical_cast< std::string >( temp.y ) ).c_str() );
+				max->y = temp.y;
+				result = GameController::JOYSTICK_AXIS_Y;
+			}
+
+			if( imax == 2 )
 			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-rx        " )  + boost::lexical_cast< std::string >( max->rx ) + " != " + boost::lexical_cast< std::string >( temp.rx ) ).c_str() );
-				max->rx = temp.rx;				
-				result = GameController::JOYSTICK_AXIS_RX;			
+				max->rx = temp.rx;
+				result = GameController::JOYSTICK_AXIS_RX;
 			}
-			
-			if( imax == 3 )				
+
+			if( imax == 3 )
 			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-ry        " )  + boost::lexical_cast< std::string >( max->ry ) + " != " + boost::lexical_cast< std::string >( temp.ry ) ).c_str() );
-				max->ry = temp.ry;				
-				result = GameController::JOYSTICK_AXIS_RY;			
+				max->ry = temp.ry;
+				result = GameController::JOYSTICK_AXIS_RY;
 			}
-			
-			if( imax == 4 )	
+
+			if( imax == 4 )
 			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-throttle  " )  + boost::lexical_cast< std::string >( max->throttle ) + " != " + boost::lexical_cast< std::string >( temp.throttle ) ).c_str() );
-				max->throttle = temp.throttle;	
-				result = GameController::JOYSTICK_AXIS_THROTTLE;	
+				max->throttle = temp.throttle;
+				result = GameController::JOYSTICK_AXIS_THROTTLE;
 			}
-			
-			if( imax == 5 )		
+
+			if( imax == 5 )
 			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-rudder    " )  + boost::lexical_cast< std::string >( max->rudder ) + " != " + boost::lexical_cast< std::string >( temp.rudder ) ).c_str() );
-				max->rudder = temp.rudder;		
-				result = GameController::JOYSTICK_AXIS_RUDDER;		
+				max->rudder = temp.rudder;
+				result = GameController::JOYSTICK_AXIS_RUDDER;
 			}
 		}
 
@@ -1530,7 +1530,7 @@ void GameController::getJoystickValues( int joynum, int *out_move_x, int *out_mo
 {
 	igiosWarning("GameController::getJoystickValues(2): joynum = %d\n", joynum);
 	assert( joynum >= 0 && joynum < 4 );
-	
+
 	int x = 0, y = 0;
 	int rx = 0, ry = 0;
 	int throttle = 0;
@@ -1573,7 +1573,7 @@ void GameController::getJoystickValues( int joynum, int *out_move_x, int *out_mo
 		default:
 			result = 0;
 			break;
-		
+
 		}
 
 		(*out_move_x) = result;
@@ -1645,7 +1645,7 @@ void GameController::getJoystickValues( int joynum, int *out_move_x, int *out_mo
 		default:
 			result = 0;
 			break;
-		
+
 		}
 
 		(*out_dir_x) = result;

@@ -11,7 +11,7 @@ namespace game
 	class GameState : public GameObject
 	{
 		public:
-	    virtual SaveData *getSaveData() = 0;	
+	    virtual SaveData *getSaveData() = 0;
 
 	};
 }

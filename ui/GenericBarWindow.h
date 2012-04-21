@@ -37,11 +37,11 @@ public:
 
 	void loadDataFromLocales( const std::string& locale_name );
 
-	
+
 	void hide( int fadeTime );
 	void show( int fadeTime );
 	void update();
-	
+
 	// NOTE! deletes the given updator, when it's done with it
 	void setUpdator( IGenericBarWindowUpdator* up );
 
@@ -81,7 +81,7 @@ private:
 
 	std::vector<OguiButton*> decorations;
 	std::vector<IOguiFont*> decorationfonts;
-	
+
 	bool isOfFadingType;
 	float sliderValue;
 	int	lastTime;

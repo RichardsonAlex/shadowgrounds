@@ -59,7 +59,7 @@ class FloatTrack : public Track, public KeyControl {
 	std::vector<FloatKey*> m_keys;
 public:
 	~FloatTrack();
-	
+
 	KeyControl* getKeyControl();
 
 	int getType();

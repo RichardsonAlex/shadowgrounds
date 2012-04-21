@@ -122,7 +122,7 @@ frozenbyte::ai::Path *PathSimplifier::getSimplifiedPath(
 		}
 
 		if (canSimplify)
-		{			
+		{
 			inv->addPoint(dx2, dy2);
 			i += simpAmount;
 		} else {

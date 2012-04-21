@@ -26,14 +26,14 @@ Storm3D_Helper_AInterface::Storm3D_Helper_AInterface(const char *_name,
 	update_globals(true),
 	helper(helper_)
 {
-	
+
 	// Create name
 	name=new char[strlen(_name)+1];
 	strcpy(name,_name);
 }
 
 
-	
+
 //------------------------------------------------------------------
 // Storm3D_Helper_AInterface::~Storm3D_Helper_AInterface
 //------------------------------------------------------------------

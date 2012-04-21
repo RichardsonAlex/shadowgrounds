@@ -110,7 +110,7 @@ void Storm3D_Line::Render()
 {
 	if(points.size() < 2)
 		return;
-	
+
 	int faces = (points.size() - 1) * 2;
 	int vertices = (points.size() - 1) * 4;
 
@@ -167,7 +167,7 @@ void Storm3D_Line::Render()
 			if (i > 1)
 				p->position = lastp1->position;
 			else
-				p->position = points[i] + (side * .5f * thickness);				
+				p->position = points[i] + (side * .5f * thickness);
 			++p;
 
 			p->color = color;

@@ -17,7 +17,7 @@ namespace game
 
 	class ItemScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

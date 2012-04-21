@@ -23,7 +23,7 @@ public:
 	// Returns -1 if no effect with given name found
 	int getEffectId(const char *name) const;
 	float getMaxSize(int id) const;
-	
+
 	void spawnDecal(DecalIdentifier &identifier, int id, const VC3 &position, const QUAT &rotation, const COL &light, bool inBuilding);
 	void eraseDecal(const DecalIdentifier &identifier);
 	void update(int timeDelta);

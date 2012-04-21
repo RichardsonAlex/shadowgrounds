@@ -40,7 +40,7 @@ namespace util
 	public:
 		FloodfillByteArrayMapper(int sizeX, int sizeY, unsigned char *buf);
 		virtual ~FloodfillByteArrayMapper() {}
-		
+
 		virtual unsigned char getByte(int x, int y);
 		virtual void setByte(int x, int y, unsigned char value);
 	private:

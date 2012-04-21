@@ -780,7 +780,7 @@ void Storm3D::SetGammaRamp(float gamma, float brightness, float contrast, float 
 	for (int i = 0; i < 256; i++)
 	{
 		float gammaVal = powf(i / 255.f, 1.f / gamma);
-		float val = 32767.5f + 65535.0f * ((gammaVal - 0.5f) * contrast + (brightness - 1.0f));		
+		float val = 32767.5f + 65535.0f * ((gammaVal - 0.5f) * contrast + (brightness - 1.0f));
 		float r = (val * red);
 		float g = (val * green);
 		float b = (val * blue);
@@ -1300,7 +1300,7 @@ IStorm3D_Terrain *Storm3D::CreateNewTerrain(int block_size)
 IStorm3D_BoneAnimation *Storm3D::CreateNewBoneAnimation(const char *file_name)
 {
 	Storm3D_BoneAnimation *ret = new Storm3D_BoneAnimation(file_name);
-	
+
 	// Don't return bone animations that failed to load!
 	// --jpk
 	if (ret->WasSuccessfullyLoaded())

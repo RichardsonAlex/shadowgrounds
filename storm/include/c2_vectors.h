@@ -65,7 +65,7 @@ public:
 	{
 		return Vec3<A>(-x,-y,-z);
 	}
-	
+
 	Vec3<A> operator+(const Vec3<A>& other) const
 	{
 		return Vec3<A>(x+other.x,y+other.y,z+other.z);
@@ -75,17 +75,17 @@ public:
 	{
 		return Vec3<A>(x-other.x,y-other.y,z-other.z);
 	}
-	
+
 	Vec3<A> operator*(const Vec3<A>& other) const
 	{
 		return Vec3<A>(x*other.x,y*other.y,z*other.z);
 	}
-	
+
 	Vec3<A> operator/(const Vec3<A>& other) const
 	{
 		return Vec3<A>(x/other.x,y/other.y,z/other.z);
 	}
-	
+
 	Vec3<A> operator*(A num) const
 	{
 		return Vec3<A>(x*num,y*num,z*num);
@@ -97,7 +97,7 @@ public:
 		A inum=(A)1/num;
 		return Vec3<A>(x*inum,y*inum,z*inum);
 	}
-	
+
 	void operator+=(const Vec3<A>& other)
 	{
 		x+=other.x;
@@ -164,7 +164,7 @@ public:
 	Vec3<A> GetNormalized() const
 	{
 		A length = GetLength();
-		
+
 		//assert(length != 0);
 
 		// hax.
@@ -231,7 +231,7 @@ public:
 	{
 		return Vec2<A>(-x,-y);
 	}
-	
+
 	Vec2<A> operator+(const Vec2<A>& other) const
 	{
 		return Vec2<A>(x+other.x,y+other.y);
@@ -241,17 +241,17 @@ public:
 	{
 		return Vec2<A>(x-other.x,y-other.y);
 	}
-	
+
 	Vec2<A> operator*(const Vec2<A>& other) const
 	{
 		return Vec2<A>(x*other.x,y*other.y);
 	}
-	
+
 	Vec2<A> operator/(const Vec2<A>& other) const
 	{
 		return Vec2<A>(x/other.x,y/other.y);
 	}
-	
+
 	Vec2<A> operator*(A num) const
 	{
 		return Vec2<A>(x*num,y*num);
@@ -261,7 +261,7 @@ public:
 	{
 		return Vec2<A>(x/num,y/num);
 	}
-	
+
 	void operator+=(const Vec2<A>& other)
 	{
 		x+=other.x;

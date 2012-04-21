@@ -59,9 +59,9 @@ namespace util
 	{
 	public:
 		DistanceFloodfillByteArrayMapper(int sizeX, int sizeY, unsigned char *buf);
-	
+
 		virtual ~DistanceFloodfillByteArrayMapper() {}
-		
+
 		virtual unsigned char getByte(int x, int y);
 		virtual void setByte(int x, int y, unsigned char value);
 	private:

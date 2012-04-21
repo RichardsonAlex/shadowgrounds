@@ -40,7 +40,7 @@ void ParticleSystemManager::registerSystem(ParticleSystemClassDesc* cd) {
 void ParticleSystemManager::registerForce(ParticleForceClassDesc* cd) {
 	m_forceClasses[cd->getClassName()] = cd;
 }
-	
+
 ParticleSystem* ParticleSystemManager::createSystem(const std::string& className) {
 	std::map< std::string, ParticleSystemClassDesc* >::iterator it = m_systemClasses.find(className);
 	if(it != m_systemClasses.end()) {
@@ -68,12 +68,12 @@ IStorm3D_Material* ParticleSystemManager::getMaterial(const std::string& texture
 
 	static int uniqueID = 0;
 	uniqueID++;
-	
-	std::string mtlName = "particle_mtl" + boost::lexical_cast<std::string>(uniqueID);	
+
+	std::string mtlName = "particle_mtl" + boost::lexical_cast<std::string>(uniqueID);
 	IStorm3D_Material* mtl = m_s3d->CreateNewMaterial(mtlName.c_str());
 	IStorm3D_Texture* tex = m_s3d->CreateNewTexture(textureName.c_str());
 	mtl->SetBaseTexture(tex);
-	
+
 	return mtl; //NULL;
 }
 
@@ -97,7 +97,7 @@ void ParticleSystemManager::tick() {
 				m_stats.maxSystems = m_stats.numSystems;
 			(*it)->tick(m_scene);
 			if((*it)->isDead()) {
-				it = m_systems.erase(it);			
+				it = m_systems.erase(it);
 			} else {
 				m_stats.numParticles += (*it)->getNumParticles();
 				if(m_stats.numParticles > m_stats.maxParticles)

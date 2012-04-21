@@ -46,9 +46,9 @@ namespace {
 
 PointArrayParticleSystem::PointArrayParticleSystem()
 {
-	m_index = 0;	
+	m_index = 0;
 }
-	
+
 boost::shared_ptr<IParticleSystem> PointArrayParticleSystem::createNew()
 {
 	PointArrayParticleSystem* ps = new PointArrayParticleSystem();
@@ -96,10 +96,10 @@ void PointArrayParticleSystem::setRotation(const MAT &tm)
 }
 */
 void PointArrayParticleSystem::setParticlePosition(Vector& pos)
-{	
+{
 	if(m_parray.get()==NULL)
 		return;
-	
+
 	if(spawnModel)
 	{
 		if(!spawnHelpers.empty())
@@ -121,7 +121,7 @@ if (gameRand == NULL)
 }
 
 
-		m_index = m_eds->firstVertex + gameRand->nextInt() % (m_eds->lastVertex - m_eds->firstVertex - 1);	
+		m_index = m_eds->firstVertex + gameRand->nextInt() % (m_eds->lastVertex - m_eds->firstVertex - 1);
 		pos = m_parray->verts[m_index];
 
 		int secondaryIndex = m_index + 1;
@@ -143,23 +143,23 @@ if (gameRand == NULL)
 	}
 	else
 	{
-		m_index = m_eds->firstVertex + rand() % (m_eds->lastVertex - m_eds->firstVertex);	
+		m_index = m_eds->firstVertex + rand() % (m_eds->lastVertex - m_eds->firstVertex);
 		pos = m_parray->verts[m_index];
 	}
 
 	//m_rotation.RotateVector(pos);
 }
-	
+
 void PointArrayParticleSystem::setParticleVelocity(Vector& vel, const Vector& dir, float speed, const GenParticleSystemEditables& eds)
 {
-	
+
 	if(m_parray.get()==NULL)
 		return;
-	
+
 	bool forceDirection = !use_explosion && (eds.launchDirectionType == GenParticleSystemEditables::DIRECTION_EXPLOSION || eds.launchDirectionType == GenParticleSystemEditables::DIRECTION_NEGATIVE_EXPLOSION);
 	if(m_eds->useNormalsAsDirection || forceDirection)
 	{
-		vel = m_parray->normals[m_index] * speed;	
+		vel = m_parray->normals[m_index] * speed;
 		m_rotation.RotateVector(vel);
 	}
 	else
@@ -178,17 +178,17 @@ void *PointArrayParticleSystem::getType()
 }
 
 void PointArrayParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene)
-{	
+{
 	defaultInit(s3d, scene, *m_eds);
 
 	std::string fileName = m_eds->modelFile;
 	if(fileName.empty())
 		return;
-	
+
 	Matrix sm;
 	Matrix rm;
 	QUAT q;
-	q.MakeFromAngles(m_eds->rotation.x, m_eds->rotation.y, m_eds->rotation.z);	
+	q.MakeFromAngles(m_eds->rotation.x, m_eds->rotation.y, m_eds->rotation.z);
 	rm.CreateRotationMatrix(q);
 	sm.CreateScaleMatrix(m_eds->scale);
 	sm.Multiply(rm);
@@ -211,7 +211,7 @@ void PointArrayParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene)
 				int base = pm->verts.size();
 				pm->verts.resize(base + mesh->GetVertexCount());
 				pm->normals.resize(base + mesh->GetVertexCount());
-				
+
 				Storm3D_Vertex *v = mesh->GetVertexBuffer();
 				for(int i = 0; i < mesh->GetVertexCount(); i++)
 				{
@@ -249,7 +249,7 @@ void PointArrayParticleSystem::render(IStorm3D_Scene* scene) {
 	GenParticleSystem::defaultRender(scene, *m_eds);
 }
 
-	
+
 void PointArrayParticleSystem::parseFrom(const ParserGroup& pg, const util::SoundMaterialParser &materialParser) {
 	defaultParseFrom(pg, *m_eds);
 	m_eds->modelFile = pg.getValue("model", "");
@@ -261,7 +261,7 @@ void PointArrayParticleSystem::parseFrom(const ParserGroup& pg, const util::Soun
 	m_eds->randomizeBetweenVertices = static_cast<bool>(convertFromString<int>(pg.getValue("positions_between_vertices", ""), 0));
 	m_eds->planePositions = static_cast<bool>(convertFromString<int>(pg.getValue("plane_positions", ""), 0));
 }
-	
+
 PointArrayParticleSystemEditables& PointArrayParticleSystem::getEditables() {
 	return *m_eds;
 }

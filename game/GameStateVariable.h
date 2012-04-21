@@ -44,7 +44,7 @@ namespace game
 			virtual bool isReadOnly();
 
 		private:
-			
+
 
 	};
 }

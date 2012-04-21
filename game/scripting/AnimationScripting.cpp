@@ -382,7 +382,7 @@ namespace game
 					ua->resetToNormalState(gsd->unit);
 
 // TEMP: HACK TEST
-// the hack seems to work... :)					
+// the hack seems to work... :)
 ua->act(gsd->unit);
 ua->resetToNormalState(gsd->unit);
 

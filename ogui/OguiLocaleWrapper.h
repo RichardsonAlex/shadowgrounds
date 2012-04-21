@@ -19,7 +19,7 @@ public:
 	~OguiLocaleWrapper();
 
 	void SetLogging( bool log, const std::string& file );
-	
+
 	void				SetWindowName( const std::string& name );
 	const std::string &GetWindowName(void);
 	OguiWindow*			LoadWindow( const std::string& name );

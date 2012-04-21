@@ -65,17 +65,17 @@ class CheckedIntValue
     CheckedIntValue& operator+ (const CheckedIntValue& value);
 
     CheckedIntValue& operator- (int value);
-    //CheckedIntValue& operator- (float value);	
+    //CheckedIntValue& operator- (float value);
     //CheckedIntValue& operator- (bool value); // (bool not allowed)
     CheckedIntValue& operator- (const CheckedIntValue& value);
 
     CheckedIntValue& operator* (int value);
-    //CheckedIntValue& operator* (float value);	
+    //CheckedIntValue& operator* (float value);
     //CheckedIntValue& operator* (bool value); // (bool not allowed)
     CheckedIntValue& operator* (const CheckedIntValue& value);
 
     CheckedIntValue& operator/ (int value);
-    //CheckedIntValue& operator/ (float value);	
+    //CheckedIntValue& operator/ (float value);
     //CheckedIntValue& operator/ (bool value); // (bool not allowed)
     CheckedIntValue& operator/ (const CheckedIntValue& value);
 */
@@ -94,22 +94,22 @@ class CheckedIntValue
     CheckedIntValue& operator+= (const CheckedIntValue& value);
 
     CheckedIntValue& operator-= (int value);
-    //CheckedIntValue& operator-= (float value);	
+    //CheckedIntValue& operator-= (float value);
     //CheckedIntValue& operator-= (bool value); // (bool not allowed)
     CheckedIntValue& operator-= (const CheckedIntValue& value);
 
     CheckedIntValue& operator*= (int value);
-    //CheckedIntValue& operator*= (float value);	
+    //CheckedIntValue& operator*= (float value);
     //CheckedIntValue& operator*= (bool value); // (bool not allowed)
     CheckedIntValue& operator*= (const CheckedIntValue& value);
 
     CheckedIntValue& operator/= (int value);
-    //CheckedIntValue& operator/= (float value);	
+    //CheckedIntValue& operator/= (float value);
     //CheckedIntValue& operator/= (bool value); // (bool not allowed)
     CheckedIntValue& operator/= (const CheckedIntValue& value);
 
     CheckedIntValue& operator%= (int value);
-    //CheckedIntValue& operator/= (float value);	
+    //CheckedIntValue& operator/= (float value);
     //CheckedIntValue& operator/= (bool value); // (bool not allowed)
     CheckedIntValue& operator%= (const CheckedIntValue& value);
 
@@ -121,7 +121,7 @@ class CheckedIntValue
 
 
     operator int() const;
-    //operator float() const;		
+    //operator float() const;
     //operator bool() const; // (bool not allowed)
     operator void*() const;
 

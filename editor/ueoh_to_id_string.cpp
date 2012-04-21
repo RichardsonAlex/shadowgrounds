@@ -52,7 +52,7 @@ UniqueEditorObjectHandle id_string_to_ueoh(const char *str)
 		tmp[i] = '\0';
 	}
 	strcpy(tmp, str);
-	
+
 	UniqueEditorObjectHandle ret = *((UniqueEditorObjectHandle *)tmp);
 	ret |= 0x8000000000000000;
 

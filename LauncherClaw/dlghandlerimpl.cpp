@@ -4,7 +4,7 @@
 
 namespace frozenbyte {
 namespace launcher {
-	
+
 std::string DlgHandlerImpl::getComboBoxSelection( HWND hwnd )
 {
 #if FB_RU_HAX
@@ -13,7 +13,7 @@ std::string DlgHandlerImpl::getComboBoxSelection( HWND hwnd )
 	LPWSTR str = (LPWSTR) buffer;
 	LRESULT index	= SendMessage( hwnd, CB_GETCURSEL, 0, 0 );
 	LRESULT length  = SendMessage( hwnd, CB_GETLBTEXTLEN, (WPARAM) index, 0 );
-	
+
 	assert( length < 256 );
 	SendMessageW( hwnd, CB_GETLBTEXT, (WPARAM)index, (LPARAM) (LPCSTR) str );
 
@@ -28,7 +28,7 @@ std::string DlgHandlerImpl::getComboBoxSelection( HWND hwnd )
 	LPCSTR str = buffer;
 	LRESULT index	= SendMessage( hwnd, CB_GETCURSEL, 0, 0 );
 	LRESULT length  = SendMessage( hwnd, CB_GETLBTEXTLEN, (WPARAM) index, 0 );
-	
+
 	assert( length < 256 );
 	SendMessage( hwnd, CB_GETLBTEXT, (WPARAM)index, (LPARAM) (LPCSTR) str );
 

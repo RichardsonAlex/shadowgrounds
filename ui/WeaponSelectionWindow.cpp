@@ -18,7 +18,7 @@ namespace ui
 		int cornerNumber, int weaponsMask)
 	{
 		assert(cornerNumber >= 0 && cornerNumber < 4);
-		
+
 		this->selectionNumber = -1;
 		this->game = game;
 		this->ogui = ogui;
@@ -69,7 +69,7 @@ namespace ui
 		{
 			delete selection;
 			selection = NULL;
-		}	
+		}
 
 		delete selectionImage;
 		for (int i = 0; i < WEAPONSELECTIONWINDOW_MAX_WEAPONS; i++)
@@ -94,8 +94,8 @@ namespace ui
 			{
 				delete selection;
 				selection = NULL;
-			}	
-			*/		
+			}
+			*/
 		} else {
 			if (weaponButtons[selectionNumber] != NULL)
 			{
@@ -158,7 +158,7 @@ namespace ui
 			case 7:
 				*x = WEAPSELECT_CORNER_MARGIN;
 				*y = WEAPSELECT_CORNER_MARGIN;
-				break;				
+				break;
 			default:
 				// nop
 				break;

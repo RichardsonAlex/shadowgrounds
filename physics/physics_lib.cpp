@@ -51,13 +51,13 @@ NxPhysicsSDK *physxSDK = NULL;
 		{
 			print(message);
 		}
-	
+
 		NxAssertResponse reportAssertViolation(const char *message, const char *file, int line)
 		{
 			print(message);
 			return NX_AR_CONTINUE;
 		}
-	
+
 		void print(const char *message)
 		{
 			//MessageBox(0, message, "Shit happens", MB_OK);
@@ -136,7 +136,7 @@ NxPhysicsSDK *physxSDK = NULL;
 				// WARNING: unsafe void * to ActorBase * cast!
 				ActorBase *contactActor1 = (ActorBase *)(pair.actors[0]->userData);
 				ActorBase *contactActor2 = (ActorBase *)(pair.actors[1]->userData);
-				
+
 				ContactListEntry entry(contactActor1, contactActor2, contactNormal, contactPosition, contactForceLen);
 				contactList.push_back(entry);
 			}
@@ -345,7 +345,7 @@ struct PhysicsLib::Data
 			this->ccdMaxThickness = params->ccdMaxThickness;
 
 			NxSceneDesc sceneDesc;
-			sceneDesc.gravity = NxVec3(params->gravity.x, params->gravity.y, params->gravity.z);	
+			sceneDesc.gravity = NxVec3(params->gravity.x, params->gravity.y, params->gravity.z);
 			sceneDesc.userContactReport = &contactReport;
 			//sceneDesc.userNotify = &userNotify;
 
@@ -840,7 +840,7 @@ boost::shared_ptr<Fluid> PhysicsLib::createFluid(FluidType fluidType, int maxPar
 	Fluid *fluid = 0;
 
 	if(data->scene)
-	{		
+	{
 		NxFluidDesc fluidDesc;
 		fluidDesc.setToDefault();
 
@@ -1269,7 +1269,7 @@ void PhysicsLib::updateVisualization(const VC3 &cameraPosition, float range, boo
 	data->sdk->setParameter(NX_VISUALIZE_CONTACT_FORCE, visualizeCollisionContacts);
 	data->sdk->setParameter(NX_VISUALIZE_CONTACT_POINT, visualizeCollisionContacts);
 
-	data->sdk->setParameter(NX_VISUALIZE_COLLISION_SKELETONS, visualizeCCD);	
+	data->sdk->setParameter(NX_VISUALIZE_COLLISION_SKELETONS, visualizeCCD);
 
 	for(int i = 0; i < actorAmount; ++i)
 	{
@@ -1282,7 +1282,7 @@ void PhysicsLib::updateVisualization(const VC3 &cameraPosition, float range, boo
 		VC3 diff = (pos - cameraPosition);
 		diff.y = 0; // ignore height
 
-		bool inRange = false;		
+		bool inRange = false;
 		if (diff.GetSquareLength() < rangeSq)
 			inRange = true;
 

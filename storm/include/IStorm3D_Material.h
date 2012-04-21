@@ -41,7 +41,7 @@ public:
 	// not support all of these blending operations.
 	enum MTL_BOP
 	{
-		MTL_BOP_MUL				=0,		
+		MTL_BOP_MUL				=0,
 		MTL_BOP_MUL2X			=1,		// if no support: ->MUL
 		MTL_BOP_MUL4X			=2,		// if no support: ->MUL2X
 		MTL_BOP_ADD				=3,
@@ -115,12 +115,12 @@ public:
 	virtual void SetReflectionTexture(IStorm3D_Texture *texture,TEX_GEN texgen=TEX_GEN_REFLECTION,MTL_BOP blend_op=MTL_BOP_ADD,float blend_factor=0.5f)=0;
 	virtual void SetLocalReflection(bool enable, float blend_factor)=0;
 	virtual void SetDistortionTexture(IStorm3D_Texture *texture)=0;
-	
+
 	// Special texturelayer operations
 	virtual void ChangeBaseTexture2Parameters(MTL_BOP op=MTL_BOP_MUL,float blend_factor=0.5f)=0;
 	virtual void ChangeReflectionTextureParameters(MTL_BOP op=MTL_BOP_ADD,float blend_factor=0.5f,TEX_GEN texgen=TEX_GEN_REFLECTION)=0;
 	virtual void ChangeBumpHeight(float bumpheight=1.0f)=0;
-	
+
 	// Virtual destructor (delete with this in v3)
 	virtual ~IStorm3D_Material() {};
 };

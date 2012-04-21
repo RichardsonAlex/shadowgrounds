@@ -38,7 +38,7 @@ namespace ui
 		strcpy(this->textConfName, textConfName);
 		this->iconConfName = new char[strlen(iconConfName) + 1];
 		strcpy(this->iconConfName, iconConfName);
-		
+
 		std::string xpos_conf("");
 		std::string ypos_conf("");
 		std::string xsize_conf("");
@@ -135,7 +135,7 @@ namespace ui
 #else
 			frozenbyte::filesystem::InputStream stream = frozenbyte::filesystem::FilePackageManager::getInstance().getFile("data/effect/conversation_noise.txt");
 #endif
-			
+
 			for(int i = 0; !stream.isEof(); ++i)
 			{
 				std::string result;
@@ -190,7 +190,7 @@ namespace ui
 	}
 	*/
 
-	
+
 	void CombatMessageWindow::hide(int fadeTime)
 	{
 		if(fadeTime)

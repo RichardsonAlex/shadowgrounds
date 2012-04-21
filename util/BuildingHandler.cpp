@@ -24,7 +24,7 @@ struct BuildingHandlerData
 {
 	// All models
 	std::vector<IStorm3D_Model *> buildingModels;
-	
+
 	// Models with top removed (from last frame)
 	// modified to contain timeout counter too. -jpk
 	std::vector<std::pair<IStorm3D_Model *, int> > removedModels;
@@ -162,7 +162,7 @@ void BuildingHandler::endUpdate(bool noDelay)
 	{
 		// If already removed
 		IStorm3D_Model *model = (*it).first;
-		
+
 		if ((*it).second > 0 && !noDelay)
 		{
 			(*it).second--;

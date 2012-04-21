@@ -32,7 +32,7 @@ namespace game
 
 		this->shooter = shooter;
 		this->bulletType = bulletType;
-		
+
 		position = VC3(0,0,0);
 		velocity = VC3(0,0,0);
 		direction = VC3(0,0,0);
@@ -307,7 +307,7 @@ namespace game
 				setPosition(destination);
 				this->destination = destination;
 				this->origin = destination;
-				
+
 				this->velocity = VC3(0,0,0);
 				this->lifeTime = bulletType->getLifeTime();
 				this->afterLifeTime = bulletType->getAfterLifeTime();
@@ -329,7 +329,7 @@ namespace game
 		VC3 dist = destination - position;
 
 		velocity = dist.GetNormalized() * vel;
-		
+
 		VC2 destFloat = VC2(
 			(float)(destination.x-position.x), (float)(destination.z-position.z));
 		float destAngleFloat = destFloat.CalculateAngle();
@@ -547,7 +547,7 @@ namespace game
 	{
 		inflictDamage = inflict;
 	}
-	
+
 	bool Projectile::doesInflictDamage() const
 	{
 		return inflictDamage;
@@ -602,7 +602,7 @@ namespace game
 
 		// FIXME: should we clone the parent unit/projectile pointers?
 		// could that possibly crash something (as only one parent/child allowed for each projectile)
-	
+
 		c->criticalHitDamageMax = criticalHitDamageMax;
 		c->criticalHitDamageMultiplier = criticalHitDamageMultiplier;
 		c->criticalHitProbabilityMultiplier = criticalHitProbabilityMultiplier;

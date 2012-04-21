@@ -42,7 +42,7 @@ using namespace frozenbyte;
 
 namespace ui
 {
-	
+
 SurvivorLoadGameMenu::SurvivorLoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_gui, Game* g ) :
 	MenuBaseImpl( NULL ),
 	menuCollection( menu ),
@@ -217,7 +217,7 @@ SurvivorLoadGameMenu::SurvivorLoadGameMenu( MenuCollection* menu, MenuCollection
 		missionButtonStartPosX = x;
 		missionButtonStartPosY = y;
 		missionButtonOffsetX = getLocaleGuiInt( "gui_survivorloadgamemenu_missionimage_offset", 10 );
-	
+
 		originalInfoText = getLocaleGuiString("gui_survivorloadgamemenu_infotext_text");
 
 		for(int i = 0; i < 4; i++)
@@ -244,7 +244,7 @@ SurvivorLoadGameMenu::SurvivorLoadGameMenu( MenuCollection* menu, MenuCollection
 			}
 		}
 
-		
+
 		missionButtonSwapLeft = x - missionButtonOffsetX;
 		missionButtonSwapRight = x + missionButtonOffsetX * 3;
 	}
@@ -432,7 +432,7 @@ void SurvivorLoadGameMenu::CursorEvent( OguiButtonEvent* eve )
 	{
 		// click sound for next/previous buttons on PRESS, not CLICK
 		OguiButtonEvent eve2 = *eve;
-		
+
 		if(eve->eventType == OguiButtonEvent::EVENT_TYPE_CLICK)
 			eve2.eventType = OguiButtonEvent::EVENT_TYPE_PRESS;
 		else if(eve->eventType == OguiButtonEvent::EVENT_TYPE_PRESS)
@@ -520,7 +520,7 @@ void SurvivorLoadGameMenu::CursorEvent( OguiButtonEvent* eve )
 		case COMMANDS_NEXT:
 			scrollMissions(1);
 			break;
-		
+
 		case COMMANDS_PREV:
 			scrollMissions(-1);
 			break;
@@ -563,7 +563,7 @@ void SurvivorLoadGameMenu::CursorEvent( OguiButtonEvent* eve )
 				scrollMissions(1);
 			}
 			break;
-		
+
 		case COMMANDS_PREV:
 			{
 				if(startedHoldingScroll < 0)
@@ -784,7 +784,7 @@ void SurvivorLoadGameMenu::clipMissionButtons()
 
 		missionInfos[i].button->SetClip(clip_left * 100.0f, 0.0f, clip_right * 100.0f, 100.0f);
 
-		
+
 
 		int pos_x = missionInfos[i].button->GetX();
 		//int pos_y = missionInfos[i].button->GetY();

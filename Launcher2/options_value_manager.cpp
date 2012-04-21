@@ -116,10 +116,10 @@ void OptionsValueManager::load()
 		int i;
 		int j;
 		int k;
-		
+
 		for( i = 0; i < data.getSubGroupAmount(); i++ )
 		{
-			OptionsValueList list;	
+			OptionsValueList list;
 			std::string name = data.getSubGroupName( i );
 			ParserGroup g = data.getSubGroup( i );
 			for( j = 0; j < g.getSubGroupAmount(); j++ )
@@ -144,7 +144,7 @@ void OptionsValueManager::load()
 
 				list.addOptions( name, options, position );
 			}
-			impl->data.insert( std::pair< std::string, OptionsValueList >( name, list ) );		
+			impl->data.insert( std::pair< std::string, OptionsValueList >( name, list ) );
 		}
 
 		OptionsValueManagerImpl::dataInitialized = true;
@@ -160,9 +160,9 @@ void OptionsValueManager::save()
 	editor::Parser options;//("Config/options.txt");
 
 	ParserGroup& data = options.getGlobals();
-	
+
 	int j;
-	
+
 	std::map< std::string, OptionsValueList >::iterator i;
 
 	for( i = impl->data.begin(); i != impl->data.end(); ++i )
@@ -172,13 +172,13 @@ void OptionsValueManager::save()
 
 		std::vector< std::string > group_names = i->second.getOptionNames();
 		std::vector< OptionsValue > options_value = i->second.getOptions();
-		
+
 		for( j = 0; j < (int)group_names.size(); j++ )
 		{
 			ParserGroup options_data;
 			std::list< OptionsValue::KeyValuePair > keys = options_value[ j ].getData();
 			std::list< OptionsValue::KeyValuePair >::iterator k;
-			
+
 			for( k = keys.begin(); k != keys.end(); ++k )
 			{
 				options_data.setValue( k->key, k->value );
@@ -187,15 +187,15 @@ void OptionsValueManager::save()
 			options_data.setValue( position_hack, boost::lexical_cast< std::string >( j ) );
 			category_data.addSubGroup( group_names[ j ], options_data );
 		}
-		data.addSubGroup( category, category_data );	
+		data.addSubGroup( category, category_data );
 	}
-	
+
 	{
 		std::fstream o;
 		o.open( filename.c_str(), std::ios::out );
 
 		o << options;
-		o.close();	
+		o.close();
 	}
 }
 

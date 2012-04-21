@@ -81,13 +81,13 @@ namespace util
 			}
 			*checksum = hashCode;
 		}
-		
+
 		delete [] buf;
 
 		filesystem::fb_fclose(f);
 
 		return success;
-	}	
+	}
 
 }
 

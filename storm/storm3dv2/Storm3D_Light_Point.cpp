@@ -37,7 +37,7 @@ Storm3D_Light_Point::Storm3D_Light_Point(Storm3D *s2,const char *name,
 }
 
 
-	
+
 //------------------------------------------------------------------
 // Storm3D_Light_Point::~Storm3D_Light_Point
 //------------------------------------------------------------------

@@ -86,7 +86,7 @@ struct CollisionModelData
 		faceBuffer[5].vertex_index[2] = 1;
 		faceBuffer[6].vertex_index[0] = 2;
 		faceBuffer[6].vertex_index[1] = 3;
-		faceBuffer[6].vertex_index[2] = 6;			
+		faceBuffer[6].vertex_index[2] = 6;
 		faceBuffer[7].vertex_index[0] = 6;
 		faceBuffer[7].vertex_index[1] = 7;
 		faceBuffer[7].vertex_index[2] = 3;
@@ -123,7 +123,7 @@ struct CollisionModelData
 		faceBuffer[5+12].vertex_index[2] = 5;
 		faceBuffer[6+12].vertex_index[0] = 2;
 		faceBuffer[6+12].vertex_index[1] = 6;
-		faceBuffer[6+12].vertex_index[2] = 3;			
+		faceBuffer[6+12].vertex_index[2] = 3;
 		faceBuffer[7+12].vertex_index[0] = 6;
 		faceBuffer[7+12].vertex_index[1] = 3;
 		faceBuffer[7+12].vertex_index[2] = 7;
@@ -162,7 +162,7 @@ void CollisionModel::create()
 {
 	data->model = boost::shared_ptr<IStorm3D_Model> (data->storm.storm->CreateNewModel());
 	data->model->CastShadows(false);
-	
+
 	IStorm3D_Material *material = data->storm.storm->CreateNewMaterial("ah");
 	IStorm3D_Model_Object *object = data->model->Object_New("uh");
 	IStorm3D_Mesh *mesh = data->storm.storm->CreateNewMesh();
@@ -207,7 +207,7 @@ void CollisionModel::scale()
 {
 	VC3 scale;
 	scale.x = scale.y = scale.z = 1.01f;
-	
+
 	data->model->SetScale(scale);
 }
 
@@ -253,7 +253,7 @@ struct CollisionVolumeData
 
 		Sphere sphere(objectPosition, boundingRadius);
 		Ray ray(collisionData.rayOrigin, collisionData.rayDirection, collisionData.rayLength);
-		
+
 		return collision(sphere, ray);
 	}
 
@@ -390,7 +390,7 @@ bool CollisionVolume::testCollision(const VC3 &objectPosition, const VC3 &angles
 {
 	QUAT rotation = getRotation(angles);
 	//rotation.MakeFromAngles(0, -yRotation, 0);
-	
+
 	Matrix tm;
 	tm.CreateRotationMatrix(rotation);
 

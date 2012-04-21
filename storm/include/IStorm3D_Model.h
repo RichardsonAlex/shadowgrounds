@@ -63,7 +63,7 @@ public:
 	// Create empty / load (".S3D"-file) / copy
 	virtual bool LoadS3D(const char *filename) = 0;
 	virtual bool LoadBones(const char *filename) = 0;
-	
+
 	//virtual void CopyModel(IStorm3D_Model *other)=0;
 	virtual void Empty(bool leave_geometry = false, bool leave_bones = false)=0;
 	virtual IStorm3D_Model *GetClone(bool cloneGeometry, bool cloneHelpers, bool cloneBones) const = 0;
@@ -94,7 +94,7 @@ public:
 	virtual void SetPosition(const VC3 &position)=0;
 	virtual void SetRotation(const QUAT &rotation)=0;
 	virtual void SetScale(const VC3 &scale)=0;
-	
+
 	// Lights
 	virtual void SetSelfIllumination(const COL &color) = 0;
 	//virtual void SetLighting(int index, const VC3 &position, const COL &color, float range) = 0;

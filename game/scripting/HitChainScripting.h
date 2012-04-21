@@ -36,7 +36,7 @@ namespace game
 
 	extern bool projs_chainedRotationRandom;
 	extern bool projs_chainedOriginToHitUnit;
-	
+
 	extern int projs_chainedCustomValue;
 	extern int projs_lifeTime;
 
@@ -52,7 +52,7 @@ namespace game
 	 */
 	class HitChainScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

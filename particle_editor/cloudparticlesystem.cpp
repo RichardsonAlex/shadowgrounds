@@ -101,13 +101,13 @@ class CloudParticleSystem : public GenParticleSystem {
 	static Box box;
 	static Cylinder cylinder;
 	static std::map<std::string, Shape*> m_shapes;
-		
+
 	Shape* m_shape;
 	int m_randomDirection;
 	Vector m_direction;
 
 public:
-	
+
 	const char* getClassName() {
 		return "cloud";
 	}
@@ -121,9 +121,9 @@ public:
 		baseCopy(ps);
 		return ps;
 	}
-	
+
 	void create() {
-		
+
 		GenParticleSystem::create();
 		m_pb->addParams(theCloudParticleSystemParamDesc, 9);
 		m_pb->setValue(PB_PCLOUD_SHAPE, "sphere");
@@ -131,7 +131,7 @@ public:
 		m_pb->setValue(PB_PCLOUD_SPHERE_OUTER_RADIUS, 1.0f);
 		m_pb->setValue(PB_PCLOUD_RANDOM_DIRECTION, 1);
 		m_pb->setValue(PB_PCLOUD_DIRECTION, Vector(0.0f, 1.0f, 0.0f));
-	
+
 	}
 
 	void init(IStorm3D* s3d, IStorm3D_Scene* scene) {
@@ -143,16 +143,16 @@ public:
 			m_shapes["box"] = &box;
 			m_shapes["cylinder"] = &cylinder;
 		}
-	
+
 	}
-		
+
 	void prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene) {
 
 		GenParticleSystem::prepareForLaunch(s3d, scene);
 
 		m_pb->getValue(PB_PCLOUD_RANDOM_DIRECTION, m_randomDirection);
 		m_pb->getValue(PB_PCLOUD_DIRECTION, m_direction);
-		
+
 		m_shape = NULL;
 		std::string shape;
 		m_pb->getValue(PB_PCLOUD_SHAPE, shape);
@@ -165,7 +165,7 @@ public:
 		if(m_randomDirection) {
 			float rnd1 = -1.0f + 2.0f * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 			float rnd2 = -1.0f + 2.0f * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
-			float rnd3 = -1.0f + 2.0f * (float)(rand() % RAND_MAX) / (float)RAND_MAX;			
+			float rnd3 = -1.0f + 2.0f * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 			Vector d(rnd1, rnd2, rnd3);
 			d.Normalize();
 			v = d * speed;
@@ -175,7 +175,7 @@ public:
 	}
 
 	void setParticlePosition(Vector& v) {
-		if(m_shape)	
+		if(m_shape)
 			m_shape->gen(v);
 	}
 

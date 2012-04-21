@@ -68,7 +68,7 @@ public:
 		camera->SetPosition(m_position);
 		camera->SetTarget(m_target);
 		camera->SetFieldOfView(m_fov);
-		camera->SetVisibilityRange(10000.0f);	
+		camera->SetVisibilityRange(10000.0f);
 	}
 };
 

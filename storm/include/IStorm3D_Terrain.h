@@ -188,14 +188,14 @@ public:
 	// obstacleShadowHeight 0 - 100, percent of actual obstacle height
 	// color is the masking color...
 	virtual void SetShadow(int darkness, int obstacleShadowHeight, COL color, bool smooth)=0;
-	
+
 	// Texture functions
 	virtual void LoadTextureAtBank(IStorm3D_Texture *texture,int texnum,bool tile_mirror=false)=0;
 
 	// Detail texturing
 	virtual void SetDetailTexture(IStorm3D_Texture *texture,int _detail_repeat)=0;	// NULL to remove detail texture
 	virtual void SetDetailTexture2(IStorm3D_Texture *texture,int _detail_repeat)=0;	// NULL to remove second detail texture
-	
+
 	// Block size (Set only at beginning)
 	virtual void SetBlockSize(int bsize=32)=0;
 

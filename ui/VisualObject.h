@@ -87,7 +87,7 @@ namespace ui
     void addPosition(const VC3 &position);
     void setScale(const VC3 &scale);
     void setRotation(float xAngle, float yAngle, float zAngle);
-	
+
 		// hacked to allow straight quaternion rotations
 		// overrided the setRotation euler angles
 		void setRotationQuaternion( const QUAT& quat );
@@ -129,14 +129,14 @@ namespace ui
 		VisualObjectModel *getVisualObjectModel();
 
 		void setEffect(int modelEffect);
-		
+
 		// NOTE: currently used by some effects only (others just ignore this)
 		void setEffectDuration(int durationMsec);
 
 		void clearEffects();
 
 		void disableSharedObjects();
-		
+
 		void createEffectLayer();
 		void createEffectLayer2();
 

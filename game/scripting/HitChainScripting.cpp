@@ -323,7 +323,7 @@ namespace game
 
 			case GS_CMD_PROJISHITCHAINNAME:
 				if (stringData != NULL)
-				{					
+				{
 					if (projs_hitChain >= 0 && projs_hitChain < HITCHAIN_AMOUNT)
 					{
 						if (hitChainName[projs_hitChain] != NULL
@@ -480,7 +480,7 @@ namespace game
 
 
 			default:
-				sp->error("HitChainScripting::process - Unknown command.");				
+				sp->error("HitChainScripting::process - Unknown command.");
 				assert(0);
 		}
 	}

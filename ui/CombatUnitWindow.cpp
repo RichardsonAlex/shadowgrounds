@@ -268,7 +268,7 @@ namespace ui
       char *name = unit->getCharacter()->getName();
       if (strlen(name) < 32)
         strcat(buf, unit->getCharacter()->getName());
-    }		
+    }
     b = ogui->CreateSimpleTextButton(win, 20, 2,
       COMBATUNITWINDOW_SIZE_X - 20, 16, NULL, NULL, NULL, buf, 0);
     b->SetFont(ui::defaultSmallIngameFont);
@@ -898,13 +898,13 @@ namespace ui
 		// if using clipped weapon, show that, and not the energy
 		Weapon *clipWeapon = NULL;
 		int clipWNum = -1;
-		
+
 		for (int w = 0; w < UNIT_MAX_WEAPONS; w++)
 		{
 			Weapon *we = unit->getWeaponType(w);
 			if (unit->isWeaponActive(w) && we != NULL
 				&& we->getClipSize() > 0)
-			{				
+			{
 				clipWeapon = unit->getWeaponType(w);
 				clipWNum = w;
 				break;
@@ -1264,7 +1264,7 @@ namespace ui
 		if (unit->getEnergy() < unit->getMaxEnergy() / 10)
 		{
 			unitModeBut->SetText(getLocaleGuiString("gui_unit_combat_energy_low"));
-			return;			
+			return;
 		}
 
 		unitModeBut->SetText("");

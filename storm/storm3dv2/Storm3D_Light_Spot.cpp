@@ -40,7 +40,7 @@ Storm3D_Light_Spot::Storm3D_Light_Spot(Storm3D *s2,const char *name,Storm3D_Mode
 }
 
 
-	
+
 //------------------------------------------------------------------
 // Storm3D_Light_Spot::~Storm3D_Light_Spot
 //------------------------------------------------------------------
@@ -91,7 +91,7 @@ void Storm3D_Light_Spot::Apply(int num)
 	lgt.Theta=cone_inner;
 	lgt.Phi=cone_outer;
 	lgt.Falloff=1;
-	
+
 	// Set light (to 3d-card)
 	Storm3D2->GetD3DDevice()->SetLight(num,&lgt);
 }

@@ -104,7 +104,7 @@ namespace {
 		// Size w/ and w/o manager extras
 		size_t requestedSize;
 		size_t overallSize;
-	
+
 		// Catches mixing new[]/delete and new/delete[]
     // changed from bool to int to catch problems with memory blocks
     // allocated without using memory manager.
@@ -121,11 +121,11 @@ namespace {
 	AllocationUnit *createAllocationUnit()
 	{
 		AllocationUnit *unit = static_cast<AllocationUnit *> (malloc(sizeof(AllocationUnit)));
-		
+
 		unit->prefixPointer = 0;
 		unit->postfixPointer = 0;
 		unit->dataPointer = 0;
-	
+
 		unit->requestedSize = 0;
 		unit->overallSize = 0;
 
@@ -133,7 +133,7 @@ namespace {
 		unit->allocatedFrom = 0;
 
 		unit->markedSnapshot = false;
-		
+
 		return unit;
 	}
 
@@ -146,7 +146,7 @@ namespace {
     unit->arrayAllocated = invalidAllocation;
 		free(unit);
 	}
-	
+
 	/*
 	  Here are our allocation infos. Finally implemented with hashing.
 	*/
@@ -161,11 +161,11 @@ namespace {
 	{
 		AllocationLink *first;
 	};
-	
+
 	// Hash data
 	static const int hashSize = 3677; // Prime number. Big enough?
 	static AllocationRoot hashMap[hashSize] = { { 0 } };
-	
+
 	// Amount of allocation
 	static int allocationCount = 0;
 	// Memory allocated
@@ -173,11 +173,11 @@ namespace {
 
 	static int peakMemoryUsage = 0;
 	static int peakPointers = 0;
-	
+
 	int calculateHashIndex(const void *buffer)
 	{
 		int value = reinterpret_cast<int> (buffer);
-		
+
 		// Shift lower bits (alignment would kill coverage)
 		value >>= 4;
 
@@ -185,14 +185,14 @@ namespace {
 		value %= hashSize;
 		return value;
 	}
-	
+
 	void addAllocation(AllocationUnit *allocation)
 	{
 		assert(allocation);
 
 		++allocationCount;
 		allocationMemory += allocation->requestedSize;
-		
+
 		AllocationLink *link = static_cast<AllocationLink *> (malloc(sizeof(AllocationLink)));
 		link->allocationUnit = allocation;
 		link->next = 0;
@@ -212,10 +212,10 @@ namespace {
 		if(allocationCount > peakPointers)
 			peakPointers = allocationCount;
 	}
-	
+
 	AllocationUnit *findAllocation(void *pointer)
 	{
-		int hashIndex = calculateHashIndex(pointer);		
+		int hashIndex = calculateHashIndex(pointer);
 		AllocationLink *current = hashMap[hashIndex].first;
 
 		while(current)
@@ -260,7 +260,7 @@ namespace {
 				// Free memory
 				deleteAllocationUnit(current->allocationUnit);
 				free(current);
-		
+
 				return;
 			}
 
@@ -315,12 +315,12 @@ namespace {
 			programExiting = false;
 		}
 		~InitializationTracker()
-		{	
+		{
 			programExiting = true;
 			dumpLeakReport();
 		}
 	};
-	
+
 	bool InitializationTracker::programExiting = false;
 	static InitializationTracker tracker;
 
@@ -383,7 +383,7 @@ namespace {
 								fprintf(fp, "\tAllocated with new()\n");
 							else
 								fprintf(fp, "\tAllocated with new[]\n");
-						
+
 							// to get the contents of some char array strings - jpk
 	#ifdef FROZENBYTE_DEBUG_MEMORY_PRINT_DATA
 							#define DEBUG_MEMORYMANAGER_MAX_PRINT_SIZE 80
@@ -425,7 +425,7 @@ namespace {
 			}
 
 			fclose(fp);
-		}		
+		}
 	}
 
 
@@ -497,7 +497,7 @@ void *operator new(size_t originalSize, const char *fileName, int lineNumber, bo
 			allocation->prefixPointer = static_cast<frozenbyte::debug::uint32 *> (buffer);
 			allocation->dataPointer = allocation->prefixPointer + frozenbyte::debug::numberPrefix;
 			allocation->postfixPointer = allocation->dataPointer + (originalSize / 4);
-			
+
 			allocation->allocatedFrom = info;
 			if (arrayAllocated)
   				allocation->arrayAllocated = frozenbyte::debug::arrayAllocation;

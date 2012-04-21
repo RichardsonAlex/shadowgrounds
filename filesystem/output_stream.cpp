@@ -67,7 +67,7 @@ OutputStream &OutputStream::write(const std::string &value)
 
 	if(!textStrings)
 		write(stringSize);
-	
+
 	for(int i = 0; i < stringSize; ++i)
 		streamBuffer->putByte(value[i]);
 

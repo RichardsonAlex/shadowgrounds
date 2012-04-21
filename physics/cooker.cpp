@@ -45,7 +45,7 @@ namespace {
 		VC3 d(p1.range_to_origin, p2.range_to_origin, p3.range_to_origin);
 		VC3 v = m1.GetCrossWith(d);
 		float ood = 1.f / denom;
-		
+
 		NxVec3 result;
 		result.x = d.GetDotWith(u) * ood;
 		result.y = m3.GetDotWith(v) * ood;
@@ -238,7 +238,7 @@ namespace {
 		int xmax = (x < resolution.x - 1) ? x + 1 : resolution.x - 1;
 		int ymin = (y > 0) ? y - 1 : 0;
 		int ymax = (y < resolution.y - 1) ? y + 1 : resolution.y - 1;
-		
+
 		int clippedVertices = 0;
 		for(int j = ymin; j <= ymax; ++j)
 		for(int i = xmin; i <= xmax; ++i)
@@ -256,7 +256,7 @@ namespace {
 		int xmax = (x < resolution.x - 1) ? x + 1 : resolution.x - 1;
 		int ymin = (y > 0) ? y - 1 : 0;
 		int ymax = (y < resolution.y - 1) ? y + 1 : resolution.y - 1;
-		
+
 		int height = heightmap[y * resolution.x + x];
 		for(int j = ymin; j <= ymax; ++j)
 		for(int i = xmin; i <= xmax; ++i)
@@ -494,7 +494,7 @@ bool Cooker::cookMesh(const char *filename, IStorm3D_Model *model)
 			VC3 p = vertexBuffer[i].position;
 			//tm.TransformVector(p);
 
-			NxVec3 vec(p.x, p.y, p.z);			
+			NxVec3 vec(p.x, p.y, p.z);
 			vertices.push_back(vec);
 		}
 
@@ -606,7 +606,7 @@ bool Cooker::cookHeightmap(const unsigned short *heightmap, const unsigned char 
 		int xmax = (x < resolution.x - 1) ? x + 1 : resolution.x - 1;
 		int ymin = (y > 0) ? y - 1 : 0;
 		int ymax = (y < resolution.y - 1) ? y + 1 : resolution.y - 1;
-		
+
 		bool needed = false;
 		for(int j = ymin; j <= ymax; ++j)
 		for(int i = xmin; i <= xmax; ++i)
@@ -1190,7 +1190,7 @@ bool Cooker::cookApproxConvex(const char *filename, IStorm3D_Model_Object *objec
 				bool ok = true;
 				for(int j = 0; j < vertexAmount; ++j)
 				{
-					const VC3 &pos = vbuffer[j].position;	
+					const VC3 &pos = vbuffer[j].position;
 					if(tempPlane.GetPointRange(pos) <= offset)
 					{
 						ok = false;

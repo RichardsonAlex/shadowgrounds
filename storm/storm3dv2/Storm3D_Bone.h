@@ -35,21 +35,21 @@ class Storm3D_BoneAnimation: public IStorm3D_BoneAnimation
 	// [bone_index][key_index] which contains (time/property) pair
 	std::vector<std::vector<BoneRotationKey> > bone_rotations;
 	std::vector<std::vector<BonePositionKey> > bone_positions;
-	
+
 	int bone_id;
 	int loop_time; // in ms
 	int reference_count;
 
 	bool successfullyLoaded;
-	
+
 	// Not implemented
 	Storm3D_BoneAnimation(const Storm3D_BoneAnimation &animation);
 	Storm3D_BoneAnimation &operator = (const Storm3D_BoneAnimation &animation);
 
 	// Use reference methods instead
 	~Storm3D_BoneAnimation();
-	
-public:	
+
+public:
 	Storm3D_BoneAnimation(const char *file_name);
 
 	// Reference counting

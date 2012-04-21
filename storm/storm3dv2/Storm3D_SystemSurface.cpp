@@ -180,17 +180,17 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[0].x=hsx+(tverts[vx2].pos.x*tverts[vx2].irhw*hsx);
 					newfaces[fcamt].vxs[0].y=hsy-(tverts[vx2].pos.y*tverts[vx2].irhw*hsy);
 					newfaces[fcamt].vxs[0].z=tverts[vx2].pos.z*icam255;
-					
+
 					VC3 vxp=tverts[vx2].pos+e20;
 					newfaces[fcamt].vxs[1].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[1].z=icam255;
-					
+
 					vxp=tverts[vx2].pos+e21;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 				}
 			}
@@ -205,17 +205,17 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[0].x=hsx+(tverts[vx1].pos.x*tverts[vx1].irhw*hsx);
 					newfaces[fcamt].vxs[0].y=hsy-(tverts[vx1].pos.y*tverts[vx1].irhw*hsy);
 					newfaces[fcamt].vxs[0].z=tverts[vx1].pos.z*icam255;
-					
+
 					VC3 vxp=tverts[vx1].pos+e12;
 					newfaces[fcamt].vxs[1].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[1].z=icam255;
-					
+
 					vxp=tverts[vx1].pos+e10;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 				}
 				else // >0
@@ -233,12 +233,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[1].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[1].z=icam255;
-					
+
 					vxp=tverts[vx1].pos+e10;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 
 					// Face2
@@ -249,12 +249,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[1].x=hsx+(tverts[vx2].pos.x*tverts[vx2].irhw*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(tverts[vx2].pos.y*tverts[vx2].irhw*hsy);
 					newfaces[fcamt].vxs[1].z=tverts[vx2].pos.z*icam255;
-					
+
 					vxp=tverts[vx2].pos+e20;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 				}
 			}
@@ -264,7 +264,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 			if (r1<0)
 			{
 				if (r2<0)
-				{					
+				{
 					// Do 1 face (r0 visible)
 					VC3 e01=(tverts[vx1].pos-tverts[vx0].pos)*(r0/(r0-r1));
 					VC3 e02=(tverts[vx2].pos-tverts[vx0].pos)*(r0/(r0-r2));
@@ -277,12 +277,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[1].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[1].z=icam255;
-					
+
 					vxp=tverts[vx0].pos+e02;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 				}
 				else // >0
@@ -300,12 +300,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[1].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[1].z=icam255;
-					
+
 					vxp=tverts[vx2].pos+e21;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 
 					// Face2
@@ -316,12 +316,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[1].x=hsx+(tverts[vx0].pos.x*tverts[vx0].irhw*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(tverts[vx0].pos.y*tverts[vx0].irhw*hsy);
 					newfaces[fcamt].vxs[1].z=tverts[vx0].pos.z*icam255;
-					
+
 					vxp=tverts[vx0].pos+e01;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 				}
 			}
@@ -342,12 +342,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[1].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[1].z=icam255;
-					
+
 					vxp=tverts[vx1].pos+e12;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 
 					// Face2
@@ -358,12 +358,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					newfaces[fcamt].vxs[1].x=hsx+(tverts[vx1].pos.x*tverts[vx1].irhw*hsx);
 					newfaces[fcamt].vxs[1].y=hsy-(tverts[vx1].pos.y*tverts[vx1].irhw*hsy);
 					newfaces[fcamt].vxs[1].z=tverts[vx1].pos.z*icam255;
-					
+
 					vxp=tverts[vx1].pos+e12;
 					newfaces[fcamt].vxs[2].x=hsx+(vxp.x*hsx);
 					newfaces[fcamt].vxs[2].y=hsy-(vxp.y*hsy);
 					newfaces[fcamt].vxs[2].z=icam255;
-					
+
 					fcamt++;
 				}
 				else // >0
@@ -382,7 +382,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 				}
 			}
 		}
-		
+
 
 		// Loop through all clipped faces
 		for (int fcc=0;fcc<fcamt;fcc++)
@@ -409,7 +409,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 					zp=(ez2-ez1)/zp;
 					if (xs<0) {ce+=zp*xs;xs=0;}
 					if (xe>=size) xe=size-1;
-				
+
 					// Render it!
 					if ((xe>0)&&(xs<size))
 					for (int xx=xs;xx<xe;xx++)
@@ -419,11 +419,11 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 						ce+=zp;
 					}
 				}*/
-				continue;	
+				continue;
 			}
 			int ex_hi_lo=((newfaces[fcc].vxs[vlo].x-newfaces[fcc].vxs[vhi].x)<<16)/yd;
 			int ez_hi_lo=((newfaces[fcc].vxs[vlo].z-newfaces[fcc].vxs[vhi].z)<<16)/yd;
-	
+
 			yd=(newfaces[fcc].vxs[vmd].y-newfaces[fcc].vxs[vhi].y);
 			if (yd==0) yd=1;
 			int ex_hi_md=((newfaces[fcc].vxs[vmd].x-newfaces[fcc].vxs[vhi].x)<<16)/yd;
@@ -490,7 +490,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 							zp=(ez2-ez1)/zp;
 							if (xs<0) {ce+=zp*(-xs);xs=0;}
 							if (xe>size-1) xe=size-1;
-				
+
 							// Render it!
 							if ((xe>0)&&(xs<size))
 							for (int xx=xs;xx<=xe;xx++)
@@ -546,8 +546,8 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 							zp=(ez2-ez1)/zp;
 							if (xs<0) {ce+=zp*(-xs);xs=0;}
 							if (xe>size-1) xe=size-1;
-						
-							// Render it!					
+
+							// Render it!
 							if ((xe>0)&&(xs<size))
 							for (int xx=xs;xx<=xe;xx++)
 							{
@@ -602,12 +602,12 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 						int ce=ez2;
 						int zp=xe-xs;
 						if (zp!=0)
-						{	
+						{
 							zp=(ez1-ez2)/zp;
 							if (xs<0) {ce+=zp*(-xs);xs=0;}
 							if (xe>size-1) xe=size-1;
-						
-							// Render it!					
+
+							// Render it!
 							if ((xe>0)&&(xs<size))
 							for (int xx=xs;xx<=xe;xx++)
 							{
@@ -661,9 +661,9 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 						{
 							zp=(ez1-ez2)/zp;
 							if (xs<0) {ce+=zp*(-xs);xs=0;}
-							if (xe>size-1) xe=size-1;				
+							if (xe>size-1) xe=size-1;
 
-							// Render it!					
+							// Render it!
 							if ((xe>0)&&(xs<size))
 							for (int xx=xs;xx<=xe;xx++)
 							{

@@ -156,7 +156,7 @@ struct FileWrapper::Data
 		for(unsigned int i = 0; i < fileList.size(); ++i)
 		{
 			const std::string &file = fileList[i];
-			
+
 			int start = root.size() + 1;
 			std::string::size_type end = file.find_last_of("/");
 			if(end == file.npos)
@@ -240,7 +240,7 @@ if (extension == "*.s3d")
 							{
 								buf[i] = '\0';
 								tmpname = file + &buf[lastPos];
-								fbemList.push_back(tmpname);							
+								fbemList.push_back(tmpname);
 							}
 							lastPos = i + 1;
 						}
@@ -281,7 +281,7 @@ if (extension == "*.s3d")
 							foo[k] = '\\';
 
 					activeDir->files.push_back(foo);
-					break;			
+					break;
 				}
 				*/
 

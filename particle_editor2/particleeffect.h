@@ -58,11 +58,11 @@ public:
 		int maxSystems;
 		int maxParticlesPerSystem;
 	};
-	
-private:	
+
+private:
 	Stats m_stats;
 	std::list< boost::shared_ptr<IParticleSystem> > m_systems;
-		
+
 	std::vector< boost::shared_ptr<IParticleEffect> > m_protos;
 	IStorm3D* m_s3d;
 	IStorm3D_Scene* m_scene;

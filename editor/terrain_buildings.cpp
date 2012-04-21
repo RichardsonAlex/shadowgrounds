@@ -173,7 +173,7 @@ namespace {
 	VC2I convertWorldToMap(const VC2 &source, const VC2I &mapSize, const VC3 &realSize)
 	{
 		VC2I result;
-		
+
 		result.x = int(source.x * mapSize.x / realSize.x);
 		result.y = int(source.y * mapSize.y / realSize.z);
 
@@ -242,7 +242,7 @@ struct TerrainBuildingsData
 			removeNotFloors(instance.floorModel.get());
 
 			buildingHandler.addBuilding(instance.model.get());
-			
+
 			storm.floorModels.insert(instance.floorModel);
 			storm.floorScene->AddModel(instance.floorModel.get());
 		}
@@ -312,7 +312,7 @@ struct TerrainBuildingsData
 
 		for(; it != buildings.end(); ++it)
 		{
-			TerrainBuilding &terrainBuilding = (*it).second;			
+			TerrainBuilding &terrainBuilding = (*it).second;
 			ObjectData objectData;
 			objectData.height = terrainBuilding.height;
 			objectData.radiusX = terrainBuilding.radiusX;
@@ -462,7 +462,7 @@ struct TerrainBuildingsData
 
 			for(int j = 0; j < buildingCount; ++j)
 			{
-				BuildingInstance &instance = terrainBuilding.instances[j];				
+				BuildingInstance &instance = terrainBuilding.instances[j];
 				stream >> instance.position.x >> instance.position.y;
 				stream >> instance.rotation;
 			}
@@ -537,7 +537,7 @@ void TerrainBuildings::updateLighting()
 	std::map<std::string, TerrainBuilding>::iterator it = data->buildings.begin();
 	for(; it != data->buildings.end(); ++it)
 	{
-		TerrainBuilding &terrainBuilding = (*it).second;		
+		TerrainBuilding &terrainBuilding = (*it).second;
 		for(unsigned int i = 0; i < terrainBuilding.instances.size(); ++i)
 		{
 			IStorm3D_Model *m = terrainBuilding.instances[i].model.get();
@@ -553,7 +553,7 @@ void TerrainBuildings::updateLighting()
 	std::map<std::string, TerrainBuilding>::iterator it = data->buildings.begin();
 	for(; it != data->buildings.end(); ++it)
 	{
-		TerrainBuilding &terrainBuilding = (*it).second;		
+		TerrainBuilding &terrainBuilding = (*it).second;
 		for(unsigned int i = 0; i < terrainBuilding.instances.size(); ++i)
 		{
 			IStorm3D_Model *m = terrainBuilding.instances[i].model.get();
@@ -648,7 +648,7 @@ void TerrainBuildings::setToTerrain()
 	for(; it != data->buildings.end(); ++it)
 	{
 		TerrainBuilding &terrainBuilding = (*it).second;
-		
+
 		for(unsigned int i = 0; i < terrainBuilding.instances.size(); ++i)
 			data->addTerrain(terrainBuilding, i);
 	}
@@ -767,7 +767,7 @@ void TerrainBuildings::doExport(Exporter &exporter) const
 	{
 		TerrainBuilding &terrainBuilding = it->second;
 		int id = exporterObjects.addTerrainBuilding(it->first, terrainBuilding.cutTerrain);
-		
+
 		for(unsigned int i = 0; i < terrainBuilding.instances.size(); ++i)
 		{
 			VC2 &scenePosition = terrainBuilding.instances[i].position;

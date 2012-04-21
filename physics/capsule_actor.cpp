@@ -39,7 +39,7 @@ CapsuleActor::CapsuleActor(NxScene &scene, float height, float radius, const VC3
 
 
 	actor = scene.createActor(actorDesc);
-	
+
 
 
 	this->scene = &scene;

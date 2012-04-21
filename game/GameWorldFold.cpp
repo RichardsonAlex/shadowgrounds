@@ -173,7 +173,7 @@ namespace game
 		// TODO: ...
 		return 0;
 	}
-	
+
 	void GameWorldFold::moveFold(int foldNumber, const VC3 &position)
 	{
 		// TODO: ...

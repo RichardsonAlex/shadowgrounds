@@ -14,7 +14,7 @@ class ScoreWindow
 public:
 	ScoreWindow( Ogui *ogui, game::Game *game, int player );
 	~ScoreWindow();
-	
+
 	bool AllowLoading() const;
 	bool CloseMePlease() const;
 	bool shouldRestart() const;
@@ -22,7 +22,7 @@ public:
 	void PleaseClose();
 
 	void Update( int update_l );
-	
+
 	int getPlayer();
 	void setPlayer(int player);
 

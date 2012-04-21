@@ -205,7 +205,7 @@ void CameraSystemAreas::update( VC3 positionOfInterest, int elapsedTime )
 				offset+=cameraArea[i]->getCameraOffset()*w/totalTWeight;
 			}
 		}
-	}	
+	}
 
 	// Account for player movement
 	offset+=speed*300/response;
@@ -275,7 +275,7 @@ void CameraSystemAreas::update( VC3 positionOfInterest, int elapsedTime )
 
 		}
 	}
-	
+
 	posDamper.setTarget(cameraPosition);
 	posDamper.update(elapsedTime);
 	targetDamper.setTarget(targetPosition);

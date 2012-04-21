@@ -90,7 +90,7 @@ struct ColorPickerData
 
 			data->colorComponent = new ColorComponent(windowHandle, 194, 10, 66, 22);
 			data->updateColor();
-			data->disableUpdate = false;		
+			data->disableUpdate = false;
 		}
 		else if(message == WM_NOTIFY)
 		{
@@ -176,7 +176,7 @@ bool ColorPicker::run(int color)
 	colorData.rgbResult = color;
 	colorData.lpCustColors = customColors;
 	colorData.Flags = CC_FULLOPEN | CC_RGBINIT;
-	
+
 	if(ChooseColor(&colorData))
 	{
 		data->r = GetRValue(colorData.rgbResult);

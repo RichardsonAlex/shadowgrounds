@@ -292,7 +292,7 @@ size_t rle_packed_fwrite(void *buffer, size_t size, size_t count, RLE_PACKED_FIL
 	}
 
 	int tmpgot = 0;
-	
+
 	tmpgot = fwrite(&RLE_PACKED_CHUNK_MAGIC, sizeof(int), 1, stream->outputFile);
 	if (tmpgot != 1)
 	{

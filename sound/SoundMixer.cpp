@@ -795,18 +795,18 @@ struct SoundMixer::Data : public IStorm3D_StreamBuilder
 		{
 			stream->setBaseVolume(fxVolume);
 		}
-		
+
 		boost::weak_ptr<SoundStream> weakStream(stream);
 		streamList.push_back(weakStream);
 		return stream;
 	}
-	
+
 	void applyVolumes()
 	{
 		float volume_music = musicVolume;
 		if(musicMute)
 			volume_music = 0.f;
-		
+
 		float volume_effect = fxVolume;
 		if(fxMute)
 			volume_effect = 0.0f;
@@ -988,7 +988,7 @@ void SoundMixer::runMixer(int currentTime)
 	data->updateSoundEvents(currentTime, this);
 	data->updateSounds(delta);
 	data->updateMusic(delta);
-	
+
 	data->soundLib->update();
 }
 
@@ -1120,7 +1120,7 @@ int SoundMixer::playSoundEffect(SoundSample *sample, bool loop, float range, int
 int SoundMixer::playAmbientSound(SoundSample *sample, bool loop, float range, int priority)
 {
 	if(true)
-	{	
+	{
 		int handle = data->play(sample, loop, 0, range, priority);
 		if(handle > 0)
 		{
@@ -1148,7 +1148,7 @@ int SoundMixer::playSpeech(SoundSample *sample, bool loop)
 		}
 
 		return handle;
-		
+
 	}
 
 	return -1;
@@ -1248,7 +1248,7 @@ void SoundMixer::setSoundFrequency(float frequency)
 	for(; it != data->sounds.end(); ++it)
 	{
 		int id = it->first;
-		
+
 		float freq = data->soundLib->getSoundFrequency(id) * frequency;
 		data->soundLib->setSoundFrequency(id, int(freq + .5f));
 	}
@@ -1418,7 +1418,7 @@ void SoundMixer::cleanSampleCache()
 		delete it->second;
 		//soundFileHash->erase(it);
 	}
-	soundFileHash->clear();	
+	soundFileHash->clear();
 }
 
 

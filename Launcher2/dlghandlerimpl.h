@@ -25,7 +25,7 @@ public:
 	virtual void loadOptions( ) = 0;
 
 	virtual BOOL handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) = 0;
-	
+
 	virtual std::string	getComboBoxSelection( HWND hwnd );
 	virtual void			addComboItems( HWND hwnd, const std::vector< std::string >& items, const std::string& select = "" );
 	virtual void			addComboItem( HWND hwnd, const std::string & item, bool setActive = false );

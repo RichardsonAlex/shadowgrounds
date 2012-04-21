@@ -244,7 +244,7 @@ inline bool contains(const AABB &box, const Sphere &sphere)
 	if(spherePosition.z + sphereRadius <= max.z)
 	if(spherePosition.z - sphereRadius >= min.z)
 		return true;
-		
+
 	return false;
 }
 

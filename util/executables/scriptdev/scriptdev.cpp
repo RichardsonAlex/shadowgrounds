@@ -73,7 +73,7 @@ int main(int argc, char *argv[])
 			break;
 		}
 	}
-	
+
 	char *toolsdir = strstr(argv[0], "\\tools");
 	if (toolsdir != NULL)
 	{

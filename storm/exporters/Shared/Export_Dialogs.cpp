@@ -102,7 +102,7 @@ BOOL CALLBACK ExportDialog(HWND windowHandle, UINT message, WPARAM wParameter, L
 		{
 			// Collect all objects to save
 			std::vector<std::string> objectNames;
-	
+
 			// If no object list selected, use all
 			if(listState == BONES)
 			{
@@ -186,7 +186,7 @@ BOOL CALLBACK ExportDialog(HWND windowHandle, UINT message, WPARAM wParameter, L
 				std::vector<int> indices(boneAmount);
 
 				int bones = SendMessage(GetDlgItem(windowHandle, IDC_LISTBOX), LB_GETSELITEMS, boneAmount, reinterpret_cast<long> (&indices[0]));
-				
+
 				// These are in same order on list box
 				for(int i = 0; i < bones; ++i)
 					boneNames.push_back(exporter->getBones()[indices[i]].getName());
@@ -201,7 +201,7 @@ BOOL CALLBACK ExportDialog(HWND windowHandle, UINT message, WPARAM wParameter, L
 		{
 			CheckDlgButton(windowHandle, IDC_OBJECT_SELECTION, BST_CHECKED);
 			CheckDlgButton(windowHandle, IDC_BONE_SELECTION, BST_UNCHECKED);
-			
+
 			listState = OBJECTS;
 			createListItems(windowHandle);
 		}
@@ -209,7 +209,7 @@ BOOL CALLBACK ExportDialog(HWND windowHandle, UINT message, WPARAM wParameter, L
 		{
 			CheckDlgButton(windowHandle, IDC_OBJECT_SELECTION, BST_UNCHECKED);
 			CheckDlgButton(windowHandle, IDC_BONE_SELECTION, BST_CHECKED);
-			
+
 			listState = BONES;
 			createListItems(windowHandle);
 		}
@@ -227,7 +227,7 @@ BOOL CALLBACK ExportDialog(HWND windowHandle, UINT message, WPARAM wParameter, L
 			}
 		}
 	}
-	
+
 	return FALSE;
 }
 
@@ -250,7 +250,7 @@ std::string createInfoText(HWND windowHandle)
 {
 	std::string separator = "------------------------------------------------------------------------------------------------------------------------\r\n";
 	std::string info;
-	
+
 	if(IsDlgButtonChecked(windowHandle, IDC_CHECK_WARNINGS) == BST_CHECKED)
 	{
 		info += separator;
@@ -306,10 +306,10 @@ void createListItems(HWND windowHandle)
 		for(unsigned int i = 0; i < objects.size(); ++i)
 		{
 			std::string line = objects[i]->getName();
-			
+
 			char number[20] = { 0 };
 			_itoa(objects[i]->getMaterialAmount(), number, 10);
-			
+
 			line += " (" + std::string(number) + ")";
 			const char *str = line.c_str();
 
@@ -323,7 +323,7 @@ void createListItems(HWND windowHandle)
 		for(unsigned int i = 0; i < bones.size(); ++i)
 		{
 			const char *str = bones[i].getName().c_str();
-			
+
 			int index = SendMessage(GetDlgItem(windowHandle, IDC_LISTBOX), LB_ADDSTRING, 0, reinterpret_cast<long> (str));
 			SendMessage(GetDlgItem(windowHandle, IDC_LISTBOX), LB_SETSEL, TRUE, index);
 		}
@@ -337,7 +337,7 @@ std::string saveFileDialog(HWND windowHandle, const std::string &title, const st
 	// Store current dir. (otherwise it changes by user's doings)
 	char workingDirectory[1000] = { 0 };;
 	GetCurrentDirectory(1000, workingDirectory);
-	
+
 	char fileName[1000] = { 0 };
 	if(!defaultName.empty())
 		strcpy(fileName, defaultName.c_str());
@@ -353,7 +353,7 @@ std::string saveFileDialog(HWND windowHandle, const std::string &title, const st
 	}
 
 	// Eg. "Storm3D Model (*.s3d)\0*.s3d\0\0"
-	std::string fileMask = fileInfo + " (*." + extension + ")\r*." + extension + "\r\r";	
+	std::string fileMask = fileInfo + " (*." + extension + ")\r*." + extension + "\r\r";
 	// String don't like \0 so use \r and change that manually
 	char charFileMask[1000];
 	strcpy(charFileMask, fileMask.c_str());
@@ -361,7 +361,7 @@ std::string saveFileDialog(HWND windowHandle, const std::string &title, const st
 	for(unsigned int j = 0; j < fileMask.size(); ++j)
 		if(charFileMask[j] == '\r')
 			charFileMask[j] = '\0';
-	
+
 	openFileName.lStructSize = sizeof(OPENFILENAME);
 	openFileName.hwndOwner = windowHandle;
 	openFileName.hInstance = 0;

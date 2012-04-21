@@ -384,7 +384,7 @@ short int Material::getTextureIndex(const std::vector<std::string> &textures, co
 	for(unsigned int i = 0; i < textures.size(); ++i)
 		if(textures[i] == texture)
 			return static_cast<short int> (i);
-	
+
 	return -1;
 }
 

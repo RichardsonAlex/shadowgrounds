@@ -41,7 +41,7 @@ public:
 	void addMovePoint(std::vector<Unit *> *units, const VC3 &scaledMapPos, Unit::MoveType moveType);
 	// Call from 'normal' mode.
 	void setMovePoint(std::vector<Unit *> *units, const VC3 &scaledMapPos);
-	
+
 	// Call from both
 	void setTarget(std::vector<Unit *> *units, const VC3 &targetPosition, Unit::FireType fireType);
 	void setTarget(std::vector<Unit *> *units, Unit *targetUnit, Unit::FireType fireType);

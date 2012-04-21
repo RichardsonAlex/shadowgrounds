@@ -43,7 +43,7 @@ namespace game
 						gsd->decoration->setName(stringData);
 					} else {
 						sp->error("DecorScripting::process - Attempt to setDecorName for null decoration.");
-					} 			
+					}
 				} else {
 					sp->error("DecorScripting::process - setDecorName parameter missing.");
 				}
@@ -76,7 +76,7 @@ namespace game
 						gsd->decoration->setHeight((float)atof(stringData));
 					} else {
 						sp->error("DecorScripting::process - Attempt to setDecorHeight for null decoration.");
-					} 			
+					}
 				} else {
 					sp->error("DecorScripting::process - setDecorHeight parameter missing.");
 				}
@@ -118,13 +118,13 @@ namespace game
 							}
 						}
 						*/
-					
+
 					} else {
 						sp->error("DecorScripting::process - Attempt to loadDecorModel for null decoration.");
 					}
 				} else {
 					sp->error("DecorScripting::process - loadDecorModel parameter missing.");
-				} 			
+				}
 				break;
 
 			case GS_CMD_ENABLEDECOREFFECT:
@@ -190,7 +190,7 @@ namespace game
 					gsd->decoration->setPosition(gsd->position);
 				} else {
 					sp->error("DecorScripting::process - Attempt to setDecorPositionToPosition for null decoration.");
-				} 			
+				}
 				break;
 
 			case GS_CMD_SETDECORHEIGHTTOVALUE:
@@ -199,7 +199,7 @@ namespace game
 					gsd->decoration->setHeight((float)intData / 100.0f);
 				} else {
 					sp->error("DecorScripting::process - Attempt to setDecorHeightToValue for null decoration.");
-				} 			
+				}
 				break;
 
 			case GS_CMD_GETDECORBYNAME:
@@ -250,14 +250,14 @@ namespace game
 						gsd->decoration->setSpeed((float)atof(stringData));
 					} else {
 						sp->error("DecorScripting::process - Attempt to setDecorSpeed for null decoration.");
-					} 			
+					}
 				} else {
 					sp->error("DecorScripting::process - setDecorSpeed parameter missing.");
 				}
 				break;
 
 			default:
-				sp->error("DecorScripting::process - Unknown command.");				
+				sp->error("DecorScripting::process - Unknown command.");
 				assert(0);
 		}
 	}

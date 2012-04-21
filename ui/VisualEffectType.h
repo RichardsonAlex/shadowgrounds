@@ -142,7 +142,7 @@ namespace ui
 		void setDecalPositionRandom(int positionRandom);
 		bool getDecalAutoRemove();
 		void setDecalAutoRemove(bool value);
-		
+
 		bool doesAttachToSpawnModel() { return this->attachToSpawnModel; }
 		void setAttachToSpawnModel(bool value) { this->attachToSpawnModel = value; }
 
@@ -166,11 +166,11 @@ namespace ui
 		VisualObjectModel *visualProtoModel;
 		VISUALEFFECT_TYPE effectType;
 		VISUALEFFECT_FOLLOW follow;
-		int particleEffectID;		
-		int particleEffectHardwareFluidID;		
-		int particleEffectHardwareRigidID;		
+		int particleEffectID;
+		int particleEffectHardwareFluidID;
+		int particleEffectHardwareRigidID;
 		bool fadeout;
-		int decalEffectID;		
+		int decalEffectID;
 		int decalAmount;
 		int decalAmountVariation;
 		int decalPositionRandom;

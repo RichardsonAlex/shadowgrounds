@@ -72,7 +72,7 @@ namespace {
 
 	static const int SAMPLE_START = 0;
 	static const int SAMPLE_END = 9;
-	
+
 	static const int TEXTURE_SIZE_FACTOR = 16;
 	static const float MAGIC_FACTOR = 1.3f;
 }
@@ -188,7 +188,7 @@ struct TerrainLightMap::Data
 	void create(const LightList &lights, int area, int quality, const VC3 &sunDir)
 	{
 		reset();
-		
+
 		bool calculateSun = false;
 		if(sunDir.GetSquareLength() > 0.001f)
 			calculateSun = true;
@@ -226,7 +226,7 @@ struct TerrainLightMap::Data
 			VC3 camera3D = storm.scene->GetCamera()->GetPosition();
 			int cameraX = int(camera3D.x * size.x / storm.heightmapSize.x);
 			int cameraY = int(camera3D.z * size.y / storm.heightmapSize.z);
-			
+
 			//float radius3D = 20.f;
 			//if(area == 2)
 			//	radius3D = 10.f;
@@ -475,7 +475,7 @@ struct TerrainLightMap::Data
 			for(int x = 0; x < size.x; ++x)
 			{
 				Pixel &pixel = values[y * size.x + x];
-				
+
 				colorStream << pixel.color.r << pixel.color.g << pixel.color.b;
 				lightStream << pixel.light.r << pixel.light.g << pixel.light.b;
 			}
@@ -1062,7 +1062,7 @@ struct TerrainLightMap::Data
 			{
 				Pixel &p = values[i];
 				stream >> p.color.r >> p.color.g >> p.color.b;
-				
+
 				if(version >= 2)
 					stream >> p.light.r >> p.light.g >> p.light.b;
 			}

@@ -47,7 +47,7 @@ Storm3D_BoneAnimation::Storm3D_BoneAnimation(const char *file_name)
 
 	// Loop time in ms
 	filesystem::fb_fread(&loop_time, sizeof(int), 1, fp);
-	
+
 	int bone_count = 0;
 	filesystem::fb_fread(&bone_count, sizeof(int), 1, fp);
 
@@ -60,7 +60,7 @@ Storm3D_BoneAnimation::Storm3D_BoneAnimation(const char *file_name)
 	{
 		int key_count = 0;
 		filesystem::fb_fread(&key_count, sizeof(int), 1, fp);
-		
+
 		int position_key_count = 0;
 		filesystem::fb_fread(&position_key_count, sizeof(int), 1, fp);
 
@@ -84,7 +84,7 @@ Storm3D_BoneAnimation::Storm3D_BoneAnimation(const char *file_name)
 	}
 
 	filesystem::fb_fclose(fp);
-	successfullyLoaded = true;	
+	successfullyLoaded = true;
 }
 
 //! Destructor
@@ -170,7 +170,7 @@ bool Storm3D_BoneAnimation::GetRotation(int bone_index, int time, Rotation *resu
 
 	// Search key index
 	int next_index = SearchIndexNext(bone_keys, time);
-	
+
 	// Properties
 	const BoneRotationKey &next_key = bone_keys[next_index];
 	BoneRotationKey prev_key;
@@ -186,7 +186,7 @@ bool Storm3D_BoneAnimation::GetRotation(int bone_index, int time, Rotation *resu
 		prev_key = bone_keys[bone_keys.size() - 1];
 		int foo = loop_time - prev_key.first;
 		float step = float(foo + next_key.first);
-		
+
 		if(time >= prev_key.first)
 			slerp_amount = 1 - (loop_time - time) / step;
 		else
@@ -236,13 +236,13 @@ bool Storm3D_BoneAnimation::GetPosition(int bone_index, int time, Vector *result
 		prev_key = bone_keys[bone_keys.size() - 1];
 		int foo = loop_time - prev_key.first;
 		float step = float(foo + next_key.first);
-		
+
 		if(time >= prev_key.first)
 			interpolate_amount = 1 - (loop_time - time) / step;
 		else
 			interpolate_amount = (time + foo) / step;;
 	}
-	
+
 	assert(interpolate_amount > -0.01f);
 	assert(interpolate_amount <  1.01f);
 
@@ -315,7 +315,7 @@ void Storm3D_Bone::SetOriginalProperties(const Vector &position, const Rotation 
 	r.CreateRotationMatrix(model_rotation);
 	Matrix t;
 	t.CreateTranslationMatrix(model_position);
-	
+
 	original_inverse_tm = r * t;
 	original_inverse_tm.Inverse();
 }
@@ -396,7 +396,7 @@ void Storm3D_Bone::SetName(const char *name)
 {
 	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
-	
+
 	strcpy(this->name, name);
 }
 
@@ -616,7 +616,7 @@ void Storm3D_Bone::TransformBones(std::vector<Storm3D_Bone*> *bones)
 			b->model_tm.CreateRotationMatrix(b->current_rotation);
 			t.CreateTranslationMatrix(b->current_position);
 			b->model_tm.Multiply(t);
-			
+
 			// Apply hierarchy
 			if(b->parent_index != -1)
 			{
@@ -624,10 +624,10 @@ void Storm3D_Bone::TransformBones(std::vector<Storm3D_Bone*> *bones)
 				b->model_tm.Multiply((*bones)[b->parent_index]->model_tm);
 			}
 		}
-		
+
 		b->global_tm_ok = false;
 		b->vertex_tm_ok = false;
-		
+
 		b->InformChangeToChilds();
 	}
 

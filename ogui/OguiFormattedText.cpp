@@ -62,7 +62,7 @@ OguiFormattedText::OguiFormattedText( OguiWindow* win, Ogui* ogui, int x, int y,
 {
 	releaseMe = new OguiFormattedCommandImg;
 	registerCommand( "img", releaseMe );
-	
+
 }
 
 //.............................................................................
@@ -103,9 +103,9 @@ void OguiFormattedText::registerFont( const std::string& tag_name, IOguiFont*fon
 {
 	// check that we are not trying to re-register a font
 	FB_ASSERT( fonts.find( tag_name ) == fonts.end() );
-	
+
 	fonts.insert( std::pair< std::string, IOguiFont* >( tag_name, font ) );
-	
+
 }
 
 void OguiFormattedText::deleteRegisteredFonts()
@@ -146,7 +146,7 @@ void OguiFormattedText::setText( const std::string& text )
 		this->text = StringReplace( "<br>", "\n", text );
 
 		releaseAllButtons();
-		
+
 		parseTextToButtons();
 	}
 	else
@@ -204,7 +204,7 @@ void OguiFormattedText::parseTextToButtons()
 		return;
 
 	ParseData data( position->x, position->y, position->w, position->h );
-	
+
 	data.next_linebrk = 0;
 	data.next_hardbreak = 0;
 	data.cur_pos = 0;
@@ -218,7 +218,7 @@ void OguiFormattedText::parseTextToButtons()
 
 	linePositionYs.clear();
 	linePositionYs.push_back(data.my);
-	
+
 	if( hAlign != OguiButton::TEXT_H_ALIGN_LEFT )
 	{
 		int lw = getLineWidth( data.cur_pos, tagstack, &data );
@@ -250,10 +250,10 @@ void OguiFormattedText::parseTextToButtons()
 			std::pair< int, int > tmp = findLineWidthBreak( data.cur_pos, data.w - data.add_x, data.currentFont );
 			data.next_linebrk = tmp.first;
 			// add_x += tmp.second;
-			data.cur_w = tmp.second;	
+			data.cur_w = tmp.second;
 		}
-		
-		
+
+
 		// create buttons as desired
 		// we check which is the first to come, linebrk, next_tag or next_hardbreak
 		if( ( data.next_linebrk < data.next_tag ||
@@ -263,14 +263,14 @@ void OguiFormattedText::parseTextToButtons()
 			if( data.next_linebrk == text.npos ) data.next_linebrk = data.next_hardbreak;
 			if( data.next_hardbreak == text.npos ) data.next_hardbreak = data.next_linebrk;
 
-			
+
 			int break_here = data.next_linebrk<data.next_hardbreak?data.next_linebrk:data.next_hardbreak;
-			
+
 			if( data.next_linebrk == data.next_hardbreak )
 			{
 				// int i = int i = data.currentFont->getStringWidth( text.substr( cur_pos, next_hardbreak - cur_pos ).c_str() );
 			}
-			
+
 			int i =  data.currentFont ? data.currentFont->getStringWidth( text.substr( data.cur_pos, break_here - data.cur_pos ).c_str() ) : 0;
 
 			FB_ASSERT( data.currentFont );
@@ -284,8 +284,8 @@ void OguiFormattedText::parseTextToButtons()
 			// might bug in some cases
 			// if( cur_pos != break_here )
 			data.cur_pos = break_here + 1;
-			
-			
+
+
 
 			if( hAlign != OguiButton::TEXT_H_ALIGN_LEFT && data.cur_pos < (int)text.size() )
 			{
@@ -304,7 +304,7 @@ void OguiFormattedText::parseTextToButtons()
 				data.mx = data.x;
 			}
 
-			
+
 			data.my += (int)( data.currentFont->getHeight() * lineHeight );
 			linePositionYs.push_back( data.my );
 			data.add_x = 0;
@@ -322,12 +322,12 @@ void OguiFormattedText::parseTextToButtons()
 			data.cur_w = data.currentFont->getStringWidth(  text.substr( data.cur_pos, data.next_tag - data.cur_pos ).c_str() );
 
 			createTextButton( data.mx, data.my, data.cur_w, data.currentFont->getHeight(), text.substr( data.cur_pos, data.next_tag - data.cur_pos ), data.currentFont );
-			
+
 			// find out the place where the next string starts
 			data.cur_pos = data.next_tag + 1;
 			data.mx += data.cur_w;
 			data.add_x += data.cur_w;
-			
+
 			// Change the font and try again
 			// data.currentFont = myFonts[ tag_name ];
 			// find out the new font
@@ -359,7 +359,7 @@ void OguiFormattedText::parseFormattedCommand( const std::string& tag_name, Pars
 		// FB_ASSERT( tag_name.empty()?true:tagstack.top() == tag_name.substr( 1 ) );
 		if( !tagstack.empty() )
 			tagstack.pop();
-		
+
 		if( tagstack.empty() )
 		{
 			data->currentFont = font;
@@ -383,7 +383,7 @@ void OguiFormattedText::parseFormattedCommand( const std::string& tag_name, Pars
 			{
 				data->currentFont = i->second;
 				tagstack.push( tag_name );
-				
+
 				return;
 			}
 		}
@@ -395,7 +395,7 @@ void OguiFormattedText::parseFormattedCommand( const std::string& tag_name, Pars
 
 			std::string command_name = tag_name;
 			std::string attributes;
-			
+
 			// parse the attributes of the command name
 			{
 				std::string::size_type i;
@@ -409,10 +409,10 @@ void OguiFormattedText::parseFormattedCommand( const std::string& tag_name, Pars
 
 			i = commands.find( command_name );
 			if( i != commands.end() )
-			{	
+			{
 				// execute the command
 				i->second->execute( this, attributes, data );
-				
+
 			}
 		}
 
@@ -435,7 +435,7 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 	int my = data->y;
 	int cur_w = data->w;
 	int add_x = 0;
-	
+
 	std::stack< std::string > tempstack = stack;
 
 	if( !stack.empty() )
@@ -463,8 +463,8 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 			// add_x += tmp.second;
 			cur_w = tmp.second;
 		}
-		
-		
+
+
 		// create buttons as desired
 		// we check which is the first to come, linebrk, next_tag or next_hardbreak
 		if( ( next_linebrk < next_tag || next_hardbreak < next_tag ) || ( next_tag == text.npos ) )
@@ -486,7 +486,7 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 
 			// if( cur_pos != break_here )
 				cur_pos = break_here + 1;
-			
+
 			mx = data->x;
 			my += (int)( cur_font->getHeight() * lineHeight );
 			add_x = 0;
@@ -495,12 +495,12 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 			cur_w = cur_font->getStringWidth(  text.substr( cur_pos, next_tag - cur_pos ).c_str() );
 
 			// createTextButton( mx, my, cur_w, cur_font->getHeight(), text.substr( cur_pos, next_tag - cur_pos ), cur_font );
-			
+
 			// find out the place where the next string starts
 			cur_pos = next_tag + 1;
 			mx += cur_w;
 			add_x += cur_w;
-			
+
 			// Change the font and try again
 			// cur_font = myFonts[ tag_name ];
 			// find out the new font
@@ -516,7 +516,7 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 						// FB_ASSERT( tempstack.top() == tag_name.substr( 1 ) );
 						if( !tempstack.empty() )
 							tempstack.pop();
-						
+
 						if( tempstack.empty() )
 						{
 							cur_font = font;
@@ -567,7 +567,7 @@ std::pair< int, int > OguiFormattedText::findLineWidthBreak( std::string::size_t
 		{
 			pos = text.size();
 		}
-		
+
 		FB_ASSERT( cur_font != NULL );
 
 		if( cur_font == NULL || ( temp_w = cur_font->getStringWidth( text.substr( cur_pos, pos - cur_pos ).c_str() ) ) > width )
@@ -596,12 +596,12 @@ std::pair< int, int > OguiFormattedText::findLineWidthBreak( std::string::size_t
 		pos = text.find_first_of( " \t\n\r", start_pos );
 		if( pos == text.npos )
 			pos = text.size();
-		
+
 		FB_ASSERT( cur_font != NULL );
 
 		if( cur_font != NULL )
 			temp_w = cur_font->getStringWidth( text.substr( cur_pos, pos - cur_pos ).c_str() );
-		
+
 		return std::pair< int, int >( pos, temp_w );
 	}
 #endif
@@ -637,7 +637,7 @@ void OguiFormattedText::createTextButton( int button_x, int button_y, int button
 {
 	FB_ASSERT( ogui );
 	FB_ASSERT( window );
-	
+
 	bool cl = false;
 	float cx = 0.0f;
 	float cy = 0.0f;
@@ -719,13 +719,13 @@ void OguiFormattedText::createTextButton( int button_x, int button_y, int button
 		}
 	}
 
-	
+
 
 	OguiButton* b;
 	b = ogui->CreateSimpleTextButton( window, button_x, button_y, button_w, button_h,
 		NULL, NULL, NULL, button_text.c_str(), 0, NULL, false );
 	if ( button_font ) b->SetFont( button_font );
-	
+
 	// b->SetDisabledImage( ogui->LoadOguiImage( "Data/GUI/debug.tga" ) );
 
 	b->SetTextHAlign( hAlign );
@@ -760,7 +760,7 @@ void OguiFormattedText::createImageButton( int button_x, int button_y, int butto
 		b->SetDisabled( true );
 		b->SetClipToWindow( false );
 	}
-	
+
 
 	buttons.push_back( b );
 }
@@ -774,7 +774,7 @@ void OguiFormattedText::createImageButton( int button_x, int button_y, int butto
 
 	OguiButton* b;
 	b = ogui->CreateSimpleImageButton( window, button_x, button_y, button_w, button_h, NULL, NULL, NULL, NULL, 0, NULL, false );
-	
+
 	if( b )
 	{
 		b->SetDisabled( true );
@@ -826,7 +826,7 @@ void OguiFormattedText::moveBy( int x, int y, bool clear_top, bool clear_bottom 
 		// int w = (*i)->GetSizeX();
 		int y = (*i)->GetY();
 		int h = (*i)->GetSizeY();
-		
+
 		if(  (clear_top    &&  y < clip->y)
 			|| (clear_bottom &&  y + h > clip->y + clip->h))
 		{
@@ -852,7 +852,7 @@ void OguiFormattedText::move( int x, int y )
 		// move
 		position->x = x;
 		position->y = y;
-		
+
 		// change clip as well
 		clip->x += diffX;
 		clip->y += diffY;

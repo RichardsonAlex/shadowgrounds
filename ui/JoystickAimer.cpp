@@ -51,7 +51,7 @@ namespace ui
 		{
 			return;
 		}
-		
+
 		int scrmidx = (int)(result.x * 1024.0f);
 		int scrmidy = (int)(result.y * 768.0f);
 		//int scrmidx = 1024/2;
@@ -72,7 +72,7 @@ namespace ui
 			scheme = game::SimpleOptions::getInt(DH_OPT_I_4TH_PLAYER_CONTROL_SCHEME);
 		/*if (scheme < 0) scheme = 0;
 		if (scheme >= 4 * 3) scheme = 4 * 3 - 1;*/
-	
+
 		// int forcedRotation = 0;
 		int x = 0, y = 0; // , rx, ry, throttle, rudder;
 

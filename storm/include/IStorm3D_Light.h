@@ -73,7 +73,7 @@ public:
 	virtual COL &GetColor()=0;
 	virtual float GetMultiplier()=0;
 	virtual float GetDecay()=0;
-	
+
 	// Keyframe animation (all times in milliseconds)
 	virtual void Animation_Clear()=0;	// Removes all animation keys
 	virtual void Animation_SetLoop(int end_time)=0;	// Set end_time to 0, if you do not want looping

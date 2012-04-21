@@ -53,7 +53,7 @@ void OguiAligner::align(OguiWindow *win, int flags, Ogui *ogui)
 			but->put_x += deltax;
 			but->put_y += deltay;
 			but = (orvgui_but *)(but->next_sister);
-		}		
+		}
 	}
 	owin->sizex = w;
 	owin->sizey = h;

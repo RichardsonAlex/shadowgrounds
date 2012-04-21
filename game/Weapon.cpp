@@ -176,7 +176,7 @@ namespace game
 		customCameraZoom = 0.0f;
 
 		selectableWithoutAmmo = true;
-		
+
 		aimEndDelay = 100;
 
 		criticalHitDamageMax = 10000;
@@ -1197,7 +1197,7 @@ namespace game
 		return accuracy;
 	}
 
-	
+
 	int Weapon::getLowAccuracy() const
 	{
 		return lowAccuracy;
@@ -1368,7 +1368,7 @@ namespace game
 
 
 	const char *Weapon::getMuzzleflashEffect()
-	{		
+	{
 		// HACK: return a random muzzleflash effect name
 
 		if (muzzleflashEffect == NULL)
@@ -1391,32 +1391,32 @@ namespace game
 			if (muzzleflashEffect2 != NULL)
 			{
 				if ((SystemRandom::getInstance()->nextInt() % 2) == 0)
-					return muzzleflashEffect;				
+					return muzzleflashEffect;
 				else
 					return muzzleflashEffect2;
 			} else {
-				return muzzleflashEffect;				
+				return muzzleflashEffect;
 			}
 		}
 	}
 
 	const char *Weapon::getRechargeEffect() const
-	{		
+	{
 		return rechargeEffect;
 	}
 
 	const char *Weapon::getEjectEffect() const
-	{		
+	{
 		return ejectEffect;
 	}
 
 	int Weapon::getEjectRate() const
-	{		
+	{
 		return ejectRate;
 	}
 
 	const char *Weapon::getClipreloadEffect() const
-	{		
+	{
 		return clipreloadEffect;
 	}
 

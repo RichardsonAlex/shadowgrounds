@@ -117,7 +117,7 @@ public:
 
 	void getObstacles(std::vector<TerrainObstacle> &obstacles);
 	void clearObstacles();
-	
+
 	void setLightManager(ui::LightManager *lightManager);
 	void createPhysics(game::GamePhysics *gamePhysics, unsigned char *clipMap, bool sleepPhysicsObjects, const char *currentMap);
 	void updatePhysics(game::GamePhysics *gamePhysics, std::vector<TerrainObstacle> &objectsMovedFirstTime, util::GridOcclusionCuller *culler);

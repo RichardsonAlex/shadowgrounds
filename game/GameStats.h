@@ -68,9 +68,9 @@ namespace game
 
 			//=================================================================
 			// added by Pete, getters for the data, used for score window
-			
+
 			int getTotalKills() const;
-			
+
 			int getTotalTime() const;	// result in secs
 
 			int getSurvivalTime() const;

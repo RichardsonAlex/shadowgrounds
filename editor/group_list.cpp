@@ -111,7 +111,7 @@ struct GroupList::Data
 			if(groupIndex == -1)
 			{
 				groupIndex = groups.size();
-				
+
 				GroupImp groupImp;
 				groupImp.name = group;
 				groups.push_back(groupImp);
@@ -120,7 +120,7 @@ struct GroupList::Data
 			if(subgroupIndex == -1)
 			{
 				subgroupIndex = groups[groupIndex].subgroups.size();
-				
+
 				SubgroupImp groupImp;
 				groupImp.name = subgroup;
 				groups[groupIndex].subgroups.push_back(groupImp);

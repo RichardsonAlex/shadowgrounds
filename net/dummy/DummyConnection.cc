@@ -159,7 +159,7 @@ namespace net
 			}
 
 			// artificial lag
-			
+
 			// FIXME: may possibly break
 			// (and loop almost forever) if timer overflows
 

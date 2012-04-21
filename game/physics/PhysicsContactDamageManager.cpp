@@ -394,7 +394,7 @@ Logger::getInstance()->error(buf);
 							if (unit->getUnitType()->getPhysicsContactDamageBullet() != NULL)
 							{
 								Bullet *damBullet = unit->getUnitType()->getPhysicsContactDamageBullet();
-								
+
 
 								if (impactDamage
 									|| (unit != NULL && !unit->isPhysicsObjectLock()))
@@ -471,7 +471,7 @@ Logger::getInstance()->error(buf);
 										MAT m;
 										m.CreateCameraMatrix( VC3(), VC3(-vel.x, 0, vel.z) , VC3(0, 1, 0));
 										QUAT rotat = m.GetRotation();
-										
+
 										//unit->setPhysicsObjectLock( false );
 										unit->getVisualObject()->setRotationQuaternion( rotat );
 										unit->getGamePhysicsObject()->setRotation( rotat );
@@ -728,7 +728,7 @@ if (strncmp(objectEvents[i].effect.c_str(), "LONG_", 5) == 0)
 					if (o != NULL)
 					{
 						o->restorePreviousVelocities(0.6f, 0.2f);
-					}					
+					}
 				}
 
 			} // end if makedamage

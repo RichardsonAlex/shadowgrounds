@@ -32,7 +32,7 @@ struct AmbientSoundManagerData {
 	SoundLooper* m_soundLooper;
 	int m_selectedSound;
 	VC3 m_listenerPosition;
-	
+
 	AmbientSoundManagerData(game::GameUI* gameUI_, SoundLooper* soundLooper) {
 		assert(gameUI_ != NULL);
 		assert(soundLooper != NULL);
@@ -41,16 +41,16 @@ struct AmbientSoundManagerData {
 	}
 
 	void clearAllAmbientSounds() {
-		
+
 		std::map<int, AmbientSound>::iterator it = m_sounds.begin();
 		while(it != m_sounds.end()) {
 			it->second.disable(true, m_soundLooper);
 			it++;
 		}
-		
+
 		m_sounds.clear();
 	}
-	
+
 	void setSelectedAmbientSound(int id) {
 		m_selectedSound = id;
 	}
@@ -70,11 +70,11 @@ struct AmbientSoundManagerData {
 	void setAmbientSoundRange(int sel, int f) {
 		m_sounds[sel].setRange(static_cast<float>(f));
 	}
-	
+
 	void setAmbientSoundClipQuarters(int sel, int clipq) {
 		m_sounds[sel].setClip(clipq);
 	}
-	
+
 	void setAmbientSoundRollOff(int sel, int r) {
 		m_sounds[sel].setRollOff(r);
 	}
@@ -107,7 +107,7 @@ struct AmbientSoundManagerData {
 			it->second.tick(m_gameUI, m_soundLooper, m_listenerPosition);
 			it++;
 		}
-	
+
 	}
 
 };
@@ -121,7 +121,7 @@ AmbientSoundManager::AmbientSoundManager(game::GameUI* gameUI_, SoundLooper* loo
 AmbientSoundManager::~AmbientSoundManager() {
 
 	m->clearAllAmbientSounds();
-	
+
 	delete m;
 
 }

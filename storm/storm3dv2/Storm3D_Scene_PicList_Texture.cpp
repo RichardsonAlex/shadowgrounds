@@ -262,7 +262,7 @@ void Storm3D_Scene_PicList_Picture3D::Render()
 		float newAlpha = (1-material->GetTransparency());
 		uint32_t col=COLOR_RGBA((int)(c.r*255.0f),(int)(c.g*255.0f),(int)(c.b*255.0f),(int)(newAlpha*255.0f));
 		//uint32_t col=COLOR_RGBA(c.r,c.g,c.b,newAlpha);
-		
+
 		// Create a quad
 		float hsx=size.x*0.5f;
 		float hsy=size.y*0.5f;

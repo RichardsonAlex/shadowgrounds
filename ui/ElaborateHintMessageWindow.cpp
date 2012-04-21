@@ -81,7 +81,7 @@ public:
 			immortal = game::getLocaleGuiInt( temp.c_str(), 0  )==0?false:true;
 
 			temp = "gui_" + fadingTextWindowName + "_" + style_name + "_" + "queue_time";
-			queueTime = game::getLocaleGuiInt( temp.c_str(), 0  );	
+			queueTime = game::getLocaleGuiInt( temp.c_str(), 0  );
 
 			SetFade( fade );
 		}
@@ -126,7 +126,7 @@ public:
 			if( immortal == false )
 			{
 				float t = 1.0f - ( (float)( ( creationTime + lifeTime ) - getTime() ) / (float)fadeTime );
-				
+
 				if( getTime() > ( creationTime + lifeTime ) )
 					t = 1.01f;
 
@@ -151,7 +151,7 @@ public:
 		{
 			if( getTime() >= ( creationTime + lifeTime - fadeTime) )
 				fadeStatus = FS_FadeOut;
-		}	
+		}
 
 		if( immortal == false && fading == false )
 		{
@@ -292,7 +292,7 @@ private:
 			{
 				int tag_size = text.find('>', i) - i;
 				std::string tag = util::StringRemoveWhitespace(text.substr(i+1, tag_size - 1));
-				
+
 				bool remove_tag = true;
 
 				// audiofile
@@ -371,7 +371,7 @@ public:
 		oguiLoader.SetLogging( elaborateLoggingEnabled, "missing_locales.txt" );
 
 		window = oguiLoader.LoadWindow( fadingTextWindowName );
-		
+
 		if( window )
 			window->SetReactMask( 0 );
 
@@ -392,7 +392,7 @@ public:
 	void ShowMessage( const std::string& style, const std::string& message )
 	{
 		CFadingTextMessage* fadingtext = GetStyleThing( style );
-		
+
 		fadingtext->SetText( message );
 		//else
 		//	fadingtext->SetImmortal( false );
@@ -406,14 +406,14 @@ public:
 		for( i = fadingTextMessages.begin(); i != fadingTextMessages.end(); )
 		{
 			i->second->Update();
-			
+
 			if( i->second->IsDead() )
 			{
 				std::map< std::string, CFadingTextMessage* >::iterator remove = i;
 				++i;
 				delete remove->second;
 				fadingTextMessages.erase( remove );
-				
+
 			}
 			else
 			{
@@ -425,7 +425,7 @@ public:
 	//-------------------------------------------------------------------------
 
 	CFadingTextMessage* GetStyleThing( const std::string& style )
-	{	
+	{
 		std::map< std::string, CFadingTextMessage* >::iterator i;
 		i = fadingTextMessages.find( style );
 		if( i != fadingTextMessages.end() )
@@ -440,7 +440,7 @@ public:
 			return result;
 		}
 	}
-	
+
 	//-------------------------------------------------------------------------
 
 	void Hide( int fadeTime )

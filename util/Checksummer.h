@@ -13,7 +13,7 @@ namespace util
 
 		private:
 			static bool countChecksumForFileImpl(unsigned int *checksum, int *filesize, const char *filename);
-			
+
 	};
 
 }

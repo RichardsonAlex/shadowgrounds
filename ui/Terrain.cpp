@@ -173,7 +173,7 @@ static void init_terrain_object_variables()
 		} else {
 			sp.error("init_terrain_object_variables - Failed to load terrain object variable names.");
 		}
-		
+
 		// get rid of empty/unused names. (by naming them _reserved_x)
 		for (int i = 0; i < TERRAIN_OBJECT_VARIABLES_AMOUNT; i++)
 		{
@@ -272,7 +272,7 @@ static void uninit_terrain_object_variables()
 				delete *it;
 
 			for(std::deque<InstanceData *>::iterator it = static_models.begin(); it != static_models.end(); ++it)
-				delete *it;	
+				delete *it;
 		}
 
 		// Use these to do something ;-)
@@ -316,7 +316,7 @@ static void uninit_terrain_object_variables()
 		void Update(int time_elapsed, IStorm3D_Scene *scene, IStorm3D_Terrain *terrain)
 		{
 			float time_delta = static_cast<float> (time_elapsed) / 1000.f;
-			
+
 			Vector model_position;
 			Vector top_position;
 			Rotation x, y, r;
@@ -710,7 +710,7 @@ static void uninit_terrain_object_variables()
 				Storm3D_Face *destFaces = destMesh->GetFaceBuffer();
 				for(int i = 0; i < faceAmount; ++i)
 					destFaces[i] = sourceFaces[i];
-				
+
 				destMesh->ChangeVertexCount(vertexAmount);
 				Storm3D_Vertex *destVertices = destMesh->GetVertexBuffer();
 				for(int i = 0; i < vertexAmount; ++i)
@@ -774,7 +774,7 @@ static void uninit_terrain_object_variables()
 		event.projectile = data.explosionProjectile;
 		event.effect = data.explosionEffect;
 		event.unifiedHandle = unifiedHandle;
-	
+
 		if(!data.explosionSounds.empty())
 		{
 			event.sound = data.explosionSounds[data.nextSound];
@@ -864,10 +864,10 @@ struct TerrainData
 	TerrainAnimation animation;
 
 	std::vector<boost::shared_ptr<IStorm3D_Texture> > textures;
-	std::map<int, std::vector<BlendPass> > blendings;	
+	std::map<int, std::vector<BlendPass> > blendings;
 	boost::scoped_ptr<IStorm3D_Model> backgroundStormModel;
 	std::map<int, TerrainLightMap> lightMaps;
-	
+
 	ObjectList objects;
 	ObjectIndices objectIndices;
 
@@ -883,7 +883,7 @@ struct TerrainData
 	boost::scoped_array<uint16_t> heightMap;
 	boost::scoped_array<uint16_t> obstacleMap;
 	boost::scoped_array<uint16_t> forceMap;
-	
+
 	VC2I mapSize;
 	VC3 realSize;
 	float terrainScale;
@@ -894,7 +894,7 @@ struct TerrainData
 	VC3 sunDirection;
 
 	float cameraRange;
-	float fogStart;	
+	float fogStart;
 	float fogEnd;
 
 	bool fogEnabled;
@@ -951,7 +951,7 @@ struct TerrainData
 			scene->RemoveBackGround();
 		if(terrain)
 			scene->RemoveTerrain(terrain);
-		
+
 		delete terrain;
 	}
 
@@ -984,7 +984,7 @@ struct TerrainData
 	void horizline( float fx1, float fx2, float fy, bool add )
 	{
 		if( fx2 < fx1 ) std::swap( fx1, fx2 );
-		
+
 		int x1 = (int)( fx1 + 0.5f );
 		int x2 = (int)( fx2 + 0.5f );
 		int ty = (int)( fy + 0.5f );
@@ -1019,12 +1019,12 @@ struct TerrainData
 			dx1=(B.x-A.x)/(B.y-A.y);
 		else
 			dx1=B.x - A.x;
-		
+
 		if (C.y-A.y > 0)
 			dx2=(C.x-A.x)/(C.y-A.y);
 		else
 			dx2=0;
-		
+
 		if (C.y-B.y > 0)
 			dx3=(C.x-B.x)/(C.y-B.y);
 		else
@@ -1093,7 +1093,7 @@ struct TerrainData
 					// rotate
 					float ca = sin( angle );
 					float sa = cos( angle );
-		
+
 					float tx = corners[ i ].x * ca - corners[ i ].y * sa;
 					float ty = corners[ i ].x * sa + corners[ i ].y * ca;
 					corners[ i ].x = tx;
@@ -1123,7 +1123,7 @@ struct TerrainData
 
 			if( false )
 			{
-				VC2 pos2d = objects[modelId].instances[instanceId].position;		
+				VC2 pos2d = objects[modelId].instances[instanceId].position;
 				VC3 rot = objects[modelId].instances[instanceId].setRotation.getEulerAngles();
 
 				int ox = gameMap->scaledToObstacleX(pos2d.x);
@@ -1204,7 +1204,7 @@ struct TerrainData
 
 		VC2I obstPos = objects[modelId].instances[instanceId].dynamicObstaclePosition;
 		float rotation = objects[modelId].instances[instanceId].dynamicObstacleRotation;
-		
+
 		paintDynamicObstacle( modelId, instanceId, obstPos, rotation, false );
 
 		objects[modelId].instances[instanceId].dynamicObstacleExists = false;
@@ -1221,7 +1221,7 @@ struct TerrainData
 		if (physType != TERRAIN_OBJECT_PHYSICS_TYPE_NONE
 			&& physType != TERRAIN_OBJECT_PHYSICS_TYPE_STATIC)
 		{
-			VC2 pos2d = objects[modelId].instances[instanceId].position;		
+			VC2 pos2d = objects[modelId].instances[instanceId].position;
 
 			if (gameMap->isWellInScaledBoundaries(pos2d.x, pos2d.y))
 			{
@@ -1327,7 +1327,7 @@ struct TerrainData
 			copy.originalModel = origModelId;
 			copy.originalInstance = origObjectId;
 
-			assert(copy.originalModel != newModelId || copy.originalInstance != newInstanceId);			
+			assert(copy.originalModel != newModelId || copy.originalInstance != newInstanceId);
 
 			// DON'T COPY THE PHYSICS OBJECT!
 			copy.physicsObject.reset();
@@ -1587,7 +1587,7 @@ static util::ObjectDurabilityParser durp;
 
 		blockAmount = 0;
 		stream >> blockAmount;
-	
+
 		for(int i = 0; i < blockAmount; ++i)
 		{
 			int blockIndex = 0;
@@ -1600,7 +1600,7 @@ static util::ObjectDurabilityParser durp;
 			{
 				int textureA = 0;
 				int textureB = 0;
-				
+
 				stream >> textureA >> textureB;
 				assert(textureA >= 0);
 
@@ -1737,7 +1737,7 @@ static util::ObjectDurabilityParser durp;
 
 						int anims = 0;
 						stream >> anims;
-					
+
 						if(anims)
 						{
 							data.explosionAnimations.resize(anims);
@@ -2421,7 +2421,7 @@ if(newObject.data.explosionObstacle.find("_loop") != std::string::npos)
 			{
 				Logger::getInstance()->warning("Terrain explosion object not properly loaded");
 				Logger::getInstance()->warning(newObject.data.explosionObstacle.c_str());
-				
+
 				newIndex = -1;
 				break;
 			}
@@ -2465,7 +2465,7 @@ if(newObject.data.explosionObstacle.find("_loop") != std::string::npos)
 			copy.originalInstance = objectId;
 
 			assert(copy.originalModel != newIndex || copy.originalInstance != int(newObject.instances.size()));
-			
+
 
 			// DON'T COPY THE PHYSICS OBJECT!
 			copy.physicsObject.reset();
@@ -2490,7 +2490,7 @@ if(newObject.data.explosionObstacle.find("_loop") != std::string::npos)
 
 			// NOTE: this is not an error??
 			// if _new_ object has no obstacle, remove original obstacle. sounds reasonable in a way - if object just gets battered a bit, don't want to get rid of the obstacle..
-			
+
 			if(newObject.data.type == TERRAIN_OBSTACLE_TYPE_NONE)
 			{
 				if (!instance.movedByPhysics)
@@ -2616,7 +2616,7 @@ static util::ObjectDurabilityParser durp;
 
 		if(data.ambientSound.empty())
 			return;
-		
+
 		ambientSoundManager->setNextFreeAmbientSound();
 		instance.ambientSound = ambientSoundManager->getSelectedAmbientSound();
 		ambientSoundManager->setAmbientSoundRange(instance.ambientSound, (float)data.ambientSoundRange);
@@ -2998,7 +2998,7 @@ void Terrain::loadPhysicsCache(game::GamePhysics *gamePhysics, char *mapFilename
 #endif
 		}
 	}
-	
+
 	fb_fclose(f);
 }
 
@@ -3171,7 +3171,7 @@ void Terrain::createPhysics(game::GamePhysics *gamePhysics, unsigned char *clipM
 		//if (game::SimpleOptions::getBool(DH_OPT_B_PHYSICS_USE_HARDWARE))
 		{
 			boost::shared_ptr<frozenbyte::physics::StaticMesh> mesh = gamePhysics->getPhysicsLib()->createStaticMesh(terrainFilename.c_str());
-			
+
 			VC3 physics_mesh_offset;
 			if( game::Unit::getVisualizationOffsetInUse() )
 				physics_mesh_offset.y = game::Unit::getVisualizationOffset();
@@ -3914,7 +3914,7 @@ UnifiedHandle Terrain::getReplacementForUnifiedHandleObject(UnifiedHandle unifie
 	int instanceId = 0;
 
 	unifiedHandleToTerrainIds(unifiedHandle, &modelId, &instanceId);
-	
+
 	int origModel = data->objects[modelId].instances[instanceId].originalModel;
 	int origInstance = data->objects[modelId].instances[instanceId].originalInstance;
 
@@ -3925,7 +3925,7 @@ UnifiedHandle Terrain::getReplacementForUnifiedHandleObject(UnifiedHandle unifie
 	}
 
 	int repModelId = data->objects[origModel].instances[origInstance].latestReplacementModel;
-	int repInstanceId = data->objects[origModel].instances[origInstance].latestReplacementInstance;	
+	int repInstanceId = data->objects[origModel].instances[origInstance].latestReplacementInstance;
 
 	// destroyed for good, no replacement?
 	if (repModelId == 0 && repInstanceId == 0)
@@ -4101,7 +4101,7 @@ COL Terrain::getAmbient() const
 
 void Terrain::setAmbient(COL ambientColor)
 {
-	COL ambientCharColor = ambientColor * 255.f;	
+	COL ambientCharColor = ambientColor * 255.f;
 	data->ambientColor = TColor<unsigned char>((unsigned char)ambientCharColor.r, (unsigned char)ambientCharColor.g, (unsigned char)ambientCharColor.b);
 	data->scene->SetAmbientLight(ambientColor);
 }
@@ -4197,7 +4197,7 @@ bool Terrain::breakObjects(int modelId, int objectId, int damage, std::vector<Te
 }
 
 void Terrain::updateOcclusionForAllObjects(util::GridOcclusionCuller *culler, GRIDOCCLUSIONCULLER_DATATYPE cameraArea)
-{	
+{
 	data->occlusionCameraArea = cameraArea;
 
 	for (int modelId = 0; modelId < (int)data->objects.size(); modelId++)

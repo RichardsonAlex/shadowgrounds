@@ -947,7 +947,7 @@ void Storm3D_Spotlight::renderCone(Storm3D_Camera &camera, float timeFactor, boo
 
 		D3DXMATRIX rot1;
 		D3DXMatrixAffineTransformation(rot1, 1.f, center, quat1, 0.0f);
-		
+
 		if(i == 0)
 		{
 			glActiveTexture(GL_TEXTURE3);

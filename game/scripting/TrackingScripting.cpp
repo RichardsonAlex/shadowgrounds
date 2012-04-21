@@ -77,7 +77,7 @@ namespace game
 		{
 		case GS_CMD_createScriptableTrackerType:
 			if (stringData != NULL)
-			{				
+			{
 				if (game->objectTracker->getTrackerTypeNumberByName(stringData) == -1)
 				{
 					tracking::ScriptableTrackerObjectType::setGameScripting(game->gameScripting);
@@ -111,7 +111,7 @@ namespace game
 				{
 					TrackerTypeNumber tnum = game->objectTracker->getTrackerTypeNumberByName(stringData);
 					if (tnum != -1)
-					{			
+					{
 						gsd->unifiedHandle = game->objectTracker->createTracker(tnum);
 						if (gsd->unifiedHandle != UNIFIED_HANDLE_NONE)
 						{
@@ -158,7 +158,7 @@ namespace game
 				{
 					TrackerTypeNumber tnum = game->objectTracker->getTrackerTypeNumberByName(s);
 					if (tnum != -1)
-					{			
+					{
 						// HACK: ...
 						hackhack_trackerunit = NULL;
 						if (VALIDATE_UNIFIED_HANDLE_BITS(*lastValue)
@@ -255,7 +255,7 @@ namespace game
 						{
 							ITrackableObject *trackable = game->objectTracker->getTrackerAttachedTrackable(gsd->unifiedHandle);
 							if (trackable != NULL)
-							{						
+							{
 								if (trackable->getTypeId() == TrackableUnifiedHandleObject::typeId)
 								{
 									// WARNING: unsafe cast, based on above type check.
@@ -445,7 +445,7 @@ namespace game
 						{
 							ITrackableObject *trackable = game->objectTracker->getTrackerAttachedTrackable(gsd->unifiedHandle);
 							if (trackable != NULL)
-							{						
+							{
 								if (trackable->getTypeId() == TrackableUnifiedHandleObject::typeId)
 								{
 									// WARNING: unsafe cast, based on above type check.
@@ -485,7 +485,7 @@ namespace game
 					{
 						ITrackableObject *trackable = game->objectTracker->getTrackerAttachedTrackable(gsd->unifiedHandle);
 						if (trackable != NULL)
-						{						
+						{
 							UnifiedHandle originalTrackerBeforeCall = ScriptableTrackerObject::trackerForCurrentlyRunningScript;
 							ScriptableTrackerObject::trackerForCurrentlyRunningScript = UNIFIED_HANDLE_NONE;
 
@@ -562,7 +562,7 @@ namespace game
 							PartType *bulletpt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"));
 
 							if (bulletpt != NULL && pt->isInherited(bulletpt))
-							{ 						
+							{
 								gs_trackerProjectileBullet = s;
 							} else {
 								sp->error("UnitScripting::process - setTrackerProjectileBullet, given part type is non-bullet type.");

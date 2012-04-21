@@ -46,7 +46,7 @@ namespace game
 		float getVelocity();
 
 		int createDamageTo(Part *part, float factor);
-		
+
 		int getHeatTo(Part *part);
 
 		int getVisualEffectNumber();

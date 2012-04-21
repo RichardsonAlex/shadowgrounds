@@ -22,7 +22,7 @@ struct Storm3D_CollisionInfo
 	// Spherecollision specific:
 	// The amount (among plane_normal) that must be added to coordinate in order to get the sphere out of the wall...
 	// Use like this: position+=colinfo.plane_normal*colinfo.inside_amount
-	float inside_amount;				
+	float inside_amount;
 	bool onlySolidSurfaces;
 	bool includeTerrainObjects;
 	int terrainInstanceId;

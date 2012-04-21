@@ -195,7 +195,7 @@ struct ParticlePhysics::Data
 #ifndef NX_DISABLE_FLUIDS
 	FluidBaseList fluidBaseList;
 #endif
-	
+
 	// Update lists
 	PhysicsActorList physicsActorList;
 #ifndef NX_DISABLE_FLUIDS
@@ -503,7 +503,7 @@ void ParticlePhysics::update()
 					actor->lastPosition1 = currentPos;
 					actor->lastAngular1 = currentAngular;
 				}
-	
+
 				if(actor->forceUpdate || !actor->actor->isSleeping())
 					actor->actor->addVelocityChange(actor->force);
 

@@ -17,7 +17,7 @@ namespace game
 
 	class AnimationScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

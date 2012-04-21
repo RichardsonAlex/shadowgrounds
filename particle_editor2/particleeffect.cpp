@@ -48,7 +48,7 @@ class ParticleEffect : public IParticleEffect
 	Vector m_velocity;
 	Vector m_position;
 	Vector m_rotation;
-		
+
 	std::vector< boost::shared_ptr<IParticleSystem> > m_systems;
 	boost::shared_ptr<IParticleCollision> collision;
 	boost::shared_ptr<IParticleArea> area;
@@ -74,38 +74,38 @@ public:
 
 /*
 	void calcFacingMatrix(Matrix& m, const Vector& d) {
-		
+
 		Vector r = d;
 		r.Normalize();
 		Vector v = r.GetCrossWith(Vector(0.0f, 1.0f, 0.0f));
 		float angle = v.GetDotWith(v);
 		if(angle<0.00001f) {
-			v = r.GetCrossWith(Vector(1.0f, 0.0f, 0.0f));			
+			v = r.GetCrossWith(Vector(1.0f, 0.0f, 0.0f));
 		}
 		Vector s = r.GetCrossWith(v);
 		Vector t = r.GetCrossWith(s);
 		m.CreateBaseChangeMatrix(Vector(s.x, r.x, t.x), Vector(s.y, r.y, t.y), Vector(s.z, r.z, t.z));
-		
+
 	}
-*/	
-	
+*/
+
 	void setPosition(const Vector& position) {
-		
+
 //		m_velocity = position - m_position;
 		m_position = position;
-			
+
 	}
 
 	void setVelocity(const Vector& velocity) {
-		
+
 		m_velocity = velocity;
-	
+
 	}
-	
+
 	void setRotation(const Vector& rotation) {
-		
+
 		m_rotation = rotation;
-	
+
 	}
 
 	void setEmitFactor(float factor)
@@ -129,7 +129,7 @@ public:
 	{
 		collision = collision_;
 	}
-	
+
 	void setArea(boost::shared_ptr<IParticleArea> &area_)
 	{
 		area = area_;
@@ -145,13 +145,13 @@ public:
 		for(int i = 0; i < (int)m_systems.size(); ++i)
 		{
 			m_systems[i]->setSpawnModel(model);
-		}		
+		}
 	}
 
 	void tick() {
 
 //		m_position += m_velocity;
-		
+
 		for(int i = 0; i < (int)m_systems.size(); ++i)
 		{
 			m_systems[i]->setLighting(ambient, lightIndices);
@@ -165,9 +165,9 @@ public:
 			m_systems[i]->setEmitterRotation(emitterRotation);
 //			m_systems[i]->setLenght(m_lenght);
 		}
-			
+
 	}
-	
+
 	void kill() {
 		// psd
 		//if(m_dieWithEffect)
@@ -177,7 +177,7 @@ public:
 			}
 		}
 	}
-		
+
 	bool isDead() {
 		bool alive = true;
 		for(int i = 0; i < (int)m_systems.size(); i++) {
@@ -187,16 +187,16 @@ public:
 		}
 		return !alive;
 	}
-	
+
 	int getNumSystems() const {
 		return m_systems.size();
 	}
-	
+
 	IParticleSystem* getParticleSystem(int i) {
 		assert(i >= 0 && i < (int)m_systems.size());
 		return m_systems[i].get();
 	}
-	
+
 	IParticleSystem* addParticleSystem(const std::string& className) {
 
 		boost::shared_ptr<IParticleSystem> ps;
@@ -222,12 +222,12 @@ public:
 		m_systems.push_back(ps);
 		return ps.get();
 	}
-	
+
 	void removeSystem(int i) {
 		assert(i >= 0 && i < (int)m_systems.size());
 		m_systems.erase(m_systems.begin() + i);
 	}
-	
+
 };
 
 
@@ -260,19 +260,19 @@ bool ParticleEffectManager::loadParticleEffect(int id, const Parser& parser) {
 	int nSystems = convertFromString<int>(eg.getValue("num_systems", "0"), 0);
 	if(nSystems <= 0)
 		return false;
-	
+
 	ParticleEffect* proto = NULL;
 	for(int i = 0; i < nSystems; i++) {
-		
+
 		std::string str = "system" + boost::lexical_cast<std::string>(i);
 		const ParserGroup& sg = eg.getSubGroup(str);
-		
+
 		if(proto == NULL) {
 			proto = new ParticleEffect;
 			boost::shared_ptr<IParticleEffect> ptr(proto);
 			m_protos[id] = ptr;
 		}
-		
+
 		std::string className = sg.getValue("class", "");
 		IParticleSystem* ps = proto->addParticleSystem(className);
 
@@ -296,13 +296,13 @@ int ParticleEffectManager::loadParticleEffect(const EditorParser& parser) {
 	int nSystems = convertFromString<int>(eg.getValue("num_systems", "0"), 0);
 	if(nSystems <= 0)
 		return -1;
-	
+
 	ParticleEffect* proto = NULL;
 	for(int i = 0; i < nSystems; i++) {
-		
+
 		std::string str = "system" + boost::lexical_cast<std::string>(i);
 		const ParserGroup& sg = eg.getSubGroup(str);
-		
+
 		if(proto == NULL) {
 			proto = new ParticleEffect;
 			boost::shared_ptr<IParticleEffect> ptr(proto);
@@ -310,7 +310,7 @@ int ParticleEffectManager::loadParticleEffect(const EditorParser& parser) {
 			int dieWithEffect = convertFromString<int>(eg.getValue("die_with_object", ""), 0);
 			proto->m_dieWithEffect = (dieWithEffect == 1) ? true : false;
 		}
-		
+
 		std::string className = sg.getValue("class", "");
 		if (className.empty())
 		{
@@ -340,29 +340,29 @@ boost::shared_ptr<IParticleEffect> ParticleEffectManager::getEffectPrototype(int
 }
 
 boost::shared_ptr<IParticleEffect> ParticleEffectManager::addEffectToScene(int id) {
-	
+
 	assert(id >= 0 && id < (int)m_protos.size());
-				
+
 	ParticleEffect* effect = new ParticleEffect;
 	boost::shared_ptr<IParticleEffect> ptr(effect);
 	ParticleEffect* proto = static_cast<ParticleEffect*>(m_protos[id].get());
-	
+
 	for(int i = 0; i < (int)proto->m_systems.size(); i++)
-	{	
+	{
 		boost::shared_ptr<IParticleSystem> ps = proto->getParticleSystem(i)->clone();
-		
-		effect->m_systems.push_back(ps);	
+
+		effect->m_systems.push_back(ps);
 		effect->m_dieWithEffect = proto->m_dieWithEffect;
-		
+
 		if(particlePhysicsEnabled)
 			ps->setPhysics(physics);
 
 		ps->prepareForLaunch(m_s3d, m_scene);
 		m_systems.push_back(ps);
 	}
-	
+
 	return ptr;
-	
+
 	static boost::shared_ptr<IParticleEffect> empty;
 	return empty;
 }
@@ -423,7 +423,7 @@ void ParticleEffectManager::setModelParticleParameters(int maxAmount, int maxSpa
 {
 #ifdef PHYSICS_PHYSX
 	if(physics)
-	{	
+	{
 		physics->setMaxParticleAmount(maxAmount);
 		physics->setMaxParticleSpawnAmount(maxSpawnAmount);
 	}
@@ -434,7 +434,7 @@ void ParticleEffectManager::addPhysicsExplosion(const VC3 &position, float force
 {
 #ifdef PHYSICS_PHYSX
 	if(physics)
-	{	
+	{
 		physics->physicsExplosion(position, forceFactor, radius);
 	}
 #endif

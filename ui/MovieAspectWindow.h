@@ -21,16 +21,16 @@ namespace ui
 	{
 		public:
 			MovieAspectWindow(Ogui *ogui);
-			
+
 			~MovieAspectWindow();
 
 			void update();
-			
+
 		private:
 			BlackEdgeWindow *top;
-			BlackEdgeWindow *bottom;			
+			BlackEdgeWindow *bottom;
 	};
-	
+
 }
 
 #endif

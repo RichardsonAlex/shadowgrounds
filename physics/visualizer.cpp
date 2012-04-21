@@ -46,7 +46,7 @@ void visualize(PhysicsLib &physics, IStorm3D_Scene &scene, float range)
     {
 		NxU32 amount = debug->getNbPoints();
         const NxDebugPoint *buffer = debug->getPoints();
-	
+
 		while(amount--)
 		{
 			COL color = getColor(buffer->color);
@@ -90,7 +90,7 @@ void visualize(PhysicsLib &physics, IStorm3D_Scene &scene, float range)
     {
 		NxU32 amount = debug->getNbTriangles();
         const NxDebugTriangle *buffer = debug->getTriangles();
-	
+
 		while(amount--)
 		{
 			COL color = getColor(buffer->color);

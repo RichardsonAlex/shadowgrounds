@@ -78,7 +78,7 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, ui::LightManager 
 	gameMap->setData(terrain->GetHeightMap(), terrain->GetDoubleHeightMap(), terrain->getHeightMapSize(),
 	  terrain->getTerrainSize(), terrain->getTerrainHeight(), binFileString.c_str());
 	gameMap->setTerrain(terrain->GetTerrain());
-	
+
 	// set proper maps and stuff to light amount manager
 	util::LightAmountManager::getInstance()->setMaps(gameMap, terrain->GetTerrain());
 	terrain->GetTerrain()->setObstacleHeightmap(gameMap->getObstacleHeightMap(), gameMap->getAreaMap());
@@ -124,7 +124,7 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, const char *confi
 	bool shadow_smooth = false;
 	if (Parser::GetInt(scene_properties, "shadow_smooth") == 1)
 		shadow_smooth = true;
-		
+
 	COL shadCol = COL(shadow_r, shadow_g, shadow_b);
 
 	terrain->GetTerrain()->SetShadow(shadow_darkness, shadow_obstacle_height, shadCol, shadow_smooth);
@@ -132,7 +132,7 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, const char *confi
 	int memRes = game::SimpleOptions::getInt(DH_OPT_I_TERRAIN_MEMORY_RESERVE);
 	if (memRes < 0) memRes = 0;
 	int preCache = game::SimpleOptions::getInt(DH_OPT_I_TERRAIN_MEMORY_PRECACHE);
-	
+
 	if (preCache < 0)
 		preCache = 0;
 	if (preCache > memRes)

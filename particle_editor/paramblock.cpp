@@ -41,7 +41,7 @@ void ParamBlock::addParams(ParamDesc* desc, int nParams) {
 				if(param->animatable) {
 					boost::shared_ptr<Track> ft(new FloatTrack());
 					param->c.swap(ft);
-				}			
+				}
 			} break;
 		case PARAM_VECTOR:
 			{
@@ -51,7 +51,7 @@ void ParamBlock::addParams(ParamDesc* desc, int nParams) {
 					boost::shared_ptr<Track> vt(new VectorTrack());
 					param->c.swap(vt);
 				}
-			} break;		
+			} break;
 		case PARAM_STRING:
 			{
 				m_strings.push_back(std::string(""));

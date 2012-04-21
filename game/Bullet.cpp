@@ -420,12 +420,12 @@ namespace game
 		if (atSub == PARTTYPE_SUB_HIT)
 		{
 			if (strcmp(key, "damagerange") == 0)
-			{ 			
+			{
 				damageRange = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "playerdamagerange") == 0)
-			{ 			
+			{
 				playerDamageRange = str2int(value);
 				return true;
 			}
@@ -533,32 +533,32 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "terrainblendmax") == 0)
-			{ 			
+			{
 				terrainBlendMax = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrainblendamount") == 0)
-			{ 			
+			{
 				terrainBlendAmount = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrainblendradius") == 0)
-			{ 			
+			{
 				terrainBlendRadius = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "terrain_object_radius_damage_amount") == 0)
-			{ 			
+			{
 				terrainObjectRadiusDamageAmount = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrain_object_direct_damage_amount") == 0)
-			{ 			
+			{
 				terrainObjectDirectDamageAmount = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrain_object_damage_probability") == 0)
-			{ 			
+			{
 				terrainObjectDamageProbability = str2int(value);
 				return true;
 			}
@@ -577,7 +577,7 @@ namespace game
 			}
 
 			if (strcmp(key, "terrainholeedges") == 0)
-			{ 			
+			{
 				if (str2int(value) == 1)
 					terrainHoleEdges = true;
 				else
@@ -585,17 +585,17 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "terrainholedepth") == 0)
-			{ 			
+			{
 				terrainHoleDepth = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "terrainholeradius") == 0)
-			{ 			
+			{
 				terrainHoleRadius = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "terrainholetype") == 0)
-			{ 			
+			{
 				if (strcmp(value, "circle") == 0)
 				{
 					terrainHoleType = TERRAIN_HOLE_TYPE_CIRCLE;
@@ -913,7 +913,7 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "endpadtohit") == 0)
-			{ 			
+			{
 				if (str2int(value) == 1)
 					endPadToHit = true;
 				else
@@ -921,17 +921,17 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "startskipamount") == 0)
-			{ 			
+			{
 				startSkipAmount = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "proximityrange") == 0)
-			{ 			
+			{
 				proximityRange = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "proximitycheckrate") == 0)
-			{ 			
+			{
 				proximityCheckRate = str2int(value);
 				// requires a 2^n value.
 				if ((proximityCheckRate & (proximityCheckRate-1)) != 0)
@@ -1118,7 +1118,7 @@ namespace game
 		return finalHeat;
 	}
 
-	
+
 	int Bullet::getVisualEffectNumber()
 	{
 		return visualEffect;
@@ -1147,7 +1147,7 @@ namespace game
 	Bullet *Bullet::getChainBullet(int hitChainType)
 	{
 		assert(hitChainType >= 0 && hitChainType < HITCHAIN_AMOUNT);
-		
+
 		// material specific hitchains will fall back to terrainobject
 		// hitchain, if they are not defined...
 		if (!chainDefined[hitChainType]
@@ -1180,7 +1180,7 @@ namespace game
 	const char *Bullet::getChainScript(int hitChainType)
 	{
 		assert(hitChainType >= 0 && hitChainType < HITCHAIN_AMOUNT);
-		
+
 		// material specific hitchains will fall back to terrainobject
 		// hitchain, if they are not defined...
 		if (!chainDefined[hitChainType]

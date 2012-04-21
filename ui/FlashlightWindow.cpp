@@ -134,7 +134,7 @@ namespace ui
 
 		if (fillTo < 0) fillTo = 0;
 		if (fillTo > 100) fillTo = 100;
-		
+
 		fillupButton->SetClip(0, 0, fillTo, 100);
 
 		if (flashlightOn)

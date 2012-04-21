@@ -352,7 +352,7 @@ struct TerrainLights::Data
 		if(properties.type != SpotProperties::ShadowCaster)
 		{
 			IStorm3D_Mesh *cone = createWireframeObject(storm, model.get(), COL(.5f, .5f, .5f) * colorMul, "cone");
-			
+
 			VC3 start = VC3(0, properties.height + properties.heightOffset, 0);
 			addCone(cone, start, properties.angle, properties.fov * .9f, properties.range, 20);
 		}
@@ -566,7 +566,7 @@ void TerrainLights::setProperties(int index, const SpotProperties &properties)
 {
 	assert(index >= 0 && index < getSpotAmount());
 	data->spots[index].properties = properties;
-	
+
 	data->updateSpot(index);
 
 	data->redrawSpots();

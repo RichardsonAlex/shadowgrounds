@@ -166,13 +166,13 @@
 			if(!rightLod)
 			{
 				generateTriangles(buffer, resolution, endVertex, startVertex, resolution - 1, endVertex, clipBuffer);
-				
+
 				createFace(buffer, -1, resolution - 1, resolution * lodFactor + resolution - 1 - lodFactor, resolution * lodFactor + resolution - 1, resolution, clipBuffer);
 				createFace(buffer, -1, (resolution - 1 - lodFactor) * resolution + resolution - 1 - lodFactor, (resolution - 1) * resolution + resolution - 1, (resolution - 1 - lodFactor) * resolution + resolution - 1, resolution, clipBuffer);
 			}
 			else
 				generateHorizontal(buffer, resolution, endVertex, lodFactor, clipBuffer);
-			
+
 			if(!upLod)
 			{
 				generateTriangles(buffer, resolution, startVertex, 0, endVertex, startVertex, clipBuffer);
@@ -350,7 +350,7 @@
 				bool downLod = d == 1;
 
 				int index = l + r*2 + u*4 + d*8;
-				
+
 				fullBuffers[index].generate(LodIndexBuffer::FullBuffer, resolution, lod, leftLod, rightLod, upLod, downLod, clipBuffer);
 				linkBuffers[index].generate(LodIndexBuffer::LinkBuffer, resolution, lod, leftLod, rightLod, upLod, downLod, clipBuffer);
 			}

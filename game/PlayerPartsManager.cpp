@@ -63,7 +63,7 @@ namespace game
     }
 		return true;
 	}
-	
+
 
 	Part *PlayerPartsManager::addStoragePart(int player, char *partIdString)
 	{
@@ -88,5 +88,5 @@ namespace game
     }
 		return part;
 	}
-						
+
 }

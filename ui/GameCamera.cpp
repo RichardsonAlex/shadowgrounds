@@ -310,7 +310,7 @@ namespace ui
 
 
   void GameCamera::setWaterManager(game::WaterManager *waterManager)
-	{	
+	{
 		this->waterManager = waterManager;
 	}
 
@@ -775,7 +775,7 @@ namespace ui
 
 		if (dist >= CAMERA_SHAKE_RANGE)
 			return;
-		
+
 		float fact = (1.0f - dist / CAMERA_SHAKE_RANGE);
 
 		implData->shakeAmount = int((float)amount * fact);
@@ -1484,12 +1484,12 @@ namespace ui
 				if (interpolateCamera->smoothInterpolation)
 					smooth = true;
 				else
-					smooth = false;				
+					smooth = false;
 			} else {
 				if (this->smoothInterpolation)
 					smooth = true;
 				else
-					smooth = false;				
+					smooth = false;
 			}
 			if (smooth)
 			{
@@ -1609,10 +1609,10 @@ namespace ui
 		{
 			if(old_forceMapView) // Just switched to normal view from map view
 			{
-				scene->GetCamera()->SetUpVec(old_upVec);				
+				scene->GetCamera()->SetUpVec(old_upVec);
 				scene->GetCamera()->ForceOrthogonalProjection(false);
 				gameMap->getTerrain()->getRenderer ().setFloatValue( IStorm3D_TerrainRenderer::ForceAmbient, 0.0f );
-				
+
 			}
 
 			if (implData->lastFOV != fov * fovFactor)
@@ -1707,7 +1707,7 @@ namespace ui
 			float mapwidth  = gameMap->getScaledSizeX();
 			float mapheight = gameMap->getScaledSizeY();
 			int scrwidth = 0, scrheight = 0;
-			
+
 			float scrAspect = this->screenAspect;
 			if(scene->getStorm()->getRenderTarget(0))
 			{
@@ -1730,9 +1730,9 @@ namespace ui
 				orthoWidth  = 512.f / mapviewWidth * mapwidth;
 				orthoHeight = 512.f / mapviewHeight * mapheight;
 			}
-			
 
-	
+
+
 			if( SimpleOptions::getBool( DH_OPT_B_MAPRENDER_USE_USER_RESOLUTION ) || !scene->getStorm()->getRenderTarget(0) )
 			{
 				if(mapwidth <= mapheight)

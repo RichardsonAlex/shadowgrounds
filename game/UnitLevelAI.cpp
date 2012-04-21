@@ -457,7 +457,7 @@ void UnitLevelAI::copyStateFrom(UnitLevelAI *otherAI)
 			}
 			delete mainScriptProcess;
 			this->mainScriptProcess = NULL;
-		}		
+		}
 	}
 }
 

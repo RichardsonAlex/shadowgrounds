@@ -24,7 +24,7 @@ namespace ui
 
 			WeaponSelectionWindow(game::Game *game, Ogui *ogui,
 				int cornerNumber, int weaponsMask);
-				
+
 			~WeaponSelectionWindow();
 
 			void setSelectedWeapon(int selectionNumber);

@@ -176,7 +176,7 @@ public:
 	// Copy (v3). Copies everything, but: name(identification), childs(objects can have only 1 parent)
 	// Do not copy object from a model to another.
 	void CopyFrom(IStorm3D_Model_Object *other, bool only_render_settings = false);
-	
+
 	// Test ray collision
 	void RayTrace(const VC3 &position,const VC3 &direction_normalized,float ray_length,Storm3D_CollisionInfo &rti, bool accurate = false);
 	void SphereCollision(const VC3 &position,float radius,Storm3D_CollisionInfo &cinf, bool accurate);

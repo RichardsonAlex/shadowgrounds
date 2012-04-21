@@ -31,13 +31,13 @@ namespace ui
 		this->ogui = ogui;
 		this->game = game;
 		this->player = player;
-		
+
 //		win = ogui->CreateSimpleWindow(1024-256, 768-128-16-40, 256, 120, NULL);
 		win = ogui->CreateSimpleWindow(1024-220, 16, 220, 120, NULL);
 		win->SetUnmovable();
 		win->SetReactMask(OGUI_WIN_REACT_MASK_CURSOR_1);
 
-		for (int ci = 0; ci < MAX_PLAYERS_PER_CLIENT; ci++)		
+		for (int ci = 0; ci < MAX_PLAYERS_PER_CLIENT; ci++)
 		{
 			playerTextLabel[ci] = NULL;
 			playerEnabledButton[ci] = NULL;
@@ -48,8 +48,8 @@ namespace ui
 
 		/*
 		//TEMP! only 1 player
-		//for (int i = 0; i < MAX_PLAYERS_PER_CLIENT; i++)		
-		for (int i = 0; i < 1; i++)		
+		//for (int i = 0; i < MAX_PLAYERS_PER_CLIENT; i++)
+		for (int i = 0; i < 1; i++)
 		{
 			const char *pltxt = "?";
 			if (i == 0) pltxt = getLocaleGuiString("gui_options_player_1"); //"Player 1";
@@ -108,7 +108,7 @@ namespace ui
 
 		difficultyButton = b;
 
-		// autoadjust difficulty		
+		// autoadjust difficulty
 		/*
 		b = ogui->CreateSimpleTextButton(win, 64, 4 * 20, 20, 20, "Data/GUI/Buttons/playerenabled.tga", "Data/GUI/Buttons/playerenabled_down.tga", "Data/GUI/Buttons/playerenabled_highlight.tga", "", OPTIONSW_AUTOADJUST);
 		b->SetReactMask(OGUI_REACT_MASK_OVER | OGUI_REACT_MASK_BUT_1);
@@ -233,7 +233,7 @@ namespace ui
 
 	}
 
-		
+
 	void OptionsWindow::CursorEvent(OguiButtonEvent *eve)
 	{
 		/*

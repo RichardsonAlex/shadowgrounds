@@ -31,7 +31,7 @@ struct VectorTrackData {
 	~VectorTrackData() {
 		clearKeys();
 	}
-	
+
 	void copy(VectorTrackData& other) {
 		setNumKeys(other.getNumKeys());
 		for(int i = 0; i < other.getNumKeys(); i++) {
@@ -92,7 +92,7 @@ struct VectorTrackData {
 			mKeys.push_back(k);
 		}
 	}
-		
+
 	void parseOut(ParserGroup& g) {
 		::parseOut(g, "num_keys", (int)mKeys.size());
 		for(int i = 0; i < mKeys.size(); i++) {
@@ -115,7 +115,7 @@ VectorTrack::VectorTrack() {
 VectorTrack::~VectorTrack() {
 
 }
-	
+
 void VectorTrack::operator=(VectorTrack& other) {
 	m->copy(*other.m);
 }

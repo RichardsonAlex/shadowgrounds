@@ -77,7 +77,7 @@ public:
 	// Create
 	Storm3D_Light_Directional(Storm3D *Storm3D2,const char *name,Storm3D_Model *_parent_model,
 		COL &_color,float multiplier,VC3 &_direction);
-	
+
 	~Storm3D_Light_Directional();
 
 	// Change params

@@ -20,7 +20,7 @@ namespace ui
 	class AmbientSoundManager;
 	struct AmbientSoundManagerData;
 
-	
+
 class AmbientSound {
 
 	// key and handles for the soundLooper
@@ -44,7 +44,7 @@ public:
 	AmbientSound();
 	~AmbientSound();
 	AmbientSound(const AmbientSound& rhs);
-	AmbientSound& operator=(const AmbientSound& rhs);		
+	AmbientSound& operator=(const AmbientSound& rhs);
 
 	void setRange(float f);
 	void setPosition(const Vector& pos);
@@ -57,7 +57,7 @@ public:
 
 	void setName(const char *name);
 	const char *getName() const;
-	
+
 	void tick(game::GameUI* gameUI, sfx::SoundLooper* looper,
 		const VC3 &listenerPosition);
 

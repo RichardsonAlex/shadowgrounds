@@ -37,7 +37,7 @@ LRESULT WINAPI RenderWindow_MessageProc(HWND hWnd,UINT msg,WPARAM wParam,LPARAM 
 		case WM_CLOSE:
 			PostQuitMessage(0);
 			return 0;
-			
+
 		case WM_SETCURSOR:
 			SetCursor(NULL);
 			return 0;

@@ -293,7 +293,7 @@ namespace game
 					//if (obstacleColl.ranges[i] >= 2)
 					//if (obstacleColl.ranges[i] >= 0.5f)
 					if (obstacleColl.ranges[i] >= 0.25f)
-					{ 					
+					{
 						obstacles++;
 						if (obstacles == 1)
 						{
@@ -337,7 +337,7 @@ namespace game
 				statLOStracePartialAmount++;
 				statLOStraceToObstacleAmount++;
 #endif
-				return; 			
+				return;
 			}
 		}
 
@@ -494,7 +494,7 @@ namespace game
 					void *id2 = d2->getVisualObjectDataId();
 					if (id2 == (void *)&game::unitDataId)
 					{
-						hitu = (Unit *)d2;	
+						hitu = (Unit *)d2;
 					}
 					else if (id2 == (void *)&game::buildingDataId)
 					{
@@ -657,7 +657,7 @@ namespace game
 					}
 					delete raytrace_debug_lines[next_raytrace_debug_line];
 				}
-			
+
 				IStorm3D_Line *lineObject = ui::VisualObjectModel::visualStorm->CreateNewLine();
 				unsigned int alpha = 0x80000000;
 				unsigned int color = 0x0000ff00;
@@ -778,7 +778,7 @@ namespace game
 		pathFinder->setCoverBlockDistance(coverBlockDistance);
 		pathFinder->setLightAvoidAmount(lightAvoidAmount);
 		pathFinder->setPathfindDepthByPercentage(depth);
-	
+
 		frozenbyte::ai::Path *tmp = new frozenbyte::ai::Path();
 
 		bool ret = pathFinder->findRoute(tmp, sx, sy, ex, ey, maxdiff, cost, VC3(startX, 0, startY), VC3(endX, 0, endY));
@@ -1130,7 +1130,7 @@ namespace game
 						}
 					}
 				}
-		
+
 			} // end if type CYLINDER
 
 
@@ -1178,14 +1178,14 @@ namespace game
 							} else {
 								pathFinder->removeObstacle(ox + rx, oy + ry);
 								gameMap->removeObstacleHeight(ox + rx, oy + ry, hmapheight, AREAVALUE_OBSTACLE_TERRAINOBJECT);
-								
+
 								if(!gameMap->getObstacleHeight(ox + rx, oy + ry))
 									gameMap->getCoverMap()->removeCover(ox + rx, oy + ry);
 							}
 						}
 					}
 				}
-		
+
 			} // end if type BOX
 
 
@@ -1250,7 +1250,7 @@ namespace game
 				float x = to->position.x;
 				float y = to->position.y;
 
-				float height = to->heightOffset;				
+				float height = to->heightOffset;
 				if (gameMap->isWellInScaledBoundaries(x,y))
 				{
 					height += gameMap->getScaledHeightAt(x,y);
@@ -1298,7 +1298,7 @@ namespace game
 				{
 					for(int oy = startTargY; oy < endTargY; ++oy)
 					for(int ox = startTargX; ox < endTargX; ++ox)
-					{ 		
+					{
 						float normedX = float(ox - startTargX) / float(endTargX - startTargX);
 						float normedY = float(oy - startTargY) / float(endTargY - startTargY);
 
@@ -1418,7 +1418,7 @@ namespace game
 									//float floorScaled = ((float)floorVal) * lastBuildingMap->getHeightScale();
 									//float floorDiff = floorScaled - gameMap->getScaledHeightAt(xPosition, yPosition);
 									//int floorDiff = ;
-									
+
 								}
 							}
 						}
@@ -1591,7 +1591,7 @@ namespace game
 			// Add blocks to pathfind
 			float scaledToPathX = gameMap->getPathfindSizeX() / gameMap->getScaledSizeX();
 			float scaledToPathY = gameMap->getPathfindSizeY() / gameMap->getScaledSizeY();
-			
+
 			frozenbyte::ai::Pathblock pathBlock;
 			int xBlockSize = static_cast<int> (scaledToPathX * collisionMap.size() * builder.getMapResolution());
 			int yBlockSize = static_cast<int> (scaledToPathY * collisionMap[0].size() * builder.getMapResolution());
@@ -1601,19 +1601,19 @@ namespace game
 			//int xBlockPosition = (scaledToPathX * x * .5f) - xBlockSize/2;
 			//int yBlockPosition = (scaledToPathY * y * .5f) - yBlockSize/2;
 			int xBlockPosition = gameMap->scaledToObstacleX(x) - xBlockSize/2;
-			int yBlockPosition = gameMap->scaledToObstacleY(y) - yBlockSize/2;					
+			int yBlockPosition = gameMap->scaledToObstacleY(y) - yBlockSize/2;
 			pathBlock.setPosition(xBlockPosition, yBlockPosition);
-			
+
 			// Doors
 			const std::vector<std::pair<int, int> > &doors = builder.getDoors();
 			for(unsigned int k = 0; k < doors.size(); ++k)
 			{
 				int x = static_cast<int> (scaledToPathX * doors[k].first * builder.getMapResolution());
 				int y = static_cast<int> (scaledToPathY * doors[k].second * builder.getMapResolution());
-				
+
 				pathBlock.addPortal(x + xBlockSize/2, y + yBlockSize/2);
 			}
-			
+
 			// add building id to pathfind
 			if(doors.empty() == false)
 				pathFinder->addPathblock(pathBlock);
@@ -1621,7 +1621,7 @@ namespace game
 			{
 				std::string foo = b->getModelFilename();
 				foo += " has no doors set.";
-				
+
 				// Info should really take const char *'s
 				Logger::getInstance()->debug(const_cast<char *> (foo.c_str()));
 			}
@@ -1672,17 +1672,17 @@ namespace game
 			for(int i = 0; i < static_cast<int> (collisionMap.size()); ++i)
 			{
 				for(int j = 0; j < static_cast<int> (collisionMap[0].size()); ++j)
-				{ 		
+				{
 					float xPosition = x + ((startMapX + i) * builder.getMapResolution());
 					float yPosition = y + ((startMapY + j) * builder.getMapResolution());
 
 					if (!gameMap->isWellInScaledBoundaries(xPosition, yPosition))
 						continue;
-					
+
 					//addObstacle(xPosition, yPosition, BUILDING_OBSTACLE_HEIGHT);
 					int ox = gameMap->scaledToObstacleX(xPosition);
 					int oy = gameMap->scaledToObstacleY(yPosition);
-					
+
 					// This is blocked
 					if(collisionMap[i][j] > 0)
 					{
@@ -1691,7 +1691,7 @@ namespace game
 						{
 							// Model's origo is in center of this map
 							// Resolution is 0.5 units
-						
+
 							//if (gameMap->isWellInScaledBoundaries(xPosition, yPosition))
 							{
 								// NEW BEHAVIOUR: building is now added even on terrainobjects...
@@ -1735,10 +1735,10 @@ namespace game
 							// If blocked and has height add to block area
 							int x = static_cast<int> (scaledToPathX * i * builder.getMapResolution());
 							int y = static_cast<int> (scaledToPathY * j * builder.getMapResolution());
-						
+
 							//assert(x == ox - xBlockPosition);
 							//assert(y == oy - yBlockPosition);
-						
+
 							pathBlock.setBlockArea(x, y);
 
 							// add to areamap too, as "inbuilding=yes"
@@ -1757,10 +1757,10 @@ namespace game
 						{
 							int x = static_cast<int> (scaledToPathX * i * builder.getMapResolution());
 							int y = static_cast<int> (scaledToPathY * j * builder.getMapResolution());
-							
+
 							//assert(x == ox - xBlockPosition);
 							//assert(y == oy - yBlockPosition);
-							
+
 							pathBlock.setBlockArea(x, y);
 
 							// add to areamap too, as "inbuilding=yes"
@@ -1773,7 +1773,7 @@ namespace game
 							gameMap->getAreaMap()->setAreaValue(ox, oy, AREAMASK_MATERIAL, (buildingMaterialInPalette << AREASHIFT_MATERIAL));
 						}
 					}
-					
+
 					//if (heightMap[i][j] > 0 || collisionMap[i][j] > 0)
 					char floorVal = floorMap[i][j];
 					if (floorVal != BUILDINGMAP_NO_FLOOR_BLOCK)
@@ -1802,7 +1802,7 @@ namespace game
 						}
 						// else if (floorVal < 0) ...
 					}
-						
+
 					if (floorVal != BUILDINGMAP_NO_FLOOR_BLOCK)
 					{
 						// NOTICE: this may be called multiple times per
@@ -1835,10 +1835,10 @@ namespace game
 						// add floormap to building area id...
 						int bax = static_cast<int> (scaledToPathX * i * builder.getMapResolution());
 						int bay = static_cast<int> (scaledToPathY * j * builder.getMapResolution());
-						
+
 						//assert(x == ox - xBlockPosition);
 						//assert(y == oy - yBlockPosition);
-						
+
 						pathBlock.setBlockArea(bax, bay);
 
 						// add to areamap too, as "inbuilding=yes"
@@ -1863,7 +1863,7 @@ namespace game
 
 			// first cut off too high terrain...
 			terrain->ForcemapHeight(pos2d, forceradius, false, true);
-			
+
 			// then raise up too low terrain...
 			terrain->ForcemapHeight(pos2d, forceradius, true, false);
 
@@ -2021,7 +2021,7 @@ namespace game
 						}
 					}
 				}
-				
+
 				//if (x + y > hmapSizeX / 2 - 10
 				//	&& x + y < hmapSizeX / 2 + 10)
 				if (underBuilding >= (obstPerHmapX * obstPerHmapY)

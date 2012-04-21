@@ -197,7 +197,7 @@ namespace game
 				break;
 
 			default:
-				sp->error("EnvironmentScripting::process - Unknown command.");				
+				sp->error("EnvironmentScripting::process - Unknown command.");
 				assert(0);
 		}
 	}

@@ -28,7 +28,7 @@ struct FloatTrackData {
 	~FloatTrackData() {
 		clearKeys();
 	}
-	
+
 	void copy(FloatTrackData& other) {
 		setNumKeys(other.getNumKeys());
 		for(int i = 0; i < other.getNumKeys(); i++) {
@@ -82,7 +82,7 @@ struct FloatTrackData {
 		int n;
 		::parseIn(g, "num_keys", n);
 		if(n < 2)
-			return;		
+			return;
 		clearKeys();
 		for(int i = 0; i < n; i++) {
 			Key* k = new Key;
@@ -93,7 +93,7 @@ struct FloatTrackData {
 			mKeys.push_back(k);
 		}
 	}
-		
+
 	void parseOut(ParserGroup& g) {
 		::parseOut(g, "num_keys", (int)mKeys.size());
 		for(int i = 0; i < mKeys.size(); i++) {
@@ -116,7 +116,7 @@ FloatTrack::FloatTrack() {
 FloatTrack::~FloatTrack() {
 
 }
-	
+
 void FloatTrack::operator=(FloatTrack& other) {
 	m->copy(*other.m);
 }

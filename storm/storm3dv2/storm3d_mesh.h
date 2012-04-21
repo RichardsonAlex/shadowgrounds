@@ -67,7 +67,7 @@ struct Storm3D_BoneChunk
 			index_buffer->Release();
 		if(vertex_buffer)
 			vertex_buffer->Release();
-		
+
 		bone_indices = other.bone_indices;
 
 		vertex_count = other.vertex_count;
@@ -124,7 +124,7 @@ class Storm3D_Mesh : public IStorm3D_Mesh
 	GLuint ibuf[LOD_AMOUNT];	// Indexbuffer (in videomemory)
 	int vbuf_vsize;
 	uint32_t vbuf_fvf;
-	
+
 	// Collision table
 	Storm3D_Mesh_CollisionTable collision;
 
@@ -151,7 +151,7 @@ class Storm3D_Mesh : public IStorm3D_Mesh
 public:
 	const Sphere &getBoundingSphere() const;
 	const AABB &getBoundingBox() const;
-	
+
 	uint32_t GetFVF() const { return vbuf_fvf; }
 	// When vertexes/faces are changed, buffers in videomemory must be rebuided.
 	void ReBuild();
@@ -166,7 +166,7 @@ public:
 	void Render(Storm3D_Scene *scene,bool mirrored,Storm3D_Model_Object *object);		// Applies material, animates, renders (use this mainly)
 	void RenderWithoutMaterial(Storm3D_Scene *scene,bool mirrored,Storm3D_Model_Object *object);
 	void RenderToBackground(Storm3D_Scene *scene,Storm3D_Model_Object *object);
-	
+
 	// Creation/delete
 	Storm3D_Mesh(Storm3D *Storm3D2, Storm3D_ResourceManager &resourceManager);
 	~Storm3D_Mesh();
@@ -199,7 +199,7 @@ public:
 	void ChangeFaceCount(int new_face_count);
 	void ChangeVertexCount(int new_vertex_count);
 	void UpdateCollisionTable();	// Use this after editing, if you want collisions to this object
-	
+
 	bool HasWeights() const;
 
 	// Test ray collision (these return true if collided)

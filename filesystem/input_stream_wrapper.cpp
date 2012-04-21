@@ -40,7 +40,7 @@ struct FB_FILE
 	FB_FILE(InputStream &stream_)
 	:	stream(stream_)
 	{
-		++openFileAmount;	
+		++openFileAmount;
 	}
 
 	~FB_FILE()

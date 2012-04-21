@@ -58,10 +58,10 @@ public:
 	LWItemInfo *getItemInfo() const;
 	LWBoneInfo *getBoneInfo() const;
 	LWObjectInfo *getObjectInfo() const;
-	LWSurfaceFuncs *getSurfaceFunctions() const;	
+	LWSurfaceFuncs *getSurfaceFunctions() const;
 	LWTextureFuncs *getTextureFunctions() const;
 	LWImageList *getImageList() const;
-	
+
 	LWSceneInfo *getSceneInfo() const;
 	LWInterfaceInfo *getInterfaceInfo() const;
 	LWLayoutGeneric *getLayoutGeneric() const;

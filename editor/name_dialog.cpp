@@ -9,9 +9,9 @@
 #include "resource/resource.h"
 
 struct NameDialogData {
-	
+
 	std::string mString;
-	
+
 	NameDialogData() {
 
 	}
@@ -19,7 +19,7 @@ struct NameDialogData {
 	~NameDialogData() {
 
 	}
-	
+
 	static BOOL CALLBACK dlgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
 		static std::string* pString = NULL;
@@ -30,7 +30,7 @@ struct NameDialogData {
 				pString = (std::string*)lParam;
 				SetDlgItemText(hwnd, IDC_NAME_EDIT, pString->c_str());
 				return TRUE;
-			} break;		
+			} break;
 		case WM_COMMAND:
 			{
 				if(LOWORD(wParam)==IDOK) {
@@ -72,7 +72,7 @@ NameDialog::NameDialog() {
 }
 
 NameDialog::~NameDialog() {
-	
+
 }
 
 
@@ -80,11 +80,11 @@ NameDialog::~NameDialog() {
 bool NameDialog::doModal(HWND parent, int resourceID) {
 	return m->doModal(parent, resourceID);
 }
-	
+
 const std::string& NameDialog::getName() {
 	return m->mString;
 }
-	
+
 void NameDialog::setName(const std::string& name) {
 	m->mString = name;
 }

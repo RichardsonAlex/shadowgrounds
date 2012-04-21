@@ -34,7 +34,7 @@ void OguiFormattedCommandImg::execute( OguiFormattedText* text, const std::strin
 	std::string align = castParameter( "align", std::string( "center" ) );
 	bool nowarp	=		castParameter( "nowarp", false );
 	std::string type =	castParameter( "type", std::string( "image" ) );
-	
+
 	if( width <= 0 || height <= 0 || src.empty() )
 		return;
 
@@ -57,7 +57,7 @@ void OguiFormattedCommandImg::execute( OguiFormattedText* text, const std::strin
 #else
 			x = data->x + ( data->w - width ) / 2;
 #endif
-			
+
 			data->mx = x + w;
 			data->my = y + h;
 
@@ -65,7 +65,7 @@ void OguiFormattedCommandImg::execute( OguiFormattedText* text, const std::strin
 		else if( align == "left" )
 		{
 			x = data->x;
-			
+
 			if( nowarp )
 			{
 				data->mx = data->x;
@@ -81,7 +81,7 @@ void OguiFormattedCommandImg::execute( OguiFormattedText* text, const std::strin
 				data->mx = data->x + w;
 				data->x = data->x + w;
 			}
-			
+
 		}
 		else if( align == "right" )
 		{
@@ -100,7 +100,7 @@ void OguiFormattedCommandImg::execute( OguiFormattedText* text, const std::strin
 				data->after_y = height;
 				data->after_y_x_value = data->x;
 				data->after_y_w_value = data->w;
-				
+
 				data->w = data->w - width;
 				data->mx = data->x;
 				data->x = data->x;

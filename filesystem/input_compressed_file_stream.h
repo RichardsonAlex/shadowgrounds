@@ -24,7 +24,7 @@ public:
 	InputCompressedFileStreamBuffer(const std::string &fileName);
 	~InputCompressedFileStreamBuffer();
 
-	unsigned char popByte();	
+	unsigned char popByte();
 	bool isEof() const;
 	int getSize() const;
 

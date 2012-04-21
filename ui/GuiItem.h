@@ -22,7 +22,7 @@ public:
 		h( 0 ),
 		image( NULL )
 	{ }
-	
+
 	GuiItem( const GuiItem& item ) :
 		imageFile( item.imageFile ),
 		w( item.w ),

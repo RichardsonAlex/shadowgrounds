@@ -48,7 +48,7 @@ public:
 		int priority;
 
 		std::vector<std::string> sounds;
-		
+
 		// HACK: ...
 		std::vector<std::string> effects;
 

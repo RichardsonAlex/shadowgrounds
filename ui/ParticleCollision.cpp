@@ -38,7 +38,7 @@ namespace {
 		vector.x = x * cosf(angle) + z * sinf(angle);
 		vector.z = -x * sinf(angle) + z * cosf(angle);
 	}
-	
+
 	bool canSpawn(game::GameMap *map, const VC3 &pos, int maxDifference, int yInt)
 	{
 		float wx = pos.x;
@@ -173,7 +173,7 @@ bool ParticleCollision::getCollision(const VC3 &oldPosition, VC3 &position, VC3 
 		float wy = position.z;
 		int x = gameMap->scaledToObstacleX(wx);
 		int y = gameMap->scaledToObstacleY(wy);
-		
+
 		if(areaMap->isAreaAnyValue(x, y, AREAMASK_INBUILDING))
 		{
 			velocity.y = -velocity.y;
@@ -330,7 +330,7 @@ bool ParticleCollision::getCollision(const VC3 &oldPosition, VC3 &position, VC3 
 					start.x = position.x;
 					start.y = position.y;
 					start.z = position.z;
-					
+
 					if(i != iterations - 1)
 					{
 						position.x = start.x + ((end.x - start.x) * .5f);
@@ -343,7 +343,7 @@ bool ParticleCollision::getCollision(const VC3 &oldPosition, VC3 &position, VC3 
 					end.x = position.x;
 					end.y = position.y;
 					end.z = position.z;
-					
+
 					position.x = start.x + ((end.x - start.x) * .5f);
 					position.y = start.y + ((end.y - start.y) * .5f);
 					position.z = start.z + ((end.z - start.z) * .5f);

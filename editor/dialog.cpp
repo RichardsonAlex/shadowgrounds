@@ -74,7 +74,7 @@ struct DialogData
 	static BOOL CALLBACK DialogHandler(HWND windowHandle, UINT message,  WPARAM wParam, LPARAM lParam)
 	{
 		DialogData *data = reinterpret_cast<DialogData *> (GetWindowLong(windowHandle, GWL_USERDATA));
-		
+
 		if(message == WM_INITDIALOG)
 		{
 			SetWindowLong(windowHandle, GWL_USERDATA, lParam);
@@ -185,7 +185,7 @@ struct DialogData
 /*
 		if(data && data->handler && windowHandle)
 		{
-			data->handler->handleMessages(windowHandle, message, wParam, lParam);			
+			data->handler->handleMessages(windowHandle, message, wParam, lParam);
 		}
 */
 		return 0;
@@ -201,7 +201,7 @@ struct DialogData
 
 		RECT windowSize = { 0 };
 		GetWindowRect(windowHandle, &windowSize);
-	
+
 		int originalWidth = windowSize.right - windowSize.left;
 		int originalHeight = windowSize.bottom - windowSize.top;
 
@@ -288,7 +288,7 @@ Dialog::Dialog(int resourceId, const Window &parentWindow, ResizeType type)
 {
 	boost::scoped_ptr<DialogData> tempData(new DialogData());
 	tempData->resizeType = type;
-	
+
 	CreateDialogParam(GetModuleHandle(0), MAKEINTRESOURCE(resourceId), parentWindow.getWindowHandle(), DialogData::DialogHandler, reinterpret_cast<LPARAM> (tempData.get()) );
 	data.swap(tempData);
 }
@@ -297,7 +297,7 @@ Dialog::Dialog(int resourceId, HWND parentWindowHandle, ResizeType type)
 {
 	boost::scoped_ptr<DialogData> tempData(new DialogData());
 	tempData->resizeType = type;
-	
+
 	CreateDialogParam(GetModuleHandle(0), MAKEINTRESOURCE(resourceId), parentWindowHandle, DialogData::DialogHandler, reinterpret_cast<LPARAM> (tempData.get()) );
 	data.swap(tempData);
 }
@@ -307,7 +307,7 @@ Dialog::Dialog(int resourceId)
 	boost::scoped_ptr<DialogData> tempData(new DialogData());
 	tempData->modalDialog = true;
 	tempData->resourceId = resourceId;
-	
+
 	data.swap(tempData);
 }
 

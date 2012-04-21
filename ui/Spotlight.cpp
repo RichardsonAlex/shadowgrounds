@@ -284,7 +284,7 @@ struct SpotlightData
 
 				spot = terrain.getRenderer().createSpot();
 				spot->setProjectionTexture(spotTexture);
-				spot->setFov(145.0f);	
+				spot->setFov(145.0f);
 				spot->setRange(8.f);
 				spot->setClipRange(3.f);
 
@@ -332,7 +332,7 @@ struct SpotlightData
 
 				spot = terrain.getRenderer().createSpot();
 				spot->setProjectionTexture(spotTexture);
-				spot->setFov(145.0f);	
+				spot->setFov(145.0f);
 				spot->setRange(6.f);
 				spot->setClipRange(2.5f);
 
@@ -374,7 +374,7 @@ struct SpotlightData
 
 				spot = terrain.getRenderer().createSpot();
 				spot->setProjectionTexture(spotTexture);
-				spot->setFov(145.0f);	
+				spot->setFov(145.0f);
 				spot->setRange(6.f);
 				spot->setClipRange(2.5f);
 
@@ -416,7 +416,7 @@ struct SpotlightData
 
 				spot = terrain.getRenderer().createSpot();
 				spot->setProjectionTexture(spotTexture);
-				spot->setFov(125.0f);	
+				spot->setFov(125.0f);
 				spot->setRange(8.f);
 				spot->setClipRange(3.f);
 				spot->setType(IStorm3D_Spotlight::Point);
@@ -813,7 +813,7 @@ void Spotlight::setDirection(const VC3 &direction)
 
 	//if (data->spot2 && data->spotAmount >= 2)
 	//{
-	//	data->spot2->setDirection(-data->currentDirection);		
+	//	data->spot2->setDirection(-data->currentDirection);
 	//}
 }
 
@@ -943,7 +943,7 @@ void Spotlight::fadeOut(int timeElapsed)
 	data->spot->setRange(data->fadeRange);
 
 	if (data->spot2 && data->spotAmount >= 2)
-	{		
+	{
 		data->spot2->setRange(data->fadeRange);
 	}
 	*/
@@ -983,7 +983,7 @@ void Spotlight::setDirectionToward(const VC3 &direction, int timeElapsed)
 	if ((overTurn < 0 && rotSpeed > 0)
 		|| (overTurn > 0 && rotSpeed < 0))
 		newAngle = preferredAngle;
-	
+
 	float angleRad = UNIT_ANGLE_TO_RAD(newAngle);
 	data->currentDirection = VC3(-sinf(angleRad), -0.3f, -cosf(angleRad));
 
@@ -992,7 +992,7 @@ void Spotlight::setDirectionToward(const VC3 &direction, int timeElapsed)
 
 	if (data->spot2 && data->spotAmount >= 2)
 	{
-		data->spot2->setDirection(-data->currentDirection);		
+		data->spot2->setDirection(-data->currentDirection);
 	}
 	*/
 	data->setSpotDir(data->currentDirection);

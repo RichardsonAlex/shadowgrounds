@@ -26,7 +26,7 @@ protected:
 
 public:
 	FloatTrack emitRateTrack;
-	
+
 	float minEmitTime;
 	float maxEmitTime;
 
@@ -40,15 +40,15 @@ public:
 	virtual ~EmitterDesc() {}
 
 //	virtual void copy(EmitterDesc* other)=0;
-	
+
 	const std::string& getName();
 	void setName(const std::string& name);
-	
+
 	virtual int getType()=0;
-	
+
 	virtual void parseIn(ParserGroup& prev);
 	virtual void parseOut(ParserGroup& prev);
-	
+
 	virtual void genVelocity(Vector& vel)=0;
 	virtual void genPosition(Vector& pos)=0;
 
@@ -72,7 +72,7 @@ public:
 	SprayEmitterDesc();
 
 	int getType();
-	
+
 	void parseIn(ParserGroup& prev);
 	void parseOut(ParserGroup& prev);
 
@@ -82,14 +82,14 @@ public:
 };
 
 class PointArrayEmitterDesc : public EmitterDesc {
-	
+
 	std::vector<Vector> mVerts;
 	std::vector<Vector> mNormals;
 
 	int mIndex;
 
 public:
-	
+
 	float minSpeed;
 	float maxSpeed;
 
@@ -99,9 +99,9 @@ public:
 	void setModel(IStorm3D_Mesh* obj);
 
 	void loadModel(IStorm3D* s3d, const std::string& name);
-	
+
 	PointArrayEmitterDesc();
-	
+
 	int getType();
 
 	void parseIn(ParserGroup& prev);
@@ -126,7 +126,7 @@ public:
 	Vector direction;
 	float minSpeed;
 	float maxSpeed;
-	
+
 	// box
 	Vector bmin;
 	Vector bmax;

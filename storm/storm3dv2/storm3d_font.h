@@ -42,7 +42,7 @@ public:
 
 	// Set textures letter rows/columns
 	void SetTextureRowsAndColums(int rows,int columns);
-	
+
 	// Set characters and letter widths.
 	// Use this after you have loaded all needed textures
 	// and set texture rows and columns. Otherwise font will

@@ -178,7 +178,7 @@ Model_BoneAnimation::Model_BoneAnimation(Storm3D_BoneAnimation *transition_, Sto
 		transition->AddReference();
 	storm3d_model_boneanimation_allocs++;
 }
-	
+
 Model_BoneAnimation::~Model_BoneAnimation()
 {
 	if(transition)
@@ -196,7 +196,7 @@ void Model_BoneAnimation::AdvanceAnimation(int time_delta, bool doUpdate)
 	// time delta scaled based on speed_factor
 	// --jpk
 	time_delta = (time_delta * speed_factor) >> MODEL_BONEANIMATION_SPEED_FACTOR_SHIFT;
-	
+
 	// FIXME: proper implementation...
 	// now we may sometimes scale the time_delta to zero.
 	// (if frame time small enough)
@@ -210,7 +210,7 @@ void Model_BoneAnimation::AdvanceAnimation(int time_delta, bool doUpdate)
 
 
 	elapsed_time += time_delta;
-	
+
 	//if(state != Normal && !doUpdate)
 	//	return;
 	// We need to loop even when blending
@@ -278,7 +278,7 @@ Model_BoneAnimation &Model_BoneAnimation::operator = (const Model_BoneAnimation 
 			animation->Release();
 		if(transition)
 			transition->Release();
-	
+
 		animation = animation_.animation;
 		transition = animation_.transition;
 
@@ -291,8 +291,8 @@ Model_BoneAnimation &Model_BoneAnimation::operator = (const Model_BoneAnimation 
 	animation_time = animation_.animation_time;
 	elapsed_time = animation_.elapsed_time;
 
-	speed_factor = animation_.speed_factor;	
-	blend_factor = animation_.blend_factor;	
+	speed_factor = animation_.speed_factor;
+	blend_factor = animation_.blend_factor;
 
 	blend_time = animation_.blend_time;
 	animation_loop = animation_.animation_loop;
@@ -351,7 +351,7 @@ bool Model_BoneAnimation::GetBlendProperties(float *blend_factor) const
 
 	// Linear increase
 	*blend_factor = float(elapsed_time) / float(blend_time);
-	
+
 	if(state == BlendOut)
 		*blend_factor = 1.f - *blend_factor;
 
@@ -706,13 +706,13 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 				{
 					actual_filename[restoreAtPos] = '@';
 				}
-			}	
+			}
 		}
 	} else {
 		assert(0);
 		return false;
 	}
-	
+
 	// Open file
 	filesystem::FB_FILE *f = filesystem::fb_fopen(actual_filename,"rb");
 	if (f==NULL)
@@ -799,7 +799,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 	{
 		// Read data
 		S3D_TEXTURE tex;
-		
+
 		if(s3d_version >= 6)
 		{
 			tex.filename = LoadStringFromFile(f);
@@ -808,7 +808,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			filesystem::fb_fread(&tex.framechangetime, sizeof(uint16_t), 1, f);
 			filesystem::fb_fread(&tex.dynamic, sizeof(uint8_t), 1, f);
 		}
-		
+
 		// Generate path+texfilename (loads textures from the same path as model)
 		// v3
 		strcpy(temptexname,path);
@@ -830,7 +830,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		if(s3d_version >= 6)
 		{
 			mat.name = LoadStringFromFile(f);
-			
+
 			filesystem::fb_fread(&mat.texture_base, sizeof(short int), 1, f);
 			filesystem::fb_fread(&mat.texture_base2, sizeof(short int), 1, f);
 			filesystem::fb_fread(&mat.texture_bump, sizeof(short int), 1, f);
@@ -868,7 +868,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		// Create new material (and put it into temporary texture list)
 		Storm3D_Material *tmat= static_cast<Storm3D_Material *> (Storm3D2->CreateNewMaterial(mat.name.c_str()));
 		mathandles[matn++]=tmat;
-		
+
 		// Set material's properties
 		tmat->SetColor(COL(mat.color));
 		tmat->SetSelfIllumination(COL(mat.self_illum));
@@ -891,7 +891,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			tmat->SetReflectionTexture(texhandles[mat.texture_reflection]);
 		if (texture_distortion>=0)
 			tmat->SetDistortionTexture(texhandles[texture_distortion]);
-		
+
 		// Texturelayer special properties (for base2 and reflection only)
 		if (mat.texture_base2>=0)
 		{
@@ -943,7 +943,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		{
 			obj.name = LoadStringFromFile(f);
 			obj.parent = LoadStringFromFile(f);
-			
+
 			filesystem::fb_fread(&obj.material_index, sizeof(short int), 1, f);
 			assert(obj.material_index < header.num_materials);
 
@@ -985,7 +985,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 				obj.position[1] = -obj.position[2];
 				obj.position[2] = origp1;
 			}
-			
+
 			char foo = 0;
 			filesystem::fb_fread(&foo, sizeof(char), 1, f);
 			if(foo == 1)
@@ -1127,7 +1127,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		// Set mesh's material
 		if (obj.material_index>=0)
 			tmesh->UseMaterial(mathandles[obj.material_index]);
-		
+
 		// Allocate memory for vertex data
 		Storm3D_Vertex *tempverts=new Storm3D_Vertex[obj.vertex_amount];
 
@@ -1297,7 +1297,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		for(int i2=0;i2<originalFaceAmount;i2++)
 		{
 			S3D_FACE &face = *((S3D_FACE *) (&fbuffer[i2 * faceSize]));
-		
+
 			for(int i = 0; i < 3; ++i)
 				assert(/*face.vertex[i] >= 0 && */ face.vertex[i] < obj.vertex_amount);
 
@@ -1425,7 +1425,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			// Read keyframe from disk
 			S3D_MESHKEY temp_kf;
 			filesystem::fb_fread(&temp_kf,sizeof(S3D_MESHKEY),1,f);
-			
+
 			// Temp vertexes
 			Storm3D_Vertex *temp_vxs=new Storm3D_Vertex[tmesh->vertex_amount];
 
@@ -1663,7 +1663,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			// Read keyframe from disk
 			S3D_V3KEY temp_kf;
 			filesystem::fb_fread(&temp_kf,sizeof(S3D_V3KEY),1,f);
-			
+
 			// Add it to helper
 			((IStorm3D_Helper_Point*)thelp)->Animation_AddNewPositionKeyFrame(
 				temp_kf.keytime,VC3(temp_kf.x,temp_kf.y,temp_kf.z));
@@ -1676,7 +1676,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			// Read keyframe from disk
 			S3D_V3KEY temp_kf;
 			filesystem::fb_fread(&temp_kf,sizeof(S3D_V3KEY),1,f);
-			
+
 			// Add it to helper
 			if (thelp->GetHelperType()==IStorm3D_Helper::HTYPE_VECTOR)
 			{
@@ -1703,7 +1703,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			// Read keyframe from disk
 			S3D_V3KEY temp_kf;
 			filesystem::fb_fread(&temp_kf,sizeof(S3D_V3KEY),1,f);
-			
+
 			// Add it to helper
 			((IStorm3D_Helper_Camera*)thelp)->Animation_AddNewUpVectorKeyFrame(temp_kf.keytime,VC3(temp_kf.x,temp_kf.y,temp_kf.z));
 		}
@@ -1741,7 +1741,7 @@ bool Storm3D_Model::LoadBones(const char *filename)
 		Storm3D2->getLogger()->debug("Storm3D_Model::LoadBones - Loading a bones file.");
 		Storm3D2->getLogger()->debug(filename);
 	}
-	
+
 	// Open file
 	filesystem::FB_FILE *fp = filesystem::fb_fopen(filename, "rb");
 	if(fp == 0)
@@ -1772,12 +1772,12 @@ bool Storm3D_Model::LoadBones(const char *filename)
 	for(int i = 0; i < bone_count; ++i)
 	{
 		Storm3D_Bone *bone = new Storm3D_Bone();
-		
+
 		// Get actual properties
 		std::string name = LoadStringFromFile(fp);
 		Vector position;
 		Rotation rotation;
-		
+
 		Rotation original_rotation;
 		Vector original_position;
 
@@ -2574,12 +2574,12 @@ void Storm3D_Model::updateRadiusToContain(const VC3 &pos, float radius)
 	{
 		bounding_radius = need_radius;
 		box_ok = false;
-		
+
 		if(observer)
 			observer->updateRadius(bounding_radius * max_scale);
 	}
 
-	original_bounding_radius = bounding_radius;	
+	original_bounding_radius = bounding_radius;
 }
 
 //! Raytrace
@@ -2673,7 +2673,7 @@ void Storm3D_Model::RayTrace(const VC3 &position,const VC3 &direction_normalized
 
 		// Test if the ray intersects bones bounding sphere
 		// Should use thickness/direction for better accuracy
-		
+
 		//Vector relative_position;
 		Vector collision_position;
 
@@ -2752,7 +2752,7 @@ real_bone_direction.Normalize();
 	{
 		// Static geometry
 
-		// Raytrace to each object	
+		// Raytrace to each object
 		for(set<Storm3D_Model_Object*>::iterator io = collision_objects.begin(); io != collision_objects.end(); ++io)
 		{
 			// Typecast (to simplify code)
@@ -2780,7 +2780,7 @@ void Storm3D_Model::SphereCollision(const VC3 &position,float radius,Storm3D_Col
 	if(no_collision == true)
 		return;
 
-	// Spherecollide to each object	
+	// Spherecollide to each object
 	for(set<Storm3D_Model_Object*>::iterator io = collision_objects.begin(); io != collision_objects.end(); ++io)
 	{
 		// Typecast (to simplify code)
@@ -2967,7 +2967,7 @@ bool Storm3D_Model::BlendToAnimation(IStorm3D_BoneAnimation *transition_, IStorm
 	Model_BoneAnimation foo(transition, animation, loop, blend_time, animation_time);
 	foo.SetState(Model_BoneAnimation::BlendIn, blend_time);
 
-	normal_animations.push_back(foo);	
+	normal_animations.push_back(foo);
 	return true;
 }
 
@@ -2982,7 +2982,7 @@ bool Storm3D_Model::BlendWithAnimationIn(IStorm3D_BoneAnimation *transition_, IS
 
 	Storm3D_BoneAnimation *animation = static_cast<Storm3D_BoneAnimation*> (animation_);
 	if(animation->GetId() != bone_boneid)
-		return false;	
+		return false;
 	Storm3D_BoneAnimation *transition = static_cast<Storm3D_BoneAnimation*> (transition_);
 	if(transition && transition->GetId() != bone_boneid)
 		return false;
@@ -3116,7 +3116,7 @@ void Storm3D_Model::AdvanceAnimation(int time_delta)
 	// Reset bones
 	for(unsigned int i = 0; i < bones.size(); ++i)
 		bones[i]->ResetAnimations();
-	
+
 	// Way too much looping over same containers
 	// Should really optimize this stuff, >10% storms cpu usage
 	//	-- psd
@@ -3133,7 +3133,7 @@ void Storm3D_Model::AdvanceAnimation(int time_delta)
 			if(it->GetState() == Model_BoneAnimation::Normal)
 				++normalAnimations;
 		}
-		
+
 		for(it = normal_animations.begin(); it != normal_animations.end();)
 		{
 			if(((*it).HasEnded() == true) && ((*it).GetState() == Model_BoneAnimation::BlendOut))
@@ -3173,7 +3173,7 @@ void Storm3D_Model::AdvanceAnimation(int time_delta)
 
 		for(it = blending_with_animations.begin(); it != blending_with_animations.end(); ++it)
 		{
-			if(((*it).HasEnded() == true) && ((*it).GetState() == Model_BoneAnimation::BlendIn))		
+			if(((*it).HasEnded() == true) && ((*it).GetState() == Model_BoneAnimation::BlendIn))
 				(*it).SetState(Model_BoneAnimation::Normal, 0);
 		}
 	}
@@ -3263,7 +3263,7 @@ void Storm3D_Model::ApplyAnimations()
 		if((*it).GetState() != Model_BoneAnimation::Normal)
 		if((*it).GetBlendProperties(&blending_factor) == false)
 			continue;
-		
+
 		for(unsigned int i = 0; i < bones.size(); ++i)
 		{
 			Storm3D_Bone *bone = bones[i];
@@ -3286,7 +3286,7 @@ void Storm3D_Model::ApplyAnimations()
 		if((*it).GetState() != Model_BoneAnimation::Normal)
 		if((*it).GetBlendProperties(&blending_factor) == false)
 			continue;
-		
+
 		for(unsigned int i = 0; i < bones.size(); ++i)
 		{
 			Storm3D_Bone *bone = bones[i];

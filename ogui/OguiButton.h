@@ -199,7 +199,7 @@ private:
 	bool imageDisabledAutodel;
 	bool imageHighlightedAutodel;
 	float rotation;
-	
+
 
 	// some internal hacks
 	// (the real button implementation is hidden behind this pointer)
@@ -212,7 +212,7 @@ private:
 	bool selected;
 	IOguiImage* imageSelected;
 	IOguiImage* imageSelectedHigh;
-	
+
 	friend class Ogui;
 	friend class OguiWindow;
 	friend class OguiAligner;

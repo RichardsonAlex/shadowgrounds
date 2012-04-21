@@ -77,7 +77,7 @@ void sysFatalError(std::string msg)
 	gtk_dialog_run(GTK_DIALOG(dialog));
 	gtk_widget_destroy(dialog);
 #endif
-	
+
 	abort();
 }
 
@@ -136,7 +136,7 @@ void igios_sighandler(int sig, siginfo_t *info, void *secret) {
 		printf("Got signal %d at %p from %p\n", sig, info->si_addr, (void *) uc->uc_mcontext.gregs[REG_EIP]);
 	else
 		printf("Got signal %d\n", sig);
-	
+
 	num = backtrace(frames, 16);
 
 	frames[1] = (void *) uc->uc_mcontext.gregs[REG_EIP];

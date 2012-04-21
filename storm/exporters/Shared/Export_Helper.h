@@ -27,7 +27,7 @@ class Helper
 public:
 	enum Type { point = 0, vector = 1, box = 2, camera = 3, sphere = 4 };
 
-private:	
+private:
 	Type type;
 
 	std::string name;

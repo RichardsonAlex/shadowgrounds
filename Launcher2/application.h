@@ -4,7 +4,7 @@
 namespace frozenbyte {
 	namespace launcher {
 		class ApplicationImpl;
-		
+
 		class Application
 		{
 		public:

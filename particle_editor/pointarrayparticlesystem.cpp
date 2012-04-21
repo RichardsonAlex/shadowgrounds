@@ -40,25 +40,25 @@ class PointArrayParticleSystem : public GenParticleSystem {
 	int m_firstVertex;
 	int m_lastVertex;
 public:
-	
+
 	PointArrayParticleSystem() {
 	}
-	
+
 	const char* getClassName() {
 		return "point_array";
 	}
-	
+
 	const char* getSuperClassName() {
 		return "gen_system";
 	}
-	
+
 	ParticleSystem* launch() {
 		PointArrayParticleSystem* ps = new PointArrayParticleSystem();
 		baseCopy(ps);
 		ps->m_mesh = m_mesh;
 		return ps;
 	}
-	
+
 	void create() {
 
 		GenParticleSystem::create();
@@ -68,16 +68,16 @@ public:
 		m_pb->setValue(PB_POINT_ARRAY_LAST_VERTEX, 0);
 
 	}
-	
+
 	void init(IStorm3D* s3d, IStorm3D_Scene* scene) {
-				
+
 		GenParticleSystem::init(s3d, scene);
-		
+
 		std::string fileName;
 		m_pb->getValue(PB_POINT_ARRAY_MODEL_FILE, fileName);
 		if(fileName.empty())
 			return;
-		
+
 		IStorm3D_Model* model = s3d->CreateNewModel();
 		if(model->LoadS3D(fileName.c_str()))
 		{
@@ -101,30 +101,30 @@ public:
 	}
 
 	void prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene) {
-		
+
 		GenParticleSystem::prepareForLaunch(s3d, scene);
 
 		m_pb->getValue(PB_POINT_ARRAY_FIRST_VERTEX, m_firstVertex);
 		m_pb->getValue(PB_POINT_ARRAY_LAST_VERTEX, m_lastVertex);
 
 	}
-	
+
 	void setParticlePosition(Vector& v) {
 		if(m_mesh.get()==NULL)
 			return;
-		
+
 		m_index = m_firstVertex + rand() % (m_lastVertex - m_firstVertex);
 		if(m_index >= m_mesh->verts.size())
 			m_index = 0;
-		
+
 		v = m_mesh->verts[m_index];
 	}
-		
+
 	void setParticleVelocity(Vector& v, float speed) {
 		if(m_mesh.get()==NULL)
 			return;
-		
-		v = m_mesh->normals[m_index] * speed;	
+
+		v = m_mesh->normals[m_index] * speed;
 	}
 
 };

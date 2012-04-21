@@ -37,7 +37,7 @@ public:
 		if (pointer) return pointer->data;
 		else return NULL;
 	}
-	
+
 	SPtrListIterator<A> &operator++()		// Next
 	{
 		if (pointer) pointer=pointer->next;
@@ -95,7 +95,7 @@ public:
 			cur=next;
 		}
 	}
-	
+
 	void Remove(A *obj)
 	{
 		Remove(SPtr<A>(obj));

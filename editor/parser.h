@@ -22,7 +22,7 @@ namespace filesystem {
 class InputStream;
 
 } // filesystem
-	
+
 namespace editor {
 
 struct ParserGroupData;
@@ -63,7 +63,7 @@ public:
 	void addLine(const std::string &value);
 	void addSubGroup(const std::string &name, ParserGroup &group);
 	void removeSubGroup(const std::string& name);
-	
+
 	std::ostream &writeStream(std::ostream &stream, int tabCount) const;
 	filesystem::InputStream &readStream(filesystem::InputStream &stream);
 

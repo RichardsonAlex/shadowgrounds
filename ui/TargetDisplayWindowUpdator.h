@@ -27,7 +27,7 @@ public:
 	virtual void hide( int time = 0 );
 	virtual void show( int time = 0 );
 	virtual void update();
-	
+
 	void risingMessage( game::Unit* unit, const std::string& text, int style = risingMessageStyle );
 	void onDestruction( game::Item* item );
 
@@ -35,7 +35,7 @@ private:
 	void updateUpdatables();
 
 	game::Game* game;
-	
+
 	int			currentFrame;
 	const int	updateTargets;
 	const int	removeUnnessary;

@@ -39,7 +39,7 @@ namespace net
       virtual int getSupportedModeFlags();
 
 			void setArtificialLag(int minPing, int maxPing, int variationSpeed);
-			
+
       virtual ~TCPIPDriver();
 
     private:

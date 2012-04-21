@@ -26,7 +26,7 @@ public:
 	std::vector< boost::shared_ptr<ParticleSystem> > m_systems;
 
 	~ParticleEffectImp() {
-		
+
 	}
 
 	ParticleEffectImp* clone() {
@@ -37,19 +37,19 @@ public:
 		}
 		return imp;
 	}
-	
+
 	void setTM(const Matrix& tm) {
 		std::vector< boost::shared_ptr<ParticleSystem> >::iterator it = m_systems.begin();
 		for(it; it != m_systems.end(); it++)
 			(*it)->setTM(tm);
 	}
-	
+
 	void setVelocity(const Vector& velocity) {
 		std::vector< boost::shared_ptr<ParticleSystem> >::iterator it = m_systems.begin();
 		for(it; it != m_systems.end(); it++)
 			(*it)->setVelocity(velocity);
 	}
-	
+
 	void kill() {
 		std::vector< boost::shared_ptr<ParticleSystem> >::iterator it = m_systems.begin();
 		for(it; it != m_systems.end(); it++)
@@ -111,17 +111,17 @@ bool ParticleEffectManager::loadParticleEffect(int id, Parser& parser) {
 
 
 boost::shared_ptr<ParticleEffect> ParticleEffectManager::addParticleEffect(int id) {
-	
+
 	std::map<int, boost::shared_ptr<ParticleEffectImp> >::iterator it = m_effectTemplates.find(id);
-	
+
 	if(it != m_effectTemplates.end()) {
-		
+
 		ParticleEffectImp* temp = it->second->clone();
-		
+
 		for(int i = 0; i < temp->m_systems.size(); i++) {
 			ParticleSystemManager::getSingleton().addParticleSystem(temp->m_systems[i]);
 		}
-		
+
 		boost::shared_ptr<ParticleEffect> ptr(temp);
 		return ptr;
 	}

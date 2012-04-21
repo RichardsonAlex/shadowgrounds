@@ -26,9 +26,9 @@ private:
 	std::list< boost::shared_ptr<IParticleSystem> > m_systems;
 public:
 	ParticleSystemManager(IStorm3D* s3d, IStorm3D_Scene* scene);
-							
+
 	void addParticleSystem(boost::shared_ptr<IParticleSystem> ps);
-	
+
 	void reset(bool statsOnly=true);
 	void tick();
 	const Stats& getStats();

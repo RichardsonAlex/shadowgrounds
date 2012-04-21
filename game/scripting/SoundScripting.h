@@ -14,7 +14,7 @@ namespace game
 
 	class SoundScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

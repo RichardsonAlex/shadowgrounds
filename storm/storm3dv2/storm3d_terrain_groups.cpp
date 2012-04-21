@@ -545,7 +545,7 @@ void Storm3D_TerrainGroup::setInstanceLightmapped(int modelId, int instanceId, b
 
 	Instance &instance = *original.instances[instanceId];
 	instance.lightmapped = lightmapped;
-	
+
 	if(instance.model)
 	{
 		Storm3D_Model *m = static_cast<Storm3D_Model *> (instance.model.get());
@@ -604,7 +604,7 @@ void Storm3D_TerrainGroup::setInstanceInBuilding(int modelId, int instanceId, bo
 {
 	assert(modelId >= 0 && instanceId >= 0);
 	SharedModel &original = data->models[modelId];
-	
+
 	Instance &instance = *original.instances[instanceId];
 	instance.inBuilding = inBuilding;
 
@@ -624,7 +624,7 @@ void Storm3D_TerrainGroup::setInstanceOccluded(int modelId, int instanceId, bool
 {
 	assert(modelId >= 0 && instanceId >= 0);
 	SharedModel &original = data->models[modelId];
-	
+
 	Instance &instance = *original.instances[instanceId];
 
 	if(instance.model)
@@ -680,7 +680,7 @@ void Storm3D_TerrainGroup::removeInstances()
 	for(; it != data->models.end(); ++it)
 	{
 		SharedModel &model = *it;
-		
+
 		ModelInstanceList::iterator i = model.instances.begin();
 		for(; i != model.instances.end(); ++i)
 		{
@@ -721,7 +721,7 @@ void Storm3D_TerrainGroup::enableCollision(bool enable)
 	for(; it != data->models.end(); ++it)
 	{
 		SharedModel &model = *it;
-		
+
 		ModelInstanceList::iterator i = model.instances.begin();
 		for(; i != model.instances.end(); ++i)
 		{
@@ -748,7 +748,7 @@ void Storm3D_TerrainGroup::enableBigCollision(bool enable)
 		SharedModel &model = *it;
 		if(static_cast<Storm3D_Model *> (model.model.get())->bounding_radius < 3.f)
 			continue;
-		
+
 		ModelInstanceList::iterator i = model.instances.begin();
 		for(; i != model.instances.end(); ++i)
 		{
@@ -774,7 +774,7 @@ void Storm3D_TerrainGroup::enableLightmapCollision(bool enable)
 	for(; it != data->models.end(); ++it)
 	{
 		SharedModel &model = *it;
-		
+
 		ModelInstanceList::iterator i = model.instances.begin();
 		for(; i != model.instances.end(); ++i)
 		{

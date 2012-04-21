@@ -43,7 +43,7 @@
 #endif
 
 namespace ui {
-	
+
 
 const static bool videoDisabledDuringGame = true;
 const static bool hidePreviouslyOpenedMenus = false;
@@ -57,7 +57,7 @@ class MenuCollectionImpl
 private:
 	Ogui*				ogui;
 	Game*				game;
-	MenuCollection*		self;		
+	MenuCollection*		self;
 
 	float				transparencyFadeSpeed;
 	float				transparency;
@@ -104,7 +104,7 @@ private:
 
 	std::stack< int >			openedMenus;
 	std::stack< IMenuBase* >	openedMenusData;
-	
+
 	///////////////////////////////////////////////////////////////////////////
 
 	IMenuBase* menuFactory( int menu )
@@ -139,7 +139,7 @@ private:
 		case MenuCollection::MENU_TYPE_OPTIONSMENU:
 			return new OptionsMenu( self, &fonts, ogui, game );
 			break;
-		
+
 		case MenuCollection::MENU_TYPE_CREDITSMENU:
 			return new CreditsMenu( self, &fonts, ogui, game );
 			break;
@@ -217,15 +217,15 @@ public:
 				lastBackgroundAlternativeSwitch = Timer::getTime();
 			}
 		}
-	
+
 		foreground = ogui->CreateSimpleWindow(	getLocaleGuiInt( "gui_menu_foreground_x", 0 ),
 												getLocaleGuiInt( "gui_menu_foreground_y", 0 ),
 												getLocaleGuiInt( "gui_menu_foreground_w", 1 ),
 												getLocaleGuiInt( "gui_menu_foreground_h", 1 ),
 												getLocaleGuiString( "gui_menu_foreground_img" ) );
 		foreground->SetReactMask( 0 );
-		
-		
+
+
 
 
 		videoButton = ogui->CreateSimpleImageButton( background,
@@ -249,7 +249,7 @@ public:
 		fonts.little.normal =		ogui->LoadFont( getLocaleGuiString( "gui_menu_font_little" ) );
 		fonts.little.highlighted =	ogui->LoadFont( getLocaleGuiString( "gui_menu_font_little_high" ) );
 
-		
+
 
 		background->StartEffect( OGUI_WINDOW_EFFECT_FADEIN, 3000 );
 		foreground->StartEffect( OGUI_WINDOW_EFFECT_FADEIN, 3000 );
@@ -257,7 +257,7 @@ public:
 		if( game->inCombat == false )
 			transparencyFadeSpeed = 50.0f;
 		else transparencyFadeSpeed = 20.0f;
-		
+
 		const int menu_to_be_opened = MenuCollection::MENU_TYPE_MAINMENU;
 		openMenu( menu_to_be_opened );
 	}
@@ -282,7 +282,7 @@ public:
 		delete backgroundAlternativeButton;
 		delete background;
 		delete foreground;
-		
+
 
 		delete fonts.big.normal;
 		delete fonts.medium.normal;
@@ -299,7 +299,7 @@ public:
 
 	void initVideos()
 	{
-		
+
 		bool video_enabled = GameOptionManager::getInstance()->getOptionByName( "menu_video_enabled" )? GameOptionManager::getInstance()->getOptionByName( "menu_video_enabled" )->getBooleanValue() : true;
 
 		if( video_enabled && game->inCombat && videoDisabledDuringGame )
@@ -312,7 +312,7 @@ public:
 
 		if( video_enabled )
 			backgroundVideo = ogui->LoadOguiVideo( getLocaleGuiString( "gui_menu_video_video" ), builder );
-		
+
 		if( backgroundVideo == NULL )
 		{
 			// background->setBackgroundImage( );
@@ -354,7 +354,7 @@ public:
 
 			if( ( video_enabled || playLogoVideoAlways ) && playLogoVideo )
 				logoVideo = ogui->LoadOguiVideo( getLocaleGuiString( "gui_menu_logo_video" ), builder );
-			
+
 			if( logoVideo == NULL )
 				logoVideo = ogui->LoadOguiImage( getLocaleGuiString( "gui_menu_logo_img" ) );
 
@@ -418,7 +418,7 @@ public:
 				foreground->SetTransparency( (int)transparency );
 			}
 
-			
+
 		}*/
 
 		if(backgroundAlternativeButton != NULL)
@@ -477,7 +477,7 @@ public:
 	{
 		return true;
 		if ( activeMenu )	return activeMenu->isVisible();
-		else				return background->IsVisible();	
+		else				return background->IsVisible();
 	}
 
 	bool wasQuitPressed() // const
@@ -490,7 +490,7 @@ public:
 	}
 
 	void changeMenu( int menu )
-	{	
+	{
 		openedMenus.pop();
 		delete activeMenu;
 		activeMenu = NULL;
@@ -498,9 +498,9 @@ public:
 		IMenuBase *lower_menu = openedMenusData.empty()?NULL:openedMenusData.top();
 
 		activeMenu = menuFactory( menu );
-		
+
 		if(raiseLowerMenu && lower_menu) lower_menu->raise();
-		
+
 		assert( foreground );
 		foreground->Raise();
 
@@ -517,7 +517,7 @@ public:
 			activeMenu->hide();
 			delete activeMenu;
 		}
-		
+
 		if( activeMenu && hidePreviouslyOpenedMenus == false )
 		{
 			openedMenusData.push( activeMenu );
@@ -533,10 +533,10 @@ public:
 		{
 			activeMenu = menuFactory( menu );
 		}
-		
+
 		assert( foreground );
 		foreground->Raise();
-		
+
 		openedMenus.push( menu );
 		activeMenu->show();
 	}
@@ -545,7 +545,7 @@ public:
 	{
 		openedMenus.pop();
 		int menu = openedMenus.empty()?0:openedMenus.top();
-		
+
 		activeMenu->applyChanges();
 
 		delete activeMenu;
@@ -578,7 +578,7 @@ public:
 		std::stringstream ss;
 		ss << n;
 
-		game->loadGame( ss.str().c_str() );	
+		game->loadGame( ss.str().c_str() );
 		// assert( false && "TODO" );
 	}
 

@@ -199,7 +199,7 @@ String String::GetAndRemoveFirstWord(char separator)
 	// Search for separator
 	int i;
 	for (i=0;(i<length)&&(data[i]!=separator);i++); //OK
-	
+
 	// Found?
 	if (i==length)
 	{
@@ -229,7 +229,7 @@ String String::GetAndRemoveLastWord(char separator)
 	// Search for separator
 	int i;
 	for (i=length-1;(i>=0)&&(data[i]!=separator);i--); //OK
-	
+
 	// Found?
 	if (i<0)
 	{

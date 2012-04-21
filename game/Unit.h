@@ -103,7 +103,7 @@ namespace game
 		int fireReloadDelay[UNIT_MAX_WEAPONS];
 
 	public:
-	
+
 		enum UNIT_MODE
 		{
 			UNIT_MODE_AGGRESSIVE = 1,
@@ -446,7 +446,7 @@ namespace game
 		 * Waypoint coordinates unit (x, y, z) = map (x, height, y).
 		 */
 		inline void setWaypoint(const VC3 &waypoint) { this->waypoint = waypoint; }
-		
+
 		/**
 		 * Sets final destination position for the unit.
 		 * Destination coordinates unit (x, y, z) = map (x, height, y).
@@ -465,7 +465,7 @@ namespace game
 		Unit *getToBeSeenUnit() const;
 
 		void setToBeSeenUnitDistance(float distance);
-		
+
 		float getToBeSeenUnitDistance() const;
 
 		bool isAnimated() const;
@@ -827,7 +827,7 @@ namespace game
 
 		float getRushDistance() const;
 		void setRushDistance(float rushDistance);
-	
+
 		// call for every non-sneaky step taken by the unit,
 		// returns true if a noise is to be made for this step, else false
 		// (noises mean gameplay noises, not actual sounds)
@@ -1168,7 +1168,7 @@ namespace game
 
 		float getPhysicsObjectDifference() const { return this->physicsObjectDifference; }
 		void setPhysicsObjectDifference(float value) { this->physicsObjectDifference = value; }
-		
+
 		// for Survivors snow hack
 		void setVisualizationOffsetInterpolation( float value ) { visualizationOffsetInterpolation = value; }
 		float getVisualizationOffsetInterpolation() const { return visualizationOffsetInterpolation; }
@@ -1604,8 +1604,8 @@ namespace game
 		int hitAnimationCounter;
 		int destroyedTime;
 
-		float hitAnimationBoneAngle;		
-		VC3 hitAnimationVector;		
+		float hitAnimationBoneAngle;
+		VC3 hitAnimationVector;
 		float hitAnimationFactor;
 
 		bool spottable;
@@ -1702,7 +1702,7 @@ namespace game
 
 		int getTargetLockCounter(void) const { return targetLockCounter; }
 		void setTargetLockCounter(int value) { targetLockCounter = value; }
-		
+
 		void setTargetLockCounterMax(int max) { targetLockCounterMax = max; }
 		int getTargetLockCounterMax(void) const { return targetLockCounterMax; }
 
@@ -1719,7 +1719,7 @@ namespace game
 
 		void setSpeedWhileFiring(Unit::UNIT_SPEED speed);
 		void resetSpeedAfterFiring(void);
-		
+
 
 		// added by Pete for the use of TargetDisplay
 		// -1 is no highlight

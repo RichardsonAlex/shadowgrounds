@@ -95,13 +95,13 @@ void AmbientSound::disable(bool immediately, sfx::SoundLooper* soundLooper) {
 		soundLooper->stopLoopedSound(handle, key, immediately);
 		played = false;
 	}
-	
+
 }
 
 void AmbientSound::makeFromDefString(const char* string) {
 	defString = string;
 }
-		
+
 void AmbientSound::tick(game::GameUI* gameUI, SoundLooper* looper,
 	const VC3 &listenerPosition) {
 
@@ -120,7 +120,7 @@ void AmbientSound::tick(game::GameUI* gameUI, SoundLooper* looper,
 	if (inArea)
 	{
 		if(!played)
-		{			
+		{
 			if(rollOff == 0)
 			{
 				if(gameUI->parseSoundFromDefinitionString(const_cast<char*>(defString.c_str()), listenerPosition.x, listenerPosition.y, listenerPosition.z,
@@ -134,10 +134,10 @@ void AmbientSound::tick(game::GameUI* gameUI, SoundLooper* looper,
 					&looped, &handle, &key, false, range, DEFAULT_SOUND_PRIORITY_LOW, false, true) != -1)
 				{
 					assert(looped);
-					played = true;			
+					played = true;
 				}
 			}
-			
+
 		}
 	} else {
 		if(played)

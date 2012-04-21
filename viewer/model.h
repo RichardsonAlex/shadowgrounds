@@ -19,7 +19,7 @@ namespace editor {
 	struct Storm;
 	class Dialog;
 }
-	
+
 namespace viewer {
 
 struct ModelData;

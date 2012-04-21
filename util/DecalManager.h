@@ -49,7 +49,7 @@ public:
 	void eraseDecal(const DecalIdentifier &decal);
 
 	void setSpawnProperties(int waitTime, int fadeInTime, FadeType type);
-	void addDecal(DecalIdentifier &id, Type type, int materialId, const VC3 &position, const VC2 &size, const QUAT &rotation, const COL &light, bool inBuilding, int fadeOutWaitTime, bool forceSpawn);	
+	void addDecal(DecalIdentifier &id, Type type, int materialId, const VC3 &position, const VC2 &size, const QUAT &rotation, const COL &light, bool inBuilding, int fadeOutWaitTime, bool forceSpawn);
 	void update(int timeDelta);
 
 	IStorm3D_TerrainDecalSystem &getDecalSystem();

@@ -54,7 +54,7 @@ namespace ui
 			assert(!"Decoration - Decoration name array not ok. Fix it.");
 		}
 #endif
-		
+
 		for (int i = 0; i < DECORATION_MAX_EFFECTS; i++)
 		{
 			if (decorEffectNames[i] != NULL)
@@ -201,7 +201,7 @@ namespace ui
 						rotation.z += animationSpeed*360.0f / GAME_TICKS_PER_SECOND;
 						if (rotation.z >= 360)
 							rotation.z -= 360;
-						break;						
+						break;
 
 					case Decoration::DECORATION_EFFECT_GEAR1_Y:
 						// NOTICE: inaccuracy grows by time!!!
@@ -382,7 +382,7 @@ namespace ui
 		 // decoration model file name doesn't have Y boundaries
 		 boundingQuadSizeX = 0.0f;
 		 boundingQuadSizeY = 0.0f;
-		 return;	
+		 return;
 	  }
 	  i++; // skip x
 	  a = 0;

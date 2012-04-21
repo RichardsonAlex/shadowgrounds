@@ -27,7 +27,7 @@ using namespace frozenbyte::editor;
 Vector convertVectorFromString(const std::string& str) {
 	std::string x,y,z;
 	int i = 0;
-	for(int j = 0; j < 3; j++) {	
+	for(int j = 0; j < 3; j++) {
 		for( ; i < (int)str.size(); i++) {
 			if(str[i] == ',') {
 				i++;
@@ -77,7 +77,7 @@ void parseFloatKeyControlTo(ParserGroup& g, KeyControl* kc) {
 		kc->getKey(i, &key);
 		std::string str = "key" + boost::lexical_cast<std::string>(i);
 		g.setValue((str + ".time"), convertToString<float>(key.time));
-		g.setValue((str + ".value"), convertToString<float>(key.value));		
+		g.setValue((str + ".value"), convertToString<float>(key.value));
 	}
 }
 
@@ -102,7 +102,7 @@ void parseVectorKeyControlTo(ParserGroup& g, KeyControl* kc) {
 		std::string str = "key" + boost::lexical_cast<std::string>(i);
 		g.setValue((str + ".time"), convertToString<float>(key.time));
 		g.setValue((str + ".value"), convertVectorToString(key.value));
-	}	
+	}
 }
 /*
 void parseParamBlockFrom(const editor::ParserGroup& g, ParamBlock& pb) {
@@ -120,7 +120,7 @@ void parseParamBlockFrom(const editor::ParserGroup& g, ParamBlock& pb) {
 			{
 				if(pb.getTrack(i)) {
 					const ParserGroup& kg = g.getSubGroup(pb.getParamName(i));
-					parseFloatKeyControlFrom(kg, pb.getTrack(i)->getKeyControl());	
+					parseFloatKeyControlFrom(kg, pb.getTrack(i)->getKeyControl());
 				} else {
 					float def;
 					pb.getValue(i, def);
@@ -132,7 +132,7 @@ void parseParamBlockFrom(const editor::ParserGroup& g, ParamBlock& pb) {
 			{
 				if(pb.getTrack(i)) {
 					const ParserGroup& kg = g.getSubGroup(pb.getParamName(i));
-					parseVectorKeyControlFrom(kg, pb.getTrack(i)->getKeyControl());	
+					parseVectorKeyControlFrom(kg, pb.getTrack(i)->getKeyControl());
 				} else {
 					Vector def;
 					pb.getValue(i, def);

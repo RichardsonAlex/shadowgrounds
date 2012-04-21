@@ -437,7 +437,7 @@ namespace game
 			}
 			break;
 
-		case GS_CMD_GETPROGRESSDONETIME:			
+		case GS_CMD_GETPROGRESSDONETIME:
 			if (itemScriptItem != NULL)
 			{
 				if (itemScriptItem->getProgressBar() != NULL)
@@ -563,7 +563,7 @@ namespace game
 				sp->error("ItemScripting::process - Attempt to setItemHighlightText outside item script.");
 			}
 			break;
-		
+
 		case GS_CMD_setItemHighlightTextBySpecialString:
 			if (itemScriptItem != NULL)
 			{
@@ -572,7 +572,7 @@ namespace game
 				sp->error("ItemScripting::process - Attempt to setItemHighlightText outside item script.");
 			}
 			break;
-		
+
 		case GS_CMD_openTerminalWindow:
 			if( game != NULL )
 			{

@@ -128,7 +128,7 @@ void LWScene::collectBones()
 
 			boneId = itemInfo->next(boneId);
 		}
-		
+
 		objectId = itemInfo->next(objectId);
 	}
 

@@ -209,7 +209,7 @@ namespace game
 				}
 				break;
 
-			case GS_CMD_COMPLETEMISSIONOBJECTIVE:				
+			case GS_CMD_COMPLETEMISSIONOBJECTIVE:
 				if (stringData != NULL)
 				{
 #ifdef GUI_BUILD_MAP_WINDOW
@@ -254,7 +254,7 @@ namespace game
 						*lastValue = 1;
 					} else {
 						*lastValue = 0;
-					}					
+					}
 #else
 					sp->warning("MapScripting::process - Map window not in build.");
 #endif
@@ -413,7 +413,7 @@ namespace game
 					int width  = mapMulti * game->getGameScene()->getGameMap()->getSizeY();
 
 					std::string filename;
-					if(stringData)			
+					if(stringData)
 					{
 						filename = stringData;
 					}
@@ -537,7 +537,7 @@ namespace game
 				break;
 
 			default:
-				sp->error("MapScripting::process - Unknown command.");				
+				sp->error("MapScripting::process - Unknown command.");
 				assert(0);
 		}
 	}

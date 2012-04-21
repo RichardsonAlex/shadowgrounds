@@ -46,12 +46,12 @@ public:
 
 class CloudParticleSystemSphere : public CloudParticleSystemShape {
 public:
-	
+
 	void genPos(Vector& v, const CloudParticleSystemEditables& eds) {
 
 		const float& innerRadius = eds.sphereInnerRadius;
 		const float& outerRadius = eds.sphereOuterRadius;
-		
+
 		v.x = (float)(-RAND_MAX) + 2.0f * (float)(rand() % RAND_MAX);
 		v.y = (float)(-RAND_MAX) + 2.0f * (float)(rand() % RAND_MAX);
 		v.z = (float)(-RAND_MAX) + 2.0f * (float)(rand() % RAND_MAX);
@@ -60,15 +60,15 @@ public:
 
 	}
 };
-		
+
 class CloudParticleSystemBox  : public CloudParticleSystemShape {
 public:
-	
+
 	void genPos(Vector& v, const CloudParticleSystemEditables& eds) {
-		
+
 		const Vector& min = eds.boxMin;
 		const Vector& max = eds.boxMax;
-		
+
 		v.x = min.x + (max.x - min.x) * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 		v.y = min.y + (max.y - min.y) * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 		v.z = min.z + (max.z - min.z) * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
@@ -78,9 +78,9 @@ public:
 
 class CloudParticleSystemCylinder  : public CloudParticleSystemShape  {
 public:
-	
+
 	void genPos(Vector& v, const CloudParticleSystemEditables& eds) {
-		
+
 		const float& radius = eds.cylinderRadius;
 		const float& height = eds.cylinderHeight;
 
@@ -120,7 +120,7 @@ boost::shared_ptr<IParticleSystem> CloudParticleSystem::clone() {
 CloudParticleSystemEditables& CloudParticleSystem::getEditables() {
 	return *m_eds;
 }
-	
+
 const CloudParticleSystemEditables& CloudParticleSystem::getEditables() const {
 	return *m_eds;
 }
@@ -144,11 +144,11 @@ void CloudParticleSystem::render(IStorm3D_Scene* scene) {
 
 
 void CloudParticleSystem::parseFrom(const ParserGroup& pg, const util::SoundMaterialParser &materialParser) {
-		
+
 	defaultParseFrom(pg, *m_eds);
 	m_eds->shape = pg.getValue("shape", "");
 	m_eds->randomDirection = static_cast<bool>(convertFromString<int>(pg.getValue("random_direction", ""), 0));
-	if(m_eds->shape == "sphere") {		
+	if(m_eds->shape == "sphere") {
 		boost::shared_ptr<CloudParticleSystemShape> sphere(new CloudParticleSystemSphere);
 		m_shape.swap(sphere);
 		m_eds->sphereInnerRadius = convertFromString<float>(pg.getValue("sphere_inner_radius", ""), 0);
@@ -164,24 +164,24 @@ void CloudParticleSystem::parseFrom(const ParserGroup& pg, const util::SoundMate
 		boost::shared_ptr<CloudParticleSystemShape> cyl(new CloudParticleSystemCylinder);
 		m_shape.swap(cyl);
 		m_eds->cylinderHeight = convertFromString<float>(pg.getValue("cylinder_height", ""), 0);
-		m_eds->cylinderRadius = convertFromString<float>(pg.getValue("cylinder_radius", ""), 0);	
+		m_eds->cylinderRadius = convertFromString<float>(pg.getValue("cylinder_radius", ""), 0);
 	}
 	else {
 		assert(!"unkown or undefined shape type");
 	}
-	
+
 
 }
 
 void CloudParticleSystem::setParticlePosition(Vector& v) {
 
-	if(m_shape.get()!=NULL)	
+	if(m_shape.get()!=NULL)
 		m_shape->genPos(v, *m_eds);
-	
+
 }
 
 void CloudParticleSystem::setParticleVelocity(Vector& v, const Vector& direction, float speed, const GenParticleSystemEditables& eds) {
-	
+
 	if(m_eds->randomDirection) {
 		float rnd1 = -1.0f + 2.0f * ((float)rand() / (float)RAND_MAX);
 		float rnd2 = -1.0f + 2.0f * ((float)rand() / (float)RAND_MAX);

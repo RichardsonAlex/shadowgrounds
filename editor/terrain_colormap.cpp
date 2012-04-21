@@ -83,7 +83,7 @@ struct TerrainColorMap::Data
 			storm.scene->RayTrace(pos, VC3(0, -1.f, 0), 500.f, info);
 			if(!info.model || !info.object || !info.hit)
 				continue;
-			
+
 			VC3 target = pos;
 			target.y = info.position.y;
 			pos = target + VC3(0, 1.5f, 0);

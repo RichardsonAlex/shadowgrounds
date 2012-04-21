@@ -26,7 +26,7 @@ class ComboWindow::ComboWindowImpl : public game::IGameStatsListener
 {
 public:
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	ComboWindowImpl( Ogui* ogui, game::Game* game, int player_num ) :
 		game( game ),
 		playerNum( player_num ),
@@ -40,7 +40,7 @@ public:
 
 		window( NULL ),
 		textbut( NULL ),
-	
+
 		oguiLoader( ogui )
 
 	{
@@ -51,10 +51,10 @@ public:
 		// oguiLoader.SetLogging( true, "combowindow.txt" );
 
 		window = oguiLoader.LoadWindow( "combowindow"  );
-		
+
 		if( window )
 			window->SetReactMask( 0 );
-		
+
 		textbut = oguiLoader.LoadButton( "textbutton", window, 0 );
 		if( textbut )
 			textbut->SetText( "" );
@@ -62,7 +62,7 @@ public:
 	}
 
 	//=========================================================================
-	
+
 	~ComboWindowImpl()
 	{
 		fb_assert( playerNum >= 0 && playerNum < 4 );
@@ -71,7 +71,7 @@ public:
 
 		delete textbut;
 		delete window;
-		
+
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -116,7 +116,7 @@ public:
 				textbut->SetText( combo.c_str() );
 
 			showMessage = 1;
-			
+
 			lastTimeShownMessage = game->gameTimer;
 			// showingMessage = true;
 
@@ -124,14 +124,14 @@ public:
 	}
 
 	//=========================================================================
-	
+
 	void update()
 	{
 		if( showMessage > 0 && ( game->gameTimer - lastTimeShownMessage ) > comboMessageLength )
 		{
 			showMessage = 0;
 			// bool result = false;
-			
+
 			if( textbut )
 				/* result = */
 					textbut->SetText( "" );
@@ -149,7 +149,7 @@ private:
 	int	lastTimeWeKilled;
 	int timeNeededForACombo;
 	int comboCount;
-	
+
 	int lastTimeShownMessage;
 	int showMessage;
 	int comboMessageLength;

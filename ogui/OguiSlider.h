@@ -24,7 +24,7 @@ public:
 	/*OguiWindow *win, int x, int y, int sizex, int sizey,
     const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename,
     int id = 0, void *argument = NULL*/
-	
+
 	virtual ~OguiSlider( );
 
 	// sets a position for the bar. Not relative to the position of the background.
@@ -106,7 +106,7 @@ public:
 		const std::string& background_norm, const std::string& background_down, const std::string& background_high,
 		const std::string& foreground_norm, const std::string& foreground_down, const std::string& foreground_high, int id = 0, float value = 1.0f  );
 	virtual ~OguiGfxSlider();
-	
+
 	virtual void setDisabled( bool disabled = true );
 
 private:

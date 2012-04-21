@@ -36,7 +36,7 @@ public:
 		float requiredAngularAcceleration;
 
 		//std::vector<std::string> breakObjects;
-		
+
 		ObjectDurability()
 		:	requiredForce(OBJECTDURABILITYPARSER_DEFAULT_REQUIRED_FORCE),
 			requiredAcceleration(OBJECTDURABILITYPARSER_DEFAULT_REQUIRED_ACCELERATION),

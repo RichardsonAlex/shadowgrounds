@@ -25,7 +25,7 @@ public:
 
 	int xPosition;
 	int yPosition;
-	
+
 
 	DialogDataImpl() :
 	  handler( NULL )
@@ -39,7 +39,7 @@ public:
 	static BOOL CALLBACK DialogHandler(HWND windowHandle, UINT message,  WPARAM wParam, LPARAM lParam)
 	{
 		DialogDataImpl *data = reinterpret_cast<DialogDataImpl *> (GetWindowLong(windowHandle, GWL_USERDATA));
-		
+
 		if(message == WM_INITDIALOG)
 		{
 			SetWindowLong(windowHandle, GWL_USERDATA, lParam);
@@ -85,7 +85,7 @@ public:
 
 		if(data && data->handler && windowHandle)
 		{
-			data->handler->handleMessages(windowHandle, message, wParam, lParam);			
+			data->handler->handleMessages(windowHandle, message, wParam, lParam);
 		}
 
 		return 0;
@@ -101,7 +101,7 @@ public:
 
 		RECT windowSize = { 0 };
 		GetWindowRect(windowHandle, &windowSize);
-	
+
 		int originalWidth = windowSize.right - windowSize.left;
 		int originalHeight = windowSize.bottom - windowSize.top;
 
@@ -176,7 +176,7 @@ DialogData::DialogData(int resourceId, HWND parentWindowHandle, ResizeType type 
 DialogData::DialogData( int resourceId )
 {
 	impl = new DialogDataImpl;
-	
+
 	impl->modalDialog = true;
 	impl->resourceId = resourceId;
 

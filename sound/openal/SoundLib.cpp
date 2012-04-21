@@ -1255,7 +1255,7 @@ Sound::Sound(Data *data_)
 					break;
 			}
 		}
-		
+
 		if(size == 0)
 		{
 			// stream ended

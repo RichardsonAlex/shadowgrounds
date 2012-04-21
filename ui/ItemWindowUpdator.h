@@ -26,12 +26,12 @@ public:
 	virtual void hide( int time = 0 );
 	virtual void show( int time = 0 );
 	virtual void update();
-	
+
 
 private:
 
 	void doUpdate( ItemWindow* itemwindow );
-	
+
 	struct ItemVisual
 	{
 		std::string watch_variable;
@@ -42,10 +42,10 @@ private:
 	//.........................................................................
 
 	game::Game* game;
-	
+
 	int updateInFrames;
 	int currentFrame;
-	
+
 	ItemWindow* itemWindow;
 	//.........................................................................
 

@@ -123,7 +123,7 @@ namespace {
 
 		int terrObjModelId;
 		int terrObjInstanceId;
-		
+
 		float extraRange;
 		VC3 clawSpaceDifference;
 
@@ -627,7 +627,7 @@ struct ClawController::Data : public NxUserRaycastReport
 		util::SoundMaterialParser materialParser;
 		int clawMaterial = materialParser.getMaterialIndexByName("claw");
 		int bodyMaterial = materialParser.getMaterialIndexByName("claw_body");
-		
+
 		lastPositions.resize(32, rootPosition);
 		lastMasses.resize(32, 0.0f);
 
@@ -656,7 +656,7 @@ struct ClawController::Data : public NxUserRaycastReport
 				{
 					actor->enableFeature(frozenbyte::physics::ActorBase::KINEMATIC_MODE, true);
 					actor->setCollisionGroup(PHYSICS_COLLISIONGROUP_NOCOLLISION);
-					//actor->setCollisionGroup(PHYSICS_COLLISIONGROUP_CLAW);				
+					//actor->setCollisionGroup(PHYSICS_COLLISIONGROUP_CLAW);
 				}
 				else
 				{
@@ -717,7 +717,7 @@ struct ClawController::Data : public NxUserRaycastReport
 		{
 			std::string boneName = "tail";
 			boneName += boost::lexical_cast<std::string> (i + 1);
-			
+
 			IStorm3D_Bone *bone = model->SearchBone(boneName.c_str());
 			actors[i].bone = bone;
 
@@ -912,8 +912,8 @@ if(grabInfo.actor)
 		}
 		grabInfo.actor->setLinearVelocity(fromVC3(force));
 	}
-	
-	// hack: give damage directly to static objects	
+
+	// hack: give damage directly to static objects
 	if(!grabInfo.actor->isDynamic() && force.GetSquareLength() > 1.0)
 	{
 		frozenbyte::physics::ActorBase *actorBase = static_cast<frozenbyte::physics::ActorBase *> (grabInfo.actor->userData);
@@ -1241,7 +1241,7 @@ if(grabInfo.actor)
 					rayClawDirection.dir = fromVC3(clawDir);
 					rayClawDirection.orig -= rayClawDirection.dir * rayClawDirectionFudge;
 					NxRaycastHit hitInfo;
-					
+
 					/*
 					if(shapes[i]->raycast(rayClawDirection, clawSettings.clawMaxDistance + rayClawDirectionFudge + EXTRA_GRAB_DISTANCE, NX_RAYCAST_FACE_NORMAL | NX_RAYCAST_IMPACT | NX_RAYCAST_DISTANCE, hitInfo, false))
 					{
@@ -1339,7 +1339,7 @@ if(grabInfo.actor)
 
 								if(dot < 0)
 									dot = 0.f;
-								
+
 								float addFactor = (1.f - powf(dot, clawSettings.preferObjectsFromClawDirectionNonlinearSpread)) * clawSettings.preferObjectsFromClawDirectionDistanceFactor;
 								clawDistance += addFactor * originalClawDistance;
 							}
@@ -1473,7 +1473,7 @@ if(grabInfo.actor)
 								// determine if it's a streetlamp
 								grabInfo.streetLamp = isStreetLamp(game, grabInfo.terrObjModelId);
 							}
-							
+
 
 						}
 
@@ -1533,7 +1533,7 @@ if(grabInfo.actor)
 							grabInfo.unit->targeting.clearTarget();
 
 							game->gameScripting->runOtherScript("claw", "grab_unit", grabInfo.unit, VC3(0,0,0));
-			
+
 							grabInfo.actor->clearBodyFlag(NX_BF_FROZEN_POS_X);
 							grabInfo.actor->clearBodyFlag(NX_BF_FROZEN_POS_Y);
 							grabInfo.actor->clearBodyFlag(NX_BF_FROZEN_POS_Z);
@@ -2072,7 +2072,7 @@ Logger::getInstance()->error( ss.str().c_str() );
 				mass = STATIC_OBJECT_MASS;
 			lastMasses[latestLastPosition] = mass;
 		}
-		
+
 
 		// Drop destroyed/unconscious unit
 		if(grabInfo.actor && grabInfo.unit)
@@ -2383,7 +2383,7 @@ Logger::getInstance()->error( ss.str().c_str() );
 	{
 		if(actor->isDynamic())
 		{
-			return actor->getCMassGlobalPosition();	
+			return actor->getCMassGlobalPosition();
 		}
 		else
 		{
@@ -2527,7 +2527,7 @@ void ClawController::update()
 
 
 						NxScene *scene = data->physicsLib->getScene();
-						
+
 
 						NxSphericalJointDesc jointDesc;
 						jointDesc.setToDefault();
@@ -2637,7 +2637,7 @@ void ClawController::update()
 		VC3 dirVec(data->turboVec.x, 0, data->turboVec.y);
 		if(dirVec.GetLength() > 0.0001f)
 			dirVec.Normalize();
-	
+
 		dirVec.y = distVec.GetNormalized().y;
 		float factor = sqrtf(1.f - (dirVec.y*dirVec.y));
 		dirVec.x *= factor;
@@ -3182,11 +3182,11 @@ worldRay.orig.z -= data->modelDelta.z;
 							data->grabInfo.actor->clearBodyFlag(NX_BF_FROZEN_ROT_Z);
 						}
 						else
-						{	
+						{
 							if(data->game)
 								data->game->gameScripting->runOtherScript("claw", "ungrab_unit", data->grabInfo.unit, VC3(0,0,0));
 						}
-					
+
 
 						data->grabInfo.actor->setMass(data->grabInfo.actorMass);
 						data->actors[data->clawSettings.boxAmount - 1].actor->setMass(data->clawSettings.clawMass);

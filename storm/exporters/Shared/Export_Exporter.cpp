@@ -44,7 +44,7 @@ const std::string &Exporter::getExporterInfo() const
 std::string Exporter::getSummaryInfo() const
 {
 	std::string result = model.getSummary();
-	
+
 	char number[20] = { 0 };
 	_itoa(bones.size(), number, 10);
 
@@ -60,7 +60,7 @@ std::string Exporter::getModelInfo() const
 std::string Exporter::getBoneInfo() const
 {
 	std::string result;
-	
+
 	char number[20] = { 0 };
 	_itoa(bones.size(), number, 10);
 	std::string boneAmount = number;
@@ -84,7 +84,7 @@ std::string Exporter::getBoneInfo() const
 std::string Exporter::getAnimationInfo() const
 {
 	std::string result;
-	
+
 	char number[20] = { 0 };
 	_itoa(animationLength, number, 10);
 
@@ -111,7 +111,7 @@ int Exporter::addBone(const Bone &bone)
 {
 	bones.push_back(bone);
 	boneKeys.resize(bones.size());
-	
+
 	return bones.size() - 1;
 }
 
@@ -135,7 +135,7 @@ int Exporter::getBoneId() const
 void Exporter::saveBonesToFile(const std::string &fileName)
 {
 	FILE *fp = fopen(fileName.c_str(), "wb");
-	
+
 	// Header
 	fwrite("B3D11", 1, 5, fp); // Version 1
 	fwrite(&boneId, 1, sizeof(int), fp); // Bone id
@@ -172,7 +172,7 @@ void Exporter::saveBonesToFile(const std::string &fileName)
 		Rotation originalRotation = convert(tm.GetRotation());
 		Vector minAngles = convert(bones[i].getMinAngles());
 		Vector maxAngles = convert(bones[i].getMaxAngles());
-		
+
 		// Write to file
 
 		const std::string &name = bones[i].getName();
@@ -184,7 +184,7 @@ void Exporter::saveBonesToFile(const std::string &fileName)
 		fwrite(&originalRotation, sizeof(float), 4, fp); // Original rotation
 		fwrite(&minAngles, sizeof(float), 3, fp); // Min angles
 		fwrite(&maxAngles, sizeof(float), 3, fp); // Max angles
-	
+
 		fwrite(&length, sizeof(float), 1, fp); // Length
 		fwrite(&radius, sizeof(float), 1, fp); // Thickness
 		fwrite(&parentIndex, sizeof(int), 1, fp); // Parent
@@ -348,7 +348,7 @@ void Exporter::buildBoneHierarchy()
 	// Hierarchy level for each bone (starting from 0)
 	std::vector<int> boneLevels(bones.size());
 	std::vector<Bone> newBones = bones;
-	
+
 	// Parents before their childs
 	{
 		for(unsigned int k = 0; k < newBones.size(); ++k)
@@ -441,7 +441,7 @@ void Exporter::buildBoneHierarchy()
 
 		// Sort
 		std::sort(newBones.begin() + sortStart, newBones.begin() + sortEnd, &BoneAlphaSort);
-		
+
 		// All done, exit
 		if(sortEnd == bones.size())
 			break;
@@ -480,7 +480,7 @@ void Exporter::buildBoneHierarchy()
 	bones = newBones;
 	boneKeys = newBoneKeys;
 
-	printInfo("Resorted bone hierarchy");	
+	printInfo("Resorted bone hierarchy");
 }
 
 void Exporter::removeRedundantMaterials()

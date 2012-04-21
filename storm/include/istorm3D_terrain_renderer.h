@@ -78,7 +78,7 @@ public:
 
 	virtual void setRenderMode(RenderMode mode) = 0;
 	virtual bool enableFeature(RenderFeature feature, bool enable) = 0;
-	
+
 	enum FloatValue
 	{
 		LightmapMultiplier,

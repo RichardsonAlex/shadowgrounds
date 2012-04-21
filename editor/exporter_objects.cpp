@@ -93,7 +93,7 @@ namespace  {
 			inBuilding(false),
 			uniqueEditorObjectHandle(0)
 		{
-			
+
 			for(int i = 0; i < LIGHT_MAX_AMOUNT; ++i)
 				lightIndex[i] = -1;
 		}
@@ -115,7 +115,7 @@ namespace  {
 		{
 		}
 	};
-	
+
 	struct BuildingInstanceData
 	{
 		VC2 position;

@@ -37,7 +37,7 @@ namespace {
 			if(textStart == -1)
 			if(!isWhiteSpace(string[i]))
 				textStart = i;
-			
+
 			// Remove comment
 			if(i < (int)string.size() - 2)
 			if(string[i] == '/')
@@ -135,7 +135,7 @@ struct ParserGroupData
 
 	typedef std::map<std::string, boost::shared_ptr<ParserGroup> > GroupMap;
 	GroupMap groups;
-	
+
 	typedef std::vector<std::string> LineList;
 	LineList lines;
 
@@ -211,7 +211,7 @@ struct ParserGroupData
 			if(nextLine[0] == '}')
 				return;
 
-			currentLine.swap(nextLine);		
+			currentLine.swap(nextLine);
 		}
 	}
 
@@ -256,9 +256,9 @@ struct ParserGroupData
 			stream << "{" << std::endl;
 
 			(*gi).second->writeStream(stream, tabCount + 1),
-			
+
 			writeTabs(stream, tabCount);
-			stream << "}" << std::endl;			
+			stream << "}" << std::endl;
 		}
 
 		if(!lines.empty() && ((!groups.empty() || !values.empty())))

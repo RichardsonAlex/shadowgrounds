@@ -52,7 +52,7 @@ void applyStorm(IStorm3D &storm, const ProceduralProperties &properties)
 void applyRenderer(IStorm3D &storm, const ProceduralProperties &properties)
 {
 	IStorm3D_ProceduralManager &manager = storm.getProceduralManager();
-	
+
 	int effectAmount = properties.getEffectAmount();
 	for(int i = 0; i < effectAmount; ++i)
 	{
@@ -63,7 +63,7 @@ void applyRenderer(IStorm3D &storm, const ProceduralProperties &properties)
 		mapLayer(effect.source2, source.source2);
 		mapDistortion(effect.distortion1, source.distortion1);
 		mapDistortion(effect.distortion2, source.distortion2);
-		
+
 		effect.enableDistortion = source.enableDistortion;
 		effect.fallback = source.fallback;
 

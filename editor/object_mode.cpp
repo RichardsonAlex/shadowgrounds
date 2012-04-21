@@ -281,7 +281,7 @@ namespace {
 						for(int k = 0; k < fileWrapper.getFileAmount(i, j); ++k)
 						{
 							std::string file = getFileName(fileWrapper.getFile(i, j, k));
-							
+
 							SendDlgItemMessage(dialog.getWindowHandle(), IDC_OBJECT_MODELS, LB_ADDSTRING, 0, reinterpret_cast<LPARAM> (file.c_str()));
 							SendDlgItemMessage(dialog.getWindowHandle(), IDC_EXPLOSION_OBJECT, CB_ADDSTRING, 0, reinterpret_cast<LPARAM> (file.c_str()));
 						}
@@ -614,7 +614,7 @@ namespace {
 			SendMessage(dialog.getWindowHandle(), WM_COMMAND, IDC_OBJECT_GROUP, IDC_OBJECT_GROUP);
 			SendDlgItemMessage(dialog.getWindowHandle(), IDC_OBJECT_SUBGROUP, CB_SETCURSEL, subgroup + 1, 0);
 			SendMessage(dialog.getWindowHandle(), WM_COMMAND, IDC_OBJECT_SUBGROUP, IDC_OBJECT_SUBGROUP);
-			
+
 			SendDlgItemMessage(dialog.getWindowHandle(), IDC_OBJECT_MODELS, LB_SETSEL, FALSE, -1);
 			SendDlgItemMessage(dialog.getWindowHandle(), IDC_OBJECT_MODELS, LB_SETSEL, TRUE, index);
 			SendMessage(dialog.getWindowHandle(), WM_COMMAND, IDC_OBJECT_MODELS, IDC_OBJECT_MODELS);
@@ -658,7 +658,7 @@ namespace {
 					int length = SendDlgItemMessage(dialog.getWindowHandle(), IDC_EXPLOSION_OBJECT, CB_GETLBTEXTLEN, explosionIndex, 0);
 					std::string name;
 					name.resize(length + 1);
-					
+
 					SendDlgItemMessage(dialog.getWindowHandle(), IDC_EXPLOSION_OBJECT, CB_GETLBTEXT, explosionIndex, reinterpret_cast<LPARAM> (name.c_str()));
 					name.resize(length);
 
@@ -774,7 +774,7 @@ namespace {
 				terrainObjects.drawCollision(false, "");
 				return;
 			}
-			
+
 			allowUpdatingItem.clear();
 
 			if(modelNames.size() != 1)
@@ -977,7 +977,7 @@ namespace {
 				subGroupIndex = 0;
 				data.updateModelList();
 			}
-			
+
 			if(subGroupIndex != data.subGroupIndex)
 			{
 				data.subGroupIndex = subGroupIndex;
@@ -1011,7 +1011,7 @@ namespace {
 				groupSubGroupIndex = 0;
 				data.updateGroupList();
 			}
-			
+
 			if(groupSubGroupIndex != data.groupSubGroupIndex)
 			{
 				data.groupSubGroupIndex = groupSubGroupIndex;
@@ -1295,7 +1295,7 @@ namespace {
 		std::vector<Vector> modelPositions;
 		std::vector<Vector> modelRotations;
 		std::vector<std::string> modelNames;
-		
+
 		//float rotation;
 		int amount;
 
@@ -1415,7 +1415,7 @@ namespace {
 		{
 			if(models.size() == 1)
 				return;
-			
+
 			float range = float(2 * sqrtf(float(models.size())));
 			if(range < 2.f)
 				range = 2.f;
@@ -1423,7 +1423,7 @@ namespace {
 			for(unsigned int i = 0; i < modelPositions.size(); ++i)
 			{
 				Vector &position = modelPositions[i];
-				
+
 				position.x = (float(rand()) / RAND_MAX) * 2 * range - range;
 				position.z = (float(rand()) / RAND_MAX) * 2 * range - range;
 				position = sharedData.storm.unitAligner.getAlignedPosition(position);
@@ -1817,7 +1817,7 @@ namespace {
 				if(modelGroup.models[i])
 					sharedData.storm.scene->RemoveModel(modelGroup.models[i].get());
 			}
-			
+
 			Mouse &mouse = sharedData.gui.getMouse();
 			if(!mouse.isInsideWindow())
 				return;
@@ -1969,7 +1969,7 @@ namespace {
 					updateLighting = true;
 					lightUpdateHaxValue = 0;
 				}
-				
+
 				for(unsigned int i = 0; i < modelGroup.models.size(); ++i)
 				{
 					if(modelGroup.models[i])
@@ -2068,7 +2068,7 @@ namespace {
 			// still, nasty shadowing variable names here.
 			// --jpk
 			*/
-			
+
 			VC3 position_offset = position - position_clicked;
 
 			for(unsigned int i = 0; i < modelGroup.objectGroup.instances.size(); ++i)
@@ -2133,7 +2133,7 @@ namespace {
 			if (maingroup)
 			{
 				if (sharedData.groupIndex >= 0)
-				{				
+				{
 					groupFiltName = sharedData.fileWrapper.getRootDir(sharedData.groupIndex);
 
 					groupFiltName += "\\";
@@ -2376,7 +2376,7 @@ void ObjectMode::tick()
 			ShowWindow(GetDlgItem(data->sharedData.dialog.getWindowHandle(), IDC_OBJECT_MODELS), SW_SHOW);
 			ShowWindow(GetDlgItem(data->sharedData.dialog.getWindowHandle(), IDC_OBJECT_GROUP_LIST), SW_HIDE);
 		}
-		
+
 		// ToDo: Activate/deactivate mechanism?
 		md.currentMode = md.changeToMode;
 	}

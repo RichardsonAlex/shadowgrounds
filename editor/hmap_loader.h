@@ -38,7 +38,7 @@ class HmapLoader
 {
 	std::vector<unsigned short> data;
 	std::string fileName;
-	
+
 	HmapFormat format;
 
 public:

@@ -29,7 +29,7 @@ HealthWindowCoop::~HealthWindowCoop()
 }
 
 ///////////////////////////////////////////////////////////////////////////////
-	
+
 void HealthWindowCoop::hide(int fadeTime )
 {
 	int i = 0;
@@ -92,7 +92,7 @@ void HealthWindowCoop::setHealthTextMultiplier( int player_num, float multiplier
 		Logger::getInstance()->error( "HealthWindowCoop::setHealthTextMultiplier() - tried to setTextMultiplier to player that doesn't exist" );
 		return;
 	}
-	
+
 	windows[ player_num ]->setHealthTextMultiplier( player_num, multiplier );
 }
 */

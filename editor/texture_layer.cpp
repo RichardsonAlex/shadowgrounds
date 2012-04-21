@@ -52,7 +52,7 @@ struct TextureLayerData
 		int index = SendDlgItemMessage(windowHandle, id, CB_GETCURSEL, 0, 0);
 		if(id == IDC_BOTTOM_TEXTURE)
 			return index - 1;
-		
+
 		return index;
 	}
 
@@ -82,7 +82,7 @@ struct TextureLayerData
 				generator.setTerrainTexture(0, data->getTexture(windowHandle, IDC_TERRAIN_TEXTURE1));
 				generator.setTerrainTexture(1, data->getTexture(windowHandle, IDC_TERRAIN_TEXTURE2));
 				generator.setWater(data->getTexture(windowHandle, IDC_BOTTOM_TEXTURE), 0);
-				
+
 				generator.generate();
 				EndDialog(windowHandle, 1);
 			}

@@ -44,7 +44,7 @@ private:
 	std::string description;
 
 	// the script value,
-	// tells us if the Log is picked up or not, or is it read or not	
+	// tells us if the Log is picked up or not, or is it read or not
 	int			variableState;
 
 	// a variable which tells us the time when this log was picked up

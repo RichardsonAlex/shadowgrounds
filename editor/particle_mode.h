@@ -27,7 +27,7 @@ public:
 	~ParticleMode();
 
 	bool handleDialogs(MSG& msg);
-	
+
 	void tick();
 	void update();
 	void reset();

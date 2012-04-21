@@ -94,7 +94,7 @@ void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 	if (units->size() > 1 || clickedBlocked)
 	{
 		int px = data->gameMap->scaledToPathfindX(scaledMapPos.x);
-		int py = data->gameMap->scaledToPathfindY(scaledMapPos.z);		
+		int py = data->gameMap->scaledToPathfindY(scaledMapPos.z);
 		buildingModel = data->gameScene->getBuildingModelAtPathfind(px, py);
 
 		// HACK:
@@ -136,7 +136,7 @@ void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 		Unit *u = (*units)[i];
 
 		UnitActor *ua = getUnitActorForUnit(u);
-		
+
     VC3 offset = u->getPosition() - avgPos;
 		offset.y = 0;
 
@@ -200,7 +200,7 @@ void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 		// then try to adjust position so that it would be nicely
 		// covered from enemy...
 		if (units->size() > 1 || clickedBlocked)
-		{			
+		{
 			int ox = data->gameMap->scaledToObstacleX(okDestX);
 			int oy = data->gameMap->scaledToObstacleY(okDestZ);
 
@@ -389,7 +389,7 @@ void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 		// now go to destination...
 		ua->setPathTo(u, VC3(okDestX, 0, okDestZ));
 
-		
+
 		// and set unit behaviour modes...
 		if (moveType == Unit::MoveTypeNormal)
 		{

@@ -13,7 +13,7 @@ public:
 	const Vector& getKeyValue(int i);
 	float getKeyTime(int i);
 	void setKey(int i, float t, const Vector& v);
-	Vector eval(float t);	
+	Vector eval(float t);
 	void parseIn(ParserGroup& g);
 	void parseOut(ParserGroup& g);
 };

@@ -48,11 +48,11 @@ int DragParticleForce::getType()
 void DragParticleForce::setFactor(float f) {
 	m_factor = f;
 }
-	
+
 float DragParticleForce::getFactor() {
 	return m_factor;
 }
-	
+
 void DragParticleForce::preCalc(float t) {
 
 }
@@ -62,7 +62,7 @@ void DragParticleForce::calcForce(Vector& force, const Vector& pos, const Vector
 	Vector newVel = vel * (float)pow(1.0f - m_factor, len);
 	force = newVel - vel;
 }
-	
+
 void DragParticleForce::parseFrom(const editor::ParserGroup& pg) {
 	m_factor = convertFromString<float>(pg.getValue("factor", ""), 0.0f);
 }
@@ -82,7 +82,7 @@ int GravityParticleForce::getType()
 void GravityParticleForce::setGravity(float f) {
 	m_gravity = f;
 }
-	
+
 float GravityParticleForce::getGravity() {
 	return m_gravity;
 }
@@ -90,13 +90,13 @@ float GravityParticleForce::getGravity() {
 void GravityParticleForce::preCalc(float t) {
 
 }
-	
+
 void GravityParticleForce::calcForce(Vector& force, const Vector& pos, const Vector& vel) {
 	force.x = 0.0f;
 	force.y = -m_gravity * PARTICLE_TIME_SCALE;
 	force.z = 0.0f;
 }
-	
+
 void GravityParticleForce::parseFrom(const editor::ParserGroup& pg) {
 	m_gravity = convertFromString<float>(pg.getValue("gravity", ""), 0.0f);
 }
@@ -116,7 +116,7 @@ int SideGravityParticleForce::getType()
 void SideGravityParticleForce::setGravity(float f) {
 	m_sideGravity = f;
 }
-	
+
 float SideGravityParticleForce::getGravity() {
 	return m_sideGravity;
 }
@@ -124,13 +124,13 @@ float SideGravityParticleForce::getGravity() {
 void SideGravityParticleForce::preCalc(float t) {
 
 }
-	
+
 void SideGravityParticleForce::calcForce(Vector& force, const Vector& pos, const Vector& vel) {
 	force.x = 0.0f;
 	force.y = 0.0f;
 	force.z = -m_sideGravity * PARTICLE_TIME_SCALE;
 }
-	
+
 void SideGravityParticleForce::parseFrom(const editor::ParserGroup& pg) {
 	m_sideGravity = convertFromString<float>(pg.getValue("sidegravity", ""), 0.0f);
 }
@@ -151,7 +151,7 @@ void WindParticleForce::setWindEffectFactor(float f)
 {
 	m_wind_effect_factor = f;
 }
-	
+
 float WindParticleForce::getWindEffectFactor()
 {
 	return m_wind_effect_factor;
@@ -161,7 +161,7 @@ void WindParticleForce::setSpiralAmount(float f)
 {
 	m_spiral_amount = f;
 }
-	
+
 float WindParticleForce::getSpiralAmount()
 {
 	return m_spiral_amount;
@@ -184,7 +184,7 @@ void WindParticleForce::setSpiralSpeed(float f)
 	wind_timer_spiral_speed_sin = sinf(wind_timer * m_spiral_speed);
 	wind_timer_changed = false;
 }
-	
+
 float WindParticleForce::getSpiralSpeed()
 {
 	return m_spiral_speed;

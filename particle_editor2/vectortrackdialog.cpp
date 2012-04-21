@@ -28,7 +28,7 @@ struct VectorTrackDialogData {
 
 
 	struct DialogData {
-		
+
 		ParserGroup& pg;
 		Dialog& dlg;
 		int curKey;
@@ -51,17 +51,17 @@ struct VectorTrackDialogData {
 		bool noValueUpdate;
 
 		DialogData(Dialog& dlg_, ParserGroup& pg_, bool floatMode_) : dlg(dlg_), pg(pg_), floatMode(floatMode_) {
-		
-			
+
+
 			int numKeys = convertFromString<int>(pg.getValue("num_keys", ""), 0);
 			keys.resize(numKeys);
-			
+
 			for(int i = 0; i < numKeys; i++) {
-				
+
 				std::string str = "key" + convertToString<int>(i);
-				
-				keys[i].time = convertFromString<float>(pg.getValue((str + ".time"), ""), 0);				
-				
+
+				keys[i].time = convertFromString<float>(pg.getValue((str + ".time"), ""), 0);
+
 				if(!floatMode) {
 					keys[i].value = convertVectorFromString(pg.getValue((str + ".value"), "0,0,0"));
 				} else {
@@ -70,31 +70,31 @@ struct VectorTrackDialogData {
 			}
 
 			updateDialog();
-			
+
 			if(numKeys > 0) {
 				ListBox_SetCurSel(dlg.getItem(IDC_KEYSV), 0);
 				selectKey();
 			}
-			
+
 
 		}
 
 		void updateKey() {
-							
+
 			if(curKey < 0)
 				return;
 
-			if(!noValueUpdate) {	
+			if(!noValueUpdate) {
 				keys[curKey].time = getDialogItemFloat(dlg, IDC_TIMEV);
-				keys[curKey].value.x = getDialogItemFloat(dlg, IDC_VALUE_X);			
-				if(!floatMode) {	
-					keys[curKey].value.y = getDialogItemFloat(dlg, IDC_VALUE_Y);			
+				keys[curKey].value.x = getDialogItemFloat(dlg, IDC_VALUE_X);
+				if(!floatMode) {
+					keys[curKey].value.y = getDialogItemFloat(dlg, IDC_VALUE_Y);
 					keys[curKey].value.z = getDialogItemFloat(dlg, IDC_VALUE_Z);
 				}
 			}
 
 		}
-		
+
 		void update()
 		{
 			pg.setValue("num_keys", convertToString<int>(keys.size()));
@@ -104,15 +104,15 @@ struct VectorTrackDialogData {
 				std::string str = "key" + convertToString<int>(i);
 				pg.setValue((str + ".time"), convertToString<float>(keys[i].time));
 
-				if(!floatMode)	
+				if(!floatMode)
 					pg.setValue((str + ".value"), convertVectorToString(keys[i].value));
 				else
 					pg.setValue((str + ".value"), convertToString<float>(keys[i].value.x));
 			}
 		}
-		
+
 		void updateDialog()
-		{	
+		{
 			ListBox_ResetContent(dlg.getItem(IDC_KEYSV));
 
 			for(unsigned int i = 0; i < keys.size(); i++)
@@ -120,7 +120,7 @@ struct VectorTrackDialogData {
 				std::string str = "key" + convertToString<int>(i);
 				ListBox_AddString(dlg.getItem(IDC_KEYSV), str.c_str());
 			}
-		
+
 			selectKey();
 		}
 
@@ -131,12 +131,12 @@ struct VectorTrackDialogData {
 		}
 
 		void removeKey() {
-			
+
 			if(curKey < 0)
 				return;
 
 			if(keys.size() > 1) {
-				keys.erase(keys.begin()+curKey);			
+				keys.erase(keys.begin()+curKey);
 			}
 			if(keys.size()==1) {
 				keys[0].time = 0.0f;
@@ -150,12 +150,12 @@ struct VectorTrackDialogData {
 			curKey = ListBox_GetCurSel(dlg.getItem(IDC_KEYSV));
 			if(curKey < 0)
 				return;
-			
+
 			noValueUpdate = true;
-			
+
 			setDialogItemFloat(dlg, IDC_VALUE_X, keys[curKey].value.x);
 			setDialogItemFloat(dlg, IDC_TIMEV, keys[curKey].time);
-			if(!floatMode) {	
+			if(!floatMode) {
 				setDialogItemFloat(dlg, IDC_VALUE_Y, keys[curKey].value.y);
 				setDialogItemFloat(dlg, IDC_VALUE_Z, keys[curKey].value.z);
 			}
@@ -163,9 +163,9 @@ struct VectorTrackDialogData {
 			noValueUpdate = false;
 		}
 
-	
+
 	};
-	
+
 	class SelectKeyCommand : public ICommand {
 		DialogData& data;
 	public:
@@ -236,7 +236,7 @@ struct VectorTrackDialogData {
 		data(dialog, pg, floatMode), selectKeyCommand(data),
 		addKeyCommand(data), removeKeyCommand(data), okCommand(dialog, data),
 		cancelCommand(dialog), updateCommand(data) {
-	
+
 		dialog.getCommandList().addCommand(IDC_KEYSV, &selectKeyCommand);
 		dialog.getCommandList().addCommand(IDC_ADD_KEYV, &addKeyCommand);
 		dialog.getCommandList().addCommand(IDC_REMOVE_KEYV, &removeKeyCommand);
@@ -254,7 +254,7 @@ struct VectorTrackDialogData {
 
 VectorTrackDialog::VectorTrackDialog() {
 }
-	
+
 VectorTrackDialog::~VectorTrackDialog() {
 }
 

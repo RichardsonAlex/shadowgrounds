@@ -48,7 +48,7 @@ private:
 	int lastFlash;
 	game::Unit *unit;
 };
-	
+
 } // end of namespace ui
 
 #endif

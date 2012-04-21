@@ -332,7 +332,7 @@ struct LipsyncManager::Data
 
 		return 0;
 	}
-		
+
 	void update(int ms, int currentTime)
 	{
 		fader.update(ms);

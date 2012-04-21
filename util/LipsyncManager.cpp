@@ -238,7 +238,7 @@ struct LipsyncManager::Data
 			{
 				IStorm3D_Material *material = storm->CreateNewMaterial("lipsync");
 				IStorm3D_Texture *texture = storm->CreateNewTexture(picture.c_str());
-				
+
 				if(!texture)
 				{
 					string msg = "Cannot find lipsync picture: ";

@@ -14,7 +14,7 @@ using namespace boost;
 namespace frozenbyte {
 namespace editor {
 namespace {
-	
+
 	struct Strings
 	{
 		string group;

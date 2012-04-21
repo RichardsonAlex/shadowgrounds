@@ -14,7 +14,7 @@ namespace game
 
 	class DirectControlScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

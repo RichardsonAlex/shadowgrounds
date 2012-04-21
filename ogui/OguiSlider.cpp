@@ -32,12 +32,12 @@ OguiSlider::OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 {
 	assert( win );
 	assert( ogui );
-	
+
 	background = ogui->CreateSimpleImageButton( win, x, y, w, h,
 		background_norm.empty()?NULL:background_norm.c_str(),
 		background_down.empty()?NULL:background_down.c_str(),
 		background_high.empty()?NULL:background_high.c_str(), backgroundId );
-	
+
 	foreground = ogui->CreateSimpleImageButton( win, x, y, w, h,
 		foreground_norm.empty()?NULL:foreground_norm.c_str(),
 		foreground_down.empty()?NULL:foreground_down.c_str(),
@@ -46,10 +46,10 @@ OguiSlider::OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 
 
 	FB_ASSERT( foreground );
-	
+
 	if( value > 1.0f ) value = 1.0f;
 	if( value < 0.0f ) value = 0.0f;
-		
+
 	// foreground->SetDisabledImage( foreground_norm.c_str() );
 	if(horizontal)
 		foreground->SetClip( 0.0f, 0.0f, value * 100.0f, 100.0f );
@@ -61,7 +61,7 @@ OguiSlider::OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 
 	background->SetListener( this );
 	background->SetEventMask( OGUI_EMASK_PRESS | OGUI_EMASK_CLICK | OGUI_EMASK_HOLD | OGUI_EMASK_OUT );
-	
+
 }
 
 OguiSlider::~OguiSlider()
@@ -78,7 +78,7 @@ void OguiSlider::setBarPosition( int x, int y, int w, int h )
 	this->x = x;
 	this->w = w;
 	this->h = h;
-	
+
 	offset_x = x - this->x;
 	offset_y = y - this->y;
 
@@ -109,7 +109,7 @@ void OguiSlider::setValue( float value )
 	{
 		if( value > 1.0f ) value = 1.0f;
 		if( value < 0.0f ) value = 0.0f;
-		
+
 		this->value = value;
 
 		if( listener )
@@ -157,7 +157,7 @@ void OguiSlider::setDisabledImages( const std::string& background_disabled, cons
 		foreground->SetDisabledImage( disabledForeground );
 	}
 }
-	
+
 void OguiSlider::setDisabled( bool disabled )
 {
 	background->SetDisabled( disabled );
@@ -206,7 +206,7 @@ void OguiSlider::CursorEvent( OguiButtonEvent *eve )
 				x = (float)( eve->cursorScreenY - this->y ) / (float)h;
 			if( x > 1.0f ) x = 1.0f;
 			if( x < 0.0f ) x = 0.0f;
-			
+
 			OguiSliderEvent* eve = new OguiSliderEvent( this, x, OguiSliderEvent::EVENT_TYPE_MOUSEDOWN );
 			listener->sliderEvent( eve );
 			delete eve;
@@ -229,7 +229,7 @@ void OguiSlider::CursorEvent( OguiButtonEvent *eve )
 	{
 		updateThis = NULL;
 		updateThisIfHold = NULL;
-		
+
 		if( listener )
 		{
 			OguiSliderEvent* eve = new OguiSliderEvent( this, value, OguiSliderEvent::EVENT_TYPE_RELEASE );
@@ -304,7 +304,7 @@ void OguiGfxSlider::Initialize()
 	background->SetDisabledImage( NULL );
 
 	foreground->SetListener( NULL );
-	foreground->SetDisabled( false );	
+	foreground->SetDisabled( false );
 	foreground->SetDisabledImage( NULL );
 }
 

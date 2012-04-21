@@ -143,10 +143,10 @@ struct BuildingMapData
 		{
 			IStorm3D_Model_Object *object = objectIterator->GetCurrent();
 			IStorm3D_Mesh *mesh = object->GetMesh();
-			
+
 			Matrix positionTm;
 			Matrix rotationTm;
-			
+
 			// rotate based on given angle
 			// -jpk
 			/*
@@ -232,7 +232,7 @@ return;
 
 		Storm3D_CollisionInfo collisionInfo;
 		Vector spherePosition;
-		
+
 		Vector rayPosition;
 		Vector rayDirection(0.f,-1.f,0.f);
 
@@ -256,7 +256,7 @@ return;
 				ui::LoadingMessage::showLoadingMessage(prog_msgbuf);
 			}
 #endif
-			
+
 			for(int j = 0; j < yResolution; ++j)
 			{
 				if(isEscDown())
@@ -440,7 +440,7 @@ collisionInfo.hit = false;
 					//kfact = 0.20f;
 					kfact = 0.5f;
 				}
-				
+
 				//bool someSphereHit = false;
 
 				for(int k = maxk; k >= mink; --k)
@@ -554,7 +554,7 @@ collisionInfo.hit = false;
 				doors.push_back(std::pair<int, int> (x, y));
 			}
 		}
-	
+
 		delete helperIterator;
 		model->SetPosition(modelPosition);
 		model->SetRotation(modelRotation);
@@ -565,7 +565,7 @@ collisionInfo.hit = false;
 	void floodfillInteriors()
 	{
     // first, the collisionmap
-		
+
 		{
 			// the mapper object for floodfill.
 			BuildingMapFillMapper mapper = BuildingMapFillMapper(this);
@@ -600,10 +600,10 @@ collisionInfo.hit = false;
 			}
 
 			util::Floodfill::fillWithByte(BMAP_FLOODFILL_REACHABLE_uint8_t, 0, xResolution, yResolution, &mapper, false, false);
-			
+
 			// now we have byte 99 on reachable areas, byte 0 left to interior
 			// unreachable areas. now "invert" by converting 0 -> 1 and 2 -> 0.
-			
+
 			for(int y = 0; y < yResolution; ++y)
 			for(int x = 0; x < xResolution; ++x)
 			{
@@ -648,10 +648,10 @@ collisionInfo.hit = false;
 			}
 
 			util::Floodfill::fillWithByte(255, 0, xResolution, yResolution, &mapper2, false, false);
-			
+
 			// now we have byte 255 on reachable areas, byte 0 left to interior
 			// unreachable areas. now "invert" by converting 0 -> 1 and 255 -> 0.
-			
+
 			for(int y = 0; y < yResolution; ++y)
 			for(int x = 0; x < xResolution; ++x)
 			{
@@ -689,7 +689,7 @@ collisionInfo.hit = false;
 		int versionNum = 0;
 		if (hasHeader)
 		{
-			filesystem::fb_fread(&versionNum, sizeof(int), 1, fp);			
+			filesystem::fb_fread(&versionNum, sizeof(int), 1, fp);
 		}
 
 		if (versionNum < CURRENT_BUILDINGMAP_VERSION)
@@ -771,7 +771,7 @@ collisionInfo.hit = false;
 
 			doors.push_back(std::pair<int, int> (x, y));
 		}
-		
+
 		filesystem::fb_fclose(fp);
 		return true;
 	}
@@ -789,7 +789,7 @@ collisionInfo.hit = false;
 		{
 			char idbuf[4 + 1] = "BMAP";
 			fwrite(&idbuf, sizeof(char) * 5, 1, fp);
-			fwrite(&versionNum, sizeof(int), 1, fp);			
+			fwrite(&versionNum, sizeof(int), 1, fp);
 		}
 
 		int tmp = 0;
@@ -922,7 +922,7 @@ collisionInfo.hit = false;
 					origHeightMap[i][j] = heightMap[i][j];
 					collisionMap[i][j] = 0;
 					heightMap[i][j] = 0;
-				}				
+				}
 			}
 
 			// new, floor only map...
@@ -945,7 +945,7 @@ collisionInfo.hit = false;
 				{
 					floorCollisionMap[i][j] = collisionMap[i][j];
 					floorHeightMap[i][j] = heightMap[i][j];
-				}	
+				}
 			}
 
 			// restore original height/collision maps
@@ -1064,7 +1064,7 @@ collisionInfo.hit = false;
 					origHeightMap[i][j] = heightMap[i][j];
 					collisionMap[i][j] = 0;
 					heightMap[i][j] = 0;
-				}				
+				}
 			}
 
 			// new, window helper only map...
@@ -1087,7 +1087,7 @@ collisionInfo.hit = false;
 				{
 					windowCollisionMap[i][j] = collisionMap[i][j];
 					windowHeightMap[i][j] = heightMap[i][j];
-				}				
+				}
 			}
 
 			// combine the maps...
@@ -1266,7 +1266,7 @@ BuildingMap::BuildingMap(const char *fileNameRaw, IStorm3D_Model *model, int rot
 		{
 			binFileName += "_R_";
 			char tmp[32];
-			
+
 			// WARNING: unsafe sprintf.
 			sprintf(tmp, "%d", rotationDegrees);
 			binFileName += tmp;
@@ -1284,7 +1284,7 @@ BuildingMap::BuildingMap(const char *fileNameRaw, IStorm3D_Model *model, int rot
 	{
 		filenameStripped[strlen(fileName) - cutpos] = '\0';
 	}
-	
+
 	//bool upToDate = FileTimestampChecker::isFileNewerOrAlmostSameThanFile(binFileName.c_str(), filenameStripped);
 	bool upToDate = FileTimestampChecker::isFileUpToDateComparedTo(binFileName.c_str(), filenameStripped);
 

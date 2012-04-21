@@ -14,7 +14,7 @@ class MissionFailureWindow
 public:
 	MissionFailureWindow(Ogui *ogui, game::Game *game);
 	~MissionFailureWindow();
-	
+
 	bool closeMePlease() const;
 	bool shouldRestart() const;
 

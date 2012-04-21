@@ -172,7 +172,7 @@ namespace {
 				{
 					passes.resize(passes.size() + 1);
 					texturePass = passes.size() - 1;
-					
+
 					passes[texturePass].textureA = textureIndex;
 					textureList.push_back(textureIndex);
 
@@ -294,7 +294,7 @@ namespace {
 		{
 			clear();
 			size = size_;
-			
+
 			blockAmount = size / (BLOCK_SIZE - 1);
 			init(textureAmount);
 		}
@@ -340,7 +340,7 @@ namespace {
 
 				VC2I blockIndex(positionX / (BLOCK_SIZE - 1), positionY / (BLOCK_SIZE - 1));
 				VC2I blockPosition(positionX - blockIndex.x * (BLOCK_SIZE - 1), positionY - blockIndex.y * (BLOCK_SIZE - 1));
-				
+
 				//if(blockPosition.x < 0 || blockPosition.y < 0)
 				//	continue;
 				//if(blockPosition.x >= blockAmount.x || blockPosition.y >= blockAmount.y)
@@ -395,7 +395,7 @@ namespace {
 			boost::shared_ptr<filesystem::MemoryStreamBuffer> streamBuffer(new filesystem::MemoryStreamBuffer());
 			filesystem::OutputStream outputStream;
 			outputStream.setBuffer(streamBuffer);
-			
+
 			filesystem::InputStream inputStream;
 			inputStream.setBuffer(streamBuffer);
 
@@ -717,7 +717,7 @@ namespace {
 				for(int i = 0; i < blockAmount.x; ++i)
 				{
 					std::vector<unsigned char> weights(BLOCK_SIZE * BLOCK_SIZE);
-					
+
 					for(int y = 0; y < BLOCK_SIZE; ++y)
 					for(int x = 0; x < BLOCK_SIZE; ++x)
 					{
@@ -780,7 +780,7 @@ struct TerrainTexturesData
 			stream << it->first;
 
 		stream << terrainTexture[0] << terrainTexture[1] << bottomTexture;
-		blendMap.write(stream);	
+		blendMap.write(stream);
 	}
 
 	void readStream(filesystem::InputStream &stream)
@@ -812,7 +812,7 @@ struct TerrainTexturesData
 		}
 
 		stream >> terrainTexture[0] >> terrainTexture[1] >> bottomTexture;
-		blendMap.read(stream);	
+		blendMap.read(stream);
 	}
 
 	void resetTextures()

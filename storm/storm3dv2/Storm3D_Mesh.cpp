@@ -231,7 +231,7 @@ void Storm3D_Mesh::PrepareForRender(Storm3D_Scene *scene,Storm3D_Model_Object *o
 			update_vx=true;
 			update_vx_amount=true;
 		}
-	}	
+	}
 	else if (vbuf_fvf!=FVF_VXFORMAT_TC2)
 	{
 		update_vx=true;
@@ -508,7 +508,7 @@ void Storm3D_Mesh::ReBuild()
 	{
 		for(int lod = 0; lod < lodLevels; ++lod)
 		{
-			bone_chunks[lod].clear();		
+			bone_chunks[lod].clear();
 
 			// Find used bones indices
 			vector<int> bone_indices;
@@ -671,7 +671,7 @@ void Storm3D_Mesh::ReBuild()
 
 					GLubyte *vp = reinterpret_cast<GLubyte *> (glMapBuffer(GL_ARRAY_BUFFER, GL_WRITE_ONLY));
 					glVertexPointer(3, GL_FLOAT, size, 0);
-					
+
 					VXFORMAT_BLEND *p=(VXFORMAT_BLEND*)vp;
 					float weight[4] = { 0 };
 
@@ -714,14 +714,14 @@ void Storm3D_Mesh::ReBuild()
 
 						weight[2] = float(Storm3D_ShaderManager::BONE_INDEX_START);
 						weight[3] = 0;
-						
+
 						if(index2 >= 0)
 						{
 							weight[2] = float((index2) * 3);
 							weight[2] += Storm3D_ShaderManager::BONE_INDEX_START;
 							weight[3] = bone_weights[vertex_index].weight2 / 100.f;
 						}
-			
+
 						p[i]=VXFORMAT_BLEND(vertexes[vertex_index].position,vertexes[vertex_index].normal,vertexes[vertex_index].texturecoordinates, vertexes[vertex_index].texturecoordinates2, weight);
 					}
 

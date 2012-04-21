@@ -101,7 +101,7 @@ ScriptableAIDirectControl::ScriptableAIDirectControl(Game *game, Unit *unit)
 
 
 void ScriptableAIDirectControl::doDirectControls(AIDirectControlActions &actionsOut)
-{	
+{
 	for (int i = 0; i < DIRECT_CTRL_AMOUNT; i++)
 	{
 		if (actionsToDisableAutomatically.directControlOn[i])

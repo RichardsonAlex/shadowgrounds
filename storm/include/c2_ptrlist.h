@@ -45,7 +45,7 @@ public:
 		if (pointer) return pointer->data;
 		else return NULL;
 	}
-	
+
 	void operator++()		// Next
 	{
 		previous=pointer;
@@ -116,7 +116,7 @@ public:
 
 		assert(!"Object not found!");
 	}
-	
+
 	void Remove(PtrListIterator<A> &iter)
 	{
 		// Search from the list
@@ -139,7 +139,7 @@ public:
 			assert(!"Nothing to remove");
 		}
 	}
-	
+
 	void Clear()
 	{
 		// Delete whole list

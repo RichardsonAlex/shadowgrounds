@@ -94,7 +94,7 @@ void GraphicsDialogHandler::loadOptions( )
 
 void GraphicsDialogHandler::applyOptions( )
 {
-	
+
 	HWND hwnd = dialogData->getHwnd();
 
 	manager.applyOptions( "Fake Shadows Texture Quality", getComboBoxSelection( GetDlgItem( hwnd, IDC_COMBO1 ) ) );

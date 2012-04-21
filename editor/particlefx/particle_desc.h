@@ -8,9 +8,9 @@ class ParticleDesc {
 public:
 
 	class TextureInfo {
-		
+
 		friend class ParticleDesc;
-		
+
 //		std::string name;
 //		std::string path;
 	public:
@@ -18,16 +18,16 @@ public:
 			ANIM_LOOP,
 			ANIM_LIFE_TIME
 		};
-		
+
 		TextureInfo();
-		
+
 		std::string name;
 		std::string path;
 
-		void operator=(const TextureInfo& other);		
-	
+		void operator=(const TextureInfo& other);
+
 		void parseIn(ParserGroup& prev);
-	
+
 		void parseOut(ParserGroup& prev);
 
 		int nFrames;
@@ -57,7 +57,7 @@ public:
 		DRAG_QUADRATIC,
 		DRAG_CUBIC
 	};
-	
+
 	TextureInfo texInfo;
 	VectorTrack colorTrack;
 	FloatTrack alphaTrack;
@@ -73,12 +73,12 @@ public:
 	float bounce;
 
 	ParticleDesc();
-	
+
 	const std::string& getName();
 	void setName(const std::string& name);
 
 	void loadTexture(IStorm3D* s3d, const std::string& path, const std::string& name);
-	
+
 	IStorm3D_Material* getMaterial();
 
 	void setAlphaType(IStorm3D_Material::ATYPE type);

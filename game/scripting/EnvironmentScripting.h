@@ -19,7 +19,7 @@ namespace game
 	 */
 	class EnvironmentScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

@@ -82,7 +82,7 @@ bool ClawUnitActor::setPathTo(Unit *unit, VC3 &destination_)
 {
 	VC3 destination = destination_;
 	frozenbyte::ai::Path *path = solvePath(unit, unit->getPosition(), destination);
-	
+
 	// luckily, getPath may modify the destination value, if it is blocked
 	// so no need to check that here.
 
@@ -97,7 +97,7 @@ bool ClawUnitActor::setPathTo(Unit *unit, VC3 &destination_)
 			game->gameMap->getScaledHeightAt(destination.x, destination.z),
 			destination.z));
 		return true;
-	} else {		
+	} else {
 		unit->setPath(NULL);
 		unit->setFinalDestination(unit->getPosition());
 		unit->setWaypoint(unit->getPosition());
@@ -268,7 +268,7 @@ sprint = false;
 	cameraFrontVec.Normalize();
 	VC3 cameraSideVec = cameraFrontVec.GetCrossWith(upvec);
 
-	// translate movement direction from camera coord system to global ocoord. system	
+	// translate movement direction from camera coord system to global ocoord. system
 	// this is the actual movement direction vector.
 	VC3 globalDirVec = (cameraFrontVec * controlDirVec.GetDotWith(controlFrontVec)) + (cameraSideVec * controlDirVec.GetDotWith(controlSideVec));
 
@@ -310,7 +310,7 @@ sprint = false;
 	bool doStrafeBackAnim = false;
 
 	static float standAngle = 0;
-	
+
 	// where do we aim?
 	float aimDestAngle = moveAngle;
 	char *aimBone = unitType->getAimBone();
@@ -318,14 +318,14 @@ sprint = false;
 	{
 		VC3 unitPos = unit->getPosition();
 
-		
+
 /*		static VC3 aimPos = VC3(0,0,0);
 		VC3 aimDiff = game->getClawController()->getClawPosition() - unitPos;
 		if (aimDiff.GetSquareLength() > 2.0f * 2.0f)
 		{
 			aimPos = game->getClawController()->getClawPosition();
 		}*/
-		
+
 //		VC3 aimPos = game->getClawController()->getClawPosition();
 		VC3 aimPos = game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS);
 
@@ -537,7 +537,7 @@ void ClawUnitActor::act(Unit *unit)
 	float oldYRotation = unit->getRotation().y;
 
 	UnitActAnimationRequests animRequests;
-	
+
 	// animated units don't do normal acting...
 	if (unit->isAnimated())
 	{

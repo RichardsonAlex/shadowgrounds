@@ -34,7 +34,7 @@ namespace {
 	{
 		VC3 dir = (end - start).GetNormalized();
 		VC3 side = normal.GetNormalized().GetCrossWith(dir);
-		
+
 		thickness *= 0.5f;
 		vertices[0].position = start + (side * thickness);
 		vertices[0].normal = normal;

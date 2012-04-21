@@ -426,7 +426,7 @@ void SoundLib::setSoundAPI(const char *api)
 {
 	if (!api) data->soundAPI = "";
 	else data->soundAPI = api;
-	
+
 #ifdef _WIN32
 	if (data->soundAPI == "winmm") FSOUND_SetOutput(FSOUND_OUTPUT_WINMM);
 	else if (data->soundAPI == "dsound") FSOUND_SetOutput(FSOUND_OUTPUT_DSOUND);
@@ -1010,7 +1010,7 @@ struct StormStream: public IStorm3D_Stream
 		sample.start = start;
 		sample.duration = duration;
 		sample.buffer.resize(length);
-		
+
 		memcpy(&sample.buffer[0], buffer_, length);
 		SDL_UnlockMutex(lock);
 	}

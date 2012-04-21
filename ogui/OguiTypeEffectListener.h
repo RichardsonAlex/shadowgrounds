@@ -16,9 +16,9 @@ class OguiTypeEffectListener : public IOguiEffectListener
 public:
 	OguiTypeEffectListener( game::Game* game, const std::string& effectFile = "" );
 	~OguiTypeEffectListener();
-	
+
 	void EffectEvent( OguiEffectEvent *eve );
-	
+
 private:
 	std::string effectFile;
 	game::Game* game;

@@ -206,7 +206,7 @@ namespace {
 			{
 				IStorm3D_Model *m = storm.storm->CreateNewModel();
 				m->LoadS3D(backGroundModel.c_str());
-			
+
 				storm.scene->SetBackGround(m);
 			}
 		}
@@ -244,7 +244,7 @@ namespace {
 		void setBackGround(const std::string &fileName)
 		{
 			backGroundModel = fileName;
-			
+
 			loadBackGround();
 			updateDialog();
 		}
@@ -316,7 +316,7 @@ namespace {
 
 			setComboIndex(dialog, IDC_FOG_ID, defaultIndex);
 			noValueUpdate = false;
-			
+
 			fogApplier.setActiveFog("Default");
 			setFogValues();
 		}
@@ -353,7 +353,7 @@ namespace {
 			enableCheck(dialog, IDC_FOG_CAMERA, fog.cameraCentric);
 			setSliderValue(dialog, IDC_FOG_START, int((fog.end + 10) * 2.f + 0.5f));
 			setSliderValue(dialog, IDC_FOG_END, int((fog.start + 10) * 2.f + 0.5f));
-			
+
 			unsigned char r = unsigned char(fog.color.r * 255.f);
 			unsigned char g = unsigned char(fog.color.g * 255.f);
 			unsigned char b = unsigned char(fog.color.b * 255.f);
@@ -520,7 +520,7 @@ namespace {
 			stream >> version;
 
 			stream >> backGroundModel;
-			
+
 			unsigned char fooc = 0;
 			float foof = 0.f;
 			int fooi = 0;
@@ -604,7 +604,7 @@ namespace {
 			if(!fileName.empty())
 				sharedData.setBackGround(fileName);
 		}
-	};	
+	};
 
 	class UpdateCommand: public ICommand
 	{
@@ -637,7 +637,7 @@ namespace {
 		void execute(int id2)
 		{
 			ColorPicker cp;
-			
+
 			if(id == 3)
 			{
 				int color = sharedData.getAmbientColor();
@@ -721,14 +721,14 @@ namespace {
 			dialog(dialog_)
 		{
 			CommandList &cs = dialog.getCommandList(WM_NOTIFY);
-			
+
 			dialog.getCommandList().addCommand(IDC_FOG_ENABLED, this);
 			dialog.getCommandList().addCommand(IDC_FOG_CAMERA, this);
 			cs.addCommand(IDC_FOG_START, this);
 			cs.addCommand(IDC_FOG_END, this);
 		}
 
-		void execute(int id)	
+		void execute(int id)
 		{
 			if(sharedData.noValueUpdate)
 				return;
@@ -750,7 +750,7 @@ namespace {
 			dialog.getCommandList().addCommand(IDC_FOG_ID, this);
 		}
 
-		void execute(int id)	
+		void execute(int id)
 		{
 			if(sharedData.noValueUpdate)
 				return;
@@ -773,7 +773,7 @@ namespace {
 			dialog.getCommandList().addCommand(IDC_FOG_ID_ADD, this);
 		}
 
-		void execute(int id)	
+		void execute(int id)
 		{
 			if(sharedData.noValueUpdate)
 				return;

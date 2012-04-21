@@ -14,7 +14,7 @@ namespace game
 
 	class StringScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

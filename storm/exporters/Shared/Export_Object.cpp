@@ -120,7 +120,7 @@ std::vector<int> Object::getMaterialIndices(bool includeNoMaterial) const
 			{
 				if((includeNoMaterial == true) && (id == -1))
 					continue;
-			
+
 				usedMaterials.push_back(id);
 			}
 		}
@@ -337,7 +337,7 @@ void Object::remapIndices()
 	};
 */
 	//void RemapIndices(const PrimitiveGroup* in_primGroups, const unsigned short numGroups, const unsigned short numVerts, PrimitiveGroup** remappedGroups);
-/*	
+/*
 	//unsigned int *indices = new unsigned int[faces.size() * 3];
 	PrimitiveGroup oldPrimitives;
 
@@ -394,7 +394,7 @@ void Object::remapIndices()
 
 		SetCacheSize(CACHESIZE_GEFORCE3);
 		SetListsOnly(true);
-		
+
 		GenerateStrips(oldIndices, faces[0].size() * 3, &primitiveGroup, &groupAmount);
 
 		for(i = 0; i < faces[0].size(); ++i)
@@ -443,7 +443,7 @@ void Object::writeToFile(FILE *fp, const FBMatrix &tm, const FBMatrix &pivotTm, 
 				break;
 			}
 		}
-		
+
 		fwrite(&materialIndex, sizeof(short int), 1, fp); // Material index
 		fwrite(&position, sizeof(float), 3, fp); // position
 		fwrite(&rotation, sizeof(float), 4, fp); // rotation
@@ -608,7 +608,7 @@ bool operator < (const Object &lhs, const Object &rhs)
 		return false;
 
 	return true;
-}	
+}
 
 } // end of namespace export
 } // end of namespace frozenbyte

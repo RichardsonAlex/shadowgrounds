@@ -27,7 +27,7 @@ namespace frozenbyte
 				int ys = 0;
 				dialog.getSize(xs, ys);
 				window.setSize(xs, ys);
-	
+
 				dialog.show();
 
 			};

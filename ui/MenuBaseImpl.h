@@ -60,17 +60,17 @@ public:
 	virtual void escPressed();
 
 protected:
-	
+
 	void debugKeyreader( int keyreader, bool release = false, std::string who = "MenuBaseImpl" );
 
 	virtual void handleEsc();
-	
+
 	virtual OguiButton*	addButton( const std::string& text, int command, IOguiFont* font = NULL, IOguiFont* high = NULL, IOguiFont* down = NULL, IOguiFont* disa = NULL, OguiButton::TEXT_H_ALIGN halign = OguiButton::TEXT_H_ALIGN_CENTER );
 	virtual OguiButton*	addDescription( const std::string& text, int x_add, int y_add, IOguiFont* font = NULL );
 	virtual OguiButton*	addSmallButton( const std::string& text, int command, IOguiFont* font = NULL, IOguiFont* high = NULL, IOguiFont* down = NULL, IOguiFont* disa = NULL );
 	virtual void		addSeparator();
 	virtual OguiButton*	addImageButtton( const std::string& image_norm, const std::string& image_down, const std::string& image_high, const std::string& image_disa, int command, int x, int y, int w, int h );
-	
+
 	virtual void addSelectionButton( const std::string& text, int command, IOguiFont* font = NULL, void* param = NULL );
 
 	virtual void addCloseButton( const std::string& text, int command, IOguiFont* font = NULL );
@@ -87,7 +87,7 @@ protected:
 
 	OguiWindow*		win;
 	Ogui*					ogui;
-	
+
 
 	// Utilitys for the creation of the specific menus
 	int				buttonX;
@@ -114,7 +114,7 @@ protected:
 	IOguiImage*		smallButtonDisabledImage;
 
 	int				smallButtonX;		// will mark the position of the buttons
-	int				smallButtonY;		
+	int				smallButtonY;
 	int				smallButtonStartAddX; // will be added to the button_x / button_y
 	int				smallButtonStartAddY; // will be added to the button_x / button_y
 	int				smallButtonW;
@@ -134,7 +134,7 @@ protected:
 	std::string		closeMeButtonDown;
 
 	// std::map< int, std::pair< OguiButton*, OguiButton* > >	sliderButtons;
-	
+
 	std::list< OguiButton* >		buttons;
 	std::map< int, OguiButton* >	selectButtons;
 	int								numberOfWorkingSelectButtons;  // HACK

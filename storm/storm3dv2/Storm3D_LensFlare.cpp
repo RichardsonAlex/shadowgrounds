@@ -63,7 +63,7 @@ void Storm3D_LensFlare::SetGlowTexture(IStorm3D_Texture *itex)
 		if (tex_glow) tex_glow->Release();
 	}
 	else
-	{	
+	{
 		// Typecast
 		Storm3D_Texture *tex=(Storm3D_Texture*)itex;
 
@@ -87,7 +87,7 @@ void Storm3D_LensFlare::SetRingTexture(IStorm3D_Texture *itex)
 		if (tex_ring) tex_ring->Release();
 	}
 	else
-	{	
+	{
 		// Typecast
 		Storm3D_Texture *tex=(Storm3D_Texture*)itex;
 

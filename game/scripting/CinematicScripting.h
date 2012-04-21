@@ -14,7 +14,7 @@ namespace game
 
 	class CinematicScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

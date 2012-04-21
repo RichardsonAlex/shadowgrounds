@@ -36,7 +36,7 @@ void ParticleDesc::TextureInfo::operator=(const TextureInfo& other) {
 	animType = other.animType;
 	startFrame = other.startFrame;
 	fps = other.fps;
-	
+
 }
 
 void ParticleDesc::TextureInfo::parseIn(ParserGroup& prev) {
@@ -67,7 +67,7 @@ void ParticleDesc::TextureInfo::parseOut(ParserGroup& prev) {
 	::parseOut(g, "start_frame", startFrame);
 	::parseOut(g, "frames_per_sec", fps);
 
-	prev.addSubGroup("texture_info", g);	
+	prev.addSubGroup("texture_info", g);
 
 }
 
@@ -77,7 +77,7 @@ ParticleDesc::ParticleDesc() : mMaterial(0) {
 	colorTrack.setNumKeys(2);
 	colorTrack.setKey(0, 0, Vector(1.0f, 1.0f, 1.0f));
 	colorTrack.setKey(1, 1.0f, Vector(0.0f, 0.0f, 0.0f));
-	
+
 	alphaTrack.setNumKeys(2);
 	alphaTrack.setKey(0, 0, 1.0f);
 	alphaTrack.setKey(1, 1.0f, 0.0f);
@@ -85,7 +85,7 @@ ParticleDesc::ParticleDesc() : mMaterial(0) {
 	sizeTrack.setNumKeys(2);
 	sizeTrack.setKey(0, 0.0f, 0.2f);
 	sizeTrack.setKey(1, 1.0f, 0.2f);
-	
+
 	minAngle = 0.0f;
 	maxAngle = 0.0f;
 
@@ -102,7 +102,7 @@ ParticleDesc::ParticleDesc() : mMaterial(0) {
 	dragFactor = 0.1f;
 
 	dragFuncByVelocity = DRAG_LINEAR;
-	
+
 	dragFuncBySize = DRAG_NONE;
 
 	collisionType = CTYPE_NONE;
@@ -110,12 +110,12 @@ ParticleDesc::ParticleDesc() : mMaterial(0) {
 	bounce = 1.0f;
 
 }
-	
-	
+
+
 const std::string& ParticleDesc::getName() {
 	return mName;
 }
-	
+
 void ParticleDesc::setName(const std::string& name) {
 	mName = name;
 }
@@ -127,7 +127,7 @@ void ParticleDesc::loadTexture(IStorm3D* s3d, const std::string& path, const std
 	}
 	if(name.empty())
 		return;
-	
+
 	IStorm3D_Texture* tex = s3d->CreateNewTexture(name.c_str());
 	if(tex == NULL) {
 		return;
@@ -136,16 +136,16 @@ void ParticleDesc::loadTexture(IStorm3D* s3d, const std::string& path, const std
 
 	texInfo.name = name;
 	texInfo.path = path;
-	
+
 	setAlphaType((IStorm3D_Material::ATYPE)texInfo.alphaType);
-}	
+}
 
 void ParticleDesc::setAlphaType(IStorm3D_Material::ATYPE type) {
 	texInfo.alphaType = type;
 	if(mMaterial)
 		mMaterial->SetAlphaType(type);
 }
-	
+
 IStorm3D_Material* ParticleDesc::getMaterial() {
 	return mMaterial;
 }
@@ -155,10 +155,10 @@ void ParticleDesc::parseIn(IStorm3D* s3d, ParserGroup& g) {
 /*
 	ParserGroup& cg = g.getSubGroup("color_track");
 	colorTrack.parseIn(cg);
-	
+
 	ParserGroup& ag = g.getSubGroup("alpha_track");
 	alphaTrack.parseIn(ag);
-	
+
 	ParserGroup& sg = g.getSubGroup("size_track");
 	sizeTrack.parseIn(sg);
 */
@@ -178,7 +178,7 @@ void ParticleDesc::parseIn(IStorm3D* s3d, ParserGroup& g) {
 	::parseIn(g, "drag_function_by_size", dragFuncBySize);
 	::parseIn(g, "collision_type", collisionType);
 	::parseIn(g, "bounce", bounce);
-	
+
 	loadTexture(s3d, "data/particles/", texInfo.name);
 
 }
@@ -223,9 +223,9 @@ void ParticleDesc::save(std::ofstream& os) {
 	colorTrack.save(os);
 	alphaTrack.save(os);
 	sizeTrack.save(os);
-	
+
 	texInfo.save(os);
-	
+
 	os << minAngle;
 	os << maxAngle;
 	os << minAngleChange;
@@ -233,7 +233,7 @@ void ParticleDesc::save(std::ofstream& os) {
 	os << minLife;
 	os << maxLife;
 	os << drawStyle;
-	
+
 
 }
 
@@ -242,9 +242,9 @@ void ParticleDesc::load(IStorm3D* s3d, std::ifstream& is) {
 	colorTrack.load(is);
 	alphaTrack.load(is);
 	sizeTrack.load(is);
-	
+
 	texInfo.load(is);
-	
+
 	loadTexture(s3d, texInfo.path, texInfo.name);
 	setAlphaType(texInfo.alphaType);
 

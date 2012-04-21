@@ -72,7 +72,7 @@ public:
 	};
 
 	//=========================================================================
-	
+
 	int					initTime;
 	int					timeToDie;
 	Ogui*				ogui;
@@ -299,11 +299,11 @@ public:
 				int time = getLocaleGuiInt( ( pre_effect + "_time" ).c_str(), 0 );
 				int length = getLocaleGuiInt( ( pre_effect + "_length" ).c_str(), 0 );
 				std::string file = getLocaleGuiString( ( pre_effect + "_img" ).c_str() );
-				
+
 				{
 					pictureFadeByTime.insert( std::pair< int, std::pair< std::string, int > >( time, std::pair< std::string, int >( file, length ) ) );
 				}
-			}			
+			}
 		}
 
 		// effects
@@ -317,7 +317,7 @@ public:
 				int time = getLocaleGuiInt( ( pre_effect + "_time" ).c_str(), 0 );
 				int effect = getLocaleGuiInt( ( pre_effect + "_id" ).c_str(), 0 );
 				int length = getLocaleGuiInt( ( pre_effect + "_duration" ).c_str(), 0 );
-				
+
 				if( time <= 0 )
 				{
 					window->StartEffect( effect, length );
@@ -326,7 +326,7 @@ public:
 				{
 					effectsByTime.insert( std::pair< int, std::pair< int, int > >( time, std::pair< int, int >( effect, length ) ) );
 				}
-			}			
+			}
 		}
 
 		// text areas
@@ -342,8 +342,8 @@ public:
 				textAreas[ i ] = new OguiFormattedText( window, ogui,
 														getLocaleGuiInt( ( pre_text + "_x" ).c_str(), 0 ), getLocaleGuiInt( ( pre_text + "_y" ).c_str(), 0 ),
 														getLocaleGuiInt( ( pre_text + "_w" ).c_str(), 0 ), getLocaleGuiInt( ( pre_text + "_h" ).c_str(), 0 ) );
-				
-			
+
+
 
 				// fonts
 				{
@@ -365,7 +365,7 @@ public:
 						fonts.push_back( font );
 					}
 
-					
+
 					font = ogui->LoadFont( getLocaleGuiString( ( pre_text + "_font_u" ).c_str() ) );
 					if( font )
 					{
@@ -373,7 +373,7 @@ public:
 						fonts.push_back( font );
 					}
 
-					
+
 					font = ogui->LoadFont( getLocaleGuiString( ( pre_text + "_font_h1" ).c_str() ) );
 					if( font )
 					{
@@ -389,10 +389,10 @@ public:
 					if( align == "left" )	textAreas[ i ]->setTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 					if( align == "right" )	textAreas[ i ]->setTextHAlign( OguiButton::TEXT_H_ALIGN_RIGHT );
 				}
-				
+
 				if(::DHLocaleManager::getInstance()->hasString(::DHLocaleManager::BANK_GUI, ( pre_text + "_typingsound" ).c_str()))
 					typingEffects[i].typingSound = getLocaleGuiString( ( pre_text + "_typingsound" ).c_str() );
-				
+
 				int num_of_texts = getLocaleGuiInt( ( pre_text + "_text_amount" ).c_str(), 0 );
 				for( int j = 0; j < num_of_texts; j++ )
 				{
@@ -467,7 +467,7 @@ public:
 					{
 						textsByTime.insert( std::pair< int, std::pair< int, std::string > >( time, std::pair< int, std::string >( i, text ) ) );
 					}
-					
+
 				}
 
 				// text queue
@@ -668,7 +668,7 @@ public:
 	}
 
 	//=========================================================================
-	
+
 	~CinematicScreenImpl()
 	{
 		// assert( false );
@@ -860,7 +860,7 @@ public:
 			{
 				StartScrollEffect( effectsByTime.begin()->second.second );
 			}
-			
+
 
 			effectsByTime.erase( effectsByTime.begin() );
 		}
@@ -874,11 +874,11 @@ public:
 			imageFadeEffect->initTime = time;
 			imageFadeEffect->transparency = 1.0f;
 			imageFadeEffect->fadeLength = pictureFadeByTime.begin()->second.second;
-			
+
 
 			IOguiImage* image = ogui->LoadOguiImage( pictureFadeByTime.begin()->second.first.c_str() );
 			images.push_back( image );
-		
+
 			backgroundImage->SetTransparency( 100 );
 			backgroundImage->SetDisabledImage( image );
 			imageFadeEffect->image = image;
@@ -911,15 +911,15 @@ public:
 
 		if( scrollEffect )
 		{
-				
+
 			scrollEffect->yPosition -= ( getTime() - scrollEffect->lastUpdate ) * scrollEffect->speed;
 			scrollEffect->lastUpdate = getTime();
-	
+
 			int moveBy = (int)scrollEffect->yPosition - (int)scrollEffect->lastYPosition;
 			scrollEffect->lastYPosition = (int)scrollEffect->yPosition;
 
 			// theText->moveBy( 0, (int)scrollEffect->yPosition - (int)scrollEffect->lastYPosition );
-			
+
 			unsigned int i;
 
 			for( i = 0; i < textAreas.size(); i++ )
@@ -1002,17 +1002,17 @@ public:
 
 	int getTime() const
 	{
-		
+
 		// this is a bad idea because the timer stops when video stops...
 		/*if( backgroundVideoStream )
 		{
 			int time = backgroundVideoStream->getTime();
-			
+
 			// Logger::getInstance()->error( boost::lexical_cast< std::string >( time ).c_str() );
 			// assert( time > 0 );
 			return time;
 		}*/
-		
+
 		return Timer::getTime();
 	}
 

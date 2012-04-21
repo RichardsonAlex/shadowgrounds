@@ -52,7 +52,7 @@ namespace ui
 		IOguiImage *fillupImage;
 		IOguiImage *fillupLowImage;
 		OguiButton *fillupButton;
-		
+
 
 		IOguiImage *healthBackgroundImage;
 		IOguiImage *healthBackgroundLowImage;
@@ -69,7 +69,7 @@ namespace ui
 		int lastUpdateValue;
 		int lastUpdateValue2;
 		int healthDropBlinkCounter;
-		
+
 		// added by Pete
 		float healthTextMultiplier;
 	};

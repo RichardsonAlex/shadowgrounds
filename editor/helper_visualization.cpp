@@ -54,7 +54,7 @@ struct HelperVisualizationData
 
 		storm.scene->AddLine(line.get(), true);
 		lines.push_back(line);
-		
+
 		return line;
 	}
 

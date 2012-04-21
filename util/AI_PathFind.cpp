@@ -48,7 +48,7 @@ Path::~Path()
 void Path::addPoint(int xPosition, int yPosition)
 {
 	assert(xPositions.size() == yPositions.size());
-	
+
 	xPositions.push_back(xPosition);
 	yPositions.push_back(yPosition);
 }
@@ -122,7 +122,7 @@ void Pathblock::addPortal(int xPosition, int yPosition)
 		Logger::getInstance()->error("addPortal - Ignored door helper which was outside building area");
 		return;
 	}
-	
+
 	//assert(xPosition >= 0);
 	//assert(yPosition >= 0);
 
@@ -132,7 +132,7 @@ void Pathblock::addPortal(int xPosition, int yPosition)
 void Pathblock::removePortal(int xPosition, int yPosition)
 {
 	std::pair<int, int> position(xPosition, yPosition);
-	
+
 	for(unsigned int i = 0; i < portals.size(); ++i)
 	{
 		if(position == portals[i])
@@ -444,7 +444,7 @@ public:
 		// Set as last element
 		array[arrayPosition] = index;
 		indexHash.insert(mapIndex, arrayPosition);
-		
+
 		// Correct place
 		slideDown(arrayPosition, mapSizeX);
 
@@ -464,7 +464,7 @@ public:
 		//indexHash.erase(mapIndex);
 		//indexHash.insert(mapIndex, 1);
 		indexHash.update(mapIndex, 1);
-		
+
 		int oldMapIndex = nodes[array[1]].yIndex * mapSizeX + nodes[array[1]].xIndex;
 		indexHash.erase(oldMapIndex);
 
@@ -551,7 +551,7 @@ private:
 		{
 			// Default to left child
 			int childIndex = 2 * currentIndex;
-			
+
 			// Change to right child?
 			if(childIndex < arrayPosition - 1)
 			if(nodes[array[childIndex + 1]] < nodes[array[childIndex]])
@@ -575,11 +575,11 @@ private:
 			}
 			else
 				break;
-				
+
 			currentIndex = childIndex;
 		}
 	}
-	
+
 	// Slide given index down on hierarchy
 	inline void slideDown(int index, int mapSizeX)
 	{
@@ -594,7 +594,7 @@ private:
 			{
 				int hashA = nodes[array[currentIndex  ]].yIndex * mapSizeX + nodes[array[currentIndex  ]].xIndex;
 				int hashB = nodes[array[currentIndex/2]].yIndex * mapSizeX + nodes[array[currentIndex/2]].xIndex;
-				
+
 				// Update hash
 				//indexHash.erase(hashA);
 				//indexHash.erase(hashB);
@@ -607,7 +607,7 @@ private:
 			}
 			else
 				break;
-				
+
 			currentIndex /= 2;
 		}
 	}
@@ -634,7 +634,7 @@ PathFind::PathFind()
 	coverMap(0),
 	lightMap(0),
 	portalRoutesDisabled(false)
-{	
+{
 }
 
 PathFind::~PathFind()
@@ -664,8 +664,8 @@ void PathFind::setHeightMap(uint16 *heightValues, int xSize_, int ySize_, int ac
 	else
 	{
 		assert(!"Whoops.");
-	}	
-	
+	}
+
 	xSize = accuracyFactor * xSize_;
 	ySize = accuracyFactor * ySize_;
 
@@ -739,7 +739,7 @@ bool PathFind::findRoute(Path *resultPath, int xStart, int yStart, int xEnd, int
 	// Normal query
 // TEMP: Temporarily removed this check! restore it!!!!
 //Logger::getInstance()->debug("TEMP - patfind doors code, restore me!!!");
-	
+
 	if(startId == endId || portalRoutesDisabled)
 	{
 		float costEstimate = estimateCost(xStart, yStart, xEnd, yEnd) / heuristicWeight;
@@ -750,7 +750,7 @@ bool PathFind::findRoute(Path *resultPath, int xStart, int yStart, int xEnd, int
 			pathfind_findroutes_failed_since_last_clear++;
 			return false;
 		}
-	
+
 		return findActualRoute(resultPath, xStart, yStart, xEnd, yEnd, maxHeightDifference, climbPenalty, 0);
 	}
 
@@ -766,7 +766,7 @@ bool PathFind::findRoute(Path *resultPath, int xStart, int yStart, int xEnd, int
 	{
 		int xBlockPosition = blockMap[startId].getPositionX();
 		int yBlockPosition = blockMap[startId].getPositionY();
-		
+
 		const std::vector<std::pair<int, int> > &portals = blockMap[startId].getPortals();
 		float smallestCost = 99999999999.f;
 
@@ -781,9 +781,9 @@ bool PathFind::findRoute(Path *resultPath, int xStart, int yStart, int xEnd, int
 		{
 			int xTargetPosition = portals[i].first + xBlockPosition;
 			int yTargetPosition = portals[i].second + yBlockPosition;
-			
+
 			//float currentCost = estimateCost(xStart, yStart, xTargetPosition, yTargetPosition);
-		
+
 			// Find closest door to target point
 			float currentCost = estimateCost(xTargetPosition, yTargetPosition, xEnd, yEnd);
 			if(currentCost < smallestCost)
@@ -982,7 +982,7 @@ bool PathFind::findRoute(Path *resultPath, int xStart, int yStart, int xEnd, int
 			pathfind_findroutes_failed_since_last_clear++;
 			return false;
 		}
-		
+
 		result = findActualRoute(resultPath, xStart, yStart, xEndPortalPosition, yEndPortalPosition, maxHeightDifference, climbPenalty, 0);
 		if(result == false)
 		{
@@ -990,7 +990,7 @@ bool PathFind::findRoute(Path *resultPath, int xStart, int yStart, int xEnd, int
 			return false;
 		}
 	}
-	
+
 	return true;
 }
 
@@ -1126,7 +1126,7 @@ yEnd += yEnd % 2;
 		// Get the most promising node
 		int currentNode = openList.top(xSize);
 		openList.pop(xSize);
-		
+
 		assert((currentNode >= 0) && (currentNode < static_cast<int> (nodes.size())));
 		int currentIndex = nodes[currentNode].yIndex * xSize + nodes[currentNode].xIndex;
 
@@ -1159,13 +1159,13 @@ yEnd += yEnd % 2;
 		if(nodes[currentNode] == endNode)
 		{
 			// Construct path backwards to resultPath
-			int loopIndex = currentIndex;		
+			int loopIndex = currentIndex;
 
 			while(loopIndex >= 0)
 			{
 				int closedIndex = closedList.find(loopIndex);
 				assert(closedIndex >= 0);
-				
+
 				Node &n = nodes[closedIndex];
 
 				// Add waypoint
@@ -1186,7 +1186,7 @@ yEnd += yEnd % 2;
 			if(parentIndex > 0)
 				assert(closedList.find(parentIndex) >= 0);
 		}
-#endif	
+#endif
 
 		int parentIndex = nodes[currentNode].yParentIndex * xSize + nodes[currentNode].xParentIndex;
 
@@ -1203,7 +1203,7 @@ for(int i = nodes[currentNode].xIndex - 2; i <= nodes[currentNode].xIndex + 2; i
 				continue;
 
 			int loopIndex = j * xSize + i;
-	
+
 			// Ignore self
 			if(loopIndex == currentIndex)
 				continue;
@@ -1287,7 +1287,7 @@ for(int i = nodes[currentNode].xIndex - 2; i <= nodes[currentNode].xIndex + 2; i
 			{
 				Node &n = nodes[closedIndex];
 				assert(openList.find(loopIndex) < 0);
-				
+
 				// If found shorter path, update to open list
 				if(nodes[loopNode].totalCost < n.totalCost)
 				{
@@ -1414,12 +1414,12 @@ float PathFind::realCost(int xStart, int yStart, int xEnd, int yEnd, float climb
 	uint16 h2 = getHeight(xEnd, yEnd);
 
 	int heightDelta = h2 - h1;
-	
+
 	// Uphill
 	if(heightDelta > 0)
 		result *= climbPenalty; //result += climbPenalty * heightDelta;
 	*/
-	
+
 	return result;
 }
 

@@ -30,7 +30,7 @@ boost::shared_ptr<IStorm3D_Texture> createTexture(int width, int height, Storm &
 {
 	IStorm3D_Texture *t = storm.storm->CreateNewTexture(width, height, IStorm3D_Texture::TEXTYPE_BASIC);
 	Storm3D_SurfaceInfo info = t->GetSurfaceInfo();
-	
+
 	assert(info.width == width && info.height == height);
 	return boost::shared_ptr<IStorm3D_Texture> (t, std::mem_fun(&IStorm3D_Texture::Release));
 }

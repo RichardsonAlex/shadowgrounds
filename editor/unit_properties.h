@@ -24,7 +24,7 @@ struct UnitProperties
 	};
 
 	std::map<std::string, std::string> strings;
-	
+
 	Difficulty difficulty;
 	int layout;
 

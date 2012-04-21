@@ -62,7 +62,7 @@ public:
 		addComboItems( GetDlgItem( hwnd, IDC_COMBOMIXINGRATE ), manager.getOptionNames( "MixingRate" ), manager.getTheOneInUse( "MixingRate" ) );
 		addComboItems( GetDlgItem( hwnd, IDC_COMBOPHYSICSDETAIL ),	manager.getOptionNames( "Physics Quality" ),	manager.getTheOneInUse( "Physics Quality" ) );
 		addComboItems( GetDlgItem( hwnd, IDC_COMBOCONTROLTYPE ),	manager.getOptionNames( "ClawControlType" ),	manager.getTheOneInUse( "ClawControlType" ) );
-	   // IDC_COMBOCONTROLTYPE	
+	   // IDC_COMBOCONTROLTYPE
 		setCheckBox( hwnd, IDC_CHECKSOUND, manager.getTheOneInUse( "Sounds" ) );
 		setCheckBox( hwnd, IDC_CHECKHARDWARE3D, manager.getTheOneInUse( "Hardware3D" ) );
 		setCheckBox( hwnd, IDC_CHECKENABLEMENUVIDEO, manager.getTheOneInUse( "EnableMenuVideo" ) );
@@ -146,7 +146,7 @@ public:
 			SendMessage( GetDlgItem( hwnd, IDC_COMBOMODSELECTION ), CB_ADDSTRING, 0, ( LPARAM ) "Nothing. Zip. Nada");
 			for(unsigned int i = 0; i < modStringList.size(); ++i)
 				SendMessage( GetDlgItem( hwnd, IDC_COMBOMODSELECTION ), CB_ADDSTRING, 0, ( LPARAM ) modStringList[i].c_str());
-			
+
 			//if no mod selected
 				SendMessage( GetDlgItem( hwnd, IDC_COMBOMODSELECTION ), CB_SETCURSEL, 0, 0);
 			*/
@@ -169,7 +169,7 @@ public:
 		// language
 		setDescriptionText( GetDlgItem( hwnd, IDC_CAPTION1 ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_CAPTION6 ) );
-		
+
 		// graphics detail
 		setDescriptionText( GetDlgItem( hwnd, IDC_STATICGRAPHICSLEVEL ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_CAPTION2 ) );
@@ -190,7 +190,7 @@ public:
 		setDescriptionText( GetDlgItem( hwnd, IDC_CAPTION5 ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_CHECKEAX ) );
 
-		
+
 	}
 
 	void applyOptions( HWND hwnd )
@@ -231,9 +231,9 @@ public:
 			break;
 
 		case WM_COMMAND:
-		{	
+		{
 			int command = LOWORD(wParam);
-						
+
 			switch( command )
 			{
 			case IDOK:
@@ -333,7 +333,7 @@ public:
 
 		case WM_SHOWWINDOW:
 			manager.load();
-			initDialog( hwnd );	
+			initDialog( hwnd );
 			break;
 
 		};
@@ -355,7 +355,7 @@ LaunchDialog::LaunchDialog( const Window& parent_window, LauncherWindow* lwindow
 	//GameOptionManager::getInstance()->load();
 
 	dialog = new DialogData( IDD_LAUNCHER, parent_window, DialogData::ATTACH_ALL, handler );
-	
+
 
 	// dialog->setDialogHandler( new LaunchDialogHandler );
 }
@@ -364,7 +364,7 @@ LaunchDialog::LaunchDialog( const Window& parent_window, LauncherWindow* lwindow
 
 LaunchDialog::~LaunchDialog()
 {
-	
+
 	delete dialog;
 	delete handler;
 }

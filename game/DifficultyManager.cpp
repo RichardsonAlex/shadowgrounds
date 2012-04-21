@@ -46,7 +46,7 @@ namespace game
 
 		// damage ratio is between 25% (very easy) - 125% (very hard)
 		ret = 0.25f + ret;
-		
+
 		return ret;
 	}
 

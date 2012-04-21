@@ -80,7 +80,7 @@ class ModelParticleSystem : public GenParticleSystem {
 
 	boost::shared_ptr<ParticlePhysics> physics;
 	boost::shared_ptr<ModelParticleSystemEditables> m_eds;
-	boost::shared_ptr<PointArray> m_parray;	
+	boost::shared_ptr<PointArray> m_parray;
 
 	Original original;
 

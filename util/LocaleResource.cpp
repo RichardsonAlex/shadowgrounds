@@ -69,7 +69,7 @@ const char *LocaleResource::convert(const char *str) const
 		if(i > 0)
 		{
 			add(str, copyStart, i);
-			
+
 			copyStart = i + 1;
 			copyEnd = copyStart;
 		}

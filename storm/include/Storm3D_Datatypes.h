@@ -4,9 +4,9 @@
   (C) Sebastian Aaltonen 2000-2001
 
   Datatypes
-	
+
 	- Basic Storm3D datatypes
-	
+
 */
 
 

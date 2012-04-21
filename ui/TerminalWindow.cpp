@@ -35,7 +35,7 @@ TerminalWindow::TerminalWindow( Ogui* ogui, Game* game, const std::string& style
 	pageNum( -1 ),
 	pageMax( 0 ),
 	visible( true ),
-	
+
 	fonts(),
 	text()
 {
@@ -54,7 +54,7 @@ TerminalWindow::TerminalWindow( Ogui* ogui, Game* game, const std::string& style
 		int w = getLocaleGuiInt( name_w.c_str(), 0 );
 		int h = getLocaleGuiInt( name_h.c_str(), 0 );
 		std::string background = getLocaleGuiString( name_norm.c_str() );
-		
+
 		window = ogui->CreateSimpleWindow( x, y, w, h, background.c_str(), 0 );
 	}
 
@@ -99,7 +99,7 @@ TerminalWindow::TerminalWindow( Ogui* ogui, Game* game, const std::string& style
 		int y = getLocaleGuiInt( ( name + "_y" ).c_str(), 0 );
 		int w = getLocaleGuiInt( ( name + "_w" ).c_str(), 0 );
 		int h = getLocaleGuiInt( ( name + "_h" ).c_str(), 0 );
-	
+
 		pageNumButton = ogui->CreateSimpleTextButton( window, x, y, w, h, NULL, NULL, NULL, "", 0 );
 		pageNumButton->SetFont( fonts[ 5 ]	 );
 	}
@@ -118,7 +118,7 @@ TerminalWindow::TerminalWindow( Ogui* ogui, Game* game, const std::string& style
 		const std::string name = style_prefix + style_name + "_vsync";
 
 		const char* image = getLocaleGuiString( ( name + "_image" ).c_str() );
-		
+
 		vsyncX =		getLocaleGuiInt( ( name + "_x" ).c_str(),		0 );
 		vsyncBeginPos = getLocaleGuiInt( ( name + "_begin" ).c_str(),	0 );
 		vsyncDownPos =	getLocaleGuiInt( ( name + "_end" ).c_str(),		0 );
@@ -153,22 +153,22 @@ TerminalWindow::~TerminalWindow()
 		delete buttonTexts[i];
 	}
 
-	delete textarea;	
+	delete textarea;
 	textarea = NULL;
 
 	delete pageNumButton;
 	pageNumButton = NULL;
-	
-	delete next;		
+
+	delete next;
 	next = NULL;
-	
-	delete prev;		
+
+	delete prev;
 	prev = NULL;
-	
-	delete close;		
+
+	delete close;
 	close = NULL;
-	
-	delete window;		
+
+	delete window;
 	window = NULL;
 }
 

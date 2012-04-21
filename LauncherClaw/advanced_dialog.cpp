@@ -54,7 +54,7 @@ public:
 		setCheckBox( hwnd, IDC_CHECKDISAPEARINGCORPSES,		manager.getTheOneInUse( "CorpseDisapear" ) );
 		setCheckBox( hwnd, IDC_CHECKHIGHQUALITYVIDEO,		manager.getTheOneInUse( "High Quality Video" ) );
 		setCheckBox( hwnd, IDC_CHECKRESETRENDERERAFTERLOAD,	manager.getTheOneInUse( "ResetAfterLoad" ) );
-		
+
 		// buttons
 		setDescriptionText( GetDlgItem( hwnd, IDOK ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_CANCEEL ) );
@@ -70,7 +70,7 @@ public:
 		setDescriptionText( GetDlgItem( hwnd, IDC_STATICSHADOWLEVELS ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_STATICSHADOWSTEXTUREQUALITY ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_STATICMISC ) );
-		
+
 		// check boxes
 		setDescriptionText( GetDlgItem( hwnd, IDC_CHECKFULLSCREEN ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_CHECKWEATHEREFFECTS ) );
@@ -117,13 +117,13 @@ public:
 		switch( msg )
 		{
 		case WM_INITDIALOG:
-			// initDialog( hwnd );			
+			// initDialog( hwnd );
 			break;
 
 		case WM_COMMAND:
 		{
 			int command = LOWORD(wParam);
-						
+
 			switch( command )
 			{
 			case IDOK:
@@ -131,7 +131,7 @@ public:
 				// GameOptionManager::getInstance()->save();
 				// PostQuitMessage( 0 );
 				// ShellExecute( 0, 0, "disposable.exe", 0, 0, SW_NORMAL );
-				
+
 				// manager.save();
 				lwindow->closeAdvanced();
 				break;
@@ -146,7 +146,7 @@ public:
 
 		case WM_SHOWWINDOW:
 			manager.load();
-			initDialog( hwnd );	
+			initDialog( hwnd );
 			break;
 
 		default:;

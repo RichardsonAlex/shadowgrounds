@@ -27,12 +27,12 @@ using namespace editor;
 
 ParamDesc::ParamDesc(const std::string _name, int _id, PARAM_TYPE _type) :
 name(_name), type(_type), id1(_id)
-{	
+{
 }
 
 ParamDesc::ParamDesc(const std::string _name, int _id, PARAM_TYPE _type, const std::string &default_) :
 name(_name), type(_type), id1(_id), defaultValue(default_)
-{	
+{
 }
 
 ParamDesc::ParamDesc(const std::string _name, int _id1, int _id2, int _id3, PARAM_TYPE _type)
@@ -58,10 +58,10 @@ ParamDesc::ParamDesc(const std::string name_, int id1_, const std::string& selec
 :	name(name_),
 	id1(id1_),
 	type(type_)
-{	
+{
 	if(type == PARAM_SELECTION)
 	{
-		std::string str;	
+		std::string str;
 		for(unsigned int i = 0; i < selections_.size(); i++)
 		{
 			if(selections_[i] == ',')
@@ -76,7 +76,7 @@ ParamDesc::ParamDesc(const std::string name_, int id1_, const std::string& selec
 		selections.push_back(str);
 	}
 	else if(type == PARAM_STRING)
-	{		
+	{
 	}
 }
 
@@ -84,7 +84,7 @@ ParamDesc::ParamDesc(const ParamDesc &rhs)
 {
 	*this = rhs;
 }
-		
+
 ParamDesc& ParamDesc::operator=(const ParamDesc& rhs)
 {
 	ext = rhs.ext;
@@ -103,7 +103,7 @@ ParamDesc& ParamDesc::operator=(const ParamDesc& rhs)
 
 namespace
 {
-	
+
 class AnimatedFloatCommand : public ICommand {
 	VectorTrackDialog floatTrackDialog;
 	Dialog& parent;
@@ -113,7 +113,7 @@ public:
 		ParserGroup& pg_) : parent(parent_), pg(pg_) {
 	}
 	void execute(int id) {
-		floatTrackDialog.open(parent, IDD_VECTOR_TRACK, pg, true);	
+		floatTrackDialog.open(parent, IDD_VECTOR_TRACK, pg, true);
 	}
 };
 
@@ -141,33 +141,33 @@ public:
 		fileName = oldFileName;
 		setDialogItemText(dlg, viewID, fileName);
 	}
-	
+
 	void execute(int id) {
 		fileName = getOpenFileName(ext, path, false);
 		setDialogItemText(dlg, viewID, fileName);
 	}
-	
+
 	std::string getFileName() {
 		return fileName;
 	}
 };
-	
+
 
 struct SharedData {
-		
-	Dialog& dlg;	
+
+	Dialog& dlg;
 	const std::vector<ParamDesc>& pd;
 	ParserGroup& parser;
 	std::map< std::string, boost::shared_ptr<ICommand> >& cmds;
-		
+
 	SharedData(ParserGroup& _parser, Dialog& _dlg, const std::vector<ParamDesc>& _pd,
 		std::map< std::string, boost::shared_ptr<ICommand> >& cmds_) :
 	parser(_parser), dlg(_dlg), pd(_pd), cmds(cmds_) {
-		
+
 	}
-	
+
 	void update() {
-		
+
 		for(unsigned int i = 0; i < pd.size(); ++i)
 		{
 			if(pd[i].type == PARAM_INT)
@@ -187,41 +187,41 @@ struct SharedData {
 			}
 			else if(pd[i].type == PARAM_VECTOR)
 			{
-				
+
 				float value1 = getDialogItemFloat(dlg, pd[i].id1);
 				float value2 = getDialogItemFloat(dlg, pd[i].id2);
 				float value3 = getDialogItemFloat(dlg, pd[i].id3);
-				
+
 				parser.setValue(pd[i].name, convertVectorToString(Vector(value1, value2, value3)));
 			}
 			else if(pd[i].type == PARAM_ANIMATED_FLOAT)
 			{
-				
+
 				//ParserGroup& pg = parser.getSubGroup(pd[i].name);
 				//pg = reinterpret_cast<AnimatedFloatCommand*>(cmds[pd[i].name].get())->getParserGroup();
-				
+
 			}
 			else if(pd[i].type == PARAM_ANIMATED_VECTOR)
 			{
-				
+
 				//ParserGroup& pg = parser.getSubGroup(pd[i].name);
 				//pg = reinterpret_cast<AnimatedVectorCommand*>(cmds[pd[i].name].get())->getParserGroup();
-				
+
 			}
 			else if(pd[i].type == PARAM_STRING)
 			{
-				std::string str = getDialogItemText(dlg, pd[i].id1);	
+				std::string str = getDialogItemText(dlg, pd[i].id1);
 				parser.setValue(pd[i].name, str);
-				
+
 			}
 			else if(pd[i].type == PARAM_FILE) {
-				
+
 				parser.setValue(pd[i].name,
 					reinterpret_cast<FileCommand*>(cmds[pd[i].name].get())->getFileName());
-				
+
 			}
 			else if(pd[i].type == PARAM_SELECTION)
-			{	
+			{
 				int sel = ComboBox_GetCurSel(dlg.getItem(pd[i].id1));
 
 				//psd
@@ -236,11 +236,11 @@ struct SharedData {
 			{
 				assert(0);
 			}
-		}		
+		}
 	}
 };
 
-	
+
 class UpdateCommand : public ICommand {
 	SharedData& data;
 public:
@@ -248,7 +248,7 @@ public:
 	:	 data(_data)
 	{
 	}
-	
+
 	void execute(int id)
 	{
 		data.update();
@@ -257,7 +257,7 @@ public:
 
 } // unnamed namespace
 
-	
+
 struct ParamUIData
 {
 
@@ -272,7 +272,7 @@ struct ParamUIData
 		updateCommand(data)
 	{
 		for(unsigned int i = 0; i < pd.size(); i++)
-		{		
+		{
 			if(pd[i].type == PARAM_INT) {
 				int value = convertFromString<int>(parser.getValue(pd[i].name, ""), convertFromString<int>(pd[i].defaultValue, 0));
 				setDialogItemInt(dlg, pd[i].id1, value);
@@ -306,7 +306,7 @@ struct ParamUIData
 				setDialogItemText(dlg, pd[i].id1, str);
 			}
 			if(pd[i].type == PARAM_FILE) {
-				std::string str = parser.getValue(pd[i].name, "");				
+				std::string str = parser.getValue(pd[i].name, "");
 				boost::shared_ptr<ICommand> c(new FileCommand(str, pd[i].ext, pd[i].path, dlg, pd[i].id2));
 				cmds[pd[i].name] = c;
 				dlg.getCommandList().addCommand(pd[i].id1, c.get());
@@ -330,11 +330,11 @@ struct ParamUIData
 				if(!found)
 					ComboBox_SetCurSel(dlg.getItem(pd[i].id1), 0);
 			}
-			
+
 		}
-		
+
 		dlg.getCommandList().addCommand(IDC_UPDATE, &updateCommand);
-		
+
 	}
 };
 
@@ -349,5 +349,5 @@ ParamUI::~ParamUI() {
 
 } // particle
 } // frozenbyte
-	
+
 

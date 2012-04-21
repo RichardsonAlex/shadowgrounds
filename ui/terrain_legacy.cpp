@@ -210,7 +210,7 @@ void TerrainLegacy::apply(const Parser::ParserGroup &group)
 
 					/*
 					std::string &texture = data->textureName[i][0];
-					
+
 					int loopIndex = -1;
 					int current_index = -1;
 

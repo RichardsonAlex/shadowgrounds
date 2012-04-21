@@ -8,7 +8,7 @@
 
 #ifdef GS_EXPAND_GAMESCRIPTING_LIST
 
-	{ GS_MAX_COMMANDS, "***", GS_DATATYPE_ARR_END } };	
+	{ GS_MAX_COMMANDS, "***", GS_DATATYPE_ARR_END } };
 
 #endif
 

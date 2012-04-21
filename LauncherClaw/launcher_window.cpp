@@ -41,7 +41,7 @@ public:
 	}
 
 	void openAdvanced()
-	{	
+	{
 		dialog.hide();
 		advanced.show();
 	}

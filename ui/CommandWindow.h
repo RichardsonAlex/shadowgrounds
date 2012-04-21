@@ -53,7 +53,7 @@ namespace ui
     bool quitPressed;
 		OguiButton *startButton;
 		OptionsWindow *optionsWindow;
-	
+
 	// Test
 	OguiWindow* foreground;
   };*/

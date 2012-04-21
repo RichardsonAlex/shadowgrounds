@@ -31,7 +31,7 @@ Export(long, GlobalFunc *global, LWLayoutGeneric *layoutGeneric, void *)
 	LWScene().collectData();
 
 	// Export
-	createExportDialog(manager->getExporter(), moduleHandle);	
+	createExportDialog(manager->getExporter(), moduleHandle);
 
 	// That's all folks!
 	return AFUNC_OK;
@@ -97,7 +97,7 @@ ServerRecord ServerDesc[] =
 		(ActivateFunc *) Export,
 		server_tags
 	},
-	
+
 	// Indicates that we don´t have any more plugins
 	{
 		(const char *) NULL

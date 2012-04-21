@@ -92,7 +92,7 @@ void loadDHCursors(Ogui *ogui, int controller)
 
 #elif defined(PROJECT_SURVIVOR)
 
-	
+
   int i = controller;
 
 	for(int j = 0; j < DH_CURSOR_AMOUNT; j++)

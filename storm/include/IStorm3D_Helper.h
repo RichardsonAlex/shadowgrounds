@@ -51,7 +51,7 @@ public:
 	virtual void SetName(const char *name)=0;
 	virtual const char *GetName()=0;
 	virtual IStorm3D_Bone *GetParentBone()=0;
-	
+
 	// Get helpers (local) TM
 	virtual Matrix GetTM() = 0;
 	virtual VC3 &GetGlobalPosition()=0;

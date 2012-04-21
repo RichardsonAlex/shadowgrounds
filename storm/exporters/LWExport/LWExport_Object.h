@@ -85,7 +85,7 @@ namespace {
 		}
 
 		LWPntID id;
-		
+
 		FBVector position;
 		FBVector normal;
 		FBVector2 uv;

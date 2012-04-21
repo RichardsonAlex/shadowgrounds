@@ -37,12 +37,12 @@ TargetDisplayWindow::TargetDisplayWindow( Ogui* ogui, Game* game, int player ) :
 	currentTicks( 0 )
 {
 	FB_ASSERT( ogui != NULL );
-	
+
 	window = ogui->CreateSimpleWindow( 0, 0, 1024, 768, NULL, 0 );
 
 	// this is required or the window will catch all the cursor clicks --jpk
 	window->SetReactMask(0);
-		
+
 	manager = new TargetDisplayButtonManager( ogui, window );
 
 	// FOR SOME REASON, THIS PARTICULAR PARSER INSTANCE TOTALLY DOES NOT GET THE REFERENCED FLAGS CORRECTLY SET
@@ -69,10 +69,10 @@ TargetDisplayWindow::TargetDisplayWindow( Ogui* ogui, Game* game, int player ) :
 		basic.buttonImages[ 3 ] = group.getValue( "bottomleft" );
 
 		basic.font = ogui->LoadFont( group.getValue( "font" ).c_str() );
-		
+
 		std::stringstream( group.getValue( "width" ) ) >> basic.width;
 		std::stringstream( group.getValue( "height" ) ) >> basic.height;
-		
+
 		std::stringstream( group.getValue( "initanimsize" ) ) >> basic.beginAnimPos;
 
 		std::stringstream( group.getValue( "text_offset_x", "0" ) ) >> basic.textOffsetX;
@@ -127,7 +127,7 @@ TargetDisplayWindow::TargetDisplayWindow( Ogui* ogui, Game* game, int player ) :
 	// imageHeight = 16;
 
 	TargetDisplayWindowButton::setManager( manager );
-	
+
 }
 
 //=============================================================================
@@ -386,7 +386,7 @@ void TargetDisplayWindow::removeRest()
 		{
 			std::map< void*, TargetDisplayWindowButton* >::iterator remove = i;
 			++i;
-			
+
 			remove->second->release();
 			delete remove->second;
 			buttons.erase( remove );
@@ -398,8 +398,8 @@ void TargetDisplayWindow::removeRest()
 	}
 
 	currentTicks++;
-	
-	
+
+
 }
 
 ///////////////////////////////////////////////////////////////////////////////

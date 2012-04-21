@@ -20,7 +20,7 @@ namespace game
 	{
 		public:
 			Item(int itemTypeId);
-			
+
 			~Item();
 
 			void setCustomScript(const char *customScript);
@@ -95,7 +95,7 @@ namespace game
 			void setHighlightStyle( int style );
 
 			bool hasHighlightText() const;
-			
+
 			std::string getHighlightText() const;
 			void setHighlightText( const std::string& styletext );
 

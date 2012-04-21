@@ -19,7 +19,7 @@ public:
 	float treshold;
 	float gStep;
 	int nChannels;
-	
+
 	float yMin, yMax;
 	float xMin, xMax;
 	float xScl, yScl;
@@ -49,14 +49,14 @@ public:
 			linkedChannels.push_back(channel);
 			channel->linkedChannels.push_back(this);
 		}
-		
+
 		void clearKeys() {
 			for(int i = 0; i < keys.size(); i++) {
 				delete keys[i];
 			}
 			keys.clear();
 		}
-		
+
 		void setNumKeys(int n) {
 			clearKeys();
 			keys.resize(n);
@@ -76,14 +76,14 @@ public:
 					keys.insert(it, key);
 					break;
 				}
-			}						
+			}
 			for(int i = 0; i < keys.size(); i++) {
 				char buffer[256];
 				sprintf(buffer, "%f, %f\n", keys[i]->x, keys[i]->y);
 //				OutputDebugString(buffer);
 			}
 		}
-		
+
 		void insertKey(Key* key) {
 			std::vector<Key*>::iterator it = keys.begin();
 			for(it; it != keys.end(); it++) {
@@ -92,7 +92,7 @@ public:
 				}
 			}
 		}
-		
+
 		int getNumKeys() {
 			return keys.size();
 		}
@@ -126,13 +126,13 @@ public:
 					//MessageBox(0, "locked", "hee", MB_OK);
 					return true;
 				}
-*/				
+*/
 			}
 			return false;
 		}
 
 		void moveKey(float dx, float dy, float xtresh, float ymin, float ymax) {
-			
+
 			Key* key = keys[mLockedKey];
 			if((key == keys.front()) || (key == keys.back())) {
 				key->y = dy;
@@ -141,13 +141,13 @@ public:
 				if(key->y < ymin)
 					key->y = ymin;
 			} else {
-				
+
 				key->x = dx;
 				key->y = dy;
-				
+
 				Key* next = keys[mLockedKey+1];
 				Key* prev = keys[mLockedKey-1];
-				
+
 				float minX = prev->x + xtresh;
 				float maxX = next->x - xtresh;
 
@@ -161,7 +161,7 @@ public:
 				}
 
 			}
-			
+
 
 		}
 
@@ -172,11 +172,11 @@ public:
 		uint32_t getColor() {
 			return color;
 		}
-		
+
 	};
 
 	std::vector<Channel> mChannels;
-	
+
 	int mLockedChannel;
 
 	bool mLocked;
@@ -193,7 +193,7 @@ public:
 /*		for(int i = 0; i < nChannels; i++) {
 
 			mChannels[i].setNumKeys(2);
-			
+
 			mChannels[i].getKey(0)->x = 0.0f;
 			mChannels[i].getKey(0)->y = 0.0f;
 
@@ -224,7 +224,7 @@ public:
 	bool channelEnabled(int i) {
 		return false;
 	}
-	
+
 	bool channelChanged(int i) {
 		return false;
 	}
@@ -261,7 +261,7 @@ public:
 		float aspect = (xmax - xmin) / (float)graphWidth;
 		return xmin + (float)x * aspect;
 	}
-	
+
 	float toGraphY(int y) {
 		y -= graphRect.top;
 		float aspect = (ymax - ymin) / (float)graphHeight;
@@ -279,7 +279,7 @@ public:
 	}
 
 	void updateBounds(HWND hwnd) {
-		
+
 		RECT rc;
 		GetClientRect(hwnd, &rc);
 		rc.bottom -= 16;
@@ -292,7 +292,7 @@ public:
 
 		mYTreshold = ((ymax - ymin) / (float)graphHeight) + 0.01585f;
 		mXTreshold = ((xmax - xmin) / (float)graphWidth) + 0.01585f;
-	
+
 	}
 
 	void clearGraph(HWND graph, HDC hdc) {
@@ -303,7 +303,7 @@ public:
 		GetClientRect(graph, &r);
 		HBRUSH whiteBrush = (HBRUSH)GetStockObject(WHITE_BRUSH);
 		HBRUSH oldBrush = (HBRUSH)SelectObject(hdc, whiteBrush);
-		Rectangle(hdc, 0, 0, (int)r.right, (int)r.bottom);			
+		Rectangle(hdc, 0, 0, (int)r.right, (int)r.bottom);
 		SelectObject(hdc, oldBrush);
 		DeleteObject(whiteBrush);
 
@@ -317,14 +317,14 @@ public:
 		HPEN pen1 = CreatePen(PS_SOLID, 3, RGB(64, 64, 64));
 		HPEN oldPen = (HPEN)SelectObject(hdc, pen1);
 		POINT pt;
-		
+
 		// x-axis
 		MoveToEx(hdc, r.left, toScreenY(0), &pt);
-		LineTo(hdc, r.right, toScreenY(0));			
-		
-		// y-axis		
+		LineTo(hdc, r.right, toScreenY(0));
+
+		// y-axis
 		MoveToEx(hdc, toScreenX(0), r.top, &pt);
-		LineTo(hdc, toScreenX(0), r.bottom);			
+		LineTo(hdc, toScreenX(0), r.bottom);
 
 		SelectObject(hdc, oldPen);
 		DeleteObject(pen1);
@@ -335,17 +335,17 @@ public:
 
 		HFONT hf = CreateFont(8, 0, 0, 0, FW_REGULAR, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
 			OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, "Arial");
-		
+
 		HFONT oldFont = SelectFont(hdc, hf);
-		
+
 		HPEN pen = CreatePen(PS_SOLID, 1, RGB(128, 128, 128));
 		HPEN oldPen = (HPEN)SelectObject(hdc, pen);
-				
+
 		POINT pt;
 
 		RECT rc;
 		GetClientRect(hwnd, &rc);
-		
+
 		float y = ymin;
 		while(y <= ymax) {
 			char buffer[256];
@@ -364,15 +364,15 @@ public:
 		DeleteObject(pen);
 		SelectFont(hdc, oldFont);
 		DeleteObject(hf);
-				
+
 	}
 
 	void drawGraph(HWND hwnd, HDC hdc) {
-	
+
 		HPEN oldPen = NULL;
-		
+
 		POINT pt;
-		
+
 		for(int i = 0; i < mChannels.size(); i++) {
 
 			Channel* c = &mChannels[i];
@@ -398,7 +398,7 @@ public:
 			}
 
 			DeleteObject(pen);
-	
+
 		}
 
 		SelectObject(hdc, oldPen);
@@ -409,11 +409,11 @@ public:
 
 	}
 
-	
+
 	void updateGraph(HWND hwnd) {
 
 		HDC hdc = (HDC)GetDC(hwnd);
-		
+
 		clearGraph(hwnd, hdc);
 
 		drawAxes(hwnd, hdc);
@@ -421,19 +421,19 @@ public:
 		drawGrid(hwnd, hdc);
 
 		drawGraph(hwnd, hdc);
-		
+
 		ReleaseDC(hwnd, hdc);
-		
+
 	}
 
 	bool msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-									
+
 		if(msg == WM_SIZE) {
 
 			updateBounds(hwnd);
 
 		}
-		
+
 		if(msg == WM_PAINT) {
 
 			updateBounds(hwnd);
@@ -443,17 +443,17 @@ public:
 		}
 
 		if(msg == WM_DESTROY) {
-			//SendMessage(GetParent(hwnd), WM_GRAPH_CHANGED, 0, 0);		
+			//SendMessage(GetParent(hwnd), WM_GRAPH_CHANGED, 0, 0);
 			bClosed = true;
 		}
-		
+
 		if(msg == WM_CREATE) {
 
 			updateGraph(hwnd);
 
 		}
 
-				
+
 		if(msg == WM_LBUTTONDBLCLK) {
 
 //			POINT point;
@@ -462,17 +462,17 @@ public:
 
 			int xPos = LOWORD(lParam);
 			int yPos = HIWORD(lParam);
-			
+
 			RECT rect;
 			GetClientRect(hwnd, &rect);
-			
+
 			if((xPos >= rect.left) && (xPos <= rect.right) && (yPos >= rect.top) &&
 				(yPos <= rect.bottom))
 			{
 
 				float x = toGraphX(xPos);
 				float y = toGraphY(rect.bottom - yPos);
-				
+
 				for(int i = 0; i < mChannels.size(); i++) {
 					Channel* c = &mChannels[i];
 					c->insertKey(x);
@@ -480,42 +480,42 @@ public:
 			}
 
 			updateGraph(hwnd);
-		
+
 		}
 
 		if((msg == WM_MOUSEMOVE) && mLocked) {
-									
+
 			if(wParam != MK_LBUTTON) {
-			
+
 				mLocked = false;
-						
+
 			} else {
-		
+
 				POINT point;
-				
+
 				point.x = LOWORD(lParam);
 				point.y = HIWORD(lParam);
-				
+
 /*				//GetCursorPos(&point);
-								
+
 				RECT rect;
 				GetClientRect(hwnd, &rect);
-				
+
 				float x = (float)(point.x - rect.left) / (float)(rect.right - rect.left);
 				float y = 1.0f - (float)(point.y - rect.top) / (float)(rect.bottom - rect.top);
 				float dx = x - mOldX;
 				float dy = y - mOldY;
-*/				
+*/
 			RECT rc;
 			GetClientRect(hwnd, &rc);
 
 				float x = toGraphX(point.x);
 				float y = toGraphY(rc.bottom - point.y);
-				
+
 				Channel* c = &mChannels[mLockedChannel];
-				
+
 				c->moveKey(x,y,mXTreshold, ymin, ymax);
-			
+
 				mOldX = x;
 				mOldY = y;
 
@@ -524,19 +524,19 @@ public:
 			updateGraph(hwnd);
 
 		}
-		
+
 
 		if((msg == WM_LBUTTONDOWN) & !mLocked) {
-		
+
 			POINT point;
 			//GetCursorPos(&point);
-								
+
 			point.x = LOWORD(lParam);
 			point.y = HIWORD(lParam);
 
 			RECT rc;
 			GetClientRect(hwnd, &rc);
-				
+
 //			float x = (float)(point.x - rect.left) / (float)(rect.right - rect.left);
 //			float y = 1.0f - (float)(point.y - rect.top) / (float)(rect.bottom - rect.top);
 
@@ -554,9 +554,9 @@ public:
 					break;
 				}
 			}
-		
+
 		}
-		
+
 		return false;
 	}
 };
@@ -574,24 +574,24 @@ Graph::Graph(int nChannels) : mRegistered(false), mHandle(0) {
 Graph::~Graph() {
 
 	if(mRegistered) {
-		UnregisterClass(mClassName.c_str(), GetModuleHandle(0));		
+		UnregisterClass(mClassName.c_str(), GetModuleHandle(0));
 	}
 }
 
 bool Graph::msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 	return m->msgProc(hwnd, msg, wParam, lParam);
 }
-		
+
 LRESULT CALLBACK Graph::WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 
 	static Graph* graph = NULL;
-	
+
 	graph = (Graph*)GetWindowLong(hwnd, GWL_USERDATA);
-	
+
 	if(graph) {
 		graph->msgProc(hwnd, msg, wParam, lParam);
 	}
-	
+
 	return DefWindowProc(hwnd, msg, wParam, lParam);
 }
 
@@ -599,9 +599,9 @@ LRESULT CALLBACK Graph::WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 void Graph::open(HWND parent) {
 
 	m->bClosed = false;
-	
+
 	mClassName = "Test Class";
-	
+
 	HINSTANCE hInst = GetModuleHandle(NULL);
 
 	if(!mRegistered) {
@@ -621,7 +621,7 @@ void Graph::open(HWND parent) {
 
 		RegisterClass(&wc);
 
-		mRegistered = true;	
+		mRegistered = true;
 	}
 
 	RECT r;
@@ -637,7 +637,7 @@ void Graph::open(HWND parent) {
 	SetWindowLong(mHandle, GWL_USERDATA, (LONG)this);
 
 	ShowWindow(mHandle, SW_SHOWNORMAL);
-		
+
 	UpdateWindow(mHandle);
 
 

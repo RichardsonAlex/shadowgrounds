@@ -48,7 +48,7 @@ public:
 
 	void hide( int fadeTime = 0 );
 	void show( int fadeTime = 0 );
-		
+
 	void EffectEvent( OguiEffectEvent *e );
 
 private:
@@ -58,7 +58,7 @@ private:
 
 	OguiWindow* window;
 	Ogui*		ogui;
-	
+
 	TargetDisplayButtonManager* manager;
 
 	unsigned int	currentTicks;

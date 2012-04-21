@@ -111,7 +111,7 @@ namespace game
 		} else {
 			//sp->error("DecorScripting::process - Missing setDecorPosition coordinates.");
 			return false;
-		} 	
+		}
 	}
 
 
@@ -158,7 +158,7 @@ namespace game
 		} else {
 			assert(!"gs_tricoord_param - string too long.");
 			return false;
-		} 	
+		}
 	}
 
 

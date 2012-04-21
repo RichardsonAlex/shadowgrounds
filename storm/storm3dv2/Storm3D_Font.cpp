@@ -63,7 +63,7 @@ Storm3D_Font::~Storm3D_Font()
 void Storm3D_Font::AddTexture(IStorm3D_Texture *itex)
 {
 	Storm3D_Texture *tex=(Storm3D_Texture*)itex;
-	
+
 	// Add texture reference count
 	tex->AddRef();
 
@@ -148,7 +148,7 @@ void Storm3D_Font::SetCharacters(const char *characters,uint8_t *_letter_width)
 			if (characters[i] != '\0')
 				slen++;
 		}
-				
+
 		memcpy(letter_characters,characters,sizeof(char)*slen);
 		memcpy(letter_width,_letter_width,sizeof(uint8_t)*slen);
 		letter_characters[slen] = '\0';

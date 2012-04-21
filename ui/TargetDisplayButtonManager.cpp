@@ -29,13 +29,13 @@ TargetDisplayButtonManager::TargetDisplayButtonManager( Ogui* ogui, OguiWindow* 
 TargetDisplayButtonManager::~TargetDisplayButtonManager()
 {
 	std::map< int, std::stack< button > >::iterator i;
-	
+
 	for( i = buttonStack.begin(); i != buttonStack.end(); ++i )
 	{
 		while( !i->second.empty() )
 		{
 			for( int j = 0; j < (int)i->second.top().buttons.size(); j++ )
-			{	
+			{
 				delete i->second.top()[ j ];
 			}
 
@@ -49,7 +49,7 @@ TargetDisplayButtonManager::~TargetDisplayButtonManager()
 			i->second.pop();
 		}
 	}
-	
+
 	std::map< int, ButtonCreator >::iterator j;
 	for( j = buttonOriginals.begin(); j != buttonOriginals.end(); ++j )
 	{
@@ -64,9 +64,9 @@ TargetDisplayButtonManager::~TargetDisplayButtonManager()
 void TargetDisplayButtonManager::registerButtonStyle( int style, const ButtonCreator& butt )
 {
 	std::map< int, ButtonCreator >::iterator i;
-	
+
 	i = buttonOriginals.find( style );
-	
+
 	FB_ASSERT( i == buttonOriginals.end() );
 
 	buttonOriginals.insert( std::pair< int, ButtonCreator >( style, butt ) );
@@ -107,7 +107,7 @@ TargetDisplayButtonManager::button TargetDisplayButtonManager::createButton( int
 
 void TargetDisplayButtonManager::releaseButton( button b )
 {
-	
+
 	std::map< int, std::stack< button > >::iterator i;
 	i = buttonStack.find( b.style );
 
@@ -127,10 +127,10 @@ void TargetDisplayButtonManager::releaseButton( button b )
 	}*/
 
 	FB_ASSERT( i != buttonStack.end() );
-	
+
 	if( i == buttonStack.end() )
 		return;
-	
+
 	i->second.push( b );
 
 	/*if( (signed)i->second.size() > stackMaxCount )
@@ -150,7 +150,7 @@ void TargetDisplayButtonManager::setText( button& b, const std::string& txt )
 	{
 		// b.buttons[ 4 ]->SetDisabled( false );
 		textW = b.font?b.font->getStringWidth( text.c_str() ):0;
-		
+
 		delete b.buttons[ 4 ];
 		b.buttons[ 4 ] = ogui->CreateSimpleTextButton( window, 0, 0, textW, textH, NULL, NULL, NULL, text.c_str() );
 		b.buttons[ 4 ]->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
@@ -191,10 +191,10 @@ TargetDisplayButtonManager::button TargetDisplayButtonManager::newButton( int st
 	i = buttonOriginals.find( style );
 
 	FB_ASSERT( i != buttonOriginals.end() );
-	
+
 	if( i == buttonOriginals.end() )
 		return result;
-	
+
 	result.buttons.resize( i->second.buttonImages.size() );
 
 	int j = 0;
@@ -216,7 +216,7 @@ TargetDisplayButtonManager::button TargetDisplayButtonManager::newButton( int st
 	result.offsetX	= i->second.textOffsetX;
 	result.offsetY	= i->second.textOffsetY;
 	result.textCenter = i->second.textCenter;
-	
+
 	if( i->second.hasSlider )
 	{
 		// result.hasHealthSlider = true;
@@ -248,7 +248,7 @@ TargetDisplayButtonManager::button TargetDisplayButtonManager::newButton( int st
 	{
 		result.healthSlider = NULL;
 	}
-	
+
 	return result;
 }
 

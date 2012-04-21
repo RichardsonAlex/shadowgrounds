@@ -108,7 +108,7 @@ private:
 
 	std::vector< std::string >	profileData;
 	std::vector< std::string >	profileInfoCache;
-	
+
 	bool					fromGame;
 	int						loadGameCnt;
 	int						loadButtonCnt;

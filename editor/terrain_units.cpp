@@ -259,7 +259,7 @@ void UnitProperties::readStream(filesystem::InputStream &stream)
 
 	int stringAmount = 0;
 	stream >> stringAmount;
-	
+
 	strings.clear();
 	for(int i = 0; i < stringAmount; ++i)
 	{
@@ -343,7 +343,7 @@ struct TerrainUnitsData
 			//result = boost::shared_ptr<IStorm3D_Model> (storm.storm->CreateNewModel());
 			//if(!fileName.empty())
 			//	result->LoadS3D(fileName.c_str());
-			
+
 			result = createEditorModel(*storm.storm, fileName);
 			originalModels[fileName] = result;
 		}
@@ -411,7 +411,7 @@ struct TerrainUnitsData
 		std::map<std::string, TerrainUnit>::iterator it = units.begin();
 		for(; it != units.end(); ++it)
 		{
-			TerrainUnit &terrainUnit = it->second;			
+			TerrainUnit &terrainUnit = it->second;
 			ObjectData objectData;
 			objectData.height = terrainUnit.size.y;
 			objectData.radiusX = terrainUnit.size.x;
@@ -423,13 +423,13 @@ struct TerrainUnitsData
 			{
 				UnitInstance &instance = terrainUnit.instances[i];
 				VC3 position(instance.position.x, 0, instance.position.y);
-				
+
 				if(fabsf(instance.cachedHeight) < 0.001f)
 					instance.cachedHeight = storm.getHeight(instance.position);
-				
+
 				//position.y = storm.getHeight(instance.position) + instance.heightOffset;
 				position.y = instance.cachedHeight + instance.heightOffset;
-				
+
 				if(collisionVolume.testCollision(position, VC3(0, -instance.yRotation, 0), collisionData, 0.f))
 				{
 					result.unitName = it->first;
@@ -450,7 +450,7 @@ struct TerrainUnitsData
 			const Script &script = unitScripts.getScript(scriptType, i);
 
 			if(script.name == scriptName)
-			{	
+			{
 				exporterScripts.setScript(id, subType, script.script);
 				return;
 			}
@@ -667,7 +667,7 @@ void TerrainUnits::clear()
 		for(unsigned int i = 0; i < terrainUnit.instances.size(); ++i)
 			data->storm.scene->RemoveModel(terrainUnit.instances[i].model.get());
 	}
-	
+
 	data->originalModels.clear();
 	data->units.clear();
 
@@ -739,7 +739,7 @@ void TerrainUnits::rotateUnit(const UnitHandle &unitHandle, int wheelDelta)
 	VC3 position(instance.position.x, 0, instance.position.y);
 	if(fabsf(instance.cachedHeight) < 0.001f)
 		instance.cachedHeight = data->storm.getHeight(instance.position);
-	
+
 	position.y = instance.cachedHeight + instance.heightOffset;
 	//position.y = data->storm.getHeight(instance.position) + instance.heightOffset;
 
@@ -941,7 +941,7 @@ ScriptConfig TerrainUnits::getUnitScripts(const UnitHandle &unitHandle) const
 
 	TerrainUnit &terrainUnit = data->units[unitHandle.unitName];
 	UnitInstance &unitInstance = terrainUnit.instances[unitHandle.unitIndex];
-	
+
 	return unitInstance.scripts;
 }
 
@@ -961,7 +961,7 @@ UnitProperties &TerrainUnits::getUnitProperties(const UnitHandle &unitHandle)
 	assert(unitHandle.hasUnit());
 
 	TerrainUnit &terrainUnit = data->units[unitHandle.unitName];
-	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];	
+	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];
 	UnitProperties &properties = instance.properties;
 
 	return properties;
@@ -971,7 +971,7 @@ std::vector<std::string> TerrainUnits::getUnitUsedProperties(const UnitHandle &u
 {
 	assert(unitHandle.hasUnit());
 	TerrainUnit &terrainUnit = data->units[unitHandle.unitName];
-	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];	
+	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];
 
 	std::vector<std::string> result;
 	result = data->findUsedProperties(instance, unitHandle.unitName);
@@ -983,7 +983,7 @@ StringProperties TerrainUnits::getUnitStringProperties(const UnitHandle &unitHan
 {
 	assert(unitHandle.hasUnit());
 	TerrainUnit &terrainUnit = data->units[unitHandle.unitName];
-	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];	
+	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];
 
 	StringProperties result;
 	result = data->findStringProperties(instance, unitHandle.unitName);
@@ -996,7 +996,7 @@ UnitHelpers &TerrainUnits::getUnitHelpers(const UnitHandle &unitHandle)
 	assert(unitHandle.hasUnit());
 
 	TerrainUnit &terrainUnit = data->units[unitHandle.unitName];
-	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];	
+	UnitInstance &instance = terrainUnit.instances[unitHandle.unitIndex];
 	UnitHelpers &helpers = instance.helpers;
 
 	data->findUsedHelpers(instance);
@@ -1207,7 +1207,7 @@ filesystem::OutputStream &TerrainUnits::writeStream(filesystem::OutputStream &st
 	for(; it != data->units.end(); ++it)
 	{
 		TerrainUnit &terrainUnit = it->second;
-		
+
 		stream << it->first;
 		stream << int(terrainUnit.instances.size());
 

@@ -80,7 +80,7 @@ void Storm3D_Scene_LightHandler::UpdateLights(Storm3D_Scene *scene)
 // Storm3D_Scene_LightHandler::ApplyLights
 //------------------------------------------------------------------
 void Storm3D_Scene_LightHandler::ApplyLights(Storm3D_Model_Object *obj)
-{	
+{
 	IStorm3D_Light **tlights=obj->GetMILights();	// New: stores lights into the object
 	int points[STORM3DV2_MAX_ACTIVELIGHTS];
 	int light_num=0;
@@ -119,7 +119,7 @@ void Storm3D_Scene_LightHandler::ApplyLights(Storm3D_Model_Object *obj)
 		else if (lgt->GetLightType()==IStorm3D_Light::LTYPE_SPOT)
 		{
 			Storm3D_Light_Spot *sl=(Storm3D_Light_Spot*)lgt;
-			
+
 			float ran=obj->GetGlobalPosition().GetRangeTo(sl->GetGlobalPosition());
 			if (ran-mesh->GetRadius()>10*sl->decay) continue;	// Out of range?
 			float a=sl->decay/ran;
@@ -155,7 +155,7 @@ void Storm3D_Scene_LightHandler::ApplyLights(Storm3D_Model_Object *obj)
 				for (lp=0;lp<STORM3DV2_MAX_ACTIVELIGHTS;lp++)
 					if (points[lp]<lowest_points) lowest_points=points[lp];
 			}
-		}		
+		}
 	}
 
 	// Apply all lights
@@ -170,7 +170,7 @@ void Storm3D_Scene_LightHandler::ApplyLights(Storm3D_Model_Object *obj)
 			case IStorm3D_Light::LTYPE_SPOT:
 				((Storm3D_Light_Spot*)tlights[ln])->Apply(ln);
 				break;
-			
+
 			case IStorm3D_Light::LTYPE_DIRECTIONAL:
 				((Storm3D_Light_Directional*)tlights[ln])->Apply(ln);
 				break;
@@ -179,7 +179,7 @@ void Storm3D_Scene_LightHandler::ApplyLights(Storm3D_Model_Object *obj)
 
 	// Tell Storm3D to use correct number of lights
 	Storm3D2->lighthandler.SetActiveLightAmount(light_num);
-	
+
 }
 
 
@@ -188,7 +188,7 @@ void Storm3D_Scene_LightHandler::ApplyLights(Storm3D_Model_Object *obj)
 // Storm3D_Scene_LightHandler::RenderLensFlares
 //------------------------------------------------------------------
 void Storm3D_Scene_LightHandler::RenderLensFlares(Storm3D_Scene *scene)
-{	
+{
 	// RStates on
 	//Storm3D2->D3DDevice->SetRenderState(D3DRS_ZENABLE,FALSE);
 	Storm3D2->D3DDevice->SetRenderState(D3DRS_ZENABLE,TRUE);
@@ -229,7 +229,7 @@ void Storm3D_Scene_LightHandler::RenderLensFlares(Storm3D_Scene *scene)
 				dir*=1/len;
 				scene->RayTrace(scene->camera.GetPosition(),dir,len,cinf);
 				*/
-				
+
 				// Test visibility (visbuffer)
 				/*if (cinf.hit)
 				{
@@ -359,7 +359,7 @@ void Storm3D_Scene_LightHandler::RenderLensFlares(Storm3D_Scene *scene)
 
 						// Render it
 						Storm3D2->D3DDevice->SetVertexShader(FVF_VXFORMAT_2D);
-						Storm3D2->D3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP,2,vx,sizeof(VXFORMAT_2D));	
+						Storm3D2->D3DDevice->DrawPrimitiveUP(D3DPT_TRIANGLESTRIP,2,vx,sizeof(VXFORMAT_2D));
 					}
 				}*/
 

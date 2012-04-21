@@ -75,7 +75,7 @@ public:
 				delete (*i);
 			}
 		}
-		
+
 		{
 			std::map< std::string, IOguiFont* >::iterator i = oguiFonts.begin();
 			for ( i = oguiFonts.begin(); i != oguiFonts.end(); ++i )
@@ -131,7 +131,7 @@ public:
 	{
 		SetWindowName( name );
 		std::string bgpic = getLocaleString( std::string( "gui_" ) + windowName + "_background_image" );
-		
+
 		SimpleRect rect = LoadRect( std::string( "gui_" ) + windowName );
 
 		return ogui->CreateSimpleWindow( rect.x, rect.y, rect.w, rect.h, bgpic.c_str() );
@@ -143,7 +143,7 @@ public:
 	{
 		std::string window_name = windowName;
 		// std::string temp;
-		
+
 		// rect
 		SimpleRect rect = LoadRect( std::string( "gui_" ) + window_name + "_" + button_name );
 
@@ -181,13 +181,13 @@ public:
 
 		if( font_normal.empty() == false )
 			return_value->SetFont( LoadFont( font_normal ) );
-		
+
 		if( font_down.empty() == false )
 			return_value->SetDownFont( LoadFont( font_down ) );
-		
+
 		if( font_high.empty() == false )
 			return_value->SetHighlightedFont( LoadFont( font_high ) );
-		
+
 		if( font_disa.empty() == false )
 			return_value->SetDisabledFont( LoadFont( font_disa ) );
 
@@ -212,7 +212,7 @@ public:
 		{
 			IOguiImage* selected_norm = NULL;
 			IOguiImage* selected_high = NULL;
-			
+
 			if( img_selected.empty() == false )
 				selected_norm = ogui->LoadOguiImage( img_selected.c_str() );
 
@@ -220,7 +220,7 @@ public:
 				selected_high = ogui->LoadOguiImage( img_selected_high.c_str() );
 
 			return_value->SetSelectedImages( selected_norm, selected_high );
-		}		
+		}
 
 		return return_value;
 	}
@@ -231,10 +231,10 @@ public:
 	{
 		std::string window_name = windowName;
 		// std::string temp;
-		
+
 		// rect
 		SimpleRect rect = LoadRect( std::string( "gui_" ) + window_name + "_" + name );
-	
+
 		// fonts
 		const std::string font_normal = getLocaleString( std::string( "gui_" ) + window_name + "_" + name + "_font_normal" );
 		const std::string font_b = getLocaleString( std::string( "gui_" ) + window_name + "_" + name + "_font_bold" );
@@ -252,13 +252,13 @@ public:
 
 		if( font_normal.empty() == false )
 			return_value->setFont( LoadFont( font_normal ) );
-		
+
 		if( font_b.empty() == false )
 			return_value->registerFont( "b", LoadFont( font_b ) );
-		
+
 		if( font_i.empty() == false )
 			return_value->registerFont( "i", LoadFont( font_i ) );
-		
+
 		if( font_h1.empty() == false )
 			return_value->registerFont( "h1", LoadFont( font_h1 ) );
 
@@ -322,7 +322,7 @@ public:
 		OguiSlider* return_value = NULL;
 
 		std::string window_name = windowName;
-		
+
 		// rect
 		SimpleRect rect = LoadRect( std::string( "gui_" ) + window_name + "_" + button_name );
 
@@ -340,7 +340,7 @@ public:
 		return_value = new OguiSlider( window, ogui, rect.x, rect.y, rect.w, rect.h,
 			back_normal, back_down, back_high,
 			fore_normal, fore_down, fore_high, id, 1.0f );
-		
+
 		return_value->setDisabledImages( back_disa, fore_disa );
 
 
@@ -430,7 +430,7 @@ private:
 
 		return DHLocaleManager::getInstance()->getString( DHLocaleManager::BANK_GUI, name.c_str() );
 	}
-	
+
 	//=========================================================================
 
 	int getLocaleInt( const std::string& name, int default_value = 0 )
@@ -438,7 +438,7 @@ private:
 		std::string s = getLocaleString( name );
 		if( s.empty() )
 			return default_value;
-		
+
 		return boost::lexical_cast< int >( s );
 	}
 
@@ -451,7 +451,7 @@ private:
 			std::fstream out( errorMessagesLogFile.c_str(), std::ios::out | std::ios::app );
 			out << name << " = " << std::endl;
 		}
-		
+
 		if( reportMissingLocales )
 		{
 			std::string temp = "ERROR: Couldn't find locale key: " + name;
@@ -466,7 +466,7 @@ private:
 
 	bool		logErrorMessages;
 	std::string errorMessagesLogFile;
-	
+
 
 	std::map< std::string, IOguiFont* >	oguiFonts;
 	std::list< OguiButtonStyle* >		oguiStyles;

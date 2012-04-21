@@ -79,7 +79,7 @@ LRESULT WINAPI MouseHandler_MessageProc(HWND hWnd,UINT msg,WPARAM wParam,LPARAM 
 				m_info->Y = rawInput->data.mouse.lLastY;
 				m_info->dX = m_info->X - m_info->oldX;
 				m_info->dY = m_info->Y - m_info->oldY;
-				
+
 				// Update our "all mouses" -mouse as well.
 				am_info->X = rawInput->data.mouse.lLastX;
 				am_info->Y = rawInput->data.mouse.lLastY;
@@ -330,7 +330,7 @@ bool RawInputDeviceHandler::init( HWND hwnd, bool initmouse, bool initkeyb )
 				l2++;
 			}
 
-		
+
 
 
 
@@ -347,7 +347,7 @@ bool RawInputDeviceHandler::init( HWND hwnd, bool initmouse, bool initkeyb )
 		rid[t].usUsagePage	= 0x01;
 		rid[t].usUsage			= 0x02;
 		rid[t].dwFlags = RIDEV_NOLEGACY | RIDEV_CAPTUREMOUSE;
-		rid[t].hwndTarget = hwnd;	
+		rid[t].hwndTarget = hwnd;
 		t++;
 	}
 	// Keyboard
@@ -356,7 +356,7 @@ bool RawInputDeviceHandler::init( HWND hwnd, bool initmouse, bool initkeyb )
 		rid[t].usUsagePage	= 0x01;
 		rid[t].usUsage			= 0x06;
 		rid[t].dwFlags = 0;
-		rid[t].hwndTarget = hwnd;	
+		rid[t].hwndTarget = hwnd;
 		t++;
 	}
 

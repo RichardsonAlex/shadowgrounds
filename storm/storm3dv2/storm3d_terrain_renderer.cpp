@@ -347,7 +347,7 @@ struct Storm3D_TerrainRendererData
 			for(int i = 0; i < 128; ++i)
 			{
 				int value = 255 - (i * 6);
-				
+
 				unsigned char c = 0;
 				if(value > 0)
 					c = value;
@@ -1652,7 +1652,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 			frozenbyte::storm::VertexShader::disable();
 
 			int glowPasses = (data->multipassGlow) ? 2 : 1;
-					
+
 			int stages = 4;
 
 			data->glowShader.apply();
@@ -1695,7 +1695,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 						}
 						glDepthMask(GL_FALSE);
 						glDisable(GL_DEPTH_TEST);
-						
+
 						// FIXME ?
 						GLint sbox[4];
 						glGetIntegerv(GL_SCISSOR_BOX, sbox);
@@ -1708,7 +1708,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 						float xs = float(data->viewport.w) / (data->glowTexture2->getWidth());
 						float ys = float(data->viewport.h) / (data->glowTexture2->getHeight());
 
-						float dp = (1.f / data->viewport.w) * xs;		
+						float dp = (1.f / data->viewport.w) * xs;
 						float d1 = 0.5f * dp;
 						float d2 = 2.5f * dp;
 						float d3 = 4.5f * dp;
@@ -1764,7 +1764,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 						float xs = float(data->viewport.w) / (data->glowTexture1->getWidth());
 						float ys = float(data->viewport.h) / (data->glowTexture1->getHeight());
 
-						float dp = (1.f / data->viewport.h) * ys;		
+						float dp = (1.f / data->viewport.h) * ys;
 						float d1 = 0.5f * dp;
 						float d2 = 2.5f * dp;
 						float d3 = 4.5f * dp;
@@ -2139,7 +2139,7 @@ void Storm3D_TerrainRenderer::renderBase(Storm3D_Scene &scene)
 			glProgramEnvParameter4fvARB(GL_FRAGMENT_PROGRAM_ARB, 2, c2);
 			glProgramEnvParameter4fvARB(GL_FRAGMENT_PROGRAM_ARB, 3, c3);
 			glProgramEnvParameter4fvARB(GL_FRAGMENT_PROGRAM_ARB, 4, c4);
-			
+
 		}
 		else if(data->renderBlackWhite)
 		{

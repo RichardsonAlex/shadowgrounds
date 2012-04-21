@@ -43,7 +43,7 @@ struct Storm3D_TerrainLightManager::Data
 {
 	Storm3D &storm;
 	IStorm3D_TerrainRendererBase &renderer;
-	
+
 	StormSpotList &spots;
 	FakeSpotList &fakeSpots;
 	FakeLightList &fakeLights;
@@ -212,7 +212,7 @@ struct Storm3D_TerrainLightManager::Data
 					glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP);
 				}
 			}
-	
+
 			if(type == RealSolid)
 				renderer.render(IStorm3D_TerrainRendererBase::SpotProjectionSolid, scene, spot);
 			else
@@ -361,7 +361,7 @@ struct Storm3D_TerrainLightManager::Data
 		glTexEnvi(GL_TEXTURE_ENV, GL_SRC0_RGB, GL_PRIMARY_COLOR);
 		glTexEnvi(GL_TEXTURE_ENV, GL_SRC1_RGB, GL_TEXTURE);
 		glTexEnvi(GL_TEXTURE_ENV, GL_SRC0_ALPHA, GL_PRIMARY_COLOR);
-		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB, GL_MODULATE);		
+		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_RGB, GL_MODULATE);
 		glTexEnvi(GL_TEXTURE_ENV, GL_COMBINE_ALPHA, GL_REPLACE);
 		glActiveTexture(GL_TEXTURE1);
 		glDisable(GL_TEXTURE_2D);

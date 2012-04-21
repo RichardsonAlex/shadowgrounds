@@ -38,15 +38,15 @@ class ParamBlock {
 	std::vector<std::string> m_strings;
 	std::vector<Param*> m_params;
 public:
-		
+
 	void addParams(ParamDesc* desc, int nParams);
-	
+
 	void setValue(int i, const std::string& str, float t=0);
 	void setValue(int i, int value, float t=0);
 	void setValue(int i, float value, float t=0);
 	void setValue(int i, const Vector& value, float t=0);
 //	void setTrack(int i, Track* c);
-	
+
 	void getValue(int i, std::string& str, float t=0);
 	void getValue(int i, int& value, float t=0);
 	void getValue(int i, float& value, float t=0);

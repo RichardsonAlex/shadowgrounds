@@ -44,7 +44,7 @@ static ParamDesc genParticleSystemParamDesc[] = {
 	ParamDesc(PB_PARTICLE_ALPHA, "particle_alpha", PARAM_FLOAT, true),
 	ParamDesc(PB_PARTICLE_SIZE, "particle_size", PARAM_FLOAT, true),
 	ParamDesc(PB_PARTICLE_LIFE, "particle_life", PARAM_FLOAT, false),
-	ParamDesc(PB_PARTICLE_LIFE_VAR, "particle_life_var", PARAM_FLOAT, false),	
+	ParamDesc(PB_PARTICLE_LIFE_VAR, "particle_life_var", PARAM_FLOAT, false),
 	ParamDesc(PB_PARTICLE_START_ANGLE, "particle_start_angle", PARAM_FLOAT, false),
 	ParamDesc(PB_PARTICLE_START_ANGLE_VAR, "particle_start_angle_var", PARAM_FLOAT, false),
 	ParamDesc(PB_PARTICLE_SPIN, "particle_spin", PARAM_FLOAT, false),
@@ -63,7 +63,7 @@ static ParamDesc genParticleSystemParamDesc[] = {
 GenParticleSystem::GenParticleSystem() {
 
 }
-	
+
 GenParticleSystem::~GenParticleSystem() {
 }
 
@@ -71,7 +71,7 @@ void GenParticleSystem::baseCopy(GenParticleSystem* ps) {
 	ps->m_pb = m_pb;
 	ps->m_mtl = m_mtl;
 	for(int i = 0; i < m_forces.size(); i++)
-		ps->m_forces.push_back(m_forces[i]);	
+		ps->m_forces.push_back(m_forces[i]);
 }
 
 const char* GenParticleSystem::getSuperClassName() {
@@ -81,7 +81,7 @@ const char* GenParticleSystem::getSuperClassName() {
 const char* GenParticleSystem::getClassName() {
 	return "gen_system";
 }
-	
+
 void GenParticleSystem::setParticlePosition(Vector& v) {
 
 }
@@ -89,28 +89,28 @@ void GenParticleSystem::setParticlePosition(Vector& v) {
 void GenParticleSystem::setParticleVelocity(Vector& v, float speed) {
 
 }
-	
+
 int GenParticleSystem::getNumParticles() {
 	return m_numParts;
 }
- 		
+
 void GenParticleSystem::setTarget(const Vector& target) {
 	m_trackTarget = true;
 	m_target = target;
 }
-	
+
 void GenParticleSystem::setTM(const Matrix& tm) {
 	m_tm = tm;
 }
-	
+
 void GenParticleSystem::setVelocity(const Vector& vel) {
 	m_velocity = vel;
 }
-	
+
 void GenParticleSystem::parseFrom(const ParserGroup& pg) {
 	parseParamBlockFrom(pg, *m_pb);
 	int nForces;
-	nForces = convertFromString<int>(pg.getValue("num_forces", "0"), 0);	
+	nForces = convertFromString<int>(pg.getValue("num_forces", "0"), 0);
 	for(int i = 0; i < nForces; i++) {
 		std::string str = "force" + boost::lexical_cast<std::string>(i);
 		const ParserGroup& fg = pg.getSubGroup(str);
@@ -123,7 +123,7 @@ void GenParticleSystem::parseFrom(const ParserGroup& pg) {
 		m_forces.push_back(ptr);
 	}
 }
-	
+
 void GenParticleSystem::parseTo(ParserGroup& pg) {
 /*
 	parseParamBlockTo(pg, *m_pb);
@@ -136,7 +136,7 @@ void GenParticleSystem::parseTo(ParserGroup& pg) {
 		pg.addSubGroup(str, fg);
 	}*/
 }
-	
+
 void GenParticleSystem::kill() {
 	m_shutdown = true;
 }
@@ -146,15 +146,15 @@ bool GenParticleSystem::isDead() {
 }
 
 void GenParticleSystem::create() {
-	
+
 	boost::shared_ptr<ParamBlock> pb(new ParamBlock());
 	m_pb.swap(pb);
 	m_pb->addParams(genParticleSystemParamDesc, GEN_PARTICLE_SYSTEM_PARAM_COUNT);
 	m_pb->setValue(PB_EMIT_RATE, 10.0f);
 	m_pb->setValue(PB_EMIT_START_TIME, 3.0f);
 	m_pb->setValue(PB_EMIT_STOP_TIME, 5.0f);
-	m_pb->setValue(PB_MAX_PARTICLES, 100);	
-	m_pb->setValue(PB_EMITTER_POSITION, Vector(0.0f, 0.0f, 0.0f));	
+	m_pb->setValue(PB_MAX_PARTICLES, 100);
+	m_pb->setValue(PB_EMITTER_POSITION, Vector(0.0f, 0.0f, 0.0f));
 	m_pb->setValue(PB_LAUNCH_SPEED, 1.0f);
 	m_pb->setValue(PB_LAUNCH_SPEED_VAR, 1.0f);
 //	m_pb->setTrack(PB_PARTICLE_COLOR, m_col);
@@ -179,11 +179,11 @@ void GenParticleSystem::create() {
 	m_pb->setValue(PB_PARTICLE_ANIMATION_START_FRAME, 0.f);
 	m_pb->setValue(PB_PARTICLE_ANIMATION_START_FRAME_VAR, 0.f);
 	m_pb->setValue(PB_PARTICLE_ANIMATION_TYPE, "loop");
-	m_pb->setValue(PB_PARTICLE_ANIMATION_FPS, 18.0f);	
-	m_pb->setValue(PB_PARTICLE_TEXTURE, "data/particles/flame_anim.jpg");	
+	m_pb->setValue(PB_PARTICLE_ANIMATION_FPS, 18.0f);
+	m_pb->setValue(PB_PARTICLE_TEXTURE, "data/particles/flame_anim.jpg");
 
 }
-	
+
 void GenParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene) {
 
 	std::string textureName;
@@ -203,7 +203,7 @@ void GenParticleSystem::prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene) {
 	m_pb->getValue(PB_PARTICLE_TEXTURE_SUB_DIV_U, m_animInfo.columns);
 	m_pb->getValue(PB_PARTICLE_TEXTURE_SUB_DIV_V, m_animInfo.rows);
 	m_pb->getValue(PB_PARTICLE_ANIMATION_FRAME_COUNT, m_animInfo.frames);
-	
+
 	m_time = 0;
 	m_particleResidue = 0;
 	m_numParts = 0;
@@ -213,7 +213,7 @@ void GenParticleSystem::prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene) {
 
 }
 
-	
+
 bool GenParticleSystem::tick(IStorm3D_Scene* scene) {
 
 	float emitStartTime;
@@ -222,11 +222,11 @@ bool GenParticleSystem::tick(IStorm3D_Scene* scene) {
 	m_pb->getValue(PB_EMIT_STOP_TIME, emitStopTime);
 	float emitTime = emitStopTime - emitStartTime;
 
-	// tick inner timer	
+	// tick inner timer
 	m_time += PARTICLE_TIME_SCALE;
 	if(m_time < emitStartTime)
 		return true;
-	
+
 	if(m_time > emitStopTime) {
 		m_shutdown = true;
 		if(m_numParts==0) {
@@ -237,14 +237,14 @@ bool GenParticleSystem::tick(IStorm3D_Scene* scene) {
 
 	int dieAfterEmission;
 	int i;
-	
+
 	float launchSpeed, launchSpeedVar;
 	m_pb->getValue(PB_LAUNCH_SPEED, launchSpeed);
 	m_pb->getValue(PB_LAUNCH_SPEED_VAR, launchSpeedVar);
 	m_pb->getValue(PB_DIE_AFTER_EMISSION, dieAfterEmission);
 	launchSpeed *= PARTICLE_TIME_SCALE;
 	launchSpeedVar *= PARTICLE_TIME_SCALE;
-	
+
 	float life, lifeVar;
 	m_pb->getValue(PB_PARTICLE_LIFE, life);
 	m_pb->getValue(PB_PARTICLE_LIFE_VAR, lifeVar);
@@ -280,7 +280,7 @@ bool GenParticleSystem::tick(IStorm3D_Scene* scene) {
 	Vector emitterPosition;
 	m_pb->getValue(PB_EMITTER_POSITION, emitterPosition);
 
-		
+
 	// move and expire particles
 	for(i = 0; i < m_parts.size(); i++) {
 		Particle& p = m_parts[i];
@@ -296,10 +296,10 @@ bool GenParticleSystem::tick(IStorm3D_Scene* scene) {
 			}
 		}
 	}
-	
+
 	// emit particles
 	if(!m_shutdown) {
-	
+
 		float t = m_time / emitTime;
 
 		int seed1 = rand() % RAND_MAX;
@@ -342,15 +342,15 @@ bool GenParticleSystem::tick(IStorm3D_Scene* scene) {
 				}
 			}
 			if(a >= m_parts.size())
-				break;			
+				break;
 		}
 		m_particleResidue = needed;
 	}
-	
+
 	// apply forces
 	for(i = 0; i < m_forces.size(); i++) {
 		Vector f;
-		
+
 		m_forces[i]->preCalculate(m_time);
 
 		for(int j = 0; j < m_parts.size(); j++) {
@@ -365,12 +365,12 @@ bool GenParticleSystem::tick(IStorm3D_Scene* scene) {
 }
 
 void GenParticleSystem::render(IStorm3D_Scene* scene) {
-	
+
 	if(!m_alive)
 		return;
 
 	int j = 0;
-	
+
 	for(int i = 0; i < m_parts.size(); i++) {
 		Particle& p = m_parts[i];
 		if(p.alive) {
@@ -397,7 +397,7 @@ void GenParticleSystem::render(IStorm3D_Scene* scene) {
 
 	if(m_mtl)
 		m_mtl->SetAlphaType((IStorm3D_Material::ATYPE)alphaType);
-	
+
 	if(m_animInfo.frames > 0)
 		scene->GetParticleSystem()->RenderParticles(m_mtl, &m_mesh[0], j, &m_animInfo);
 	else

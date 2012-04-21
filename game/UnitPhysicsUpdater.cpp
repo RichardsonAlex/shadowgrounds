@@ -264,7 +264,7 @@ namespace game
 #else
 				if (true)
 #endif
-				{	
+				{
 					setposz = true;
 #ifdef PHYSICS_FEEDBACK
 					if (bp->getFeedbackNormal().z > 0.7f)
@@ -281,7 +281,7 @@ namespace game
 				diff.z += threshold;
 			}
 			if (unit->isPhysicsObjectFeedbackEnabled())
-			{				
+			{
 				unit->setVelocity(vel);
 				if (diff.GetSquareLength() > 0.05f * 0.05f && (setposx || setposz))
 				{
@@ -422,7 +422,7 @@ if (unit->variables.getVariable("proning") > 30 &&
 					unit->setWaypoint(upos);
 					unit->setFinalDestination(upos);
 					unit->setVelocity(VC3(0,0,0));
-					
+
 					// TODO: phys obj. rotation (quat) to unit rotation (eul angles)
 					//unit->setRotation(...);
 					ua->addUnitObstacle(unit);

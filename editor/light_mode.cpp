@@ -297,7 +297,7 @@ struct Shared
 		enableCheck(dialog, IDC_LIGHT_LIGHTMAPPED, p.lightMapped);
 		enableCheck(dialog, IDC_LIGHT_POINTLIGHT, p.pointLight);
 		enableCheck(dialog, IDC_LIGHT_BUILDING, p.building);
-		
+
 		//setDialogItemInt(dialog, IDC_LIGHT_OFFSET, int(p.heightOffset + 0.5f));
 		std::string offsetText = boost::lexical_cast<std::string> (p.heightOffset);
 		setDialogItemText(dialog, IDC_LIGHT_OFFSET, offsetText);
@@ -347,10 +347,10 @@ struct Shared
 		result.lightMapped = isCheckEnabled(dialog, IDC_LIGHT_LIGHTMAPPED);
 		result.pointLight = isCheckEnabled(dialog, IDC_LIGHT_POINTLIGHT);
 		result.building = isCheckEnabled(dialog, IDC_LIGHT_BUILDING);
-		
+
 		result.lightingModelType = (TerrainLights::SpotProperties::LightingModelType) getComboIndex(dialog, IDC_LIGHT_LIGHTINGMODEL_TYPE);
 		result.lightingModelFade = isCheckEnabled(dialog, IDC_LIGHT_LIGHTINGMODEL_FADE);
-		
+
 		std::string offsetText = getDialogItemText(dialog, IDC_LIGHT_OFFSET);
 		try
 		{
@@ -457,7 +457,7 @@ public:
 		{
 			const VC2 &position = shared.lights.getPosition(shared.active);
 			COL ambient = shared.state.getColorMap().getColor(position) + shared.state.getLightMap().getColor(position);
-		
+
 			ambient.Clamp();
 			ambient *= 255.f;
 			ambient *= 1.9f;
@@ -663,7 +663,7 @@ public:
 	{
 		int group = getComboIndex(shared.dialog, IDC_LIGHT_GROUP_E);
 		bool enable = shared.lights.isGroupEnabled(group);
-		
+
 		enableCheck(shared.dialog, IDC_LIGHT_GROUP_ENABLE, enable);
 	}
 };

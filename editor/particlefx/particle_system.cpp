@@ -24,7 +24,7 @@ const int ParticleSystem::TIME_STEP = 10;
 struct ParticleSystemData {
 
 	struct Entry {
-		
+
 		SharedPtr<EmitterDesc> ed;
 		SharedPtr<ParticleDesc> pd;
 
@@ -36,7 +36,7 @@ struct ParticleSystemData {
 
 		int mNumParticles;
 		float mRemainder;
-		
+
 		int& totalParticles;
 		int& maxParticles;
 
@@ -48,21 +48,21 @@ struct ParticleSystemData {
 		inline float fRand() {
 			return (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 		}
-		
+
 		Entry(SharedPtr<EmitterDesc> _ed, SharedPtr<ParticleDesc> _pd, int& totParts, int& maxParts)
 			: ed(_ed), pd(_pd), totalParticles(totParts), maxParticles(maxParts),
 			mParticles(0), mFreeParticles(0), mTime(0), mNumParticles(0), mRemainder(0) {
-				
+
 			mEndTime = ed->minEmitTime + (ed->maxEmitTime - ed->minEmitTime) * fRand();
 			dead = false;
 		}
-		
+
 		bool tick(const Matrix& tm, const Vector& velocity, IStorm3D_Scene* scene) {
-			
+
 			mTime += ParticleSystem::TIME_SCALE;
 			if(mTime > mEndTime) {
 				if(!ed->dieAfterEmission) {
-					mTime -= mEndTime;					
+					mTime -= mEndTime;
 					mEndTime = ed->minEmitTime + (ed->maxEmitTime - ed->minEmitTime) * fRand();
 				} else {
 					if(mNumParticles == 0)
@@ -76,7 +76,7 @@ struct ParticleSystemData {
 				float t = (pd->maxLife - p->life) / pd->maxLife;
 				p->t += ParticleSystem::TIME_SCALE;
 				p->life -= ParticleSystem::TIME_SCALE;
-				p->position += p->velocity;	
+				p->position += p->velocity;
 				p->velocity.y -= (ParticleSystemManager::getGravity() * pd->gravityMultiplier);
 				//p->velocity *= pow(p->velocity, 1.0f - pd->dragFactor);
 				p->size = pd->sizeTrack.eval(t);
@@ -95,9 +95,9 @@ struct ParticleSystemData {
 					bool died = false;
 					if(!p->collisionType == ParticleDesc::CTYPE_NONE) {
 						Vector v = p->oldPos - p->position;
-						float len = v.GetLength();					
-						
-						Iterator<IStorm3D_Terrain*>* ti = scene->ITTerrain->Begin();					
+						float len = v.GetLength();
+
+						Iterator<IStorm3D_Terrain*>* ti = scene->ITTerrain->Begin();
 						if(ti) {
 							IStorm3D_Terrain* t = ti->GetCurrent();
 							Storm3D_CollisionInfo ci;
@@ -114,7 +114,7 @@ struct ParticleSystemData {
 									p->next = mFreeParticles;
 									mFreeParticles = p;
 									mNumParticles--;
-									totalParticles--;	
+									totalParticles--;
 								}
 							}
 						}
@@ -124,15 +124,15 @@ struct ParticleSystemData {
 					if(!died) {
 						pp = &p->next;
 					}
-					
+
 				}
 			}
-						
+
 			float t = (float)mTime / (float)mEndTime;
-			
+
 			if((mTime < mEndTime) && (!dead))
-				mRemainder += ed->emitRateTrack.eval(t) * ParticleSystem::TIME_SCALE;		
-			
+				mRemainder += ed->emitRateTrack.eval(t) * ParticleSystem::TIME_SCALE;
+
 			Vector factorizedVelocity = velocity * ed->velocityFactor;
 
 			while((mRemainder >= 1.0f) && (totalParticles < maxParticles)) {
@@ -143,15 +143,15 @@ struct ParticleSystemData {
 				} else {
 					p = new Particle;
 				}
-				
+
 				p->next = mParticles;
 				mParticles = p;
 				mNumParticles++;
 				totalParticles++;
 				mRemainder -= 1.0f;
-				
+
 				float rnd = fRand();
-				
+
 				ed->genPosition(p->position);
 				tm.TransformVector(p->position);
 				p->oldPos = p->position;
@@ -159,7 +159,7 @@ struct ParticleSystemData {
 				ed->genVelocity(p->velocity);
 				p->velocity += factorizedVelocity;
 				tm.RotateVector(p->velocity);
-				
+
 				p->velocity *= ParticleSystem::TIME_SCALE;
 				p->size = pd->sizeTrack.getKeyValue(0);
 				p->color = pd->colorTrack.getKeyValue(0);
@@ -177,20 +177,20 @@ struct ParticleSystemData {
 				}
 				p->rotSpeed = pd->minSpin + (pd->maxSpin - pd->minSpin) * rnd;
 			}
-			
-			
+
+
 			return true;
 
 		}
 
 		int render(IStorm3D_Scene* scene, Storm3D_PointParticle* pointParticles,
 			Storm3D_LineParticle* lineParticles) {
-			
+
 			Storm3D_ParticleAnimationInfo info;
 			info.frames = pd->texInfo.nFrames;
 			info.columns = pd->texInfo.columns;
 			info.rows = pd->texInfo.rows;
-			
+
 			switch(pd->drawStyle) {
 			case ParticleDesc::DSTYLE_QUAD:
 				{
@@ -225,17 +225,17 @@ struct ParticleSystemData {
 					Particle* p = mParticles;
 					while(p) {
 						Storm3D_LineParticle& shape = lineParticles[nParts++];
-						
+
 						shape.start.position = p->position;
 						shape.start.color = COL(p->color.x, p->color.y, p->color.z);
 						shape.start.alpha = p->alpha;
 						shape.start.size = p->size;
-						
+
 						shape.end.position = p->oldPos;
 						shape.end.color = COL(p->color.x, p->color.y, p->color.z);
 						shape.end.alpha = p->alpha;
 						shape.end.size = p->size;
-							
+
 						shape.alive = true;
 						shape.frame = p->frame;
 						p = p->next;
@@ -245,10 +245,10 @@ struct ParticleSystemData {
 					return nParts;
 				} break;
 			}
-		
+
 			return 0;
 		}
-		
+
 	};
 
 	std::vector< SharedPtr<Entry> > mEntries;
@@ -276,7 +276,7 @@ struct ParticleSystemData {
 		dead = false;
 		setMaxParticles(maxParts);
 	}
-	
+
 	void setName(const std::string& name) {
 		mName = name;
 	}
@@ -284,7 +284,7 @@ struct ParticleSystemData {
 	const std::string& getName() {
 		return mName;
 	}
-				
+
 	void copy(const ParticleSystemData& other) {
 		mName = other.mName;
 		for(int i = 0; i < other.mEntries.size(); i++) {
@@ -333,12 +333,12 @@ struct ParticleSystemData {
 	}
 
 	bool tick(IStorm3D_Scene* scene, int timeDif) {
-		
+
 		mTimeCounter += timeDif;
 		while(mTimeCounter > ParticleSystem::TIME_STEP) {
 			bool b = false;
 			mTimeCounter -= ParticleSystem::TIME_STEP;
-						
+
 			for(int i = 0; i < mEntries.size(); i++) {
 				if(mEntries[i]->tick(mTM, mVelocity, scene))
 					b = true;
@@ -361,9 +361,9 @@ struct ParticleSystemData {
 	int getMaxParticles() {
 		return mMaxParticles;
 	}
-	
+
 	void render(IStorm3D_Scene* scene) {
-		
+
 		int n = 0;
 		for(int i = 0; i < mEntries.size(); i++) {
 			n += mEntries[i]->render(scene, &mPointParticles[n], &mLineParticles[n]);
@@ -376,14 +376,14 @@ struct ParticleSystemData {
 		Parser parser;
 		is >> parser;
 
-		ParserGroup& g = parser.getGlobals();	
-		
+		ParserGroup& g = parser.getGlobals();
+
 		int version = 0;
 		::parseIn(g, "version", version);
 		::parseIn(g, "max_particles", mMaxParticles);
 		::parseIn(g, "gravity", mGravity);
 		int n;
-		::parseIn(g, "num_emitters", n);	
+		::parseIn(g, "num_emitters", n);
 		for(int i = 0; i < n; i++) {
 			std::string str = "emitter";
 //			str << n;
@@ -425,11 +425,11 @@ struct ParticleSystemData {
 		::parseOut(g, "max_particles", mMaxParticles);
 		::parseOut(g, "num_emitters", (int)mEntries.size());
 		for(int i = 0; i < mEntries.size(); i++) {
-			
+
 			ParserGroup eGroup;
 			::parseOut(eGroup, "type", mEntries[i]->ed->getType());
 			mEntries[i]->ed->parseOut(eGroup);
-			
+
 			ParserGroup pGroup;
 			mEntries[i]->pd->parseOut(pGroup);
 
@@ -439,11 +439,11 @@ struct ParticleSystemData {
 			e.addSubGroup("emission", eGroup);
 			e.addSubGroup("particle", pGroup);
 			g.addSubGroup(str, e);
-		
+
 		}
 
 		os << parser;
-		
+
 		return os;
 	}
 
@@ -456,7 +456,7 @@ ParticleSystem::ParticleSystem(IStorm3D* s3d, int maxParticles) {
 }
 
 ParticleSystem::~ParticleSystem() {
-	
+
 }
 
 const std::string& ParticleSystem::getTemplateName() {
@@ -535,7 +535,7 @@ void ParticleSystem::kill() {
 void ParticleSystem::setMaxParticles(int n) {
 	m->setMaxParticles(n);
 }
-	
+
 int ParticleSystem::getMaxParticles() {
 	return m->getMaxParticles();
 }
@@ -546,7 +546,7 @@ int ParticleSystem::getMaxParticles() {
 
 	IStorm3D* mStorm;
 	IStorm3D_Scene* mScene;
-	
+
 	std::vector< SharedPtr<IParticleEmitter> > mEmitters;
 	Vector mPosition;
 	Vector mVelocity;
@@ -567,8 +567,8 @@ int ParticleSystem::getMaxParticles() {
 			mEmitters.push_back(temp);
 		}
 	}
-	
-	
+
+
 	void addParticleEmitter(SharedPtr<IParticleEmitter> emitter) {
 		mEmitters.push_back(emitter);
 	}
@@ -586,7 +586,7 @@ int ParticleSystem::getMaxParticles() {
 	}
 
 	bool tick(int timeDif) {
-		
+
 		OutputDebugString("ps tick\n");
 
 		mTimeCounter += timeDif;
@@ -599,8 +599,8 @@ int ParticleSystem::getMaxParticles() {
 			}
 			if(alive == false)
 				return false;
-		}	
-		
+		}
+
 		return true;
 	}
 
@@ -678,7 +678,7 @@ const Vector& ParticleSystem::getVelocity() {
 }
 
 bool ParticleSystem::tick(int timeDif) {
-	return m->tick(timeDif);	
+	return m->tick(timeDif);
 }
 
 void ParticleSystem::render() {

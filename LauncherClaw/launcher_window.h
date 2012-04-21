@@ -3,7 +3,7 @@
 
 namespace frozenbyte {
 namespace launcher {
-	
+
 class LauncherWindowImpl;
 
 
@@ -15,7 +15,7 @@ public:
 
 	void openAdvanced();
 	void closeAdvanced();
-	
+
 private:
 	LauncherWindowImpl* impl;
 };

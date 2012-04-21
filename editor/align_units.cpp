@@ -71,7 +71,7 @@ VC3 AlignUnits::getAlignedPosition(const VC3 &position) const
 VC2 AlignUnits::getAlignedPosition(const VC2 &position) const
 {
 	VC3 result = getAlignedPosition(VC3(position.x, 0, position.y));
-	return VC2(result.x, result.z);	
+	return VC2(result.x, result.z);
 }
 
 float AlignUnits::getRotation(float oldRotation, int delta, bool cap) const

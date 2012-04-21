@@ -57,7 +57,7 @@ void OguiTextLabel::SetText(const char *text)
 	{
 		OguiStormFont *implFont = (OguiStormFont *) (font);
 		IStorm3D_Font *stormFont = implFont->fnt;
-		
+
 		if(stormFont->isUnicode())
 		{
 			std::wstring unicode;

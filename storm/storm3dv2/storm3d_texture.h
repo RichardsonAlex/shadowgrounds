@@ -45,7 +45,7 @@ protected:
 	char *filename;					// Filename
 	Uint32 tex_identity;				// Used if no sharing wanted
 	Uint32 texloadflags;				// Onfy for loaded textures (NoCompress etc.)
-	
+
 	int refcount;					// Reference count (for delete)
 	int width,height;				// Texture size
 

@@ -40,7 +40,7 @@ namespace ui
 			charWindow = false;
 		}
 	}
-				
+
 	GUIEffectWindow::~GUIEffectWindow()
 	{
 		if (this->win3 != NULL)

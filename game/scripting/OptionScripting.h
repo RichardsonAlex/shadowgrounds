@@ -14,7 +14,7 @@ namespace game
 
 	class OptionScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

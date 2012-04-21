@@ -60,7 +60,7 @@ public:
 	void addTexture(const std::string &fileName);
 	void removeTexture(int index);
 
-	void clear();	
+	void clear();
 	void applyToTerrain();
 
 	int getTextureCount() const;

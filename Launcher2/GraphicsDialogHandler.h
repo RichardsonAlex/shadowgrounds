@@ -10,7 +10,7 @@ namespace frozenbyte
 
 	namespace launcher
 	{
-		
+
 
 		class GraphicsDialogHandler : public DlgHandlerImpl
 		{

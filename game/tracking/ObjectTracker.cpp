@@ -251,7 +251,7 @@ namespace tracking
 				assert(!"ObjectTracker::createTracker - Parameter out of range.");
 				return UNIFIED_HANDLE_NONE;
 			}
-			
+
 			if (trackerTypes[trackerTypeNumber] != NULL)
 			{
 				for (int i = 0; i < OBJECTTRACKER_MAX_TRACKERS; i++)

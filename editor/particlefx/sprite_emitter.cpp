@@ -17,7 +17,7 @@
 
 struct SpriteEmitterData {
 
-	SpriteEmitter* self;	
+	SpriteEmitter* self;
 	Particle* mParticles;
 	Particle* mFreeParticles;
 	int mEndTime;
@@ -32,18 +32,18 @@ struct SpriteEmitterData {
 
 	SpriteEmitterData(SpriteEmitter* _self) : self(_self), mTime(0), mNumParticles(0),
 		mMaterial(NULL), mParticles(NULL), mFreeParticles(NULL), mRemainder(0.0f) {
-		
+
 		mEndTime = 10 * 1000;
 	}
 
 	~SpriteEmitterData() {
-		
+
 	}
 
 	void copy(SpriteEmitterData& data) {
-		mMaterial = data.mMaterial;	
+		mMaterial = data.mMaterial;
 	}
-	
+
 	void setName(const std::string& name) {
 		mName = name;
 	}
@@ -51,11 +51,11 @@ struct SpriteEmitterData {
 	const std::string& getName() {
 		return mName;
 	}
-	
+
 	void setPositionGen(SharedPtr<IPositionGen> gen) {
 		mPosGen = gen;
 	}
-	
+
 	SharedPtr<IPositionGen> getPositionGen() {
 		return mPosGen;
 	}
@@ -91,14 +91,14 @@ struct SpriteEmitterData {
 		while(*pp) {
 			Particle* p = *pp;
 			float t = (self->maxLife - p->life) / self->maxLife;
-			p->position += p->velocity;	
+			p->position += p->velocity;
 			p->velocity.y -= (self->gravity * 0.01f);
 			p->size = self->sizeTrack.eval(t);
 			Vector c = self->colorTrack.eval(t);
 			p->color.r = c.x;
 			p->color.g = c.y;
 			p->color.b = c.z;
-			p->alpha = self->alphaTrack.eval(t);				
+			p->alpha = self->alphaTrack.eval(t);
 			p->life -= (1.0f / 100.0f);
 			if(p->life < 0) {
 				*pp = p->next;
@@ -109,11 +109,11 @@ struct SpriteEmitterData {
 				pp = &p->next;
 			}
 		}
-	
+
 		float t = (float)mTime / (float)mEndTime;
-		
+
 		if(mTime < mEndTime)
-			mRemainder += self->emitRateTrack.eval(t) * 0.01f;		
+			mRemainder += self->emitRateTrack.eval(t) * 0.01f;
 
 		Vector baseVelocity = self->emitDirectionTrack.eval(t) + velocity * self->velocityFactor;
 		Vector minVelocity = self->minVelocity;
@@ -121,7 +121,7 @@ struct SpriteEmitterData {
 		//tm.TransformVector(baseVelocity);
 		tm.TransformVector(minVelocity);
 		tm.TransformVector(maxVelocity);
-				
+
 		while((mRemainder >= 1.0f) && (mNumParticles < self->maxParticles)) {
 			Particle* p = NULL;
 			if(mFreeParticles) {
@@ -130,12 +130,12 @@ struct SpriteEmitterData {
 			} else {
 				p = new Particle;
 			}
-			
+
 			p->next = mParticles;
 			mParticles = p;
 			mNumParticles++;
 			mRemainder -= 1.0f;
-			
+
 			mPosGen->gen(p->position);
 			p->position = self->position;
 			p->position += tm.GetTranslation();
@@ -159,7 +159,7 @@ struct SpriteEmitterData {
 	}
 
 	void render(IStorm3D_Scene* scene) {
-		
+
 //				OutputDebugString("render\n");
 
 		switch(self->drawStyle) {
@@ -170,7 +170,7 @@ struct SpriteEmitterData {
 			{
 				if(mPointParticles.empty()) {
 					mPointParticles.resize(self->maxParticles);
-				}				
+				}
 				int nParts = 0;
 				Particle* p = mParticles;
 				while(p) {
@@ -185,7 +185,7 @@ struct SpriteEmitterData {
 				char buffer[256];
 				sprintf(buffer, "%d particles to render\n", nParts);
 //				OutputDebugString(buffer);
-				scene->GetParticleSystem()->RenderParticles(mMaterial, &mPointParticles[0], nParts);			
+				scene->GetParticleSystem()->RenderParticles(mMaterial, &mPointParticles[0], nParts);
 			}
 			break;
 		case SpriteEmitter::DS_LINE:
@@ -193,7 +193,7 @@ struct SpriteEmitterData {
 				int nParts = 0;
 				Particle* p = mParticles;
 				while(p) {
-					
+
 					p = p->next;
 				}
 				scene->GetParticleSystem()->RenderParticles(mMaterial, &mLineParticles[0], nParts);
@@ -204,7 +204,7 @@ struct SpriteEmitterData {
 //	OutputDebugString("render end\n");
 
 	}
-	
+
 
 };
 
@@ -214,9 +214,9 @@ SpriteEmitter::SpriteEmitter() {
 }
 
 IParticleEmitter* SpriteEmitter::clone() {
-	
+
 	SpriteEmitter* emitter = new SpriteEmitter();
-	
+
 	emitter->setName(getName());
 	emitter->setPositionGen(getPositionGen());
 	emitter->texInfo = texInfo;
@@ -259,7 +259,7 @@ void SpriteEmitter::setName(const std::string& name) {
 const std::string& SpriteEmitter::getName() {
 	return m->getName();
 }
-	
+
 void SpriteEmitter::setPositionGen(SharedPtr<IPositionGen> gen) {
 	m->setPositionGen(gen);
 }
@@ -271,13 +271,13 @@ SharedPtr<IPositionGen> SpriteEmitter::getPositionGen() {
 void SpriteEmitter::loadTexture(const std::string& name, const std::string& path, IStorm3D* s3d) {
 	m->loadTexture(name, path, s3d);
 }
-	
+
 bool SpriteEmitter::tick(IStorm3D_Scene* scene, const Matrix& tm,
 						 const Vector& velocity, int timeDif) {
-	
+
 	return m->tick(scene, tm, velocity, timeDif);
 }
-	
+
 void SpriteEmitter::render(IStorm3D_Scene* scene) {
 	m->render(scene);
 }
@@ -314,7 +314,7 @@ void SpriteEmitter::setDefaults() {
 	colorTrack.setNumKeys(2);
 	colorTrack.setKey(0, 0, Vector(1.0f, 1.0f, 1.0f));
 	colorTrack.setKey(1, 1.0f, Vector(0.0f, 0.0f, 0.0f));
-	
+
 	alphaTrack.setNumKeys(2);
 	alphaTrack.setKey(0, 0, 1.0f);
 	alphaTrack.setKey(1, 1.0f, 0.0f);
@@ -322,7 +322,7 @@ void SpriteEmitter::setDefaults() {
 	sizeTrack.setNumKeys(2);
 	sizeTrack.setKey(0, 0.0f, 1.0f);
 	sizeTrack.setKey(1, 1.0f, 1.0f);
-	
+
 	emitRateTrack.setNumKeys(2);
 	emitRateTrack.setKey(0, 0, 10.0f);
 	emitRateTrack.setKey(1, 1.0f, 10.0f);
@@ -344,7 +344,7 @@ void SpriteEmitter::setDefaults() {
 
 	minLife = 0.5f;
 	maxLife = 1.0f;
-	
+
 	minEmitTime = 10.0f;
 	maxEmitTime = 10.0f;
 
@@ -403,8 +403,8 @@ public:
 	FloatTrack& getAlphaTrack();
 
 	FloatTrack& getSizeTrack();
-	
-		
+
+
 	void setTexture(const std::string& filename) {
 		ParticleGroup* ptr = isInstanced ? ref.get() : this;
 		ptr->m->setTexture(filename);
@@ -414,11 +414,11 @@ public:
 		ParticleGroup* ptr = isInstanced ? ref.get() : this;
 		ptr->m->setAlphaType(type);
 	}
-	
+
 	IStorm3D_Material* getMaterial() {
 
 	}
-	
+
 	int getNumParticles();
 	void addParticle(const Vector& pos, const Vector& vel);
 	void moveParticles();
@@ -442,7 +442,7 @@ public:
 
 
 struct ParticleEmitterData {
-	
+
 	SharedPtr<ParticleGroup> group;
 	SharedPtr<ISource> source;
 	SharedPtr<IRenderer> renderer;
@@ -464,7 +464,7 @@ struct ParticleEmitterData {
 	}
 
 	bool tick() {
-	
+
 		if(mTime > mEndTime) {
 			if(source->loop) {
 				mTime -= mEndTime;
@@ -479,12 +479,12 @@ struct ParticleEmitterData {
 		for(mods) {
 			mod->modify(group.getParticles());
 		}
-					
+
 		float t = mTime / mEndTime;
-				
+
 		mParticleRemainder += source->getEmitRate(t);
-		
-		if(mParticleRemainder >= 1.0f)	
+
+		if(mParticleRemainder >= 1.0f)
 			source->emit(group, t, (int)mParticleRemainder);
 
 		mParticleRemainder -= (int)mParticleRemainder;
@@ -500,7 +500,7 @@ class ParticleEmitter {
 	ScopedPtr<ParticleEmitterData> m;
 public:
 
-	ParticleEmitter();	
+	ParticleEmitter();
 	ParticleEmitter(SharedPtr<ParticleEmitter> other);
 
 	SharedPtr<ParticleGroup> getParticleGroup();
@@ -526,11 +526,11 @@ ParticleEmitter::ParticleEmitter(SharedPtr<ParticleEmitter> other) {
 
 
 struct ParticleSystemData {
-	
+
 	std::vector< SharedPtr<ParticleEmitter> > mEmitters;
-	
+
 	ParticleSystemData() {
-		
+
 	}
 
 	void copy(ParticleSystemData& other) {
@@ -539,7 +539,7 @@ struct ParticleSystemData {
 			mEmitters.push_back(emitter);
 		}
 	}
-	
+
 	SharedPtr<ParticleEmitter> newEmitter() {
 
 	}
@@ -549,7 +549,7 @@ struct ParticleSystemData {
 	}
 
 	int getNumEmitters() {
-		
+
 	}
 
 	void deleteEmitter() {
@@ -557,7 +557,7 @@ struct ParticleSystemData {
 	}
 
 	bool tick(int timeDif) {
-	
+
 		mTime += timeDif;
 		if(mTime > 10) {
 			bool alive = false;
@@ -569,7 +569,7 @@ struct ParticleSystemData {
 			if(!alive)
 				return false;
 		}
-		
+
 		return true;
 	}
 
@@ -578,7 +578,7 @@ struct ParticleSystemData {
 		for(int i = 0; i < mEmitters.size(); i++) {
 			mEmitters[i]->render();
 		}
-	
+
 	}
 
 };
@@ -606,7 +606,7 @@ ParticleSystem::ParticleSystem() {
 ParticleSystem::ParticleSystem(SharedPtr<ParticleSystem> other) {
 	ScopedPtr<ParticleSystemData> temp(new ParticleSystemData());
 	m.swap(temp);
-	m->copy(*other.m);	
+	m->copy(*other.m);
 }
 
 SharedPtr<ParticleEmitter> ParticleSystem::newEmitter() {
@@ -654,8 +654,8 @@ public:
 	FloatTrack& getAlphaTrack();
 
 	FloatTrack& getSizeTrack();
-	
-	
+
+
 	void setTexture(const std::string& filename) {
 		ParticleGroup* ptr = isInstanced ? ref.get() : this;
 		ptr->m->setTexture(filename);
@@ -665,7 +665,7 @@ public:
 		ParticleGroup* ptr = isInstanced ? ref.get() : this;
 		ptr->m->setAlphaType(type);
 	}
-	
+
 	int getNumParticles();
 	void addParticle(const Vector& pos, const Vector& vel);
 	void moveParticles();
@@ -680,20 +680,20 @@ class ISource {
 	SharedPtr<ISource> ref;
 	bool isInstance;
 public:
-	
+
 	virtual ~ISource();
-	
+
 	void emit(ParticleGroup& group, int nParts) {
 		for(int i = 0; i < nParts; i++) {
 			group.addParticle(pos, vel);
 		}
 	}
-	
+
 	void setIntance(SharedPtr<ISource> source) {
 		ref = source;
 		isInstance = true;
 	}
-	
+
 	void transform(const Matrix& tm, const Vector& velocity) {
 		ISource* src = isInstance ? ref.get() : this;
 		src->_transform(tm, velocity);
@@ -713,14 +713,14 @@ public:
 struct SphereSourceData {
 
 	FloatTrack emitRateTrack;
-	
+
 	void emit(ParticleGroup& group, float t) {
 
-		remainder += emitRateTrack.eval(t);		
+		remainder += emitRateTrack.eval(t);
 		while(remainder >= 1.0f) {
 			Vector pos = ;
 			Vector vel = ;
-			group.addParticle(pos, vel);		
+			group.addParticle(pos, vel);
 		}
 
 	}
@@ -728,7 +728,7 @@ struct SphereSourceData {
 };
 
 class SphereSource : public ISource {
-	SharedPtr<SphereSourceData> m;	
+	SharedPtr<SphereSourceData> m;
 public:
 
 	FloatTrack& getEmitRateTrack();
@@ -736,9 +736,9 @@ public:
 	float getOuterRadius();
 	void setInnerRadius(float f);
 	void setOuterRadius(float f);
-	
+
 	void _transform(const Matrix& tm, const Vector& velocity);
-	
+
 	void _emit(ParticleGroup& group);
 
 };
@@ -762,7 +762,7 @@ public:
 
 class SpriteRenderer : public IRenderer {
 public:
-	void render(ParticleGroup& group);	
+	void render(ParticleGroup& group);
 };
 
 
@@ -787,9 +787,9 @@ class Emitter {
 	boost::shared_ptr<Emitter> instance;
 	bool instanced;
 public:
-		
+
 	Emitter(boost::shared_ptr<ParticleSettings> settings) {
-	
+
 	}
 
 	virtual void createInstance(boost::shared_ptr<Emitter> inst);
@@ -809,5 +809,5 @@ ParticleSystem* createDefaultPS() {
 	emitter->addMod(gravity);
 	emitter->addMod(drag);
 	emitter->setRenderer(spriteRenderer);
-	
+
 }*/

@@ -115,7 +115,7 @@ void ItemWindowUpdator::doUpdate( ItemWindow* itemwindow )
 		if( i->shown != game->gameScripting->getGlobalIntVariableValue( i->watch_variable.c_str() )	 )
 		{
 			i->shown = game->gameScripting->getGlobalIntVariableValue( i->watch_variable.c_str() );
-	
+
 			if( i->shown )
 			{
 				itemwindow->addItem( i->location, i->image );

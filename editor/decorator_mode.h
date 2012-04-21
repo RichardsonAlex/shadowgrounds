@@ -31,7 +31,7 @@ class DecoratorMode: public IMode
 public:
 	DecoratorMode(Gui &gui, Storm &storm, IEditorState &editorState);
 	~DecoratorMode();
-	
+
 	void tick();
 	void update();
 	void reset();

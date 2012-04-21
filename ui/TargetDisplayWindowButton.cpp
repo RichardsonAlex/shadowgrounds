@@ -152,9 +152,9 @@ void TargetDisplayWindowButton::setRect( int x, int y, int w, int h, float dista
 		if( beginAnimPos < 1.0f )
 			setButtonTextPosition( topx, bottomy, bottomx + imageWidth, transparency );
 		else
-			hideButton( buttontext );	
+			hideButton( buttontext );
 	}
-	
+
 	if( b.healthSlider )
 	{
 		if( beginAnimPos < 1.0f )
@@ -180,7 +180,7 @@ void TargetDisplayWindowButton::setRect( int x, int y, int w, int h, float dista
 	setButtonPosition( topright, bottomx, topy, transparency );
 	setButtonPosition( bottomright, bottomx, bottomy, transparency );
     setButtonPosition( bottomleft, topx, bottomy, transparency );
-	
+
 
 }
 
@@ -429,7 +429,7 @@ void TargetDisplayWindowButton::setButtonTextPosition( int x, int y, int bottomx
 				x_pos += b.offsetX;
 				y_pos += b.offsetY;
 			}
-		
+
 			FB_ASSERT( b.buttons.size() >= 5 );
 			b[ buttontext ]->Move( x_pos, y_pos );
 			b[ buttontext ]->SetTransparency( transparency );

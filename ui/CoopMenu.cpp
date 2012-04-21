@@ -104,7 +104,7 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 	optionsBigText( NULL )
 {
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	FB_ASSERT( o_gui );
 	FB_ASSERT( menu );
 	FB_ASSERT( fonts );
@@ -139,14 +139,14 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 			std::string name = gameProfiles->getCurrentProfile( i );
 			if( name.empty() )
 				name = none;
-			
+
 			if( coopPlayerNames.find( convertToPlayerNum( i ) ) == coopPlayerNames.end() )
 				coopPlayerNames.insert( std::pair< int, std::string >( convertToPlayerNum( i ), name ) );
 			else coopPlayerNames[ convertToPlayerNum( i ) ] = name;
 
 		}
 	}
-	
+
 	createCooperativeMenu();
 
 	///////////////////////////////////////////////////////////////////////////
@@ -207,12 +207,12 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 	}
 	else
 	{
-		
+
 		closeMenuByEsc = true;
 		editHandle = game->gameUI->getController(0)->addKeyreader( this );
 		// debugKeyreader( editHandle, false, "CreditsMenu::CreditsMenu()" );
 	}
-	
+
 	buttonPaddingString = "";
 
 	options.resize(NUM_OPTIONS);
@@ -236,7 +236,7 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 
 	{
 		std::string	text = getLocaleGuiString( "gui_coop_options_text" );
-			
+
 		int x = getLocaleGuiInt( "gui_coopmenu_text_options_x", 0 );
 		int y = getLocaleGuiInt( "gui_coopmenu_text_options_y", 0 );
 		int w = getLocaleGuiInt( "gui_coopmenu_text_options_w", 0 );
@@ -271,13 +271,13 @@ CoopMenu::~CoopMenu()
 		buttons.pop_front();
 	}
 
-	
+
 	while( textLabels.empty() == false )
 	{
 		delete textLabels.front();
 		textLabels.pop_front();
 	}
-	
+
 	{
 		delete coopCaptureEvents;
 		coopCaptureEvents = NULL;
@@ -291,7 +291,7 @@ CoopMenu::~CoopMenu()
 		delete coopBigText;
 		coopBigText = NULL;
 	}
-	
+
 	{
 		std::list< OguiButtonStyle* >::iterator i;
 		for( i = styles.begin(); i != styles.end(); ++i )
@@ -382,13 +382,13 @@ void CoopMenu::applyChanges()
 
 void CoopMenu::CursorEvent( OguiButtonEvent* eve )
 {
-	
+
 	if( eve->eventType == OGUI_EMASK_CLICK )
 	{
-		
+
 		if( eve->triggerButton == coopCaptureEvents )
 		{
-			
+
 			closeCoopProfileMenu();
 			return;
 		}
@@ -406,7 +406,7 @@ void CoopMenu::CursorEvent( OguiButtonEvent* eve )
 			menuStartSurvival();
 			break;
 
-	
+
 		case COMMANDS_PLAYER1:
 		case COMMANDS_PLAYER2:
 		case COMMANDS_PLAYER3:
@@ -414,7 +414,7 @@ void CoopMenu::CursorEvent( OguiButtonEvent* eve )
 			openCoopProfileMenu( eve->triggerButton->GetId() );
 			break;
 
-	
+
 		case COMMANDS_PLAYER1_OPTIONS:
 		case COMMANDS_PLAYER2_OPTIONS:
 		case COMMANDS_PLAYER3_OPTIONS:
@@ -425,7 +425,7 @@ void CoopMenu::CursorEvent( OguiButtonEvent* eve )
 		default:
 			break;
 		}
-		
+
 	}
 	else
 	{
@@ -483,18 +483,18 @@ bool CoopMenu::enableCoopGameSettings(Game *game, bool test_only)
 
 			i->second = none;
 		}
-		
+
 		int j;
 		num_of_players = (int)temp.size();
 		for( j = 0; j < (int)temp.size(); j++ )
 		{
 			coopPlayerNames[ convertToPlayerNum( j ) ] = temp[ j ];
 		}
-	
+
 		if( num_of_players < 2 )
 			return false;
 	}
-	
+
 	if(test_only)
 	{
 		// we don't want to change any settings, just test
@@ -538,7 +538,7 @@ bool CoopMenu::enableCoopGameSettings(Game *game, bool test_only)
 			if( num_of_players > c )
 			{
 				SimpleOptions::setBool( DH_OPT_B_1ST_PLAYER_ENABLED + c, true );
-				
+
 				GameController* gameController = game->getGameUI()->getController( c );
 
 				{
@@ -551,7 +551,7 @@ bool CoopMenu::enableCoopGameSettings(Game *game, bool test_only)
 					assert( foo == gameController->getControllerType() );
 #endif
 				}
-				
+
 				if( gameController->controllerTypeHasMouse() )
 				{
 					SimpleOptions::setBool( DH_OPT_B_1ST_PLAYER_HAS_CURSOR + c, true );
@@ -561,7 +561,7 @@ bool CoopMenu::enableCoopGameSettings(Game *game, bool test_only)
 					SimpleOptions::setBool( DH_OPT_B_1ST_PLAYER_HAS_CURSOR + c, false );
 				}
 				SimpleOptions::setInt( DH_OPT_I_1ST_PLAYER_CONTROL_SCHEME + c, gameController->getControllerType() );
-				
+
 			}
 		}
 	}
@@ -625,7 +625,7 @@ void CoopMenu::createCooperativeMenu()
 
 	{
 		std::string	text = getLocaleGuiString( "gui_newgamemenu_text_coopprofile" );
-			
+
 		int x = getLocaleGuiInt( "gui_coopmenu_text_coopprofile_x", 0 );
 		int y = getLocaleGuiInt( "gui_coopmenu_text_coopprofile_y", 0 );
 		int w = getLocaleGuiInt( "gui_coopmenu_text_coopprofile_w", 0 );
@@ -641,7 +641,7 @@ void CoopMenu::createCooperativeMenu()
 	buttonY	= getLocaleGuiInt( "gui_coopmenu_coopprofile_y", 0 );
 	buttonW	= getLocaleGuiInt( "gui_coopmenu_coopprofile_w", getLocaleGuiInt( "gui_menu_common_button_w", 0 ) );
 	buttonH	= getLocaleGuiInt( "gui_coopmenu_coopprofile_h", getLocaleGuiInt( "gui_menu_common_button_h", 0 ) );
-	
+
 	buttonPaddingString = "";
 
 	/*int profile_button_x = buttonX;
@@ -704,7 +704,7 @@ void CoopMenu::freeCooperativeMenu()
 	coopBigText = NULL;
 
 	std::map< int, OguiButton* >::iterator i;
-	
+
 	for(int id = COMMANDS_PLAYER1; id <= COMMANDS_PLAYER4; id++)
 	{
 		i = selectButtons.find( id );
@@ -767,11 +767,11 @@ void CoopMenu::openCoopProfileMenu( int i )
 		scroll_button_w = scrollUpStyle->sizeX>scrollDownStyle->sizeX?scrollUpStyle->sizeX:scrollDownStyle->sizeX;
 
 		int num_of_elements = getLocaleGuiInt( "gui_coopmenu_number_of_items", 0 );
-	
+
 		selectListStyle = new OguiSelectListStyle( unselStyle, selStyle, newStyle, newUnStyle, scrollUpStyle, scrollDownStyle, unselStyle->sizeX, unselStyle->sizeY * num_of_elements, scrollUpStyle->sizeX, scrollUpStyle->sizeY );
 
 	}
-	
+
 	{
 		// buttonW	= getLocaleGuiInt( "gui_coopmenu_coopprofile_w", getLocaleGuiInt( "gui_menu_common_button_w", 0 ) );
 		// buttonH	= getLocaleGuiInt( "gui_coopmenu_coopprofile_h", getLocaleGuiInt( "gui_menu_common_button_h", 0 ) );
@@ -793,13 +793,13 @@ void CoopMenu::openCoopProfileMenu( int i )
 	}
 
 	coopProfileList->addItem( none.c_str(), none.c_str() );
-	
+
 	{
 		const std::string &current_player = coopPlayerNames.find( i ) != coopPlayerNames.end()?coopPlayerNames[ i ]:none;
 		GameProfilesEnumeration* enum1 = gameProfiles->getProfileList();
 		while( enum1->isNextProfileAvailable() )
 		{
-			
+
 			const std::string& temp = enum1->getNextProfile();
 			bool selected = false;
 			if( temp == current_player ) selected = true;
@@ -807,8 +807,8 @@ void CoopMenu::openCoopProfileMenu( int i )
 		}
 		delete enum1;
 	}
-	
-	
+
+
 
 	coopCurrentSelection = i;
 }
@@ -822,7 +822,7 @@ void CoopMenu::setCoopPlayer( int player_num, const std::string& nam )
 
 	{
 		std::map< int, std::string >::iterator i;
-		
+
 		for( i = coopPlayerNames.begin(); i != coopPlayerNames.end(); ++i )
 		{
 			if( i->second == name && i->first != player_num )
@@ -851,7 +851,7 @@ void CoopMenu::setCoopPlayer( int player_num, const std::string& nam )
 			i->second = name;
 		}
 	}
-	
+
 	// update options button states
 	{
 		int i = convertToRunningNum(player_num);

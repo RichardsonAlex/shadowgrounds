@@ -99,7 +99,7 @@ static IStorm3D_Material *cursor_pic[OG_CURSORS];
 static int cursor_offset_x[OG_CURSORS];
 static int cursor_offset_y[OG_CURSORS];
 static int cursor_state[OG_CURSORS];
-static unsigned int cursor_control[OG_CURSORS];		
+static unsigned int cursor_control[OG_CURSORS];
 static int cursor_control_keys[OG_CURSORS][6];
 int cursor_x[OG_CURSORS];
 int cursor_y[OG_CURSORS];
@@ -384,7 +384,7 @@ void og_update_cursor_positions()
 				if (Keyb3_IsKeyDown(KEYCODE_MOUSE_WHEEL_UP) && !(og_mouse_obut[l] & OG_BUT_WHEEL_UP_MASK)) mousebut |= OG_BUT_WHEEL_UP_MASK;
 				if (Keyb3_IsKeyDown(KEYCODE_MOUSE_WHEEL_DOWN) && !(og_mouse_obut[l] & OG_BUT_WHEEL_DOWN_MASK)) mousebut |= OG_BUT_WHEEL_DOWN_MASK;
 			}
-			
+
 			Keyb3_ReadMouse(&mousex, &mousey, NULL, NULL, l);
 
 			// psd
@@ -607,7 +607,7 @@ void og_run_gui(void)
 			if (got_mouse)
 			{
 				int mID = og_get_mouse_ID(cursor_control[g]);
-				
+
 				if (og_mouse_x[mID] != og_mouse_ox[mID] || og_mouse_y[mID] != og_mouse_oy[mID])
 				{
 					cursor_x[g] = og_mouse_x[mID];
@@ -725,7 +725,7 @@ void og_run_gui(void)
 				if (Keyb3_IsKeyPressed(KEYCODE_JOY_DOWN) != 0
 					|| Keyb3_IsKeyPressed(KEYCODE_JOY_RIGHT) != 0)
 				{
-					cursor_button_index--;										
+					cursor_button_index--;
 				}
 				int x, y, last_index;
 				orvgui_but *tmp;
@@ -740,7 +740,7 @@ void og_run_gui(void)
 					if (Keyb3_IsKeyPressed(KEYCODE_JOY_DOWN) != 0
 						|| Keyb3_IsKeyPressed(KEYCODE_JOY_RIGHT) != 0)
 					{
-						cursor_button_index = last_index; 									
+						cursor_button_index = last_index;
 					}
 					if (last_index >= 0)
 					{
@@ -1665,7 +1665,7 @@ orvgui_but *og_create_button(orvgui_win *parent, unsigned char type,
 		((orvgui_but *)(parent->first_child))->prev_sister = new_but;
 
 	parent->first_child = new_but;
-	
+
 	for (int i = 0; i < OG_MAX_HOTKEYS; i++)
 	{
 		new_but->hotKeys[i] = 0;
@@ -2645,7 +2645,7 @@ void og_move_window(orvgui_win *win, short x, short y)
 		if ((x+1) > scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x)
 			x = (short)(scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x - 1);
 		if ((y+1) > scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y )
-			y = (short)(scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y - 1); 	
+			y = (short)(scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y - 1);
 	}
 
 	win->put_x = x;
@@ -2818,7 +2818,7 @@ void og_write_text_transp(orvgui_win *win, IStorm3D_Font *font,
 {
 	// TODO: should actually change the text alpha, not just make
 	// it disappear/appear
-	
+
 	//if (win->alpha > 0.5f)
 	{
 		// added the * alpha - Pete

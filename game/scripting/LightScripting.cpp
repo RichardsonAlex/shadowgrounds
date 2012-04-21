@@ -418,7 +418,7 @@ namespace game
 				game->gameUI->getLightManager()->setLightColorMultiplier(COL(val, val, val));
 				game->decorationManager->updateDecorationIllumination(game->gameMap->colorMap);
 				game->gameUI->updateUnitLighting(false);
-			} 		
+			}
 			break;
 
 		case GS_CMD_SETLIGHTTYPE:
@@ -512,7 +512,7 @@ namespace game
 				game->gameUI->getLightManager()->setLightColorMultiplier(col);
 				game->decorationManager->updateDecorationIllumination(game->gameMap->colorMap);
 				game->gameUI->updateUnitLighting(false);
-			} 		
+			}
 			break;
 
 		case GS_CMD_SETCOLORMAPBRIGHTNESSGREEN:
@@ -529,7 +529,7 @@ namespace game
 				game->gameUI->getLightManager()->setLightColorMultiplier(col);
 				game->decorationManager->updateDecorationIllumination(game->gameMap->colorMap);
 				game->gameUI->updateUnitLighting(false);
-			} 		
+			}
 			break;
 
 		case GS_CMD_SETCOLORMAPBRIGHTNESSBLUE:
@@ -546,7 +546,7 @@ namespace game
 				game->gameUI->getLightManager()->setLightColorMultiplier(col);
 				game->decorationManager->updateDecorationIllumination(game->gameMap->colorMap);
 				game->gameUI->updateUnitLighting(false);
-			} 		
+			}
 			break;
 
 		case GS_CMD_SETLIGHTINGSPOTCULLRANGE:
@@ -1241,7 +1241,7 @@ namespace game
 			}
 			break;
 
-		case GS_CMD_setOutdoorBlinkingLightPauseVariation:						
+		case GS_CMD_setOutdoorBlinkingLightPauseVariation:
 			if (game->inCombat)
 			{
 				if (intData >= 0)
@@ -1885,7 +1885,7 @@ namespace game
 			break;
 
 		default:
-			sp->error("LightScripting::process - Unknown command.");				
+			sp->error("LightScripting::process - Unknown command.");
 			assert(0);
 		}
 	}

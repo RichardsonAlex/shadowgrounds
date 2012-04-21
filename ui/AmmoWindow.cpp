@@ -56,7 +56,7 @@ namespace ui
 		this->game = game;
 		this->clientNum = clientNum;
 
-		
+
 		std::string prefix = "gui_ammo_";
 
 		if( coop )
@@ -195,7 +195,7 @@ namespace ui
 			ammoAmount = u->getWeaponAmmoInClip(selWeap);
 			maxAmmo = u->getWeaponClipSize(selWeap);
 			ammoTotalAmount = u->getWeaponAmmoAmount(selWeap);
-			
+
 			// NEW: ... (temp for demo)
 			if (ammoAmount > ammoTotalAmount)
 			{

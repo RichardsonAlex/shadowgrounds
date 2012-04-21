@@ -76,7 +76,7 @@ namespace {
 	{
 		double xd = a.x - b.x;
 		double zd = a.z - b.z;
-		
+
 		return sqrt(xd*xd + zd*zd);
 	}
 
@@ -85,7 +85,7 @@ namespace {
 		double xd = a.x - b.x;
 		double yd = a.y - b.y;
 		double zd = a.z - b.z;
-		
+
 		return sqrt(xd*xd + yd*yd + zd*zd);
 	}
 

@@ -255,7 +255,7 @@ namespace ui
 			lastUpdateValue = health;
 			lastUpdateValue2 = max_health;
 
-			
+
 			float hpPercentage = 100.0f * health / (float) max_health;
 			float fillTo = (float)ceil(hpPercentage);
 

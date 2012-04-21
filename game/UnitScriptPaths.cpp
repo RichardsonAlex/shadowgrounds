@@ -161,7 +161,7 @@ namespace game
 		storedPathsIsEnd[toPathNumber] = storedPathsIsEnd[fromPathNumber];
 		pathStarts[toPathNumber] = pathStarts[fromPathNumber];
 		pathEnds[toPathNumber] = pathEnds[fromPathNumber];
-		
+
 		storedPathsUsed[fromPathNumber] = false;
 		storedPaths[fromPathNumber] = NULL;
 		storedPathNames[fromPathNumber] = NULL;

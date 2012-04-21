@@ -31,7 +31,7 @@ public:
 	void spawnParticleSystem(ParticleSystem::ParticleSystemType type, Vector vector1, Vector vector2, float lifeTime);
 
 private:
-	
+
 	/* This list should be the sole owner of the particle systems.
 	   (otherwise we would need shared (smart) pointers)          */
 	std::list<ParticleSystem*> particleSystems;

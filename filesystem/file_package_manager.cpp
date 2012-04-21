@@ -107,7 +107,7 @@ struct FilePackageManagerData
 		boost::shared_ptr<EmptyBuffer> inputBuffer(new EmptyBuffer());
 
 		inputStream.setBuffer(inputBuffer);
-		return inputStream;		
+		return inputStream;
 	}
 
 	unsigned int getCrc(std::string fileName)

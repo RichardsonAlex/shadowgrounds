@@ -93,7 +93,7 @@ public:
 	Game*			game;
 	TerminalWindow*	window;
 	int				timeCounter;
-	
+
 };
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -101,7 +101,7 @@ public:
 TerminalManager::TerminalManager( Ogui* ogui, game::Game* game ) :
 	impl( new TerminalManagerImpl( ogui, game ) )
 {
-	
+
 }
 
 //=============================================================================

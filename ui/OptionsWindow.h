@@ -23,7 +23,7 @@ namespace ui
 			OptionsWindow(game::Game *game, Ogui *ogui, int player);
 
 			~OptionsWindow();
-			
+
 	    virtual void CursorEvent(OguiButtonEvent *eve);
 
 		private:

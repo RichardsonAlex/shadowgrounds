@@ -22,7 +22,7 @@ namespace game
 namespace ui
 {
 	int getNumberOfPlayers();
-	
+
 	class GamePointers;
 	class CombatRadar;
 	class OffscreenUnitPointers;
@@ -49,7 +49,7 @@ namespace ui
 	// class ComboWindow;
 
 	class CombatWindowImpl;
-	
+
 
 	class CombatSubWindowFactory;
 	class ICombatSubWindow;
@@ -70,37 +70,37 @@ namespace ui
 	* @see CombatUnitWindow
 	*
 	*/
-	
+
 	class CombatWindow : public IOguiButtonListener,
 		private game::IUnitSelectionListener
 	{
 	public:
-		
+
 		CombatWindow(Ogui *ogui, game::Game *game, int player);
-		
+
 		~CombatWindow();
-		
+
 		virtual void CursorEvent(OguiButtonEvent *eve);
-		
+
 		virtual void unitSelectionEvent(game::Unit *unit);
 
 		void createUnitWindows();
-		
+
 		void hide();
 		void show();
 		// notice! returns the _window_ visibility, not the _gui_ visibility!
 		// (they are a different things)
 		bool isWindowVisible();
-		
+
 		// affects gui visibility, not window visibility
 		// (well, the actual implementation may use window visibility to do
 		// that, but externally window visibility is unchanged)
 		void setGUIVisibility(bool guiVisible);
 		void toggleGUIMode();
 		void toggleRadarMode();
-		
+
 		bool isGUIVisible();
-		
+
 		void update(int delta);
 		void updateCursorImage();
 		void updateMeters();
@@ -111,30 +111,30 @@ namespace ui
 		void updateCameraDependedElements();
 		void renderPointers();
 		void updateUnitPointers();
-		
+
 		void updateRadar(float x, float y);
 		void setRadarAngle(float angle);
 
 		void addHostileUnitPointer(game::Unit *unit);
 		void removeHostileUnitPointer(game::Unit *unit);
 		void updateOffscreenUnitPointers();
-		
+
 		void recreatePointers();
-		
+
 		void recreateUnitSelections();
-		
+
 		void doCombatControls(int timeDelta);
-		
+
 		void doUnitSelectionByNumber(int unitNum);
-		
+
 		void doUnitSelection(game::Unit *unit);
-		
+
 		void doAllUnitSelection();
-		
+
 		void doUnitClick(game::Unit *unit);
 
 		void doUnitAttack(const VC3 &target, game::Unit *targetUnit);
-		
+
 		void showMessage(const char *message, Visual2D *image, bool rightSide);
 		void showCenterMessage(const char *message);
 		void showHintMessage(const char *message);
@@ -144,7 +144,7 @@ namespace ui
 		void clearCenterMessage();
 		void clearHintMessage();
 		void clearExecuteTipMessage();
-		
+
 		void setCrosshair(bool crosshairVisible);
 
 		void setCrosshairProperties(int screenX, int screenY, float sizeFactor);
@@ -152,9 +152,9 @@ namespace ui
 		SelectionBox *getSelectionBox() { return selectionBox; }
 
 		void setTacticalClickExpected(int cursorType);
-		
+
 		void setTacticalModeButton(bool tactical);
-		
+
 		void updateUnitHighlight();
 		void setUnitHighlight(const game::Unit *unit);
 		void setTerrainHighlight(VC3 &position);
@@ -176,7 +176,7 @@ namespace ui
 		bool isGUIModeTempInvisible(void);
 
 		void setConversationNoise(int index, int value);
-		
+
 		void hideFlashlight();
 		void showFlashlight();
 
@@ -194,17 +194,17 @@ namespace ui
 		game::Game *game;
 		int player;
 		OguiWindow *win;
-		
+
 		int dragStartX;
 		int dragStartY;
 		int dragStartTime;
 
 		int lastMoveClickTime;
 		VC3 lastMoveTarget;
-		
+
 		int *unitSelectTime;
 		int *blinkUnit;
-		
+
 		bool winVisible;
 		int radarMode;
 		int guiMode;
@@ -214,37 +214,37 @@ namespace ui
 		bool radarTemporarilyDisabled;
 		bool radarDisabled;
 		bool radarWasDisabled;
-		
+
 		bool tacticalClickExpected;
 		int tacticalClickCursorType;
 
 		WeaponSelectionWindow *weaponSelectionWindows[MAX_PLAYERS_PER_CLIENT];
 
 		//CombatUnitWindow *unitWindows[COMBATW_UNITS];
-		
+
 		// screen areas (scene and areas that move/rotate camera)
 		OguiButton **areas;
-		
+
 		CombatMessageWindow *messageWindow;
 		CombatMessageWindow *messageWindowRight;
 		CombatMessageWindow *centerMessageWindow;
 		CombatMessageWindowWithHistory *hintMessageWindow;
 		CombatMessageWindow *executeTipMessageWindow;
 		CombatMessageWindow *timerWindow;
-		
+
 		OguiButton *crosshair;
 		IOguiImage *crosshairImage;
 
 		OguiButton *tacticalModeBut;
-		
+
 		game::Unit *unitsByNumber[COMBATW_UNITS];
-		
+
 		CombatRadar *radar;
 
 		OffscreenUnitPointers *offscreenUnitPointers;
-		
+
 		TacticalUnitWindow *tacticalUnitWindow;
-		
+
 		SelectionBox *selectionBox;
 
 		std::map< std::string, ICombatSubWindow* > subWindowMap;
@@ -260,23 +260,23 @@ namespace ui
 		// TargetDisplayWindowUpdator* targetDisplayWindowUpdator;
 
 		ICombatSubWindow*	unitHealthBar;
-		
+
 		UnitHighlight *unitHighlight;
 		bool highlightLocked;
-		
+
 		// ComboWindow* comboWindow;
 		// if cursor is on the scene (not on any unit status)
 		bool cursorOnScene;
-		
+
 		// the waypoint, selection and other pointers
 		GamePointers *gamePointers;
-		
+
 		// returns button number for unit or -1 if no button for that unit
 		int solveNumberForUnit(game::Unit *unit);
-		
+
 		// returns unit for the given button number of null, if no unit
 		game::Unit *solveUnitForNumber(int number);
-		
+
 		// updates the unit window positions based on current gui mode
 		void setUnitWindowPositions();
 

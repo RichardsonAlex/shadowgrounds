@@ -65,7 +65,7 @@ namespace game
     // TODO
     return NULL;
   }
-	
+
 	const char *Character::getStatusInfo() const
 	{
 		return "Character";

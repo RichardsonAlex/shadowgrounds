@@ -206,7 +206,7 @@ void Storm3D_SpotlightShared::updateMatricesOffCenter(const D3DXMATRIX &cameraVi
 		camera.SetFieldOfView( maxAngle );
 		camera.SetVisibilityRange( maxRange );
 	}
-	
+
 	D3DXMATRIX cameraMatrix(cameraView);
 	float det = D3DXMatrixDeterminant(cameraMatrix);
 	D3DXMatrixInverse(cameraMatrix, &det, cameraMatrix);
@@ -215,7 +215,7 @@ void Storm3D_SpotlightShared::updateMatricesOffCenter(const D3DXMATRIX &cameraVi
 	float bias = 0.f;
 	float currentBias = 0.f;
 	for(int i = 0; i < 2; ++i)
-	{	
+	{
 		D3DXMatrixLookAtLH(lightView[i], lightPosition, lookAt, up);
 		if(i == 1)
 			currentBias = 0;
@@ -341,7 +341,7 @@ void Storm3D_SpotlightShared::setClipPlanes(const float *cameraView)
 
 	VC3 d(direction.x, direction.y, direction.z);
 	VC2 bd(d.x, d.z);
-	bd.Normalize();		
+	bd.Normalize();
 	VC3 p1(position.x - 8*bd.x, position.y, position.z - 8*bd.y);
 	VC3 p2(p1.x, p1.y + 5.f, p1.z);
 
@@ -515,7 +515,7 @@ namespace {
 		for(int i = 0; i < in.vertexAmount; ++i)
 		{
 			VC3 v2 = in.vertices[i];
-			
+
 			bool inside1 = plane.GetPointRange(v1) > 0.0f;
 			bool inside2 = plane.GetPointRange(v2) > 0.0f;
 
@@ -531,7 +531,7 @@ namespace {
 				out.addVertex(newVert);
 			}
 			else if(!inside1 && inside2) // Entering
-			{			
+			{
 				VC3 newVert;
 				clipLine(plane, v2, v1, newVert);
 
@@ -719,7 +719,7 @@ bool Storm3D_SpotlightShared::setScissorRect(Storm3D_Camera &camera, const VC2I 
 						plane.MakeFromNormalAndPosition(planeNormal, frustum.position + planeNormal);
 					else
 						plane.MakeFromNormalAndPosition(planeNormal, frustum.position);
-	
+
 					float d1 = plane.GetPointRange(p1);
 					float d2 = plane.GetPointRange(p2);
 

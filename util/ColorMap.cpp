@@ -230,7 +230,7 @@ COL ColorMap::getUnmultipliedColor(float x, float y) const
 	COL result(r / 255.f, g / 255.f, b / 255.f);
 	*/
 	// Interpolated 16bit
-	COL result((r + r2 + r3) / 3.0f / 32.f, (g + g2 + g3) / 3.0f / 64.f, (b + b2 + b3) / 3.0f / 32.f);	
+	COL result((r + r2 + r3) / 3.0f / 32.f, (g + g2 + g3) / 3.0f / 64.f, (b + b2 + b3) / 3.0f / 32.f);
 
 	return result;
 }
@@ -257,14 +257,14 @@ COL ColorMap::getColor(float x, float y) const
 }
 
 COL ColorMap::getColorAtScaled(float scaledX, float scaledY) const
-{	 	
+{
 	float x = scaledX / data->scaledSizeX + .5f;
 	float y = scaledY / data->scaledSizeY + .5f;
 	return getColor(x,y);
 }
 
 COL ColorMap::getUnmultipliedColorAtScaled(float scaledX, float scaledY) const
-{	 	
+{
 	float x = scaledX / data->scaledSizeX + .5f;
 	float y = scaledY / data->scaledSizeY + .5f;
 	return getUnmultipliedColor(x,y);

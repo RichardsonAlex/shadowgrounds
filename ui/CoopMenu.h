@@ -33,7 +33,7 @@ class CoopMenu : public MenuBaseImpl, private IOguiSelectListListener
 public:
 
 	//.........................................................................
-	
+
 	enum COMMANDS {
 		COMMANDS_STARTGAME = 1,
 		COMMANDS_LOADGAME,
@@ -85,7 +85,7 @@ public:
 	void SelectEvent( OguiSelectListEvent *eve );
 
 	//.........................................................................
-	
+
 	void menuStartGame();
 	void menuLoadGame();
 	void menuStartSurvival();
@@ -125,7 +125,7 @@ private:
 	MenuCollection*			menuCollection;
 	MenuCollection::Fonts*	fonts;
 
-	
+
 	std::list< OguiButtonStyle* >	styles;
 	OguiSelectListStyle*			selectListStyle;
 

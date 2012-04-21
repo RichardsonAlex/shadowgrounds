@@ -77,9 +77,9 @@ public:
 			return false;
 		}
 	}
-	
+
 protected:
-	
+
 	void setButtonPosition( int i, int x, int y, int transparency );
 	void setButtonTextPosition( int x, int y, int bottomx, int transparency );
 	void setButtonSliderPosition( int x, int y, int bottomx, int transparency );
@@ -91,7 +91,7 @@ protected:
 	float getAnimPos( int x );
 
 	button b;
-	
+
 	float beginAnimInitialPosition;
 	float beginAnimPos;
 	int imageWidth;
@@ -113,7 +113,7 @@ public:
 	TargetDisplayRisingScoreButton() { amIDead = false; }
 	TargetDisplayRisingScoreButton( int style ) : TargetDisplayWindowButton( style ) { amIDead = false; }
 	~TargetDisplayRisingScoreButton() { }
-	
+
 	virtual void updateRect(void);
 	virtual void setRect( int x, int y, int w, int h, float distance = 0.0f );
 	virtual bool hasEnded() const { return amIDead; }

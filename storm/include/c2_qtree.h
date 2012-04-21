@@ -159,7 +159,7 @@ struct QuadtreeNode
 		root(root_)
 	{
 		position = (area.mmin + area.mmax) * .5f;
-		
+
 		for(int i = 0; i < 4; ++i)
 			childs[i] = 0;
 	}
@@ -222,7 +222,7 @@ struct QuadtreeNode
 		{
 			AABB area[4];
 			AABB looseArea[4];
-			
+
 			// Fits to normal area?
 
 			QuadtreeNode<T> *realRoot = root;
@@ -261,7 +261,7 @@ struct QuadtreeNode
 
 		// Store
 
-		imp.node = this;		
+		imp.node = this;
 		entities.push_back(&imp);
 	}
 
@@ -385,7 +385,7 @@ class QuadtreeRaytraceCollision
 				for(unsigned int j = 0; j < childNodes; ++j)
 				{
 					QuadtreeNode<T> *child = childs[j];
-					
+
 					if(collision(ray, child->looseArea))
 						iterateNode(child);
 				}
@@ -577,7 +577,7 @@ public:
 					if(visibility == Frustum::Partial)
 					{
 						visibility = frustum.visibilityValue(child->looseArea);
-	
+
 						if(visibility == Frustum::None)
 							continue;
 					}
@@ -710,7 +710,7 @@ Quadtree<T>::Quadtree(const VC2 &min_, const VC2 &max_)
 	AABB area(mmin, mmax);
 	AABB looseArea;
 
-	Quadtree<T>::Node::calculateLooseArea(area, looseArea);	
+	Quadtree<T>::Node::calculateLooseArea(area, looseArea);
 	root = new typename Quadtree<T>::Node(area, looseArea, 0);
 }
 

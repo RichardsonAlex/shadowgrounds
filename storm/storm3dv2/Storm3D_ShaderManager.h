@@ -35,11 +35,11 @@ public:
 		intptr_t pointer_super = (intptr_t) (T*) 1;
 		intptr_t pointer_derived = (intptr_t) (Singleton<T>*)(T*) 1;
 		intptr_t offset = pointer_super - pointer_derived;
-		
+
 		// Use offset to get our instance address
 		instance = (T*) (intptr_t)(this) + offset;
 	}
-	
+
 	~Singleton()
 	{
 		assert(instance);
@@ -100,8 +100,8 @@ class Storm3D_ShaderManager: public Singleton<Storm3D_ShaderManager>
 	VC4 spot_color;
 	D3DXMATRIX target_matrix;
 
-	VC4 model_ambient_color;	
-	VC4 object_ambient_color;	
+	VC4 model_ambient_color;
+	VC4 object_ambient_color;
 	VC4 object_diffuse_color;
 	VC4 lightmap_factor;
 
@@ -163,9 +163,9 @@ class Storm3D_ShaderManager: public Singleton<Storm3D_ShaderManager>
 	frozenbyte::storm::VertexShader ati_shadow_bone_shader_flat;
 
 	frozenbyte::storm::VertexShader fake_depth_shader;
-	frozenbyte::storm::VertexShader fake_shadow_shader;	
+	frozenbyte::storm::VertexShader fake_shadow_shader;
 	frozenbyte::storm::VertexShader fake_depth_bone_shader;
-	frozenbyte::storm::VertexShader fake_shadow_bone_shader;	
+	frozenbyte::storm::VertexShader fake_shadow_bone_shader;
 
 	int current_shader;
 
@@ -194,7 +194,7 @@ class Storm3D_ShaderManager: public Singleton<Storm3D_ShaderManager>
 public:
 	Storm3D_ShaderManager();
 	~Storm3D_ShaderManager();
-	
+
 	// Create shaders
 	void CreateShaders();
 

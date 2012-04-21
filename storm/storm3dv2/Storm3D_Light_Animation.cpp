@@ -60,7 +60,7 @@ void Storm3D_Light_Animation::AddNewPositionKeyFrame(int time,const VC3 &positio
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -97,7 +97,7 @@ void Storm3D_Light_Animation::AddNewDirectionKeyFrame(int time,const VC3 &positi
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -134,7 +134,7 @@ void Storm3D_Light_Animation::AddNewLuminanceKeyFrame(int time,float multiplier,
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -171,7 +171,7 @@ void Storm3D_Light_Animation::AddNewConeKeyFrame(int time,float inner,float oute
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -231,7 +231,7 @@ void Storm3D_Light_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;
@@ -271,7 +271,7 @@ void Storm3D_Light_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;
@@ -284,7 +284,7 @@ void Storm3D_Light_Animation::Apply(Storm3D_Scene *scene)
 			int td=kfp->keytime-old_kfp->keytime;
 			float ipol=(float)(time_now-old_kfp->keytime)/(float)td;
 
-			// Interpolate direction+			
+			// Interpolate direction+
 			if (ltype==IStorm3D_Light::LTYPE_SPOT) ((IStorm3D_Light_Spot*)owner)->SetDirection((kfp->position*ipol)+(old_kfp->position*(1.0f-ipol)));
 			else ((IStorm3D_Light_Directional*)owner)->SetDirection((kfp->position*ipol)+(old_kfp->position*(1.0f-ipol)));
 		}
@@ -309,7 +309,7 @@ void Storm3D_Light_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;
@@ -324,7 +324,7 @@ void Storm3D_Light_Animation::Apply(Storm3D_Scene *scene)
 
 			// Interpolate color+
 			owner->SetColor((kfp->color*ipol)+(old_kfp->color*(1.0f-ipol)));
-			
+
 			// Interpolate range if it's not directional light
 			//if (ltype!=IStorm3D_Light::LTYPE_DIRECTIONAL)
 			//	((IStorm3D_Light_Point*)owner)->SetRadius((kfp->radius*ipol)+(old_kfp->radius*(1.0f-ipol)));
@@ -353,7 +353,7 @@ void Storm3D_Light_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;

@@ -422,7 +422,7 @@ CreditsMenu::CreditsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_creditsmenu_window_x", 0 ), getLocaleGuiInt( "gui_creditsmenu_window_y", 0 ),
 									getLocaleGuiInt( "gui_creditsmenu_window_w", 1024 ), getLocaleGuiInt( "gui_creditsmenu_window_h", 768 ), NULL );
-	
+
 	// win = ogui->CreateSimpleWindow( 0, 0, 1024, 768, NULL );
 	win->Hide();
 	win->SetUnmovable();
@@ -431,13 +431,13 @@ CreditsMenu::CreditsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	menu->setBackgroundImage( getLocaleGuiString( "gui_credits_background_image" ) );
 
 	/*addCloseButton( getLocaleGuiString( "gui_om_closeme" ), COMMANDS_CLOSEME, fonts->medium.normal );
-	
+
 	textWindow = ogui->CreateSimpleWindow( 0, 768, 1024, 1024, NULL );
 	textWindow->SetMoveBoundaryType( OguiWindow::MOVE_BOUND_NO_PART_IN_SCREEN );
 	textWindow->SetReactMask( 0 );
 	textWindow->Hide();
 	*/
-	
+
 
 	const std::string& credits = G_UiCredits;
 
@@ -454,7 +454,7 @@ CreditsMenu::CreditsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	theText->setLineHeight( (float)atof(getLocaleGuiString("gui_creditsmenu_line_height")) );
 
 	theText->setText( credits );
-	
+
 #ifdef LEGACY_FILES
 	maskWindow = ogui->CreateSimpleWindow( 0, 0, 1024, 768, "data/GUI/Menus/credits-hack.tga" );
 #else
@@ -488,12 +488,12 @@ CreditsMenu::CreditsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	}
 	else
 	{
-		
+
 		closeMenuByEsc = true;
 		editHandle = game->gameUI->getController(0)->addKeyreader( this );
 		// debugKeyreader( editHandle, false, "CreditsMenu::CreditsMenu()" );
 	}
-		
+
 }
 
 //.............................................................................
@@ -558,7 +558,7 @@ void CreditsMenu::applyChanges()
 void CreditsMenu::CursorEvent( OguiButtonEvent* eve )
 {
 	MenuBaseImpl::CursorEvent( eve );
-	
+
 	if( eve->eventType == OGUI_EMASK_CLICK )
 	{
 		switch( eve->triggerButton->GetId() )
@@ -568,7 +568,7 @@ void CreditsMenu::CursorEvent( OguiButtonEvent* eve )
 			break;
 		};
 	}
-	
+
 }
 
 //.............................................................................
@@ -583,8 +583,8 @@ void CreditsMenu::update()
 
 	yPosition -= ( Timer::getTime() - lastUpdate ) * speed;
 	lastUpdate = Timer::getTime();
-	
-	
+
+
 	theText->moveBy( 0, (int)yPosition - hack );
 	lastYPosition = (int)yPosition;
 	// textWindow->MoveTo( 0, 0 ); // (int)yPosition );

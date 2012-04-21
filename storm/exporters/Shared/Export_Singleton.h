@@ -26,11 +26,11 @@ public:
 		int pointerSuper = (int) (T*) 1;
 		int pointerDerived = (int) (TSingleton<T> *) (T*) 1;
 		int offset = pointerSuper - pointerDerived;
-		
+
 		// Use offset to get our instance address
 		instance = (T*) (int)(this) + offset;
 	}
-	
+
 	~TSingleton()
 	{
 		assert(instance);

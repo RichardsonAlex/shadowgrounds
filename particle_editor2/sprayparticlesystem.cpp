@@ -87,7 +87,7 @@ boost::shared_ptr<IParticleSystem> SprayParticleSystem::clone() {
 SprayParticleSystemEditables& SprayParticleSystem::getEditables() {
 	return *m_eds;
 }
-	
+
 const SprayParticleSystemEditables& SprayParticleSystem::getEditables() const {
 	return *m_eds;
 }
@@ -131,43 +131,43 @@ void SprayParticleSystem::setParticlePosition(Vector& v) {
 }
 
 void SprayParticleSystem::setParticleVelocity(Vector& v, const Vector& direction, float speed, const GenParticleSystemEditables& eds) {
-	
+
 	float spread1 = m_eds->spread1;
 	float spread2 = m_eds->spread2;
-	
+
 	Vector dir = direction;
 	dir.Normalize();
-	
+
 	Vector up(0.0f, 0.0f, 1.0f);
 	Vector u = dir.GetCrossWith(up);
 	if(u.GetDotWith(u)<0.0001f) {
-		up = Vector(0.0f, 1.0f, 0.0f);	
+		up = Vector(0.0f, 1.0f, 0.0f);
 	}
-	
+
 	Vector left;
 	left = dir.GetCrossWith(up);
 	left.Normalize();
 	up = left.GetCrossWith(dir);
 	up.Normalize();
-	
+
 	int seed1 = rand() % RAND_MAX;
 	int seed2 = rand() % RAND_MAX;
-	
+
 	float rnd1 = -1.0f + (float)seed1 / (float)RAND_MAX * 2.0f;
 	float rnd2 = -1.0f + (float)seed2 / (float)RAND_MAX * 2.0f;
-	
+
 	float a1 = rnd1 * spread1;
 	float a2 = rnd2 * spread2;
-	
+
 	QUAT q1;
 	QUAT q2;
-	
+
 	q1.MakeFromAxisRotation(left, a1);
 	q2.MakeFromAxisRotation(up, a2);
-	
+
 	q1.RotateVector(dir);
 	q2.RotateVector(dir);
-	
+
 	v = dir * speed;
 }
 

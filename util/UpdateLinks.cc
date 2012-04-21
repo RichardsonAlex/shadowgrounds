@@ -62,7 +62,7 @@ std::vector<std::string> UpdateLinks::getLinksFromFile(std::string linksFilename
 
 	for (int i = 0; i < (int)links.size(); i++)
 	{
-		if (links[i].linkClass == linkClass)		
+		if (links[i].linkClass == linkClass)
 		{
 			// strip extension off...?
 			std::string stripped = links[i].linkURL;

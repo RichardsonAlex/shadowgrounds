@@ -25,7 +25,7 @@ namespace game
 
 		// returns positive fold id number at given position, or 0 if no fold at given position
 		int getFoldNumberAtPosition(const VC3 &position);
-		
+
 		void moveFold(int foldNumber, const VC3 &position);
 
 		void setFoldAngle(int foldNumber, float angle);

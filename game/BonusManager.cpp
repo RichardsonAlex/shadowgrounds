@@ -189,7 +189,7 @@ namespace game
 		{
 			name = "invulnerability";
 		}
-		
+
 		void apply(game::Game *game, int flags)
 		{
 			if(flags & BonusManager::APPLYING_AFTER_LOAD)
@@ -216,7 +216,7 @@ namespace game
 			camera_default_beta_angle = SimpleOptions::getInt(DH_OPT_I_CAMERA_DEFAULT_BETA_ANGLE);
 			camera_autozoom_enabled = SimpleOptions::getBool(DH_OPT_B_CAMERA_AUTOZOOM_ENABLED);
 		}
-		
+
 		void apply(game::Game *game, int flags)
 		{
 			if(!applied)
@@ -276,7 +276,7 @@ namespace game
 		BonusManagerImpl(Game *game) : game(game), available(false)
 		{
 			IBonusOption *opt;
-			
+
 			// register options
 			//
 			opt = new BWModeBonusOption();
@@ -293,7 +293,7 @@ namespace game
 
 			opt = new ElectricGunBonusOption();
 			options[opt->name] = opt;
-			
+
 			opt = new BloopersBonusOption();
 			options[opt->name] = opt;
 
@@ -517,7 +517,7 @@ namespace game
 		}
 
 	private:
-		
+
 		Game *game;
 
 		std::vector<IBonusOption *> unlockedOptions;

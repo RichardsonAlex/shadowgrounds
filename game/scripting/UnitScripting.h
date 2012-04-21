@@ -17,7 +17,7 @@ namespace game
 
 	class UnitScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */
@@ -37,7 +37,7 @@ namespace game
 
 			static Unit *findClosestUnitWithVariableSet(Game *game, const VC3 &position, const char *unitvar, bool varIsNonZero);
 			static Unit *findClosestUnitOfTypeWithVariableSet(Game *game, const VC3 &position, const char *unittype, const char *unitvar, bool varIsNonZero);
-	
+
 			static bool findGroup(Game *game, Unit *unit);
 
 			static void moveUnitToDirection(Unit *unit, int direction,

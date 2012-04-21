@@ -20,7 +20,7 @@
 #include "Resource/resource.h"
 #include <assert.h>
 
-namespace frozenbyte {	
+namespace frozenbyte {
 namespace launcher {
 
 using namespace filesystem;
@@ -72,11 +72,11 @@ public:
 		while ( GetMessage( &msg, NULL, 0, 0 ) && quit == false )
 		{
 			// IsDialogMessage( dialog.getWindowHandle(), &windowsMessage );
-			
+
 			TranslateMessage (&msg);
 			DispatchMessage (&msg);
 		}
-		
+
 	}
 
 	///////////////////////////////////////////////////////////////////////////

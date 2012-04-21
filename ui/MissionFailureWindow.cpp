@@ -31,7 +31,7 @@ public:
 	game::Game*	game;
 
 	OguiLocaleWrapper	oguiLoader;
-	OguiWindow*	win;	
+	OguiWindow*	win;
 	OguiButton* closeButton;
 	OguiButton* restartButton;
 	OguiFormattedText* textArea;

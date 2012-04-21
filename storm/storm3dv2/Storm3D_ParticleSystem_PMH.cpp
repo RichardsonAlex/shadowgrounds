@@ -116,7 +116,7 @@ int Storm3D_ParticleSystem::QuadArray::lock(VXFORMAT_PART *pointer, int particle
 	GLubyte *verts = (GLubyte*)&vp[0].position;
 	GLubyte *uvs = (GLubyte*)&vp[0].texcoords;
 	GLubyte *colors = (GLubyte*)&vp[0].color;
-	
+
 	GLuint stride = sizeof(VXFORMAT_PART);
 	D3DXMATRIX mv = scene->camera.GetViewMatrix();
 	uint32_t c0 = 0;
@@ -140,7 +140,7 @@ int Storm3D_ParticleSystem::QuadArray::lock(VXFORMAT_PART *pointer, int particle
 		float sa = sinf(p.angle);
 		float ca = cosf(p.angle);
 		float hsize = 0.5f*p.size;
-			
+
 		float x1,y1,x2,y2,x3,y3,x4,y4;
 
 		quad_util::rotatePointFast(x1, y1, -hsize, hsize, ca, sa);
@@ -180,15 +180,15 @@ int Storm3D_ParticleSystem::QuadArray::lock(VXFORMAT_PART *pointer, int particle
 
 		// Fill texturecoords
 		if(m_animInfo.numFrames > 1) {
-			
+
 			int frame = (int)p.frame % m_animInfo.numFrames;
-			
+
 			int col = frame % m_animInfo.textureUSubDivs;
 			int row = frame / m_animInfo.textureUSubDivs;
-			
+
 			float tx = frameWidth * (float)col;
-			float ty = frameHeight * (float)row;				
-			
+			float ty = frameHeight * (float)row;
+
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx + frameWidth; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty + frameHeight; uvs += (stride - 4);
@@ -200,14 +200,14 @@ int Storm3D_ParticleSystem::QuadArray::lock(VXFORMAT_PART *pointer, int particle
 			*((float*)uvs) = 1.0f; uvs += 4; *((float*)uvs) = 0.0f; uvs += (stride - 4);
 			*((float*)uvs) = 0.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
 			*((float*)uvs) = 1.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
-			
+
 		}
 		// colors were bgra
 		c0 = (((uint32_t)(p.alpha * 255.0f) &0xff) << 24) |
 			(((uint32_t)(factor.b * p.color.b * 255.0f) &0xff) << 16) |
 			(((uint32_t)(factor.g * p.color.g * 255.0f) &0xff) << 8) |
 			(((uint32_t)(factor.r * p.color.r * 255.0f) &0xff) );
-	
+
 		*((GLuint*)colors) = c0; colors += stride;
 		*((GLuint*)colors) = c0; colors += stride;
 		*((GLuint*)colors) = c0; colors += stride;
@@ -224,7 +224,7 @@ void Storm3D_ParticleSystem::QuadArray::setRender(int &vertexOffset, int &partic
 		return;
 
 	if (m_mtl)
-	{	
+	{
 		static_cast<Storm3D_Material*>(m_mtl)->ApplyBaseTextureExtOnly();
 	}
 	else
@@ -253,7 +253,7 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 		return;
 
 	if (m_mtl)
-	{	
+	{
 		static_cast<Storm3D_Material*>(m_mtl)->ApplyBaseTextureExtOnly();
 	}
 	else
@@ -281,7 +281,7 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 	GLubyte* verts = (GLubyte*)&vp[0].position;
 	GLubyte* uvs = (GLubyte*)&vp[0].texcoords;
 	GLubyte* colors = (GLubyte*)&vp[0].color;
-	
+
 	GLuint stride = sizeof(VXFORMAT_PART);
 
 	D3DXMATRIX mv = scene->camera.GetViewMatrix();
@@ -289,7 +289,7 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 	uint32_t c0;
 
 	for(int i = 0; i < m_numParts; i++) {
-	
+
 		Storm3D_PointParticle& p = m_parts[i];
 
 		c0 = (((uint32_t)(p.alpha * 255.0f) &0xff) << 24) |
@@ -300,7 +300,7 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 		float sa = sinf(p.angle);
 		float ca = cosf(p.angle);
 		float hsize = 0.5f*p.size;
-			
+
 		float x1,y1,x2,y2,x3,y3,x4,y4;
 
 		quad_util::rotatePointFast(x1, y1, -hsize, hsize, ca, sa);
@@ -309,11 +309,11 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 		quad_util::rotatePointFast(x4, y4,  hsize, -hsize, ca, sa);
 
 		VC3 v;
-			
+
 		v.x = p.position.x * mv.m[0][0] +
 			p.position.y * mv.m[1][0] +
 			p.position.z * mv.m[2][0] + mv.m[3][0];
-		
+
 		v.y = p.position.x * mv.m[0][1] +
 			p.position.y * mv.m[1][1] +
 			p.position.z * mv.m[2][1] + mv.m[3][1];
@@ -326,7 +326,7 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 		VC3 v2(v.x + x2, v.y + y2, v.z);
 		VC3 v3(v.x + x3, v.y + y3, v.z);
 		VC3 v4(v.x + x4, v.y + y4, v.z);
-				
+
 		*((Vector*)verts) = v1; verts += stride;
 		*((Vector*)verts) = v2; verts += stride;
 		*((Vector*)verts) = v3; verts += stride;
@@ -334,15 +334,15 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 
 		// Fill texturecoords
 		if(m_animInfo.numFrames > 1) {
-			
+
 			int frame = (int)p.frame % m_animInfo.numFrames;
-			
+
 			int col = frame % m_animInfo.textureUSubDivs;
 			int row = frame / m_animInfo.textureUSubDivs;
-			
+
 			float tx = frameWidth * (float)col;
-			float ty = frameHeight * (float)row;				
-			
+			float ty = frameHeight * (float)row;
+
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx + frameWidth; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty + frameHeight; uvs += (stride - 4);
@@ -354,9 +354,9 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 			*((float*)uvs) = 1.0f; uvs += 4; *((float*)uvs) = 0.0f; uvs += (stride - 4);
 			*((float*)uvs) = 0.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
 			*((float*)uvs) = 1.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
-			
+
 		}
-		
+
 		*((GLuint*)colors) = c0; colors += stride;
 		*((GLuint*)colors) = c0; colors += stride;
 		*((GLuint*)colors) = c0; colors += stride;
@@ -423,7 +423,7 @@ float computeConstantScale(const Vector& pos, const D3DXMATRIX& view, const D3DX
 
 	Vector ppcam1 = ppcam0;
 	ppcam1.x += 1.0f;
-	
+
 	float l1 = 1.0f/(ppcam0.x*proj.m[0][3] + ppcam0.y*proj.m[1][3] + ppcam0.z*proj.m[2][3] + proj.m[3][3]);
 	float c1 =  (ppcam0.x*proj.m[0][0] + ppcam0.y*proj.m[1][0] + ppcam0.z*proj.m[2][0] + proj.m[3][0])*l1;
 	float l2 = 1.0f/(ppcam1.x*proj.m[0][3] + ppcam1.y*proj.m[1][3] + ppcam1.z*proj.m[2][3] + proj.m[3][3]);
@@ -441,7 +441,7 @@ void computeScreenQuad(
 	// Compute delta in camera space
 	Vector Delta;
 	transPoint3x3(Delta, p1-p0, view);
-	
+
 	// Compute size factors
 	float SizeP0 = size0;
 	float SizeP1 = size1;
@@ -452,22 +452,22 @@ void computeScreenQuad(
 	float s0 = SizeP0 * sinf(Theta0);
 	computePoint(*((Vector*)verts),  c0, -s0, inverseview, p0); verts+=stride;
 	computePoint(*((Vector*)verts),  -c0, s0, inverseview, p0); verts+=stride;
-	
+
 	float Theta1 = atan2f(Delta.x, Delta.y);
 	float c1 = SizeP1 * cosf(Theta1);
 	float s1 = SizeP1 * sinf(Theta1);
 	computePoint(*((Vector*)verts),  -c1, s1, inverseview, p1); verts+=stride;
 	computePoint(*((Vector*)verts),  c1, -s1, inverseview, p1); verts+=stride;
-	
+
 	// Output color if needed
 	if(colors)
 	{
-		*((uint32_t*)colors) = col0; colors+=stride;	
-		*((uint32_t*)colors) = col0; colors+=stride;	
-		*((uint32_t*)colors) = col1; colors+=stride;	
-		*((uint32_t*)colors) = col1; colors+=stride;	
+		*((uint32_t*)colors) = col0; colors+=stride;
+		*((uint32_t*)colors) = col0; colors+=stride;
+		*((uint32_t*)colors) = col1; colors+=stride;
+		*((uint32_t*)colors) = col1; colors+=stride;
 	}
-	
+
 }
 
 } // line_utils
@@ -524,7 +524,7 @@ int Storm3D_ParticleSystem::LineArray::lock(VXFORMAT_PART *pointer, int particle
 	GLubyte *verts = (GLubyte*)&vp[0].position;
 	GLubyte *uvs = (GLubyte*)&vp[0].texcoords;
 	GLubyte *colors = (GLubyte*)&vp[0].color;
-	
+
 	GLuint stride = sizeof(VXFORMAT_PART);
 	D3DXMATRIX inview, view, proj;
 	view = scene->camera.GetViewMatrix();
@@ -553,14 +553,14 @@ int Storm3D_ParticleSystem::LineArray::lock(VXFORMAT_PART *pointer, int particle
 
 		// Fill texturecoords
 		if(m_animInfo.numFrames > 1)
-		{	
+		{
 			int frame = (int)p.frame % m_animInfo.numFrames;
 			int col = frame % m_animInfo.textureUSubDivs;
 			int row = frame / m_animInfo.textureUSubDivs;
-			
+
 			float tx = frameWidth * (float)col;
 			float ty = frameHeight * (float)row;
-			
+
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx + frameWidth; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty + frameHeight; uvs += (stride - 4);
@@ -573,7 +573,7 @@ int Storm3D_ParticleSystem::LineArray::lock(VXFORMAT_PART *pointer, int particle
 			*((float*)uvs) = 0.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
 			*((float*)uvs) = 1.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
 		}
-		
+
 		verts += 4 * stride;
 		colors += 4 * stride;
 	}
@@ -587,7 +587,7 @@ void Storm3D_ParticleSystem::LineArray::setRender(int &vertexOffset, int &partic
 		return;
 
 	if (m_mtl)
-	{	
+	{
 		static_cast<Storm3D_Material*>(m_mtl)->ApplyBaseTextureExtOnly();
 	}
 	else
@@ -618,7 +618,7 @@ void Storm3D_ParticleSystem::LineArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 	scene->camera.Apply();
 
 	if (m_mtl)
-	{	
+	{
 		static_cast<Storm3D_Material*>(m_mtl)->ApplyBaseTextureExtOnly();
 	}
 	else
@@ -647,7 +647,7 @@ void Storm3D_ParticleSystem::LineArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 	GLubyte* verts = (GLubyte*)&vp[0].position;
 	GLubyte* uvs = (GLubyte*)&vp[0].texcoords;
 	GLubyte* colors = (GLubyte*)&vp[0].color;
-	
+
 	GLuint stride = sizeof(VXFORMAT_PART);
 
 	D3DXMATRIX inview, view, proj;
@@ -660,7 +660,7 @@ void Storm3D_ParticleSystem::LineArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 	for(int i = 0; i < m_numParts; i++)
 	{
 		Storm3D_LineParticle& p = m_parts[i];
-		
+
 		c0 = (((uint32_t)(p.alpha[0] * 255.0f) &0xff) << 24) |
 			(((uint32_t)(p.color[0].r * 255.0f) &0xff) << 16) |
 			(((uint32_t)(p.color[0].g * 255.0f) &0xff) << 8) |
@@ -680,13 +680,13 @@ void Storm3D_ParticleSystem::LineArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 		if(m_animInfo.numFrames > 1)
 		{
 			int frame = (int)p.frame % m_animInfo.numFrames;
-			
+
 			int col = frame % m_animInfo.textureUSubDivs;
 			int row = frame / m_animInfo.textureUSubDivs;
-			
+
 			float tx = frameWidth * (float)col;
-			float ty = frameHeight * (float)row;				
-			
+			float ty = frameHeight * (float)row;
+
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx + frameWidth; uvs += 4; *((float*)uvs) = ty; uvs += (stride - 4);
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty + frameHeight; uvs += (stride - 4);
@@ -699,7 +699,7 @@ void Storm3D_ParticleSystem::LineArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 			*((float*)uvs) = 0.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
 			*((float*)uvs) = 1.0f; uvs += 4; *((float*)uvs) = 1.0f; uvs += (stride - 4);
 		}
-		
+
 		verts += 4 * stride;
 		colors += 4 * stride;
 	}

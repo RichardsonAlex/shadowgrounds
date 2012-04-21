@@ -53,7 +53,7 @@ namespace {
 			if(textStart == -1)
 			if(!isWhiteSpace(string[i]))
 				textStart = i;
-			
+
 			// Remove comment
 			if(i < string.size() - 2)
 			if(string[i] == '/')
@@ -268,7 +268,7 @@ struct ParserGroupData
 			if(nextLine[0] == '}')
 				return;
 
-			currentLine.swap(nextLine);		
+			currentLine.swap(nextLine);
 		}
 
 		parseValue(currentLine, flags);
@@ -315,9 +315,9 @@ struct ParserGroupData
 			stream << "{" << std::endl;
 
 			(*gi).second->writeStream(stream, tabCount + 1),
-			
+
 			writeTabs(stream, tabCount);
-			stream << "}" << std::endl;			
+			stream << "}" << std::endl;
 		}
 
 		if(!lines.empty() && ((!groups.empty() || !values.empty())))

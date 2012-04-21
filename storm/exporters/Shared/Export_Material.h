@@ -68,7 +68,7 @@ public:
 	void setBumpTexture(const std::string &name);
 	void setReflectionTexture(const std::string &name, float factor);
 	void setDistortionTexture(const std::string &name);
-	
+
 	void useAlphaTexture();
 	void useAdditiveAlpha();
 	void setDiffuseColor(const Color &color);
@@ -90,7 +90,7 @@ public:
 	float getReflectionFactor() const;
 	const VC2 &getScrollSpeed() const;
 	bool scrollAutoStartEnabled() const;
-	
+
 	bool operator == (const Material &hs) const;
 	void copy(const Material &m);
 

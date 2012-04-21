@@ -124,7 +124,7 @@ namespace {
 			index = lightObject.objects.size();
 			//if(isRoof)
 			//	index = lightObject.roofObjects.size();
-		
+
 			//if(isRoof)
 			//	lightObject.roofObjects.push_back(createNewObject(index, isRoof));
 			//else

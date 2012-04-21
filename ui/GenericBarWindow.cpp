@@ -98,7 +98,7 @@ void GenericBarWindow::loadDataFromLocales( const std::string& locale_name )
 		{
 			slider->setSliderDirection(false);
 		}
-		
+
 
 		int max = is_vertical ? h : w;
 		int start = getLocaleGuiInt( ( prefix + "foreground_start" ).c_str() , 0 );
@@ -181,7 +181,7 @@ void GenericBarWindow::loadDataFromLocales( const std::string& locale_name )
 			const char *fontname = getLocaleGuiString( (prefix2 + "_font" ).c_str() );
 
 			IOguiFont *font = fontname != NULL && fontname[0] != 0 ? ogui->LoadFont(fontname) : NULL;
-			
+
 			OguiButton *button;
 			if(texttext != NULL && texttext[0] != 0)
 			{
@@ -375,7 +375,7 @@ void GenericBarWindow::setValue( float value )
 {
 	if( value > 1.0f ) value = 1.0f;
 	if( value < 0.0f ) value = 0.0f;
-	
+
 	if( value != sliderValue && slider )
 	{
 		sliderValue = value;

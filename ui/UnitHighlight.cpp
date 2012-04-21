@@ -49,7 +49,7 @@ namespace ui
 #else
 		terrainVisualObjectModel = new VisualObjectModel("data/model/pointer/highlight_terrain.s3d");
 #endif
-		
+
 		terrainVisualObject = terrainVisualObjectModel->getNewObjectInstance();
 		terrainVisualObject->setEffect(VISUALOBJECTMODEL_EFFECT_ADDITIVE);
 		terrainVisualObject->setEffect(VISUALOBJECTMODEL_EFFECT_TRANSPARENT_30);
@@ -131,7 +131,7 @@ namespace ui
 
 
 	void UnitHighlight::setHighlightedUnit(const game::Unit *unit)
-	{		
+	{
 		// DISABLED!
 		return;
 
@@ -153,7 +153,7 @@ namespace ui
 		if (highlightUnit == NULL && unit != NULL)
 		{
 			// no old highlight object. add a new one.
-			visualObject->setInScene(true);			
+			visualObject->setInScene(true);
 			visualObject->setVisible(true);
 			visualObject2->setVisible(true);
 			visualObject2->setInScene(true);
@@ -189,7 +189,7 @@ namespace ui
 			visualObject2->setRotation(rotX, (360.0f-rotY) * 2, rotZ);
 			visualObject->prepareForRender();
 			visualObject2->prepareForRender();
-		}		
+		}
 		if (highlightTerrain)
 		{
 			rotY += 0.2f;
@@ -200,8 +200,8 @@ namespace ui
 			terrainVisualObject2->setRotation(rotX, (360.0f-rotY) * 2, rotZ);
 			terrainVisualObject->prepareForRender();
 			terrainVisualObject2->prepareForRender();
-		}		
+		}
 	}
-			
+
 }
 

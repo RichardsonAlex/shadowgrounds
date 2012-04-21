@@ -71,7 +71,7 @@ namespace game
 	}
 
 
-	
+
 	void UnitVisibility::setDestroyed(bool destroyed)
 	{
 		this->destroyed = destroyed;

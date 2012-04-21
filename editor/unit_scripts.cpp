@@ -372,7 +372,7 @@ const Script *UnitScripts::findScript(ScriptType type, const std::string &name) 
 std::vector<std::string> UnitScripts::getTypes() const
 {
 	// Find all different types
-	
+
 	std::vector<std::string> result;
 
 	const std::vector<Unit> &units = data->units;

@@ -144,7 +144,7 @@ namespace {
 	typedef std::map<int, int> PhysicsHandleHash;
 
 	class GamePhysicsImpl
-	{	
+	{
 	private:
 #ifdef PHYSICS_PHYSX
 		frozenbyte::physics::PhysicsLib *physicsLib;
@@ -279,7 +279,7 @@ namespace {
 			{
 				physicsLib->addSkyPlane(SimpleOptions::getFloat(DH_OPT_F_PHYSICS_SKY_PLANE_HEIGHT));
 			}
-			
+
 			physicsLib->addFluidContainmentPlane(fluidContainmentHeight);
 
 #endif
@@ -857,7 +857,7 @@ namespace {
 				} else {
 					assert(!"GamePhysicsImpl::deleteObject - Attempt to delete an object containing a handle for an already deleted object, data integrity error (bug).");
 				}
-				
+
 			} else {
 				//assert(!"GamePhysicsImpl::deleteObject - Attempt to delete an object that was not found in object list.");
 			}

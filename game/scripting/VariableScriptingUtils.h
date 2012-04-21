@@ -20,7 +20,7 @@ namespace game
 			{
 				if (variable->getVariableType() == game::IScriptVariable::VARTYPE_BOOLEAN)
 				{
-					if (variable->getBooleanValue())							
+					if (variable->getBooleanValue())
 						*resultValue = 1;
 					else
 						*resultValue = 0;

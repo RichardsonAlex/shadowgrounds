@@ -83,7 +83,7 @@ SurvivalMenu::SurvivalMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 	if(startAsCoop) addHeaderText( getLocaleGuiString( "gui_survivalmenu_header_coop" ), fonts->big.normal );
 	else addHeaderText( getLocaleGuiString( "gui_survivalmenu_header" ), fonts->big.normal );
-	
+
 
 	buttonX	= getLocaleGuiInt( "gui_survivalmenu_button_x", 0 );
 	buttonY	= getLocaleGuiInt( "gui_survivalmenu_button_y", 0 );
@@ -141,7 +141,7 @@ SurvivalMenu::SurvivalMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 			getLocaleGuiInt( "gui_survivalmenu_showcustom_x", 0 ),
 			getLocaleGuiInt( "gui_survivalmenu_showcustom_y", 0 ),
 			getLocaleGuiInt( "gui_survivalmenu_showcustom_w", 0 ),
-			getLocaleGuiInt( "gui_survivalmenu_showcustom_h", 0 ), 	
+			getLocaleGuiInt( "gui_survivalmenu_showcustom_h", 0 ),
 			getLocaleGuiString( "gui_survivalmenu_showcustom_img_norm" ), "", "",
 			getLocaleGuiString( "gui_survivalmenu_showcustom_img_fill" ));
 
@@ -320,7 +320,7 @@ void SurvivalMenu::checkBoxEvent( OguiCheckBoxEvent* eve )
 			delete i->second;
 		}
 		selectButtons.clear();
-		
+
 		scrollCount = 0;
 		scrollPosition = 0;
 
@@ -369,7 +369,7 @@ void SurvivalMenu::CursorEvent( OguiButtonEvent* eve )
 			scrollMissionsDown();
 			updateArrows();
 			break;
-		
+
 		case COMMANDS_ARROWUP:
 			scrollMissionsUp();
 			updateArrows();
@@ -389,7 +389,7 @@ void SurvivalMenu::CursorEvent( OguiButtonEvent* eve )
 			}
 		}
 	}
-	
+
 }
 
 //.............................................................................
@@ -497,18 +497,18 @@ void SurvivalMenu::createTexts()
 		const std::string font_b = getLocaleGuiString( "gui_survivalmenu_infotext_font_bold" );
 		const std::string font_i = getLocaleGuiString( "gui_survivalmenu_infotext_font_italic" );
 		const std::string font_h1 = getLocaleGuiString( "gui_survivalmenu_infotext_font_h1" );
-		
+
 		infoText = new OguiFormattedText( win, ogui, x, y, w, h, 0 );
-		
+
 		if( font_normal.empty() == false )
 			infoText->setFont( ogui->LoadFont( font_normal.c_str() ) );
-		
+
 		if( font_b.empty() == false )
 			infoText->registerFont( "b", ogui->LoadFont( font_b.c_str() ) );
-		
+
 		if( font_i.empty() == false )
 			infoText->registerFont( "i", ogui->LoadFont( font_i.c_str() ) );
-		
+
 		if( font_h1.empty() == false )
 			infoText->registerFont( "h1", ogui->LoadFont( font_h1.c_str() ) );
 	}
@@ -524,18 +524,18 @@ void SurvivalMenu::createTexts()
 		const std::string font_b = getLocaleGuiString( "gui_survivalmenu_scoretext_font_bold" );
 		const std::string font_i = getLocaleGuiString( "gui_survivalmenu_scoretext_font_italic" );
 		const std::string font_h1 = getLocaleGuiString( "gui_survivalmenu_scoretext_font_h1" );
-		
+
 		scoreText = new OguiFormattedText( win, ogui, x, y, w, h, 0 );
-		
+
 		if( font_normal.empty() == false )
 			scoreText->setFont( ogui->LoadFont( font_normal.c_str() ) );
-		
+
 		if( font_b.empty() == false )
 			scoreText->registerFont( "b", ogui->LoadFont( font_b.c_str() ) );
-		
+
 		if( font_i.empty() == false )
 			scoreText->registerFont( "i", ogui->LoadFont( font_i.c_str() ) );
-		
+
 		if( font_h1.empty() == false )
 			scoreText->registerFont( "h1", ogui->LoadFont( font_h1.c_str() ) );
 	}
@@ -558,7 +558,7 @@ void SurvivalMenu::addImageSelectionButton( const std::string& image_norm, const
 	b->SetEventMask( OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE );
 	b->SetClipToWindow( false );
 	b->Move( buttonX, buttonY );
-	
+
 	if( buttonX == buttonXStart && buttonY > buttonYMaxLimit )
 	{
 		scrollCount++;
@@ -655,7 +655,7 @@ bool SurvivalMenu::loadMissionInfo(const std::string &directory, MissionInfo &mi
 
 		mi.scoreNumbers[j] = atoi(scoreArray[j].score.c_str());
 	}
-	
+
 
 	mi.show_upgradewindow = show_upgradewindow;
 	mi.dir = dir;
@@ -726,7 +726,7 @@ void SurvivalMenu::createMissionButtons()
 				if(!is_standard)
 				{
 					custom_dirs.push_back(dirname);
-				}			
+				}
 			}
 		}
 		dirs.clear();
@@ -804,7 +804,7 @@ void SurvivalMenu::scrollMissionsDown()
 		scrollPosition++;
 		std::map< int, OguiButton* >::iterator i;
 		for( i = selectButtons.begin(); i != selectButtons.end(); ++i )
-		{	
+		{
 			i->second->MoveBy( 0, -buttonAddY );
 			if( i->second->GetY() > buttonYMinLimit - 900 && i->second->GetY() < buttonYMinLimit )
 			{
@@ -885,7 +885,7 @@ void SurvivalMenu::updateArrows()
 			scrollUpArrow->SetDisabled( true );
 		}
 	}
-	
+
 	if( scrollDownArrow )
 	{
 		if( scrollPosition < scrollCount )

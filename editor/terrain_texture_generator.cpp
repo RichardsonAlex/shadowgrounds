@@ -48,7 +48,7 @@ struct TerrainTextureGeneratorData
 			int position = y * splatSize.x + x;
 			int xb = 5 - x % 10;
 			int yb = 5 - y % 10;
-			
+
 			xb = int(sqrtf(float(xb * xb)));
 			yb = int(sqrtf(float(yb * yb)));
 

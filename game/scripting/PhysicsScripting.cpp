@@ -61,7 +61,7 @@ namespace game
 			VC3 position;
 			VC3 axis;
 			VC3 normal;
-			
+
 			VC3 lowAngle;
 			VC3 highAngle;
 			VC3 lowSpring;
@@ -624,7 +624,7 @@ namespace game
 
 
 		default:
-			sp->error("PhysicsScripting::process - Unknown command.");				
+			sp->error("PhysicsScripting::process - Unknown command.");
 			assert(0);
 		}
 	}

@@ -20,7 +20,7 @@ int VectorTrack::getType() {
 	return TRACK_VECTOR;
 }
 
-void VectorTrack::setValue(void* v, float t) {			
+void VectorTrack::setValue(void* v, float t) {
 	if(m_keys.empty()) {
 		m_keys.push_back(new VectorKey(*((Vector*)v), t));
 		return;
@@ -77,7 +77,7 @@ void VectorTrack::setNumKeys(int n) {
 	}
 }
 void VectorTrack::sortKeys() {
-	
+
 }
 void VectorTrack::setKey(int i, Key* k) {
 	assert(i < (int)m_keys.size());
@@ -89,7 +89,7 @@ void VectorTrack::getKey(int i, Key* k) {
 	assert(i < (int)m_keys.size());
 	VectorKey* p = m_keys[i];
 	k->time = p->time;
-	((VectorKey*)k)->value = p->value;	
+	((VectorKey*)k)->value = p->value;
 }
 void VectorTrack::addKey(Key* k) {
 	VectorKey* key = new VectorKey();

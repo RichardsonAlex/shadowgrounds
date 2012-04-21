@@ -315,7 +315,7 @@ namespace game
 		this->visible = true;
 	}
 
-	
+
 	void ProgressBar::restartProgress()
 	{
 		VC3 tmp = this->progressPosition;

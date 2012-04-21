@@ -166,7 +166,7 @@ void Storm3D_Helper_Camera::UpdateGlobals()
 		position_global=position;
 		direction_global=direction;
 		upvec_global=upvec;
-		
+
 		if(parent_object)
 		{
 			parent_object->GetMXG().TransformVector(position_global);
@@ -304,7 +304,7 @@ void Storm3D_Helper_Vector::UpdateGlobals()
 		update_globals=false;
 		position_global=position;
 		direction_global=direction;
-		
+
 		if (parent_object)
 		{
 			parent_object->GetMXG().TransformVector(position_global);
@@ -409,7 +409,7 @@ void Storm3D_Helper_Point::UpdateGlobals()
 	{
 		update_globals=false;
 		position_global=position;
-		
+
 		if(parent_object)
 		{
 			parent_object->GetMXG().TransformVector(position_global);

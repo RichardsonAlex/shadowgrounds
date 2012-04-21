@@ -29,7 +29,7 @@ bool getHelperPositionOffset(IStorm3D_Model *model, const char *name, const VC3 
 		result += helper->GetGlobalPosition();
 		return true;
 	}
-	
+
 	return false;
 }
 

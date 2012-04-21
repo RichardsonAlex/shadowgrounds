@@ -29,7 +29,7 @@ namespace particle
 			PARAM_TYPE type_ = PARAM_FILE);
 		ParamDesc(const std::string name_, int id1_,
 			const std::string& selections_, PARAM_TYPE type_ = PARAM_SELECTION);
-		
+
 		ParamDesc(const ParamDesc& rhs);
 		ParamDesc& operator=(const ParamDesc& rhs);
 

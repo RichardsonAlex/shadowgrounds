@@ -39,7 +39,7 @@ namespace {
 					if(value)
 					{
 						speed.x = boost::lexical_cast<float> (value);
-					
+
 						value = strtok(0, ",");
 						if(value)
 						{

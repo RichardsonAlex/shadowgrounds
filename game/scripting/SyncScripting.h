@@ -14,7 +14,7 @@ namespace game
 
 	class SyncScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

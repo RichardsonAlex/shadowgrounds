@@ -80,7 +80,7 @@ namespace tracking
 		assert(trackerForCurrentlyRunningScript == UNIFIED_HANDLE_NONE);
 
 		trackerForCurrentlyRunningScript = this->unifiedHandle;
-		ScriptableTrackerObjectType::gameScripting->runTrackerScript(this->type->script.c_str(), "tick", this->unifiedHandle);		
+		ScriptableTrackerObjectType::gameScripting->runTrackerScript(this->type->script.c_str(), "tick", this->unifiedHandle);
 		trackerForCurrentlyRunningScript = UNIFIED_HANDLE_NONE;
 	}
 

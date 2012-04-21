@@ -21,7 +21,7 @@ template <class A> class /*ST3D_EXP_DLLAPI*/ IteratorIM_Set : public Iterator<A>
 
 	set<A> *ptrset;
 	typename set<A>::iterator it;
-	
+
 public:
 
 	void Next()
@@ -54,7 +54,7 @@ public:
 
 template <class A> class ST3D_EXP_DLLAPI ICreateIM_Set : public ICreate<A>
 {
-	
+
 	set<A> *ptrset;
 
 public:
@@ -79,7 +79,7 @@ template <class A> class ST3D_EXP_DLLAPI IteratorIM_PtrList : public Iterator<A>
 
 	PtrList<A> *ptrset;
 	PtrListIterator<A> it;
-	
+
 public:
 
 	void Next()
@@ -112,7 +112,7 @@ public:
 
 template <class A> class ST3D_EXP_DLLAPI ICreateIM_PtrList : public ICreate<A>
 {
-	
+
 	PtrList<A> *ptrset;
 
 public:

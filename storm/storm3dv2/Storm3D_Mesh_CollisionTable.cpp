@@ -141,7 +141,7 @@ void CollisionFace::RayTrace(const VC3 &position, const VC3 &direction, float ra
 
 	// Prepare to test V parameter
 	VC3 qvec(tvec.y * e01.z - tvec.z * e01.y, tvec.z * e01.x - tvec.x * e01.z, tvec.x * e01.y - tvec.y * e01.x);
-	
+
 	// Calculate V parameter and test bounds
 	float v = direction.x * qvec.x + direction.y * qvec.y + direction.z * qvec.z;
 	if((v < 0) || ((u + v) > det))
@@ -255,7 +255,7 @@ void Storm3D_Mesh_CollisionTable::ReBuild(Storm3D_Mesh *mesh)
 		// psd
 		CollisionFace *face = &faces[fi];
 		face->sphere.position = (face->vertex0 + face->vertex1 + face->vertex2) / 3;
-		
+
 		face->sphere.radius = face->sphere.position.GetSquareRangeTo(face->vertex0);
 		float tmp = face->sphere.position.GetSquareRangeTo(face->vertex1);
 		if(tmp > face->sphere.radius)

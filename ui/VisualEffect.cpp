@@ -188,10 +188,10 @@ namespace ui
 
 		visualObject->setPosition(this->position);
 		visualObject->setRotation(rotation.x, rotation.y, rotation.z);
-	
+
 	}
 
-	
+
 	void VisualEffect::moveBetween(const VC3 &position_, const VC3 &endPosition, const VC3 &rotation, float alpha, float scale)
 	{
 		if (visualObject == NULL)
@@ -249,7 +249,7 @@ namespace ui
 		if(particleEffect.get()) {
 			particleEffect->kill();
 		}
-	
+
 	}
 
 
@@ -263,12 +263,12 @@ namespace ui
 	{
 		this->position = position;
 		if(particleEffect.get())
-		{	
+		{
 			particleEffect->setPosition(position);
 			//particleEffect->setVelocity(position - oldPosition);
 		}
 		if(visualObject != NULL)
-		{	
+		{
 			visualObject->setPosition(position);
 		}
 	}
@@ -277,11 +277,11 @@ namespace ui
 	void VisualEffect::setRotation(const VC3 &rotation)
 	{
 		if(particleEffect.get())
-		{	
+		{
 			particleEffect->setRotation(rotation);
 		}
 		if(visualObject != NULL)
-		{	
+		{
 			visualObject->setRotation(rotation.x, rotation.y, rotation.z);
 		}
 	}
@@ -291,12 +291,12 @@ namespace ui
 	void VisualEffect::setRotation(const QUAT &rotation)
 	{
 		if(visualObject != NULL)
-		{	
+		{
 			// TODO: QUAT to axis angles...
 			//visualObject->setRotation(rotation.x, rotation.y, rotation.z);
 		}
 		if(particleEffect.get())
-		{	
+		{
 			particleEffect->setRotation(rotation);
 		}
 	}
@@ -316,7 +316,7 @@ namespace ui
 		}
 		if(particleEffect)
 			particleEffect->setPosition(position);
-		
+
 		if(particleEffect)
 			particleEffect->tick();
 
@@ -364,7 +364,7 @@ namespace ui
 	void VisualEffect::setParticleEffect(boost::shared_ptr<IParticleEffect> effect,
 		const Vector& velocity, const VC3 &rotation) {
 		particleEffect = effect;
-		if(particleEffect.get()) {	
+		if(particleEffect.get()) {
 			particleEffect->setPosition(position);
 			particleEffect->setVelocity(velocity);
 			particleEffect->setRotation(rotation);

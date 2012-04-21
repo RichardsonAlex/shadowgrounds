@@ -20,7 +20,7 @@ public:
 
 	// Data (public for speed)
 	A r,g,b;
-	
+
 	// Creation
 	TColor(A _r=0,A _g=0,A _b=0) : r(_r),g(_g),b(_b) {}
 	TColor(const A f[3]) : r(f[0]),g(f[1]),b(f[2]) {}
@@ -31,7 +31,7 @@ public:
 		return ((uint32_t)((((255)&0xff)<<24)|((((int)(b*255.0f))&0xff)<<16)|((((int)(g*255.0f))&0xff)<<8)|(((int)(r*255.0f))&0xff)));
 	}
 
-	TColor GetClamped() const			// Forces all colors in range [0,1]	
+	TColor GetClamped() const			// Forces all colors in range [0,1]
 	{
 		TColor nc(r,g,b);
 		if (nc.r>1.0f) nc.r=1.0f; else if (nc.r<0.0f) nc.r=0.0f;
@@ -59,7 +59,7 @@ public:
 	}
 
 	// Functions (these modify this color)
-	void Clamp()			// Forces all colors in range [0,1]	
+	void Clamp()			// Forces all colors in range [0,1]
 	{
 		if (r>1.0f) r=1.0f; else if (r<0.0f) r=0.0f;
 		if	(g>1.0f) g=1.0f; else if (g<0.0f) g=0.0f;
@@ -72,7 +72,7 @@ public:
 		if (g<0.0f) g=0.0f;
 		if (b<0.0f) b=0.0f;
 	}
-	
+
 	void ClampPositive()	// Forces all colors in range ]-n,1]
 	{
 		if (r>1.0f) r=1.0f;
@@ -95,7 +95,7 @@ public:
 	{
 		return TColor(r*other.r,g*other.g,b*other.b);
 	}
-	
+
 	TColor operator/(const TColor& other) const
 	{
 		return TColor(r/other.r,g/other.g,b/other.b);
@@ -105,7 +105,7 @@ public:
 	{
 		return TColor(r*num,g*num,b*num);
 	}
-	
+
 	TColor operator/(const A& num) const
 	{
 		return TColor(r/num,g/num,b/num);

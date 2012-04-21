@@ -67,7 +67,7 @@ void Water::setPosition(const VC3 &position)
 
 // based on current position and decoration...
 void Water::updateBoundaries()
-{	
+{
 	if(decoration) {
 		float sizeX, sizeY;
 		decoration->getBoundingQuadSize(&sizeX, &sizeY);
@@ -76,7 +76,7 @@ void Water::updateBoundaries()
 		minX = position.x - sizeX * 0.5f;
 		maxX = position.x + sizeX * 0.5f;
 		minY = position.z - sizeY * 0.5f;
-		maxY = position.z + sizeY * 0.5f;		
+		maxY = position.z + sizeY * 0.5f;
 	}
 }
 

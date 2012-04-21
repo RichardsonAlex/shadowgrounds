@@ -33,12 +33,12 @@ class CloudParticleSystemShape;
 
 class CloudParticleSystem : public GenParticleSystem
 {
-	boost::shared_ptr<CloudParticleSystemShape> m_shape;		
-	boost::shared_ptr<CloudParticleSystemEditables> m_eds;	
+	boost::shared_ptr<CloudParticleSystemShape> m_shape;
+	boost::shared_ptr<CloudParticleSystemEditables> m_eds;
 
 	CloudParticleSystem();
 public:
-	
+
 	static boost::shared_ptr<IParticleSystem> createNew();
 	boost::shared_ptr<IParticleSystem> clone();
 
@@ -55,7 +55,7 @@ public:
 	void tick(IStorm3D_Scene* scene);
 	void render(IStorm3D_Scene* scene);
 	void parseFrom(const editor::ParserGroup& pg, const util::SoundMaterialParser &materialParser);
-	
+
 	CloudParticleSystemEditables& getEditables();
 	const CloudParticleSystemEditables& getEditables() const;
 

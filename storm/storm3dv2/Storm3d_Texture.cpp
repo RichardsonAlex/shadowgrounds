@@ -767,7 +767,7 @@ bool Storm3D_Texture::loadDDS(const char *filename, const char *fileData) {
 		loadDDS_(compressed, mipmaps, w, h, fmt, data, glTextype, mult);
 		texfmt = fmt;
 	}
-	
+
 	storm3d_texture_allocs++;
 	//dx_handle->SetLOD(1);
 
@@ -876,7 +876,7 @@ Storm3D_Texture::Storm3D_Texture(Storm3D *s2,int _width,int _height,TEXTYPE ttyp
 		else if (width>4) width=4;
 		else if (width>2) width=2;
 		else if (width>1) width=1;
-		
+
 		if (height>4096) height=4096;
 		else if (height>2048) height=2048;
 		else if (height>1024) height=1024;

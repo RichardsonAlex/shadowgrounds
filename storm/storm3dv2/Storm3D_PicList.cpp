@@ -46,7 +46,7 @@ void Storm3D_PicList::Render(Storm3D_Scene &scene,int timedif)
 	// Set material active...
 	// Use only base texture, and no other parameters
 	if (material)
-	{	
+	{
 		material->ApplyBaseTextureOnly();
 	}
 	else

@@ -15,15 +15,15 @@ public:
 };
 
 class SprayParticleSystem : public GenParticleSystem {
-	boost::shared_ptr<SprayParticleSystemEditables> m_eds;	
+	boost::shared_ptr<SprayParticleSystemEditables> m_eds;
 
 	boost::shared_ptr<IParticleCollision> collision;
 
 	SprayParticleSystem();
 public:
-	
+
 	static boost::shared_ptr<IParticleSystem> createNew();
-	
+
 	boost::shared_ptr<IParticleSystem> clone();
 
 	void setParticlePosition(Vector& pos);
@@ -43,7 +43,7 @@ public:
 	void setCollision(boost::shared_ptr<IParticleCollision> &collision);
 	void setEmitterRotation(const QUAT &/*rotation*/) {}
 };
-	
+
 } // particle
 } // frozenbyte
 

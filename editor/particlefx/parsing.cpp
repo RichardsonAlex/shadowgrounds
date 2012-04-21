@@ -53,11 +53,11 @@ bool parseIn(ParserGroup& g, const std::string& name, Vector& value) {
 	const std::string& str = g.getValue(name, def);
 	if(str.empty())
 		return false;
-	
+
 	std::string x = "0";
 	std::string y = "0";
 	std::string z = "0";
-	
+
 	// default to zero
 
 	value.x = 0.0f;
@@ -85,7 +85,7 @@ bool parseIn(ParserGroup& g, const std::string& name, Vector& value) {
 	if(pos < str.size()) {
 		z = str;
 		z.erase(0, x.size()+1+y.size()+1);
-		value.z = convertFromString<float>(z, 0);	
+		value.z = convertFromString<float>(z, 0);
 	}
 
 	return true;
@@ -100,7 +100,7 @@ bool parseOut(ParserGroup& g, const std::string& name, const std::string& str) {
 
 bool parseOut(ParserGroup& g, const std::string& name, int value) {
 
-	
+
 	std::string str = convertToString<int>(value);
 
 	g.setValue(name, str);
@@ -122,7 +122,7 @@ bool parseOut(ParserGroup& g, const std::string& name, const Vector& value) {
 	std::string x = convertToString<float>(value.x);
 	std::string y = convertToString<float>(value.y);
 	std::string z = convertToString<float>(value.z);
-	
+
 	std::string str = x + "," + y + "," + z;
 
 	g.setValue(name, str);

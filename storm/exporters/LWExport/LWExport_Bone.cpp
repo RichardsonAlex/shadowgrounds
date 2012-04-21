@@ -25,7 +25,7 @@ bool validateBoneProperties(LWItemID id)
 	// No helper leafs
 	//if(!boneInfo->weightMap(id))
 	//	return false;
-	
+
 	return true;
 }
 

@@ -14,7 +14,7 @@ namespace game
 
 	class TrackingScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

@@ -59,7 +59,7 @@ namespace ui
 		FLASH_TYPE flashType;
 		std::string flashTypeScript;
 		std::string lowDetailVersion;
-		
+
 		SpotTypeProperties()
 			: fov(50.0f),
 			coneFov(40.0f),

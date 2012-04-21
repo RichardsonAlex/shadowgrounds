@@ -124,9 +124,9 @@ namespace game
 					VC3 accel = o->getAcceleration();
 					VC3 angaccel = o->getAngularAcceleration();
 
-					
 
-					
+
+
 
 					if (accel.GetSquareLength() >= smlist[smindex].requiredAcceleration * smlist[smindex].requiredAcceleration
 						|| angaccel.GetSquareLength() >= smlist[smindex].requiredAngularAcceleration * smlist[smindex].requiredAngularAcceleration)
@@ -196,7 +196,7 @@ namespace game
 					// TODO: some better pseudo-random logic here maybe...
 					int sndnum = rand() % soundlist.size();
 					// const char *soundfile = soundlist[sndnum].c_str();
-					
+
 					float volumeFactor = 1.0f;
 					std::string soundfile = soundlist[sndnum];
 
@@ -212,10 +212,10 @@ namespace game
 
 						if( sndnum < 0 )
 							sndnum = 0;
-						
+
 						if( sndnum > (signed)( soundlist.size() - 1 ) )
 							sndnum = (signed)( soundlist.size() - 1 );
-						
+
 						soundfile = soundlist[sndnum];
 						/*
 						// 40% - 100% volume factor (100% required force - 200% required force)

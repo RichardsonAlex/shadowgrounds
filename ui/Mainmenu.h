@@ -114,7 +114,7 @@ private:
 	int								difficultActiveSelection;
 	IOguiImage*						difficultImageSelectDown;
 	IOguiImage*						difficultImageSelectNorm;
-	
+
 	bool					fromGame;
 	bool firstUpdate;
 

@@ -10,7 +10,7 @@ class IMenuBase
 public:
 	IMenuBase() { }
 	virtual ~IMenuBase() { }
-	
+
 	virtual int  getType() const = 0;
 
 	virtual void hide() = 0;

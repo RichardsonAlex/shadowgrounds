@@ -80,7 +80,7 @@ int SoundLooper::playLoopedSound(SoundSample *start,
 			startEndTime[nextHandle] = curtime + startDuration;
 			loopEndTime[nextHandle] = startEndTime[nextHandle] + loopDuration;
 			endEndTime[nextHandle] = loopEndTime[nextHandle] + endDuration;
-			
+
 			volume[nextHandle] = DEFAULT_SOUND_EFFECT_VOLUME;
 			range[nextHandle] = range_;
 			priority[nextHandle] = priority_;
@@ -106,7 +106,7 @@ int SoundLooper::playLoopedSound(SoundSample *start,
 			Logger::getInstance()->debug("SoundLooper::playLoopedSound - Too many sounds playing.");
 			return -1;
 		}
-	}	
+	}
 	nextHandle = (nextHandle + 1) % SOUNDLOOPER_MAX_SOUNDS;
 	return ret;
 }
@@ -118,7 +118,7 @@ bool SoundLooper::isSoundStillLooping(int loopedSoundHandle, int key)
 		&& handleKey[loopedSoundHandle] == key)
 		return true;
 	else
-		return false;	
+		return false;
 }
 
 bool SoundLooper::isSoundStillPlaying(int loopedSoundHandle, int key)
@@ -155,7 +155,7 @@ bool SoundLooper::continueLoopedSound(int loopedSoundHandle,
 			}
 			return true;
 		}
-	}	
+	}
 	return false;
 }
 
@@ -360,14 +360,14 @@ void SoundLooper::run()
 			{
 				if (curTime > endEndTime[i])
 				{
-					playPhase[i] = PLAYPHASE_NONE;					
+					playPhase[i] = PLAYPHASE_NONE;
 				}
 			}
 
 			if (playPhase[i] != prevPhase)
 			{
 				// stop old sound
-				if (prevPhase == PLAYPHASE_START)			
+				if (prevPhase == PLAYPHASE_START)
 				{
 					//assert(startHandle[i] != -1);
 					soundMixer->stopSound(startHandle[i]);
@@ -425,7 +425,7 @@ void SoundLooper::run()
 
 		}
 	}
-	
+
 }
 
 

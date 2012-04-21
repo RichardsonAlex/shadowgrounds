@@ -14,7 +14,7 @@ namespace game
 
 	class DevScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

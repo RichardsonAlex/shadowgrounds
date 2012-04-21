@@ -155,7 +155,7 @@ namespace game
 	{
 #ifdef PHYSICS_PHYSX
 		boost::shared_ptr<frozenbyte::physics::StaticMesh> staticMeshSPtr = impl->getMesh(gamePhysics, position, rotation);
-		
+
 		// cooking failed
 		if(!staticMeshSPtr)
 		{

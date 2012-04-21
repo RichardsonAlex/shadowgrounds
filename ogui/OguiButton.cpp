@@ -54,7 +54,7 @@ OguiButton::~OguiButton()
 
 	parent->buttonDeleted(this);
 	og_delete_button((orvgui_but *)but);
-	
+
 	if (imageAutodel && image != NULL)
 		delete image;
 
@@ -63,10 +63,10 @@ OguiButton::~OguiButton()
 
 	if (imageDisabledAutodel && imageDisabled != NULL)
 		delete imageDisabled;
-	
+
 	if (imageHighlightedAutodel && imageHighlighted != NULL)
 		delete imageHighlighted;
-	
+
 	delete imageSelected;
 	imageSelected = NULL;
 
@@ -253,7 +253,7 @@ bool OguiButton::SetText(const char *text)
 		&& text != NULL
 		&& strcmp(((orvgui_but *)but)->text, text) == 0)
 		return false;
-	
+
 	if( ( text != NULL && !std::string( text ).empty() ) &&
 		( this->text.empty() ||	this->text.size() < strlen( text ) ||
 		this->text.substr( 0, strlen( text ) ) != text ) )
@@ -511,7 +511,7 @@ IOguiFont* OguiButton::GetTheFontCurrentlyInUse()
 {
 	orvgui_but* orv_button = (orvgui_but *)but;
 	IOguiFont* result = font;
-	
+
 	if( orv_button->enabled == 0 )
 	{
 		if( fontDisabled != NULL )

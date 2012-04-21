@@ -16,7 +16,7 @@ namespace game
 
 	class MissionScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

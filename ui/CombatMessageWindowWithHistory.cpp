@@ -63,7 +63,7 @@ CombatMessageWindowWithHistory::~CombatMessageWindowWithHistory()
 		delete messageBuffer[ i ];
 		messageBuffer[ i ] = NULL;
 
-		
+
 	}
 }
 

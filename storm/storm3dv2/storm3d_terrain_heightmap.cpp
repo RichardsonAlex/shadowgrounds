@@ -266,7 +266,7 @@ struct Storm3D_TerrainHeightmapData
 	frozenbyte::storm::VertexShader nvShadowShaderDirectional;
 	frozenbyte::storm::VertexShader nvShadowShaderPoint;
 	frozenbyte::storm::VertexShader nvShadowShaderFlat;
-	
+
 	frozenbyte::storm::VertexBuffer vertexBuffer;
 
 	std::vector<TerrainBlock> blocks;
@@ -390,7 +390,7 @@ struct Storm3D_TerrainHeightmapData
 
 		positionDelta.x = size.x / blockAmount.x;
 		positionDelta.y = size.z / blockAmount.y;
-		
+
 		float radiusX = positionDelta.x * 1.5f / 2.f;
 		float radiusY = positionDelta.y * 1.5f / 2.f;
 		if(radiusX > radiusY)
@@ -483,7 +483,7 @@ struct Storm3D_TerrainHeightmapData
 
 		if(!scene.GetCamera()->TestSphereVisibility(position, radius) && radius > 200)
 			return 10000.f;
-		
+
 		return range;
 	}
 
@@ -507,7 +507,7 @@ struct Storm3D_TerrainHeightmapData
 
 		Frustum frustum = static_cast<Storm3D_Camera *> (scene.GetCamera())->getFrustum();
 		Sphere sphere;
-			
+
 		for(int j = 0; j < blockAmount.y; ++j)
 		for(int i = 0; i < blockAmount.x; ++i)
 		{
@@ -618,7 +618,7 @@ struct Storm3D_TerrainHeightmapData
 	VC2I convertWorldToObstacleMap(const VC2 &position) const
 	{
 		VC3 mmult_world_map=VC3((float)(resolution.x-1),65535.0f,(float)(resolution.y-1))/size;
-		
+
 		float obstacle_map_multiplier = (float)this->obstaclemapMultiplier;
 
 		return VC2I(
@@ -629,7 +629,7 @@ struct Storm3D_TerrainHeightmapData
 
 	VC2 convertObstacleMapToWorld(const VC2I &position) const
 	{
-		VC3 mmult_map_world=size/VC3((float)(resolution.x-1),65535.0f,(float)(resolution.y-1));	
+		VC3 mmult_map_world=size/VC3((float)(resolution.x-1),65535.0f,(float)(resolution.y-1));
 
 		float obstacle_map_multiplier = (float)this->obstaclemapMultiplier;
 
@@ -714,7 +714,7 @@ void Storm3D_TerrainHeightmap::setHeightMap(const unsigned short *buffer, const 
 	{
 		for(i = 0 ; i < resolution.x; ++i)
 			tempBuffer[j * (resolution.x + 1) + i] = buffer[j * resolution.x + i];
-	}	
+	}
 
 	// Clear safe borders
 	for(i = 0; i <= resolution.x; ++i)
@@ -723,7 +723,7 @@ void Storm3D_TerrainHeightmap::setHeightMap(const unsigned short *buffer, const 
 		tempBuffer[j * (resolution.x + 1) + resolution.x] = 0;
 
 	data->collResolution = resolution * heightmapMultiplier;
-	
+
 	// Create correctly interpolated collision map
 	{
 		int bufferSize = data->collResolution.x * (data->collResolution.y + 1);
@@ -1240,9 +1240,9 @@ void Storm3D_TerrainHeightmap::setBlendMap(int blockIndex, Storm3D_Texture &blen
 	assert(textureB >= -1 && textureB < int(data->textures.size()));
 
 	std::vector<TexturePass> &passes = data->blocks[blockIndex].passes;
-	
+
 	passes.push_back(TexturePass(frozenbyte::storm::createSharedTexture(&blend), textureA, textureB));
-	std::sort(passes.begin(), passes.end());	
+	std::sort(passes.begin(), passes.end());
 }
 
 //! Set partial blend map
@@ -1262,9 +1262,9 @@ void Storm3D_TerrainHeightmap::setPartialBlendMap(int blockIndex, int subMask, S
 	assert(textureB >= 0 && textureB < int(data->textures.size()));
 
 	std::vector<TexturePass> &passes = data->blocks[blockIndex].passes;
-	
+
 	passes.push_back(TexturePass(frozenbyte::storm::createSharedTexture(&blend), textureA, textureB, subMask));
-	std::sort(passes.begin(), passes.end());	
+	std::sort(passes.begin(), passes.end());
 }
 
 //! Reset blends of given block index
@@ -1519,7 +1519,7 @@ VC3 Storm3D_TerrainHeightmap::solveObstacleNormal(const VC2I &obstaclePosition, 
 		VC3 unsolved = -fromDirection;
 		return unsolved;
 	}
-		
+
 	if (!blockedR && blockedL && blockedU && blockedD)
 		return VC3(0,0,1);
 	if (blockedR && !blockedL && blockedU && blockedD)
@@ -1580,7 +1580,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 		int obstacle_minus_heightmap_shift = obstacle_map_mult_shift - collision_heightmap_shift;
 
 		VC3 mmult_world_map=VC3((float)data->collResolution.x,65535.0f,(float)data->collResolution.y)/data->size;
-		VC3 mmult_map_world=data->size/VC3((float)data->collResolution.x,65535.0f,(float)data->collResolution.y);	
+		VC3 mmult_map_world=data->size/VC3((float)data->collResolution.x,65535.0f,(float)data->collResolution.y);
 
 		// damn, can't have this here if the raytrace is const... =/
 		//if (collisionMap == NULL)
@@ -1752,12 +1752,12 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 
 					float planeRange = planeYDist / directionNormalized.y;
 					VC3 planeHitPos = position + directionNormalized * planeRange;
-					
+
 					VC2 planeHit2D = VC2(planeHitPos.x, planeHitPos.z);
 					float mapHeightAtPlaneHit = getHeight(planeHit2D);
 
 					float planeHitError = mapHeightAtPlaneHit - planeHitPos.y;
-				
+
 					// HACK: if too much height difference, don't calculate position on plane...
 					if (fabs(planeHitError) >= 1.0f)
 					{
@@ -1925,7 +1925,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 				rti.model = 0;
 				rti.object = 0;
 				rti.range = float(i) / float(length) * rayLength;
-				
+
 				rti.position = position + directionNormalized * rti.range;
 				return;
 			}

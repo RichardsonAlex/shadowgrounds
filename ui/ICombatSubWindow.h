@@ -15,6 +15,6 @@ public:
 
 	virtual void updateAnimation() { }
 };
-	
+
 } // end of namespace ui
 #endif

@@ -43,7 +43,7 @@ void LaunchDialogHandler::updateInfoText( )
 		std::string modDir = modSelector.getDescription(modIndex);
 		text += modDir;
 	}
-	
+
 	SendMessage( hwnd_text, WM_SETTEXT, (WPARAM)0, (LPARAM)(LPCTSTR)text.c_str() );
 
 }

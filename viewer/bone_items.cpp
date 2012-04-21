@@ -20,7 +20,7 @@
 #include <istorm3d_bone.h>
 
 namespace frozenbyte {
-namespace viewer {	
+namespace viewer {
 
 struct BoneItemsData
 {
@@ -129,7 +129,7 @@ struct BoneItemsData
 	void removeOld(IStorm3D_Model *model)
 	{
 		std::vector<IStorm3D_Model_Object *> removeList;
-		
+
 		boost::scoped_ptr<Iterator<IStorm3D_Model_Object *> > objectIterator(model->ITObject->Begin());
 		for(; !objectIterator->IsEnd(); objectIterator->Next())
 		{
@@ -201,7 +201,7 @@ void BoneItems::load(const editor::Parser &parser)
 	for(int i = 0; i < helpers; ++i)
 	{
 		const editor::ParserGroup &g = group.getSubGroup(std::string("Helper") + boost::lexical_cast<std::string> (i));
-		
+
 		const std::string &helper = g.getValue("Name");
 		if(helper.empty())
 			continue;

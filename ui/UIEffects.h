@@ -148,7 +148,7 @@ namespace ui
 
 			OguiWindow *fadeWindow;
 			char *fadeImageFilename;
-			
+
 			int fadeTimeLeft;
 			int fadeTotalTime;
 			bool fadingIn;

@@ -225,7 +225,7 @@ namespace filesystem {
 			ZipFileList::iterator it = fileList.begin();
 			for(; it != fileList.end(); ++it)
 			{
-				const std::string &file = it->first;				
+				const std::string &file = it->first;
 				if(!containsToken(file, dir, 0))
 					continue;
 
@@ -277,7 +277,7 @@ namespace filesystem {
 			convertLower(file);
 
 			it = fileList.find(file);
-			
+
 			/*
 			ZipFileList::iterator iter;
 			int t = file.find("pictures/startup.dds", 0);
@@ -338,7 +338,7 @@ namespace filesystem {
 					release();
 					return false;
 				}
-	
+
 				currentPosition = 0;
 			}
 
@@ -362,7 +362,7 @@ namespace filesystem {
 				return;
 			if(unzOpenCurrentFile(zipData->fileId) != UNZ_OK)
 				return;
-			
+
 			if(offset > 0 && if(unzSetOffset(zipData->fileId, readBytes) != UNZ_OK)
 				return;
 
@@ -564,7 +564,7 @@ void ZipPackage::findFiles(const std::string &dir, const std::string &extension,
 InputStream ZipPackage::getFile(const std::string &fileName)
 {
 	InputStream inputStream;
-	
+
 	ZipFileList::iterator it;
 	if(data->zipData->findFile(fileName, it))
 	{

@@ -477,7 +477,7 @@ const LocaleResource *LocaleManager::getResource(int resourceId) const
 		if(l.resources[resourceId])
 			return l.resources[resourceId].get();
 	}
-	
+
 	return 0;
 }
 
@@ -536,7 +536,7 @@ const char *LocaleManager::getString(int resourceId, const char *key) const
 	file.close();
 */
 // #endif
-	
+
 	Logger::getInstance()->error(message.c_str());
 	return "(LOCALIZATION MISSING)";
 }

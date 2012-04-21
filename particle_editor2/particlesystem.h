@@ -55,7 +55,7 @@ public:
 	virtual ~IParticleSystem() {}
 	virtual boost::shared_ptr<IParticleSystem> clone()=0;
 	virtual bool isDead()=0;
-	virtual void kill()=0;		
+	virtual void kill()=0;
 	virtual void init(IStorm3D* s3d, IStorm3D_Scene* scene)=0;
 	virtual void tick(IStorm3D_Scene* scene)=0;
 	virtual void render(IStorm3D_Scene* scene)=0;
@@ -138,7 +138,7 @@ public:
 	float lineLenght;
 	int maxParticles;
 	bool dieAfterEmission;
-	float velocityInheritanceFactor;	
+	float velocityInheritanceFactor;
 	Vector emitterPosition;
 	Vector emitterVariation;
 	float launchSpeed;
@@ -256,7 +256,7 @@ public:
 class GenParticleSystem : public IParticleSystem {
 protected:
 
-	std::vector<Particle> m_parts;	
+	std::vector<Particle> m_parts;
 	std::vector< boost::shared_ptr<IParticleForce> > m_forces;
 //	std::vector<Storm3D_PointParticle> m_mesh;
 //	std::vector<Storm3D_LineParticle> m_lineMesh;
@@ -285,7 +285,7 @@ protected:
 	boost::shared_ptr<IParticleArea> area;
 	float emit_factor;
 
-	boost::shared_ptr<std::vector<Particle> > m_render_fluid_parts;	
+	boost::shared_ptr<std::vector<Particle> > m_render_fluid_parts;
 	boost::shared_ptr<PhysicsFluid> fluid;
 	boost::shared_ptr<ParticlePhysics> physics;
 
@@ -312,7 +312,7 @@ public:
 	int getNumForces() const;
 	IParticleForce* getForce(int i);
 	void removeForce(int i);
-	
+
 	virtual void setParticlePosition(Vector& pos)=0;
 	virtual void setParticleVelocity(Vector& vel, const Vector& direction, float speed, const GenParticleSystemEditables& eds)=0;
 	virtual void *getId() const = 0;

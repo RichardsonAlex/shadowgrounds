@@ -108,12 +108,12 @@ MenuBaseImpl::MenuBaseImpl( OguiWindow* window ) :
 {
 	buttonW		= getLocaleGuiInt( "gui_menu_common_button_w", 0 );
 	buttonH		= getLocaleGuiInt( "gui_menu_common_button_h", 0 );
-	
+
 	buttonAddX	= getLocaleGuiInt( "gui_menu_common_button_add_x", 0 );
 	buttonAddY	= getLocaleGuiInt( "gui_menu_common_button_add_y", 28 );
 	separatorH		= getLocaleGuiInt( "gui_menu_common_separator_h", 35 );
 	separatorW		= getLocaleGuiInt( "gui_menu_common_separator_w", 0 );
-	
+
 	buttonNormal	= getLocaleGuiString( "gui_menu_common_button_img_normal" );
 	buttonHigh		= getLocaleGuiString( "gui_menu_common_button_img_high" );
 	buttonDown		= getLocaleGuiString( "gui_menu_common_button_img_down" );
@@ -129,7 +129,7 @@ MenuBaseImpl::MenuBaseImpl( OguiWindow* window ) :
 	smallButtonH			= getLocaleGuiInt( "gui_menu_common_smallbutton_h", 0 );
 	smallButtonAddX			= getLocaleGuiInt( "gui_menu_common_smallbutton_add_x", 0 );
 	smallButtonAddY			= getLocaleGuiInt( "gui_menu_common_smallbutton_add_y", 0 );
-	
+
 	closeMeButtonX = getLocaleGuiInt( "gui_menu_common_closebutton_x", 0 );
 	closeMeButtonY = getLocaleGuiInt( "gui_menu_common_closebutton_y", 0 );
 	closeMeButtonW = getLocaleGuiInt( "gui_menu_common_closebutton_w", 0 );
@@ -256,7 +256,7 @@ void MenuBaseImpl::highlightSelectButton( int i )
 
 			if( imageSelectDown )
 				it->second->SetImage( imageSelectDown );
-			
+
 			SelectionButtonDescs* descs = NULL;
 
 			if( it->second->GetArgument() != NULL )
@@ -289,8 +289,8 @@ void MenuBaseImpl::downlightSelectButton( int i )
 			FB_ASSERT( it->second );
 
 			if( imageSelectNorm )
-				it->second->SetImage( imageSelectNorm );	
-		
+				it->second->SetImage( imageSelectNorm );
+
 			SelectionButtonDescs* descs = NULL;
 
 			if( it->second->GetArgument() != NULL )
@@ -325,7 +325,7 @@ void MenuBaseImpl::CursorEvent( OguiButtonEvent* eve )
 		int i = eve->triggerButton->GetId();
 		std::map< int, OguiButton* >::iterator it;
 		it = selectButtons.find( i );
-		
+
 		if ( i > numberOfWorkingSelectButtons && i < (int)selectButtons.size() && it != selectButtons.end() )
 		{
 			if( game )
@@ -371,7 +371,7 @@ void MenuBaseImpl::update()
 
 			if( editCursorDrawn ) editBufferAfter = "_";
 			else editBufferAfter = "";
-			
+
 			editButtonP->SetText( ( editBufferBefore + editBuffer + editBufferAfter ).c_str() );
 		}
 	}
@@ -382,7 +382,7 @@ void MenuBaseImpl::update()
 
 void MenuBaseImpl::readKey( char ascii, int keycode, const char *keycodeName )
 {
-	
+
 
 	if( editButtonP )
 	{
@@ -424,7 +424,7 @@ void MenuBaseImpl::readKey( char ascii, int keycode, const char *keycodeName )
 		}
 	}
 
-	
+
 }
 
 void MenuBaseImpl::handleEsc()
@@ -537,12 +537,12 @@ OguiButton*	MenuBaseImpl::addSmallButton( const std::string& text, int command, 
 
 	b->SetEventMask( OGUI_EMASK_CLICK |  OGUI_EMASK_OVER );
 	b->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-	
+
 	if( smallButtonDisabledImage == NULL && !smallButtonDisabled.empty() )
 	{
 		smallButtonDisabledImage = ogui->LoadOguiImage( smallButtonDisabled.c_str() );
 	}
-	
+
 	if( smallButtonDisabledImage )
 	  b->SetDisabledImage( smallButtonDisabledImage );
 
@@ -567,8 +567,8 @@ void MenuBaseImpl::addCloseButton( const std::string& text, int command, IOguiFo
 
 
 	b->SetEventMask( OGUI_EMASK_CLICK |  OGUI_EMASK_OVER );
-	
-	
+
+
 	closeMeButtonX += closeMeButtonAddX;
 	closeMeButtonY += closeMeButtonAddY;
 
@@ -621,10 +621,10 @@ void MenuBaseImpl::addHeaderText( const std::string& text, IOguiFont* font )
 {
 	assert( ogui );
 	assert( win );
-	
+
 	headerText = ogui->CreateTextLabel( win, headerTextX, headerTextY, headerTextW, headerTextH, text.c_str() );
 	headerText->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-	
+
 	if ( font )
 		headerText->SetFont( font );
 

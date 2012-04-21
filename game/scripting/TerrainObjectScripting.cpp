@@ -81,7 +81,7 @@ namespace game
 				sp->error("MiscScripting::process - getTerrainObjectMetaValueString parameter missing (terrain object meta key name expected).");
 				gsd->setStringValue(NULL);
 			}
-			break;			
+			break;
 
 		case GS_CMD_hasTerrainObjectMetaValueString:
 			if (stringData != NULL)
@@ -115,7 +115,7 @@ namespace game
 				sp->error("MiscScripting::process - hasTerrainObjectMetaValueString parameter missing (terrain object meta key name expected).");
 				*lastValue = 0;
 			}
-			break;			
+			break;
 
 		case GS_CMD_getTerrainObjectVariable:
 			if (stringData != NULL)
@@ -152,7 +152,7 @@ namespace game
 				sp->error("MiscScripting::process - getTerrainObjectVariable parameter missing (terrain object variable name expected).");
 				*lastValue = 0;
 			}
-			break;			
+			break;
 
 		case GS_CMD_setTerrainObjectVariable:
 			if (stringData != NULL)
@@ -184,7 +184,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - setTerrainObjectVariable parameter missing (terrain object variable name expected).");
 			}
-			break;			
+			break;
 
 		case GS_CMD_changeTerrainObjectTo:
 			if (stringData != NULL)
@@ -219,7 +219,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - changeTerrainObjectTo, parameter missing (terrain object variable name expected).");
 			}
-			break;			
+			break;
 
 		case GS_CMD_deleteTerrainObject:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -239,7 +239,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - deleteTerrainObject, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_setTerrainObjectDamageTextureFadeFactorToFloatValue:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -259,7 +259,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - setTerrainObjectDamageTextureFadeFactor, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_doesReplacementForTerrainObjectExist:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -288,7 +288,7 @@ namespace game
 				sp->error("MiscScripting::process - getReplacementForTerrainObject, invalid unified handle.");
 				*lastValue = 0;
 			}
-			break;			
+			break;
 
 		case GS_CMD_getReplacementForTerrainObject:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -313,7 +313,7 @@ namespace game
 				sp->error("MiscScripting::process - getReplacementForTerrainObject, invalid unified handle.");
 				gsd->unifiedHandle = UNIFIED_HANDLE_NONE;
 			}
-			break;			
+			break;
 
 		case GS_CMD_findClosestTerrainObjectOfMaterial:
 			if (stringData != NULL)
@@ -335,7 +335,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - findClosestTerrainObjectOfMaterial parameter missing.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_setTerrainObjectByIdString:
 			if (stringData != NULL)
@@ -355,7 +355,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - setTerrainObjectByIdString parameter missing.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_getTerrainObjectPosition:
 			// NOTE: this is the same as getUnifiedHandleObjectPosition, but for terrain object only.
@@ -378,7 +378,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - getTerrainObjectPosition, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_getTerrainObjectIdString:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -400,7 +400,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - getTerrainObjectIdString, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_findClosestTerrainObjectWithFilenamePart:
 			if (stringData != NULL)
@@ -422,7 +422,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - findClosestTerrainObjectWithFilenamePart parameter missing.");
 			}
-			break;			
+			break;
 
 		default:
 			sp->error("MiscScripting::process - Unknown command.");

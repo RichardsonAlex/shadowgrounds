@@ -76,7 +76,7 @@ bool SidewaysUnitActor::setPathTo(Unit *unit, const VC3 &destination_)
 {
 	VC3 destination = destination_;
 	frozenbyte::ai::Path *path = solvePath(unit, unit->getPosition(), destination);
-	
+
 	// luckily, getPath may modify the destination value, if it is blocked
 	// so no need to check that here.
 
@@ -91,7 +91,7 @@ bool SidewaysUnitActor::setPathTo(Unit *unit, const VC3 &destination_)
 			game->gameMap->getScaledHeightAt(destination.x, destination.z),
 			destination.z));
 		return true;
-	} else {		
+	} else {
 		unit->setPath(NULL);
 		unit->setFinalDestination(unit->getPosition());
 		unit->setWaypoint(unit->getPosition());
@@ -172,7 +172,7 @@ void SidewaysUnitActor::actDirectSidewaysControls(Unit *unit)
 	cameraFrontVec.Normalize();
 	VC3 cameraSideVec = cameraFrontVec.GetCrossWith(upvec);
 
-	// translate movement direction from camera coord system to global ocoord. system	
+	// translate movement direction from camera coord system to global ocoord. system
 	// this is the actual movement direction vector.
 	VC3 globalDirVec = (cameraFrontVec * controlDirVec.GetDotWith(controlFrontVec)) + (cameraSideVec * controlDirVec.GetDotWith(controlSideVec));
 
@@ -392,7 +392,7 @@ void SidewaysUnitActor::act(Unit *unit)
 	float rotationAngle = 0.0f;
 
 	UnitActAnimationRequests animRequests;
-	
+
 	// animated units don't do normal acting...
 	if (unit->isAnimated())
 	{

@@ -63,7 +63,7 @@ namespace editor {
 	std::string mission_id_global;
 
 namespace {
-	
+
 	IStorm3D_Font *font = 0;
 
 	struct NullDeleter
@@ -95,13 +95,13 @@ namespace {
 			font->AddTexture(texture);
 			font->SetTextureRowsAndColums(8, 8);
 			font->SetCharacters(buff.c_str(), &widths[0]);
-			font->SetColor(COL(1.0f, 1.0f, 1.0f));	
+			font->SetColor(COL(1.0f, 1.0f, 1.0f));
 		}
 		*/
 
 		font = storm.CreateNewFont();
 		font->SetFont("Times New Roman", 0, 20, false, false);
-		font->SetColor(COL(1.0f, 1.0f, 1.0f));	
+		font->SetColor(COL(1.0f, 1.0f, 1.0f));
 	}
 
 	void freeFont()
@@ -521,7 +521,7 @@ namespace {
 	class QuitCommand: public ICommand
 	{
 		Window &window;
-	
+
 	public:
 		QuitCommand(Window &window_)
 		:	window(window_)
@@ -782,7 +782,7 @@ namespace {
 						std::string top_file = "";
 						std::string fileName = iterator.getFileName();
 						while(!fileName.empty())
-						{							
+						{
 							if(top_file.empty() || top_file < fileName)
 							{
 								top_file = fileName;

@@ -52,7 +52,7 @@ public:
 
 	// Make from (conversion)
 	void MakeFromNormalAndRange(const Vec3<A> &_planenormal,A _range_to_origin)
-	{	
+	{
 		planenormal=_planenormal;
 		range_to_origin=_range_to_origin;
 	}
@@ -175,7 +175,7 @@ public:
 	}
 
 	void ProjectVector(Vec3<A> &vector) const
-	{	
+	{
 		A range=planenormal.GetDotWith(vector)-range_to_origin;
 		vector-=planenormal*range;
 	}
@@ -195,7 +195,7 @@ public:
 	}
 
 	const Vec3<A> GetProjectedVector(const Vec3<A> &vector) const
-	{	
+	{
 		Vec3<A> temp=vector;
 		ProjectVector(temp);
 		return temp;

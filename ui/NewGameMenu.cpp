@@ -144,7 +144,7 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	startGame( NULL )
 {
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	FB_ASSERT( o_gui );
 	FB_ASSERT( menu );
 	FB_ASSERT( fonts );
@@ -181,10 +181,10 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 #ifdef GAME_MODE_OPTION_ENABLED
 		addText( textGameMode, textBigX, textBigY, textBigW, textBigH, fonts->big.normal );
 #endif
-		
+
 
 		std::string	textDifficultyLevel = getLocaleGuiString( "gui_newgamemenu_text_difficultylevel" );
-		
+
 		textBigX = getLocaleGuiInt( "gui_newgamemenu_text_difficultylevel_x", 0 );
 		textBigY = getLocaleGuiInt( "gui_newgamemenu_text_difficultylevel_y", 0 );
 		textBigW = getLocaleGuiInt( "gui_newgamemenu_text_difficultylevel_w", 0 );
@@ -236,7 +236,7 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		selectGameModeButton( selectedGameplaySelection );
 #endif
 
-	
+
 	{
 		int i;
 		for( i = 0; i < 4; i++ )
@@ -244,14 +244,14 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 			std::string name = gameProfiles->getCurrentProfile( i );
 			if( name.empty() )
 				name = none;
-			
+
 			if( coopPlayerNames.find( convertToPlayerNum( i ) ) == coopPlayerNames.end() )
 				coopPlayerNames.insert( std::pair< int, std::string >( convertToPlayerNum( i ), name ) );
 			else coopPlayerNames[ convertToPlayerNum( i ) ] = name;
 
 		}
 	}
-	
+
 #ifdef GAME_MODE_OPTION_ENABLED
 	if( selectedGameplaySelection == COMMANDS_MULTIPLAYER )
 		createCooperativeMenu();
@@ -284,7 +284,7 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	}
 	else
 	{
-		
+
 		closeMenuByEsc = true;
 		editHandle = game->gameUI->getController(0)->addKeyreader( this );
 		// debugKeyreader( editHandle, false, "CreditsMenu::CreditsMenu()" );
@@ -305,12 +305,12 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		tutorialHintsButton = new OguiCheckBox( win, ogui, x, y, w, h,
 			img_norm, "", "",
 			img_fill,	"", "", 0 );
-		
+
 		tutorialHintsButton->setText( text, OguiCheckBox::TEXT_ALIGN_RIGHT, text_w, fonts->medium.highlighted, OguiButton::TEXT_V_ALIGN_TOP  );
 		tutorialHintsButton->setValue( SimpleOptions::getBool(DH_OPT_B_SHOW_TUTORIAL_HINTS) );
 	}
 #endif
-	
+
 	buttonPaddingString = "";
 }
 
@@ -332,13 +332,13 @@ NewGameMenu::~NewGameMenu()
 		buttons.pop_front();
 	}
 
-	
+
 	while( textLabels.empty() == false )
 	{
 		delete textLabels.front();
 		textLabels.pop_front();
 	}
-	
+
 	{
 		delete coopCaptureEvents;
 		coopCaptureEvents = NULL;
@@ -352,7 +352,7 @@ NewGameMenu::~NewGameMenu()
 		delete coopBigText;
 		coopBigText = NULL;
 	}
-	
+
 	{
 		std::map< int, OguiButton* >::iterator i;
 		for( i = difficultButtons.begin(); i != difficultButtons.end(); ++i )
@@ -487,7 +487,7 @@ void NewGameMenu::applyChanges()
 
 void NewGameMenu::CursorEvent( OguiButtonEvent* eve )
 {
-	
+
 	if( eve->eventType == OGUI_EMASK_CLICK )
 	{
 		if( eve->triggerButton->GetId() >= COMMANDS_BONUSOPTION_BUTTONS )
@@ -497,10 +497,10 @@ void NewGameMenu::CursorEvent( OguiButtonEvent* eve )
 			return;
 #endif
 		}
-		
+
 		if( eve->triggerButton == coopCaptureEvents )
 		{
-			
+
 			closeCoopProfileMenu();
 			return;
 		}
@@ -515,7 +515,7 @@ void NewGameMenu::CursorEvent( OguiButtonEvent* eve )
 		case COMMANDS_SINGLEPLAYER:
 			if( gameModeActiveSelection == COMMANDS_MULTIPLAYER )
 				freeCooperativeMenu();
-			
+
 			selectGameModeButton( eve->triggerButton->GetId() );
 			break;
 
@@ -533,7 +533,7 @@ void NewGameMenu::CursorEvent( OguiButtonEvent* eve )
 		case COMMANDS_EXTREMELY_HARD:
 			selectDifficultButton( eve->triggerButton->GetId() );
 			break;
-		
+
 		case COMMANDS_PLAYER1:
 		case COMMANDS_PLAYER2:
 		case COMMANDS_PLAYER3:
@@ -545,7 +545,7 @@ void NewGameMenu::CursorEvent( OguiButtonEvent* eve )
 		default:
 			break;
 		}
-		
+
 	}
 	else if(eve->eventType == OGUI_EMASK_OVER || eve->eventType == OGUI_EMASK_LEAVE)
 	{
@@ -629,18 +629,18 @@ void NewGameMenu::menuStartGame()
 
 			i->second = none;
 		}
-		
+
 		int j;
 		num_of_players = (int)temp.size();
 		for( j = 0; j < (int)temp.size(); j++ )
 		{
 			coopPlayerNames[ convertToPlayerNum( j ) ] = temp[ j ];
 		}
-	
+
 		if( num_of_players < 2 )
 			return;
 	}
-	
+
 	applyChanges();
 
 	if( gameModeActiveSelection == COMMANDS_MULTIPLAYER )
@@ -652,7 +652,7 @@ void NewGameMenu::menuStartGame()
 			if( num_of_players > c )
 			{
 				SimpleOptions::setBool( DH_OPT_B_1ST_PLAYER_ENABLED + c, true );
-				
+
 				GameController* gameController = game->getGameUI()->getController( c );
 
 				{
@@ -663,7 +663,7 @@ void NewGameMenu::menuStartGame()
 
 					assert( foo == gameController->getControllerType() );
 				}
-				
+
 				if( gameController->controllerTypeHasMouse() )
 				{
 					SimpleOptions::setBool( DH_OPT_B_1ST_PLAYER_HAS_CURSOR + c, true );
@@ -673,7 +673,7 @@ void NewGameMenu::menuStartGame()
 					SimpleOptions::setBool( DH_OPT_B_1ST_PLAYER_HAS_CURSOR + c, false );
 				}
 				SimpleOptions::setInt( DH_OPT_I_1ST_PLAYER_CONTROL_SCHEME + c, gameController->getControllerType() );
-				
+
 			}
 		}
 	}
@@ -723,7 +723,7 @@ void NewGameMenu::createDifficultyButtons()
 	std::string optionsDifficultButtonNormal =	getLocaleGuiString( "gui_optionsmenu_difficult_image_normal" );
 	std::string optionsDifficultButtonDown =	getLocaleGuiString( "gui_optionsmenu_difficult_image_down" );
 	std::string optionsDifficultButtonHigh =	getLocaleGuiString( "gui_optionsmenu_difficult_image_high" );
-	
+
 	std::string optionsEasyText =	getLocaleGuiString( "gui_optionsmenu_text_easy" );
 	std::string optionsNormalText = getLocaleGuiString( "gui_optionsmenu_text_normal" );
 	std::string optionsHardText =	getLocaleGuiString( "gui_optionsmenu_text_hard" );
@@ -743,7 +743,7 @@ void NewGameMenu::createDifficultyButtons()
 	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, optionsNormalText, COMMANDS_NORMAL );
-	
+
 	difficultButtonX += difficultButtonAddX;
 	difficultButtonY += difficultButtonAddY;
 
@@ -854,7 +854,7 @@ void NewGameMenu::selectDifficultButton( int i )
 			if ( it != difficultButtons.end() )
 			{
 				FB_ASSERT( it->second );
-				it->second->SetImage( difficultImageSelectDown );	
+				it->second->SetImage( difficultImageSelectDown );
 
 				if( fontSelectDown )
 						it->second->SetFont( fontSelectDown );
@@ -862,7 +862,7 @@ void NewGameMenu::selectDifficultButton( int i )
 				difficultActiveSelection = i;
 			}
 		}
-	}	
+	}
 }
 
 //.............................................................................
@@ -881,11 +881,11 @@ void NewGameMenu::addDifficultButton( int x, int y, int w, int h,
 		button_down.empty()?NULL:button_down.c_str(),
 		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
-	
+
 	b->SetListener( this );
 	b->SetEventMask( OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE );
 	// b->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-	
+
 	if ( font ) b->SetFont( font );
 	if ( high ) b->SetHighlightedFont( high );
 	if ( down ) b->SetDownFont( down );
@@ -944,14 +944,14 @@ void NewGameMenu::createGameModeButtons()
 		modeCoop, COMMANDS_MULTIPLAYER );
 
 	selectGameModeButton( COMMANDS_SINGLEPLAYER );
-	
+
 }
 
 //.............................................................................
 
 void NewGameMenu::setGameMode( int gamemode )
 {
-	
+
 }
 
 //.............................................................................
@@ -983,7 +983,7 @@ void NewGameMenu::selectGameModeButton( int i )
 			if ( it != gameModeButtons.end() )
 			{
 				FB_ASSERT( it->second );
-				// it->second->SetImage( difficultImageSelectDown );	
+				// it->second->SetImage( difficultImageSelectDown );
 
 				if( fontSelectDown )
 					it->second->SetFont( fontSelectDown );
@@ -1009,10 +1009,10 @@ void NewGameMenu::addGameModeButton( int x, int y, int w, int h, const std::stri
 		button_down.empty()?NULL:button_down.c_str(),
 		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
-	
+
 	b->SetListener( this );
 	b->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-	
+
 	if ( font ) b->SetFont( font );
 	if ( high ) b->SetHighlightedFont( high );
 	if ( down ) b->SetDownFont( down );
@@ -1028,7 +1028,7 @@ void NewGameMenu::createCooperativeMenu()
 
 	{
 		std::string	text = getLocaleGuiString( "gui_newgamemenu_text_coopprofile" );
-			
+
 		int x = getLocaleGuiInt( "gui_newgamemenu_text_coopprofile_x", 0 );
 		int y = getLocaleGuiInt( "gui_newgamemenu_text_coopprofile_y", 0 );
 		int w = getLocaleGuiInt( "gui_newgamemenu_text_coopprofile_w", 0 );
@@ -1044,7 +1044,7 @@ void NewGameMenu::createCooperativeMenu()
 	buttonY	= getLocaleGuiInt( "gui_newgamemenu_coopprofile_y", 0 );
 	buttonW	= getLocaleGuiInt( "gui_newgamemenu_coopprofile_w", getLocaleGuiInt( "gui_menu_common_button_w", 0 ) );
 	buttonH	= getLocaleGuiInt( "gui_newgamemenu_coopprofile_h", getLocaleGuiInt( "gui_menu_common_button_h", 0 ) );
-	
+
 	buttonPaddingString = "";
 
 	addSelectionButton( getCoopPlayerName( COMMANDS_PLAYER1 ), COMMANDS_PLAYER1, fonts->medium.normal );
@@ -1077,7 +1077,7 @@ void NewGameMenu::freeCooperativeMenu()
 	coopBigText = NULL;
 
 	std::map< int, OguiButton* >::iterator i;
-	
+
 	i = selectButtons.find( COMMANDS_PLAYER1 );
 	if( i != selectButtons.end() )
 	{
@@ -1091,21 +1091,21 @@ void NewGameMenu::freeCooperativeMenu()
 		delete i->second;
 		selectButtons.erase( i );
 	}
-	
+
 	i = selectButtons.find( COMMANDS_PLAYER3 );
 	if( i != selectButtons.end() )
 	{
 		delete i->second;
 		selectButtons.erase( i );
 	}
-	
+
 	i = selectButtons.find( COMMANDS_PLAYER4 );
 	if( i != selectButtons.end() )
 	{
 		delete i->second;
 		selectButtons.erase( i );
 	}
-	
+
 }
 
 //.............................................................................
@@ -1158,11 +1158,11 @@ void NewGameMenu::openCoopProfileMenu( int i )
 		scroll_button_w = scrollUpStyle->sizeX>scrollDownStyle->sizeX?scrollUpStyle->sizeX:scrollDownStyle->sizeX;
 
 		int num_of_elements = getLocaleGuiInt( "gui_newgamemenu_number_of_items", 0 );
-	
+
 		selectListStyle = new OguiSelectListStyle( unselStyle, selStyle, newStyle, newUnStyle, scrollUpStyle, scrollDownStyle, unselStyle->sizeX, unselStyle->sizeY * num_of_elements, scrollUpStyle->sizeX, scrollUpStyle->sizeY );
 
 	}
-	
+
 	{
 		// buttonW	= getLocaleGuiInt( "gui_newgamemenu_coopprofile_w", getLocaleGuiInt( "gui_menu_common_button_w", 0 ) );
 		// buttonH	= getLocaleGuiInt( "gui_newgamemenu_coopprofile_h", getLocaleGuiInt( "gui_menu_common_button_h", 0 ) );
@@ -1184,13 +1184,13 @@ void NewGameMenu::openCoopProfileMenu( int i )
 	}
 
 	coopProfileList->addItem( none.c_str(), none.c_str() );
-	
+
 	{
 		const std::string &current_player = coopPlayerNames.find( i ) != coopPlayerNames.end()?coopPlayerNames[ i ]:none;
 		GameProfilesEnumeration* enum1 = gameProfiles->getProfileList();
 		while( enum1->isNextProfileAvailable() )
 		{
-			
+
 			const std::string& temp = enum1->getNextProfile();
 			bool selected = false;
 			if( temp == current_player ) selected = true;
@@ -1198,8 +1198,8 @@ void NewGameMenu::openCoopProfileMenu( int i )
 		}
 		delete enum1;
 	}
-	
-	
+
+
 
 	coopCurrentSelection = i;
 }
@@ -1213,7 +1213,7 @@ void NewGameMenu::setCoopPlayer( int player_num, const std::string& nam )
 
 	{
 		std::map< int, std::string >::iterator i;
-		
+
 		for( i = coopPlayerNames.begin(); i != coopPlayerNames.end(); ++i )
 		{
 			if( i->second == name && i->first != player_num )
@@ -1242,7 +1242,7 @@ void NewGameMenu::setCoopPlayer( int player_num, const std::string& nam )
 			i->second = name;
 		}
 	}
-	
+
 }
 
 //.............................................................................
@@ -1333,7 +1333,7 @@ void NewGameMenu::createBonusOptions(game::Game *game, OguiWindow *win, Ogui *og
 				b = new OguiCheckBox( win, ogui, x, y, w, h,
 					img_norm.c_str(), "", "",
 					img_fill.c_str(),	"", "", i );
-				
+
 				b->setText( text.c_str(), OguiCheckBox::TEXT_ALIGN_RIGHT, text_w, fonts->medium.highlighted, OguiButton::TEXT_V_ALIGN_TOP  );
 				b->setValue(game->bonusManager->isActive(i));
 				boxes.push_back( b );

@@ -82,11 +82,11 @@ using namespace frozenbyte::editor;
 			params.push_back(ParamDesc("particle_start_angle", IDC_PARTICLE_ANGLE, PARAM_FLOAT));
 			params.push_back(ParamDesc("particle_start_angle_var", IDC_PARTICLE_ANGLE_VAR, PARAM_FLOAT));
 			params.push_back(ParamDesc("particle_spin", IDC_PARTICLE_SPIN, PARAM_FLOAT));
-			params.push_back(ParamDesc("particle_spin_var", IDC_PARTICLE_SPIN_VAR, PARAM_FLOAT));		
-			params.push_back(ParamDesc("particle_color", IDC_PARTICLE_COLOR, PARAM_ANIMATED_VECTOR));		
-//	params.push_back(ParamDesc("particle_size", IDC_PARTICLE_SIZE, PARAM_ANIMATED_FLOAT));		
-	params.push_back(ParamDesc("particle_size", IDC_PARTICLE_SIZE, PARAM_ANIMATED_VECTOR));		
-			params.push_back(ParamDesc("particle_alpha", IDC_PARTICLE_ALPHA, PARAM_ANIMATED_FLOAT));		
+			params.push_back(ParamDesc("particle_spin_var", IDC_PARTICLE_SPIN_VAR, PARAM_FLOAT));
+			params.push_back(ParamDesc("particle_color", IDC_PARTICLE_COLOR, PARAM_ANIMATED_VECTOR));
+//	params.push_back(ParamDesc("particle_size", IDC_PARTICLE_SIZE, PARAM_ANIMATED_FLOAT));
+	params.push_back(ParamDesc("particle_size", IDC_PARTICLE_SIZE, PARAM_ANIMATED_VECTOR));
+			params.push_back(ParamDesc("particle_alpha", IDC_PARTICLE_ALPHA, PARAM_ANIMATED_FLOAT));
 			params.push_back(ParamDesc("particle_life", IDC_PARTICLE_LIFE, PARAM_FLOAT));
 			params.push_back(ParamDesc("particle_life_var", IDC_PARTICLE_LIFE_VAR, PARAM_FLOAT));
 #ifdef LEGACY_FILES
@@ -253,7 +253,7 @@ using namespace frozenbyte::editor;
 			params.push_back(ParamDesc("spiral_speed", IDC_SPIRAL_SPEED, PARAM_FLOAT));
 		}
 	};
-	
+
 /*
 	struct CloudParticleSystemParamDesc {
 		std::vector<ParamDesc> params;
@@ -271,7 +271,7 @@ using namespace frozenbyte::editor;
 		}
 	};
 */
-	
+
 	static SprayParticleSystemParamDesc theSprayParticleSystemParamDesc;
 	static PointArrayParticleSystemParamDesc thePointArrayParticleSystemParamDesc;
 	static ModelParticleSystemParamDesc theModelParticleSystemParamDesc;
@@ -422,7 +422,7 @@ using namespace frozenbyte::editor;
 		ParticleEffectManager& effectManager;
 
 		boost::shared_ptr<physics::PhysicsLib> physics;
-		
+
 		boost::shared_ptr<IParticleEffect> effect;
 		int effectID;
 		Vector effectPosition;
@@ -438,7 +438,7 @@ using namespace frozenbyte::editor;
 		boost::shared_ptr<ParamUI> paramUI;
 		boost::shared_ptr<ParamUI> forceUI;
 
-		bool systemDisabled[256];		
+		bool systemDisabled[256];
 		int color;
 
 		boost::shared_ptr<Parser> parser;
@@ -457,7 +457,7 @@ using namespace frozenbyte::editor;
 			camera(camera_), saved(true), effectManager(mgr),
 			skipTimeUpdate(false),
 			model(storm_)
-		{	
+		{
 			color = RGB(70, 70, 70);
 			colorComponent.setColor(color);
 
@@ -468,7 +468,7 @@ using namespace frozenbyte::editor;
 		}
 
 		~SharedData()
-		{	
+		{
 		}
 
 		void setBackGround()
@@ -481,7 +481,7 @@ using namespace frozenbyte::editor;
 		}
 
 		void load(const std::string& defaultFileName) {
-/*					
+/*
 			if(!saved) {
 				if(IDYES == MessageBox(0, "Current Effect Not Saved. Save?", "Save?", MB_YESNO)) {
 					save();
@@ -509,7 +509,7 @@ using namespace frozenbyte::editor;
 			//assert(file.bad()==false);
 
 			currentFilename = fileName;
-			
+
 			boost::shared_ptr<editor::Parser> p(new editor::Parser);
 			filesystem::createInputFileStream(fileName) >> *p;
 			//file >> *p;
@@ -522,7 +522,7 @@ using namespace frozenbyte::editor;
 		{
 			if(parser.get()==NULL)
 				return;
-			
+
 			std::string fileName = editor::getSaveFileName("txt", "data\\effects\\particles");
 			if(fileName.empty())
 				return;
@@ -533,7 +533,7 @@ using namespace frozenbyte::editor;
 			file << *parser;
 
 			saved = true;
-	
+
 		}
 		*/
 
@@ -541,7 +541,7 @@ using namespace frozenbyte::editor;
 		{
 			if(parser.get()==NULL)
 				return false;
-			
+
 			if(fileName.empty())
 				return false;
 
@@ -559,7 +559,7 @@ using namespace frozenbyte::editor;
 
 			saved = true;
 
-			return true;	
+			return true;
 		}
 
 		void save()
@@ -592,7 +592,7 @@ using namespace frozenbyte::editor;
 		}
 
 		void addForce() {
-		
+
 			if(parser.get()==NULL) {
 				return;
 			}
@@ -628,7 +628,7 @@ using namespace frozenbyte::editor;
 					assert(0);
 				}
 #endif
-			
+
 				ParserGroup& effect = parser->getGlobals().getSubGroup("effect");
 
 				int selPS = ListBox_GetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS));
@@ -640,24 +640,24 @@ using namespace frozenbyte::editor;
 
 				int numForces = convertFromString<int>(pg.getValue("num_forces", ""), 0);
 				std::string forceName = "force" + convertToString<int>(numForces);
-				
+
 				ParserGroup& fg = pg.getSubGroup(forceName);
-				
+
 				//std::ifstream file(fileName.c_str());
 				//file >> fg;
 				filesystem::createInputFileStream(fileName) >> fg;
 
 				pg.setValue("num_forces", convertToString<int>(numForces+1));
-			
+
 			}
-		
+
 		}
 
 		void removeForce() {
-			
+
 			if(parser.get()==NULL)
 				return;
-			
+
 			int selPS = ListBox_GetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS));
 			if(selPS < 0)
 				return;
@@ -668,9 +668,9 @@ using namespace frozenbyte::editor;
 
 			ParserGroup& effect = parser->getGlobals().getSubGroup("effect");
 			ParserGroup& system = effect.getSubGroup("system" + convertToString<int>(selPS));
-			
+
 			int numForces = convertFromString<int>(system.getValue("num_forces", ""), 0);
-			
+
 			if(numForces > 0) {
 
 				std::vector<ParserGroup> oldForces;
@@ -689,7 +689,7 @@ using namespace frozenbyte::editor;
 					force = oldForces[i];
 					n++;
 				}
-				
+
 				system.setValue("num_forces", convertToString<int>(numForces-1));
 
 			}
@@ -697,7 +697,7 @@ using namespace frozenbyte::editor;
 		}
 
 		void editForce() {
-		
+
 			if(parser.get()==NULL)
 				return;
 
@@ -711,47 +711,47 @@ using namespace frozenbyte::editor;
 
 			ParserGroup& effect = parser->getGlobals().getSubGroup("effect");
 			ParserGroup& system = effect.getSubGroup("system" + convertToString<int>(selPS));
-			
+
 			int numForces = convertFromString<int>(system.getValue("num_forces", ""), 0);
 
 			ParserGroup& force = system.getSubGroup("force" + convertToString<int>(selForce));
 			std::string className = force.getValue("class", "");
 			if(className == "gravity") {
 				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_GRAVITY,
-					force, theGravityForceParamDesc.params));				
+					force, theGravityForceParamDesc.params));
 				forceUI.swap(p);
 			}
 			else if(className == "sidegravity") {
 				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_SIDEGRAVITY,
-					force, theSideGravityForceParamDesc.params));				
+					force, theSideGravityForceParamDesc.params));
 				forceUI.swap(p);
 			}
 			else if(className == "drag") {
 				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_DRAG,
-					force, theDragForceParamDesc.params));				
+					force, theDragForceParamDesc.params));
 				forceUI.swap(p);
 			}
 			else if(className == "wind") {
 				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_WIND,
-					force, theWindForceParamDesc.params));				
+					force, theWindForceParamDesc.params));
 				forceUI.swap(p);
 			}
 			else {
 				// psd
 				//assert(0);
 			}
-		
+
 		}
 
 		void addParticleSystem() {
-		
+
 			if(parser.get()==NULL)
 				return;
-			
+
 			int selection;
 			if(IDOK==DialogBoxParam(NULL, MAKEINTRESOURCE(IDD_PARTICLE_SYSTEM_SELECT),
 				NULL, psDlgProc, (LONG)&selection)) {
-								
+
 				std::string fileName;
 #ifdef LEGACY_FILES
 				if(selection == 0) {
@@ -796,7 +796,7 @@ using namespace frozenbyte::editor;
 
 				std::string name = "system" + convertToString<int>(numSystems);
 				ParserGroup& pg = effect.getSubGroup(name);
-			
+
 				//std::ifstream file(fileName.c_str());
 				//file >> pg;
 				filesystem::createInputFileStream(fileName) >> pg;
@@ -814,19 +814,19 @@ using namespace frozenbyte::editor;
 		}
 
 		void removeParticleSystem() {
-		
+
 			if(parser.get()==NULL)
 				return;
 
 			int selection = ListBox_GetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS));
 			if(selection < 0)
 				return;
-			
+
 			ParserGroup& effect = parser->getGlobals().getSubGroup("effect");
 			int numSystems = convertFromString<int>(effect.getValue("num_systems", ""), 0);
-			
+
 			if(numSystems > 0) {
-			
+
 				int i;
 				std::vector<ParserGroup> oldSystems;
 				for(i = 0; i < numSystems; i++) {
@@ -841,16 +841,16 @@ using namespace frozenbyte::editor;
 					system = oldSystems[i];
 					n++;
 				}
-			
+
 				effect.setValue("num_systems", convertToString<int>(numSystems-1));
-			
+
 			}
 
 
 		}
 
 		void editParticleSystem() {
-					
+
 			if(parser.get()==NULL)
 				return;
 
@@ -869,43 +869,43 @@ using namespace frozenbyte::editor;
 			}
 			if(className == "spray") {
 				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_SPRAY_PARTICLE_SYSTEM,
-					pg, theSprayParticleSystemParamDesc.params));				
+					pg, theSprayParticleSystemParamDesc.params));
 				paramUI.swap(p);
 			}
 			else if(className == "parray") {
 				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_POINT_ARRAY_PARTICLE_SYSTEM,
-					pg, thePointArrayParticleSystemParamDesc.params));				
+					pg, thePointArrayParticleSystemParamDesc.params));
 				paramUI.swap(p);
 			}
 			else if(className == "modelp") {
 				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_MODEL_PARTICLE_SYSTEM,
-					pg, theModelParticleSystemParamDesc.params));				
+					pg, theModelParticleSystemParamDesc.params));
 				paramUI.swap(p);
 			}
 			else {
 				assert(!"undefined class");
 			}
-		
+
 
 			saved = false;
 		}
 
 		void enableParticleSystem() {
 
-			
+
 			int selection = ListBox_GetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS));
 			if(selection < 0)
 				return;
 
 			systemDisabled[selection] = false;
-		
+
 			updateDialog();
 
 		}
 
 		void disableParticleSystem() {
 
-		
+
 			int selection = ListBox_GetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS));
 			if(selection < 0)
 				return;
@@ -917,7 +917,7 @@ using namespace frozenbyte::editor;
 		}
 
 		void renameParticleSystem() {
-		
+
 			int selection = ListBox_GetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS));
 			if(selection < 0)
 				return;
@@ -928,13 +928,13 @@ using namespace frozenbyte::editor;
 			std::string name = system.getValue("name", "unnamed" + convertToString<int>(selection));
 			if(IDOK==DialogBoxParam(NULL, MAKEINTRESOURCE(IDD_RENAME),
 				NULL, nameDlgProc, (LONG)&name)) {
-			
+
 				system.setValue("name", name);
 
 				updateDialog();
-			
+
 			}
-			
+
 
 		}
 
@@ -944,13 +944,13 @@ using namespace frozenbyte::editor;
 				return;
 
 			int selPS = ListBox_GetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS));
-			
+
 			const ParserGroup& effect = parser->getGlobals().getSubGroup("effect");
 			int numSystems = convertFromString<int>(effect.getValue("num_systems", ""), 0);
-		
-			ListBox_ResetContent(dialog.getItem(IDC_PARTICLE_SYSTEMS));			
+
+			ListBox_ResetContent(dialog.getItem(IDC_PARTICLE_SYSTEMS));
 			for(int i = 0; i < numSystems; i++) {
-				
+
 				const ParserGroup& pg = effect.getSubGroup("system" + convertToString<int>(i));
 
 				std::string name = pg.getValue("name", "unnamed" + convertToString<int>(i));
@@ -966,7 +966,7 @@ using namespace frozenbyte::editor;
 				if(systemDisabled[i]) {
 					name += " [disabled]";
 				}
-				
+
 				ListBox_AddString(dialog.getItem(IDC_PARTICLE_SYSTEMS), name.c_str());
 
 				if(i == selPS) {
@@ -980,22 +980,22 @@ using namespace frozenbyte::editor;
 						forceName += ")";
 						ListBox_AddString(dialog.getItem(IDC_FORCES), forceName.c_str());
 					}
-				
+
 				}
 			}
-		
+
 			ListBox_SetCurSel(dialog.getItem(IDC_PARTICLE_SYSTEMS), selPS);
 			if(systemDisabled[selPS]) {
 				enableDialogItem(dialog, IDC_ENABLE, true);
 				enableDialogItem(dialog, IDC_DISABLE, false);
 			} else {
 				enableDialogItem(dialog, IDC_ENABLE, false);
-				enableDialogItem(dialog, IDC_DISABLE, true);			
+				enableDialogItem(dialog, IDC_DISABLE, true);
 			}
 
 		}
 
-	
+
 
 		void play()
 		{
@@ -1009,11 +1009,11 @@ using namespace frozenbyte::editor;
 			ParserGroup& effectGroup = parser2.getGlobals().getSubGroup("effect");
 			std::vector<ParserGroup> oldSystems;
 			int numSystems = convertFromString<int>(effectGroup.getValue("num_systems", ""), 0);
-			
+
 			int i;
 			for(i = 0; i < numSystems; i++)
 			{
-				oldSystems.push_back(effectGroup.getSubGroup("system" + convertToString<int>(i)));		
+				oldSystems.push_back(effectGroup.getSubGroup("system" + convertToString<int>(i)));
 				effectGroup.removeSubGroup("system" + convertToString<int>(i));
 			}
 
@@ -1032,13 +1032,13 @@ using namespace frozenbyte::editor;
 
 			if(n > 0)
 			{
-				effectManager.reset(false);	
+				effectManager.reset(false);
 				effectID = effectManager.loadParticleEffect(parser2);
-				
+
 				effect = effectManager.addEffectToScene(effectID);
 				effect->setPosition(effectPosition);
 				effect->setVelocity(effectPosition);
-				
+
 				//effect->setLighting(COL(0.33f, 0.33f, 0.33f), VC3(), COL(), 1.f);
 				signed short int lightIndices[LIGHT_MAX_AMOUNT] = { 0 };
 				for(int i = 1; i < LIGHT_MAX_AMOUNT; ++i)
@@ -1055,7 +1055,7 @@ using namespace frozenbyte::editor;
 				effect->setCollision(col);
 				boost::shared_ptr<IParticleArea> area(new ParticleArea());
 				effect->setArea(area);
-				
+
 				effect->tick();
 			}
 
@@ -1063,11 +1063,11 @@ using namespace frozenbyte::editor;
 		}
 
 		void tick() {
-		
+
 		}
 
 		void render() {
-		
+
 		}
 
 		void stop(bool reset = false)
@@ -1075,7 +1075,7 @@ using namespace frozenbyte::editor;
 			if(effect)
 			{
 				effect->kill();
-				effectManager.reset(false);	
+				effectManager.reset(false);
 			}
 
 			if(reset)
@@ -1088,9 +1088,9 @@ using namespace frozenbyte::editor;
 		}
 
 		static BOOL CALLBACK nameDlgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-			
+
 			static std::string* name;
-			
+
 			switch(msg) {
 			case WM_INITDIALOG:
 				{
@@ -1106,30 +1106,30 @@ using namespace frozenbyte::editor;
 						EndDialog(hwnd, IDOK);
 						return TRUE;
 					}
-					if(LOWORD(wParam)==IDCANCEL) {						
+					if(LOWORD(wParam)==IDCANCEL) {
 						EndDialog(hwnd, IDCANCEL);
 						return TRUE;
 					}
 				} break;
 			}
-		
+
 			return FALSE;
 		}
 
 
-		
+
 		static BOOL CALLBACK forceDlgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-			
+
 			static int* selection = 0;
-			
+
 			switch(msg) {
 			case WM_INITDIALOG:
 				{
 					selection = (int*)lParam;
 					ComboBox_ResetContent(GetDlgItem(hwnd, IDC_FORCE_TYPE));
-					ComboBox_AddString(GetDlgItem(hwnd, IDC_FORCE_TYPE), "gravity force");				
-					ComboBox_AddString(GetDlgItem(hwnd, IDC_FORCE_TYPE), "drag force");				
-					ComboBox_AddString(GetDlgItem(hwnd, IDC_FORCE_TYPE), "wind force");				
+					ComboBox_AddString(GetDlgItem(hwnd, IDC_FORCE_TYPE), "gravity force");
+					ComboBox_AddString(GetDlgItem(hwnd, IDC_FORCE_TYPE), "drag force");
+					ComboBox_AddString(GetDlgItem(hwnd, IDC_FORCE_TYPE), "wind force");
 					ComboBox_AddString(GetDlgItem(hwnd, IDC_FORCE_TYPE), "sidegravity force");
 					ComboBox_SetCurSel(GetDlgItem(hwnd, IDC_FORCE_TYPE), 0);
 				} break;
@@ -1140,29 +1140,29 @@ using namespace frozenbyte::editor;
 						EndDialog(hwnd, IDOK);
 						return TRUE;
 					}
-					if(LOWORD(wParam)==IDCANCEL) {						
+					if(LOWORD(wParam)==IDCANCEL) {
 						EndDialog(hwnd, IDCANCEL);
 						return TRUE;
 					}
 				} break;
 			}
-		
+
 			return FALSE;
 		}
 
 		static BOOL CALLBACK psDlgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-			
+
 			static int* selection = 0;
-			
+
 			switch(msg) {
 			case WM_INITDIALOG:
 				{
 					selection = (int*)lParam;
 					ComboBox_ResetContent(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE));
-					ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "spray particle system");				
-					ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "point array particle system");				
-					ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "model particle system");				
-					//ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "cloud particle system");				
+					ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "spray particle system");
+					ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "point array particle system");
+					ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "model particle system");
+					//ComboBox_AddString(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), "cloud particle system");
 					ComboBox_SetCurSel(GetDlgItem(hwnd, IDC_PARTICLE_SYSTEM_TYPE), 0);
 				} break;
 			case WM_COMMAND:
@@ -1172,20 +1172,20 @@ using namespace frozenbyte::editor;
 						EndDialog(hwnd, IDOK);
 						return TRUE;
 					}
-					if(LOWORD(wParam)==IDCANCEL) {						
+					if(LOWORD(wParam)==IDCANCEL) {
 						EndDialog(hwnd, IDCANCEL);
 						return TRUE;
 					}
 				} break;
 			}
-		
+
 			return FALSE;
 		}
-	
-	
+
+
 	};
 
-	
+
 	class NewEffectCommand : public editor::ICommand
 	{
 		SharedData& m_data;
@@ -1193,8 +1193,8 @@ using namespace frozenbyte::editor;
 		NewEffectCommand(SharedData& data) : m_data(data) {
 		}
 		void execute(int id) {
-			
-			
+
+
 			m_data.load("particle_editor/default_effect.txt");
 			m_data.currentFilename = "";
 
@@ -1223,7 +1223,7 @@ using namespace frozenbyte::editor;
 		}
 		void execute(int id) {
 			m_data.save();
-		}	
+		}
 	};
 
 	class SaveEffectAsCommand : public editor::ICommand
@@ -1234,16 +1234,16 @@ using namespace frozenbyte::editor;
 		}
 		void execute(int id) {
 			m_data.saveAs();
-		}	
+		}
 	};
 
 	class AddParticleSystemCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
-		
+
 		AddParticleSystemCommand(SharedData& data) : m_data(data) {
-			
+
 		}
 
 		void execute(int id) {
@@ -1259,7 +1259,7 @@ using namespace frozenbyte::editor;
 	public:
 
 		RemoveParticleSystemCommand(SharedData& data) : m_data(data) {
-			
+
 		}
 
 		void execute(int id) {
@@ -1339,7 +1339,7 @@ using namespace frozenbyte::editor;
 		}
 		void execute(int id) {
 			m_data.enableParticleSystem();
-		}	
+		}
 	};
 
 	class DisableParticleSystemCommand : public editor::ICommand
@@ -1350,7 +1350,7 @@ using namespace frozenbyte::editor;
 		}
 		void execute(int id) {
 			m_data.disableParticleSystem();
-		}	
+		}
 	};
 
 	class PlayCommand : public editor::ICommand
@@ -1361,7 +1361,7 @@ using namespace frozenbyte::editor;
 		}
 		void execute(int id) {
 			m_data.play();
-		}	
+		}
 	};
 
 	class StopCommand : public editor::ICommand
@@ -1372,9 +1372,9 @@ using namespace frozenbyte::editor;
 		}
 		void execute(int id) {
 			m_data.stop();
-		}	
+		}
 	};
-	
+
 	class ColorCommand: public editor::ICommand
 	{
 		SharedData &sharedData;
@@ -1409,12 +1409,12 @@ using namespace frozenbyte::editor;
 		: storm(storm_)
 		{
 		}
-		
+
 		void execute(int id)
 		{
 			loadModel();
 		}
-		
+
 		void loadModel()
 		{
 #ifdef LEGACY_FILES
@@ -1790,7 +1790,7 @@ struct ApplicationData
 
 	OrbitCamera orbitCamera;
 	CrappyFont font;
-	
+
 	NewEffectCommand newEffectCommand;
 	LoadEffectCommand loadEffectCommand;
 	SaveEffectCommand saveEffectCommand;
@@ -1834,7 +1834,7 @@ struct ApplicationData
 
 		colorComponent(mainDialog.getWindowHandle(), 120, 602, 90, 22),
 		sharedData(storm, mainDialog, renderDialog, camera, colorComponent, effectManager),
-		
+
 		newEffectCommand(sharedData),
 		loadEffectCommand(sharedData),
 		saveEffectCommand(sharedData),
@@ -1946,7 +1946,7 @@ struct ApplicationData
 	void handleMessage()
 	{
 		MSG windowsMessage = { 0 };
-		
+
 		if(GetMessage(&windowsMessage, 0, 0, 0) <= 0)
 		{
 			mustQuit = true;
@@ -1982,7 +1982,7 @@ if(hideCursor)
 
 		if(GetKeyState(key) & 0x80)
 			return true;
-	
+
 		return false;
 	}
 
@@ -2004,15 +2004,15 @@ if(hideCursor)
 		}
 		if(isKeyDown('D')) {
 			dy -= rotateFactor * t;
-		}		
+		}
 		if(isKeyDown('W')) {
-			dx += rotateFactor * t;	
+			dx += rotateFactor * t;
 		}
 		if(isKeyDown('S')) {
-			dx -= rotateFactor * t;	
+			dx -= rotateFactor * t;
 		}
 		if(isKeyDown('Z') || isKeyDown(VK_ADD)) {
-			zoom += moveFactor * t;	
+			zoom += moveFactor * t;
 		}
 		if(isKeyDown('X') || isKeyDown(VK_SUBTRACT)) {
 			zoom -= moveFactor * t;
@@ -2156,7 +2156,7 @@ Application::~Application()
 				actor->getMassCenterPosition(actorPos);
 
 				VC3 force = pos - actorPos;
-				
+
 				/*
 				// HAXHAX
 				{
@@ -2309,7 +2309,7 @@ if(data->storm.scene)
 		for(unsigned int i = 0; i < boxes.size(); ++i)
 		{
 			Hack &h = boxes[i];
-			
+
 			VC3 pos;
 			h.actor->getPosition(pos);
 			QUAT rot;
@@ -2321,7 +2321,7 @@ if(data->storm.scene)
 		for(unsigned int i = 0; i < convexes.size(); ++i)
 		{
 			Hack2 &h = convexes[i];
-			
+
 			VC3 pos;
 			h.actor->getPosition(pos);
 			QUAT rot;
@@ -2813,7 +2813,7 @@ fpsString += "  -- actor create count " + convertToString<int> (physics::getActo
 		data->sharedData.effectManager.updatePhysics();
 #endif
 
-		/*		
+		/*
 		physics->finishSimulation();
 		physics::visualize(*physics, *data->storm.scene, PARTICLE_EDITOR_VISUALIZE_RANGE);
 		data->sharedData.effectManager.updatePhysics();
@@ -2823,7 +2823,7 @@ fpsString += "  -- actor create count " + convertToString<int> (physics::getActo
 	}
 
 #ifdef PHYSICS_PHYSX
-	//jointThing.clear();	
+	//jointThing.clear();
 #endif
 
 	data->sharedData.stop();

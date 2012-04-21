@@ -148,7 +148,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 #endif
 
 	_hasFocus = hasFocus;
-	
+
 	data->update();
 	float timeDelta = data->getTimeDelta();
 
@@ -163,7 +163,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 	if(!data->storm.terrain)
 	{
 		multiplier = .075f;
-		
+
 		if(!data->isKeyDown(VK_SHIFT))
 			multiplier = .01f;
 	}
@@ -310,14 +310,14 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 		if(data->xAngle <= limitMin)
 		{
 			data->xAngle += xOtherAngle;
-		
+
 			if(data->xAngle <= limitMin)
 				data->xAngle = limitMin;
 		}
 		if(data->xAngle >= limitMax)
 		{
 			data->xAngle += xOtherAngle;
-		
+
 			if(data->xAngle >= limitMax)
 				data->xAngle = limitMax;
 		}
@@ -327,7 +327,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 			rrotation.MakeFromAngles(0, data->yAngle, -data->xAngle);
 			Vector direction(1.f, 0, 0);
 			direction = rrotation.GetRotated(direction);
-			
+
 			VC3 pos = data->targetPosition + direction * TARGET_DISTANCE;
 
 			QUAT rotation;
@@ -337,7 +337,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 
 			data->xAngle += xOtherAngle;
 			VC3 newPos = pos - otherDirection * TARGET_DISTANCE;
-			
+
 			if(xOtherAngle < 0)
 				data->height += fabsf(newPos.y - data->targetPosition.y);
 			else
@@ -375,7 +375,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 		data->height -=  1.f * timeDelta * SPEED * .5f * multiplier;
 
 	Vector position = data->targetPosition + direction * TARGET_DISTANCE;
-	
+
 	float yOtherAngle = data->yAngle + PI;
 	bool rotate = false;
 	if(data->isKeyDown('Q'))
@@ -443,7 +443,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 		data->storm.scene->GetCamera()->SetTarget(position);
 
 		data->cameraPos = position;
-	
+
 		/*
 		float height1 = 0.f;
 		float height2 = 0.f;
@@ -452,7 +452,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 
 		float newHeight = data->targetPosition.y + ((targetHeight - data->targetPosition.y) / 16);
 		float delta = newHeight - data->targetPosition.y;
-		
+
 		data->targetPosition.y += delta;
 		position.y += delta;
 

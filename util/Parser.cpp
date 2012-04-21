@@ -63,12 +63,12 @@ std::string ReadLine(filesystem::FB_FILE *fp)
 	{
 		if(character == '\n')
 			break;
-		
+
 		// Comment?
 		if((character == '/') && (string.size() > 0) && (string[string.size() - 1] == '/'))
 		{
 			found_comment = true;
-			
+
 			// Remove first slash
 			string = string.substr(0, string.size() - 1);
 		}
@@ -155,7 +155,7 @@ ParserGroup::~ParserGroup()
 void ParserGroup::Parse(filesystem::FB_FILE *fp)
 {
 	sub_groups = string_map();
-	
+
 	while(!feof(fp))
 	{
 		std::string string = ReadLine(fp);
@@ -321,7 +321,7 @@ void Parser::Parse(const char *file_name)
 
 				properties[ property ] = value;
 			}
-			
+
 			if(group_start[i] == '{')
 			{
 				// Inheritance owns :)
@@ -389,7 +389,7 @@ int GetInt(const std::string &string, int index)
 		return atoi(string.c_str());
 
 	std::vector<int> values;
-	
+
 	int dot = string_size;
 	for(int i = string_size - 2; i >= 0; --i)
 	{
@@ -424,7 +424,7 @@ std::string GetString(const string_map &properties, const std::string &string)
 {
 	string_map::const_iterator i;
 	i = properties.find(string);
-	
+
 	if(i != properties.end())
 		return (*i).second;
 	else
@@ -435,7 +435,7 @@ float GetFloat(const string_map &properties, const std::string &string)
 {
 	string_map::const_iterator i;
 	i = properties.find(string);
-	
+
 	if(i != properties.end())
 		return GetFloat((*i).second);
 	else
@@ -446,7 +446,7 @@ int GetInt(const string_map &properties, const std::string &string, int index)
 {
 	string_map::const_iterator i;
 	i = properties.find(string);
-	
+
 	if(i != properties.end())
 		return GetInt((*i).second, index);
 	else

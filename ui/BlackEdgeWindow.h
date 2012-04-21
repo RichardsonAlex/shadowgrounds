@@ -14,14 +14,14 @@ namespace ui
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
    * @see MovieAspectWindow
    */
-	
+
 	class BlackEdgeWindow
 	{
 	public:
 		BlackEdgeWindow(Ogui *ogui);
-		
+
 		~BlackEdgeWindow();
-		
+
 		void moveTo(int x, int y);
 
 		void update();
@@ -29,9 +29,9 @@ namespace ui
 	private:
 		Ogui *ogui;
 		OguiWindow *win;
-		
+
 	};
-	
+
 }
 
 #endif

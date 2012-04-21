@@ -76,13 +76,13 @@ public:
 	void menuCredits();
 	void menuQuit();*/
 
-	
+
 	void menuBonusOptions();
 	void menuCloseBonusOptions();
 
 
 	static bool startAsCoop;
-	
+
 private:
 
 	void missionSelected( int m, int ex_selection );
@@ -103,7 +103,7 @@ private:
 
 	int						doubleClickHack;
 	int						doubleClickTimeHack;
-	
+
 	bool					hideLoadGame;
 	bool					fromGame;
 	int						loadGameCnt;

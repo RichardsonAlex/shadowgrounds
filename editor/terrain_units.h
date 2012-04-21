@@ -59,7 +59,7 @@ class UnitHandle
 	friend class TerrainUnits;
 	friend struct TerrainUnitsData;
 
-public:	
+public:
 	UnitHandle();
 	~UnitHandle();
 

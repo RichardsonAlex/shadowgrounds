@@ -20,7 +20,7 @@ struct ColorComponentData;
 class ColorComponent
 {
 	boost::scoped_ptr<ColorComponentData> data;
-	
+
 public:
 	ColorComponent(HWND parentHandle, int xPosition, int yPosition, int xSize, int ySize);
 	~ColorComponent();

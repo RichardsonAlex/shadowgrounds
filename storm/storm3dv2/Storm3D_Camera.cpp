@@ -111,7 +111,7 @@ void Storm3D_Camera::SetVisibilityRange(float range)
 */
 void Storm3D_Camera::SetZNear(float value)
 {
-	znear = value;	
+	znear = value;
 }
 
 //! Set Z near to default
@@ -339,7 +339,7 @@ void Storm3D_Camera::UpdateVisPlanes() const
 	float spx=spy*((float)ss.width/(float)ss.height);
 
 	// Calculate 4 points (to create faces)
-	VC3 points[4];	
+	VC3 points[4];
 	points[0]=VC3(spx,spy,-vis_range);
 	points[1]=VC3(spx,-spy,-vis_range);
 	points[2]=VC3(-spx,spy,-vis_range);
@@ -356,7 +356,7 @@ void Storm3D_Camera::UpdateVisPlanes() const
 	// 0: Camera vector (normalized)
 	pnormals[0]=target-position;
 	pnormals[0].Normalize();
-	
+
 	// 1: Side face +
 	VC3 e1=points[0];
 	VC3 e2=-points[1];
@@ -364,7 +364,7 @@ void Storm3D_Camera::UpdateVisPlanes() const
 	pnormals[1].y=e1.z*e2.x-e1.x*e2.z;
 	pnormals[1].z=e1.x*e2.y-e1.y*e2.x;
 	pnormals[1].Normalize();
-	
+
 	// 2: Side face -
 	e1=points[2];
 	e2=points[3];
@@ -372,7 +372,7 @@ void Storm3D_Camera::UpdateVisPlanes() const
 	pnormals[2].y=e1.z*e2.x-e1.x*e2.z;
 	pnormals[2].z=e1.x*e2.y-e1.y*e2.x;
 	pnormals[2].Normalize();
-	
+
 	// 3: Down face (+)
 	e1=points[2];
 	e2=-points[0];
@@ -380,7 +380,7 @@ void Storm3D_Camera::UpdateVisPlanes() const
 	pnormals[3].y=e1.z*e2.x-e1.x*e2.z;
 	pnormals[3].z=e1.x*e2.y-e1.y*e2.x;
 	pnormals[3].Normalize();
-	
+
 	// 4: Up face (-)
 	e1=points[1];
 	e2=-points[3];
@@ -388,7 +388,7 @@ void Storm3D_Camera::UpdateVisPlanes() const
 	pnormals[4].y=e1.z*e2.x-e1.x*e2.z;
 	pnormals[4].z=e1.x*e2.y-e1.y*e2.x;
 	pnormals[4].Normalize();
-	
+
 	// Clear update flag
 	visplane_update_needed=false;
 }
@@ -413,7 +413,7 @@ bool Storm3D_Camera::TestSphereVisibility(const VC3 &pointpos,float radius)
 		pointpos.y-position.y,pointpos.z-position.z).GetDotWith(pnormals[0]);
 	if (er<-radius) return false;
 	if (er>(vis_range+radius)) return false;
-	
+
 	// Side Planes
 	if (VC3(pointpos.x-position.x,pointpos.y-position.y,
 		pointpos.z-position.z).GetDotWith(pnormals[1])
@@ -519,7 +519,7 @@ bool Storm3D_Camera::TestPointVisibility(const VC3 &pointpos)
 		pointpos.y-position.y,pointpos.z-position.z).GetDotWith(pnormals[0]);
 	if (er<0) return false;
 	if (er>vis_range) return false;
-	
+
 	// Side Planes
 	if (VC3(pointpos.x-position.x,pointpos.y-position.y,
 		pointpos.z-position.z).GetDotWith(pnormals[1])
@@ -556,7 +556,7 @@ bool Storm3D_Camera::TestPointIsBehind(const VC3 &pointpos)
 	float er=VC3(pointpos.x-position.x,
 		pointpos.y-position.y,pointpos.z-position.z).GetDotWith(pnormals[0]);
 	if (er<0) return true;
-	
+
 	// It's on front (of camera)
 	return false;
 }
@@ -715,7 +715,7 @@ void Storm3D_Camera::ForceOrthogonalProjection(bool force, float minX, float max
 	}
 	else
 		forcedOrthogonalProjection = false;
-	
+
 }
 
 //! Get ray vector

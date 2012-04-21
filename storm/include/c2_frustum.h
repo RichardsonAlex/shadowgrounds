@@ -232,7 +232,7 @@ struct TFrustum
 
 		Vec3<T> dif = aabb.mmax;
 		dif -= position;
-		
+
 		float radius = dif.GetLength();
 		return visibilityValue(TSphere<T>(position, radius));
 		*/

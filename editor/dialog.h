@@ -43,7 +43,7 @@ public:
 	Dialog(int resourceId, HWND parentWindowHandle, ResizeType type = ATTACH_NONE);
 	explicit Dialog(int resourceId); // modal dialog, explicit creation with show()!
 	~Dialog();
-	
+
 	void setPosition(int xPosition, int yPosition);
 	void setSize(int xSize, int ySize);
 	void getSize(int &xSize, int &ySize) const;

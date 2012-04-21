@@ -50,7 +50,7 @@ bool ConvexMesh::isValid() const
 {
 	if(mesh)
 		return true;
-	
+
 	return false;
 }
 

@@ -165,7 +165,7 @@ struct EditorStateData
 		if(updateHeightmap)
 		{
 			HeightmapData &heightmapData = terrainMode.loadHeightmap();
-		
+
 			terrainMode.setHeightmap();
 			objectMode.resetTerrain();
 		}
@@ -242,7 +242,7 @@ void EditorState::tick()
 	data->decoratorMode.guiTick();
 	//data->colorMap.debugRender();
 	//data->lightMap.debugRender();
-	
+
 	data->tick(ms);
 }
 

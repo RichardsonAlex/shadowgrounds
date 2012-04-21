@@ -34,10 +34,10 @@ public:
 	void update();
 	void clearOneMessage();
 
-	
+
 
 private:
-	
+
 	void pushMessage( const std::string& message );
 	void popMessage();
 
@@ -49,7 +49,7 @@ private:
 
 	int numOfMessages;
 	int textHeight;
-	
+
 	int messageStartFadeTime;
 	int messageEndFadeTime;
 

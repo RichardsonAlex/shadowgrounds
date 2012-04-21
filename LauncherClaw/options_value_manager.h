@@ -17,13 +17,13 @@ public:
 
 	void load();
 	void save();
-	
+
 	std::vector< std::string >	getOptionNames( const std::string& category ) const;
 	std::string					getTheOneInUse( const std::string& category ) const;
-	
+
 
 	void						applyOptions( const std::string& category, const std::string& value );
-	
+
 private:
 
 	OptionsValueManagerImpl* impl;

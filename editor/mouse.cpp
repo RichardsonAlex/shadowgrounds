@@ -30,7 +30,7 @@ Mouse::Mouse()
 	leftButtonClicked = false;
 	rightButtonDown = false;
 	rightButtonClicked = false;
-	
+
 	insideWindow = false;
 	wheelDelta = 0;
 
@@ -54,7 +54,7 @@ void Mouse::setStorm(Storm &storm_)
 void Mouse::update()
 {
 	assert(window);
-	
+
 	POINT p = { 0 };
 	RECT r = { 0 };
 

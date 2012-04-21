@@ -52,7 +52,7 @@ class Storm3D_Scene : public IStorm3D_Scene
 	float *renderlistmir_points;
 
 	// Time in seconds (0.0 at start)
-	float time;	
+	float time;
 
 	// Polygon counter (v3)
 	int poly_counter;
@@ -174,7 +174,7 @@ public:
 	void AddPoint(const VC3 &p1, const COL &color);
 
 	// World folding --jpk
-	// (does not do anything if no WORLD_FOLDING_ENABLED defined)	
+	// (does not do anything if no WORLD_FOLDING_ENABLED defined)
 	void setWorldFoldCenter(const VC3 &position);
 	void addWorldFoldAtPosition(const VC3 &position, const MAT &fold);
 	void changeWorldFoldAtPosition(const VC3 &position, const MAT &fold);

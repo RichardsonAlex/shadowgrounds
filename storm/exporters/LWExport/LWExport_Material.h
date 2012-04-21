@@ -45,7 +45,7 @@ class LWMaterial
 	std::string reflectionTexture;
 	std::string distortionTexture;
 	mutable std::string luminosityTexture;
-	
+
 	// Textures id's. Get uv's from here
 	LWTextureID textureId;
 	mutable LWTextureID lightmapId;
@@ -56,14 +56,14 @@ class LWMaterial
 	// Properties
 	std::string name;
 	std::string objectName;
-	
+
 	float smoothingAngle;
 	float transparency;
 	float glow;
 	float reflectionFactor;
 
 	bool doubleSided;
-	
+
 	Color diffuseColor;
 	Color luminosityColor;
 	bool additiveAlpha;
@@ -77,7 +77,7 @@ public:
 
 	const std::string &getName() const;
 	const std::string &getObjectName() const;
-	
+
 	LWTextureID getTextureId() const;
 	LWTextureID getLightmapId() const;
 	float getSmoothingAngle() const;

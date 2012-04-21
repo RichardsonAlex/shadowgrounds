@@ -49,7 +49,7 @@ namespace game
 						gsd->water->setName(watername);
 					} else {
 						sp->error("WaterScripting::process - Attempt to setWaterName for null water.");
-					} 			
+					}
 				} else {
 					sp->error("WaterScripting::process - setWaterName parameter missing.");
 				}
@@ -93,7 +93,7 @@ namespace game
 						gsd->water->setHeight((float)atof(stringData));
 					} else {
 						sp->error("WaterScripting::process - Attempt to setWaterHeight for null water.");
-					} 			
+					}
 				} else {
 					sp->error("WaterScripting::process - setWaterHeight parameter missing.");
 				}
@@ -105,7 +105,7 @@ namespace game
 					gsd->water->setHeight((float)*lastValue / 100.0f);
 				} else {
 					sp->error("WaterScripting::process - Attempt to setWaterHeightToValue for null water.");
-				} 			
+				}
 				break;
 
 			case GS_CMD_GETWATERBYNAME:
@@ -129,7 +129,7 @@ namespace game
 					gsd->water->setDecoration(gsd->decoration);
 				} else {
 					sp->error("WaterScripting::process - Attempt to createWaterDecor for null water.");
-				} 			
+				}
 				break;
 
 			case GS_CMD_UPDATEWATER:
@@ -139,11 +139,11 @@ namespace game
 					game->waterManager->recalculate();
 				} else {
 					sp->error("WaterScripting::process - Attempt to updateWater for null water.");
-				} 			
+				}
 				break;
 
 			default:
-				sp->error("WaterScripting::process - Unknown command.");				
+				sp->error("WaterScripting::process - Unknown command.");
 				assert(0);
 		}
 	}

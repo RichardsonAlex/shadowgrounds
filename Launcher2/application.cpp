@@ -16,7 +16,7 @@
 
 #include <assert.h>
 
-namespace frozenbyte {	
+namespace frozenbyte {
 namespace launcher {
 
 using namespace filesystem;
@@ -43,9 +43,9 @@ public:
 			TranslateMessage (&msg);
 			DispatchMessage (&msg);
 		}
-		
+
 	}
-	
+
 	LauncherWindow m_LauncherWindow;
 	bool			quit;
 

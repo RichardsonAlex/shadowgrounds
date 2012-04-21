@@ -41,7 +41,7 @@ namespace frozenbyte {
 			fadeOutWaitTime(0),
 			currentTime(0)
 		{
-		}	
+		}
 	};
 
 	struct FadeDecal

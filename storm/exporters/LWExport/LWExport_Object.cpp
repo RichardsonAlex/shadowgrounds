@@ -141,7 +141,7 @@ namespace {
 			for(unsigned int i = maxOriginalVertex; i < vertices->size(); ++i)
 			{
 				const LWVertex &v = (*vertices)[i];
-				
+
 				if(v.id != vo.id)
 					continue;
 				if(!equal(v.position, vo.position))
@@ -243,7 +243,7 @@ bool LWObject::collectGeometry(std::vector<LWMaterial> &materials, const std::ve
 	// Transform
 	FBMatrix objectTm = LWTransforms::GetTransform(lwId);
 	FBMatrix pivotTm = LWTransforms::GetPivotTransform(lwId);
-/*	
+/*
 	// If linked to bone helper, make tm relative
 	if(parentName.substr(0, 11) == "HELPER_BONE")
 	{
@@ -252,7 +252,7 @@ bool LWObject::collectGeometry(std::vector<LWMaterial> &materials, const std::ve
 	}
 */
 	// Normals and texturing
-	
+
 	if(collectWeights(bones) == true)
 		objectTm = FBMatrix();
 
@@ -323,7 +323,7 @@ bool LWObject::collectWeights(const std::vector<LWBone> &bones)
 	LWObjectInfo *objectInfo = Manager::getSingleton()->getObjectInfo();
 	if(objectInfo == 0)
 		return false;
-			
+
 	LWMeshInfo *meshInfo = objectInfo->meshInfo(lwId, TRUE);
 	if(meshInfo == 0)
 		return false;
@@ -361,7 +361,7 @@ bool LWObject::collectWeights(const std::vector<LWBone> &bones)
 				for(int k = 0; k < LWVertex::MAX_WEIGHTS; ++k)
 				{
 					if(vertices[j].boneIndices[k] == -1 || fabs(vertices[j].boneWeights[k]) < fabsf(weight))
-					{	
+					{
 						// Store old value forward
 						if(k + 1 < LWVertex::MAX_WEIGHTS)
 						{
@@ -398,7 +398,7 @@ bool LWObject::collectWeights(const std::vector<LWBone> &bones)
 				for(k = LWVertex::MAX_WEIGHTS - 1; k >= 0; --k)
 				{
 					if(fabs(vertices[j].boneWeights[k]) < fabsf(weight))
-					{	
+					{
 						// Store old value forward
 						if(k + 1 < LWVertex::MAX_WEIGHTS)
 						{
@@ -597,7 +597,7 @@ if(materials[faces[i].materialId].getName() == "Lattia")
 						faces[i].uvs[j].x = faces[i].uvs2[j].x;
 						faces[i].uvs[j].y = faces[i].uvs2[j].y;
 					}
-					
+
 					faces[i].hasUvs[j] = true;
 				}
 				//else
@@ -625,7 +625,7 @@ if(materials[faces[i].materialId].getName() == "Lattia")
 				double oPosition[3] = { vO.x, vO.y, vO.z };
 				double wPosition[3] = { vW.x, vW.y, vW.z };
 				double uv[2] = { 0 };
-				
+
 				textureFunctions->evaluateUV(layerId, wAxis, oAxis, oPosition, wPosition, uv);
 				faces[i].uvs2[j].x = static_cast<double> (uv[0]);
 				faces[i].uvs2[j].y = static_cast<double> (-uv[1]);
@@ -635,7 +635,7 @@ if(materials[faces[i].materialId].getName() == "Lattia")
 					faces[i].uvs[j].x = faces[i].uvs2[j].x;
 					faces[i].uvs[j].y = faces[i].uvs2[j].y;
 				}
-				
+
 				faces[i].hasUvs[j] = true;
 			}
 */
@@ -650,7 +650,7 @@ void LWObject::collectNormals(const std::vector<LWMaterial> &materials)
 {
 	// Stores all faces for each vertex
 	std::map<int, std::vector<int> > faceIndices;
-	
+
 	// Face normals
 	for(unsigned int i = 0; i < faces.size(); ++i)
 	{
@@ -674,7 +674,7 @@ void LWObject::collectNormals(const std::vector<LWMaterial> &materials)
 	{
 		LWFace &face = faces[j];
 		double smoothingAngle = 0.f;
-		
+
 		int index = face.materialId;
 		if(index != -1)
 			smoothingAngle = materials[index].getSmoothingAngle();
@@ -692,7 +692,7 @@ void LWObject::collectNormals(const std::vector<LWMaterial> &materials)
 			{
 				LWFace &otherFace = faces[indices[i]];
 				FBVector n2 = otherFace.normal.GetNormalized();
-				
+
 				//double angle = acosf(face.normal.GetDotWith(otherFace.normal));
 				double dot = n.GetDotWith(n2);
 				double angle = acos(dot);
@@ -733,7 +733,7 @@ void LWObject::mapVertices()
 			v.normal = f.normals[j];
 			v.uv = f.uvs[j];
 			v.uv2 = f.uvs2[j];
-			
+
 			handledVertices[index].push_back(index);
 			continue;
 		}
@@ -780,7 +780,7 @@ void LWObject::mapVertices()
 		if(createNew == true)
 		{
 			LWVertex newVertex = vertices[index];
-			
+
 			newVertex.normal = f.normals[j];
 			newVertex.uv = f.uvs[j];
 			newVertex.uv2 = f.uvs2[j];
@@ -788,7 +788,7 @@ void LWObject::mapVertices()
 			// Update face index
 			faces[i].indices[j] = vertices.size();
 			handledVertices[index].push_back(vertices.size());
-			
+
 			vertices.push_back(newVertex);
 		}
 	}
@@ -806,7 +806,7 @@ void LWObject::mapVertices()
 #endif
 {
 	ScanStruct *scanInfo = static_cast<ScanStruct *> (info);
-	
+
 	// Position
 	LWFVector position;
 	scanInfo->meshInfo->pntBasePos(scanInfo->meshInfo, id, position);
@@ -844,7 +844,7 @@ static bool equal(const FBVector &a, const FBVector &b)
 
 	LWID type = scanInfo->meshInfo->polType(scanInfo->meshInfo, id);
 	int vertices = scanInfo->meshInfo->polSize(scanInfo->meshInfo, id);
-	
+
 	// We can only handle triangles (TODO: split if count > 3)
 	if(type != LWPOLTYPE_FACE || vertices != 3)
 	{
@@ -1029,7 +1029,7 @@ static int getDominantAxis(const FBVector &v)
 	double x = fabs(v.x);
 	double y = fabs(v.y);
 	double z = fabs(v.z);
-	
+
 	if((x > y) && (x > z))
 		return 0;
 	if((y > x) && (y > z))

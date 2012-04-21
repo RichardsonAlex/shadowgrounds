@@ -42,7 +42,7 @@ struct AnimationKey
 	AnimationKey(int time_, const FBMatrix &transform_)
 		:	time(time_),
 			transform(transform_) {}
-				
+
 	int time; // ms
 	FBMatrix transform;
 };

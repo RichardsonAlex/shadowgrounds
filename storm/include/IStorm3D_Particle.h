@@ -41,9 +41,9 @@ struct Storm3D_ParticleTextureAnimationInfo {
 
 class ST3D_EXP_DLLAPI IStorm3D_ParticleSystem {
 public:
-	
+
 	virtual ~IStorm3D_ParticleSystem() {}
-	
+
 	virtual void renderPoints(IStorm3D_Material* mtl, Storm3D_PointParticle* parts, int nParts, const COL &factor = COL(), bool distortion = false)=0;
 	virtual void renderQuads(IStorm3D_Material* mtl, Storm3D_PointParticle* parts, int nParts,
 		Storm3D_ParticleTextureAnimationInfo* info = NULL, const COL &factor = COL(), bool distortion = false, bool faceUp = false)=0;

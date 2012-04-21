@@ -21,7 +21,7 @@ class Ogui;
 #endif
 
 namespace ui
-{	
+{
 	class LoadingMessage
 	{
 		public:

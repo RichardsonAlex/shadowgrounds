@@ -21,7 +21,7 @@ public:
 		ATTACH_RIGHT = 1,
 		ATTACH_BOTTOM = 2,
 		ATTACH_ALL = 3
-	};	
+	};
 
 	DialogData(int resourceId, const HWND parentHandle, ResizeType type = ATTACH_NONE, IDlgHandler* handler = 0 );
 	explicit DialogData(int resourceId);

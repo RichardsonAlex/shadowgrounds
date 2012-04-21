@@ -155,7 +155,7 @@ bool ActorBase::checkOverlapOBB(const VC3 &center, const VC3 &radius, const QUAT
 	while(shapeAmount--)
 	{
 		NxShape *shape = shapes[shapeAmount];
-	
+
 		bool intersection = shape->checkOverlapOBB(box);
 		if(intersection)
 			return true;

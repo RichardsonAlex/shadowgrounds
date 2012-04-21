@@ -103,7 +103,7 @@ Storm3D_Scene::~Storm3D_Scene()
 	for(std::set<IStorm3D_Terrain *>::iterator it = terrains.begin(); it != terrains.end(); ++it)
 	{
 		Storm3D_Terrain *terrain = static_cast<Storm3D_Terrain *> (*it);
-		
+
 		for(std::set<IStorm3D_Model *>::iterator it = models.begin(); it != models.end(); ++it)
 			terrain->getModels().removeModel(**it);
 	}
@@ -227,7 +227,7 @@ void Storm3D_Scene::RenderSceneWithParams(bool flip,bool disable_hsr, bool updat
 			// Calculate range (outside check part1... fastest)
 			float radius = mod->bounding_radius;
 			float nr = camera.vis_range + radius;
-			
+
 			if (fabsf(camera.position.x-model_position.x)>nr) continue;
 			if (fabsf(camera.position.y-model_position.y)>nr) continue;
 			if (fabsf(camera.position.z-model_position.z)>nr) continue;
@@ -279,7 +279,7 @@ void Storm3D_Scene::RenderSceneWithParams(bool flip,bool disable_hsr, bool updat
 
 		// Put each object in set into the list
 		for(set<IStorm3D_Model_Object*>::iterator io=mod->objects.begin();io!=mod->objects.end();++io)
-		{	
+		{
 			// Typecast (to simplify code)
 			Storm3D_Model_Object *obj=(Storm3D_Model_Object*)*io;
 
@@ -332,7 +332,7 @@ void Storm3D_Scene::RenderSceneWithParams(bool flip,bool disable_hsr, bool updat
 			// Calculate list position (optimize)
 			int lp = 0;
 			for (;renderlist_points[lp]>points;lp++);	// OK!
-			
+
 			// Move end of list 1 position backwards
 			for (int i=renderlist_size-1;i>lp;i--)
 			{
@@ -351,7 +351,7 @@ void Storm3D_Scene::RenderSceneWithParams(bool flip,bool disable_hsr, bool updat
 				int new_renderlist_size=renderlist_size*2;
 				PStorm3D_Model_Object *new_renderlist_obj=new PStorm3D_Model_Object[new_renderlist_size];
 				float *new_renderlist_points=new float[new_renderlist_size];
-				
+
 				// Clear new renderlists
 				for (int i=0;i<new_renderlist_size;i++)
 				{
@@ -527,7 +527,7 @@ void Storm3D_Scene::renderRealScene(bool flip, bool render_mirrored, Storm3D_Tex
 			Storm3D_ShaderManager::GetSingleton()->SetObjectAmbient(m->GetSelfIllumination());
 			Storm3D_ShaderManager::GetSingleton()->SetObjectDiffuse(m->GetColor());
 			Storm3D_Texture *t = (Storm3D_Texture *) m->GetBaseTexture();
-		
+
 			if(t)
 			{
 				t->Apply(0);
@@ -581,7 +581,7 @@ void Storm3D_Scene::renderRealScene(bool flip, bool render_mirrored, Storm3D_Tex
 		}
 
 		Storm3D_ShaderManager::GetSingleton()->SetModelAmbient(mod->self_illumination + ambient);
-		
+
 		// Horrible ...
 		{
 			Storm3D_ShaderManager::GetSingleton()->setLightingParameters(false, false, 1);
@@ -684,7 +684,7 @@ void Storm3D_Scene::renderRealScene(bool flip, bool render_mirrored, Storm3D_Tex
 
 			for(unsigned int i = 0; i < no_depth_lines.size(); ++i)
 				no_depth_lines[i]->Render();
-			
+
 			glEnable(GL_DEPTH_TEST);
 		}
 
@@ -716,7 +716,7 @@ void Storm3D_Scene::renderRealScene(bool flip, bool render_mirrored, Storm3D_Tex
 		{
 			const Debug3 &d = debugTriangles[i];
 			uint32_t color = d.color.GetAsD3DCompatibleARGB();
-			
+
 			buffer->color = color;
 			buffer->position = d.p1;
 			++buffer;
@@ -733,7 +733,7 @@ void Storm3D_Scene::renderRealScene(bool flip, bool render_mirrored, Storm3D_Tex
 		{
 			const Debug2 &d = debugLines[i];
 			uint32_t color = d.color.GetAsD3DCompatibleARGB();
-			
+
 			buffer->color = color;
 			buffer->position = d.p1;
 			++buffer;
@@ -747,7 +747,7 @@ void Storm3D_Scene::renderRealScene(bool flip, bool render_mirrored, Storm3D_Tex
 		{
 			const Debug1 &d = debugPoints[i];
 			uint32_t color = d.color.GetAsD3DCompatibleARGB();
-			
+
 			buffer->color = color;
 			buffer->position = d.p1;
 			++buffer;
@@ -1252,7 +1252,7 @@ void Storm3D_Scene::GetEyeVectors(const VC2I &screen_position, Vector &position_
 	VC3 camera_up = camera.GetUpVec();
 	VC3 camera_position = camera.GetPosition();
 	VC3 camera_target = camera.GetTarget();
-	
+
 	D3DXMatrixLookAtLH(pView, camera_position, camera_target, camera_up);
 
 	//RECT windowSize = { 0 };
@@ -1367,7 +1367,7 @@ int Storm3D_Scene::RenderScene(bool present)
 {
 	// Reset polygon counter
 	poly_counter = 0;
-	
+
 	{
 		static int haxValue = 0;
 		++haxValue;
@@ -1536,7 +1536,7 @@ void Storm3D_Scene::RenderSceneToAllDynamicCubeTexturesInScene()
 
 		// Loop objects
 		for(set<IStorm3D_Model_Object*>::iterator io=mod->objects.begin();io!=mod->objects.end();io++)
-		{	
+		{
 			// Typecast (to simplify code)
 			Storm3D_Model_Object *obj=(Storm3D_Model_Object*)*io;
 

@@ -73,7 +73,7 @@ bool operator < (const Bone &lhs, const Bone &rhs)
 		return true;
 
 	return false;
-}	
+}
 
 
 } // end of namespace export

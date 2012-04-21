@@ -64,7 +64,7 @@ namespace game
 
 	class CameraScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

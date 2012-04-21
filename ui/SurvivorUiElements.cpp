@@ -250,7 +250,7 @@ public:
 				result = 1.0f - result;
 				if( result < 0.0f )
 					result = 0.0f;
-				
+
 				if( result > 1.0f )
 					result = 1.0f;
 			}
@@ -532,7 +532,7 @@ public:
 				}
 			}
 
-			
+
 			desc_text = ogui->CreateSimpleTextButton(win->getWindow(),
 				win->getText()->getX(), win->getText()->getY()-2,
 				win->getText()->getW(), win->getText()->getH(), NULL, NULL, NULL, description.c_str(), 0, 0, false);
@@ -1127,7 +1127,7 @@ public:
 				w = unit->getWeaponType(wnum);
 			}
 		}
-		
+
 		// no weapon uses launchspeed
 		if(!w || !w->usesLaunchSpeed())
 		{

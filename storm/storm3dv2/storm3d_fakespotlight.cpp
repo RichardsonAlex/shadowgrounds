@@ -267,7 +267,7 @@ using namespace boost;
 				}
 			}
 
-			assert(!"Whoops");	
+			assert(!"Whoops");
 			return shared_ptr<RenderTarget>();
 		}
 
@@ -931,7 +931,7 @@ void Storm3D_FakeSpotlight::createBuffers(Storm3D &storm, int shadowQuality)
 	{
 		Storm3D_FakeSpotlight::Data::indexBuffer->create(4, false);
 		uint16_t *pointer = Storm3D_FakeSpotlight::Data::indexBuffer->lock();
-		
+
 		*pointer++ = 4;
 		*pointer++ = 0;
 		*pointer++ = 1;

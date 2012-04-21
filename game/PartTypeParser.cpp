@@ -194,7 +194,7 @@ namespace game
 												}
 											}
 										} else {
-											pos = j;									
+											pos = j;
 										}
 										break;
 									}
@@ -205,7 +205,7 @@ namespace game
 								Logger::getInstance()->debug(&importfile[pos]);
 								ptp.loadPartTypes(&importfile[pos]);
 
-								lineok = true;							
+								lineok = true;
 							} else {
                 error("Import parameter missing.", lineNumber);
 							}

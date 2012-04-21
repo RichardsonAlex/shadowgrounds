@@ -34,7 +34,7 @@ const int SCOREWINDOW_NAME = 3;
 class ScoreWindow::ScoreWindowImpl : private IOguiButtonListener, public IGameControllerKeyreader
 {
 public:
-	
+
 	//=========================================================================
 	ScoreWindowImpl( Ogui* ogui, Game* game, int player ) :
 		ogui( ogui ),
@@ -45,7 +45,7 @@ public:
 		closebut( NULL ),
 		restartbut( NULL ),
 		textArea( NULL ),
-		
+
 		scoreLimitHint( NULL ),
 		oguiLoader( ogui ),
 		pressed_restart( false )
@@ -73,7 +73,7 @@ public:
 
 		counterIncSound = getLocaleGuiString( "gui_scorewindow_sound_counter_inc" );
 		counterDoneSound = getLocaleGuiString( "gui_scorewindow_sound_counter_done" );
-		
+
 		newHighScoreHint = oguiLoader.LoadFormattedText( "newscore", win, 0);
 		newHighScoreHintText = getLocaleGuiString( "gui_scorewindow_newscore_text" );
 		newHighScoreHint->setText("");
@@ -225,9 +225,9 @@ public:
 		editcursor_show = true;
 		editcursor_last_change = game->gameTimer;
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	void GenerateStats()
 	{
 		game::GameStats* stats = game::GameStats::instances[ player ];
@@ -244,7 +244,7 @@ public:
 		scoreCounters[0].step = scoreTime / GAME_TICKS_PER_SECOND; // calc for 1 secs
 		if(scoreCounters[0].step < 1) scoreCounters[0].step = 1;
 		scoreCounters[0].wait = GAME_TICKS_PER_SECOND / 2; // chill afterwards
-		
+
 		scoreCounters[1].current = 0;
 		scoreCounters[1].target = scoreKills;
 		scoreCounters[1].step = scoreKills / GAME_TICKS_PER_SECOND; // calc for 1 secs
@@ -280,7 +280,7 @@ public:
 			text = util::StringReplace("($scoretime)", "0", text);
 			text = util::StringReplace("($scorekills)", "0", text);
 			textArea->setText( text );
-			
+
 		}
 
 		if(!game::SimpleOptions::getBool(DH_OPT_B_SCOREWINDOW_NAME_INPUT))
@@ -341,7 +341,7 @@ public:
 
 		highScores->setText( ss.str() );
 		highScoreNumbers->setText( ss2.str() );
-		
+
 		// give some room for fader
 		highScores->moveBy(0, 25);
 		highScoreNumbers->moveBy(0, 25);
@@ -428,7 +428,7 @@ public:
 	}
 
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	bool AllowLoading() const
 	{
 		return allowLoading;
@@ -562,7 +562,7 @@ public:
 					name->SetText((">" + editBuffer + " ").c_str());
 			}
 		}
-		
+
 
 		if(scrollScores > 0)
 		{
@@ -688,7 +688,7 @@ private:
 	game::Game*	game;
 	bool		allowLoading;
 	int player;
-	
+
 	struct ScoreCounter
 	{
 		int current;
@@ -701,7 +701,7 @@ private:
 	std::string counterDoneSound;
 	int lastCounterUpdate;
 	int creationTime;
-	
+
 	OguiButton*	closebut;
 	OguiButton* restartbut;
 	OguiFormattedText* textArea;

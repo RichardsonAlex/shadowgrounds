@@ -19,7 +19,7 @@ public:
 	virtual ~DlgHandlerImpl() { }
 
 	virtual BOOL handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) = 0;
-	
+
 	virtual std::string getComboBoxSelection( HWND hwnd );
 	virtual void		addComboItems( HWND hwnd, const std::vector< std::string >& items, const std::string& select = "" );
 	virtual void		setCheckBox( HWND hwnd, int buttonId, const std::string& value );

@@ -36,17 +36,17 @@ public:
 	static ParticleSystemManager& getSingleton();
 
 	ParticleSystemManager(IStorm3D* s3d, IStorm3D_Scene* scene);
-	
+
 	void registerSystem(ParticleSystemClassDesc* cd);
 	void registerForce(ParticleForceClassDesc* cd);
-	
+
 	ParticleSystem* createSystem(const std::string& className);
 	ParticleForce* createForce(const std::string className);
 
 	// makes materials with particle+textureName as id
 	IStorm3D_Material* getMaterial(const std::string& textureName);
 	PointArray* getMesh(const std::string& fileName);
-	
+
 	void addParticleSystem(boost::shared_ptr<ParticleSystem> ps);
 	void tick();
 	void render();

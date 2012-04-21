@@ -30,7 +30,7 @@ class Storm3D_Mesh_CollisionTable
 	Storm3D_Mesh *owner;
 	CollisionFace *faces;
 	int face_amount;
-	
+
 	//Storm3D_Face *tfaces;
 	//Quadtree<CollisionFace> *tree;
 	StaticQuadtree<CollisionFace> *tree;

@@ -161,7 +161,7 @@ typedef struct {
 	COL font_disabled_color;
 	IStorm3D_Font *font_highlighted;
 	COL font_highlighted_color;
-		
+
 	IStorm3D_Material 		*get_pic;
 	IStorm3D_Material 		*get_picdown;
 	IStorm3D_Material 		*get_picdisabled;

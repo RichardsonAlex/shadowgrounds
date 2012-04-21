@@ -128,7 +128,7 @@ namespace ui
 				// (or maybe just do a quick hack and add it to xz-coordinates?)
 				velocityRandomized.x += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
 				velocityRandomized.z += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
-				
+
 				// add to y too? maybe should add downward only?
 				// NOTE: biased downward
 				velocityRandomized.y += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
@@ -142,7 +142,7 @@ namespace ui
 
 			IStorm3D_Scene *scene = gameScene->getStormScene();
 
-			VC3 dir = velocityRandomized.GetNormalized();			
+			VC3 dir = velocityRandomized.GetNormalized();
 			VC3 rayOrigin = origin;
 			float rayLen = velocityRandomized.GetLength();
 
@@ -272,7 +272,7 @@ namespace ui
 				//*resultPosition += randomizedOffset;
 				resultPosition->x += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
 				resultPosition->z += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
-			}			
+			}
 
 			/*
 			// psd

@@ -31,7 +31,7 @@ namespace {
 		if(index != name.npos)
 		{
 			std::string::size_type start = name.find_first_of("(", index);
-			
+
 			if(start != name.npos)
 			{
 				start += 1;
@@ -389,11 +389,11 @@ void Storm3D_Material::ReCalculateMultiTextureType()
 		MTYPE_REF,				// 0 texcoords, 1 layers, ref
 		MTYPE_TEX_REF,			// 1 texcoords, 2 layers, base+ref
 		MTYPE_DUALTEX_REF,		// 2 texcoords, 3 layers, base+base2+ref
-		
+
 		MTYPE_EMBM_REF,			// 1 texcoords, 2 layers, bump+ref
 		MTYPE_TEX_EMBM_REF,		// 2 texcoords, 3 layers, base+bump+ref
 		MTYPE_DUALTEX_EMBM_REF,	// 3 texcoords, 4 layers, base+base2+bump+ref
-		
+
 		MTYPE_DOT3,				// 1 texcoords, 1 layers, bump
 		MTYPE_DOT3_TEX,			// 2 texcoords, 2 layers, base+bump
 		MTYPE_DOT3_REF,			// 1 texcoords, 2 layers, bump+ref
@@ -513,7 +513,7 @@ void Storm3D_Material::ReCalculateMultiTextureType()
 				// color only!
 				multitexture_type=MTYPE_COLORONLY;
 			}
-		}		
+		}
 	}
 }
 
@@ -576,7 +576,7 @@ IStorm3D_Texture *Storm3D_Material::GetDistortionTexture()
 void Storm3D_Material::SetBaseTexture(IStorm3D_Texture *itexture)
 {
 	Storm3D_Texture *texture=(Storm3D_Texture*)itexture;
-	
+
 	// Add texture reference count
 	if (texture) texture->AddRef();
 
@@ -599,7 +599,7 @@ void Storm3D_Material::SetBaseTexture(IStorm3D_Texture *itexture)
 void Storm3D_Material::SetDistortionTexture(IStorm3D_Texture *itexture)
 {
 	Storm3D_Texture *texture=(Storm3D_Texture*)itexture;
-	
+
 	// Add texture reference count
 	if (texture) texture->AddRef();
 
@@ -622,7 +622,7 @@ void Storm3D_Material::SetDistortionTexture(IStorm3D_Texture *itexture)
 void Storm3D_Material::SetBaseTexture2(IStorm3D_Texture *itexture,Storm3D_Material::MTL_BOP blend_op,float blend_factor)
 {
 	Storm3D_Texture *texture=(Storm3D_Texture*)itexture;
-	
+
 	// Add texture reference count
 	if (texture) texture->AddRef();
 
@@ -645,7 +645,7 @@ void Storm3D_Material::SetBaseTexture2(IStorm3D_Texture *itexture,Storm3D_Materi
 void Storm3D_Material::SetBumpTexture(IStorm3D_Texture *itexture,float _bumpheight)
 {
 	Storm3D_Texture *texture=(Storm3D_Texture*)itexture;
-	
+
 	// Add texture reference count
 	if (texture) texture->AddRef();
 
@@ -672,7 +672,7 @@ void Storm3D_Material::SetBumpTexture(IStorm3D_Texture *itexture,float _bumpheig
 void Storm3D_Material::SetReflectionTexture(IStorm3D_Texture *itexture,TEX_GEN texgen,Storm3D_Material::MTL_BOP blend_op,float blend_factor)
 {
 	Storm3D_Texture *texture=(Storm3D_Texture*)itexture;
-	
+
 	// Add texture reference count
 	if (texture) texture->AddRef();
 
@@ -763,7 +763,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 	alphaop = disable
 	texturetransformflags = disable
 	texcoordindex = 0
-	
+
 	After rendering material's UnApply() is called, and it
 	returns these states, if it changes them.
 	*/
@@ -793,7 +793,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 	if (texture_reflection) texture_reflection->texture->AnimateVideo();
 	if (texture_bump) texture_bump->texture->AnimateVideo();
 
-	// The superb if(TM) multitexturing (no effects/techniques needed anymore!)	
+	// The superb if(TM) multitexturing (no effects/techniques needed anymore!)
 	// This routine is much faster than DX8-effect system (and bugfree also;)...
 	if (multitexture_type==MTYPE_COLORONLY)			// COL only
 	{
@@ -829,7 +829,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 	{
 		// Set stage (base)
 		texture_base->texture->Apply(0);
-		
+
 		// Set stage (base2)
 		texture_base2->texture->Apply(1);
 		glActiveTexture(GL_TEXTURE1);
@@ -873,7 +873,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 			mat.CreateRotationMatrix(QUAT(-angle_x,-angle_y,0));
 
 			if (!texture_reflection->texture->IsCube())
-			{	
+			{
 				// Fix reflection (v2.3)
 				float mt[16]=
 				{
@@ -898,7 +898,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 			mat._21=0.0f;mat._22=-0.866f;mat._23=0.0f;
 			mat._31=0.5f;mat._32=0.5f;mat._33=1.0f;
 			mat._41=0.0f;mat._42=0.0f;mat._43=0.0f;
-			
+
 			// If it's mirror negate _11
 			if (texture_reflection->texcoord_gen==TEX_GEN_PROJECTED_MIRROR)
 				mat._11*=-1;
@@ -958,7 +958,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 			mat.CreateRotationMatrix(QUAT(-angle_x,-angle_y,0));
 
 			if (!texture_reflection->texture->IsCube())
-			{	
+			{
 				// Fix reflection (v2.3)
 				float mt[16]=
 				{
@@ -1357,7 +1357,7 @@ bool Storm3D_Material::IsIdenticalWith(const Storm3D_Material *other) const
 	bool identical = true;
 
 	// ToDo: operator == for different stuff
-	
+
 	// Texture layers
 	if(texture_base && other->texture_base)
 	{

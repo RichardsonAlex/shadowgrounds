@@ -29,8 +29,8 @@ class ParticleSystem {
 public:
 	virtual ~ParticleSystem() {}
 	virtual const char* getClassName()=0;
-	virtual const char* getSuperClassName()=0;		
-	virtual ParticleSystem* launch()=0;	
+	virtual const char* getSuperClassName()=0;
+	virtual ParticleSystem* launch()=0;
 	virtual int  getNumParticles()=0;
 	virtual void setTarget(const Vector& target)=0;
 	virtual void setTM(const Matrix& tm)=0;
@@ -139,7 +139,7 @@ enum GEN_PARTICLE_SYSTEM_PARAMS
 class GenParticleSystem : public ParticleSystem {
 protected:
 
-	std::vector<Particle> m_parts;	
+	std::vector<Particle> m_parts;
 	std::vector< boost::shared_ptr<ParticleForce> > m_forces;
 	std::vector<Storm3D_PointParticle> m_mesh;
 	Storm3D_ParticleAnimationInfo m_animInfo;
@@ -158,7 +158,7 @@ protected:
 //	boost::shared_ptr<VectorTrack> m_colorTrack;
 //	boost::shared_ptr<FloatTrack> m_sizeTrack;
 //	boost::shared_ptr<FloatTrack> m_alphaTrack;
-	
+
 //	VectorTrack m_colorTrack;
 //	FloatTrack m_sizeTrack;
 //	FloatTrack m_alphaTrack;
@@ -166,7 +166,7 @@ protected:
 	void baseCopy(GenParticleSystem* ps);
 
 public:
-		
+
 	GenParticleSystem();
 	virtual ~GenParticleSystem();
 
@@ -174,15 +174,15 @@ public:
 //	int getNumForces();
 //	void removeForce(int i);
 //	void clearForces();
-	
+
 	boost::shared_ptr<ParamBlock> getParamBlock();
 
 	virtual const char* getClassName();
 	virtual const char* getSuperClassName();
-	
+
 	virtual void setParticlePosition(Vector& v);
 	virtual void setParticleVelocity(Vector& v, float speed);
-		
+
 	int  getNumParticles();
 	void setTarget(const Vector& target);
 	void setTM(const Matrix& tm);
@@ -191,7 +191,7 @@ public:
 	void parseTo(editor::ParserGroup& pg);
 	void kill();
 	bool isDead();
-		
+
 	virtual void create();
 	virtual void init(IStorm3D* s3d, IStorm3D_Scene* scene);
 	virtual void prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene);

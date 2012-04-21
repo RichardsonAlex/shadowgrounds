@@ -191,7 +191,7 @@ using namespace frozenbyte::storm;
 				return false;
 			if(!contains2D(area, vertices[3]))
 				return false;
-			
+
 			return true;
 		}
 
@@ -460,7 +460,7 @@ struct Storm3D_TerrainDecalSystem::Data
 	{
 		DecalMaterial &material = materials[materialIndex];
 		assert(decalIndex >= 0 && decalIndex < int(material.decals.size()));
-		
+
 		StormDecal &decal = material.decals[decalIndex];
 		if(decal.id != id)
 			return;
@@ -473,7 +473,7 @@ struct Storm3D_TerrainDecalSystem::Data
 	{
 		DecalMaterial &material = materials[materialIndex];
 		assert(decalIndex >= 0 && decalIndex < int(material.decals.size()));
-		
+
 		StormDecal &decal = material.decals[decalIndex];
 		if(decal.id != id)
 			return;
@@ -486,7 +486,7 @@ struct Storm3D_TerrainDecalSystem::Data
 	{
 		DecalMaterial &material = materials[materialIndex];
 		assert(decalIndex >= 0 && decalIndex < int(material.decals.size()));
-		
+
 		if(alpha < 0.f)
 			alpha = 0.f;
 		if(alpha > 1.f)
@@ -504,7 +504,7 @@ struct Storm3D_TerrainDecalSystem::Data
 	{
 		DecalMaterial &material = materials[materialIndex];
 		assert(decalIndex >= 0 && decalIndex < int(material.decals.size()));
-		
+
 		StormDecal &decal = material.decals[decalIndex];
 		if(decal.id != id)
 			return;

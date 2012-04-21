@@ -101,7 +101,7 @@ std::vector< OptionsValue > OptionsValueList::getOptions() const
 std::string	OptionsValueList::getTheOneInUse() const
 {
 	int i;
-	
+
 	for( i = 0; i < (int)options.size(); ++i )
 	{
 		if( !names[ i ].empty() && options[ i ].isInUse( GameOptionManager::getInstance() ) )

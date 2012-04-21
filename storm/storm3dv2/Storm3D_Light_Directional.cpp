@@ -33,7 +33,7 @@ Storm3D_Light_Directional::Storm3D_Light_Directional(Storm3D *s2,const char *nam
 }
 
 
-	
+
 //------------------------------------------------------------------
 // Storm3D_Light_Directional::~Storm3D_Light_Directional
 //------------------------------------------------------------------

@@ -66,9 +66,9 @@ namespace util
 			bool loadFile(const char *filename);
 
 			bool saveFile();
-			
+
 			bool saveFileAs(const char *filename);
-			
+
 			// will NOT save the file even if modified. just get rid of it.
 			void closeFile();
 

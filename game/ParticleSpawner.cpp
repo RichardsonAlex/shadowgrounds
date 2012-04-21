@@ -77,7 +77,7 @@ namespace game
 
 	void ParticleSpawner::setPosition(const VC3 &position)
 	{
-		this->position = position;	
+		this->position = position;
 	}
 
 

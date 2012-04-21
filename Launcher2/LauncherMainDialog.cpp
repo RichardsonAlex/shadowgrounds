@@ -107,14 +107,14 @@ public:
 					// Hide all tab dialogs, then show the selected one.
 					for(int l = 0; l < TAB_AMOUNT; l++)
 						if(handlerList[l]->dialogData)
-							handlerList[l]->dialogData->hide();				
+							handlerList[l]->dialogData->hide();
 					handlerList[tabid]->dialogData->show();
 				}
 			}
 			break;
 
 		case WM_SHOWWINDOW:
-			initDialog( );	
+			initDialog( );
 			break;
 
 		};
@@ -145,7 +145,7 @@ void LauncherMainDialog::initTabs()
 
 		TCITEM t;
 		t.mask = TCIF_TEXT;
-		
+
 		ADD_TAB(0, "launcher_launch_tab");
 		ADD_TAB(1, "launcher_graphics");
 		ADD_TAB(2, "launcher_sounds");

@@ -33,7 +33,7 @@ public:
 	// Length
 	int GetLength() const;
 	void SetLength(int _length);
-	
+
 	// Non-null-terminated char[] functions
 	void AddNonNullTerminatedString(char *_data,int _length);
 	void CreateFromNullTerminatedString(char *_data,int _length);

@@ -19,7 +19,7 @@ FBMatrix createFBMatrix(LWDVector position, LWDVector angles)
 	tm.Set(1, 0);
 	tm.Set(2, 0);
 	tm.Set(3, 0);
-	
+
 	tm.Set(4, 0);
 	tm.Set(5, 1);
 	tm.Set(6, 0);
@@ -41,7 +41,7 @@ FBMatrix createFBMatrix(LWDVector position, LWDVector angles)
 	z.MakeFromAngles(0, 0, -static_cast<double> (angles[2]));
 
 	r = z * (x * y);
-	
+
 	tm.CreateRotationMatrix(r);
 
 	tm.Set(12, static_cast<double> (position[0]));
@@ -105,9 +105,9 @@ FBMatrix LWTransforms::GetTransform(LWItemID itemId, float time)
 	transform.Set(13, lw_pos[1]);
 	transform.Set(14, lw_pos[2]);
 	transform.Set(15, 1);
-	
+
 	return transform;
-	
+
 /*
 	LWDVector lw_pos;
 	LWDVector lw_rot;
@@ -120,14 +120,14 @@ FBMatrix LWTransforms::GetTransform(LWItemID itemId, float time)
 	{
 		itemInfo->param(currentId, LWIP_PIVOT_ROT, 0, lw_rot_pivot);
 		itemInfo->param(currentId, LWIP_PIVOT, 0, lw_pos_pivot);
-		
+
 		itemInfo->param(currentId, LWIP_ROTATION, time, lw_rot);
 		itemInfo->param(currentId, LWIP_POSITION, time, lw_pos);
 
 		FBMatrix tm = createFBMatrix(lw_pos, lw_rot);
 		FBMatrix pivot = createFBMatrix(lw_pos_pivot, lw_rot_pivot);
 		//result = result * pivot * tm;
-		
+
 		result = result * tm * pivot;
 		currentId = itemInfo->parent(currentId);
 	}
@@ -158,7 +158,7 @@ FBMatrix LWTransforms::GetBoneTransform(LWItemID itemId, float time)
 	{
 		itemInfo->param(currentId, LWIP_PIVOT_ROT, 0, lw_rot_pivot);
 		itemInfo->param(currentId, LWIP_PIVOT, 0, lw_pos_pivot);
-		
+
 		if(itemInfo->type(currentId) == LWI_BONE)
 		{
 			boneInfo->restParam(currentId, LWIP_ROTATION, lw_rot);
@@ -236,14 +236,14 @@ FBMatrix LWTransforms::GetBoneTransform(LWItemID itemId, float time)
 		LWDVector rotation = { 0 };
 		itemInfo->param(current, LWIP_POSITION, time, position);
 		itemInfo->param(current, LWIP_ROTATION, time, rotation);
-		
+
 		FBMatrix pivot = createFBMatrix(pivot_position, pivot_rotation);
 		FBMatrix transform = pivot * createFBMatrix(position, rotation);
 
 		result = result * transform;
 		current = itemInfo->parent(current);
 	}
-*/		
+*/
 	return result;
 }
 
@@ -278,7 +278,7 @@ FBMatrix LWTransforms::GetPivotTransform(LWItemID itemId)
 
 	LWDVector position = { 0 };
 	LWDVector FBQuaternion = { 0 };
-	
+
 	itemInfo->param(itemId, LWIP_PIVOT, 0, position);
 	itemInfo->param(itemId, LWIP_PIVOT_ROT, 0, FBQuaternion);
 
@@ -306,7 +306,7 @@ FBMatrix LWTransforms::GetBoneRestTransform(LWItemID itemId)
 	{
 		itemInfo->param(currentId, LWIP_PIVOT_ROT, 0, lw_rot_pivot);
 		itemInfo->param(currentId, LWIP_PIVOT, 0, lw_pos_pivot);
-		
+
 		if(itemInfo->type(currentId) == LWI_BONE)
 		{
 			boneInfo->restParam(currentId, LWIP_ROTATION, lw_rot);
@@ -336,7 +336,7 @@ double LWTransforms::GetScale(LWItemID itemId, float time)
 
 	LWDVector vector = { 0 };
 	itemInfo->param(itemId, LWIP_UP, time, vector);
-	
+
 	// Take scale from upvector
 	double scale = static_cast<double> (vector[0]*vector[0] + vector[1]*vector[1] + vector[2]*vector[2]);
 	scale = static_cast<double> (sqrt(scale));
@@ -351,7 +351,7 @@ double LWTransforms::GetBoneScale(LWItemID itemId)
 
 	if((itemInfo == 0) || (boneInfo == 0))
 		return 1.f;
-	
+
 	// Get scale from parent
 
 	LWItemID currentId = itemId;

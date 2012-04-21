@@ -37,7 +37,7 @@ public:
 
 	void chooseCharacterInDir(int dir, int player);
 	void lockChosenCharacter(int player);
-	
+
 	void updateProfileButtons();
 	bool canStart();
 

@@ -4,7 +4,7 @@
   (C) Sebastian Aaltonen 2000
 
   Techniques
-	
+
 	Technique stuff...
 
 */

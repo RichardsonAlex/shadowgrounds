@@ -45,13 +45,13 @@ class Thread
 #endif
 
 	// Is the thread ended?
-	bool finished;		
+	bool finished;
 
 protected:
 
 	// Running flag
 	// If running==false the thread should exit as soon as possible
-	bool running;		
+	bool running;
 
 	// Thread code
 	// Put your own code here.

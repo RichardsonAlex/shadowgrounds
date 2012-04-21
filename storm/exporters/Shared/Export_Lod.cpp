@@ -29,7 +29,7 @@ namespace {
 	class DX
 	{
 		HWND windowHandle;
-	
+
 		CComPtr<IDirect3DDevice9> device;
 		CComPtr<IDirect3D9> d3dHandle;
 
@@ -54,7 +54,7 @@ namespace {
 			ZeroMemory(&presentInfo, sizeof(D3DPRESENT_PARAMETERS));
 			presentInfo.Windowed = TRUE;
 			presentInfo.SwapEffect = D3DSWAPEFFECT_DISCARD;
-			presentInfo.BackBufferFormat = D3DFMT_UNKNOWN;	
+			presentInfo.BackBufferFormat = D3DFMT_UNKNOWN;
 			presentInfo.BackBufferCount = 1;
 
 			d3dHandle->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, windowHandle, D3DCREATE_HARDWARE_VERTEXPROCESSING, &presentInfo, &device);
@@ -96,14 +96,14 @@ namespace {
 		bool generateMeshes(const std::vector<Vertex> &vertices, const std::vector<Face> &faces)
 		{
 			CComPtr<ID3DXMesh> basicMesh;
-			
+
 			D3DXDeclaratorFromFVF(D3DFVF_XYZ | D3DFVF_NORMAL | D3DFVF_TEX4, declaration);
 			D3DXCreateMesh(faces.size(), vertices.size(), D3DXMESH_SYSTEMMEM, declaration, &device, &basicMesh);
 
 			{
 				unsigned short int *indexBuffer = 0;
 				basicMesh->LockIndexBuffer(0, reinterpret_cast<void **> (&indexBuffer));
-				
+
 				for(unsigned int i = 0; i < faces.size(); ++i)
 				for(int j = 0; j < 3; ++j)
 				{
@@ -196,7 +196,7 @@ namespace {
 
 				FBVector normal(*vertexBuffer++, *vertexBuffer++, *vertexBuffer++);
 				v.setNormal(normal);
-			
+
 				FBVector2 uv(*vertexBuffer++, *vertexBuffer++);
 				v.setUv(uv);
 
@@ -345,7 +345,7 @@ int Lod::getFaceBufferCount() const
 {
 	if(data->hasLods)
 		return LOD_AMOUNT;
-	
+
 	return 1;
 }
 

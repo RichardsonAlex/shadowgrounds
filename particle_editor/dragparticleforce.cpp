@@ -38,7 +38,7 @@ public:
 	}
 	const char* getClassName() {
 		return "drag";
-	}	
+	}
 	void preCalculate(float t) {
 		m_pb->getValue(PB_DRAG_FACTOR, m_factor);
 	}

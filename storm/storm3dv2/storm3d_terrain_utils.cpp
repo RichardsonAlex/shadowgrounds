@@ -56,7 +56,7 @@ namespace {
 					continue;
 				else if(c == '\n')
 					break;
-				
+
 				line += c;
 			}
 

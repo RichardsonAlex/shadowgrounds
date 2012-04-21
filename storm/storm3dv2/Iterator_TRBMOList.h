@@ -45,7 +45,7 @@ public:
 			{
 				itm++;
 				if ((*itm)!=NULL)
-				{			
+				{
 					it=(*itm)->objects.Begin();
 				}
 			}
@@ -92,7 +92,7 @@ public:
 
 template <class A> class ST3D_EXP_DLLAPI ICreateIM_TRBMOList : public ICreate<A>
 {
-	
+
 	PtrList<TRBlock_MatHandle> *ptrset;
 
 public:

@@ -178,7 +178,7 @@ public:
 		int volume;
 		bool loop;
 	};
-	
+
 	void queueSoundEvent(const SoundEvent &se);
 	void clearAllSoundEvents(void);
 

@@ -35,7 +35,7 @@ namespace game
 				*unit = game->units->getUnitById(unitId);
 				// assert(unitId != 0)
 			}
-		}	
+		}
 	}
 
 	int PhysicsContactUtils::calcCustomPhysicsObjectDataForUnit(Game *game, Unit *unit)

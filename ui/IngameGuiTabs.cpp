@@ -48,7 +48,7 @@ public:
 		if( exActive >= 0 && exActive < (int)buttons.size() &&
 			eve->triggerButton->GetId() >= 0 && eve->triggerButton->GetId() < (int)buttons.size() )
 		{
-			
+
 			if( eve->triggerButton->GetId() >= 0 && eve->triggerButton->GetId() < (int)buttons.size() )
 			{
 				visible = false;
@@ -94,7 +94,7 @@ public:
 			visible = true;
 			window->StartEffect(OGUI_WINDOW_EFFECT_FADEIN, GUITABS_FADE_IN_TIME);
 			window->SetReactMask( OGUI_WIN_REACT_MASK_ALL );
-			
+
 			if(buttons[ GameUI::WINDOW_TYPE_LOG ])
 				buttons[ GameUI::WINDOW_TYPE_LOG ]->SetDisabled( false );
 
@@ -126,7 +126,7 @@ public:
 
 			buttons[ GameUI::WINDOW_TYPE_UPGRADE ]->SetDisabled( true );
 			buttons[ GameUI::WINDOW_TYPE_MAP ]->SetDisabled( true );
-	
+
 		}
 	}
 
@@ -137,7 +137,7 @@ public:
 			//visible = false;
 		}
 	}
-	
+
 	void setActive( IngameGuiTabs::IngameWindows current_active )
 	{
 		// std::stringstream ss;
@@ -187,7 +187,7 @@ public:
 		buttonsUp[ GameUI::WINDOW_TYPE_LOG ]		= ( "gui_tabs_log_normal" );
 		buttonsUp[ GameUI::WINDOW_TYPE_UPGRADE ] = ( "gui_tabs_upgrade_normal" );
 		buttonsUp[ GameUI::WINDOW_TYPE_MAP ]		= ( "gui_tabs_map_normal" );
-		
+
 		buttonsDown[ GameUI::WINDOW_TYPE_LOG ]		= ( "gui_tabs_log_down" );
 		buttonsDown[ GameUI::WINDOW_TYPE_UPGRADE ]	= ( "gui_tabs_upgrade_down" );
 		buttonsDown[ GameUI::WINDOW_TYPE_MAP ]		= ( "gui_tabs_map_down" );

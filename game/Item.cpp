@@ -34,7 +34,7 @@ namespace game
 
 		spawner = NULL;
 	}
-	
+
 	Item::~Item()
 	{
 		if(this->progress)
@@ -152,7 +152,7 @@ namespace game
 		if (visualObject != NULL)
 		{
 			visualObject->setRotation(rotation.x, rotation.y, rotation.z);
-		}		
+		}
 	}
 
 	const VC3 &Item::getPosition()
@@ -308,7 +308,7 @@ namespace game
 	}
 
 	//.........................................................................
-	
+
 	bool Item::hasHighlightText() const
 	{
 		return !highlightText.empty();

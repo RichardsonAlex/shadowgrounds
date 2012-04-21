@@ -12,7 +12,7 @@ class IOguiFormattedCommand
 public:
 	IOguiFormattedCommand() { }
 	virtual ~IOguiFormattedCommand() { }
-	
+
 	virtual void execute( OguiFormattedText* text, const std::string& parameters, OguiFormattedText::ParseData* data ) = 0;
 
 };

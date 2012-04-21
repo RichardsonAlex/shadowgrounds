@@ -23,7 +23,7 @@ public:
 		for (int i = 0; i < DIRECT_CTRL_AMOUNT; i++)
 		{
 			this->directControlOn[i] = copyFrom.directControlOn[i];
-		}		
+		}
 		this->aimPosition = copyFrom.aimPosition;
 		return *this;
 	}

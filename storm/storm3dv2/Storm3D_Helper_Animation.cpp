@@ -51,7 +51,7 @@ void Storm3D_Helper_Animation::AddNewPositionKeyFrame(int time,const VC3 &positi
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -88,7 +88,7 @@ void Storm3D_Helper_Animation::AddNewDirectionKeyFrame(int time,const VC3 &posit
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -125,7 +125,7 @@ void Storm3D_Helper_Animation::AddNewUpVectorKeyFrame(int time,const VC3 &positi
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -184,7 +184,7 @@ void Storm3D_Helper_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;
@@ -224,7 +224,7 @@ void Storm3D_Helper_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;
@@ -263,7 +263,7 @@ void Storm3D_Helper_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;

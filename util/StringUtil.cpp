@@ -42,9 +42,9 @@ std::string StringRemoveWhitespace( const std::string& line )
 
 size_t StringFindNotInside( const std::string& what, const std::string& in_here, const size_t& begin, const std::string begin_char, const std::string end_char )
 {
-	
+
 	size_t result = in_here.find( what, begin );
-	
+
 	if ( result == in_here.npos )
 	{
 		return result;
@@ -67,7 +67,7 @@ size_t StringFindNotInside( const std::string& what, const std::string& in_here,
 
 	// Then heres the other vars used here
 	size_t quete_end	= in_here.find(end_char, quete_begin+1 );
-	
+
 
 	while ( quete_begin < result )
 	{

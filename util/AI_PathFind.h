@@ -85,7 +85,7 @@ public:
 	// Units are in path's blocks
 	void setSize(int xSize, int ySize); // Whole map is marked free after this
 	void setPosition(int xPosition, int yPosition); // Upper-left corner
-	
+
 	// All internals should be accessible from these
 	void addPortal(int xPosition, int yPosition);
 	void removePortal(int xPosition, int yPosition);
@@ -96,10 +96,10 @@ public:
 	void setModel(IStorm3D_Model *model);
 
 	// Query stuff
-	
+
 	int getPositionX() const;
 	int getPositionY() const;
-	
+
 	int getSizeX() const;
 	int getSizeY() const;
 
@@ -132,7 +132,7 @@ class PathFind
 	// Dimensions
 	int xSize;
 	int ySize;
-	
+
 	//int accuracyFactor;
 	int accuracyShift;
 
@@ -152,7 +152,7 @@ class PathFind
 	// Not implemented
 	PathFind(const PathFind &rhs);
 	PathFind &operator = (const PathFind &rhs);
-		
+
 public:
 	PathFind();
 	~PathFind();
@@ -226,7 +226,7 @@ public:
 
 private:
 	bool findActualRoute(Path *resultPath, int xStart, int yStart, int xEnd, int yEnd, int maxHeightDifference, float climbPenalty, const Pathblock *avoidBlock) const;
-	
+
 	// Returns height at given point
 	int getHeight(int xPosition, int yPosition) const;
 

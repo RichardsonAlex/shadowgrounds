@@ -369,7 +369,7 @@ struct hiiri1
 	int dx,dy;	//kursorin deltakoordinaatit (vauhdit)
 
 	int rulla;	//rullan delta "koordinaatti"
-	
+
 	int max_x,max_y;	// Hiiren reunat
 
 	unsigned char nappi[MAX_MOUSEBUTTONS];	//napit
@@ -382,7 +382,7 @@ struct joy1
 
 	// Lis‰-akselit
 	int rot_x,rot_y;
-	int throttle,rudder;		
+	int throttle,rudder;
 
 	unsigned char nappi[MAX_JOYBUTTONS];	//napit
 };
@@ -910,7 +910,7 @@ struct hiiri1
 	int dx,dy;	//kursorin deltakoordinaatit (vauhdit)
 
 	int rulla;	//rullan delta "koordinaatti"
-	
+
 	int max_x,max_y;	// Hiiren reunat
 
 	unsigned char nappi[MAX_MOUSEBUTTONS];	//napit
@@ -922,7 +922,7 @@ struct joy1
 
 	// Lis‰-akselit
 	int rot_x,rot_y;
-	int throttle,rudder;		
+	int throttle,rudder;
 
 	unsigned char nappi[MAX_JOYBUTTONS];	//napit
 };
@@ -966,7 +966,7 @@ BOOL CALLBACK EnumJoysticksCallback( LPCDIDEVICEINSTANCE pInst,
 	if (JoyNum==1) memcpy( &GUID_Joystick2, &pInst->guidInstance, sizeof(GUID) );
 	if (JoyNum==2) memcpy( &GUID_Joystick3, &pInst->guidInstance, sizeof(GUID) );
 	if (JoyNum==3) memcpy( &GUID_Joystick4, &pInst->guidInstance, sizeof(GUID) );
-	
+
 	JoyNum++;
 
 
@@ -1275,7 +1275,7 @@ void Keyb3_UpdateDevices_Optimized(int time)
 }
 
 
-	
+
 //-----------------------------------------------------------------------------
 // Keyb3_UpdateDevices()
 // P‰ivitt‰‰ joystikin, hiiren ja n‰ppiksen omiin struckteihin.
@@ -1456,7 +1456,7 @@ void Keyb3_UpdateDevices()
 
 			/*
 			for(unsigned int l = 0; l < MouseHandler::numMice; l++)
-				for(i=0; i < MAX_MOUSEBUTTONS;i++)	
+				for(i=0; i < MAX_MOUSEBUTTONS;i++)
 					hiiri[l].nappi[i] = 0;*/
 		}
 
@@ -1552,7 +1552,7 @@ void Keyb3_UpdateDevices()
 		if(FAILED(hr)) return;
 
 		// p‰ivit‰ hiiri-strukti
-/*		
+/*
 		// UUs versio, kiihtyy...
 		{
 			static float speed=1;
@@ -1584,7 +1584,7 @@ void Keyb3_UpdateDevices()
 		if (hiiri[0].y>hiiri[0].max_y) hiiri[0].y=hiiri[0].max_y;
 		if (hiiri[0].x<0) hiiri[0].x=0;
 		if (hiiri[0].y<0) hiiri[0].y=0;
-		
+
 		// p‰ivit‰ "extra"-nappis
 		nappis.keysdown[KEYCODE_MOUSE_UP]=(dims.lY<0);
 		nappis.keysdown[KEYCODE_MOUSE_DOWN]=(dims.lY>0);
@@ -1623,7 +1623,7 @@ void Keyb3_UpdateDevices()
 	// ----------
 
 	// K‰yd‰‰n molemmat joystikit l‰pi (max 2)
-	for (int jn=0;jn<MAX_JOYSTICKS;jn++)	
+	for (int jn=0;jn<MAX_JOYSTICKS;jn++)
 	{
 		int ok=1;
 
@@ -1660,7 +1660,7 @@ void Keyb3_UpdateDevices()
 				}
 
 				hr = Device_Joystick1->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
-	
+
 				// Jos virhe, niin kokeillaan uusiksi...
 				if (FAILED(hr))
 				{
@@ -1684,7 +1684,7 @@ void Keyb3_UpdateDevices()
 				}
 
 				hr = Device_Joystick2->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
-	
+
 				// Jos virhe, niin kokeillaan uusiksi...
 				if (FAILED(hr))
 				{
@@ -1708,7 +1708,7 @@ void Keyb3_UpdateDevices()
 				}
 
 				hr = Device_Joystick3->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
-	
+
 				// Jos virhe, niin kokeillaan uusiksi...
 				if (FAILED(hr))
 				{
@@ -1732,7 +1732,7 @@ void Keyb3_UpdateDevices()
 				}
 
 				hr = Device_Joystick4->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
-	
+
 				// Jos virhe, niin kokeillaan uusiksi...
 				if (FAILED(hr))
 				{
@@ -1751,7 +1751,7 @@ void Keyb3_UpdateDevices()
 			// p‰ivit‰ joystikin-strukti
 			joy[jn].x=dijs.lX;
 			joy[jn].y=dijs.lY;
-			for (i=0;i<MAX_JOYBUTTONS;i++) joy[jn].nappi[i]=((dijs.rgbButtons[i] & 0x80)!=0);		
+			for (i=0;i<MAX_JOYBUTTONS;i++) joy[jn].nappi[i]=((dijs.rgbButtons[i] & 0x80)!=0);
 			joy[jn].throttle=dijs.lZ;
 			joy[jn].rudder=dijs.lRz;
 			joy[jn].rot_x=dijs.lRx;
@@ -1897,21 +1897,21 @@ void Keyb3_SetActive(int on)
 	if(on)
 	{
 
-		if(Device_Keyboard) Device_Keyboard->Acquire();	
-		if(Device_Mouse) Device_Mouse->Acquire();	
-		if(Device_Joystick1) Device_Joystick1->Acquire();	
-		if(Device_Joystick2) Device_Joystick2->Acquire();	
-		if(Device_Joystick3) Device_Joystick3->Acquire();	
-		if(Device_Joystick4) Device_Joystick4->Acquire();	
+		if(Device_Keyboard) Device_Keyboard->Acquire();
+		if(Device_Mouse) Device_Mouse->Acquire();
+		if(Device_Joystick1) Device_Joystick1->Acquire();
+		if(Device_Joystick2) Device_Joystick2->Acquire();
+		if(Device_Joystick3) Device_Joystick3->Acquire();
+		if(Device_Joystick4) Device_Joystick4->Acquire();
 	}
 	else
 	{
-		if(Device_Keyboard) Device_Keyboard->Unacquire();	
-		if(Device_Mouse) Device_Mouse->Unacquire();	
-		if(Device_Joystick1) Device_Joystick1->Unacquire();	
-		if(Device_Joystick2) Device_Joystick2->Unacquire();	
-		if(Device_Joystick3) Device_Joystick3->Unacquire();	
-		if(Device_Joystick4) Device_Joystick4->Unacquire();	
+		if(Device_Keyboard) Device_Keyboard->Unacquire();
+		if(Device_Mouse) Device_Mouse->Unacquire();
+		if(Device_Joystick1) Device_Joystick1->Unacquire();
+		if(Device_Joystick2) Device_Joystick2->Unacquire();
+		if(Device_Joystick3) Device_Joystick3->Unacquire();
+		if(Device_Joystick4) Device_Joystick4->Unacquire();
 	}
 }
 

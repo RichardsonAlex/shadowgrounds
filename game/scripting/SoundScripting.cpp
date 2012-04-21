@@ -230,7 +230,7 @@ namespace game
 		case GS_CMD_SETAMBIENTSOUNDROLLOFF:
 			{
 				//sp->debug("setAmbientSoundRollOff");
-				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();			
+				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();
 				asman->setAmbientSoundRollOff(asman->getSelectedAmbientSound(), intData);
 			}
 			break;
@@ -561,7 +561,7 @@ namespace game
 
 		case GS_CMD_setAmbientSoundVolume:
 			{
-				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();			
+				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();
 				asman->setAmbientSoundVolume(asman->getSelectedAmbientSound(), intData);
 			}
 			break;

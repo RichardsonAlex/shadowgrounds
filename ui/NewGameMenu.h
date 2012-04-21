@@ -35,7 +35,7 @@ class NewGameMenu : public MenuBaseImpl, private IOguiSelectListListener
 public:
 
 	//.........................................................................
-	
+
 	enum COMMANDS {
 		COMMANDS_STARTGAME = 1,
 
@@ -80,9 +80,9 @@ public:
 	void SelectEvent( OguiSelectListEvent *eve );
 
 	//.........................................................................
-	
+
 	void menuStartGame();
-	
+
 	static void createBonusOptions(	game::Game *game, OguiWindow *win, Ogui *ogui, MenuCollection::Fonts *fonts,
 																	std::vector<OguiCheckBox *> &boxes, std::vector<OguiButton *> &buttons, std::list<OguiTextLabel *> &texts,
 																	IOguiButtonListener *button_listener, int button_id_offset,
@@ -119,7 +119,7 @@ private:
 	std::vector<OguiCheckBox *> bonusOptionBoxes;
 	std::vector<OguiButton *> bonusOptionButtons;
 
-	
+
 	// Gamemode buttons
 	void createGameModeButtons();
 	void setGameMode( int gamemode );
@@ -145,8 +145,8 @@ private:
 	OguiButton*						coopCaptureEvents;
 	int								coopCurrentSelection;
 	static std::map< int, std::string >	coopPlayerNames;
-	
-	
+
+
 	std::string				none;
 	game::GameProfiles*		gameProfiles;
 
@@ -154,13 +154,13 @@ private:
 	MenuCollection*			menuCollection;
 	MenuCollection::Fonts*	fonts;
 
-	
+
 	std::list< OguiButtonStyle* >	styles;
 	OguiSelectListStyle*			selectListStyle;
 
 	std::list< OguiTextLabel* >		textLabels;
 	OguiButton*						startGame;
-	
+
 
 public:
 	static int						selectedDifficultSelection;

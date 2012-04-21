@@ -66,7 +66,7 @@ public:
 	// Windows message proc
 	static LRESULT CALLBACK WindowProc( HWND windowHandle, UINT message, WPARAM wParam, LPARAM lParam )
 	{
-		
+
 		switch( message )
 		{
 			case WM_DESTROY:

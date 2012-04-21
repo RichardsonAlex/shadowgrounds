@@ -40,7 +40,7 @@ public:
 		GenParticleForce::create();
 		m_pb->addParams(theParticleGravityParamDesc, 1);
 	}
-	
+
 	const char* getClassName() {
 		return "gravity";
 	}
@@ -48,26 +48,26 @@ public:
 	const char* getSuperClassName() {
 		return "gen_force";
 	}
-				
+
 	void parseFrom(const editor::ParserGroup& pg) {
 		GenParticleForce::parseFrom(pg);
 	}
-	
+
 	void parseTo(editor::ParserGroup& pg) {
-	
+
 	}
-	
+
 	void preCalculate(float t) {
 		m_pb->getValue(PB_GRAVITY, m_gravity);
 		m_gravity *= PARTICLE_TIME_SCALE;
 	}
-		
+
 	void calcForce(Vector& force, const Vector& pos, const Vector& vel) {
 		force.x = 0;
 		force.y = 0;
 		force.y = -m_gravity;
 	}
-	
+
 };
 
 class ParticleGravityClassDesc : public ParticleForceClassDesc {

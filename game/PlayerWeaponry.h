@@ -27,7 +27,7 @@ namespace game
 		private:
 
 			static int getPlayerWeaponry( Unit* unit, int i );
-		
+
 	};
 
 }

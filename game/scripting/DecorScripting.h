@@ -19,7 +19,7 @@ namespace game
 	 */
 	class DecorScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

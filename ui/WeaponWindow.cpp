@@ -121,13 +121,13 @@ namespace ui
 				strcat(buf, int2str(i));
 				const char *tmp = getLocaleGuiString(buf);
 				this->weaponImages[i] = ogui->LoadOguiImage(tmp);
-				
+
 				weaponNames[ i ] = getLocaleGuiString( ( std::string( "gui_weapon_select_text_" ) + boost::lexical_cast< std::string >( i ) ).c_str() );
 #else
 				std::string buf = prefix + "image_" + boost::lexical_cast< std::string >( i );
 				std::string tmp = getLocaleGuiString(buf.c_str());
 				this->weaponImages[i] = ogui->LoadOguiImage(tmp.c_str());
-				
+
 				std::string prefix2 = prefix;
 
 #ifdef PROJECT_SURVIVOR
@@ -186,7 +186,7 @@ namespace ui
 				weaponListButtons[i]->SetDisabled(true);
 			}
 		}
-		
+
 		weaponSelectionFont = ogui->LoadFont( getLocaleGuiString( ( prefix + "text_font" ).c_str() ) );
 		playerNameFont = ogui->LoadFont( getLocaleGuiString( ( prefix + "player_name_font" ).c_str() ) );
 

@@ -14,7 +14,7 @@ namespace frozenbyte
 
 			LauncherWindow( );
 			~LauncherWindow( );
-		
+
 		private:
 
 			LauncherWindowImpl *impl;

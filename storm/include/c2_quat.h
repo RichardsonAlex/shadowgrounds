@@ -37,7 +37,7 @@ public:
 	{
 		MakeFromAxisRotation(axis,angle);
 	}
-	
+
 	// Quaternion
 	Quat(A _x,A _y,A _z,A _w) : x(_x),y(_y),z(_z),w(_w) {}
 
@@ -74,7 +74,7 @@ public:
 		z = qz.z;
 		w = qz.w;
 		*/
-		
+
 		Quat qx,qy,qz,qf;
 
 		bool xrot,yrot,zrot;
@@ -183,7 +183,7 @@ public:
 		y=cs*axis.y;
 		z=cs*axis.z;
 	}
-	
+
 	void MakeFromQuaternion(A _x=0,A _y=0,A _z=0,A _w=1)
 	{
 		x=_x;
@@ -300,7 +300,7 @@ public:
 		A Dw = -x*other.x - y*other.y - z*other.z + w*other.w;
 		return Quat(Dx,Dy,Dz,Dw);
 	}
-	
+
 	bool operator==(const Quat& other) const
 	{
 		if ((fabs(x-other.x)<EPSILON)&&

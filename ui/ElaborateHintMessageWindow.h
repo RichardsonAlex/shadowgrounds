@@ -25,11 +25,11 @@ public:
 
 	void setStyle( const std::string& style );
 	void showMessage( const std::string& message );
-	
+
 	void showMessage( const std::string& style, const std::string& message );
 
 	OguiFormattedText* getFormattedTextForStyle( const std::string &style );
-	
+
 private:
 	class ElaborateHintMessageWindowImpl;
 	ElaborateHintMessageWindowImpl* impl;

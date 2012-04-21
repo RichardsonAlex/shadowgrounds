@@ -47,7 +47,7 @@
 //------------------------------------------------------------------
 template <class A> class ST3D_EXP_DLLAPI Iterator
 {
-	
+
 public:
 
 	virtual void Next()=0;
@@ -62,7 +62,7 @@ public:
 
 template <class A> class ST3D_EXP_DLLAPI ICreate
 {
-	
+
 public:
 	virtual ~ICreate() {}
 	virtual Iterator<A> *Begin()=0;

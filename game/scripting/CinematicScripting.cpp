@@ -122,7 +122,7 @@ namespace game
 			break;
 
 		case GS_CMD_MOVIEASPECTRATIO:
-			{				
+			{
 				Terrain *t = game->gameUI->getTerrain();
 				if(t && t->GetTerrain())
 				{
@@ -332,7 +332,7 @@ namespace game
 			if (stringData != NULL)
 			{
 				//float volume = game->gameUI->getVideoVolume();
-				
+
 				IStorm3D_StreamBuilder *builder = 0;
 				sfx::SoundMixer *mixer = game->gameUI->getSoundMixer();
 				if(mixer)
@@ -566,7 +566,7 @@ namespace game
 					else
 					{
 						game->gameUI->openVehicleGUI(stringData);
-					}					
+					}
 				}
 				else
 				{

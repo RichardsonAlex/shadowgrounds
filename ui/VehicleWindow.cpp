@@ -183,7 +183,7 @@ public:
 			{
 				bool was_end = combatwindows_array[i] == 0;
 				combatwindows_array[i] = 0;
-				
+
 				const char *subwin = combatwindows_array + start;
 				setCombatSubWindowVisible(subwin, true);
 

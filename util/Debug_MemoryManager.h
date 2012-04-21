@@ -44,7 +44,7 @@ This does the following:
 		-> That`s legacy anyway
 	- Ability to query some useful statistics
 		-> ToDo but see below
-		
+
 Started coding this on my own but later on found Paul Nettle's manager.
 Some ideas from there.
 	-- psd

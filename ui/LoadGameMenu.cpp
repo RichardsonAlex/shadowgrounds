@@ -120,21 +120,21 @@ public:
 		const std::string font_b = getLocaleGuiString( "gui_loadgamemenu_survivor_infoscreen_font_bold" );
 		const std::string font_i = getLocaleGuiString( "gui_loadgamemenu_survivor_infoscreen_font_italic" );
 		const std::string font_h1 = getLocaleGuiString( "gui_loadgamemenu_survivor_infoscreen_font_h1" );
-		
+
 		theOriginalText = getLocaleGuiString( "gui_loadgame_survivor_infoscreen_original_text" );
 		workingCopyText = theOriginalText;
 
 		OguiFormattedText* return_value = new OguiFormattedText( window, ogui, x, y, w, h, id );
-		
+
 		if( font_normal.empty() == false )
 			return_value->setFont( LoadFont( font_normal ) );
-		
+
 		if( font_b.empty() == false )
 			return_value->registerFont( "b", LoadFont( font_b ) );
-		
+
 		if( font_i.empty() == false )
 			return_value->registerFont( "i", LoadFont( font_i ) );
-		
+
 		if( font_h1.empty() == false )
 			return_value->registerFont( "h1", LoadFont( font_h1 ) );
 
@@ -184,9 +184,9 @@ public:
 
 	Ogui* ogui;
 	OguiWindow* window;
-	
+
 	std::map< std::string, IOguiFont* > oguiFonts;
-	
+
 	std::string			theOriginalText;
 	std::string			workingCopyText;
 	OguiFormattedText*	theTextBox;
@@ -215,7 +215,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	assert( menu );
 	assert( fonts );
 	assert( g );
-	
+
 #ifdef PROJECT_SURVIVOR
 	bool survivor = true;
 #else
@@ -231,7 +231,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	// -jpk
 
 	Logger::getInstance()->debug( ((std::string)("LoadGameMenu - Mission amount ") + boost::lexical_cast< std::string >( mission_max )).c_str() );
-	
+
 	game = g;
 
 	ogui = o_gui;
@@ -289,7 +289,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 			foo << i;
 			bool add = g->getInfoForSavegame( foo.str().c_str(), "savegame" );
-			
+
 			availableMissions[ i ] = add;
 			missionDescriptions[ i ] = savegame_description;
 			missionTimes[ i ] = savegame_time;
@@ -332,7 +332,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 			// only show coop saves
 			if(startAsCoop) foo << "coop_";
 			foo << i;
-			
+
 			bool add = g->getInfoForSavegame( foo.str().c_str(), "savegame" );
 
 			availableMissions[ i ] = add;
@@ -361,7 +361,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 				this->addImageSelectionButton( image_norm, image_high, image_down, image_disabled, !add, i, NULL );
 				// SelectionButtonDescs* descs = new SelectionButtonDescs;
-				
+
 				if( selectButtons[ i ] )
 					selectButtons[ i ]->SetSelectedImages( ogui->LoadOguiImage( image_selected_norm.c_str() ), ogui->LoadOguiImage( image_selected_high.c_str() ) );
 
@@ -377,7 +377,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 				// selectionButtonDescs.push_back( descs );
 
-			
+
 			}
 
 			if(i == 5)
@@ -404,7 +404,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 		}
 	}
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	// addSmallButton( getLocaleGuiString( "gui_lgm_arrow_up" ), COMMANDS_ARROWUP, fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled );
 	// addSmallButton( getLocaleGuiString( "gui_lgm_arrow_down" ), COMMANDS_ARROWDOWN, fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled );
 
@@ -510,7 +510,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 		else addHeaderText( getLocaleGuiString( "gui_lgm_header" ), fonts->big.normal );
 		// addCloseButton( "OPEN MENU", COMMANDS_OPENME, fonts->big );
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
 
 	if( hideLoadGame )
@@ -528,7 +528,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	}
 
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	if( game->inCombat )
 	{
 		closeMenuByEsc = false;
@@ -539,7 +539,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 		editHandle = game->gameUI->getController(0)->addKeyreader( this );
 		debugKeyreader( editHandle, false, "LoadGameMenu::LoadGameMenu()" );
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
 
 
@@ -692,7 +692,7 @@ void LoadGameMenu::CursorEvent( OguiButtonEvent* eve )
 			scrollMissionsDown();
 			updateArrows();
 			break;
-		
+
 		case COMMANDS_ARROWUP:
 			scrollMissionsUp();
 			updateArrows();
@@ -711,7 +711,7 @@ void LoadGameMenu::CursorEvent( OguiButtonEvent* eve )
 			}
 		}
 	}
-	
+
 }
 
 void LoadGameMenu::selectButton( int command )
@@ -753,7 +753,7 @@ void LoadGameMenu::menuClose()
 void LoadGameMenu::menuLoad()
 {
 	if( activeSelection > 0 )
-	{		
+	{
 #ifdef GC_BUILD_2007
 	game->getInfoForSavegame(int2str( activeSelection ), "savegame" );
 	if(strstr(savegame_mission_id.c_str(), "surv_") != 0)
@@ -803,7 +803,7 @@ std::string LoadGameMenu::getMissionName( int i )
 
 void LoadGameMenu::missionSelected( int m, int ex_selection )
 {
-	
+
 	if( survivorInfoScreen )
 	{
 		std::map< int, OguiButton* >::iterator it = selectButtons.find( ex_selection );
@@ -811,7 +811,7 @@ void LoadGameMenu::missionSelected( int m, int ex_selection )
 		{
 			it->second->SetSelected( false );
 		}
-		
+
 		it = selectButtons.find( m );
 		if( it != selectButtons.end() )
 		{
@@ -860,7 +860,7 @@ void LoadGameMenu::addImageSelectionButton( const std::string& image_norm, const
 	b->SetEventMask( OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE );
 	b->SetClipToWindow( false );
 	b->Move( buttonX, buttonY );
-	
+
 	if( buttonX == buttonXStart && buttonY > buttonYMaxLimit )
 	{
 		scrollCount++;
@@ -893,7 +893,7 @@ void LoadGameMenu::scrollMissionsDown()
 		scrollPosition++;
 		std::map< int, OguiButton* >::iterator i;
 		for( i = selectButtons.begin(); i != selectButtons.end(); ++i )
-		{	
+		{
 			i->second->MoveBy( 0, -buttonAddY );
 			if( i->second->GetY() > buttonYMinLimit - 900 && i->second->GetY() < buttonYMinLimit )
 			{
@@ -945,7 +945,7 @@ void LoadGameMenu::updateArrows()
 				survivorInfoScreen->scrollUpArrow->SetDisabled( true );
 			}
 		}
-		
+
 		if( survivorInfoScreen->scrollDownArrow )
 		{
 			if( scrollPosition < scrollCount )

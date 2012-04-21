@@ -55,7 +55,7 @@ struct PhysicsMass::Data
 		{
 			Mass mass;
 			mass.name = globals.getSubGroupName(i);
-			
+
 			if(mass.name.empty())
 				continue;
 

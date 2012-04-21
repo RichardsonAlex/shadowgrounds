@@ -43,7 +43,7 @@ namespace game
 	class AniImpl
 	{
 		private:
-			
+
 			AniImpl(GameScripting *gameScripting, Unit *unit)
 			{
 				this->gameScripting = gameScripting;
@@ -285,7 +285,7 @@ namespace game
 						Logger::getInstance()->debug("Ani::startRecord - Note, a file with the record name exists, it will be overwritten.");
 						Logger::getInstance()->debug("Ani::startRecord - To prevent the file from being overwritten, use cancelRecord to cancel this recording.");
 					}
-					
+
 					// make a backup...
 					fseek(f, 0, SEEK_END);
 					int flen = ftell(f);
@@ -476,7 +476,7 @@ namespace game
 	void Ani::cancelRecord()
 	{
 		// notice: this is called by stopRecord too.
-		
+
 		if (!impl->recording)
 		{
 			Logger::getInstance()->error("Ani::stopRecord - Cannot cancel record, ani is not recording.");
@@ -925,7 +925,7 @@ namespace game
 		return false;
 	}
 
-	
+
 	bool Ani::reachedTick()
 	{
 		impl->atTick++;
@@ -980,7 +980,7 @@ namespace game
 		impl->unit->setPosition(pos);
 	}
 
-	
+
 	void Ani::aniHeight(float height)
 	{
 		VC3 pos = impl->unit->getPosition();
@@ -993,21 +993,21 @@ namespace game
 		impl->unit->setPosition(pos);
 	}
 
-	
+
 	void Ani::aniRots(float angleX, float angleY, float angleZ)
 	{
 		if (impl->yAxisRotation + impl->globalRotation != 0.0f)
 		{
 			float newY = angleY + impl->yAxisRotation + impl->globalRotation;
 			while (newY >= 360.0f) newY -= 360.0f;
-			while (newY < 0.0f) newY += 360.0f;			
+			while (newY < 0.0f) newY += 360.0f;
 			impl->unit->setRotation(angleX, newY, angleZ);
 		} else {
 			impl->unit->setRotation(angleX, angleY, angleZ);
 		}
 	}
 
-	
+
 	void Ani::aniAnim(int anim)
 	{
 		// TODO: this ok?
@@ -1028,7 +1028,7 @@ namespace game
 		//ui::Animator::setAnimation(impl->unit, anim);
 	}
 
-	
+
 	void Ani::aniEndAnim(int anim)
 	{
 		// TODO: umm.. how exactly is this done...??
@@ -1051,7 +1051,7 @@ namespace game
 		}
 	}
 
-	
+
 	void Ani::aniMoveX(float offsetX)
 	{
 		VC3 pos = impl->unit->getPosition();
@@ -1065,7 +1065,7 @@ namespace game
 		impl->unit->setPosition(pos);
 	}
 
-	
+
 	void Ani::aniMoveY(float offsetY)
 	{
 		VC3 pos = impl->unit->getPosition();
@@ -1073,7 +1073,7 @@ namespace game
 		impl->unit->setPosition(pos);
 	}
 
-	
+
 	void Ani::aniOnGround(float height)
 	{
 		VC3 pos = impl->unit->getPosition();
@@ -1081,7 +1081,7 @@ namespace game
 		impl->unit->setPosition(pos);
 	}
 
-	
+
 	void Ani::aniMoveZ(float offsetZ)
 	{
 		VC3 pos = impl->unit->getPosition();
@@ -1095,7 +1095,7 @@ namespace game
 		impl->unit->setPosition(pos);
 	}
 
-	
+
 	void Ani::aniRotX(float rotateX)
 	{
 		VC3 rot = impl->unit->getRotation();
@@ -1119,7 +1119,7 @@ namespace game
 		impl->unit->setRotation(rot.x, rot.y, rot.z);
 	}
 
-	
+
 	void Ani::aniRotZ(float rotateZ)
 	{
 		VC3 rot = impl->unit->getRotation();
@@ -1131,7 +1131,7 @@ namespace game
 		impl->unit->setRotation(rot.x, rot.y, rot.z);
 	}
 
-	
+
 	void Ani::aniAim(float aimY)
 	{
 		// HACK: set target to get proper aiming direction...
@@ -1140,7 +1140,7 @@ namespace game
 		pos.x += -10.0f * sinf(UNIT_ANGLE_TO_RAD(aimY));
 		pos.z += -10.0f * cosf(UNIT_ANGLE_TO_RAD(aimY));
 		impl->unit->targeting.setTarget(pos);
-		impl->unit->targeting.setAimingPosition(pos);				
+		impl->unit->targeting.setAimingPosition(pos);
 		*/
 
 		impl->unit->setLastBoneAimDirection(aimY);
@@ -1150,7 +1150,7 @@ namespace game
 		}
 	}
 
-	
+
 	void Ani::aniEndAim()
 	{
 		// this ok?

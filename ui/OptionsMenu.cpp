@@ -58,7 +58,7 @@ namespace {
 
 	float getMouseSpring()
 	{
-		float result = SimpleOptions::getFloat( DH_OPT_F_CAMERA_ROTATION_SPRING );		
+		float result = SimpleOptions::getFloat( DH_OPT_F_CAMERA_ROTATION_SPRING );
 		result /= 2.0f;
 
 		return result;
@@ -186,7 +186,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	assert( g );
 
 	game = g;
-	
+
 	ogui = o_gui;
 	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_optionsmenu_window_x", 0 ), getLocaleGuiInt( "gui_optionsmenu_window_y", 0 ), getLocaleGuiInt( "gui_optionsmenu_window_w", 1024 ), getLocaleGuiInt( "gui_optionsmenu_window_h", 768 ), NULL );
 	win->Hide();
@@ -225,11 +225,11 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	gameController = game->getGameUI()->getController( cooperativeSelection );
 	assert( gameController );
 
-	
+
 
 	imageSelectNorm = ogui->LoadOguiImage( buttonNormal.c_str() );
 	imageSelectDown = ogui->LoadOguiImage( buttonDown.c_str() );
-	
+
 
 	// Main menu buttons
 	buttonX	= getLocaleGuiInt( "gui_optionsmenu_button_x", 0 );
@@ -242,7 +242,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	// addHeaderText( getLocaleGuiString( "gui_om_header" ), fonts->big.normal );
 
 	currentProfile = game->getGameProfiles()->getCurrentProfile( cooperativeSelection );
-	
+
 	///////////////////////////////////////////////////////////////////////////
 
 	// the new read-from-file solution...
@@ -270,7 +270,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 					// (should alloc appropriate size before the loop)
 					controlNumArray.resize( options_max + 1 );
 					keycodeArray.resize( options_max + 1 );
-					controlDescriptions.resize( options_max + 1 );					
+					controlDescriptions.resize( options_max + 1 );
 					controlNumArray[options_max] = ctrlNum;
 				} else {
 					LOG_ERROR_W_DEBUG("OptionsMenu - Options menu keybinds configuration file contained an unknown control name.", tmp);
@@ -283,7 +283,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	// the old hard-coded solution...
 	controlNumArray.resize( options_max + 1 );
 	keycodeArray.resize( options_max + 1 );
-	controlDescriptions.resize( options_max + 1 );					
+	controlDescriptions.resize( options_max + 1 );
 
 	controlNumArray[ 1 ] = DH_CTRL_ATTACK;
 	controlNumArray[ 2 ] = DH_CTRL_ATTACK_SECONDARY;
@@ -297,15 +297,15 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	controlNumArray[ 9 ] = DH_CTRL_CAMERA_MOVE_BACKWARD;
 	controlNumArray[10 ] = DH_CTRL_CAMERA_MOVE_LEFT;
 	controlNumArray[11 ] = DH_CTRL_CAMERA_MOVE_RIGHT;
-	controlNumArray[12 ] = DH_CTRL_SPECIAL_MOVE;	
-	controlNumArray[13 ] = DH_CTRL_OPEN_MAP;	
+	controlNumArray[12 ] = DH_CTRL_SPECIAL_MOVE;
+	controlNumArray[13 ] = DH_CTRL_OPEN_MAP;
 	controlNumArray[14 ] = DH_CTRL_OPEN_UPGRADE;
 	controlNumArray[15 ] = DH_CTRL_OPEN_LOG;
 	controlNumArray[16 ] = DH_CTRL_CAMERA_MOVE_ROTATE_LEFT;
 	controlNumArray[17 ] = DH_CTRL_CAMERA_MOVE_ROTATE_RIGHT;
 	controlNumArray[18 ] = DH_CTRL_CAMERA_LOOK_MODE;
 	*/
-	
+
 
 	int i;
 	for ( i = 1; i <= options_max; i++ )
@@ -330,7 +330,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 #endif
 		{
 			std::string	textDifficultyLevel = getLocaleGuiString( "gui_optionsmenu_text_difficultylevel" );
-			
+
 			textBigX					= getLocaleGuiInt( "gui_optionsmenu_text_difficultylevel_x", 0 );
 			int	textDifficultyLevelY	= getLocaleGuiInt( "gui_optionsmenu_text_difficultylevel_y", 0 );
 			textBigW					= getLocaleGuiInt( "gui_optionsmenu_text_difficultylevel_w", 0 );
@@ -340,7 +340,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		}
 
 		std::string	textControls = getLocaleGuiString( "gui_optionsmenu_text_controls" );
-		
+
 		textBigX			= getLocaleGuiInt( "gui_optionsmenu_text_controls_x", 0 );
 		int	textControlsY	= getLocaleGuiInt( "gui_optionsmenu_text_controls_y", 0 );
 		textBigW			= getLocaleGuiInt( "gui_optionsmenu_text_controls_w", 0 );
@@ -350,7 +350,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		addText( textControls, textBigX, textControlsY, textBigW, textBigH, fonts->big.normal );
 
 		std::string	textGraphics = getLocaleGuiString( "gui_optionsmenu_text_graphics" );
-		
+
 		textBigX			= getLocaleGuiInt( "gui_optionsmenu_text_graphics_x", 0 );
 		int	textGraphicsY	= getLocaleGuiInt( "gui_optionsmenu_text_graphics_y", 0 );
 		textBigW			= getLocaleGuiInt( "gui_optionsmenu_text_graphics_w", 0 );
@@ -369,7 +369,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		int sliderButtonY = getLocaleGuiInt( "gui_optionsmenu_slider_button_y", 0 );
 		int sliderButtonW = getLocaleGuiInt( "gui_optionsmenu_slider_button_w", 0 );
 		int sliderButtonH = getLocaleGuiInt( "gui_optionsmenu_slider_button_h", 0 );
-		
+
 		int sliderClipX = getLocaleGuiInt( "gui_optionsmenu_slider_button_clip_x", 0 );
 		int sliderClipY = getLocaleGuiInt( "gui_optionsmenu_slider_button_clip_y", 0 );
 		int sliderClipW = getLocaleGuiInt( "gui_optionsmenu_slider_button_clip_w", 0 );
@@ -498,7 +498,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		std::string optionsDifficultButtonNormal =	getLocaleGuiString( "gui_optionsmenu_difficult_image_normal" );
 		std::string optionsDifficultButtonDown =	getLocaleGuiString( "gui_optionsmenu_difficult_image_down" );
 		std::string optionsDifficultButtonHigh =	getLocaleGuiString( "gui_optionsmenu_difficult_image_high" );
-		
+
 		std::string optionsEasyText =	getLocaleGuiString( "gui_optionsmenu_text_easy" );
 		std::string optionsNormalText = getLocaleGuiString( "gui_optionsmenu_text_normal" );
 		std::string optionsHardText =	getLocaleGuiString( "gui_optionsmenu_text_hard" );
@@ -516,7 +516,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 			optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 			fonts->little.normal, optionsNormalText, COMMANDS_NORMAL );
-		
+
 		difficultButtonX += difficultButtonAddX;
 		difficultButtonY += difficultButtonAddY;
 
@@ -550,9 +550,9 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		}
 
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	// These should be loaded from the locales, and they are. Yay.
 
 	sliderSoundPlayfile = getLocaleGuiString( "gui_optionsmenu_sound_file" );
@@ -581,7 +581,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	bool value = game->gameUI->getGameCamera()->getGameCameraYAxisLock();
 
 	camera_lock_y_axis = value;
-	
+
 	// addSmallButton( getLocaleGuiString( "gui_om_closeme" ), COMMANDS_CLOSEME, fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled );
 	addSeparator();
 #ifdef PROJECT_SURVIVOR
@@ -598,7 +598,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 			getLocaleGuiInt( "gui_optionsmenu_camerabox_x", 0 ),
 			getLocaleGuiInt( "gui_optionsmenu_camerabox_y", 0 ),
 			getLocaleGuiInt( "gui_optionsmenu_camerabox_w", 0 ),
-			getLocaleGuiInt( "gui_optionsmenu_camerabox_h", 0 ), 	
+			getLocaleGuiInt( "gui_optionsmenu_camerabox_h", 0 ),
 			getLocaleGuiString( "gui_optionsmenu_camerabox_img_norm" ), "", "",
 			getLocaleGuiString( "gui_optionsmenu_camerabox_img_fill" ) );
 
@@ -628,7 +628,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		controllerTypeButton->SetHighlightedFont( fonts->medium.highlighted );
 		controllerTypeButton->SetListener(this);
 	}
-	
+
 	///////////////////////////////////////////////////////////////////////////
 	// GAMMA Ramp
 
@@ -758,7 +758,7 @@ OptionsMenu::~OptionsMenu()
 		delete textLabels.front();
 		textLabels.pop_front();
 	}
-	
+
 	{
 		std::map< int, OguiButton* >::iterator i;
 		for( i = difficultButtons.begin(); i != difficultButtons.end(); ++i )
@@ -833,7 +833,7 @@ void OptionsMenu::setProfile( const std::string& profile )
 	tmp += "/config/keybinds.txt";
 #endif
 	gameController->loadConfiguration( igios_mapUserDataPrefix(tmp).c_str() );
-	
+
 	readControls();
 	updateControlDescriptions();
 }
@@ -884,7 +884,7 @@ void OptionsMenu::applyChanges()
 	{
 		ambientVolume = soundVolume;
 	}
-	
+
 	SimpleOptions::setInt( DH_OPT_I_MUSIC_VOLUME,	musicVolume );
 	SimpleOptions::setInt( DH_OPT_I_FX_VOLUME,		soundVolume );
 	SimpleOptions::setInt( DH_OPT_I_SPEECH_VOLUME,	speechVolume );
@@ -892,10 +892,10 @@ void OptionsMenu::applyChanges()
 
 	// if( cameraRotateStrength )
 	setCameraRotateRate( cameraRotateSpeed );
-	
+
 	//if( cameraSpringStrength )
 	setMouseSpring( mouseSpring );
-	
+
 	// above setInt calls do not yet apply the changes, thus this apply is needed --jpk
 	OptionApplier::applySoundOptions(game->gameUI->getSoundMixer());
 
@@ -908,9 +908,9 @@ void OptionsMenu::applyChanges()
 
 	if( cameraLockYAxis )
 		camera_lock_y_axis = cameraLockYAxis->getValue();
-	
+
 	game->gameUI->getGameCamera()->setGameCameraYAxisLock( camera_lock_y_axis );
-	
+
 
 	gameController->setControllerType( (GameController::CONTROLLER_TYPE)currentController );
 
@@ -926,7 +926,7 @@ void OptionsMenu::applyChanges()
 
 	// Save difficulty
 	// setDifficulty( difficultActiveSelection );
-	
+
 	//
 #ifdef LEGACY_FILES
 	std::string tmp = "Profiles/";
@@ -957,7 +957,7 @@ void OptionsMenu::menuDefaults()
 {
 	// TODO set selection ...
 	assert( gameController );
-	
+
 #ifdef LEGACY_FILES
 	// should not this be default_keybinds.txt? (though not sure if that was the case in sg.) --jpk
 	gameController->loadConfiguration( "Data/Misc/keybinds.txt" );
@@ -1025,7 +1025,7 @@ void OptionsMenu::CursorEvent( OguiButtonEvent* eve )
 	{
 
 		if( mouseEventCaptureWindow != NULL )
-		{			
+		{
 			if( joystickUpdate != -1 )
 			{
 
@@ -1038,8 +1038,8 @@ void OptionsMenu::CursorEvent( OguiButtonEvent* eve )
 			discartNextCursorEvent = false;
 			return;
 		}
-		
-		
+
+
 
 		switch( eve->triggerButton->GetId() )
 		{
@@ -1111,7 +1111,7 @@ void OptionsMenu::sliderEvent( OguiSliderEvent* eve )
 	case COMMANDS_SLIDERMUSIC:
 		sounds_updated = true;
 		sliderMusicValue = eve->value;
-		
+
 		break;
 
 	case COMMANDS_SLIDERSOUND:
@@ -1120,7 +1120,7 @@ void OptionsMenu::sliderEvent( OguiSliderEvent* eve )
 
 		if( eve->type == OguiSliderEvent::EVENT_TYPE_MOUSEDOWN )
 			sliderSoundPlayNow = true;
-		
+
 		if( eve->type == OguiSliderEvent::EVENT_TYPE_RELEASE )
 			sliderSoundPlayNow = false,
 			lastPlayTime = 0;
@@ -1133,7 +1133,7 @@ void OptionsMenu::sliderEvent( OguiSliderEvent* eve )
 
 		if( eve->type == OguiSliderEvent::EVENT_TYPE_MOUSEDOWN )
 			sliderSpeechPlayNow = true;
-		
+
 		if( eve->type == OguiSliderEvent::EVENT_TYPE_RELEASE )
 			sliderSpeechPlayNow = false,
 			lastPlayTime = 0;
@@ -1141,7 +1141,7 @@ void OptionsMenu::sliderEvent( OguiSliderEvent* eve )
 
 	case COMMANDS_SLIDERAMBIENT:
 		sounds_updated = true;
-		sliderAmbientValue = eve->value;	
+		sliderAmbientValue = eve->value;
 		break;
 	}
 
@@ -1155,7 +1155,7 @@ void OptionsMenu::sliderEvent( OguiSliderEvent* eve )
 		{
 			ambientVolume = soundVolume;
 		}
-		
+
 		SimpleOptions::setInt( DH_OPT_I_MUSIC_VOLUME,	musicVolume );
 		SimpleOptions::setInt( DH_OPT_I_FX_VOLUME,		soundVolume );
 		SimpleOptions::setInt( DH_OPT_I_SPEECH_VOLUME,	speechVolume );
@@ -1208,7 +1208,7 @@ void OptionsMenu::update()
 	{
 		if( !sliderSoundPlayfile.empty() )
 			game->getGameUI()->playGUISound( sliderSoundPlayfile.c_str(), (int)( 100 ) );
-		
+
 		lastPlayTime = Timer::getTime();
 	}
 
@@ -1216,7 +1216,7 @@ void OptionsMenu::update()
 	{
 		if( !sliderSpeechPlayfile.empty() )
 			game->getGameUI()->playGUISpeech( sliderSpeechPlayfile.c_str(), (int)( 100 ) );
-		
+
 		lastPlayTime = Timer::getTime();
 	}
 
@@ -1241,9 +1241,9 @@ void OptionsMenu::update()
 
 
 	if( controlUpdate == -1 && mouseEventCaptureWindow != NULL )
-	{			
+	{
 		assert( gameController );
-		
+
 		if( gameController->isKeyDownByKeyCode( 262 ) == false &&	// mouse button 1
 			gameController->isKeyDownByKeyCode( 263 ) == false &&   // mouse button 2
 			gameController->isKeyDownByKeyCode( 264 ) == false &&   // mouse button 3
@@ -1333,7 +1333,7 @@ void OptionsMenu::update()
 					{
 						new_key = KEYCODE_GEN_KEYBID(kb_id, new_key);
 					}
-					
+
 					gameController->bindKey(DH_CTRL_WEAPON_1 + i, new_key, 0, false);
 				}
 			}
@@ -1358,7 +1358,7 @@ void OptionsMenu::update()
 				|| gameController->isKeyDownByKeyCode(KEYCODE_JOY_BUTTON10))
 				discartNextCursorEvent = true;
 		}
-		
+
 	}
 }
 
@@ -1370,9 +1370,9 @@ void OptionsMenu::selectButton( int i )
 	{*/
 		MenuBaseImpl::selectButton( i );
 		controlUpdate = i;
-	
+
 	// }
-	
+
 	if( i != -1 )
 	{
 		if( i >= 0 && i < (int)controlDescriptions.size() )
@@ -1526,11 +1526,11 @@ void OptionsMenu::selectDifficultButton( int i )
 			if ( it != difficultButtons.end() )
 			{
 				assert( difficultImageSelectDown );
-				it->second->SetImage( difficultImageSelectDown );	
+				it->second->SetImage( difficultImageSelectDown );
 				difficultActiveSelection = i;
 			}
 		}
-	}	
+	}
 }
 
 //.............................................................................
@@ -1549,9 +1549,9 @@ void OptionsMenu::addDifficultButton( int x, int y, int w, int h,
 		button_down.empty()?NULL:button_down.c_str(),
 		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
-	
+
 	b->SetListener( this );
-	
+
 	if ( font ) b->SetFont( font );
 
 	difficultButtons.insert( std::pair< int, OguiButton* >( command, b ) );
@@ -1582,7 +1582,7 @@ void OptionsMenu::addControlDescription( const std::string& text, int id, int x_
 
 	if( id >= (int)controlDescriptions.size() )
 		controlDescriptions.resize( id + 1 );
-	
+
 	assert( id >= 0 && id < (int)controlDescriptions.size() );
 	controlDescriptions[ id ] = foo;
 }
@@ -1609,7 +1609,7 @@ void OptionsMenu::readControls()
 	{
 		keycodeArray[ i ] = gameController->getBoundKey( controlNumArray[ i ], 0 );
 	}
-	
+
 	// updateControlDescriptions();
 }
 
@@ -1668,8 +1668,8 @@ void OptionsMenu::joystickSelection( int i )
 {
 	joystickUpdate = i;
 	MenuBaseImpl::selectButton( i );
-	
-	
+
+
 	if( i != -1 )
 	{
 		if( i >= 0 && i < (int)controlDescriptions.size() )
@@ -1783,7 +1783,7 @@ void OptionsMenu::createJoystickButtons()
 		}
 		//.....................................................................
 		{
-			
+
 			std::string text =	getLocaleGuiString( "gui_optionsmenu_text_joystickaxis" );
 			int			x =		getLocaleGuiInt( "gui_optionsmenu_text_joystickaxis_x", 0 );
 			int			y =		getLocaleGuiInt( "gui_optionsmenu_text_joystickaxis_y", 0 );
@@ -1915,7 +1915,7 @@ void OptionsMenu::openCoopProfileMenu()
 	menuCollection->setBackgroundImage( getLocaleGuiString( "gui_optionsmenu_coopbackground_image" ) );
 
 	{
-			
+
 		std::string text =	getLocaleGuiString( "gui_optionsmenu_text_profiles" );
 		int			x =		getLocaleGuiInt( "gui_optionsmenu_text_profiles_x", 0 );
 		int			y =		getLocaleGuiInt( "gui_optionsmenu_text_profiles_y", 0 );
@@ -1949,11 +1949,11 @@ void OptionsMenu::openCoopProfileMenu()
 		// scroll_button_w = scrollUpStyle->sizeX>scrollDownStyle->sizeX?scrollUpStyle->sizeX:scrollDownStyle->sizeX;
 
 		int num_of_elements = MAX_PLAYERS_PER_CLIENT;
-	
+
 		selectListStyle = new OguiSelectListStyle( unselStyle, selStyle, newStyle, newUnStyle, scrollUpStyle, scrollDownStyle, unselStyle->sizeX, unselStyle->sizeY * num_of_elements, scrollUpStyle->sizeX, scrollUpStyle->sizeY );
 
 	}
-	
+
 	{
 		// buttonW	= getLocaleGuiInt( "gui_newgamemenu_coopprofile_w", getLocaleGuiInt( "gui_menu_common_button_w", 0 ) );
 		// buttonH	= getLocaleGuiInt( "gui_newgamemenu_coopprofile_h", getLocaleGuiInt( "gui_menu_common_button_h", 0 ) );
@@ -1998,14 +1998,14 @@ static OguiTextLabel* hackText2 = NULL;
 
 void OptionsMenu::createMouseButtons()
 {
-	
+
 	// Lock y axis
 	{
 		cameraLockYAxis = new OguiCheckBox( win, ogui,
 			getLocaleGuiInt( "gui_optionsmenu_cameralock_x", 0 ),
 			getLocaleGuiInt( "gui_optionsmenu_cameralock_y", 0 ),
 			getLocaleGuiInt( "gui_optionsmenu_cameralock_w", 0 ),
-			getLocaleGuiInt( "gui_optionsmenu_cameralock_h", 0 ), 	
+			getLocaleGuiInt( "gui_optionsmenu_cameralock_h", 0 ),
 			getLocaleGuiString( "gui_optionsmenu_camerabox_img_norm" ), "", "",
 			getLocaleGuiString( "gui_optionsmenu_camerabox_img_fill" ) );
 
@@ -2038,7 +2038,7 @@ void OptionsMenu::createMouseButtons()
 		std::string sliderButtonForegroundHigh =	getLocaleGuiString( "gui_optionsmenu_slider_button_foreground_high" );
 
 		float value = getCameraRotateRate();
-		
+
 		OguiSlider* slider;
 
 		cameraRotateStrength = new OguiSlider( win, ogui, x, y, w, h,
@@ -2062,7 +2062,7 @@ void OptionsMenu::createMouseButtons()
 			if ( font ) foo->SetFont( font );
 
 			foo->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-			
+
 			hackText1 = foo;
 			// textLabels.push_back( foo );
 		}
@@ -2088,7 +2088,7 @@ void OptionsMenu::createMouseButtons()
 		text_y += sliderButtonAddY;
 
 		value = getMouseSpring();
-		
+
 		// OguiSlider* slider;
 
 		cameraSpringStrength = new OguiSlider( win, ogui, x, y, w, h,
@@ -2114,7 +2114,7 @@ void OptionsMenu::createMouseButtons()
 			if ( font ) foo->SetFont( font );
 
 			foo->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-			
+
 			hackText2 = foo;
 			// textLabels.push_back( foo );
 		}
@@ -2144,7 +2144,7 @@ void OptionsMenu::freeMouseButtons()
 
 	delete hackText1;
 	hackText1 = NULL;
-	
+
 	delete hackText2;
 	hackText2 = NULL;
 }
@@ -2235,7 +2235,7 @@ void OptionsMenu::openControllerTypeList()
 		OguiButtonStyle* scrollDownStyle =	loadStyle( "gui_optionsmenu_controllertype_arrow_down" );
 
 		int num_of_elements = 5;
-	
+
 		controllerTypeListStyle = new OguiSelectListStyle( unselStyle, selStyle, newStyle, newUnStyle, scrollUpStyle, scrollDownStyle, unselStyle->sizeX, unselStyle->sizeY * num_of_elements, scrollUpStyle->sizeX, scrollUpStyle->sizeY );
 	}
 

@@ -33,7 +33,7 @@ namespace ui
 {
 
 const static int profiles_max = 10;
-	
+
 ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_gui, Game* g ) :
   MenuBaseImpl( NULL ),
   menuCollection( menu ),
@@ -50,7 +50,7 @@ ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	game = g;
 
 	gameProfiles = game->getGameProfiles();
-	
+
 	ogui = o_gui;
 	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_profilesmenu_window_x", 0 ),
 									getLocaleGuiInt( "gui_profilesmenu_window_y", 0 ) ,
@@ -63,7 +63,7 @@ ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 	imageSelectNorm = ogui->LoadOguiImage( buttonNormal.c_str() );
 	imageSelectDown = ogui->LoadOguiImage( buttonDown.c_str() );
-	
+
 
 	// Main menu buttons
 	buttonX	= getLocaleGuiInt( "gui_profilesmenu_button_x", 0 );
@@ -100,11 +100,11 @@ ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 		profileData.push_back( temp );
 	}
-	
+
 	delete enum1;
-	
+
 	profilesCnt = profileData.size();
-	
+
 	for ( i = profileData.size(); i < profilesMax; i++ )
 	{
 		profileData.push_back( profileEmpty );
@@ -134,7 +134,7 @@ ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 	addHeaderText( getLocaleGuiString( "gui_pm_header" ), fonts->big.normal );
 	// addCloseButton( "OPEN MENU", COMMANDS_OPENME, fonts->big );
-	
+
 	///////////////////////////////////////////////////////////////////////////
 
 	editHandle = game->gameUI->getController(0)->addKeyreader( this );
@@ -222,19 +222,19 @@ void ProfilesMenu::createProfileInfoText()
 	const std::string font_b = getLocaleGuiString( "gui_profilesmenu_survivor_infoscreen_font_bold" );
 	const std::string font_i = getLocaleGuiString( "gui_profilesmenu_survivor_infoscreen_font_italic" );
 	const std::string font_h1 = getLocaleGuiString( "gui_profilesmenu_survivor_infoscreen_font_h1" );
-	
+
 	profileInfoString = getLocaleGuiString( "gui_profilesmenu_survivor_infoscreen_text" );
 	profileInfoText = new OguiFormattedText( win, ogui, x, y, w, h, 0 );
-	
+
 	if( font_normal.empty() == false )
 		profileInfoText->setFont( ogui->LoadFont( font_normal.c_str() ) );
-	
+
 	if( font_b.empty() == false )
 		profileInfoText->registerFont( "b", ogui->LoadFont( font_b.c_str() ) );
-	
+
 	if( font_i.empty() == false )
 		profileInfoText->registerFont( "i", ogui->LoadFont( font_i.c_str() ) );
-	
+
 	if( font_h1.empty() == false )
 		profileInfoText->registerFont( "h1", ogui->LoadFont( font_h1.c_str() ) );
 
@@ -495,8 +495,8 @@ void ProfilesMenu::readKey( char ascii, int keycode, const char *keycodeName )
 
 		MenuBaseImpl::readKey( ascii, keycode, keycodeName );
 	}
-	
-	
+
+
 }
 
 void ProfilesMenu::escPressed()
@@ -524,7 +524,7 @@ void ProfilesMenu::menuSelect()
 {
 	if( activeSelection >= 0 )
 	{
-	
+
 
 		// gameController[c]->loadConfiguration(tmp.c_str());
 
@@ -540,17 +540,17 @@ void ProfilesMenu::menuNew()
 	{
 		profilesCnt++;
 		profilesCurrent = profilesCnt - 1;
-			
+
 		createProfileButtons();
 		std::map< int, OguiButton* >::iterator i = selectButtons.find( profilesCnt - 1 );
 
 		std::stringstream ss; ss << profilePlayer << " " << ( profilesCurrent + 1 );
-		
+
 		if ( i != selectButtons.end() )
 			editButton( i->second, ss.str(), buttonPaddingString );
 
 	}
-	
+
 }
 
 /*
@@ -570,10 +570,10 @@ void ProfilesMenu::menuDelete( bool delete_from_profiles )
 		profilesCurrent = activeSelection;
 		profilesCnt--;
 		// if( profilesCnt < 0 ) profilesCnt = 0;
-		
+
 		if( delete_from_profiles )
 			gameProfiles->deleteProfile( profileData[ activeSelection ].c_str() );
-		
+
 		int i;
 		for( i = activeSelection; i < (signed)profileData.size() - 1; i++ )
 		{
@@ -583,12 +583,12 @@ void ProfilesMenu::menuDelete( bool delete_from_profiles )
 		activeSelection = -1;
 
 		profileData[ profileData.size() - 1 ] = profileEmpty;
-		
+
 		if( profilesCurrent >= profilesCnt ) profilesCurrent = profilesCnt - 1;
-		
+
 
 		createProfileButtons();
-		
+
 		if( activeSelection >= 0 && activeSelection < (signed)profileData.size() )
 		{
 			gameProfiles->setCurrentProfile( profileData[ activeSelection ].c_str(), 0 );

@@ -37,7 +37,7 @@ namespace {
 	};
 
 	char *createFilter(const std::string &extension)
-	{		
+	{
 		filter[0] = extension.c_str()[0];
 		filter[1] = extension.c_str()[1];
 		filter[2] = extension.c_str()[2];
@@ -69,12 +69,12 @@ namespace {
 		}
 		else
 			fileStruct.lpstrFilter = createFilter(extension);
-		
+
 		fileStruct.lpstrFile = createFileName();
 		fileStruct.nMaxFile = sizeof(fileName);
 		fileStruct.lpstrInitialDir = defaultDir.c_str();
 
-		
+
 		return fileStruct;
 	}
 
@@ -164,7 +164,7 @@ std::vector<std::string> getMultipleOpenFileName(const std::string &extension, c
 	{
 		std::vector<std::string> fileNames;
 		std::string directory = getRelativeFileName(fileStruct.lpstrFile);
-		
+
 		if(fileExists(directory))
 		{
 			fileNames.push_back(directory);

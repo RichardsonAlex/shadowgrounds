@@ -162,7 +162,7 @@ namespace game
     {
       delete areaMap;
     }
-	
+
     delete lightMap;
     delete colorMap;
   }

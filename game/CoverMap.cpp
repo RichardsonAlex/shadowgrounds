@@ -31,7 +31,7 @@ namespace game
 			int sizeY;
 			char *filename;
 			unsigned char *rangemap;
-			
+
 		public:
 			CoverMapMonitor(char *filename, unsigned char *rangemap,
 				int sizeX, int sizeY)
@@ -56,7 +56,7 @@ namespace game
 					{
 						fwrite(&rangemap[i * sizeX], sizeX, 1, f);
 					}
-					fclose(f);					
+					fclose(f);
 				}
 #endif
 			}

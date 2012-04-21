@@ -61,7 +61,7 @@ namespace game
 
 		case GS_CMD_DIVIDEVALUE:
 			if (intData == 0)
-			{ 			
+			{
 				*lastValue = 0;
 				sp->error("MathScripting::process - divideValue, division by zero.");
 			} else {
@@ -71,7 +71,7 @@ namespace game
 
 		case GS_CMD_MODULOVALUE:
 			if (intData == 0)
-			{ 			
+			{
 				*lastValue = 0;
 				sp->error("MathScripting::process - moduloValue, division by zero.");
 			} else {

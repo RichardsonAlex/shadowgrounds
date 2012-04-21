@@ -48,7 +48,7 @@ bool DoWeHaveAnySaveGames( Game* game )
 		bool add = game->getInfoForSavegame( foo.str().c_str(), "savegame" );
 
 		if ( add )
-			return true;		
+			return true;
 	}
 	return false;
 }
@@ -125,7 +125,7 @@ MainMenu::MainMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 		addSeparator();
 	}
 
-	
+
 
 	addButton( getLocaleGuiString( "gui_mm_new_game" ),		COMMANDS_NEW_GAME,	fonts->medium.normal, fonts->medium.highlighted );
 	addButton( getLocaleGuiString( "gui_mm_load_game" ),	COMMANDS_LOAD_GAME, fonts->medium.normal, fonts->medium.highlighted );
@@ -243,7 +243,7 @@ void MainMenu::CursorEvent( OguiButtonEvent* eve )
 	else
 	{
 		MenuBaseImpl::CursorEvent( eve );
-		
+
 		if( eve->eventType == OGUI_EMASK_CLICK )
 		{
 			if( currentActive && eve->triggerButton->GetId() != COMMANDS_CONTINUE )
@@ -260,7 +260,7 @@ void MainMenu::CursorEvent( OguiButtonEvent* eve )
 					menuCollection->closeMenu();
 				}
 			}
-			
+
 			currentActive = eve->triggerButton;
 			if( currentActive )
 				currentActive->SetFont( fonts->medium.highlighted );
@@ -295,7 +295,7 @@ void MainMenu::CursorEvent( OguiButtonEvent* eve )
 			case COMMANDS_OPTIONS:
 				menuOptions();
 				break;
-			
+
 			case COMMANDS_CREDITS:
 				menuCredits();
 				break;
@@ -303,7 +303,7 @@ void MainMenu::CursorEvent( OguiButtonEvent* eve )
 			case COMMANDS_QUIT:
 				menuQuit();
 				break;
-			
+
 			case COMMANDS_EASY:
 			case COMMANDS_NORMAL:
 			case COMMANDS_HARD:
@@ -338,7 +338,7 @@ void MainMenu::menuResume()
 void MainMenu::menuContinue()
 {
 
-	
+
 	int newest_mission = 0;
 
 #ifdef PROJECT_SURVIVOR
@@ -353,7 +353,7 @@ void MainMenu::menuContinue()
 		buf[length] = 0;
 		sscanf(buf, "%i", &newest_mission);
 		frozenbyte::filesystem::fb_fclose(f);
-	}	
+	}
 #else
 	int i = 0;
 	std::string temp = boost::lexical_cast< std::string >( char( 0 ) );
@@ -366,7 +366,7 @@ void MainMenu::menuContinue()
 
 		if ( add )
 		{
-				
+
 			if( savegame_time >= temp )
 			{
 				temp = savegame_time;
@@ -377,7 +377,7 @@ void MainMenu::menuContinue()
 		else
 		{
 		}
-		
+
 	}
 #endif
 
@@ -475,7 +475,7 @@ void MainMenu::abortCurrentGame()
 		abortGame->setFont( fonts->medium.normal );
 		abortGame->setText( getLocaleGuiString( "gui_mainmenu_abortbox_text" ) );
 	}
-	
+
 	{
 		int x = getLocaleGuiInt( "gui_mainmenu_abort_yes_x", 0 );
 		int y = getLocaleGuiInt( "gui_mainmenu_abort_yes_y", 0 );
@@ -503,7 +503,7 @@ void MainMenu::abortCurrentGame()
 		abortGameNo->SetFont( fonts->medium.normal );
 		abortGameNo->SetListener( this );
 	}
-	
+
 }
 
 void MainMenu::closeAbortMenu()
@@ -528,7 +528,7 @@ void MainMenu::createDifficultyButtons()
 	std::string optionsDifficultButtonNormal =	getLocaleGuiString( "gui_optionsmenu_difficult_image_normal" );
 	std::string optionsDifficultButtonDown =	getLocaleGuiString( "gui_optionsmenu_difficult_image_down" );
 	std::string optionsDifficultButtonHigh =	getLocaleGuiString( "gui_optionsmenu_difficult_image_high" );
-	
+
 	std::string optionsEasyText =	getLocaleGuiString( "gui_optionsmenu_text_easy" );
 	std::string optionsNormalText = getLocaleGuiString( "gui_optionsmenu_text_normal" );
 	std::string optionsHardText =	getLocaleGuiString( "gui_optionsmenu_text_hard" );
@@ -546,7 +546,7 @@ void MainMenu::createDifficultyButtons()
 	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->little.normal, optionsNormalText, COMMANDS_NORMAL );
-	
+
 	difficultButtonX += difficultButtonAddX;
 	difficultButtonY += difficultButtonAddY;
 
@@ -615,11 +615,11 @@ void MainMenu::selectDifficultButton( int i )
 			if ( it != difficultButtons.end() )
 			{
 				assert( difficultImageSelectDown );
-				it->second->SetImage( difficultImageSelectDown );	
+				it->second->SetImage( difficultImageSelectDown );
 				difficultActiveSelection = i;
 			}
 		}
-	}	
+	}
 }
 
 //.............................................................................
@@ -638,9 +638,9 @@ void MainMenu::addDifficultButton( int x, int y, int w, int h,
 		button_down.empty()?NULL:button_down.c_str(),
 		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
-	
+
 	b->SetListener( this );
-	
+
 	if ( font ) b->SetFont( font );
 
 	difficultButtons.insert( std::pair< int, OguiButton* >( command, b ) );
@@ -659,7 +659,7 @@ OguiButton* MainMenu::addButton( const std::string& text, int command, IOguiFont
 
 	if (!text.empty()) {
 		OguiButton* b;
-		
+
 		int x = getLocaleGuiInt( ( preHeader + "x_" + boost::lexical_cast< std::string >( count ) ).c_str(), buttonX );
 		int y = getLocaleGuiInt( ( preHeader + "y_" + boost::lexical_cast< std::string >( count ) ).c_str(), buttonY );
 		int w = getLocaleGuiInt( ( preHeader + "w_" + boost::lexical_cast< std::string >( count ) ).c_str(), buttonW );
@@ -702,13 +702,13 @@ OguiButton* MainMenu::addButton( const std::string& text, int command, IOguiFont
 void MainMenu::show()
 {
 	// assert( false );
-	
+
 	if( currentActive )
 	{
 		currentActive->SetFont( fonts->medium.normal );
 		menuCollection->setBackgroundImage( "" );
 	}
-	
+
 	currentActive = NULL;
 
 	checkContinue();

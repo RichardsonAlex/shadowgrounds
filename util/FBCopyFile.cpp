@@ -39,7 +39,7 @@ void FBCopyFile::copyFile(const std::string &from, const std::string &to)
 	// }*/
 
 	// in.close();
-	out.close();	
+	out.close();
 }
 
 }

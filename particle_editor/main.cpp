@@ -80,7 +80,7 @@ void calcFacingMatrix(Matrix& m, const Vector& d) {
 	Vector v = r.GetCrossWith(Vector(0.0f, 1.0f, 0.0f));
 	float angle = v.GetDotWith(v);
 	if(angle<0.00001f) {
-		v = r.GetCrossWith(Vector(1.0f, 0.0f, 0.0f));			
+		v = r.GetCrossWith(Vector(1.0f, 0.0f, 0.0f));
 	}
 	Vector s = r.GetCrossWith(v);
 	Vector t = r.GetCrossWith(s);
@@ -94,23 +94,23 @@ void calcFacingMatrix(Matrix& m, const Vector& velocity) {
 
 	Vector dir = Vector(0.0f, 0.0f, -1.0f);
 	dir.Normalize();
-	
+
 	Vector zAxis(0.0f, 1.0f, 0.0f);
-	
+
 	// check if this up vector is ok!
 	Vector v = dir.GetCrossWith(zAxis);
 	if(v.GetDotWith(v)<0.0001f) {
-		zAxis = Vector(0.0f, 0.0f, 1.0f);	
+		zAxis = Vector(0.0f, 0.0f, 1.0f);
 	}
-	
+
 	Vector xAxis;
-	
+
 	xAxis = dir.GetCrossWith(zAxis);
 	xAxis.Normalize();
-	
+
 	zAxis = dir.GetCrossWith(xAxis);
 	zAxis.Normalize();
-	
+
 	xAxis =
 
 	m.CreateBaseChangeMatrix(xAxis, dir, zAxis);
@@ -165,7 +165,7 @@ public:
 		camera->SetPosition(m_position);
 		camera->SetTarget(m_target);
 		camera->SetFieldOfView(m_fov);
-		camera->SetVisibilityRange(10000.0f);	
+		camera->SetVisibilityRange(10000.0f);
 	}
 };
 
@@ -186,7 +186,7 @@ class ParticleViewer {
 	int m_movementType;
 	IStorm3D_Model* m_model;
 	bool m_active;
-	
+
 	enum EMITTER_MOVEMENT_TYPE {
 		EMITTER_MOVE_NONE,
 		EMITTER_MOVE_CIRCULAR
@@ -206,52 +206,52 @@ class ParticleViewer {
 		wc.lpszClassName = "ParticleEditor";
 		wc.lpszMenuName = NULL;
 		wc.style = CS_HREDRAW | CS_VREDRAW;
-		
+
 		RegisterClass(&wc);
-		
+
 		m_hwnd = CreateWindow("ParticleEditor", "ParticleViewer", WS_OVERLAPPEDWINDOW, 0, 0, 640, 480,
 			NULL, NULL, m_hInst, NULL);
-				
+
 		SetWindowLong(m_hwnd, GWL_USERDATA, (LONG)this);
-				
+
 		ShowWindow(m_hwnd, SW_SHOWNORMAL);
-	
+
 	}
-	
+
 	void createFont() {
 
 		m_font = m_s3d->CreateNewFont();
-		
+
 		std::string buff;
 		buff += '\t';
 		buff += '!';
 		buff += '"';
 		buff += "#$%@'()*+.-,/0123456789:;<=>?\nabcdefghijklmnopqrstuvwxyz[\]\t_";
-		
+
 		std::vector<unsigned char> widths;
 		for(int i = 0; i < buff.size(); i++) {
 			widths.push_back(64);
 		}
-		
+
 		IStorm3D_Texture* ftex = m_s3d->CreateNewTexture("font2.dds");
 		m_font->AddTexture(ftex);
 		m_font->SetTextureRowsAndColums(8, 8);
 		m_font->SetCharacters(buff.c_str(), &widths[0]);
-		m_font->SetColor(COL(1.0f, 1.0f, 1.0f));	
+		m_font->SetColor(COL(1.0f, 1.0f, 1.0f));
 
 	}
 
 	void createStorm() {
-		
+
 		m_s3d = IStorm3D::Create_Storm3D_Interface(true);
-		
+
 		//m_s3d->SetUserWindowMessageProc(MsgProc);
-		
+
 		m_s3d->SetWindowedMode(m_hwnd);
-		
+
 		COL bgCol = COL(0.3f, 0.3f, 0.3f);
 		COL ambLight = COL(1.0f, 1.0f, 1.0f);
-		
+
 		m_scene = m_s3d->CreateNewScene();
 		m_scene->SetBackgroundColor(bgCol);
 
@@ -260,13 +260,13 @@ class ParticleViewer {
 	void freeStorm() {
 
 		m_s3d->Empty();
-		
+
 		delete m_s3d;
 
 	}
 
 	void updateCamera() {
-		
+
 		float dx = 0.0f;
 		float dy = 0.0f;
 		float zoom = 0.0f;
@@ -308,26 +308,26 @@ class ParticleViewer {
 		if(m_keys['F']) {
 			pan.z -= 0.01f;
 		}
-*/			
+*/
 
 		m_camera.orbit(dx,dy);
 		m_camera.truck(zoom);
 //		m_camera.pan(pan);
-		
+
 		m_camera.apply(m_scene->GetCamera());
 	}
 
-	
+
 	void loadEffect() {
-		
+
 		TCHAR curDir[255];
 
 		GetCurrentDirectory(sizeof(curDir), curDir);
-		
+
 		OPENFILENAME ofn;
 		TCHAR filename[255] = _T("");
 		memset(&ofn, 0, sizeof(OPENFILENAME));
-/*		
+/*
 		fileStruct.lpstrFilter = createFilter(extension);
 		fileStruct.lpstrFile = createFileName();
 		fileStruct.nMaxFile = sizeof(fileName);
@@ -349,7 +349,7 @@ class ParticleViewer {
 		ofn.Flags = OFN_PATHMUSTEXIST | OFN_FILEMUSTEXIST;// | OFN_NOCHANGEDIR;
 		ofn.nFileExtension = 3;
 		ofn.lpstrDefExt = _T("pfx\0");
-*/		
+*/
 		if(GetOpenFileName(&ofn)) {
 			SetCurrentDirectory(curDir);
 //			reloadEffect("data/particles/fire_explosion.txt", 0);
@@ -369,7 +369,7 @@ class ParticleViewer {
 //			reloadEffect("data/particles/fire_explosion.txt", 6);
 
 		}
-		
+
 	}
 
 	void loadModel() {
@@ -377,11 +377,11 @@ class ParticleViewer {
 		TCHAR curDir[255];
 
 		GetCurrentDirectory(sizeof(curDir), curDir);
-		
+
 		OPENFILENAME ofn;
 		TCHAR filename[255] = _T("");
 		memset(&ofn, 0, sizeof(OPENFILENAME));
-		
+
 
 		ofn.lStructSize = sizeof(OPENFILENAME);
 		ofn.lpstrFilter = _T("S3D Files\0*.s3d\0\0");
@@ -397,7 +397,7 @@ class ParticleViewer {
 			} else {
 				m_scene->AddModel(m_model);
 				m_model->SetPosition(Vector(0.0f, 0.0f, 0.0f));
-			}			
+			}
 		}
 
 	}
@@ -414,16 +414,16 @@ class ParticleViewer {
 			str += fileName;
 			MessageBox(0, str.c_str(), "Error", MB_OK | MB_ICONERROR);
 		}
-		
+
 		editor::Parser parser;
 		file >> parser;
 		//file.close();
 		m_particleEffectManager->loadParticleEffect(i, parser);
-		
+
 	}
-	
+
 	void createObjects() {
-		
+
 		m_particleSystemManager = new ParticleSystemManager(m_s3d, m_scene);
 		m_particleEffectManager = new ParticleEffectManager(m_s3d, m_scene,
 			m_particleSystemManager);
@@ -454,9 +454,9 @@ class ParticleViewer {
 		delete m_particleEffectManager;
 
 	}
-	
-	
-	
+
+
+
 	void processInput() {
 
 		updateCamera();
@@ -477,22 +477,22 @@ class ParticleViewer {
 				m_effect->kill();
 			}
 		}
-		m_effect = m_particleEffectManager->addParticleEffect(0);		
+		m_effect = m_particleEffectManager->addParticleEffect(0);
 
 	}
-	
+
 	void tick() {
 
 		static float angle = 0.0f;
 		static Vector oldPosition(0.0f, 0.0f, 0.0f);
-		
+
 		angle += 0.01f;
-						
+
 		if(m_effect.get()) {
 
 			Vector position;
 			Vector velocity;
-			
+
 			switch(m_movementType) {
 			case EMITTER_MOVE_NONE:
 				{
@@ -508,16 +508,16 @@ class ParticleViewer {
 					oldPosition = position;
 				} break;
 			}
-		
+
 			Matrix tm;
 			//calcFacingMatrix(tm, velocity);
 			tm.CreateTranslationMatrix(position);
 			m_effect->setTM(tm);
 			m_effect->setVelocity(velocity);
-		
+
 		}
-		
-		m_particleSystemManager->tick();		
+
+		m_particleSystemManager->tick();
 
 	}
 
@@ -525,13 +525,13 @@ class ParticleViewer {
 
 		char buffer[256];
 		const ParticleSystemManager::Stats& stats = ParticleSystemManager::getSingleton().getStats();
-		
-		sprintf(buffer, "particles %d", stats.numParticles);		
+
+		sprintf(buffer, "particles %d", stats.numParticles);
 		m_scene->Render2D_Text(m_font, VC2(8,32), VC2(strlen(buffer), 16), buffer);
-		
-		sprintf(buffer, "max particles %d", stats.maxParticles);		
+
+		sprintf(buffer, "max particles %d", stats.maxParticles);
 		m_scene->Render2D_Text(m_font, VC2(8,16), VC2(strlen(buffer), 16), buffer);
-				
+
 		m_particleSystemManager->render();
 
 		m_scene->RenderScene();
@@ -543,26 +543,26 @@ class ParticleViewer {
 	}
 
 	static LRESULT CALLBACK msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-		
+
 		ParticleViewer* viewer = (ParticleViewer*)GetWindowLong(hwnd, GWL_USERDATA);
 
 		switch(msg) {
 		case WM_ACTIVATE:
 			{
-			
+
 				if(viewer != NULL) {
-		
+
 					if(LOWORD(wParam) != WA_INACTIVE)
 						viewer->activate(true);
 						else
 						viewer->activate(false);
-					
-					
+
+
 					// Minimized?
 					if(HIWORD(wParam) == TRUE)
 						viewer->activate(false);
 				}
-					
+
 			} break;
 		case WM_DESTROY:
 			PostQuitMessage(0);
@@ -624,21 +624,21 @@ public:
 		int lastTime = timeGetTime();
 		GetMessage(&msg, 0, 0, 0);
 		while(!mustQuit) {
-			
+
 			if(!m_active) {
-			
+
 				while(!m_active) {
-					
+
 					if(GetMessage(&msg, 0, 0, 0) <= 0) {
-						
-						mustQuit = true;						
+
+						mustQuit = true;
 						break;
 					}
-					
+
 					TranslateMessage(&msg);
 					DispatchMessage(&msg);
 				}
-			
+
 			} else {
 
 				if(PeekMessage(&msg, 0, 0, 0, PM_REMOVE)) {
@@ -661,7 +661,7 @@ public:
 				}
 
 			}
-						
+
 		}
 		freeObjects();
 		freeStorm();
@@ -700,13 +700,13 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	HWND hwnd = CreateWindow("ParticleEditor", "ParticleViewer", WS_OVERLAPPEDWINDOW, 0, 0, 640, 480,
 		NULL, NULL, hInstance, NULL);
-	
+
 	ShowWindow(hwnd, SW_SHOWNORMAL);
 
 	IStorm3D *s3d = IStorm3D::Create_Storm3D_Interface(true);
 
 	s3d->SetUserWindowMessageProc(MsgProc);
-	
+
 	s3d->SetWindowedMode(hwnd);
 
 	COL bgCol = COL(0.3f, 0.3f, 0.3f);
@@ -716,13 +716,13 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	scene->SetBackgroundColor(bgCol);
 
 	IStorm3D_Font* font = s3d->CreateNewFont();
-	
+
 	std::string buff;
 	buff += '\t';
 	buff += '!';
 	buff += '"';
 	buff += "#$%@'()*+.-,/0123456789:;<=>?\nabcdefghijklmnopqrstuvwxyz[\]\t_";
-	
+
 	std::vector<unsigned char> widths;
 	for(int i = 0; i < buff.size(); i++) {
 		widths.push_back(64);
@@ -732,18 +732,18 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	font->AddTexture(ftex);
 	font->SetTextureRowsAndColums(8, 8);
 	font->SetCharacters(buff.c_str(), &widths[0]);
-	font->SetColor(COL(1.0f, 1.0f, 1.0f));	
+	font->SetColor(COL(1.0f, 1.0f, 1.0f));
 
-	
+
 	scene->GetCamera()->SetPosition(Vector(10.0f, 20.0f, 40.0f));
 	scene->GetCamera()->SetTarget(Vector(10.0f, 0.0f, 0.0f));
 //	scene->GetCamera()->SetUpVec(Vector(0.0f, 1.0f, 0.0f));
 	scene->GetCamera()->SetFieldOfView(45.0f);
 	scene->GetCamera()->SetVisibilityRange(10000.0f);
-	
+
 	ParticleSystemManager* psMgr = new ParticleSystemManager(s3d, scene);
 	ParticleEffectManager* efMgr = new ParticleEffectManager(s3d, scene, psMgr);
-	
+
 	psMgr->registerSystem(getSprayParticleSystemClassDesc());
 	psMgr->registerSystem(getPointArrayParticleSystemClassDesc());
 	psMgr->registerSystem(getCloudParticleSystemClassDesc());
@@ -751,13 +751,13 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	psMgr->registerForce(getParticleGravityClassDesc());
 	psMgr->registerForce(getDragParticleForceClassDesc());
 
-	
+
 	std::ifstream file("effect.txt");
 	editor::Parser parser;
 	file >> parser;
 	file.close();
 	efMgr->loadParticleEffect(0, parser);
-	
+
 
 	int startTime = timeGetTime();
 	int lastTime = timeGetTime();
@@ -770,7 +770,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 	Vector emitterPos(0.0f, 0.0f, 0.0f);
 	Vector emitterVelocity(0.0f, 0.0f, 0.0f);
 	Vector oldEmitterPos;
-	
+
 	float angle = 0.0f;
 	int timeCount = 0;
 
@@ -784,7 +784,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 			DispatchMessage(&msg);
 		} else {
 
-			if(!firstTime) {				
+			if(!firstTime) {
 				if(moveEmitter) {
 					angle += 0.001f;
 					emitterPos.x = sin(angle) * 5.0f;
@@ -797,7 +797,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 					emitterVelocity = Vector(0.0f, 0.0f, 0.0f);
 				}
 			}
-			
+
 			if(reload) {
 				editor::Parser parser2;
 				std::ifstream file2("effect.txt");
@@ -806,10 +806,10 @@ int WINAPI WinMain(HINSTANCE hInstance,
 				efMgr->loadParticleEffect(0, parser2);
 				reload = false;
 			}
-			
+
 			if(spawn) {
 				if(firstTime) {
-					effect = efMgr->addParticleEffect(0);		
+					effect = efMgr->addParticleEffect(0);
 					firstTime = false;
 				} else if(effect->isDead()) {
 					effect = efMgr->addParticleEffect(0);
@@ -833,7 +833,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 			//effect->setVelocity(Vector(0.0f, 0.0f, 0.0f));
 
 			// animate at 100 hz like the game
-						
+
 			int time = timeGetTime();
 			timeCount += (time - lastTime);
 			while(timeCount > 10) {
@@ -843,17 +843,17 @@ int WINAPI WinMain(HINSTANCE hInstance,
 			lastTime = time;
 
 			psMgr->render();
-			
+
 			char buffer[256];
 			const ParticleSystemManager::Stats& stats = ParticleSystemManager::getSingleton().getStats();
 
-			sprintf(buffer, "particles %d", stats.numParticles);		
+			sprintf(buffer, "particles %d", stats.numParticles);
 			scene->Render2D_Text(font, VC2(8,32), VC2(strlen(buffer), 16), buffer);
-			
-			sprintf(buffer, "max particles %d", stats.maxParticles);		
+
+			sprintf(buffer, "max particles %d", stats.maxParticles);
 			scene->Render2D_Text(font, VC2(8,16), VC2(strlen(buffer), 16), buffer);
 
-	//		sprintf(buffer, "emitter movement %s", );		
+	//		sprintf(buffer, "emitter movement %s", );
 	//		scene->Render2D_Text(font, VC2(8,16), VC2(strlen(buffer), 16), buffer);
 
 			scene->RenderScene();
@@ -862,9 +862,9 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	delete psMgr;
 	delete efMgr;
-	
+
 	s3d->Empty();
-	
+
 	delete s3d;
 
 	return 0;

@@ -13,7 +13,7 @@ namespace game
 
 namespace ui
 {
-	struct AmbientSoundManagerData;	
+	struct AmbientSoundManagerData;
 
 	class AmbientSoundManager
 	{
@@ -25,7 +25,7 @@ namespace ui
 		virtual ~AmbientSoundManager();
 
 		void clearAllAmbientSounds();
-	 		
+
 		void setNextFreeAmbientSound();
 
 		void setSelectedAmbientSound(int i);
@@ -45,7 +45,7 @@ namespace ui
 		void setAmbientSoundName(int i, const char *name);
 
 		void makeAmbientSoundFromDefString(int i, const char* defString);
-		
+
 		void startAmbientSound(int i);
 
 		void stopAmbientSound(int i, bool immediately);
@@ -60,7 +60,7 @@ namespace ui
 
 	private:
 
-		AmbientSoundManagerData* m;	
+		AmbientSoundManagerData* m;
 
 	};
 

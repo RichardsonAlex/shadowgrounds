@@ -114,11 +114,11 @@ Storm3D_Model_Object::~Storm3D_Model_Object()
 				case IStorm3D_Helper::HTYPE_VECTOR:
 					((Storm3D_Helper_Vector*)ihelper)->parent_object=0;
 					break;
-					
+
 				case IStorm3D_Helper::HTYPE_CAMERA:
 					((Storm3D_Helper_Camera*)ihelper)->parent_object=0;
 					break;
-					
+
 				case IStorm3D_Helper::HTYPE_BOX:
 					((Storm3D_Helper_Box*)ihelper)->parent_object=0;
 					break;
@@ -340,7 +340,7 @@ MAT &Storm3D_Model_Object::GetMXG()
 	if (mxg_update)
 	{
 		mxg_update=false;
-		
+
 		if (parent)
 			mxg=mx*parent->GetMXG();
 		else if(parent_bone)
@@ -398,12 +398,12 @@ void Storm3D_Model_Object::AddChild(IStorm3D_Helper *ihelper)
 			if (((Storm3D_Helper_Point*)ihelper)->parent_object) ((Storm3D_Helper_Vector*)ihelper)->parent_object->RemoveChild(ihelper);
 			((Storm3D_Helper_Vector*)ihelper)->parent_object=this;
 			break;
-			
+
 		case IStorm3D_Helper::HTYPE_CAMERA:
 			if (((Storm3D_Helper_Camera*)ihelper)->parent_object) ((Storm3D_Helper_Camera*)ihelper)->parent_object->RemoveChild(ihelper);
 			((Storm3D_Helper_Camera*)ihelper)->parent_object=this;
 			break;
-			
+
 		case IStorm3D_Helper::HTYPE_BOX:
 			if (((Storm3D_Helper_Point*)ihelper)->parent_object) ((Storm3D_Helper_Box*)ihelper)->parent_object->RemoveChild(ihelper);
 			((Storm3D_Helper_Box*)ihelper)->parent_object=this;
@@ -435,11 +435,11 @@ void Storm3D_Model_Object::RemoveChild(IStorm3D_Helper *ihelper)
 		case IStorm3D_Helper::HTYPE_VECTOR:
 			((Storm3D_Helper_Vector*)ihelper)->parent_object=NULL;
 			break;
-			
+
 		case IStorm3D_Helper::HTYPE_CAMERA:
 			((Storm3D_Helper_Camera*)ihelper)->parent_object=NULL;
 			break;
-			
+
 		case IStorm3D_Helper::HTYPE_BOX:
 			((Storm3D_Helper_Box*)ihelper)->parent_object=NULL;
 			break;
@@ -482,11 +482,11 @@ void Storm3D_Model_Object::InformChangeToChilds()
 			case IStorm3D_Helper::HTYPE_VECTOR:
 				((Storm3D_Helper_Vector*)(*ih))->update_globals=true;
 				break;
-			
+
 			case IStorm3D_Helper::HTYPE_CAMERA:
 				((Storm3D_Helper_Camera*)(*ih))->update_globals=true;
 				break;
-			
+
 			case IStorm3D_Helper::HTYPE_BOX:
 				((Storm3D_Helper_Box*)(*ih))->update_globals=true;
 				break;
@@ -745,7 +745,7 @@ void Storm3D_Model_Object::RayTrace(const VC3 &position,const VC3 &direction_nor
 	{
 		Ray ray(tr_pos, tr_dir, ray_length);
 		const AABB &aabb = mesh->getBoundingBox();
-		
+
 		if(!collision(aabb, ray))
 			return;
 	}
@@ -918,13 +918,13 @@ void Storm3D_Model_Object::SetRenderPassParams(int renderPassBit, const VC3 &off
 {
 	assert(renderPassBit >= 0 && renderPassBit < RENDER_PASS_BITS_AMOUNT);
 	this->renderPassOffset[renderPassBit] = offset;
-	this->renderPassScale[renderPassBit] = scale;	
+	this->renderPassScale[renderPassBit] = scale;
 }
 
 void Storm3D_Model_Object::SetAlphaTestPassParams(bool conditional, int alphaValue)
 {
 	this->alphaTestPassConditional = conditional;
-	this->alphaTestValue = alphaValue;	
+	this->alphaTestValue = alphaValue;
 }
 
 

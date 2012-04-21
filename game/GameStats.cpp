@@ -260,7 +260,7 @@ namespace game
 				}
 			}
 
-			
+
 			void end()
 			{
 				running = false;
@@ -567,7 +567,7 @@ namespace game
 	{
 		listeners.push_back( listener );
 	}
-	
+
 	void GameStats::removeListener( IGameStatsListener* listener )
 	{
 		std::list< IGameStatsListener* >::iterator i;

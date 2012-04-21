@@ -4,7 +4,7 @@
   (C) Sebastian Aaltonen 2000
 
   Basic Primitives
-	
+
 */
 
 
@@ -28,7 +28,7 @@ class Storm3D_Model_Object_Sphere : public Storm3D_Model_Object
 	float texrep_ring,texrep_height;
 
 	// Virtual functions
-	void ReCreate();	
+	void ReCreate();
 
 	// Creation/delete (only models use these)
 	Storm3D_Model_Object_Sphere(Storm3D_Model *_parent_model,
@@ -56,7 +56,7 @@ class Storm3D_Model_Object_Plane : public Storm3D_Model_Object
 	float texrep_height,texrep_width;
 
 	// Virtual functions
-	void ReCreate();	
+	void ReCreate();
 
 	// Creation/delete (only models use these)
 	Storm3D_Model_Object_Plane(Storm3D_Model *_parent_model,
@@ -84,7 +84,7 @@ class Storm3D_Model_Object_Box : public Storm3D_Model_Object
 	float texrep_width,texrep_height,texrep_length;
 
 	// Virtual functions
-	void ReCreate();	
+	void ReCreate();
 
 	// Creation/delete (only models use these)
 	Storm3D_Model_Object_Box(Storm3D_Model *_parent_model,

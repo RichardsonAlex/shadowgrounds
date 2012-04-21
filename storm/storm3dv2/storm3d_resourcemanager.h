@@ -26,7 +26,7 @@ public:
 
 	void addResource(IStorm3D_Material *material);
 	void addResource(IStorm3D_Mesh *mesh);
-	
+
 	void deleteResource(IStorm3D_Material *material);
 	void deleteResource(IStorm3D_Mesh *mesh);
 

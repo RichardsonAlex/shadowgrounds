@@ -118,7 +118,7 @@ namespace {
 			}
 		}
 	}
-	
+
 	void flipData(std::vector<unsigned short> *data, HmapFormat &format)
 	{
 		for(int y = 0; y < format.height / 2; ++y)
@@ -126,7 +126,7 @@ namespace {
 		{
 			int p1 = y * format.width + x;
 			int p2 = (format.height - y - 1) * format.width + x;
-			
+
 			std::swap((*data)[p1], (*data)[p2]);
 		}
 	}
@@ -134,7 +134,7 @@ namespace {
 	void getAllData(std::vector<unsigned short> *data, const std::string &fileName, HmapFormat &format)
 	{
 		data->resize(format.height * format.width);
-		
+
 		readData(data, fileName, format);
 		flipData(data, format);
 	}
@@ -161,7 +161,7 @@ HmapLoader::HmapLoader(const std::string &fileName_)
 	{
 		data = std::vector<unsigned short> ();
 		format = HmapFormat();
-		
+
 		fileName = "";
 	}
 	*/

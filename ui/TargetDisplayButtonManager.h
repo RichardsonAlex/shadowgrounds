@@ -159,7 +159,7 @@ public:
 		float sliderHighLimit;
 		int sliderCurrentImages;
 	};
-	
+
 	///////////////////////////////////////////////////////////////////////////
 
 
@@ -185,12 +185,12 @@ private:
 	// This just creates a new button from the buttnOriginals
 	// doesn't use the buttonStack in anyway
 	button  newButton( int style );
-	
+
 	Ogui*		ogui;
 	OguiWindow*	window;
 
 	std::map< int, std::stack< button > >	buttonStack;
-	std::map< int, ButtonCreator >			buttonOriginals;		
+	std::map< int, ButtonCreator >			buttonOriginals;
 
 };
 

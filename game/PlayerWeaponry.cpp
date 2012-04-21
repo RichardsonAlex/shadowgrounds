@@ -67,7 +67,7 @@ namespace game
 					return it->second[ i ];
 			}
 		}
-		
+
 		return 0;
 	}
 
@@ -80,7 +80,7 @@ namespace game
 			it = playerweaponry_weaplist.find( unit_id );
 			if( it == playerweaponry_weaplist.end() )
 				playerweaponry_weaplist.insert( std::pair< int, std::vector< int > >( unit_id, std::vector< int >( PLAYERWEAPONRY_MAX_WEAPONS ) ) );
-			
+
 			if( i >= 0 && i < PLAYERWEAPONRY_MAX_WEAPONS )
 			{
 				playerweaponry_weaplist[ unit_id ][ i ] = weapon;

@@ -28,7 +28,7 @@ namespace game
 			 * of it. Human player controlled units will be kept.
 			 * (May affect unit's parts and stuff - some things still TODO)
 			 */
-			static void retireUnit(Game *game, Unit *unit);		
+			static void retireUnit(Game *game, Unit *unit);
 
 			/**
 			 * Retires a unit from the battlefield and deletes it,
@@ -36,7 +36,7 @@ namespace game
 			 * (Call this before quitting to make sure player units
 			 * get properly destroyed)
 			 */
-			static void deleteUnit(Game *game, Unit *unit);		
+			static void deleteUnit(Game *game, Unit *unit);
 
 			static void markAliveHostileUnits(Game *game);
 

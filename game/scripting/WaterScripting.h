@@ -17,7 +17,7 @@ namespace game
 	 */
 	class WaterScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

@@ -21,7 +21,7 @@ public:
 	float	bounce;
 	int		collisionType;
 	Particle* next;
-	
+
 };
 
 
@@ -71,11 +71,11 @@ public:
 	void setTextureAnimation(TextureAnimation& anim);
 
 	void setTexture(IStorm3D* s3d, const std::string& fileName) {
-		
+
 	}
-	
+
 	void tick(IStorm3D_Scene* scene) {
-		
+
 	}
 
 	void render(IStorm3D_Scene* scene) {
@@ -86,7 +86,7 @@ public:
 
 class SuperSpray : public ParticleSystem {
 public:
-	
+
 	virtual void setParticlePosition();
 	virtual void setParticleVelocity();
 
@@ -94,7 +94,7 @@ public:
 
 class ParticleCloud : public ParticleSystem {
 public:
-	
+
 };
 
 

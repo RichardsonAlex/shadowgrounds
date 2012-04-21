@@ -32,7 +32,7 @@ public:
 	void addItem( const std::string& target, const Item& item );
 	void removeItem( const std::string& target, const Item& item );
 
-	
+
 	void hide( int fadeTime = 0 );
 	void show( int fadeTime = 0 );
 	void update();
@@ -53,14 +53,14 @@ private:
 		void removeItem( const Item& item );
 
 	private:
-		
+
 		int startX;
 		int startY;
 		int curX;
 		int curY;
 		int addX;
 		int addY;
-		
+
 		std::list< Item > items;
 	};
 

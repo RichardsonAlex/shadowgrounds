@@ -36,7 +36,7 @@ Storm3D_Helper::Storm3D_Helper(char *_name,Storm3D_Model *_parent_model,
 }
 
 
-	
+
 //------------------------------------------------------------------
 // Storm3D_Helper::~Storm3D_Helper
 //------------------------------------------------------------------

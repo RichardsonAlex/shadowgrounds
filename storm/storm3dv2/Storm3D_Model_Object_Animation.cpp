@@ -48,7 +48,7 @@ void Storm3D_Model_Object_Animation::AddNewPositionKeyFrame(int time,const VC3 &
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -85,7 +85,7 @@ void Storm3D_Model_Object_Animation::AddNewRotationKeyFrame(int time,const QUAT 
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -122,7 +122,7 @@ void Storm3D_Model_Object_Animation::AddNewScaleKeyFrame(int time,const VC3 &sca
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -178,7 +178,7 @@ void Storm3D_Model_Object_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;
@@ -206,7 +206,7 @@ void Storm3D_Model_Object_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;
@@ -234,7 +234,7 @@ void Storm3D_Model_Object_Animation::Apply(Storm3D_Scene *scene)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;

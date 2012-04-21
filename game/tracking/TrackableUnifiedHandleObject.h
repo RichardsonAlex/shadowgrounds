@@ -59,7 +59,7 @@ namespace tracking
 		//int getTrackedByCount();
 
 		static void cleanupPool();
-		
+
 		static void *typeId;
 
 		static std::string getStatusInfo();

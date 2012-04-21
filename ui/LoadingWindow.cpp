@@ -122,7 +122,7 @@ namespace ui
 		std::string bgpic;
 
 		std::string custom_survival_mission_desc;
-		
+
 #ifdef PROJECT_SURVIVOR
 		if(!::DHLocaleManager::getInstance()->hasString( ::DHLocaleManager::BANK_GUI, ( "gui_loadingwindow_" + mission + "_background" ).c_str() ))
 		{
@@ -206,13 +206,13 @@ namespace ui
 			if( !font_bold_file.empty() )		fontBold		= ogui->LoadFont( font_bold_file.c_str() );
 			if( !font_italic_file.empty() )		fontItalic		= ogui->LoadFont( font_italic_file.c_str() );
 			if( !font_underline_file.empty() )	fontUnderline	= ogui->LoadFont( font_underline_file.c_str() );
-			
-			briefingArea = new OguiFormattedText( win, ogui, x, y, w, h, 0 );	
-			
+
+			briefingArea = new OguiFormattedText( win, ogui, x, y, w, h, 0 );
+
 			if( fontNormal )
 			{
 				briefingArea->setFont( fontNormal );
-				
+
 				if( fontBold )		briefingArea->registerFont( "b", fontBold );
 				if( fontItalic )	briefingArea->registerFont( "i", fontItalic );
 				if( fontUnderline )	briefingArea->registerFont( "u", fontUnderline );
@@ -289,7 +289,7 @@ namespace ui
 				normal.empty()?NULL:normal.c_str(),
 				down.empty()?NULL:down.c_str(),
 				high.empty()?NULL:high.c_str(), loadingtext.c_str(), LOADINGW_PROGRESS );
-		
+
 			loadingbut->SetReactMask(0);
 			loadingbut->SetListener(this);
 			loadingbut->SetFont(fontButton);
@@ -546,7 +546,7 @@ namespace ui
 	void LoadingWindow::startScrolling()
 	{
 		scrollingStarted = true;
-		
+
 		std::string mission = game->getMissionId()?game->getMissionId():"";
 
 		// play briefing sound
@@ -894,7 +894,7 @@ namespace ui
 	{
 		// upgrade button thingie
 		{
-			
+
 			int x = getLocaleGuiInt( "gui_loadingwindow_upgrademenubutton_x", 0 );
 			int y = getLocaleGuiInt( "gui_loadingwindow_upgrademenubutton_y", 0 );
 			int w = getLocaleGuiInt( "gui_loadingwindow_upgrademenubutton_w", 0 );
@@ -913,7 +913,7 @@ namespace ui
 				down.empty()?NULL:down.c_str(),
 				high.empty()?NULL:high.c_str(), upgradetext.c_str(), LOADINGW_UPGRADEMENU );
 
-			
+
 			upgradeMenuBut->SetListener(this);
 			upgradeMenuBut->SetFont(fontButton);
 			upgradeMenuBut->SetDisabledFont(fontButtonDisabled);

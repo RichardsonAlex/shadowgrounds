@@ -85,15 +85,15 @@ std::string Model::getSummary() const
 	_itoa(materialAmount, number, 10);
 	result += "Number of materials: " + std::string(number) + std::string("\r\n");
 	_itoa(textureAmount, number, 10);
-	result += "\tNumber of textures: " + std::string(number) + std::string("\r\n");	
-	
+	result += "\tNumber of textures: " + std::string(number) + std::string("\r\n");
+
 	return result;
 }
 
 std::string Model::getDetails() const
 {
 	std::string result;
-	
+
 	char number[20] = { 0 };
 	_itoa(objects.size(), number, 10);
 	std::string objectAmount = number;
@@ -104,7 +104,7 @@ std::string Model::getDetails() const
 		result += "Object (" + std::string(number) + "/" + objectAmount + ")\r\n";
 		result += "\tName: " + objects[i]->getName() + "\r\n";
 		result += "\tParent: " + objects[i]->getParentName() + "\r\n";
-		
+
 		_itoa(objects[i]->getFaceAmount(), number, 10);
 		result += "\tFace amount: " + std::string(number) + "\r\n";
 		_itoa(objects[i]->getVertexAmount(), number, 10);
@@ -207,7 +207,7 @@ void Model::saveToFile(const std::string &fileName, std::vector<std::string> obj
 		//for(j = 0; j < saveObjects[index].size(); ++j)
 		//	objectAmount += saveObjects[index][j]->getMaterialIndices().size();
 	}
-	
+
 	lightObjects.combine();
 
 	if(chop)
@@ -226,7 +226,7 @@ void Model::saveToFile(const std::string &fileName, std::vector<std::string> obj
 			boost::shared_ptr<Object> newObject1(new Object(o));
 			//boost::shared_ptr<Object> newObject1(new Object(o.getName(), o.getParentName()));
 			objectList.push_back(newObject1);
-	
+
 			boost::shared_ptr<Object> newObject2(new Object(o));
 			saveObjects[objects.size() + i].push_back(newObject2);
 			o = Object();
@@ -319,7 +319,7 @@ void Model::saveToFile(const std::string &fileName, std::vector<std::string> obj
 			{
 				for(unsigned int k = 0; k < saveObjects[index].size(); ++k)
 					saveObjects[index][k]->writeToFile(fp, objectList[j]->getTransform(), usedMaterials, optimizeVcache, true);
-				
+
 				found = true;
 				break;
 			}
@@ -399,7 +399,7 @@ void Model::saveToFile(const std::string &fileName, std::vector<std::string> obj
 					std::string foo = directory;
 					foo += '\\';
 					foo += textures[i].substr(j + 1, textures[i].size() - 1);
-					
+
 					CopyFile(textures[i].c_str(), foo.c_str(), FALSE);
 					break;
 				}
@@ -486,7 +486,7 @@ int Model::removeRedundantMaterials()
 	for(unsigned int i = 0; i < usedMaterials.size(); ++i)
 	{
 		int oldIndex = usedMaterials[i];
-		
+
 		newMaterials.push_back(materials[oldIndex]);
 		newIndices[oldIndex] = i;
 	}
@@ -680,7 +680,7 @@ std::vector<int> Model::getMaterials(const std::vector<std::string> &objectNames
 		}
 
 		const std::vector<Face> &faces = objects[index].getFaces();
-		
+
 		for(j = 0; j < faces.size(); ++j)
 		{
 			if(std::find(usedMaterials.begin(), usedMaterials.end(), faces[j].getMaterialId()) == usedMaterials.end())
@@ -708,7 +708,7 @@ void Model::getMaterials(std::vector<int> &result, const std::vector<std::string
 		}
 
 		const std::vector<Face> &faces = objects[index]->getFaces();
-		
+
 		for(unsigned int j = 0; j < faces.size(); ++j)
 		{
 			if(std::find(result.begin(), result.end(), faces[j].getMaterialId()) == result.end())

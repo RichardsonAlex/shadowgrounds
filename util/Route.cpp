@@ -140,7 +140,7 @@ Skip:;
 
 		if (Position.x==sx)
 		if (Position.y==sy) break;
-	
+
 	}
 
 	return NPoints;

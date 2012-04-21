@@ -109,19 +109,19 @@ bool LWHelper::collectData()
 	if(name.substr(0, 11) == "HELPER_BONE")
 	{
 		Helper helper(Helper::camera, name, parentName);
-		
+
 		helper.setPosition(position);
 		helper.setDirection(direction);
 		helper.setUpVector(up);
 
 		// Store
-		Manager::getSingleton()->getExporter()->addBoneHelper(helper);			
+		Manager::getSingleton()->getExporter()->addBoneHelper(helper);
 	}
 	// Direction
 	else
 	{
 		Helper helper(Helper::vector, name, parentName);
-		
+
 		helper.setPosition(position);
 		helper.setDirection(direction);
 

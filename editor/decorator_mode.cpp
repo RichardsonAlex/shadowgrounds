@@ -211,7 +211,7 @@ DecoratorMode::DecoratorMode(Gui &gui, Storm &storm, IEditorState &editorState)
 DecoratorMode::~DecoratorMode()
 {
 }
-	
+
 void DecoratorMode::tick()
 {
 }

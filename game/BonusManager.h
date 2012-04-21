@@ -43,7 +43,7 @@ namespace game
 		bool shouldCreateAsButton(int i);
 		void buttonPressed(int i);
 
-	private:	
+	private:
 		class BonusManagerImpl;
 		BonusManagerImpl *impl;
 	};

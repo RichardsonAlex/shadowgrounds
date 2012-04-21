@@ -128,10 +128,10 @@ int getLocaleGuiInt(const char *str, int defaultValue)
 	{
 		const char *s = getLocaleGuiString(str);
 		int result = defaultValue;
-		
+
 		std::stringstream ss( s );
 		ss >> result;
-		
+
 		return result;
 	}
 	else

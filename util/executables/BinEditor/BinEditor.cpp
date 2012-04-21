@@ -151,7 +151,7 @@ void parse_commandline(const char *cmdline)
 					{
 						if (binFilename[j] == '_')
 						{
-							tmpbuf[j] = '\0';	
+							tmpbuf[j] = '\0';
 							assert(cutposnum < 2);
 							if (cutposnum < 2)
 							{
@@ -186,7 +186,7 @@ void parse_commandline(const char *cmdline)
 			strcpy(modelFilename, binFilename);
 			modelFilename[cutpos] = '\0';
 			strcat(modelFilename, ".s3d");
-		} else {			
+		} else {
 			// oops? not a bin file?
 			delete [] binFilename;
 			binFilename = NULL;
@@ -595,7 +595,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
     }
 
 		// height/floor/obstacle visualization...
-		
+
 		int cammapx = int(campos.x / resolution);
 		int cammapz = int(campos.z / resolution);
 

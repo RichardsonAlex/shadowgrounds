@@ -27,7 +27,7 @@ namespace ui
 			ITrackerObject *tracker = trackerList[i];
 
 			std::string trackerName = tracker->getType()->getTrackerTypeName();
-			
+
 			COL col = COL(0,0,1);
 
 			VC3 pos = tracker->getTrackerPosition();

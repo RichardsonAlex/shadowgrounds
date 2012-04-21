@@ -38,7 +38,7 @@ Storm3D_Light_AInterface::Storm3D_Light_AInterface(Storm3D *s2,const char *_name
 }
 
 
-	
+
 //------------------------------------------------------------------
 // Storm3D_Light_AInterface::~Storm3D_Light_AInterface
 //------------------------------------------------------------------

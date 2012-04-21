@@ -20,7 +20,7 @@ int FloatTrack::getType() {
 	return TRACK_FLOAT;
 }
 
-void FloatTrack::setValue(void* v, float t) {		
+void FloatTrack::setValue(void* v, float t) {
 	if(m_keys.empty()) {
 		m_keys.push_back(new FloatKey(*((float*)v), t));
 		return;
@@ -79,7 +79,7 @@ void FloatTrack::setNumKeys(int n) {
 	}
 }
 void FloatTrack::sortKeys() {
-	
+
 }
 void FloatTrack::setKey(int i, Key* k) {
 	assert(i < (int)m_keys.size());
@@ -91,7 +91,7 @@ void FloatTrack::getKey(int i, Key* k) {
 	assert(i < (int)m_keys.size());
 	FloatKey* p = m_keys[i];
 	k->time = p->time;
-	((FloatKey*)k)->value = p->value;	
+	((FloatKey*)k)->value = p->value;
 }
 void FloatTrack::addKey(Key* k) {
 	FloatKey* key = new FloatKey();

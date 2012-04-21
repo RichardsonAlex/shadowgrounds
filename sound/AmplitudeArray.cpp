@@ -42,7 +42,7 @@ void AmplitudeArray::update()
 
 	originalAvg = 0;
 	originalMax = 0;
-	
+
 	int addAvg = 0;
 	for(AmpSampleList::iterator it = data.begin(); it != data.end(); ++it)
 	{

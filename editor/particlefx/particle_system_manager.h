@@ -8,10 +8,10 @@ class ParticleSystemManager {
 	static float gGravity;
 	static float gDragFactor;
 public:
-	
+
 	ParticleSystemManager(IStorm3D* s3d, IStorm3D_Scene* scene);
 	~ParticleSystemManager();
-	
+
 	// templates that are used to define systems
 
 	SharedPtr<ParticleSystem> addTemplate(const std::string& name);
@@ -38,8 +38,8 @@ public:
 
 	static void saveConfig(std::ostream& os);
 	static void loadConfig(std::istream& is);
-	
-	// framestep and rendering	
+
+	// framestep and rendering
 	void tick(int timeDif);
 	void render();
 };

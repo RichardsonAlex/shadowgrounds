@@ -44,7 +44,7 @@ using namespace ui;
 
 namespace game
 {
-	CameraAreaParameters CameraScripting::cameraAreaParameters = CameraAreaParameters();	
+	CameraAreaParameters CameraScripting::cameraAreaParameters = CameraAreaParameters();
 
 	void CameraScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
@@ -66,7 +66,7 @@ namespace game
 
 		case GS_CMD_LISTENERPOSITION:
 			// TODO: proper handling of players in netgame
-			
+
 			// TODO: real listener position, this is just an approximation...
 			// (that is, using camera position as the camera position for now)
 			//gsd->position = game->gameUI->getGameCamera()->getPosition();
@@ -250,7 +250,7 @@ namespace game
 				sp->error("GameScripting::process - selectCamera parameter expected.");
 			}
 			break;
-			
+
 		case GS_CMD_SETCAMERAMOVEMENTON:
 			// TODO: proper handling of players in netgame
 			if (stringData != NULL)
@@ -444,7 +444,7 @@ namespace game
 				VC3 midpos(0,0,0);
 				VC3 rotation(0,0,0);
 				float scale;
-				
+
 				util::ObjectStretchingCalculator::calculateStretchValues(
 					campos, upos, &midpos, &rotation, &scale);
 
@@ -456,7 +456,7 @@ namespace game
 
 			} else {
 				sp->warning("GameScripting::process - Attempt to rotateCameraTowardUnit for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETCAMERAHEIGHT:
@@ -612,7 +612,7 @@ namespace game
 				VC3 tmp = game->gameUI->getGameCamera()->getPositionOffset();
 				tmp.y = gsd->floatValue;
 				game->gameUI->getGameCamera()->setPositionOffset(tmp);
-			}			
+			}
 			break;
 
 		case GS_CMD_setCameraPositionOffsetZToFloatValue:
@@ -621,7 +621,7 @@ namespace game
 				VC3 tmp = game->gameUI->getGameCamera()->getPositionOffset();
 				tmp.z = gsd->floatValue;
 				game->gameUI->getGameCamera()->setPositionOffset(tmp);
-			}						
+			}
 			break;
 
 		case GS_CMD_setCameraTargetOffsetXToFloatValue:
@@ -639,7 +639,7 @@ namespace game
 				VC3 tmp = game->gameUI->getGameCamera()->getTargetOffset();
 				tmp.y = gsd->floatValue;
 				game->gameUI->getGameCamera()->setTargetOffset(tmp);
-			}			
+			}
 			break;
 
 		case GS_CMD_setCameraTargetOffsetZToFloatValue:
@@ -648,7 +648,7 @@ namespace game
 				VC3 tmp = game->gameUI->getGameCamera()->getTargetOffset();
 				tmp.z = gsd->floatValue;
 				game->gameUI->getGameCamera()->setTargetOffset(tmp);
-			}						
+			}
 			break;
 
 		case GS_CMD_setCameraTargetOffsetAtPosition:
@@ -657,7 +657,7 @@ namespace game
 				VC3 targpos = game->gameUI->getGameCamera()->getTargetPosition();
 				VC3 diff = gsd->position - targpos;
 				game->gameUI->getGameCamera()->setTargetOffset(diff);
-			}						
+			}
 			break;
 
 		case GS_CMD_setCameraPositionOffsetAtPosition:
@@ -666,7 +666,7 @@ namespace game
 				VC3 campos = game->gameUI->getGameCamera()->getPosition();
 				VC3 diff = gsd->position - campos;
 				game->gameUI->getGameCamera()->setPositionOffset(diff);
-			}						
+			}
 			break;
 
 		case GS_CMD_disableDirectCameraControls:
@@ -680,7 +680,7 @@ namespace game
 			if (game->inCombat)
 			{
 				game->gameUI->getGameCamera()->setDirectControlsEnabled(true);
-			}						
+			}
 			break;
 
 		case GS_CMD_updateCamera:
@@ -698,111 +698,111 @@ namespace game
 		case GS_CMD_setCameraAreaCorner1ToPosition:
 			{
 				VC3 pos = gsd->position;
-				cameraAreaParameters.corner[0] = pos;				
+				cameraAreaParameters.corner[0] = pos;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaCorner2ToPosition:
 			{
 				VC3 pos = gsd->position;
-				cameraAreaParameters.corner[1] = pos;				
+				cameraAreaParameters.corner[1] = pos;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaCorner3ToPosition:
 			{
 				VC3 pos = gsd->position;
-				cameraAreaParameters.corner[2] = pos;				
+				cameraAreaParameters.corner[2] = pos;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaCorner4ToPosition:
 			{
 				VC3 pos = gsd->position;
-				cameraAreaParameters.corner[3] = pos;				
+				cameraAreaParameters.corner[3] = pos;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaFOV:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.FOV = floatData;			
+				cameraAreaParameters.FOV = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaAngle:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.angle = floatData;			
+				cameraAreaParameters.angle = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaBetaAngle:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.betaAngle = floatData;			
+				cameraAreaParameters.betaAngle = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaBank:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.bank = floatData;			
+				cameraAreaParameters.bank = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaOffsetX:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.offset.x = floatData;			
+				cameraAreaParameters.offset.x = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaOffsetY:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.offset.y = floatData;			
+				cameraAreaParameters.offset.y = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaOffsetZ:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.offset.z = floatData;			
+				cameraAreaParameters.offset.z = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaFollowX:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.follow.x = floatData*0.01f;			
+				cameraAreaParameters.follow.x = floatData*0.01f;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaFollowY:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.follow.y = floatData*0.01f;			
+				cameraAreaParameters.follow.y = floatData*0.01f;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaFollowZ:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.follow.z = floatData*0.01f;			
+				cameraAreaParameters.follow.z = floatData*0.01f;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaTargetToPosition:
 			{
 				VC3 pos = gsd->position;
-				cameraAreaParameters.target = pos;				
+				cameraAreaParameters.target = pos;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaAnimation:
 			{
-				cameraAreaParameters.animation = stringData;				
+				cameraAreaParameters.animation = stringData;
 			}
 			break;
 
@@ -822,20 +822,20 @@ namespace game
 		case GS_CMD_setCameraAreaAngleToValue:
 			{
 				float floatData = (float)(*lastValue);
-				cameraAreaParameters.angle = floatData;			
+				cameraAreaParameters.angle = floatData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaName:
 			{
-				cameraAreaParameters.name = stringData;				
+				cameraAreaParameters.name = stringData;
 			}
 			break;
 
 		case GS_CMD_setCameraAreaDistance:
 			{
 				float floatData = intFloat.f;
-				cameraAreaParameters.distance = floatData;			
+				cameraAreaParameters.distance = floatData;
 			}
 			break;
 
@@ -852,45 +852,45 @@ namespace game
 		case GS_CMD_moveCameraAngle:
 			{
 				float floatData = intFloat.f;
-				game->getGameUI()->getCameraSystem()->moveCameraAngle(floatData);			
+				game->getGameUI()->getCameraSystem()->moveCameraAngle(floatData);
 			}
 			break;
 
 		case GS_CMD_moveCameraBetaAngle:
 			{
 				float floatData = intFloat.f;
-				game->getGameUI()->getCameraSystem()->moveCameraBetaAngle(floatData);			
+				game->getGameUI()->getCameraSystem()->moveCameraBetaAngle(floatData);
 			}
 			break;
 
 		case GS_CMD_moveCameraBank:
 			{
 				float floatData = intFloat.f;
-				game->getGameUI()->getCameraSystem()->moveCameraBank(floatData);			
+				game->getGameUI()->getCameraSystem()->moveCameraBank(floatData);
 			}
 			break;
 
 		case GS_CMD_moveCameraDistance:
 			{
 				float floatData = intFloat.f;
-				game->getGameUI()->getCameraSystem()->moveCameraDistance(floatData);			
+				game->getGameUI()->getCameraSystem()->moveCameraDistance(floatData);
 			}
 			break;
 
 		case GS_CMD_moveCameraFOV:
 			{
 				float floatData = intFloat.f;
-				game->getGameUI()->getCameraSystem()->moveCameraFOV(floatData);			
+				game->getGameUI()->getCameraSystem()->moveCameraFOV(floatData);
 			}
 			break;
 
 		case GS_CMD_clearCameraAreas:
 			{
-				game->getGameUI()->getCameraSystem()->clearCameraAreas();			
+				game->getGameUI()->getCameraSystem()->clearCameraAreas();
 			}
 			break;
 
-			
+
 		case GS_CMD_isCameraSelected:
 			if (stringData != NULL)
 			{

@@ -58,7 +58,7 @@ bool Storm3D_Material_TextureLayer::IsIdenticalWith(const Storm3D_Material_Textu
 	if (texture!=other->texture) return false;
 	if (blend_op!=other->blend_op) return false;
 	if (texcoord_gen!=other->texcoord_gen) return false;
-	
+
 	if (fabsf(blend_factor-other->blend_factor)>0.001f) return false;
 
 	// Its the same (at last)

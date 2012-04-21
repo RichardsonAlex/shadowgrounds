@@ -112,7 +112,7 @@ namespace game
 			else if (SimpleOptions::getInt(DH_OPT_I_RENDER_MODE) == 1)
 				r.setRenderMode(IStorm3D_TerrainRenderer::LightOnly);
 			else if (SimpleOptions::getInt(DH_OPT_I_RENDER_MODE) == 2)
-				r.setRenderMode(IStorm3D_TerrainRenderer::TexturesOnly);			
+				r.setRenderMode(IStorm3D_TerrainRenderer::TexturesOnly);
 
 			r.enableFeature(IStorm3D_TerrainRenderer::SpotShadows, SimpleOptions::getBool(DH_OPT_B_RENDER_SPOT_SHADOWS));
 			r.enableFeature(IStorm3D_TerrainRenderer::Glow, SimpleOptions::getBool(DH_OPT_B_RENDER_GLOW));

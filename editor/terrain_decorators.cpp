@@ -69,7 +69,7 @@ struct TerrainDecoratorsData
 
 		boost::scoped_ptr<DecorationInstance> decorationInstance(new DecorationInstance(decorationManager));
 		ui::Decoration &decoration = decorationInstance->get();
-		
+
 		ui::VisualObjectModel::setVisualStorm(storm.storm, storm.scene);
 
 		decoration.setHeight(waterHeight[index]);
@@ -116,7 +116,7 @@ void TerrainDecorators::setWaterModel(int index, const std::string &fileName)
 {
 	assert(index >= 0 && index < 2);
 	data->waterName[index] = fileName;
-	
+
 	data->createWater(index);
 }
 

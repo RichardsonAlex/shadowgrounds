@@ -66,7 +66,7 @@ namespace {
 		SharedData(editor::Storm &storm_, Model &model_, editor::Dialog &dialog_, editor::Dialog &renderDialog_, editor::Camera &camera_, editor::ColorComponent &colorComponent_)
 		:	storm(storm_),
 			model(model_),
-			
+
 			dialog(dialog_),
 			renderDialog(renderDialog_),
 			camera(camera_),
@@ -159,18 +159,18 @@ namespace {
 					font->AddTexture(texture);
 					font->SetTextureRowsAndColums(8, 8);
 					font->SetCharacters(buff.c_str(), &widths[0]);
-					font->SetColor(COL(1.0f, 1.0f, 1.0f));	
+					font->SetColor(COL(1.0f, 1.0f, 1.0f));
 				}
 			}
 			*/
 
 			font = storm.storm->CreateNewFont();
 			font->SetFont("Times New Roman", 0, 20, false, false);
-			font->SetColor(COL(1.0f, 1.0f, 1.0f));	
+			font->SetColor(COL(1.0f, 1.0f, 1.0f));
 
 			font2 = storm.storm->CreateNewFont();
 			font2->SetFont("Times New Roman", 0, 15, false, false);
-			font2->SetColor(COL(1.0f, 1.0f, 1.0f));	
+			font2->SetColor(COL(1.0f, 1.0f, 1.0f));
 		}
 
 		void play(const std::string &name)
@@ -821,7 +821,7 @@ struct ApplicationData
 
 	editor::ColorComponent colorComponent;
 	SharedData sharedData;
-	
+
 	LoadGeometryCommand geometryCommand;
 	LoadBonesCommand bonesCommand;
 	AddGeometryCommand addGeometryCommand;
@@ -832,7 +832,7 @@ struct ApplicationData
 	BlendCommand blendCommand;
 	InsertAnimationCommand insertCommand;
 	RemoveAnimationCommand removeCommand;
-	
+
 	PlayAnimationCommand playCommand;
 	LoopAnimationCommand loopCommand;
 	StopAnimationCommand stopCommand;
@@ -864,7 +864,7 @@ struct ApplicationData
 
 		colorComponent(mainDialog.getWindowHandle(), 105, 500, 100, 24),
 		sharedData(storm, model, mainDialog, renderDialog, camera, colorComponent),
-		
+
 		geometryCommand(sharedData, mainDialog),
 		bonesCommand(sharedData, mainDialog),
 		addGeometryCommand(sharedData, mainDialog),
@@ -875,7 +875,7 @@ struct ApplicationData
 		blendCommand(sharedData, mainDialog),
 		insertCommand(sharedData, mainDialog),
 		removeCommand(sharedData, mainDialog),
-		
+
 		playCommand(sharedData, mainDialog),
 		loopCommand(sharedData, mainDialog),
 		stopCommand(sharedData, mainDialog),
@@ -947,7 +947,7 @@ struct ApplicationData
 	void handleMessage()
 	{
 		MSG windowsMessage = { 0 };
-		
+
 		if(GetMessage(&windowsMessage, 0, 0, 0) <= 0)
 		{
 			mustQuit = true;
@@ -1058,7 +1058,7 @@ m->SetBaseTexture(tex);
 	float dist = 5.f;
 	float rad = 9.f;
 	float h = 1.5f;
-	
+
 	//int l1 = data->storm.terrain->addLight(VC3(0, h, -dist), 0.01f, COL(0, 0, 0));
 	//int l2 = data->storm.terrain->addLight(VC3(0, h, -dist), 0.01f, COL(0, 0, 0));
 	//int l3 = data->storm.terrain->addLight(VC3(0, h, -dist), 0.01f, COL(0, 0, 0));

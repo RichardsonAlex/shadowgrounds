@@ -41,7 +41,7 @@ namespace ui {
 
 	static const int FADE_IN_TIME = 500;
 	static const int FADE_OUT_TIME = 500;
-	
+
 	static const int BUTTON_ID_UNDO = 5;
 	static const int BUTTON_ID_CLOSE = 4;
 
@@ -104,7 +104,7 @@ namespace ui {
 			if(text)
 			{
 				text->SetText("");
-				
+
 				if(icon)
 					icon->SetDisabled(true);
 			}
@@ -316,7 +316,7 @@ public:
 		unit_name = unit->getUnitType()->getName();
 		unit_name = boost::to_lower_copy( unit_name );
 		loadDataForUnit();
-		
+
 		loadWeaponUpgradesForUnit();
 
 		// loadSelectionButton( "testi" );
@@ -337,7 +337,7 @@ public:
 				delete i->second;
 			}
 		}
-		
+
 		{
 			std::list< OguiButton* >::iterator i;
 			for( i = decorationList.begin(); i != decorationList.end(); ++i )
@@ -349,7 +349,7 @@ public:
 			for( i = decorationText.begin(); i != decorationText.end(); ++i )
 				delete (*i);
 		}
-		
+
 		delete expobarSlider;
 		delete upgradePartsAmount;
 		delete characterPartsAmount;
@@ -428,7 +428,7 @@ public:
 	}
 
 	void addItem( SurvivorItem *item )
-	{	
+	{
 		std::string localeName;
 		int itemCount = getItemCount(item, localeName);
 
@@ -532,7 +532,7 @@ public:
 		hintBox = oguiLoader.LoadFormattedText( "hintbox", window, 0 );
 		undoButton = oguiLoader.LoadButton( "undobutton", window, BUTTON_ID_UNDO );
 		undoButton->SetListener( this );
-		
+
 		closeButton = oguiLoader.LoadButton( "closebutton", window,  BUTTON_ID_CLOSE );
 		closeButton->SetListener( this );
 
@@ -651,10 +651,10 @@ public:
 			temp_decoration->SetTextHAlign( OguiButton::TEXT_H_ALIGN_RIGHT );
 			healthDeco = temp_decoration;
 			decorationList.push_back( temp_decoration );
-			
+
 			std::string temp_text = boost::lexical_cast< std::string >( min_health );
 			temp_decoration->SetText( temp_text.c_str() );
-			
+
 
 			max_hp = unit->getMaxHP();
 			float max_health_rounded = (float)max_hp * health_multiplier;
@@ -671,13 +671,13 @@ public:
 			temp_decoration->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 			maxHealthDeco = temp_decoration;
 			decorationList.push_back( temp_decoration );
-			
+
 			temp_text = boost::lexical_cast< std::string >( max_health );
 			temp_decoration->SetText( temp_text.c_str() );
-			
+
 			temp_string = "deco_health_slash";
 			temp_decoration = oguiLoader.LoadButton( temp_string, window, 0 );
-			temp_decoration->SetDisabled( true );			
+			temp_decoration->SetDisabled( true );
 			decorationList.push_back( temp_decoration );
 			// unit->getMaxHP();
 
@@ -696,12 +696,12 @@ public:
 				float slider_value = ( (float)(expo_value - expo_min) / (float)( expo_max - expo_min ) );
 
 				expobarSlider->setValue( slider_value );
-	
+
 				int level = 0;
 				util::Script::getGlobalArrayVariableValue( "survivor_current_level", playerNum, &level);
 				level++;
 				// Logger::getInstance()->error( ((std::string)("Cur-level: " ) + boost::lexical_cast< std::string >( level ) ).c_str() );
-				
+
 				std::stringstream ss;
 				ss << getLocaleGuiString("gui_upgradewindow_level") << " " << level;
 				temp_string = "expo_bar_level_text";
@@ -735,7 +735,7 @@ public:
 			{
 				deco_temp = oguiLoader.LoadButton( std::string( "charupgdecorationtext_" ) + boost::lexical_cast< std::string >( i ), window,  0 );
 				deco_temp->SetDisabled( true );
-				decorationList.push_back( deco_temp );				
+				decorationList.push_back( deco_temp );
 			}
 		}
 
@@ -748,7 +748,7 @@ public:
 			{
 				game::UpgradeType *upgType = game->upgradeManager->getUpgradeTypeById( temp_vector[ i ] );
 				std::string upgScript = upgType->getScript();
-		
+
 				std::string upgButton;
 				// general upgrades starting from 4, no need to separate locales
 				if(i >= 4) upgButton = "upgrade_" + boost::lexical_cast< std::string >( i );
@@ -888,7 +888,7 @@ public:
 				game::Weapon *w = unit->getWeaponType( wnum );
 				if (w != NULL)
 					weapName = w->getPartTypeIdString();
-				
+
 				// create the text thing and decoration crap
 				{
 					OguiButton* deco_temp = oguiLoader.LoadButton( std::string( "weapondecorationbar_" ) + boost::lexical_cast< std::string >( weapon_count ), window,  0 );
@@ -896,12 +896,12 @@ public:
 					decorationList.push_back( deco_temp );
 
 					std::string locale = "gui_upgradewindow_" + boost::to_lower_copy( weapName ) + "_image_text";
-				
+
 					deco_temp = oguiLoader.LoadButton( std::string( "weapondecorationtext_" ) + boost::lexical_cast< std::string >( weapon_count ), window,  0 );
 					deco_temp->SetDisabled( true );
 					deco_temp->SetText( getLocaleGuiString(locale.c_str()) );
 					deco_temp->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-					decorationList.push_back( deco_temp );				
+					decorationList.push_back( deco_temp );
 				}
 
 
@@ -941,7 +941,7 @@ public:
 					{
 						game::UpgradeType *upgType = game->upgradeManager->getUpgradeTypeById( upgIds[ j ] );
 						std::string upgScript = upgType->getScript();
-				
+
 
 						// selected button
 						OguiButton *selected_button = NULL;
@@ -1275,7 +1275,7 @@ public:
 					if( alreadyPending == false )
 					{
 						int tmp = pendingCost;
-						
+
 						if( game->upgradeManager->canUpgrade( unit, upgid, &tmp ) && !game->upgradeManager->isLocked(unit, upgid) )
 						{
 							fb_assert( tmp > pendingCost );
@@ -1314,7 +1314,7 @@ public:
 						upgradesPending.erase( iter );
 						playDoneSound = true;
 					}
-					
+
 					if( playDoneSound )
 					{
 						game->gameUI->playGUISound( game::getLocaleGuiString( "gui_upgrades_sound_upgrade_done" ) );
@@ -1573,7 +1573,7 @@ public:
 					updateTheButtons();
 				}
 				break;
-			
+
 			case BUTTON_ID_CLOSE:
 				{
 					game->gameUI->playGUISound( game::getLocaleGuiString( "gui_upgrades_sound_close" ) );
@@ -1598,7 +1598,7 @@ public:
 			break;
 		}
 	}
-	
+
 	//-------------------------------------------------------------------------
 };
 

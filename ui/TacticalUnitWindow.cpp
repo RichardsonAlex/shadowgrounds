@@ -92,7 +92,7 @@ struct TacticalUnitWindowData
 		secondaryDropWeap(false),
 		clickPosition(0,0,0),
 		targetUnit(0)
-		
+
 	{
 	}
 
@@ -448,7 +448,7 @@ void TacticalUnitWindow::CursorEvent(OguiButtonEvent *event)
 		{
 #ifdef PROJECT_SHADOWGROUNDS
 			if (data->clickedButton == PRIMARY_FIRE_BUTTON)
-				cursor = DH_CURSOR_AIM;			
+				cursor = DH_CURSOR_AIM;
 			if (data->clickedButton == SECONDARY_FIRE_BUTTON)
 				cursor = DH_CURSOR_AIM_HEAVY;
 			if (data->clickedButton == BOTH_FIRE_BUTTON)
@@ -470,7 +470,7 @@ void TacticalUnitWindow::CursorEvent(OguiButtonEvent *event)
 			if (data->clickedButton == SECONDARY_FIRE_BUTTON)
 			{
 				if (w2->isHeavyWeapon())
-					cursor = DH_CURSOR_AIM_HEAVY;	
+					cursor = DH_CURSOR_AIM_HEAVY;
 				else
 					cursor = DH_CURSOR_AIM;
 			}
@@ -480,12 +480,12 @@ void TacticalUnitWindow::CursorEvent(OguiButtonEvent *event)
 				{
 					if (w1->isHeavyWeapon() && w2->isHeavyWeapon())
 					{
-						cursor = DH_CURSOR_AIM_HEAVY;	
+						cursor = DH_CURSOR_AIM_HEAVY;
 					} else {
 						cursor = DH_CURSOR_AIM_ALL;
 					}
 				} else {
-					cursor = DH_CURSOR_AIM;	
+					cursor = DH_CURSOR_AIM;
 				}
 			}
 #endif

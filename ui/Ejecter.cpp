@@ -20,7 +20,7 @@ namespace ui
 		//std::string barrelName = "WeaponEject";
 
 		//std::string modelHelperName = std::string("HELPER_MODEL_") + barrelName;
-		
+
 		//const char *weaponHelper = modelHelperName.c_str();
 		//char *weaponHelper = "HELPER_MODEL_WeaponBarrel";
 

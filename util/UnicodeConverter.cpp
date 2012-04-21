@@ -68,7 +68,7 @@ wchar_t *convertToWide(const char *source)
 
 	int length = getLength(source, strlen(source) + 1);
 	wchar_t *destination = new wchar_t[length];
-	
+
 	convert(source, strlen(source) + 1, destination, length);
 	return destination;
 }
@@ -99,7 +99,7 @@ char *convertToMultiByte(const wchar_t *source)
 
 	int length = getLength(source, wcslen(source) + 1);
 	char *destination = new char[length];
-	
+
 	convert(source, wcslen(source) + 1, destination, length);
 	return destination;
 }
@@ -226,7 +226,7 @@ wchar_t *convertToWide(const char *source)
 
 	int length = getLength(source, strlen(source) + 1);
 	wchar_t *destination = new wchar_t[length];
-	
+
 	convert(source, strlen(source) + 1, destination, length);
 	return destination;
 	*/
@@ -310,7 +310,7 @@ char *convertToMultiByte(const wchar_t *source)
 
 	int length = getLength(source, wcslen(source) + 1);
 	char *destination = new char[length];
-	
+
 	convert(source, wcslen(source) + 1, destination, length);
 	return destination;
 	*/

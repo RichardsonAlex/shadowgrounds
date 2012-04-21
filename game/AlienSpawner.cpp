@@ -17,7 +17,7 @@
 
 namespace game
 {
-	
+
 	class AlienSpawnerPointImpl
 	{
 	public:
@@ -96,7 +96,7 @@ namespace game
 
 			// add the given spawnpoint...
 			if (scriptId != 0)
-			{				
+			{
 				bool foundPos = false;
 				for (int i = 0; i < ALIENSPAWNER_MAX_SPAWNPOINTS; i++)
 				{
@@ -142,7 +142,7 @@ namespace game
 			int closestId = -1;
 
 #ifdef PROJECT_SURVIVOR
-			
+
 			// get random spawn point
 			int temp_count = 0;
 			int max_random = ALIENSPAWNER_MAX_SPAWNPOINTS;
@@ -165,7 +165,7 @@ namespace game
 					if( i < max_random )
 						max_random = i;
 				}
-			}					
+			}
 #else
 			float closestDistSq = ALIENSPAWNER_MAX_SPAWN_RANGE * ALIENSPAWNER_MAX_SPAWN_RANGE;
 			// TODO: more efficient datastructure

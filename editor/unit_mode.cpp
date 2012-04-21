@@ -249,9 +249,9 @@ namespace {
 				int length = SendDlgItemMessage(dialog.getWindowHandle(), IDC_UNIT_HELPERS, LB_GETTEXTLEN, index, 0);
 				activeText.resize(length + 1);
 
-				SendDlgItemMessage(dialog.getWindowHandle(), IDC_UNIT_HELPERS, LB_GETTEXT, index, reinterpret_cast<LPARAM> (&activeText[0]));			
+				SendDlgItemMessage(dialog.getWindowHandle(), IDC_UNIT_HELPERS, LB_GETTEXT, index, reinterpret_cast<LPARAM> (&activeText[0]));
 			}
-			
+
 			// Clear
 			SendDlgItemMessage(dialog.getWindowHandle(), IDC_UNIT_HELPERS, LB_RESETCONTENT, 0, 0);
 			if(!activeUnit.hasUnit())
@@ -400,7 +400,7 @@ namespace {
 		UnitCommand(SharedData &sharedData_)
 		:	sharedData(sharedData_)
 		{
-			sharedData.dialog.getCommandList().addCommand(IDC_UNIT_LIST, this);		
+			sharedData.dialog.getCommandList().addCommand(IDC_UNIT_LIST, this);
 		}
 
 		void execute(int id)
@@ -596,7 +596,7 @@ namespace {
 
 			sharedData.terrainUnits.removeUnit(sharedData.activeUnit);
 			sharedData.setUnit(UnitHandle());
-			
+
 			SetFocus(sharedData.gui.getRenderDialog().getWindowHandle());
 		}
 	};
@@ -643,7 +643,7 @@ namespace {
 		{
 			int index = SendDlgItemMessage(sharedData.dialog.getWindowHandle(), IDC_UNIT_HELPERS, LB_GETCURSEL, 0, 0);
 			UnitHelpers &helpers = sharedData.terrainUnits.getUnitHelpers(sharedData.activeUnit);
-			
+
 			if(index < 0)
 				return;
 
@@ -673,7 +673,7 @@ namespace {
 		{
 			int index = SendDlgItemMessage(sharedData.dialog.getWindowHandle(), IDC_UNIT_HELPERS, LB_GETCURSEL, 0, 0);
 			UnitHelpers &helpers = sharedData.terrainUnits.getUnitHelpers(sharedData.activeUnit);
-			
+
 			if(index < 0)
 				return;
 

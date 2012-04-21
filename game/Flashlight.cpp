@@ -178,7 +178,7 @@ namespace game
 			impl->spotlight->setPosition(pos);
 		}
 
-		int recharging = 0;	
+		int recharging = 0;
 
 		// consume energy if on, or recharge based on light if off...
 		if (isFlashlightOn())
@@ -451,7 +451,7 @@ dir.z = -dir.z;
 #ifdef PROJECT_AOV
 			// don't touch the direction!
 #else
-				impl->spotlight->setDirection(dir);				
+				impl->spotlight->setDirection(dir);
 #endif
 			} else {
 				float shakenAngle = angle;

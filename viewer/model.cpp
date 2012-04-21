@@ -336,7 +336,7 @@ void Model::rotateModel(float yAngleDelta, float xAngleDelta)
 	QUAT b;
 	b.MakeFromAngles(data->xAngle, 0, 0);
 	QUAT quaternion = a * b;
-	
+
 	data->model->SetRotation(quaternion);
 }
 

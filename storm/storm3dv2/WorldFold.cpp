@@ -137,7 +137,7 @@ void WorldFold::addWorldFoldAtPosition(const VC3 &position, const MAT &fold)
 void WorldFold::changeWorldFoldAtPosition(const VC3 &position, const MAT &fold)
 {
 	int index = worldFoldPositionToIndex(position);
-	
+
 	assert(worldFoldExists[index]);
 	if (!worldFoldExists[index])
 		return;

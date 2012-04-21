@@ -28,9 +28,9 @@ class Bone
 {
 	std::string name;
 	std::string parentName;
-	
+
 	FBMatrix restTransform;
-	
+
 	double restLength;
 	double radius;
 
@@ -44,10 +44,10 @@ public:
 	const FBMatrix &getRestTransform() const;
 	const FBVector &getMaxAngles() const;
 	const FBVector &getMinAngles() const;
-	
-	double getRestLength() const;	
+
+	double getRestLength() const;
 	double getRadius() const;
-	
+
 	const std::string &getName() const;
 	const std::string &getParentName() const;
 

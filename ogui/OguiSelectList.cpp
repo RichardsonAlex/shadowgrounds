@@ -29,7 +29,7 @@ void OguiSelectList::CursorEvent(OguiButtonEvent *eve)
 
 	bool scrollup = eve->eventType == OguiButtonEvent::EVENT_TYPE_CLICK && (eve->cursorOldButtonMask & OGUI_BUTTON_WHEEL_UP_MASK) ;
 	bool scrolldown = eve->eventType == OguiButtonEvent::EVENT_TYPE_CLICK && (eve->cursorOldButtonMask & OGUI_BUTTON_WHEEL_DOWN_MASK) ;
-	
+
 	if(scrollup)
 	{
 		scrollUp ();
@@ -83,7 +83,7 @@ void OguiSelectList::CursorEvent(OguiButtonEvent *eve)
 		}
 	} else {
 		num = scrolly + eve->triggerButton->GetId();
-		
+
 		if (num < 0 || num >= amount)
 		{
 			#ifdef _DEBUG
@@ -251,7 +251,7 @@ void OguiSelectList::refresh()
 				{
 					listButs[ i ]->SetStyle( style->highlightedUnselectedItem );
 				}
-			
+
 			}
 			else
 			{
@@ -292,7 +292,7 @@ void OguiSelectList::refresh()
 
 	// old stuff...
 	/*
-	og_fbox(win->get_ogwin(), x, y, x + sizex - 16 - 1, y + sizey - 1, og_get_bg_color());	
+	og_fbox(win->get_ogwin(), x, y, x + sizex - 16 - 1, y + sizey - 1, og_get_bg_color());
 	if (selected >= scrolly && selected < scrolly + (sizey / 8))
 	{
 		og_fbox(win->get_ogwin(), x, y + (selected - scrolly) * 8, x + sizex - 16 - 1, y + ((selected - scrolly) * 8) + (8-1), og_get_selection_color());
@@ -320,7 +320,7 @@ void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, c
 	//win->addPicButton(x + sizex - 16, y, 16, 16, DEFBUT_X_SCROLLUP, DEFBUT_Y_SCROLLUP, cback_up, uptabi, this);
 	//win->addPicButton(x + sizex - 16, y + sizey - 16, 16, 16, DEFBUT_X_SCROLLDOWN, DEFBUT_Y_SCROLLDOWN, cback_down, downtabi, this);
 
-	// check that all item/scroll button styles are ok (correct sizes)	
+	// check that all item/scroll button styles are ok (correct sizes)
 	// #ifdef _DEBUG
 	/*
 		FB_ASSERT( !(style->scrollDown->sizeX != style->scrollUp->sizeX) );
@@ -330,7 +330,7 @@ void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, c
 			!= style->sizeX ) );
 	*/
 	//#endif
-	
+
 	if( style->unselectedItem->sizeY != 0 )
 		this->listButAmount = style->sizeY / style->unselectedItem->sizeY;
 	else
@@ -385,7 +385,7 @@ void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, c
 	this->id = id;
 	this->argument = argument;
 	this->listener = NULL;
-	
+
 
 	/* done by refresh?
 	this->upScrollBut->SetDisabled(true);
@@ -529,7 +529,7 @@ void OguiSelectList::deleteItem(int position)
 
 		delete [] values[position];
 		values[position] = NULL;
-		
+
 		//Logger::getInstance()->debug("Done");
 	}
 	delete [] descs[position];
@@ -576,7 +576,7 @@ void OguiSelectList::uninit()
 	if (upScrollBut != NULL) delete upScrollBut;
 	downScrollBut = NULL;
 	upScrollBut = NULL;
-	
+
 	for (i = 0; i < amount; i++)
 	{
 		if (values[i] != NULL)

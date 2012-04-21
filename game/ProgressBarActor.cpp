@@ -21,7 +21,7 @@
 
 namespace game
 {
-	
+
 	ProgressBarActor::ProgressBarActor(Game *game, ProgressBar *progressBar,
 		Item *item, Unit *unit)
 	{

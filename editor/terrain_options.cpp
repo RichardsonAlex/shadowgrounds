@@ -101,7 +101,7 @@ bool TerrainOptions::setHeight(int index, int value)
 	assert((index >= 0) && (index <= 2));
 	if(data->height[index] == value)
 		return false;
-	
+
 	data->height[index] = value;
 	return true;
 }
@@ -110,7 +110,7 @@ bool TerrainOptions::setSlopeDivider(int value)
 {
 	if(data->slopeDivider == value)
 		return false;
-	
+
 	data->slopeDivider = value;
 	return true;
 }
@@ -162,7 +162,7 @@ void TerrainOptions::doExport(Exporter &exporter) const
 	scene.setHeight(2, getHeight(2));
 	scene.setSlopeDivider(getSlopeDivider());
 	scene.setSlopeStart(getSlopeStart());
-	
+
 	scene.setDetailTexture(0, getDetailTexture(0));
 	scene.setDetailTexture(1, getDetailTexture(1));
 	scene.setDetailRepeat(0, getDetailRepeat(0));
@@ -199,7 +199,7 @@ filesystem::InputStream &TerrainOptions::readStream(filesystem::InputStream &str
 
 	stream >> data->height[0] >> data->height[1] >> data->height[2];
 	stream >> data->slopeDivider >> data->slopeStart;
-	
+
 	return stream;
 }
 

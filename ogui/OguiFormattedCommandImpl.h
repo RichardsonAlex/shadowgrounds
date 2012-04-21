@@ -12,9 +12,9 @@ public:
 
 	OguiFormattedCommandImpl() { }
 	virtual ~OguiFormattedCommandImpl() { }
-	
+
 	virtual void execute( OguiFormattedText* text, const std::string& parameters, OguiFormattedText::ParseData* data ) = 0;
-	
+
 protected:
 	virtual void parseParameters( const std::string& params );
 
@@ -23,7 +23,7 @@ protected:
 	{
 		if( parameters.find( name ) == parameters.end() )
 			return default_value;
-		
+
 		try
 		{
 			return boost::lexical_cast< T >( parameters[ name ] );

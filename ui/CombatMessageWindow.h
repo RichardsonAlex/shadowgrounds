@@ -81,7 +81,7 @@ namespace ui
 		int boxYPosition;
 		int boxXSize;
 		int boxYSize;
-		
+
 		IOguiFont *textFont;
 		bool textCentered;
 		bool textBoxed;

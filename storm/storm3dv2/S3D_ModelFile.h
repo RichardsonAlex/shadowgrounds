@@ -45,7 +45,7 @@ struct S3D_HEADER
 	uint16_t num_materials;
 	uint16_t num_objects;
 	uint16_t num_lights;
-	uint16_t num_helpers;	
+	uint16_t num_helpers;
 	uint16_t num_bones;
 
 	S3D_HEADER()
@@ -140,7 +140,7 @@ struct S3D_OBJECT
 	std::string parent;		// Parent's name ("" if not)
 
 	short int material_index;	// Object's material index (in this file, -1 if not used)
-	
+
 	float position[3];		// Position
 	float rotation[4];		// QUAT (quaternion)
 	float scale[3];			// VC3
@@ -196,13 +196,13 @@ struct S3D_OBJECT
 struct S3D_FACE
 {
 	uint16_t vertex[3];
-	//short int material_index;	// Face's material index (in this file, -1 if not used)	
+	//short int material_index;	// Face's material index (in this file, -1 if not used)
 };
 
 
 
 struct S3D_VERTEX
-{	
+{
 	// psd: smoothing & texcoords 2 removed
 	float position[3];
 	float normal[3];
@@ -215,7 +215,7 @@ struct S3D_VERTEX
 
 struct S3D_V3KEY	// POSION, SCALE, DIRECTION, UPVECTOR
 {
-	int keytime;			// in millisecs	
+	int keytime;			// in millisecs
 	float x,y,z;
 };
 
@@ -223,7 +223,7 @@ struct S3D_V3KEY	// POSION, SCALE, DIRECTION, UPVECTOR
 
 struct S3D_ROTKEY
 {
-	int keytime;			// in millisecs	
+	int keytime;			// in millisecs
 	float x,y,z,w;
 };
 
@@ -231,7 +231,7 @@ struct S3D_ROTKEY
 
 struct S3D_MESHKEY
 {
-	int keytime;			// in millisecs	
+	int keytime;			// in millisecs
 
 	// ... Meshkey is always followed by a vertex-array (same size as objects original vertexarray)
 };
@@ -240,7 +240,7 @@ struct S3D_MESHKEY
 
 struct S3D_LUMKEY			// For lights
 {
-	int keytime;			// in millisecs	
+	int keytime;			// in millisecs
 	float r,g,b;			// color settings
 	float multiplier;		// multiplier setting
 	float decay;			// decay setting
@@ -250,7 +250,7 @@ struct S3D_LUMKEY			// For lights
 
 struct S3D_CONEKEY			// For spotlights
 {
-	int keytime;			// in millisecs	
+	int keytime;			// in millisecs
 	float inner,outer;		// cone settings
 };
 

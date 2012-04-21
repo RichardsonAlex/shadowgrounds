@@ -143,7 +143,7 @@ namespace game
 			// TEMP!
 			//char buf[16 * 16];
 			//for (int c = 0; c < 16*16; c++) { buf[c] = ' '; }
-			
+
 			for (int i = minY; i <= maxY; i++)
 			{
 				for (int j = minX; j <= maxX; j++)
@@ -185,7 +185,7 @@ namespace game
 			//Logger::getInstance()->error(buf);
 
 		}
-	}	
+	}
 
 
 
@@ -399,7 +399,7 @@ namespace game
 				//  if (overLapAmount >= 1)
 				// HACK: at least 4 blocks need to overlap!
 				// HACK: more hack hack...
-				// in case of 90 deg doors only!!				
+				// in case of 90 deg doors only!!
 				// FIXME: really needs some proper code!
 				if (overLapAmount >= 4
 					|| ((int(UNIT_ANGLE_TO_RAD(unit->obstacleAngle) + 0.5f) % 90) != 0

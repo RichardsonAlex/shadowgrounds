@@ -144,7 +144,7 @@ int Animator::getAnimationNumberByFilename(const char *filename)
 				return i;
 			}
 		}
-  }	
+  }
 	return -1;
 }
 
@@ -316,7 +316,7 @@ void Animator::setBlendAnimation(IAnimatable *animatable, int blendNumber, int t
 
   if (animatable->getBlendAnimation(blendNumber) != 0)
 	{
-		// running some other animation, need to end it first		
+		// running some other animation, need to end it first
 		endBlendAnimation(animatable, blendNumber, false);
 	}
 

@@ -113,7 +113,7 @@ struct UnitPropertiesDialog::Data
 	{
 		string key = getKey(window);
 		string data = strings[key];
-		
+
 		SetDlgItemText(window, IDC_UNIT_DATA, data.c_str());
 
 		string def = "No default value defined";

@@ -16,7 +16,7 @@ OguiCheckBox::OguiCheckBox(  OguiWindow* win, Ogui* ogui, int x, int y, int w, i
 	textId( -1 ),
 	ogui( ogui ),
 	win( win ),
-	
+
 	listener( NULL ),
 
 	textButton( NULL ),
@@ -43,10 +43,10 @@ OguiCheckBox::OguiCheckBox(  OguiWindow* win, Ogui* ogui, int x, int y, int w, i
 {
 	assert( win );
 	assert( ogui );
-	
+
 	button = ogui->CreateSimpleImageButton( win, x, y, w, h, NULL, NULL, NULL, buttonId );
 	assert( button );
-	
+
 	/////////////////////////////////////////////////////////////////////////////
 
 	if( !checkbox_false_norm.empty() )
@@ -169,7 +169,7 @@ int OguiCheckBox::getId() const
 	return id;
 }
 
-///////////////////////////////////////////////////////////////////////////////	
+///////////////////////////////////////////////////////////////////////////////
 
 void OguiCheckBox::setText( const std::string& text, TEXT_ALIGN align, int w, IOguiFont* font, OguiButton::TEXT_V_ALIGN valign )
 {
@@ -192,7 +192,7 @@ void OguiCheckBox::setText( const std::string& text, TEXT_ALIGN align, int w, IO
 	{
 		int buttonSpace = 0;
 		int x = 0, y, w, h;
-		
+
 		std::string foo_text;
 		if( font != NULL )
 			foo_text = breakText( text, font );
@@ -205,7 +205,7 @@ void OguiCheckBox::setText( const std::string& text, TEXT_ALIGN align, int w, IO
 		y = buttonY;
 		w = textW;
 		h = textH;
-		
+
 		textButton = ogui->CreateSimpleTextButton( win, x, y, w, h, NULL, NULL, NULL, NULL, textId );
 		textButton->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 		textButton->SetTextVAlign( valign );
@@ -217,7 +217,7 @@ void OguiCheckBox::setText( const std::string& text, TEXT_ALIGN align, int w, IO
 			textButton->SetFont( font );
 		textButton->SetText( foo_text.c_str() );
 
-		
+
 	}
 
 }

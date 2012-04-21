@@ -179,7 +179,7 @@ namespace game
 		case GS_CMD_STRINGLENGTH:
 			if (gsd->stringValue != NULL)
 			{
-				*lastValue = (int)strlen(gsd->stringValue);				
+				*lastValue = (int)strlen(gsd->stringValue);
 			} else {
 				*lastValue = 0;
 				sp->warning("StringScripting::process - Attempt to stringLength for null string.");

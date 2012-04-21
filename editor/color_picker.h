@@ -21,7 +21,7 @@ struct ColorPickerData;
 class ColorPicker
 {
 	boost::scoped_ptr<ColorPickerData> data;
-	
+
 public:
 	ColorPicker();
 	~ColorPicker();

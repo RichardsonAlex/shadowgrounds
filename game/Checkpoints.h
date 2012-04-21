@@ -32,7 +32,7 @@ namespace game
 
 				checkPointX = scaledX;
 				checkPointY = scaledY;
-			}			
+			}
 
 
 			void enableCheckpoint(int num)

@@ -14,13 +14,13 @@ class MissionSelectionWindow
 public:
 	MissionSelectionWindow( Ogui *ogui, game::Game *game );
 	~MissionSelectionWindow();
-	
+
 	// bool AllowLoading() const;
 	// bool CloseMePlease() const;
-	
+
 	void AddMissionButton( const std::string& id );
 	void Update( int update_l );
-	
+
 
 private:
 	class MissionSelectionWindowImpl;

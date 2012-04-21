@@ -220,7 +220,7 @@ void Storm3D_ParticleList::Render(Storm3D_Scene *scene,bool ismain,int time_dif)
 				mopt[1].rhw=1;
 				mopt[1].texcoords.x=fx;
 				mopt[1].texcoords.y=fy+ty1;
-		
+
 				mopt[2].rhw=1;
 				mopt[2].texcoords.x=fx;
 				mopt[2].texcoords.y=fy;
@@ -242,7 +242,7 @@ void Storm3D_ParticleList::Render(Storm3D_Scene *scene,bool ismain,int time_dif)
 				mopt[1].rhw=1;
 				mopt[1].texcoords.x=0;
 				mopt[1].texcoords.y=1;
-		
+
 				mopt[2].rhw=1;
 				mopt[2].texcoords.x=0;
 				mopt[2].texcoords.y=0;
@@ -309,7 +309,7 @@ void Storm3D_ParticleList::Render(Storm3D_Scene *scene,bool ismain,int time_dif)
 				//}
 			}
 			else
-			{	
+			{
 				// BETA: Render particle only if has last position
 				if (ismain)		// BETA: FIX THIS!!
 				if (particlelist[pt].has_last_position)
@@ -350,7 +350,7 @@ void Storm3D_ParticleList::Render(Storm3D_Scene *scene,bool ismain,int time_dif)
 					// Optimized copy
 					mopt[0].color=mopt[1].color=mopt[2].color=mopt[3].color=col;
 					memcpy(&mesh[mpi],mopt,sizeof(VXFORMAT_2D)*4);
-					mpi+=4;					
+					mpi+=4;
 				}
 
 				// Save current position as last position
@@ -406,7 +406,7 @@ int Storm3D_ParticleList::Add(Storm3D_Particle *part)
 
 		// Copy stuff from the old array to the new bigger one
 		memcpy(newlist,particlelist,sizeof(Storm3D_Particle)*list_size);
-		
+
 		// Delete old list
 		delete[] particlelist;
 
@@ -476,7 +476,7 @@ void Storm3D_ParticleList::Remove(int position)
 	// Mark it removed
 	particlelist[position].lifetime=0;
 	particlelist[position].has_last_position=false;
-	
+
 	// Update first_free inxed if needed
 	if (position<first_free) first_free=position;
 }

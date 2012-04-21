@@ -98,7 +98,7 @@ namespace ui
 		int upgAvailable = game::UnitInventory::getUnitItemCount(game, game->gameUI->getFirstPerson(0), "upgradepart");
 
 		if (upgAvailable != lastUpdateValue)
-		{			
+		{
 			bool forcedUpdate = false;
 			if (lastUpdateValue == -1)
 				forcedUpdate = true;

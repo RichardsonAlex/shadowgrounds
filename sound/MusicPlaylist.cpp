@@ -57,7 +57,7 @@ void MusicPlaylist::play()
 {
 
 	static int musicplaylist_last_playing_track_msg_time = -MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT ;
-	
+
 	if (Timer::getTime() > musicplaylist_last_playing_track_msg_time + MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT)
 	{
 		Logger::getInstance()->debug("MusicPlaylist::play - Playing track.");
@@ -215,7 +215,7 @@ void MusicPlaylist::run()
     {
 			static int musicplaylist_last_track_changing_msg_time = -MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT;
 			static bool musicplaylist_last_track_changing_msg_multi = false;
-			
+
 			if (Timer::getTime() > musicplaylist_last_track_changing_msg_time + MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT)
 			{
 				Logger::getInstance()->debug("MusicPlaylist::run - Track changing.");

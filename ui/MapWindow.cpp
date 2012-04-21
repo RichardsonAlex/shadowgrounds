@@ -103,7 +103,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 	VC2 playerPosition;
 	float playerRotation;
 	int currentObjective;
-	
+
 	shared_ptr<Map> map;
 
 	bool visible;
@@ -354,7 +354,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 			exitFontHigh.reset( ogui.LoadFont( getLocaleGuiString( "gui_map_exit_text_font_high" ) ) );
 #endif
 		}
-		
+
 		/*
 		missionLabel.reset(ogui.CreateTextLabel(window.get(), getLocaleGuiInt("gui_map_mission_object_label_position_x", 0), getLocaleGuiInt("gui_map_mission_object_label_position_y", 0), 200, 50, ""));
 		missionLabel->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -374,7 +374,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 		secondaryLabel->SetFont( ui::defaultIngameFont );
 		secondaryLabel->SetText(getLocaleGuiString("gui_map_secondary_objectives"));
 		*/
-		
+
 		/*
 		// the description box initialization
 		description.reset( new OguiFormattedText( window.get(), &ogui, getLocaleGuiInt( "gui_map_description_box_position_x", 0 ), getLocaleGuiInt( "gui_map_description_box_position_y", 0 ), getLocaleGuiInt( "gui_map_description_box_size_x", 0 ), getLocaleGuiInt( "gui_map_description_box_size_y", 0 )  ) );
@@ -660,7 +660,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 
 				int center_x = (int)(pos.x * width);
 				int center_y = (int)(pos.y * height);
-				
+
 				int radius_x = (int)((pos_x - pos).GetLength() * width);
 				int radius_y = (int)((pos_y - pos).GetLength() * height);
 
@@ -919,7 +919,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 		{
 			ObjectiveList &list = objectives[i];
 			ObjectiveList::iterator it = list.begin();
-			
+
 			for(; it != list.end(); ++it)
 			{
 				ObjectivePoints::iterator op = objectivePoints.find(it->id);
@@ -935,7 +935,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 	}
 
 	void updateObjectiveDescription()
-	{				
+	{
 		// const std::string& id = objectives[ currentObjective ].id;
 		/*std::string text = "gui_";
 		text += missionId;
@@ -1072,7 +1072,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 					VC2 fromPosition = startPosition;
 					if(!current.portals.empty())
 						fromPosition = current.portals[current.portals.size() - 1].toPosition;
-					
+
 					newRoute.cost += fromPosition.GetSquareRangeTo(p.toPosition);
 					iterate(newRoute);
 				}
@@ -1231,7 +1231,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 						const char *fname = getLocaleGuiString("gui_map_highlight_image");
 						highlight.reset(ogui.CreateSimpleTextButton(window.get(), x, y, xs, ys, fname, fname, fname, 0));
 					}
-					
+
 					shared_ptr<OguiCheckBox> checkbox( new OguiCheckBox( window.get(), &ogui, getLocaleGuiInt( "gui_map_checkbox_position_x", 0 ), yPos, getLocaleGuiInt( "gui_map_checkbox_size_x", 0 ), getLocaleGuiInt( "gui_map_checkbox_size_y", 0 ),
 						getLocaleGuiString("gui_map_checkbox_image"), "", "",
 						getLocaleGuiString("gui_map_checkbox_done_image"), "", "", 0, it->completed, false )  );

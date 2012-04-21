@@ -18,7 +18,7 @@ namespace game
 	 */
 	class LightScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

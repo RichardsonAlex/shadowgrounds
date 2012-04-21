@@ -54,7 +54,7 @@ namespace tracking
 		this->script = script;
 	}
 
-	
+
 	void ScriptableTrackerObjectType::doSelfInit()
 	{
 		if (!this->script.empty())

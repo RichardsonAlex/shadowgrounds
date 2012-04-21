@@ -211,7 +211,7 @@ namespace game
 			Logger::getInstance()->error("UpgradeManager::getUpgradeTypeById - Upgrade id number out of range.");
 			assert(0);
 			return NULL;
-		}		
+		}
 	}
 
 
@@ -222,7 +222,7 @@ namespace game
 		assert(upgradename != NULL);
 
 		if (upgradeTypes == NULL)
-			loadUpgradeTypes();		
+			loadUpgradeTypes();
 
 		// TODO: this is not very effective, but on the other hand
 		// this is not meant to be called very often.
@@ -246,7 +246,7 @@ namespace game
 		assert(scriptname != NULL);
 
 		if (upgradeTypes == NULL)
-			loadUpgradeTypes();		
+			loadUpgradeTypes();
 
 		// TODO: this is not very effective, but on the other hand
 		// this is not meant to be called very often.
@@ -354,7 +354,7 @@ namespace game
 						}
 						lineok = true;
 					}
-					
+
 				} else {
 					char *l = sp.getLine();
 					if (strcmp(l, "upgrade") == 0)
@@ -388,10 +388,10 @@ namespace game
 				{
 					sp.error("UpgradeManager::loadUpgradeTypes - Unknown command or bad key/value pair.");
 				}
-			}				
+			}
 		}	else {
 			Logger::getInstance()->error("UpgradeManager::loadUpgradeTypes - Failed to load upgrade types.");
-		}		
+		}
 	}
 
 
@@ -417,7 +417,7 @@ namespace game
 					upgradeIds.push_back(i);
 				}
 			}
-		}		
+		}
 	}
 
 

@@ -18,7 +18,7 @@ namespace ui
 
 			GUIEffectWindow(Ogui *ogui, const char *layer1Image, const char *layer2Image,
 				const char *layer3Image, const VC2I &position = VC2I(0,0), const VC2I &size = VC2I(1024,768));
-				
+
 			~GUIEffectWindow();
 
 			void update(int msecTimeDelta);

@@ -7,7 +7,7 @@ namespace game
 	class GameVariable
 	{
 	public:
-		
+
 
 	};
 }

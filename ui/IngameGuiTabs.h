@@ -31,7 +31,7 @@ public:
 
 	void show();
 	void hide();
-	
+
 	void raise();
 	void update(int ms);
 
@@ -40,7 +40,7 @@ public:
 	void setActive( IngameWindows current_active );
 
 private:
-	
+
 	IngameGuiTabsImpl* impl;
 };
 

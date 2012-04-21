@@ -51,7 +51,7 @@ void ParticleSystemManager::tick()
 {
 	m_stats.numParticles = 0;
 	m_stats.numSystems = 0;
-	
+
 	std::list< boost::shared_ptr<IParticleSystem> >::iterator it = m_systems.begin();
 	while(it != m_systems.end())
 	{

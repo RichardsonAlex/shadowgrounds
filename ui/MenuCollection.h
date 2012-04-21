@@ -14,7 +14,7 @@ namespace game
 
 namespace ui
 {
-	
+
 	class MenuCollectionImpl;
 
    /**
@@ -51,7 +51,7 @@ namespace ui
 			{
 
 			}
-			
+
 			IOguiFont* normal;
 			IOguiFont* disabled;
 			IOguiFont* down;
@@ -79,7 +79,7 @@ namespace ui
 
 		// opens a new menu on top of the stack
 		void openMenu( int menu );
-		
+
 		// closes the and pops the top from stack
 		void closeMenu();
 
@@ -99,7 +99,7 @@ namespace ui
 
 	private:
 		MenuCollectionImpl* impl;
-		
+
 	};
 
 

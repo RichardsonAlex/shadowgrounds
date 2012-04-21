@@ -28,7 +28,7 @@ public:
 	};
 
 	//.........................................................................
-	
+
 	CreditsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_gui, game::Game* g );
 	~CreditsMenu();
 
@@ -37,7 +37,7 @@ public:
 	int getType() const;
 
 	//.........................................................................
-	
+
 	void closeMenu();
 	void openMenu( int m );
 	void applyChanges();

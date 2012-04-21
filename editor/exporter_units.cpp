@@ -63,7 +63,7 @@ struct ExporterUnitsData
 			{
 				stream << "   if" << std::endl;
 				stream << "    getVariable hostile_amount_level" << std::endl;
-				
+
 				std::string value;
 				if(difficulty == UnitProperties::EasyOnly)
 					value = "valueLessThan 50";
@@ -82,7 +82,7 @@ struct ExporterUnitsData
 					stream << "    getVariable random_layout_a" << std::endl;
 				else
 					stream << "    getVariable random_layout_b" << std::endl;
-				
+
 				if(layout == 1 || layout == 3)
 					stream << "   notValue" << std::endl;
 
@@ -139,7 +139,7 @@ struct ExporterUnitsData
 				// ToDo: string replace
 				if (printLineUnconverted)
 					stream << "   " << replaceString(unit.spawnText[j], unit.properties.strings, unit.stringProperties.defaults) << std::endl;
-				
+
 				if (convertToItemParams || convertToLightParams
 					|| convertToParticleParams)
 				{
@@ -194,7 +194,7 @@ struct ExporterUnitsData
 					stream << "   setUnitSpawnCoordinates " << "s," << unit.position.x << "," << unit.position.y << std::endl;
 					stream << "   setUnitAngle " << rotation << std::endl;
 					//stream << "   setUnitHeight " << unit.height << std::endl;
-					stream << "   setUnitScript " << id << "_" << unit.script << std::endl;					
+					stream << "   setUnitScript " << id << "_" << unit.script << std::endl;
 				}
 			}
 
@@ -341,7 +341,7 @@ void ExporterUnits::save(const ExportOptions &options) const
 		stream << script.c_str() << std::endl;
 		stream << "sub hax" << std::endl;
 
-		data->exportUnits(stream, it->second, options.id);	
+		data->exportUnits(stream, it->second, options.id);
 
 		stream << "endSub" << std::endl;
 		stream << "endScript" << std::endl;

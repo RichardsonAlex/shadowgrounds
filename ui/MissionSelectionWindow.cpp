@@ -28,7 +28,7 @@ struct SingleMissionButton
 	std::string missionScriptName;
 	std::string missionSubName;
 
-	// int			
+	// int
 };
 
 
@@ -39,7 +39,7 @@ const int MISSIONSELECTIONWINDOW_LOADMISSION = 102;
 class MissionSelectionWindow::MissionSelectionWindowImpl : private IOguiButtonListener, private IOguiSelectListListener
 {
 public:
-	
+
 	//=========================================================================
 	MissionSelectionWindowImpl( Ogui* ogui, Game* game ) :
 		ogui( ogui ),
@@ -126,7 +126,7 @@ public:
 			// Logger::getInstance()->debug( "CLOSE ME NOW" );
 		}
 	}
-	
+
 	//=========================================================================
 
 	virtual void SelectEvent( OguiSelectListEvent* eve )
@@ -136,7 +136,7 @@ public:
 	}
 
 	///////////////////////////////////////////////////////////////////////////
-	
+
 	void HighlightMission( int id )
 	{
 		std::map< int, SingleMissionButton* >::iterator i = missionButtons.find( highlightedButton );
@@ -182,20 +182,20 @@ public:
 	{
 		int button_id = missionButtonIds;
 		missionButtonIds++;
-		
+
 		SingleMissionButton* result = new SingleMissionButton;
 		result->button = oguiLoader.LoadButton( id, win, button_id );
 		result->button->SetListener( this );
-	
+
 		result->guiId = button_id;
 		result->missionId = id;
 		{
 			std::string temp = "gui_missionselectionwindow_" + id + "_description";
 			result->missionDescription = getLocaleGuiString( temp.c_str() );
-			
+
 			temp = "gui_missionselectionwindow_" + id + "_scriptname";
 			result->missionScriptName = getLocaleGuiString( temp.c_str() );
-			
+
 			temp = "gui_missionselectionwindow_" + id + "_scriptsubname";
 			result->missionSubName = getLocaleGuiString( temp.c_str() );
 		}
@@ -212,14 +212,14 @@ private:
 	Ogui*		ogui;
 	OguiWindow*	win;
 	game::Game*	game;
-	
+
 	OguiButton*	closebut;
 	OguiButton* loadMissionBut;
 	OguiFormattedText* textArea;
 	OguiSelectList*	selectList;
 
 	OguiLocaleWrapper	oguiLoader;
-	
+
 	int highlightedButton;
 	int missionButtonIds;
 	std::map< int, SingleMissionButton* >	missionButtons;

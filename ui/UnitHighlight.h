@@ -32,7 +32,7 @@ namespace ui
 			void setHighlightedUnit(const game::Unit *unit);
 
 			void run();
-			
+
 		private:
 			IStorm3D *storm3D;
 			IStorm3D_Scene *stormScene;

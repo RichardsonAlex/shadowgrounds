@@ -27,7 +27,7 @@ namespace game
 		for (int y = -size; y < size; y++)
 		{
 			for (int x = -size; x < size; x++)
-			{				
+			{
 				int maptype = CONNCHK_UNCONNECTED;
 				if (!gameScene->getGameMap()->inPathfindBoundaries(centerX + x, centerY + y))
 				{
@@ -71,7 +71,7 @@ namespace game
 			return true;
 		else
 			return false;
-	}	
+	}
 
 }
 

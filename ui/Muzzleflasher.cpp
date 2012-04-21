@@ -34,7 +34,7 @@ namespace ui
 			barrelName += int2str(muzzleFlashBarrelNumber);
 
 		std::string modelHelperName = std::string("HELPER_MODEL_") + barrelName;
-		
+
 		const char *weaponHelper = modelHelperName.c_str();
 		//char *weaponHelper = "HELPER_MODEL_WeaponBarrel";
 
@@ -81,7 +81,7 @@ namespace ui
 		{
 			return false;
 		}
-		
+
 		pos = object->GetPosition();
 		scale = object->GetScale();
 		rot = object->GetRotation();

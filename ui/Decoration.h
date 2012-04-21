@@ -97,13 +97,13 @@ namespace ui
 
       bool effectOn[DECORATION_MAX_EFFECTS];
       float effectValue[DECORATION_MAX_EFFECTS];
-			
+
 			int tickCount;
 
       //float effectDuration;
-	
+
       void parseBoundingQuadSize(const char* modelFileName);
-	
+
       float boundingQuadSizeX;
       float boundingQuadSizeY;
 

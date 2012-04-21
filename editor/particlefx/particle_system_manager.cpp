@@ -21,7 +21,7 @@ struct ParticleSystemManagerData {
 
 	ParticleSystemManagerData(IStorm3D* _s3d, IStorm3D_Scene* _scene) : s3d(_s3d), scene(_scene),
 		numParticleSystems(0) {}
-	
+
 	IStorm3D* s3d;
 	IStorm3D_Scene* scene;
 
@@ -29,7 +29,7 @@ struct ParticleSystemManagerData {
 
 	std::list< SharedPtr<ParticleSystem> > systems;
 	int numParticleSystems;
-/*	
+/*
 	void tick(int timeDif) {
 
 		std::list< SharedPtr<ParticleSystem> >::iterator it = mSystems.begin();
@@ -53,7 +53,7 @@ struct ParticleSystemManagerData {
 				++it;
 		}
 	}
-	
+
 	void render() {
 
 		std::list< SharedPtr<ParticleSystem> >::iterator it = mSystems.begin();
@@ -61,7 +61,7 @@ struct ParticleSystemManagerData {
 			(*it)->render(mScene);
 			++it;
 		}
-	
+
 	}
 
 >>>>>>> 1.5
@@ -73,7 +73,7 @@ ParticleSystemManager::ParticleSystemManager(IStorm3D* s3d, IStorm3D_Scene* scen
 	ScopedPtr<ParticleSystemManagerData> temp(new ParticleSystemManagerData(s3d, scene));
 	m.swap(temp);
 }
-	
+
 ParticleSystemManager::~ParticleSystemManager() {
 
 }
@@ -84,12 +84,12 @@ SharedPtr<ParticleSystem> ParticleSystemManager::addTemplate(const std::string& 
 	m->templateMap[name] = ps;
 	return ps;
 }
-	
+
 void ParticleSystemManager::renameTemplate(const std::string& oldName, const std::string& newName) {
 	SharedPtr<ParticleSystem> ps;
 	std::map< std::string, SharedPtr<ParticleSystem> >::iterator it = m->templateMap.find(oldName);
 	if(it != m->templateMap.end()) {
-		ps = it->second;			
+		ps = it->second;
 		m->templateMap.erase(it);
 	}
 	m->templateMap[newName] = ps;
@@ -102,7 +102,7 @@ void ParticleSystemManager::removeTemplate(const std::string& name) {
 		m->templateMap.erase(it);
 	}
 }
-	
+
 SharedPtr<ParticleSystem> ParticleSystemManager::getTemplate(const std::string& name) {
 	SharedPtr<ParticleSystem> ps;
 	std::map< std::string, SharedPtr<ParticleSystem> >::iterator it = m->templateMap.find(name);
@@ -115,10 +115,10 @@ SharedPtr<ParticleSystem> ParticleSystemManager::getTemplate(const std::string& 
 SharedPtr<ParticleSystem> ParticleSystemManager::spawnParticleSystem(const std::string& name) {
 
 	SharedPtr<ParticleSystem> ps;
-		
+
 	std::map< std::string, SharedPtr<ParticleSystem> >::iterator it = m->templateMap.find(name);
 	if(it != m->templateMap.end()) {
-		
+
 		SharedPtr<ParticleSystem> temp(new ParticleSystem(m->s3d));
 		ps.swap(temp);
 		ps->copy(it->second);
@@ -143,12 +143,12 @@ SharedPtr<ParticleSystem> ParticleSystemManager::getParticleSystem(int i) {
 int ParticleSystemManager::getNumParticleSystems() {
 	return m->numParticleSystems;
 }
-	
+
 void ParticleSystemManager::removeParticleSystem(int i) {
 	assert(i < m->systems.size());
 	std::list< SharedPtr<ParticleSystem> >::iterator it = m->systems.begin();
 	for(int j = 0; j < i; j++) it++;
-		m->systems.erase(it);	
+		m->systems.erase(it);
 }
 
 void ParticleSystemManager::removeAllParticleSystems() {
@@ -165,7 +165,7 @@ void ParticleSystemManager::tick(int timeDif) {
 		} else
 			it++;
 	}
-	
+
 }
 
 void ParticleSystemManager::render() {
@@ -175,7 +175,7 @@ void ParticleSystemManager::render() {
 		(*it)->render(m->scene);
 		it++;
 	}
-	
+
 }
 
 
@@ -205,7 +205,7 @@ void ParticleSystemManager::saveConfig(std::ostream& os) {
 	::parseOut(g, "gravity", gGravity);
 	::parseOut(g, "drag_factor", gDragFactor);
 	os << parser;
-		
+
 }
 
 void ParticleSystemManager::loadConfig(std::istream& is) {

@@ -82,7 +82,7 @@ public:
 
 	// For the scrolling and scrollbars
 	void setClip( int x, int y, int w, int h, bool half_clip = true );
-	
+
 	// Where do we begin to draw the text
 	void setY( int y );
 
@@ -91,7 +91,7 @@ public:
 
 	// Sets new position
 	void move(int x, int y);
-	
+
 	// These tell us up to where did the clipping happen.
 	// Returns clip sizes if half_clip is true
 	int getClipPositionTop() const;
@@ -100,7 +100,7 @@ public:
 	int getId() const;
 
 	Ogui* getOgui() const;
-	
+
 	// applies the transparency (0-100) to all the children
 	void setTransparency( int transparency );
 
@@ -150,7 +150,7 @@ private:
 	// returns the line width in pixels. Parses the text ( the member
 	// variable ) startting from curpos
 	int						getLineWidth( int curpos, const std::stack< std::string >& tagstack, ParseData* data );
-	
+
 	// finds a place where the text goes over the width with the given cursor.
 	// Returns the string position in pair.first and the length of it in pixels
 	// in pair.second. The Length in pixels isn't that useful anymore.
@@ -166,16 +166,16 @@ private:
 
 	//.........................................................................
 
-	
+
 	std::list< OguiButton* >						buttons;
 	std::map< std::string, IOguiFormattedCommand* >	commands;
 
 	std::vector< int > linePositionYs;
-	
+
 	// used to keep track of the tag names and their corresponding fonts
 	std::map< std::string, IOguiFont* >	fonts;
 	std::list< IOguiImage* >			images;
-	
+
 	// keeps track of the tags we encounter in the parseable text
 	std::stack< std::string > tagstack;
 
@@ -190,10 +190,10 @@ private:
 
 	OguiWindow*		window;
 	Ogui*			ogui;
-	
+
 	// the current font used if no other font by tags are given
 	IOguiFont*		font;
-	
+
 	// the text we parse
 	std::string		text;
 

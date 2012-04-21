@@ -98,7 +98,7 @@ class Model_BoneBlend
 	int blend_time;
 	int elapsed_time;
 
-public:	
+public:
 	Model_BoneBlend();
 	Model_BoneBlend(int bone_index, const QUAT rotation, int blend_time);
 
@@ -124,7 +124,7 @@ class Storm3D_Model : public IStorm3D_Model
 
 	VC3 position;
 	QUAT rotation;
-	VC3 scale;	
+	VC3 scale;
 	MAT mx;
 	bool mx_update;
 	bool no_collision;
@@ -212,7 +212,7 @@ public:
 	// Create empty / load (".S3D"-file) / copy
 	bool LoadS3D(const char *filename);
 	bool LoadBones(const char *filename);
-	
+
 	//void CopyModel(IStorm3D_Model *other);
 	void Empty(bool leave_geometry = false, bool leave_bones = false);
 
@@ -268,7 +268,7 @@ public:
 	void SetRotation(const QUAT &_rotation);
 	void SetScale(const VC3 &_scale);
 	void SetSelfIllumination(const COL &color) { self_illumination = color; }
-	
+
 	void SetLighting(int index, signed short light_index_)
 	{
 		if(index >= 0 && index < LIGHT_MAX_AMOUNT)

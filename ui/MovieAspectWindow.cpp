@@ -16,7 +16,7 @@ namespace ui
 		bottom->moveTo(0, 768 - 128);
 	}
 
-	
+
 	MovieAspectWindow::~MovieAspectWindow()
 	{
     delete top;

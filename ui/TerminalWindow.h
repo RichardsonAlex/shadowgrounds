@@ -20,7 +20,7 @@ class TerminalWindow : public IOguiButtonListener
 public:
 	TerminalWindow( Ogui* ogui, game::Game* game, const std::string& style_name );
 	~TerminalWindow();
-	
+
 	void setText( const std::string& txt );
 	void setPage( int page );
 	void nextPage();
@@ -31,7 +31,7 @@ public:
 	void update();
 
 	void CursorEvent( OguiButtonEvent* eve );
-	
+
 
 private:
 	OguiButton* loadButton( const std::string& name, int id = 0 );
@@ -61,9 +61,9 @@ private:
 
 	std::vector< IOguiFont* >	fonts;
 	std::vector< std::string >	text;
-	
+
 	std::vector<OguiTextLabel*> buttonTexts;
-	
+
 };
 
 }

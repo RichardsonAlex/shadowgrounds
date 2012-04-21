@@ -191,7 +191,7 @@ namespace ui {
 			float range = planeCenter.x - planeMin.x;
 			if(d < 0)
 				d = range - d;
-			
+
 			range += radius;
 			float factor = 0;
 			if(range > 0.0001f)
@@ -205,7 +205,7 @@ namespace ui {
 			float range = planeCenter.y - planeMin.y;
 			if(d < 0)
 				d = range - d;
-			
+
 			range += radius;
 			float factor = 0;
 			if(range > 0.0001f)
@@ -219,7 +219,7 @@ namespace ui {
 			float range = planeMax.x - planeCenter.x;
 			if(d < 0)
 				d = range - d;
-			
+
 			range += radius;
 			float factor = 0;
 			if(range > 0.0001f)
@@ -233,7 +233,7 @@ namespace ui {
 			float range = planeMax.y - planeCenter.y;
 			if(d < 0)
 				d = range - d;
-			
+
 			range += radius;
 			float factor = 0;
 			if(range > 0.0001f)
@@ -558,7 +558,7 @@ namespace ui {
 			for(int i = 0; i < shadowPlaneVertexAmount; i++)
 			{
 				VC3 vP = currentInput[i];
-				
+
 				bool insideS = (frustumPlane.GetPointRange ( vS ) > 0);
 				bool insideP = (frustumPlane.GetPointRange ( vP ) > 0);
 
@@ -576,7 +576,7 @@ namespace ui {
 						assert ( clip );
 						currentOutput[n++] = clipPoint;
 					}
-					currentOutput[n++] = vP;					
+					currentOutput[n++] = vP;
 				}
 				else if(insideS)
 				{
@@ -587,7 +587,7 @@ namespace ui {
 						frustumPlane.GetClip( vP, vS, &clipPoint );
 					//frustumPlane.clipLine( vS, vP, clipPoint );
 					assert ( clip );
-					currentOutput[n++] = clipPoint;				
+					currentOutput[n++] = clipPoint;
 				}
 				vS = vP;
 			}
@@ -920,7 +920,7 @@ struct LightManager::Data
 				}
 			}
 		}
-	}		
+	}
 
 	void updateLightingSpots(const VC3 &player, int ms)
 	{
@@ -985,10 +985,10 @@ struct LightManager::Data
 
 			const SpotImp &spotImp = spots[index];
 			const SpotProperties &properties = spotImp.properties;
-	
+
 			spot->setPosition(spotImp.position);
 			spot->setDirection(spotImp.getDirection());
-			spot->setFov(properties.fov / PI * 180.f);	
+			spot->setFov(properties.fov / PI * 180.f);
 			spot->setRange(properties.range);
 
 			if(spotImp.texture)
@@ -1213,7 +1213,7 @@ struct LightManager::Data
 
 			spot->setPosition(imp.position);
 			spot->setDirection(imp.getDirection());
-			spot->setFov(properties.fov / PI * 180.f);	
+			spot->setFov(properties.fov / PI * 180.f);
 			spot->setRange(properties.range);
 
 			COL color(imp.currentColorMul, imp.currentColorMul, imp.currentColorMul);
@@ -1301,7 +1301,7 @@ for(i = 0; i < LIGHTING_FAKE_SPOT_AMOUNT; ++i)
 		//float intensity = (newColor.r + newColor.g + newColor.b) * 0.33f;
 		// Average between max color component and b&w intensity
 		//return (intensity + maxColor) * .5f;
-	
+
 		return maxColor;
 	}
 
@@ -1323,7 +1323,7 @@ for(i = 0; i < LIGHTING_FAKE_SPOT_AMOUNT; ++i)
 		// on shadowgrounds we want to use value read from lightmap when no lights near
 #ifndef PROJECT_SHADOWGROUNDS
 		// on survivor we clear it out
-		pointLights.ambient = COL();	
+		pointLights.ambient = COL();
 #endif
 		VC2 player2(position.x, position.z);
 
@@ -1350,7 +1350,7 @@ for(i = 0; i < LIGHTING_FAKE_SPOT_AMOUNT; ++i)
 
 			//model->SetRotation ( QUAT (0, 0, 0, 1) );
 			//model->SetPosition ( VC3  (0, 0, 0) );
-			
+
 			// Get model's bounding box ignoring "EditorOnly" -meshes.
 			bbox.mmax = VC3(-100000.0f,-100000.0f,-100000.0f );
 			bbox.mmin = VC3( 100000.0f, 100000.0f, 100000.0f );
@@ -1453,10 +1453,10 @@ if(fabsf(haxP.y - l.position.z) > 0.1f)
 				AABB lightAABB;
 				lightAABB.mmax = VC3( l.maxPlane.x, l.position.y + l.range, l.maxPlane.y );
 				lightAABB.mmin = VC3( l.minPlane.x, l.position.y - l.range, l.minPlane.y );
-				
+
 				if( !collision( lightAABB, modelOBB) )
 					continue;
-		
+
 			}
 
 			const Light &l2 = lights[i];
@@ -1474,7 +1474,7 @@ if(fabsf(haxP.y - l.position.z) > 0.1f)
 				const Light &l1 = lights[closest[j]];
 				//float f1 = getFadeFactor(player2, l1.minPlane, l1.maxPlane, radius);
 				float f1 = getLightFadeFactor(l1, position, radius);
-				
+
 				bool update = f2 < f1;
 				if(l2.dynamic)
 				{
@@ -1734,7 +1734,7 @@ for(int i = STATIC_LIGHT_LIMIT; i < LIGHT_MAX_AMOUNT; ++i)
 		{
 			if(f1 > 0.8f)
 				f1 = 0.8f;
-			
+
 			resultAmbient *= (1.f - f1);
 			return;
 		}
@@ -1795,7 +1795,7 @@ for(int i = STATIC_LIGHT_LIMIT; i < LIGHT_MAX_AMOUNT; ++i)
 	void update(const VC3 &player, const VC3 &center, int ms)
 	{
 		updateLightingSpots(center, ms);
-		
+
 		updateFakeSpots(center, ms);
 		//updateFakeSpots(player, ms);
 		updateFakeSpots((player + center) * .5f, ms);
@@ -1947,7 +1947,7 @@ void LightManager::setBuildingLights(IStorm3D_Model &model)
 				if(dist < dist2)
 				{
 					closest[1] = j;
-					continue;			
+					continue;
 				}
 				*/
 			}

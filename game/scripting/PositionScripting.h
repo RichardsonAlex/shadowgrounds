@@ -14,7 +14,7 @@ namespace game
 
 	class PositionScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

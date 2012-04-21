@@ -91,7 +91,7 @@ struct ExporterSceneData
 {
 	std::vector<unsigned short> heightMap;
 	std::vector<unsigned short> obstacleMap; // 16x resolution (4x * 4x)
-	
+
 	VC2I mapSize;
 	VC3 realSize;
 	int textureRepeat;
@@ -103,7 +103,7 @@ struct ExporterSceneData
 	VC3 sunDirection;
 
 	float cameraRange;
-	float fogStart;	
+	float fogStart;
 	float fogEnd;
 
 	bool fogEnabled;
@@ -341,7 +341,7 @@ void ExporterScene::save(const ExportOptions &options) const
 					if(i + 1 < passes.size())
 						stream << passes[i + 1].weights[j];
 				}
-			}	
+			}
 		}
 	}
 

@@ -295,7 +295,7 @@ void ModelParticleSystem::update()
 		/*
 		for(unsigned int i = 0; i < m_forces.size(); ++i)
 		{
-			Vector f;	
+			Vector f;
 			m_forces[i]->preCalc(m_time);
 
 			for(unsigned int j = 0; j < particles.size(); ++j)
@@ -485,7 +485,7 @@ void ModelParticleSystem::getVelocity(VC3 &velocity, const VC3 &dir, float speed
 {
 	if(!m_parray)
 		return;
-	
+
 	bool forceDirection = !use_explosion && (m_eds->launchDirectionType == GenParticleSystemEditables::DIRECTION_EXPLOSION || m_eds->launchDirectionType == GenParticleSystemEditables::DIRECTION_NEGATIVE_EXPLOSION);
 	if(m_eds->useNormalsAsDirection || forceDirection)
 	{
@@ -592,11 +592,11 @@ void ModelParticleSystem::init(IStorm3D *s3d, IStorm3D_Scene *scene)
 		std::string fileName = m_eds->modelFile;
 		if(fileName.empty())
 			return;
-		
+
 		Matrix sm;
 		Matrix rm;
 		QUAT q;
-		q.MakeFromAngles(m_eds->rotation.x, m_eds->rotation.y, m_eds->rotation.z);	
+		q.MakeFromAngles(m_eds->rotation.x, m_eds->rotation.y, m_eds->rotation.z);
 		rm.CreateRotationMatrix(q);
 		sm.CreateScaleMatrix(m_eds->scale);
 		sm.Multiply(rm);
@@ -618,7 +618,7 @@ void ModelParticleSystem::init(IStorm3D *s3d, IStorm3D_Scene *scene)
 					Vector pos = v[i].position;
 					Vector nor = v[i].normal;
 					sm.TransformVector(pos);
-					rm.RotateVector(nor);				
+					rm.RotateVector(nor);
 					pm->verts[i] = pos;
 					pm->normals[i] = nor;
 				}
@@ -628,7 +628,7 @@ void ModelParticleSystem::init(IStorm3D *s3d, IStorm3D_Scene *scene)
 
 			delete obj;
 		}
-		
+
 		delete model;
 	}
 
@@ -713,7 +713,7 @@ void ModelParticleSystem::init(IStorm3D *s3d, IStorm3D_Scene *scene)
 void ModelParticleSystem::prepareForLaunch(IStorm3D *s3d, IStorm3D_Scene *scene)
 {
 	model.reset(s3d->CreateNewModel());
-	scene->AddModel(model.get());	
+	scene->AddModel(model.get());
 	model->CastShadows(false);
 	model->SetNoCollision(true);
 

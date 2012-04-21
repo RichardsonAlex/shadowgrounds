@@ -45,7 +45,7 @@ namespace game
 		} else {
 			Logger::getInstance()->error("UnitInventory::giveUnitItem - giveUnitItem item by given name not found.");
 			return false;
-		}		
+		}
 	}
 
 
@@ -163,7 +163,7 @@ namespace game
 			}
 		}
 	}
-	
+
 
 	void UnitInventory::setUnitItemCount(Game *game, Unit *unit, const char *itemName, int amount)
 	{
@@ -195,7 +195,7 @@ namespace game
 		return;
 	}
 
-	
+
 	bool UnitInventory::selectUnitItem(Game *game, Unit *unit, const char *itemName)
 	{
 		assert(unit != NULL);

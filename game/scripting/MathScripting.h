@@ -14,7 +14,7 @@ namespace game
 
 	class MathScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

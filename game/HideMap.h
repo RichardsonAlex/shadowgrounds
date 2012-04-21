@@ -34,7 +34,7 @@ namespace game
 				HIDDENESS_TYPE hidType);
 
 			int getHiddenessAt(int x, int y);
-			
+
 			HIDDENESS_TYPE getHiddenessTypeAt(int x, int y);
 
 		private:

@@ -46,7 +46,7 @@ public:
 	// some rendering settings
 	void setCamera(CharPosition pos, const VC3 &cameraPos, const VC3 &cameraTarget, float aspectRatio = 0.0f);
 	void setBackground(CharPosition pos, COL color);
-	void resetCamera(CharPosition pos);	
+	void resetCamera(CharPosition pos);
 	void resetBackground(CharPosition pos);
 
 	void setActive(bool active, int numChars = 2);

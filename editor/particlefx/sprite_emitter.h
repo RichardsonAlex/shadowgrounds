@@ -66,7 +66,7 @@ public:
 	const Vector& getKeyValue(int i);
 	float getKeyTime(int i);
 	void setKey(int i, float t, const Vector& v);
-	Vector eval(float t);	
+	Vector eval(float t);
 };
 
 
@@ -88,7 +88,7 @@ protected:
 	int drawStyle;
 	float bounce;
 	std::string name;
-	
+
 public:
 
 	const std::string& getName();
@@ -101,8 +101,8 @@ public:
 
 	ParticleDesc();
 	ParticleDesc(const ParticleDesc& other);
-	
-	virtual void loadTexture(const std::string& path, const std::string& name);	
+
+	virtual void loadTexture(const std::string& path, const std::string& name);
 	virtual void render(Particle* particles, IStorm3D_Scene* scene);
 };
 
@@ -120,28 +120,28 @@ protected:
 	SharedPtr<IPositionGen> gen;
 
 public:
-	
+
 	const std::string& getName();
 	void setName(const std::string& name);
-	
+
 	VectorTrack& getEmitDirectionTrack();
 	FloatTrack& getEmitRateTrack();
 	FloatTrack& getSizeMulTrack();
-	FloatTrack& getRotMulTrack();	
+	FloatTrack& getRotMulTrack();
 	float getVelocityFactor();
 	void setVelocityFactor(float f);
 
 	void setPositionGen(SharedPtr<IPositionGen> gen);
 
 	SharedPtr<IPositionGen> getPositionGen();
-	
+
 };
 
 
 struct ParticleSystemData {
 
 	struct Entry {
-		
+
 		SharedPtr<EmitterDesc> ed;
 		SharedPtr<ParticleDesc> pd;
 
@@ -153,7 +153,7 @@ struct ParticleSystemData {
 
 		int mNumParticles;
 		float mParticleRemainder;
-		
+
 		int& totalParticles;
 		int& maxParticles;
 
@@ -161,9 +161,9 @@ struct ParticleSystemData {
 
 			mEndTime = ed->ed->minEmitTime + (ed->maxEmitTime - ed->minEmitTime) * rnd;
 		}
-		
+
 		bool tick() {
-			
+
 			mTime += 10;
 			if(mTime > mEndTime) {
 				if(ed->bRepeat()) {
@@ -195,7 +195,7 @@ struct ParticleSystemData {
 				mNumParticles++;
 				totalParticles++;
 			}
-			
+
 
 			return true;
 
@@ -221,7 +221,7 @@ struct ParticleSystemData {
 	}
 
 	bool tick(int timeDif) {
-		
+
 		mTimeCounter += timeDif;
 		while(mTimeCounter > 10) {
 
@@ -251,13 +251,13 @@ struct ParticleSystemData {
 class ParticleSystem {
 	ScopedPtr<ParticleSystemData> m;
 public:
-	
+
 	ParticleSystem();
 
 	void copy(SharedPtr<ParticleSystem> ps);
-	
+
 	void setMaxParticles(int n);
-	
+
 	float setGravity(float f);
 
 	void addEmitter(SharedPtr<EmitterDesc> emitter,
@@ -296,11 +296,11 @@ struct SpriteEmitterData;
 class SpriteEmitter : public IParticleEmitter {
 	ScopedPtr<SpriteEmitterData> m;
 public:
-	
+
 	struct TextureInfo {
-		
+
 		void operator=(const TextureInfo& other);
-		
+
 		void setDefaults();
 
 		std::string name;
@@ -325,7 +325,7 @@ public:
 		CT_DIE = 1,
 		CT_BOUNCE = 2
 	};
-	
+
 
 	TextureInfo texInfo;
 	VectorTrack colorTrack;
@@ -349,8 +349,8 @@ public:
 	float bounceFactor;
 	Vector position;
 	int maxParticles;
-	
-	
+
+
 	TextureInfo& getTextureInfo();
 	VectorTrack& getColorTrack();
 	VectorTrack& getAlphaTrack();
@@ -379,26 +379,26 @@ public:
 	void setMinEmitTime(float f);
 
 	SpriteEmitter();
-	
+
 	void setInstance(SharedPtr<IParticleEmitter> emitter);
-	
+
 	SharedPtr<IParticleEmitter> clone();
-	
+
 	void setDefaults();
 
 	const std::string& getName();
 
 	void setName(const std::string& name);
-	
+
 	void setPositionGen(SharedPtr<IPositionGen> gen);
 
 	SharedPtr<IPositionGen> getPositionGen();
 
 	void loadTexture(const std::string& name, const std::string& path, IStorm3D* s3d);
-	
+
 	virtual bool tick(IStorm3D_Scene* scene, const Matrix& tm,
-		const Vector& velocity, int timeDif);	
-	
+		const Vector& velocity, int timeDif);
+
 	virtual void render(IStorm3D_Scene* scene);
 };
 

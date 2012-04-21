@@ -70,7 +70,7 @@ namespace ui
 
 		this->fadeWindow = NULL;
 		this->fadeImageFilename = NULL;
-		
+
 		setDefaultFadeImage();
 
     this->flashEffectRunning = false;
@@ -155,7 +155,7 @@ namespace ui
 		if (this->fadeImageFilename != NULL)
 		{
 			delete [] this->fadeImageFilename;
-			this->fadeImageFilename = NULL;		
+			this->fadeImageFilename = NULL;
 		}
 		if (fadeImageFilename != NULL)
 		{
@@ -816,7 +816,7 @@ namespace ui
 		{
 			delete fadeWindow;
 			fadeWindow = NULL;
-		}		
+		}
 		this->fadeTimeLeft = 0;
 		this->fadeTotalTime = 0;
 		this->fadingIn = false;

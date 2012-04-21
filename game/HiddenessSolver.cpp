@@ -66,7 +66,7 @@ namespace game
 			if (tmp > max) max = tmp;
 		}
 
-		return ((float)max / (float)HideMap::maxHiddeness);		
+		return ((float)max / (float)HideMap::maxHiddeness);
 	}
 
 }

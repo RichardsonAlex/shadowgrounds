@@ -45,7 +45,7 @@ namespace {
 const int WM_UPDATE_DIALOG = WM_USER + 2;
 
 void setGraphFromTrack(Graph& graph, VectorTrack& track) {
-	for(int j = 0; j < 3; j++) {	
+	for(int j = 0; j < 3; j++) {
 		graph.setNumKeys(j, track.getNumKeys());
 		for(int i = 0; i < track.getNumKeys(); i++) {
 			graph.setX(j, i, track.getKeyTime(i));
@@ -100,7 +100,7 @@ public:
 		SharedPtr<ParticleSystem> ps;
 		DialogData(Dialog& d) : dlg(d) {}
 		bool noValueUpdate;
-		
+
 		void setPS(SharedPtr<ParticleSystem> _ps)  {
 			ps = _ps;
 			noValueUpdate = true;
@@ -108,13 +108,13 @@ public:
 			noValueUpdate = false;
 		}
 		void update() {
-			
+
 			if(!noValueUpdate) {
 				ps->setMaxParticles(getDialogItemInt(dlg, IDC_MAX_PARTICLES));
 			}
 		}
 	};
-	
+
 	class HideCommand : public ICommand {
 		Dialog& dlg;
 	public:
@@ -123,7 +123,7 @@ public:
 			dlg.hide();
 		}
 	};
-	
+
 	class UpdateCommand : public ICommand {
 		DialogData& data;
 	public:
@@ -132,26 +132,26 @@ public:
 			data.update();
 		}
 	};
-	
+
 	Dialog dlg;
 	DialogData data;
 	HideCommand hideC;
 	UpdateCommand updateC;
-	
+
 	PSysDialog(Dialog& d) : dlg(IDD_PSYS, d.getWindowHandle()), data(dlg), hideC(dlg), updateC(data) {
 		dlg.getCommandList().addCommand(IDC_MAX_PARTICLES, &updateC);
 		dlg.getCommandList().addCommand(IDC_PSYS_HIDE, &hideC);
 	}
-	
+
 	void setPS(SharedPtr<ParticleSystem> ps) {
 		data.setPS(ps);
 	}
-	
+
 	void show() {
 		dlg.show();
 	}
 	void hide() {
-		dlg.hide();	
+		dlg.hide();
 	}
 };
 
@@ -173,22 +173,22 @@ public:
 			pd = _pd;
 
 			noValueUpdate = true;
-			
+
 			ParticleDesc::TextureInfo& info = pd->texInfo;
-			
+
 			HWND hAlpha = GetDlgItem(dlg.getWindowHandle(), IDC_P_ALPHA_TYPE);
 			ComboBox_SetCurSel(hAlpha, info.alphaType);
-			
+
 			HWND hAnim = GetDlgItem(dlg.getWindowHandle(), IDC_P_ANIM_TYPE);
 			ComboBox_SetCurSel(hAnim, info.animType);
-/*			
+/*
 <<<<<<< particle_mode.cpp
 			dlg.setItemInt(IDC_P_NUM_FRAMES, info.nFrames);
 			dlg.setItemInt(IDC_P_FRAME_WIDTH, info.frameWidth);
 			dlg.setItemInt(IDC_P_FRAME_HEIGHT, info.frameHeight);
 			dlg.setItemFloat(IDC_P_FPS, info.fps);
 			dlg.setItemFloat(IDC_P_START_FRAME, info.startFrame);
-		
+
 			dlg.setItemText(IDC_P_TEX_FILE_NAME, info.name);
 =======
 			//dlg.setItemInt(IDC_P_NUM_FRAMES, info.nFrames);
@@ -196,7 +196,7 @@ public:
 			//dlg.setItemInt(IDC_P_FRAME_HEIGHT, info.frameHeight);
 			//dlg.setItemFloat(IDC_P_FPS, info.fps);
 			//dlg.setItemFloat(IDC_P_FPS, info.startFrame);
-		
+
 			//dlg.setItemText(IDC_P_TEX_FILE_NAME, info.name);
 */
 			setDialogItemInt(dlg, IDC_P_NUM_FRAMES, info.nFrames);
@@ -217,7 +217,7 @@ public:
 		}
 
 		void updateValues() {
-			
+
 			ParticleDesc::TextureInfo& info = pd->texInfo;
 
 			//info.frameWidth = dlg.getItemInt(IDC_P_FRAME_WIDTH);
@@ -230,9 +230,9 @@ public:
 			info.fps = getDialogItemFloat(dlg, IDC_P_FPS);
 			info.startFrame = getDialogItemFloat(dlg, IDC_P_START_FRAME);
 			info.nFrames = getDialogItemInt(dlg, IDC_P_NUM_FRAMES);
-			
+
 			info.animType = ComboBox_GetCurSel(GetDlgItem(dlg.getWindowHandle(), IDC_P_ANIM_TYPE));
-			int atype = ComboBox_GetCurSel(GetDlgItem(dlg.getWindowHandle(), IDC_P_ALPHA_TYPE));		
+			int atype = ComboBox_GetCurSel(GetDlgItem(dlg.getWindowHandle(), IDC_P_ALPHA_TYPE));
 
 			pd->setAlphaType((IStorm3D_Material::ATYPE)atype);
 
@@ -240,11 +240,11 @@ public:
 
 		void loadTexture() {
 			std::string fileName = getOpenFileName("jpg", "data/particles");
-			
+
 			//dlg.setItemText(IDC_P_TEX_FILE_NAME, fileName);
 			setDialogItemText(dlg, IDC_P_TEX_FILE_NAME, fileName);
-			
-			if(!fileName.empty())	
+
+			if(!fileName.empty())
 				pd->loadTexture(storm.storm, "data/particles/", fileName);
 		}
 
@@ -259,7 +259,7 @@ public:
 		}
 	};
 
-	
+
 	class HideCommand : public ICommand {
 		Dialog& dlg;
 	public:
@@ -268,7 +268,7 @@ public:
 			dlg.hide();
 		}
 	};
-	
+
 	class UpdateCommand : public ICommand {
 		TextureDialogData& data;
 	public:
@@ -288,14 +288,14 @@ public:
 		loadCommand(data), hideCommand(dlg), updateCommand(data) {
 
 		HWND hAlpha = GetDlgItem(dlg.getWindowHandle(), IDC_P_ALPHA_TYPE);
-		ComboBox_ResetContent(hAlpha);	
+		ComboBox_ResetContent(hAlpha);
 		ComboBox_AddString(hAlpha, "none");
 		ComboBox_AddString(hAlpha, "use transparency");
 		ComboBox_AddString(hAlpha, "use texture transparency");
 		ComboBox_AddString(hAlpha, "add");
 		ComboBox_AddString(hAlpha, "mul");
 		ComboBox_AddString(hAlpha, "mul 2x");
-	
+
 		HWND hAnim = GetDlgItem(dlg.getWindowHandle(), IDC_P_ANIM_TYPE);
 		ComboBox_ResetContent(hAnim);
 		ComboBox_AddString(hAnim, "loop");
@@ -310,7 +310,7 @@ public:
 		dlg.getCommandList().addCommand(IDC_P_FPS, &updateCommand);
 		dlg.getCommandList().addCommand(IDC_P_ALPHA_TYPE, &updateCommand);
 		dlg.getCommandList().addCommand(IDC_P_ANIM_TYPE, &updateCommand);
-	
+
 	}
 
 	void setParticleDesc(SharedPtr<ParticleDesc> _pd) {
@@ -332,10 +332,10 @@ public:
 
 class ParticleDialog {
 public:
-	
-	
+
+
 	struct ParticleDialogData {
-			
+
 		Dialog& dlg;
 		Graph mColorGraph;
 		Graph mAlphaGraph;
@@ -356,7 +356,7 @@ public:
 		ParticleDialogData(Dialog& d, Storm& storm) : dlg(d), mStorm(storm), bColorGraphChanged(true),
 			bAlphaGraphChanged(true), bSizeGraphChanged(true), noValueUpdate(true),
 			mColorGraph(3), texDlg(dlg, storm) {
-		
+
 			texDlg.hide();
 
 			mColorGraph.setChannelColor(0, 255, 0, 0);
@@ -366,16 +366,16 @@ public:
 			mColorGraph.linkChannels(0, 2);
 			mColorGraph.linkChannels(1, 2);
 			mColorGraph.setWindow(0.0f, 0.0f, 1.0f, 1.0f, 0.1f, 0.1f);
-			
+
 			mAlphaGraph.setChannelColor(0, 64, 64, 64);
 			mAlphaGraph.setWindow(0.0f, 0.0f, 1.0f, 1.0f, 0.1f, 0.1f);
-			
+
 			mSizeGraph.setChannelColor(0, 64, 64, 64);
 			mSizeGraph.setWindow(0.0f, 0.0f, 1.0f, 30.0f, 5.0f, 5.0f);
-		
-		
+
+
 		}
-		
+
 		void showTextureDialog() {
 
 			texDlg.setParticleDesc(pd);
@@ -388,11 +388,11 @@ public:
 			pd = _pd;
 
 			noValueUpdate = true;
-			
-			setGraphFromTrack(mColorGraph, pd->colorTrack);			
+
+			setGraphFromTrack(mColorGraph, pd->colorTrack);
 			setGraphFromTrack(mSizeGraph, pd->sizeTrack);
 			setGraphFromTrack(mAlphaGraph, pd->alphaTrack);
-			
+
 			/*
 			dlg.setItemText(IDC_P_NAME, pd->getName());
 			dlg.setItemFloat(IDC_P_MIN_LIFE, pd->minLife);
@@ -405,7 +405,7 @@ public:
 			dlg.setItemFloat(IDC_P_BOUNCE, pd->bounce);
 			dlg.setItemFloat(IDC_P_DRAG_FACTOR, pd->dragFactor);
 			*/
-			
+
 			setDialogItemText(dlg, IDC_P_NAME, pd->getName());
 			setDialogItemFloat(dlg, IDC_P_MIN_LIFE, pd->minLife);
 			setDialogItemFloat(dlg, IDC_P_MAX_LIFE, pd->maxLife);
@@ -419,13 +419,13 @@ public:
 
 			HWND hCollision = GetDlgItem(dlg.getWindowHandle(), IDC_P_COLLISION_TYPE);
 			ComboBox_SetCurSel(hCollision, pd->collisionType);
-			
+
 			HWND hDraw = GetDlgItem(dlg.getWindowHandle(), IDC_P_DRAW_STYLE);
 			ComboBox_SetCurSel(hDraw, pd->drawStyle);
-			
+
 			HWND hDragByVelocity = GetDlgItem(dlg.getWindowHandle(), IDC_P_DRAG_BY_VELOCITY);
 			ComboBox_SetCurSel(hDragByVelocity, pd->dragFuncByVelocity);
-			
+
 			HWND hDragBySize = GetDlgItem(dlg.getWindowHandle(), IDC_P_DRAG_BY_SIZE);
 			ComboBox_SetCurSel(hDragBySize, pd->dragFuncBySize);
 
@@ -433,10 +433,10 @@ public:
 		}
 
 		void editColorGraph() {
-		
+
 			bColorGraphChanged = true;
 			mColorGraph.open(dlg.getWindowHandle());
-		
+
 		}
 
 		void editSizeGraph() {
@@ -452,9 +452,9 @@ public:
 			mAlphaGraph.open(dlg.getWindowHandle());
 
 		}
-		
+
 		void update() {
-			
+
 			if(!noValueUpdate) {
 				updateValues();
 			}
@@ -465,10 +465,10 @@ public:
 
 			if(bColorGraphChanged && !mColorGraph.isOpen())
 				setTrackFromGraph(pd->colorTrack, mColorGraph);
-			
+
 			if(bAlphaGraphChanged && !mAlphaGraph.isOpen())
 				setTrackFromGraph(pd->alphaTrack, mAlphaGraph);
-			
+
 			if(bSizeGraphChanged && !mSizeGraph.isOpen())
 				setTrackFromGraph(pd->sizeTrack, mSizeGraph);
 
@@ -479,7 +479,7 @@ public:
 		}
 
 		void updateValues() {
-			
+
 			updateGraphs();
 
 			/*
@@ -513,13 +513,13 @@ public:
 			pd->drawStyle = ComboBox_GetCurSel(hDraw);
 			pd->dragFuncByVelocity = ComboBox_GetCurSel(hDragByVelocity);
 			pd->dragFuncBySize = ComboBox_GetCurSel(hDragBySize);
-		
+
 		}
 
 		void setName(const std::string& str) {
 
 			pd->setName(str);
-			
+
 			//dlg.setItemText(IDC_P_NAME, pd->getName());
 			setDialogItemText(dlg, IDC_P_NAME, pd->getName());
 		}
@@ -529,7 +529,7 @@ public:
 		}
 
 	};
-	
+
 	class UpdateCommand : public ICommand {
 		ParticleDialogData& data;
 	public:
@@ -556,7 +556,7 @@ public:
 			data.editColorGraph();
 		}
 	};
-	
+
 	class SizeGraphCommand : public ICommand {
 		ParticleDialogData& data;
 	public:
@@ -586,7 +586,7 @@ public:
 			dlg.hide();
 		}
 	};
-	
+
 	class RenameCommand : public ICommand {
 		ParticleDialogData& data;
 	public:
@@ -595,7 +595,7 @@ public:
 			NameDialog dlg;
 			dlg.setName(data.getName());
 			if(dlg.doModal(NULL, IDD_NAME))
-				data.setName(dlg.getName());		
+				data.setName(dlg.getName());
 		}
 	};
 
@@ -627,25 +627,25 @@ public:
 		data(dlg, storm),
 		updateCommand(data), colorCommand(data), hideCommand(dlg, data), textureCommand(data),
 		renCommand(data), sizeCommand(data), alphaCommand(data), updateGraphs(data) {
-	
+
 		HWND hCollision = GetDlgItem(dlg.getWindowHandle(), IDC_P_COLLISION_TYPE);
 		ComboBox_ResetContent(hCollision);
 		ComboBox_AddString(hCollision, "none");
 		ComboBox_AddString(hCollision, "die");
 		ComboBox_AddString(hCollision, "bounce");
-		
+
 		HWND hDraw = GetDlgItem(dlg.getWindowHandle(), IDC_P_DRAW_STYLE);
 		ComboBox_ResetContent(hDraw);
 		ComboBox_AddString(hDraw, "point");
 		ComboBox_AddString(hDraw, "quad");
 		ComboBox_AddString(hDraw, "line");
-				
+
 		HWND hDragByVelocity = GetDlgItem(dlg.getWindowHandle(), IDC_P_DRAG_BY_VELOCITY);
 		ComboBox_ResetContent(hDragByVelocity);
 		ComboBox_AddString(hDragByVelocity, "none");
 		ComboBox_AddString(hDragByVelocity, "linear");
 		ComboBox_AddString(hDragByVelocity, "quadratic");
-			
+
 		HWND hDragBySize = GetDlgItem(dlg.getWindowHandle(), IDC_P_DRAG_BY_SIZE);
 		ComboBox_ResetContent(hDragBySize);
 		ComboBox_AddString(hDragBySize, "none");
@@ -653,7 +653,7 @@ public:
 		ComboBox_AddString(hDragBySize, "quadratic");
 		ComboBox_AddString(hDragBySize, "cubic");
 
-		
+
 		dlg.getCommandList().addCommand(IDC_P_MIN_LIFE, &updateCommand);
 		dlg.getCommandList().addCommand(IDC_P_MAX_LIFE, &updateCommand);
 		dlg.getCommandList().addCommand(IDC_P_MIN_SPIN, &updateCommand);
@@ -682,7 +682,7 @@ public:
 		dlg.show();
 	}
 
-	
+
 };
 
 
@@ -695,7 +695,7 @@ public:
 		CloudEmitterDesc* ed;
 		bool noValueUpdate;
 	public:
-		
+
 		DialogData(Dialog& d, Storm& s3d) : dlg(d), storm(s3d), ed(0) {}
 
 		void setEmitterDesc(CloudEmitterDesc* _ed) {
@@ -725,12 +725,12 @@ public:
 
 			Button_SetCheck(GetDlgItem(dlg.getWindowHandle(), IDC_CE_RANDOM_DIRECTION),
 				ed->randomDirection ? BST_CHECKED : BST_UNCHECKED);
-			
+
 			ComboBox_SetCurSel(GetDlgItem(dlg.getWindowHandle(), IDC_CE_SHAPE), ed->shapeType);
 
 			noValueUpdate = false;
 
-			setShape();		
+			setShape();
 		}
 
 		void update() {
@@ -753,7 +753,7 @@ public:
 			ed->bmin.x = dlg.getItemFloat(IDC_CE_BOX_MIN_X);
 			ed->bmin.y = dlg.getItemFloat(IDC_CE_BOX_MIN_Y);
 			ed->bmin.z = dlg.getItemFloat(IDC_CE_BOX_MIN_Z);
-			
+
 			ed->bmax.x = dlg.getItemFloat(IDC_CE_BOX_MAX_X);
 			ed->bmax.y = dlg.getItemFloat(IDC_CE_BOX_MAX_Y);
 			ed->bmax.z = dlg.getItemFloat(IDC_CE_BOX_MAX_Z);
@@ -802,7 +802,7 @@ public:
 
 			enableDialogItem(dlg, IDC_CE_BOX_MAX_X, true);
 			enableDialogItem(dlg, IDC_CE_BOX_MAX_Y, true);
-			enableDialogItem(dlg, IDC_CE_BOX_MAX_Z, true);		
+			enableDialogItem(dlg, IDC_CE_BOX_MAX_Z, true);
 		}
 
 		void disableBox() {
@@ -821,11 +821,11 @@ public:
 
 			enableDialogItem(dlg, IDC_CE_BOX_MAX_X, false);
 			enableDialogItem(dlg, IDC_CE_BOX_MAX_Y, false);
-			enableDialogItem(dlg, IDC_CE_BOX_MAX_Z, false);		
+			enableDialogItem(dlg, IDC_CE_BOX_MAX_Z, false);
 		}
 
 		void enableSphere() {
-		
+
 
 			enableDialogItem(dlg, IDC_CE_SPHERE_INNER, true);
 			enableDialogItem(dlg, IDC_CE_SPHERE_OUTER, true);
@@ -851,7 +851,7 @@ public:
 		}
 
 		void setShape() {
-			
+
 			if(noValueUpdate)
 				return;
 
@@ -920,13 +920,13 @@ public:
 
 	CloudEmitterDialog(Dialog& parent, Storm& storm) : dlg(IDD_CLOUD_EMITTER, parent.getWindowHandle()),
 		data(dlg, storm), updateCommand(data), hideCommand(dlg), shapeCommand(data) {
-		
+
 		HWND hShape = GetDlgItem(dlg.getWindowHandle(), IDC_CE_SHAPE);
 		ComboBox_ResetContent(hShape);
 		ComboBox_AddString(hShape, "box");
 		ComboBox_AddString(hShape, "sphere");
 		ComboBox_AddString(hShape, "cylinder");
-		
+
 		dlg.getCommandList().addCommand(IDC_CE_DIRECTION_X, &updateCommand);
 		dlg.getCommandList().addCommand(IDC_CE_DIRECTION_Y, &updateCommand);
 		dlg.getCommandList().addCommand(IDC_CE_DIRECTION_Z, &updateCommand);
@@ -946,11 +946,11 @@ public:
 
 		dlg.getCommandList().addCommand(IDC_CE_SHAPE, &shapeCommand);
 		dlg.getCommandList().addCommand(IDC_CE_HIDE, &hideCommand);
-		
+
 	}
 
 	void open(CloudEmitterDesc* _ed) {
-		
+
 		data.setEmitterDesc(_ed);
 
 		show();
@@ -978,7 +978,7 @@ public:
 		PointArrayEmitterDesc* ed;
 		bool noValueUpdate;
 	public:
-		
+
 		DialogData(Dialog& d, Storm& s3d) : dlg(d), storm(s3d), ed(0) {}
 
 		void setEmitterDesc(PointArrayEmitterDesc* _ed) {
@@ -990,11 +990,11 @@ public:
 			/*
 			dlg.setItemInt(IDC_PA_RANGE_START, ed->rangeStart);
 			dlg.setItemInt(IDC_PA_RANGE_END, ed->rangeEnd);
-			
+
 			dlg.setItemFloat(IDC_PA_MIN_SPEED, ed->minSpeed);
 			dlg.setItemFloat(IDC_PA_MAX_SPEED, ed->maxSpeed);
 			*/
-			
+
 			setDialogItemInt(dlg, IDC_PA_RANGE_START, ed->rangeStart);
 			setDialogItemInt(dlg, IDC_PA_RANGE_END, ed->rangeEnd);
 
@@ -1019,14 +1019,14 @@ public:
 			/*
 			ed->minSpeed = dlg.getItemFloat(IDC_PA_MIN_SPEED);
 			ed->maxSpeed = dlg.getItemFloat(IDC_PA_MAX_SPEED);
-			
+
 			ed->rangeStart = dlg.getItemInt(IDC_PA_RANGE_START);
 			ed->rangeEnd = dlg.getItemInt(IDC_PA_RANGE_END);
 			*/
 
 			ed->minSpeed = getDialogItemFloat(dlg, IDC_PA_MIN_SPEED);
 			ed->maxSpeed = getDialogItemFloat(dlg, IDC_PA_MAX_SPEED);
-			
+
 			ed->rangeStart = getDialogItemInt(dlg, IDC_PA_RANGE_START);
 			ed->rangeEnd = getDialogItemInt(dlg, IDC_PA_RANGE_END);
 		}
@@ -1087,7 +1087,7 @@ public:
 	}
 
 	void open(PointArrayEmitterDesc* _ed) {
-		
+
 		data.setEmitterDesc(_ed);
 
 		show();
@@ -1114,7 +1114,7 @@ public:
 		SprayEmitterDesc* ed;
 		bool noValueUpdate;
 	public:
-		
+
 		SprayEmitterDialogData(Dialog& d) : dlg(d), ed(0) {}
 
 		void setEmitterDesc(SprayEmitterDesc* _ed) {
@@ -1161,7 +1161,7 @@ public:
 			ed->maxSpeed = getDialogItemFloat(dlg, IDC_SE_MAX_SPEED);
 
 			ed->spread1 = getDialogItemFloat(dlg, IDC_SE_SPREAD1);
-			ed->spread2 = getDialogItemFloat(dlg, IDC_SE_SPREAD2);		
+			ed->spread2 = getDialogItemFloat(dlg, IDC_SE_SPREAD2);
 		}
 
 	};
@@ -1204,7 +1204,7 @@ public:
 	}
 
 	void open(SprayEmitterDesc* _ed) {
-		
+
 		data.setEmitterDesc(_ed);
 
 		show();
@@ -1232,18 +1232,18 @@ public:
 		CloudEmitterDialog ceDlg;
 		SharedPtr<EmitterDesc> ed;
 	public:
-		
+
 		ExtendedData(Dialog& parent, Storm& s3d)
 			: seDlg(parent) , paDlg(parent, s3d), ceDlg(parent, s3d) {
 			seDlg.hide();
 			paDlg.hide();
 			ceDlg.hide();
 		}
-		
+
 		void setEmitterDesc(SharedPtr<EmitterDesc> _ed) {
 			ed = _ed;
 		}
-		
+
 		void open() {
 			switch(ed->getType()) {
 			case ED_SPRAY:
@@ -1259,14 +1259,14 @@ public:
 		}
 
 	};
-		
+
 	struct Data {
-		
+
 		SharedPtr<EmitterDesc> ed;
 		Dialog& dlg;
 		Graph mEmitRateGraph;
 		bool noValueUpdate;
-				
+
 		Data(Dialog& plah) : dlg(plah), noValueUpdate(true) {
 
 			mEmitRateGraph.setChannelColor(0, 64, 64, 64);
@@ -1279,26 +1279,26 @@ public:
 		}
 
 		void setName(const std::string& str) {
-			
+
 			ed->setName(str);
 
 			setEmitterDesc(ed);
 
 
 		}
-		
+
 		void openGraph() {
 			mEmitRateGraph.open(dlg.getWindowHandle());
 		}
-		
+
 		void setEmitterDesc(SharedPtr<EmitterDesc> _ed) {
-			
+
 			ed = _ed;
-		
+
 			noValueUpdate = true;
-			
+
 			setGraphFromTrack(mEmitRateGraph, ed->emitRateTrack);
-			
+
 			/*
 			dlg.setItemFloat(IDC_E_MIN_EMIT_TIME, ed->minEmitTime);
 			dlg.setItemFloat(IDC_E_MAX_EMIT_TIME, ed->maxEmitTime);
@@ -1311,8 +1311,8 @@ public:
 
 			Button_SetCheck(GetDlgItem(dlg.getWindowHandle(), IDC_E_DIE_AFTER_EMISSION),
 				ed->dieAfterEmission ? BST_CHECKED : BST_UNCHECKED);
-			
-			noValueUpdate = false;			
+
+			noValueUpdate = false;
 		}
 
 		void update() {
@@ -1325,11 +1325,11 @@ public:
 
 		void updateValues() {
 
-				
+
 			ed->dieAfterEmission =
 				(Button_GetCheck(GetDlgItem(dlg.getWindowHandle(), IDC_E_DIE_AFTER_EMISSION)) == BST_CHECKED) ?
 				true : false;
-			
+
 			//ed->minEmitTime = dlg.getItemFloat(IDC_E_MIN_EMIT_TIME);
 			//ed->maxEmitTime = dlg.getItemFloat(IDC_E_MAX_EMIT_TIME);
 			ed->minEmitTime = getDialogItemFloat(dlg, IDC_E_MIN_EMIT_TIME);
@@ -1360,17 +1360,17 @@ public:
 			NameDialog dlg;
 			dlg.setName(data.getName());
 			if(dlg.doModal(NULL, IDD_NAME)) {
-				data.setName(dlg.getName());		
+				data.setName(dlg.getName());
 			}
 		}
 	};
-	
+
 	class ExtendedCommand : public ICommand {
 		ExtendedData& data;
 	public:
 		ExtendedCommand(ExtendedData& d) : data(d) {}
 		void execute() {
-			data.open();	
+			data.open();
 		}
 	};
 
@@ -1394,7 +1394,7 @@ public:
 		}
 	};
 
-	
+
 	Data data;
 	Dialog dlg;
 	UpdateCommand updateCommand;
@@ -1463,7 +1463,7 @@ public:
 			{
 				dlg = (SelDialog*)lParam;
 				HWND h1 = GetDlgItem(hwnd, IDC_SELECTION1);
-				HWND h2 = GetDlgItem(hwnd, IDC_SELECTION2);	
+				HWND h2 = GetDlgItem(hwnd, IDC_SELECTION2);
 				ComboBox_ResetContent(h1);
 				ComboBox_ResetContent(h2);
 				int i;
@@ -1481,7 +1481,7 @@ public:
 			{
 				if(LOWORD(wParam)==IDOK) {
 					HWND h1 = GetDlgItem(hwnd, IDC_SELECTION1);
-					HWND h2 = GetDlgItem(hwnd, IDC_SELECTION2);	
+					HWND h2 = GetDlgItem(hwnd, IDC_SELECTION2);
 					dlg->ed = ComboBox_GetCurSel(h1);
 					dlg->pd = ComboBox_GetCurSel(h2);
 					EndDialog(hwnd, IDOK);
@@ -1504,7 +1504,7 @@ public:
 
 		return false;
 	}
-	
+
 
 };
 
@@ -1520,7 +1520,7 @@ public:
 	int getSel() {
 		return sel;
 	}
-	
+
 	static BOOL CALLBACK msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
 		static SingleSelDialog* dlg = NULL;
 		switch(msg) {
@@ -1552,7 +1552,7 @@ public:
 		}
 		return FALSE;
 	}
-	
+
 	bool doModal(HWND parent) {
 
 		sel = 0;
@@ -1569,28 +1569,28 @@ public:
 HTREEITEM tvAddChildItem(HWND hTree, HTREEITEM parent, const std::string& name) {
 
 	TV_INSERTSTRUCT tvinsert;
-	
-	tvinsert.hParent=parent;		
+
+	tvinsert.hParent=parent;
 	tvinsert.hInsertAfter=TVI_LAST;
 	tvinsert.item.mask=TVIF_TEXT|TVIF_IMAGE|TVIF_SELECTEDIMAGE;
 	tvinsert.item.pszText=const_cast<char*>(name.c_str());
 	tvinsert.item.iImage=0;
 	tvinsert.item.iSelectedImage=1;
-	
+
 	return TreeView_InsertItem(hTree, &tvinsert);
 }
 
 HTREEITEM tvAddRootItem(HWND hTree, const std::string& name) {
-	
+
 	TV_INSERTSTRUCT tvinsert;
-	
-	tvinsert.hParent=NULL;		
+
+	tvinsert.hParent=NULL;
 	tvinsert.hInsertAfter=TVI_ROOT;
 	tvinsert.item.mask=TVIF_TEXT|TVIF_IMAGE|TVIF_SELECTEDIMAGE;
 	tvinsert.item.pszText=const_cast<char*>(name.c_str());
 	tvinsert.item.iImage=0;
 	tvinsert.item.iSelectedImage=1;
-	
+
 	return TreeView_InsertItem(hTree, &tvinsert);
 }
 
@@ -1602,17 +1602,17 @@ public:
 
 	class Item {
 	public:
-				
+
 		virtual ~Item() {}
 		virtual int getType() { return 0; }
-				
+
 		virtual bool newChildItem(std::map<HTREEITEM, Item*>& imap, HWND hTree, HTREEITEM self)=0;
 		virtual bool delItem(std::map<HTREEITEM, Item*>& imap, HWND hTree, HTREEITEM self)=0;
 		virtual void editItem(std::map<HTREEITEM, Item*>& imap, HWND hTree, HTREEITEM self)=0;
-				
+
 	};
 
-	typedef std::map<HTREEITEM, Item*> ItemMap;	
+	typedef std::map<HTREEITEM, Item*> ItemMap;
 
 	struct SharedData {
 		ParticleSystemManager& mgr;
@@ -1624,18 +1624,18 @@ public:
 		EmitterDialog emitterDialog;
 		PSysDialog psysDialog;
 		int selectedTemplate;
-		
+
 		SharedData(Dialog& dlg, ParticleSystemManager& _mgr, Storm& s) :
 			storm(s), mgr(_mgr), particleDialog(dlg, storm), emitterDialog(dlg, storm),
 			selectedTemplate(-1), psysDialog(dlg) {
-			
+
 				emitterDialog.hide();
 				particleDialog.hide();
 				psysDialog.hide();
 		}
-		
+
 		std::string getNewTemplateName(const std::string& name) {
-			
+
 			int n = 0;
 			std::string str;
 			while(1) {
@@ -1656,10 +1656,10 @@ public:
 			return str;
 		}
 
-		
+
 
 	};
-	
+
 	class EDItem : public Item {
 		int id;
 		SharedData& sd;
@@ -1695,7 +1695,7 @@ public:
 			sd.particleDialog.show();
 		}
 	};
-	
+
 	class EmitterListItem : public Item {
 		SharedData& sd;
 		HWND hDlg;
@@ -1721,7 +1721,7 @@ public:
 					break;
 				}
 			}
-			
+
 			NameDialog ndlg;
 			ndlg.setName(str);
 			if(ndlg.doModal(hDlg, IDD_NAME)) {
@@ -1745,7 +1745,7 @@ public:
 			} else {
 				return false;
 			}
-						
+
 			SharedPtr<EmitterDesc> ed(_ed);
 			ed->setName(str);
 			sd.emitters.push_back(ed);
@@ -1759,7 +1759,7 @@ public:
 			return false; // cant delete root
 		}
 		void editItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
-		
+
 		}
 	};
 
@@ -1768,7 +1768,7 @@ public:
 		HWND hDlg;
 	public:
 		ParticleListItem(SharedData& data, HWND dlg) : sd(data), hDlg(dlg) {
-			
+
 		}
 		bool newChildItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
 
@@ -1796,8 +1796,8 @@ public:
 			} else {
 				return false;
 			}
-			
-			
+
+
 			SharedPtr<ParticleDesc> pd(new ParticleDesc());
 			pd->setName(str);
 			sd.particles.push_back(pd);
@@ -1811,21 +1811,21 @@ public:
 			return false; // cant delete root
 		}
 		void editItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
-			
+
 		}
 	};
-	
+
 	class TemplateListItem : public Item {
 		SharedData& sd;
 		HWND hDlg;
 	public:
 		TemplateListItem(SharedData& data, HWND dlg) : sd(data), hDlg(dlg) {}
-		
-		
+
+
 		bool newChildItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
-			
+
 			std::string str = sd.getNewTemplateName("template");
-			
+
 			NameDialog ndlg;
 			ndlg.setName(str);
 			if(ndlg.doModal(hDlg, IDD_NAME)) {
@@ -1833,11 +1833,11 @@ public:
 			} else {
 				return false;
 			}
-					
+
 			SharedPtr<ParticleSystem> ps = sd.mgr.addTemplate(str);
 			sd.temps.push_back(ps);
-			
-			
+
+
 			HTREEITEM id = tvAddChildItem(hTree, self, str);
 			TemplateItem* temp = new TemplateItem(sd, sd.temps.size()-1, ps, hDlg);
 			imap[id] = temp;
@@ -1852,7 +1852,7 @@ public:
 		void editItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
 
 		}
-		
+
 	};
 
 	class TemplateItem : public Item {
@@ -1864,7 +1864,7 @@ public:
 
 		TemplateItem(SharedData& data, int _id, SharedPtr<ParticleSystem> _ps, HWND dlg) : sd(data),
 			ps(_ps), hDlg(dlg), id(_id) {}
-		
+
 		int getType() { return 1; }
 
 		bool newChildItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
@@ -1875,11 +1875,11 @@ public:
 				ps->addEmitter(sd.emitters[sel1], sd.particles[sel2]);
 
 				TV_INSERTSTRUCT tvinsert;
-				
+
 				std::string str = sd.emitters[sel1]->getName();
 				str += "/";
 				str += sd.particles[sel2]->getName();
-							
+
 				HTREEITEM id = tvAddChildItem(hTree, self, str);
 				EmitterItem* eItem = new EmitterItem(ps, ps->getNumEmitters()-1);
 				imap[id] = eItem;
@@ -1888,20 +1888,20 @@ public:
 			return false;
 		}
 		bool delItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
-			
+
 			sd.mgr.removeTemplate(ps->getTemplateName());
-			
+
 			sd.temps.erase(sd.temps.begin()+id);
-			
+
 			int sel = ComboBox_FindString(GetDlgItem(hDlg, IDC_SELECTED_TEMPLATE), 0,
 				ps->getTemplateName().c_str());
 			ComboBox_DeleteString(GetDlgItem(hDlg, IDC_SELECTED_TEMPLATE), sel);
 			ComboBox_SetCurSel(GetDlgItem(hDlg, IDC_SELECTED_TEMPLATE), 0);
-			
+
 			return true;
 		}
 		void editItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
-			
+
 			sd.psysDialog.setPS(sd.temps[id]);
 			sd.psysDialog.show();
 
@@ -1933,7 +1933,7 @@ public:
 		HTREEITEM hItem;
 		PSItem(SharedPtr<ParticleSystem> _ps, HTREEITEM i) : ps(_ps), hItem(i) {}
 
-		bool newChildItem(ItemMap& imap, HWND hTree, HTREEITEM self) {			
+		bool newChildItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
 			return false;
 		}
 
@@ -1942,11 +1942,11 @@ public:
 			return false;
 		}
 		void editItem(ItemMap& imap, HWND hTree, HTREEITEM self) {
-		}		
+		}
 	};
-	
+
 	class MyHandler : public IDlgHandler {
-		
+
 		HTREEITEM hCurItem;
 		HTREEITEM hEmitterList;
 		HTREEITEM hParticleList;
@@ -1967,7 +1967,7 @@ public:
 
 	public:
 
-		
+
 		void launch(const Vector& pos, const Vector& vel) {
 
 			char buffer[256];
@@ -1979,22 +1979,22 @@ public:
 				tm.CreateTranslationMatrix(pos);
 				ps->setTM(tm);
 				ps->setVelocity(vel);
-											
+
 				HTREEITEM id = tvAddChildItem(GetDlgItem(dlg.getWindowHandle(), IDC_TREE1),
 					hPSList, ps->getTemplateName());
-				
+
 				//TreeView_SelectItem(GetDialogItem(dlg.getWindowHandle(), IDC_TREE1), id);
 				PSItem* i = new PSItem(ps, id);
 				itemMap[id] = i;
 				psItems.push_back(i);
-			
+
 			}
 
-		
+
 		}
-		
+
 		void update() {
-		
+
 			if(mgr.getNumParticleSystems() != psItems.size()) {
 				for(int i = 0; i < psItems.size(); i++) {
 					if(psItems[i]->ps->isDead()) {
@@ -2008,9 +2008,9 @@ public:
 					psItems.erase(psItems.begin()+i);
 				}
 			}
-			
+
 		}
-		
+
 		MyHandler(Dialog& _dlg, ParticleSystemManager& _mgr, Storm& storm) :
 		dlg(_dlg),
 		mgr(_mgr),
@@ -2019,8 +2019,8 @@ public:
 		tempList(data, _dlg.getWindowHandle()),
 		emitterList(data, _dlg.getWindowHandle()),
 		particleList(data, _dlg.getWindowHandle()) {
-		
-			
+
+
 			InitCommonControls();	    // make our tree control to work
 			HWND hTree=dlg.getItem(IDC_TREE1);
 			// creating image list and put it into the tree control
@@ -2030,34 +2030,34 @@ public:
 			ImageList_Add(hImageList,hBitMap,NULL);								      // Macro: Attach the image, to the image list
 			DeleteObject(hBitMap);													  // no need it after loading the bitmap
 			SendDlgItemMessage(dlg.getWindowHandle(),IDC_TREE1,TVM_SETIMAGELIST,0,(LPARAM)hImageList); // put it onto the tree control
-						
+
 			hTemplateList = tvAddRootItem(hTree, "templates");
 			itemMap[hTemplateList] = &tempList;
-					
+
 			hEmitterList = tvAddRootItem(hTree, "emitters");
 			itemMap[hEmitterList] = &emitterList;
-			
+
 			hParticleList = tvAddRootItem(hTree, "particles");
 			itemMap[hParticleList] = &particleList;
-		
+
 			hPSList = tvAddRootItem(hTree, "particle systems in scene");
 
 		}
-				
+
 		BOOL handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam) {
-									
+
 			HWND hTree = GetDlgItem(hwnd, IDC_TREE1);
-			
+
 			switch(msg) {
-				
+
 			case WM_COMMAND:
 				{
-					
+
 					switch(LOWORD(wParam)) {
 					case IDM_NEW:
 						{
 							if(curItem != NULL)
-								curItem->newChildItem(itemMap, hTree, hCurItem);											
+								curItem->newChildItem(itemMap, hTree, hCurItem);
 						} break;
 					case IDM_SAVE:
 						{
@@ -2079,7 +2079,7 @@ public:
 								if(it != itemMap.end()) {
 									itemMap.erase(it);
 								}
-							}												
+							}
 						} break;
 					case IDC_EXPORT_TEMPLATE:
 						{
@@ -2100,14 +2100,14 @@ public:
 								os << *ps;
 								os.close();
 							}
-								
+
 
 						} break;
 					case IDC_IMPORT_TEMPLATE:
 						{
 
 							std::string tstr = data.getNewTemplateName("template");
-							
+
 							NameDialog ndlg;
 							ndlg.setName(tstr);
 							if(ndlg.doModal(hwnd, IDD_NAME)) {
@@ -2119,58 +2119,58 @@ public:
 							std::string fileName = getOpenFileName("fbp", "data/particles");
 							if(fileName.empty())
 								return false;
-							
+
 							SharedPtr<ParticleSystem> ps = mgr.addTemplate(tstr);
 
 							std::ifstream file;
 							file.open(fileName.c_str());
 							file >> (*ps.get());
 							file.close();
-						
-							
+
+
 							data.temps.push_back(ps);
 							TemplateItem* temp = new TemplateItem(data, data.temps.size()-1, ps, hwnd);
 							HTREEITEM hParent = tvAddChildItem(hTree, hTemplateList, ps->getTemplateName());
 							itemMap[hParent] = temp;
-							
+
 							for(int i = 0; i < ps->getNumEmitters(); i++) {
-								
+
 								data.emitters.push_back(ps->getEmitterDesc(i));
 								data.particles.push_back(ps->getParticleDesc(i));
-								
+
 								HTREEITEM id;
-								
+
 								EDItem* ed = new EDItem(data, data.emitters.size()-1);
 								id = tvAddChildItem(hTree, hEmitterList, ps->getEmitterDesc(i)->getName());
 								itemMap[id] = ed;
-								
+
 								PDItem* pd = new PDItem(data, data.particles.size()-1);
 								id = tvAddChildItem(hTree, hParticleList, ps->getParticleDesc(i)->getName());
 								itemMap[id] = pd;
-								
+
 								EmitterItem* ei = new EmitterItem(ps, i);
 								std::string str = ps->getEmitterDesc(i)->getName();
 								str += "/";
 								str += ps->getParticleDesc(i)->getName();
 								id = tvAddChildItem(hTree, hParent, str);
 								itemMap[id] = ei;
-								
+
 							}
-							
+
 							ComboBox_AddString(GetDlgItem(hwnd, IDC_SELECTED_TEMPLATE), tstr.c_str());
 							int sel = ComboBox_FindString(GetDlgItem(hwnd, IDC_SELECTED_TEMPLATE), 0, tstr.c_str());
 							ComboBox_SetCurSel(GetDlgItem(hwnd, IDC_SELECTED_TEMPLATE), sel);
-							
+
 						} break;
 					}
 				} break;
-			
+
 			case WM_NOTIFY:
 			{
 			case IDC_TREE1:
-				
+
 				if(((LPNMHDR)lParam)->code == NM_DBLCLK)
-				{				
+				{
 					hCurItem = TreeView_GetSelection(hTree);
 					if(hCurItem != NULL) {
 						TreeView_EnsureVisible(hwnd, hCurItem);
@@ -2183,7 +2183,7 @@ public:
 						}
 					}
 				}
-								
+
 				if(((LPNMHDR)lParam)->code == NM_RCLICK)
 				{
 
@@ -2195,15 +2195,15 @@ public:
 						if(it != itemMap.end()) {
 							curItem = it->second;
 
-								
+
 								POINT p;
 								GetCursorPos(&p);
 								TrackPopupMenuEx( GetSubMenu( LoadMenu( 0, MAKEINTRESOURCE(IDR_POPUP) ), 0 ),
 									TPM_VERTICAL, p.x, p.y, hwnd, NULL );
-							
-							
-							
-							
+
+
+
+
 
 						} else {
 							curItem = NULL;
@@ -2214,29 +2214,29 @@ public:
 			} break;
 
 			}
-			
+
 			return FALSE;
-			
+
 		}
 
 
 	};
-	
+
 	Dialog& dlg;
 	MyHandler handler;
 	ParticleSystemManager& mgr;
 
 	ParticleSystemDialog(Dialog& _dlg, ParticleSystemManager& _mgr, Storm& storm) :
 	dlg(_dlg), handler(_dlg, _mgr, storm), mgr(_mgr) {
-	
+
 		dlg.setCustomHandler(&handler);
-		
+
 	}
 
 	void update() {
 		handler.update();
 	}
-	
+
 	void launch(const Vector& pos, const Vector& vel) {
 		handler.launch(pos, vel);
 	}
@@ -2267,7 +2267,7 @@ struct ParticleModeData
 	ParticleSystemManager mManager;
 	AddPSCommand addPSCommand;
 
-	
+
 	ParticleSystemDialog sysDlg;
 
 	boost::shared_ptr<IStorm3D_Model> mModel;
@@ -2280,9 +2280,9 @@ struct ParticleModeData
 
 	ParticleModeData(Dialog& dialog, Gui& _gui, Storm& storm) : mStorm(storm), gui(_gui),
 		mManager(storm.storm, storm.scene), sysDlg(dialog, mManager, storm) {
-		
+
 		dialog.getCommandList().addCommand(IDC_ADD_PS, &addPSCommand);
-		
+
 		loadModel();
 	}
 
@@ -2291,7 +2291,7 @@ struct ParticleModeData
 	}
 
 	bool handleDialogs(MSG& msg) {
-		
+
 		if(IsDialogMessage(gui.getParticleDialog().getWindowHandle(), &msg))
 			return true;
 
@@ -2302,70 +2302,70 @@ struct ParticleModeData
 
 		mModel = SharedPtr<IStorm3D_Model> (mStorm.storm->CreateNewModel());
 		mModel->LoadS3D("data/models/pointers/cone.s3d");
-		
+
 	}
 
 	void update() {
 	}
-	
+
 	void tick() {
 
 		static int nClicks = 0;
 		static uint32_t oldTime = timeGetTime();
 
 		sysDlg.update();
-		
+
 		mStorm.scene->RemoveModel(mModel.get());
-		
+
 		Mouse &mouse = gui.getMouse();
 		if(!mouse.isInsideWindow())
 			return;
-		
+
 		if(!mModel)
 			return;
-		
+
 		Vector p, d;
 		VC2I screen(mouse.getX(), mouse.getY());
-		
+
 		IStorm3D_Scene *s = mStorm.scene;
 		s->GetEyeVectors(screen, p, d);
-		
+
 		Storm3D_CollisionInfo ci;
 		ObstacleCollisionInfo oi;
-		
+
 		ci.hit = false;
 		oi.hit = false;
 
 		mLaunchVel = Vector(0.0f, 0.0f, 0.0f);
-		
+
 		IStorm3D_Terrain* terrain = mStorm.terrain;
 		if(terrain) {
 
 			terrain->RayTrace(p, d, 200.f, ci, oi, true);
-			
+
 			if(!ci.hit)
 				return;
-			
+
 			ci.position.y = terrain->GetHeightAt(VC2(ci.position.x, ci.position.z));
-			
+
 			mLaunchPos = ci.position;
 			mLaunchPos.y += 0.5f;
-			
+
 			mModel->SetPosition(ci.position);
 			mStorm.scene->AddModel(mModel.get());
 
 		} else {
 
-			mLaunchPos = Vector(0.0f, 100.0f, 0.0f);			
+			mLaunchPos = Vector(0.0f, 100.0f, 0.0f);
 
 		}
-				
+
 		if(mouse.hasLeftClicked() && addPSCommand.launch)
 		{
-/*		
+/*
 			// launch ps
 			if(nClicks == 0) {
-				// set position				
+				// set position
 				mLaunchPos = ci.position;
 				mLaunchPos.y += 10.0f;
 			}
@@ -2382,7 +2382,7 @@ struct ParticleModeData
 					*temp = *mEditor.mPS;
 					temp->setPosition(mLaunchPos);
 					temp->setVelocity(mLaunchVel);
-					mManager->addParticleSystem(temp);					
+					mManager->addParticleSystem(temp);
 				}
 				addPSCommand.execute();
 				nClicks = 0;
@@ -2390,12 +2390,12 @@ struct ParticleModeData
 
 			nClicks++;
 */
-		
+
 			//SharedPtr<ParticleSystem> temp(new ParticleSystem("blah", mStorm.storm, mStorm.scene));
 			//*temp = *mEditor.mPS;
 			//temp->setPosition(mLaunchPos);
 			//temp->setVelocity(mLaunchVel);
-			//mManager->addParticleSystem(temp);					
+			//mManager->addParticleSystem(temp);
 
 			//mEditor.launchPS(mLaunchPos, mLaunchVel);
 			sysDlg.launch(mLaunchPos, mLaunchVel);
@@ -2403,7 +2403,7 @@ struct ParticleModeData
 			addPSCommand.execute();
 
 		}
-		
+
 		uint32_t time = timeGetTime();
 		int step = time - oldTime;
 		oldTime = time;
@@ -2425,7 +2425,7 @@ ParticleMode::ParticleMode(Gui &gui, Storm &storm)
 	Dialog &d = gui.getParticleDialog();
 	boost::scoped_ptr<ParticleModeData> tempData(new ParticleModeData(d, gui, storm));
 	data.swap(tempData);
-	
+
 }
 
 
@@ -2435,9 +2435,9 @@ ParticleMode::~ParticleMode()
 }
 
 bool ParticleMode::handleDialogs(MSG& msg) {
-	
+
 	return data->handleDialogs(msg);
-	
+
 //	return false;
 }
 
@@ -2451,7 +2451,7 @@ void ParticleMode::update()
 	if(!data->mModel)
 		data->loadModel();
 
-	data->update();	
+	data->update();
 }
 
 void ParticleMode::reset()

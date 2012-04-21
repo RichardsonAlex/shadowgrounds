@@ -349,7 +349,7 @@ namespace util
 #endif
 		return false;
 	}
-	
+
 	bool TextFileModifier::saveFileAs(const char *filename)
 	{
 		assert(filename != NULL);
@@ -365,7 +365,7 @@ namespace util
 
 		return saveFile();
 	}
-	
+
 	void TextFileModifier::closeFile()
 	{
 		if (impl->filename != NULL)

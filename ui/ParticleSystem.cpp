@@ -24,7 +24,7 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 																								 pointParticles_(0), lineParticles_(0),
 																								 particleNo_(0), velocities_(0), time_(0),
 																								 particleSystem_(particleSystem)
-																								
+
 {
 	int i;
 
@@ -54,9 +54,9 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 				pointParticles_[i].center.position.x=vector1_.x+(random()*2.0f-1.0f) * sizeFactor;
 				pointParticles_[i].center.position.y=vector1_.y+(random()*2.0f-1.0f) * sizeFactor;
 				pointParticles_[i].center.position.z=vector1_.z+(random()*2.0f-1.0f) * sizeFactor;
-				
+
 				pointParticles_[i].center.size=2.0f * sizeFactor;
-				
+
 				pointParticles_[i].alive=true;
 				float a;
 				if(random()<0.01f) {
@@ -92,9 +92,9 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 				pointParticles_[i].center.position.x=vector1_.x+random()-0.5f;
 				pointParticles_[i].center.position.y=vector1_.y+random()+1;
 				pointParticles_[i].center.position.z=vector1_.z+random()-0.5f;
-				
+
 				pointParticles_[i].center.size=0.2f;
-				
+
 				pointParticles_[i].alive=true;
 				float a=0.5f;
 				velocities_[i].x=(random()-0.5f)*a;
@@ -181,7 +181,7 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 				pointParticles_[i].center.position.x=random()*2.0f-1.0f;
 				pointParticles_[i].center.position.y=random()*2.0f-1.0f;
 				pointParticles_[i].center.position.z=random()*2.0f-1.0f;
-				
+
 				pointParticles_[i].center.position.Normalize();
 				pointParticles_[i].center.position*=(random()+0.5f)*0.5f;
 				pointParticles_[i].center.position+=vector1_;
@@ -194,7 +194,7 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 				  pointParticles_[i].center.size=0.5f;
         else
 				  pointParticles_[i].center.size=2.0f;
-				
+
 				pointParticles_[i].alive=true;
 				float a = 0.01f;
         if (type_ == DUST || type_ == RISINGSMOKE)
@@ -229,13 +229,13 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 				pointParticles_[i].center.position.x=random()*2.0f-1.0f;
 				pointParticles_[i].center.position.y=random()*2.0f-1.0f;
 				pointParticles_[i].center.position.z=random()*2.0f-1.0f;
-				
+
 				pointParticles_[i].center.position.Normalize();
 				pointParticles_[i].center.position*=(random()+0.5f)*0.5f;
 				pointParticles_[i].center.position+=vector1_;
 
   		  pointParticles_[i].center.size=0.5f;
-				
+
 				pointParticles_[i].alive=true;
 				float a = 0.01f;
         if (i == 0) a = 0;
@@ -251,7 +251,7 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 		case LASER:
 			// TODO:
 			break;
-		
+
 		case SWARM:
 			// TODO:
 			break;
@@ -287,7 +287,7 @@ void ParticleSystem::setMaterials(IStorm3D *s3d) {
 		c->SetAlphaType(IStorm3D_Material::ATYPE_ADD);
 
 		IStorm3D_Texture *t=s3d->CreateNewTexture( "Data/Particles/explosion.jpg" );
-		
+
 		c->SetBaseTexture(t);
 		c->SetColor( Color(1.0f, 0.4f, 0.1f) );
 	}
@@ -330,7 +330,7 @@ void ParticleSystem::setMaterials(IStorm3D *s3d) {
 		c->SetAlphaType(IStorm3D_Material::ATYPE_ADD);
 
 		IStorm3D_Texture *t=s3d->CreateNewTexture( "Data/Particles/flame.jpg" );
-		
+
 		c->SetBaseTexture(t);
 		c->SetColor( Color(1.0f, 1.0f, 0.1f) );
 	}
@@ -340,7 +340,7 @@ void ParticleSystem::setMaterials(IStorm3D *s3d) {
 		c=flareMaterial;
 
 		IStorm3D_Texture *t=s3d->CreateNewTexture( "Data/Particles/flare.jpg" );
-		
+
 		c->SetAlphaType(IStorm3D_Material::ATYPE_ADD);
 		c->SetBaseTexture(t);
 		c->SetColor( Color(1.0f, 1.0f, 0.1f) );
@@ -369,7 +369,7 @@ bool ParticleSystem::stepForwards(int tick) {
 	// Don't recreate on each loop step
 	//	--psd
 	Vector acceleration;
-	
+
 	switch(type_) {
 		case EXPLOSION:
 		case EXPLOSION2:
@@ -390,7 +390,7 @@ bool ParticleSystem::stepForwards(int tick) {
 
 				if(pointParticles_[i].center.color.b<0.01f)
 					pointParticles_[i].alive=false;
-				
+
 				if(pointParticles_[i].alive) returnValue=false;
 
 			}
@@ -415,7 +415,7 @@ bool ParticleSystem::stepForwards(int tick) {
 
 				if(pointParticles_[i].center.color.b<0.01f)
 					pointParticles_[i].alive=false;
-				
+
 				if(pointParticles_[i].alive) returnValue=false;
 
 			}
@@ -434,7 +434,7 @@ bool ParticleSystem::stepForwards(int tick) {
 				acceleration *= -drag;
 				acceleration.y += heat_;
 				acceleration -= velocities_[i].y;
-				
+
 
 				solver(velocities_[i],acceleration,&velocities_[i],mass_,tick/100.0f);
 				pointParticles_[i].center.position += velocities_[i];
@@ -454,7 +454,7 @@ bool ParticleSystem::stepForwards(int tick) {
 
 				if(pointParticles_[i].center.color.b<0.1f)
 					pointParticles_[i].alive=false;
-				
+
 				if(pointParticles_[i].alive) returnValue=false;
 
 			}
@@ -509,7 +509,7 @@ bool ParticleSystem::stepForwards(int tick) {
             }
           }
         }
-				
+
 				if(pointParticles_[i].alive) returnValue=false;
 
 			}
@@ -533,7 +533,7 @@ bool ParticleSystem::stepForwards(int tick) {
 
 				if(pointParticles_[i].center.color.b<0.01f)
 					pointParticles_[i].alive=false;
-				
+
 				if(pointParticles_[i].alive) returnValue=false;
 
 			}
@@ -571,7 +571,7 @@ bool ParticleSystem::stepForwards(int tick) {
 				  pointParticles_[i].center.position.x=random()*2.0f-1.0f;
 				  pointParticles_[i].center.position.y=random()*2.0f-1.0f;
 				  pointParticles_[i].center.position.z=random()*2.0f-1.0f;
-				
+
 				  pointParticles_[i].center.position.Normalize();
 				  pointParticles_[i].center.position*=(random()+0.5f)*0.5f;
 				  pointParticles_[i].center.position+=

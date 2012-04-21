@@ -30,7 +30,7 @@ public:
 	void AddPoint(const Vector &position);
 	int GetPointCount();
 	void RemovePoint(int index);
-	
+
 	// Units in world space
 	void SetThickness(float thickness);
 	void SetColor(int color);

@@ -52,7 +52,7 @@ void Storm3D_Mesh_Animation::AddNewMeshKeyFrame(int time,const Storm3D_Vertex *v
 	{
 		// Test if we found a right spot
 		if (kfp->keytime>time) break;
-	
+
 		// Next
 		old_kfp=kfp;
 		kfp=kfp->next_key;
@@ -90,7 +90,7 @@ void Storm3D_Mesh_Animation::Apply(Storm3D_Scene *scene,int time_now)
 
 	// Is the mesh mesh animated?
 	if (first_meshkey)
-	{		
+	{
 		// Search for mesh keyframes
 		Storm3D_KeyFrame_Mesh *kfp=first_meshkey;
 		Storm3D_KeyFrame_Mesh *old_kfp=NULL;
@@ -98,7 +98,7 @@ void Storm3D_Mesh_Animation::Apply(Storm3D_Scene *scene,int time_now)
 		{
 			// Test if we found a right spot
 			if (kfp->keytime>time_now) break;
-	
+
 			// Next
 			old_kfp=kfp;
 			kfp=kfp->next_key;

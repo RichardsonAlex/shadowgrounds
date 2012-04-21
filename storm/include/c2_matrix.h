@@ -46,12 +46,12 @@ public:
 		mat[5] = 1;
 		mat[6] = 0;
 		mat[7] = 0;
-	
+
 		mat[8] = 0;
 		mat[9] = 0;
 		mat[10] = 1;
 		mat[11] = 0;
-		
+
 		mat[12] = 0;
 		mat[13] = 0;
 		mat[14] = 0;
@@ -76,12 +76,12 @@ public:
 		mat[5] = 1;
 		mat[6] = 0;
 		mat[7] = 0;
-	
+
 		mat[8] = 0;
 		mat[9] = 0;
 		mat[10] = 1;
 		mat[11] = 0;
-		
+
 		mat[12] = 0;
 		mat[13] = 0;
 		mat[14] = 0;
@@ -109,7 +109,7 @@ public:
 		mat[8]=mat[9]=mat[11]=0.0f;
 		mat[12]=mat[13]=mat[14]=0.0f;
 		mat[15]=1.0f;
-		
+
 		mat[0]=scale.x;
 		mat[5]=scale.y;
 		mat[10]=scale.z;
@@ -156,7 +156,7 @@ public:
 	{
 		// Calculate direction (Z) vector
 		Vec3<A> z=target-position;
-		
+
 		// Normalize direction vector
 		z.Normalize();
 
@@ -194,11 +194,11 @@ public:
 		mat[0]=base_x.x;
 		mat[1]=base_y.x;
 		mat[2]=base_z.x;
-	
+
 		mat[4]=base_x.y;
 		mat[5]=base_y.y;
 		mat[6]=base_z.y;
-	
+
 		mat[8]=base_x.z;
 		mat[9]=base_y.z;
 		mat[10]=base_z.z;
@@ -358,7 +358,7 @@ public:
 		tmat[1] = mat[0] * other.mat[1] + mat[1] * other.mat[5] + mat[2] * other.mat[9];
 		tmat[2] = mat[0] * other.mat[2] + mat[1] * other.mat[6] + mat[2] * other.mat[10];
 		tmat[3] = 0;
-	
+
 		tmat[4] = mat[4] * other.mat[0] + mat[5] * other.mat[4] + mat[6] * other.mat[8];
 		tmat[5] = mat[4] * other.mat[1] + mat[5] * other.mat[5] + mat[6] * other.mat[9];
 		tmat[6] = mat[4] * other.mat[2] + mat[5] * other.mat[6] + mat[6] * other.mat[10];
@@ -423,7 +423,7 @@ public:
 		assert((index >= 0) && (index < 16));
 		return mat[index];
 	}
-	
+
 	void Set(int index, A value)
 	{
 		assert((index >= 0) && (index < 16));
@@ -441,7 +441,7 @@ public:
 			A s = A(sqrt(tr + 1.0f));
 			result.w = s / 2.0f;
 			s = 0.5f / s;
-			
+
 			result.x = (mat[9] - mat[6]) * s;
 			result.y = (mat[2] - mat[8]) * s;
 			result.z = (mat[4] - mat[1]) * s;
@@ -452,12 +452,12 @@ public:
 			A q[4] = { 0 };
 			int nxt[3] = { 1, 2, 0 };
 			int i = 0;
-			
+
 			if(mat[5] > mat[0])
 				i = 1;
 			if(mat[10] > mat[i*4 + i])
 				i = 2;
-			
+
 			int j = nxt[i];
 			int k = nxt[j];
 

@@ -18,9 +18,9 @@ void DoorCreator::replaceStrings(util::TextFileModifier &tfm, const char *name, 
 	modelFilename, bool singleSide, const char *leftLayer, const char *rightLayer,
 	const char *partTypeLowerCase, int blockRadius, unsigned int timeStamp)
 {
-	tfm.replaceString("<DOOR_PART_TYPE>", partType, false);	
-	tfm.replaceString("<DOOR_NAME>", name, false);	
-	tfm.replaceString("<DOOR_MODEL_FILENAME>", modelFilename, false);	
+	tfm.replaceString("<DOOR_PART_TYPE>", partType, false);
+	tfm.replaceString("<DOOR_NAME>", name, false);
+	tfm.replaceString("<DOOR_MODEL_FILENAME>", modelFilename, false);
 	tfm.replaceString("<DOOR_LEFT_SIDE_LAYER>", leftLayer, false);
 	tfm.replaceString("<DOOR_RIGHT_SIDE_LAYER>", rightLayer, false);
 	if (singleSide)
@@ -33,7 +33,7 @@ void DoorCreator::replaceStrings(util::TextFileModifier &tfm, const char *name, 
 		tfm.replaceString("<DOOR_NAME_LEFT_POSTFIX>", ", left", false);
 		tfm.replaceString("<DOOR_NAME_RIGHT_POSTFIX>", ", right", false);
 	}
-	tfm.replaceString("<DOOR_BLOCK_RADIUS>", int2str(blockRadius), false);	
+	tfm.replaceString("<DOOR_BLOCK_RADIUS>", int2str(blockRadius), false);
 	tfm.replaceString("<DOOR_UNIT_ID>", int2str(timeStamp), false);
 
 	// macro include file?
@@ -78,7 +78,7 @@ bool DoorCreator::createDoor(const char *name, const char *partType, const char 
 	fb_assert(modelFilename != NULL);
 	fb_assert(leftLayer != NULL);
 	fb_assert(rightLayer != NULL);
-	
+
 	fb_assert(strlen(partType) >= 4 && strlen(partType) <= 7);
 
   time_t ltime;

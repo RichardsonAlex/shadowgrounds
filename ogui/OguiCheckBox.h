@@ -53,7 +53,7 @@ public:
 
 	// ........................................................................
 	int getId() const;
-	
+
 	int getHeight() const;
 
 	void setListener( IOguiCheckBoxListener* listener );
@@ -61,7 +61,7 @@ public:
 	void setText( const std::string& text, TEXT_ALIGN align = TEXT_ALIGN_RIGHT, int w = 200, IOguiFont* font = NULL, OguiButton::TEXT_V_ALIGN valign = OguiButton::TEXT_V_ALIGN_TOP );
 
 	// ........................................................................
-	
+
 	void CursorEvent( OguiButtonEvent *eve );
 
 private:
@@ -72,7 +72,7 @@ private:
 
 	Ogui*			ogui;
 	OguiWindow*		win;
-	
+
 	IOguiCheckBoxListener*	listener;
 
 	OguiButton*				textButton;

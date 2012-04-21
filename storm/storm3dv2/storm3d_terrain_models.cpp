@@ -294,7 +294,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 	float forcedDirectionalLightStrength;
 
 	std::vector<Storm3D_Model *> disabledCullingModels;
-	
+
 	// Mac black reflection textures hack
 	bool blendenabled;
 
@@ -419,9 +419,9 @@ struct Storm3D_TerrainModelsData : public DataBase
 						}
 						else
 							solidObjects[i][NormalObjects].push_back(o);
-						
+
 					}
-					
+
 					if(!hasAlpha)
 						solidObjects[i][DepthObjects].push_back(o);
 				}
@@ -438,7 +438,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 			return;
 
 		o->visibilityFlag = 0;
-		
+
 		for(int i = 0; i < MAX_VISIBILITY_STRUCTURES; ++i)
 		{
 			Storm3D_Model *m = o->parent_model;
@@ -472,7 +472,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 				else
 					solidObjects[i][NormalObjects].push_back(o);
 			}
-			
+
 			if(!hasAlpha)
 				solidObjects[i][DepthObjects].push_back(o);
 		}
@@ -681,7 +681,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 					{
 						continue;
 					}
-					
+
 					m->need_cull_adding = false;
 					visibleModels[active_visibility].push_back(m);
 				}
@@ -856,7 +856,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 								solidObjects[active_visibility][NormalObjects].push_back(o);
 							}
 						}
-						
+
 						if(!hasAlpha)
 						{
 							if (!m->skyModel)
@@ -938,7 +938,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 		if(active_visibility == 0)
 		{
 			storm.enableLocalReflection(foundLocalReflection, localReflectionHeight);
-			
+
 			foundLocalReflection = false;
 			localReflectionHeight = 0.f;
 		}
@@ -1143,13 +1143,13 @@ struct Storm3D_TerrainModelsData : public DataBase
 				if(applyTexture(storm.getReflectionTexture(), 3))
 				{
 					localReflection = true;
-					
+
 					// Hacky fix on Mac
 					material.SetTransparency(0.7f);
 
 					//glEnable(GL_BLEND);
 					//blendenabled = true;
-					
+
 					//glBlendFunc(GL_ONE_MINUS_SRC_ALPHA, GL_SRC_ALPHA);
 
 					float ref = material.getReflectionBlendFactor();
@@ -2272,7 +2272,7 @@ void Storm3D_TerrainModels::renderBackground(Storm3D_Model *model)
 		shaderManager->SetObjectDiffuse(material->GetColor());
 
 		mesh->ReBuild();
-	
+
 		shaderManager->SetShader(object);
 		shaderManager->BackgroundShader();
 		mesh->RenderBuffers(object);

@@ -66,7 +66,7 @@ void Storm3D_Mesh_LOD::SetFaceAmount(int num)
 {
 	// Free old buffer first
 	//SAFE_RELEASE(dx8_ibuf);
-	
+
 	// Set new amount
 	face_amount=num;
 
@@ -154,11 +154,11 @@ void Storm3D_Mesh_LOD::UpdateFaceAdjacency(int vertex_amount)
 		IntLiList *temp=vxfacelists[v0];
 		vxfacelists[v0]=new IntLiList(fc);
 		vxfacelists[v0]->next=temp;
-		
+
 		temp=vxfacelists[v1];
 		vxfacelists[v1]=new IntLiList(fc);
 		vxfacelists[v1]->next=temp;
-		
+
 		temp=vxfacelists[v2];
 		vxfacelists[v2]=new IntLiList(fc);
 		vxfacelists[v2]->next=temp;
@@ -297,7 +297,7 @@ void Storm3D_Mesh_LOD::UpdateFaceAdjacency(int vertex_amount)
 					}
 					// else: Strip ends here
 				}
-				
+
 				// Edge 1-2 ??
 				if (((faces[curfc].vertex_index[1]==fstrip[fstrip_len-1])||
 					(faces[curfc].vertex_index[1]==fstrip[fstrip_len-2]))&&
@@ -314,7 +314,7 @@ void Storm3D_Mesh_LOD::UpdateFaceAdjacency(int vertex_amount)
 					}
 					// else: Strip ends here
 				}
-				
+
 				// Edge 2-0 ??
 				if (((faces[curfc].vertex_index[2]==fstrip[fstrip_len-1])||
 					(faces[curfc].vertex_index[2]==fstrip[fstrip_len-2]))&&
@@ -331,7 +331,7 @@ void Storm3D_Mesh_LOD::UpdateFaceAdjacency(int vertex_amount)
 					}
 					// else: Strip ends here
 				}
-				
+
 
 				// Strip ends here... (there are breaks in other cases)
 
@@ -369,7 +369,7 @@ void Storm3D_Mesh_LOD::UpdateFaceAdjacency(int vertex_amount)
 					fstrip[fstrip_len++]=faces[curfc].vertex_index[0];
 					fstrip[fstrip_len++]=faces[curfc].vertex_index[1];
 				}
-				break;								
+				break;
 			}
 		}
 	}
@@ -486,7 +486,7 @@ void Storm3D_Mesh_LOD::UpdateDOT3LightVectors(Storm3D_Mesh *owner,Storm3D_Scene_
 	// Test values
 	if (face_amount<1) return;
 	if (lod_vertex_amount<3) return;
-	
+
 	// Test if object uses DOT3
 	if (!owner->material) return;
 	if (owner->material->GetBumpType()!=Storm3D_Material::BUMPTYPE_DOT3) return;
@@ -517,7 +517,7 @@ void Storm3D_Mesh_LOD::UpdateDOT3LightVectors(Storm3D_Mesh *owner,Storm3D_Scene_
 		ldir_orig=lgt_p->GetGlobalPosition();
 		ldir_orig.Transform(object->GetMXG().GetInverse());
 	}
-	
+
 	// Fill lightvectors only (diffuse component)
 	int p9=0;	// optimization: save some multiplys
 	for (int vx=0;vx<lod_vertex_amount;vx++)
@@ -528,7 +528,7 @@ void Storm3D_Mesh_LOD::UpdateDOT3LightVectors(Storm3D_Mesh *owner,Storm3D_Scene_
 		// Calculate light direction
 		VC3 ldir;
 		if (lgt->GetLightType()==IStorm3D_Light::LTYPE_DIRECTIONAL)
-		{	
+		{
 			// Just copy (directional light stays at the same direction always)
 			ldir=ldir_orig;
 		}
@@ -545,7 +545,7 @@ void Storm3D_Mesh_LOD::UpdateDOT3LightVectors(Storm3D_Mesh *owner,Storm3D_Scene_
 		temp.y=ldir.x*owner->DOT3_VertexMatrix[pr+1]+ldir.y*owner->DOT3_VertexMatrix[pr+4]+ldir.z*owner->DOT3_VertexMatrix[pr+7];
 		temp.z=ldir.x*owner->DOT3_VertexMatrix[pr+2]+ldir.y*owner->DOT3_VertexMatrix[pr+5]+ldir.z*owner->DOT3_VertexMatrix[pr+8];
 		temp.Normalize();
-		
+
 		// Save light direction to diffuse component
 		vxp->lightvector=(((int)(temp.x*127)+127)<<16) + (((int)(-temp.z*127)+127)<<8) + ((int)(temp.y*127)+127);
 
@@ -673,11 +673,11 @@ void Storm3D_Mesh_LOD::OptimizeAndBuildBuffers(Storm3D_Mesh *owner)
 		}
 
 		// Is the angle small enough?
-		if (max_angle>remove_value) continue;		
+		if (max_angle>remove_value) continue;
 
 		// Is the vertex on the edge?
 		if (is_on_edge) continue;
-		
+
 		// Temp edge list for polygon
 		IntLiList edgelist;
 

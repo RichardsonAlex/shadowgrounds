@@ -83,7 +83,7 @@ namespace {
 			FileIterator fileIterator("data\\mission\\*.*", true);
 #endif
 			std::string fileName = fileIterator.getFileName();
-			
+
 			while(!fileName.empty())
 			{
 				// ignore these mission directories -jpk
@@ -305,7 +305,7 @@ ExportOptions ExportDialog::show()
 	ExportCommand exportCommand(data->sharedData, dialog);
 	UpdateCommand updateCommand(data->sharedData, dialog);
 	QueryNewMissionCommand queryMissionCommand(data->sharedData, dialog);
-	
+
 	dialog.getCommandList(WM_INITDIALOG).addCommand(WM_INITDIALOG, &initializationCommand);
 	dialog.getCommandList().addCommand(IDC_EXPORT, &exportCommand);
 	dialog.getCommandList().addCommand(IDC_NEWMISSION, &queryMissionCommand);

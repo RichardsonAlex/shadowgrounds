@@ -47,10 +47,10 @@ using namespace frozenbyte::editor;
 void PointParticleRenderer::prepareForLaunch(int maxParts) {
 
 }
-	
+
 void PointParticleRenderer::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl,
 		GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward) {
-	
+
 }
 
 boost::shared_ptr<IParticleRenderer> PointParticleRenderer::clone() {
@@ -69,7 +69,7 @@ boost::shared_ptr<IParticleRenderer> QuadParticleRenderer::clone() {
 void QuadParticleRenderer::prepareForLaunch(int maxParts) {
 	m_points.resize(maxParts);
 }
-	
+
 void QuadParticleRenderer::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl,
 			GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward) {
 
@@ -124,7 +124,7 @@ boost::shared_ptr<IParticleRenderer> LineParticleRenderer1::clone() {
 void LineParticleRenderer1::prepareForLaunch(int maxParts) {
 	m_lines.resize(maxParts);
 }
-	
+
 void LineParticleRenderer1::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl,
 			GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward)
 {
@@ -161,7 +161,7 @@ if(!camera->TestSphereVisibility(p.position, radius))
 			shape.color[0] = p.originColor;
 			shape.position[0] = p.origin;
 			shape.size[0] = p.originSize;
-			
+
 			// psd: cant fade whole line using alpha if it always uses 1.0 for start point
 			//shape.alpha[0] = p.originAlpha;
 			shape.alpha[0] = p.previousAlpha;
@@ -192,7 +192,7 @@ boost::shared_ptr<IParticleRenderer> LineParticleRenderer2::clone() {
 void LineParticleRenderer2::prepareForLaunch(int maxParts) {
 	m_lines.resize(maxParts);
 }
-	
+
 void LineParticleRenderer2::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl,
 			GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward)
 {
@@ -211,7 +211,7 @@ void LineParticleRenderer2::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl
 			float alpha = 0;
 			Vector c;
 			float t = p.age / p.life;
-			
+
 			eds.particleSize.getValue(&size, t);
 float radius = std::max(std::max(size.x, fabsf(size.y)), p.previousSize);
 if(!camera->TestSphereVisibility(p.position, radius))
@@ -220,7 +220,7 @@ if(!camera->TestSphereVisibility(p.position, radius))
 			eds.particleColor.getValue(&c, t);
 			eds.particleAlpha.getValue(&alpha, t);
 
-			Storm3D_LineParticle& shape = m_lines[a++];			
+			Storm3D_LineParticle& shape = m_lines[a++];
 			shape.color[0] = p.previousColor;
 			Vector v = p.velocity;
 			float speed = v.GetLength();
@@ -243,7 +243,7 @@ if(!camera->TestSphereVisibility(p.position, radius))
 
 			shape.alpha[1] -= p.forceAlpha;
 			shape.alpha[1] = std::max(0.f, shape.alpha[1]);
-	
+
 			p.previousColor = shape.color[1];
 			p.previousSize = size.x;
 			p.previousAlpha = alpha;
@@ -300,7 +300,7 @@ IParticleForce* GenParticleSystem::addForce(const std::string& className) {
 int GenParticleSystem::getNumForces() const {
 	return m_forces.size();
 }
-	
+
 IParticleForce* GenParticleSystem::getForce(int i) {
 	return m_forces[i].get();
 }
@@ -364,10 +364,10 @@ void GenParticleSystem::defaultPrepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* s
 	int reserveAmount = eds.maxParticles;
 	if(eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID || eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID_INTERACTION)
 		reserveAmount *= FLUID_PARTICLE_FACTOR;
-	
+
 	m_renderer->prepareForLaunch(reserveAmount);
 	m_maxParticles = eds.maxParticles;
-	
+
 	m_time = 0;
 	m_particleResidue = 0;
 	m_numParts = 0;
@@ -406,13 +406,13 @@ void GenParticleSystem::defaultTick(IStorm3D_Scene* scene, const GenParticleSyst
 {
 	if(!moveAndAnimateSystem(eds))
 		return;
-	
+
 	// move and expire particles
 	moveAndExpireParticles(eds);
 
 	if(!m_shutdown)
 		emitParticles(eds);
-		
+
 	applyForces(eds);
 
 }
@@ -423,7 +423,7 @@ void GenParticleSystem::defaultRender(IStorm3D_Scene* scene, GenParticleSystemEd
 	bool usingFluids = false;
 	if(eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID || eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID_INTERACTION)
 		usingFluids = true;
-	
+
 	//if(!m_alive && !usingFluids)
 	//	return;
 	if(!m_alive)
@@ -431,7 +431,7 @@ void GenParticleSystem::defaultRender(IStorm3D_Scene* scene, GenParticleSystemEd
 
 	if(m_mtl)
 		m_mtl->SetAlphaType((IStorm3D_Material::ATYPE)eds.particleTextureAlphaType);
-	
+
 	COL darkness(1.f, 1.f, 1.f);
 	darkness -= ambient;
 
@@ -615,11 +615,11 @@ if (gameRand == 0)
 
 bool GenParticleSystem::moveAndAnimateSystem(const GenParticleSystemEditables& eds)
 {
-	// tick inner timer	
+	// tick inner timer
  	m_time += PARTICLE_TIME_SCALE;
 	if(m_time < eds.emitStartTime)
 		return false;
-	
+
 	if(m_time > eds.emitStopTime)
 	{
 		m_shutdown = true;
@@ -703,7 +703,7 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 				int create_amount = int(needed);
 				if(create_amount > 600)
 					create_amount = 600;
-				
+
 				//int activeParticles = 0;
 				//fluid->getParticles(activeParticles);
 				//assert(activeParticles >= 0);
@@ -738,7 +738,7 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 						}
 
 						setParticleVelocity(p.velocity, dir, speed, eds);
-						
+
 						if(!spawnModel)
 							p.position += eds.emitterPosition;
 
@@ -810,15 +810,15 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 					p.angle = eds.particleStartAngle + eds.particleStartAngleVar * (float)(rand() - RAND_MAX/2) / (float)RAND_MAX;
 					p.angleSpeed = eds.particleSpin + eds.particleSpinVar * (float)(rand() - RAND_MAX/2) / (float)RAND_MAX;
 					p.frame = eds.particleAnimationStartFrame + eds.particleAnimationStartFrameVar * rnd1;
-					
+
 					if(eds.particleAnimationType == GenParticleSystemEditables::ANIMATION_LOOP) {
 						p.frameSpeed = eds.particleAnimationFps;
 					} else {
 						p.frameSpeed = ((float)eds.particleAnimationFrameCount - p.frame) / p.life * PARTICLE_TIME_SCALE;
 					}
-					
+
 					float speed = eds.launchSpeed + eds.launchSpeedVar * rnd2;
-									
+
 					setParticlePosition(p.position);
 					if(eds.launchDirectionType == GenParticleSystemEditables::DIRECTION_EXPLOSION || eds.launchDirectionType == GenParticleSystemEditables::DIRECTION_NEGATIVE_EXPLOSION)
 					{
@@ -836,7 +836,7 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 					}
 
 					setParticleVelocity(p.velocity, dir, speed, eds);
-					
+
 					p.position += eds.emitterPosition;
 					if (eds.emitterVariation.x != 0
 						|| eds.emitterVariation.y != 0
@@ -873,7 +873,7 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 					p.previousAlpha = p.originAlpha;
 					p.previousColor = p.originColor;
 					p.previousSize = p.originSize;
-					
+
 					p.velocity += m_velocity * eds.velocityInheritanceFactor;
 
 					m_numParts++;
@@ -884,7 +884,7 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 		}
 
 		//	if(a >= (int)m_parts.size())
-		//		break;			
+		//		break;
 		if(!found)
 			break;
 	}
@@ -1096,14 +1096,14 @@ GenParticleSystemEditables::GenParticleSystemEditables(bool defaults) {
 	particleAnimationFrameCount = 0;
 	particleAnimationStartFrame = 0;
 	particleAnimationStartFrameVar = 0;
-	particleAnimationFps = 18.0f;	
+	particleAnimationFps = 18.0f;
 }
 */
 
 void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSystemEditables& eds) {
 
 	//static GenParticleSystemEditables def(true);
-	
+
 	// parse generic params
 	// rememeber to multiply time dependant params with PARTICLE_TIME_SCALE
 
@@ -1120,13 +1120,13 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 	eds.dieAfterEmission = static_cast<bool>(convertFromString<int>(pg.getValue("die_after_emission", ""), eds.dieAfterEmission));
 	eds.velocityInheritanceFactor = convertFromString<float>(pg.getValue("velocity_inheritance_factor", ""), eds.velocityInheritanceFactor);
 	eds.launchSpeed = convertFromString<float>(pg.getValue("launch_speed", ""), eds.launchSpeed) * PARTICLE_TIME_SCALE;
-	eds.launchSpeedVar = convertFromString<float>(pg.getValue("launch_speed_var", ""), eds.launchSpeedVar) * PARTICLE_TIME_SCALE;	
-	eds.darkening = convertFromString<float>(pg.getValue("emit_darkening", ""), eds.darkening);	
+	eds.launchSpeedVar = convertFromString<float>(pg.getValue("launch_speed_var", ""), eds.launchSpeedVar) * PARTICLE_TIME_SCALE;
+	eds.darkening = convertFromString<float>(pg.getValue("emit_darkening", ""), eds.darkening);
 	const ParserGroup& cg = pg.getSubGroup("particle_color");
-	parseVectorKeyControlFrom(cg, eds.particleColor.getKeyControl());	
+	parseVectorKeyControlFrom(cg, eds.particleColor.getKeyControl());
 	const ParserGroup& sg = pg.getSubGroup("particle_size");
-	//parseFloatKeyControlFrom(sg, eds.particleSize.getKeyControl());	
-	parseVectorKeyControlFrom(sg, eds.particleSize.getKeyControl());	
+	//parseFloatKeyControlFrom(sg, eds.particleSize.getKeyControl());
+	parseVectorKeyControlFrom(sg, eds.particleSize.getKeyControl());
 	const ParserGroup& ag = pg.getSubGroup("particle_alpha");
 	parseFloatKeyControlFrom(ag, eds.particleAlpha.getKeyControl());
 	eds.particleLife = convertFromString<float>(pg.getValue("particle_life", ""), eds.particleLife);
@@ -1165,7 +1165,7 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 	} else {
 		eds.particleAnimationType = GenParticleSystemEditables::ANIMATION_PARTICLE_LIFE_TIME;
 	}
-	
+
 	if(pg.getValue("launch_direction", "default") == "velocity") {
 		eds.launchDirectionType = GenParticleSystemEditables::DIRECTION_VELOCITY;
 	}
@@ -1182,8 +1182,8 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 		eds.launchDirectionType = GenParticleSystemEditables::DIRECTION_DEFAULT;
 	}
 	eds.defaultLaunchDirection = convertVectorFromString(pg.getValue("default_direction", "0,1,0"));
-	
-	
+
+
 	if(pg.getValue("element_type", "")=="quad") {
 		boost::shared_ptr<IParticleRenderer> r(new QuadParticleRenderer());
 		m_renderer.swap(r);
@@ -1199,12 +1199,12 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 	}
 	else {
 		boost::shared_ptr<IParticleRenderer> r(new PointParticleRenderer());
-		m_renderer.swap(r);	
+		m_renderer.swap(r);
 	}
 
 	int lc = convertFromString<int>(pg.getValue("use_len_control", ""), 0);
 	eds.useLenghtControl = (lc == 1) ? true : false;
-	
+
 	if(pg.getValue("physics_type", "default") == "Physics")
 		eds.physicsType = GenParticleSystemEditables::PHYSICS_TYPE_PARTICLE;
 	else if(pg.getValue("physics_type", "default") == "Fluid without interaction")
@@ -1232,7 +1232,7 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 	// parse forces
 
 	int nForces;
-	nForces = convertFromString<int>(pg.getValue("num_forces", "0"), 0);	
+	nForces = convertFromString<int>(pg.getValue("num_forces", "0"), 0);
 	for(int i = 0; i < nForces; i++) {
 		std::string str = "force" + boost::lexical_cast<std::string>(i);
 		const ParserGroup& fg = pg.getSubGroup(str);
@@ -1242,10 +1242,10 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 		IParticleForce* force = addForce(className);
 		force->parseFrom(fg);
 	}
-	
+
 }
 
-	
+
 void GenParticleSystem::kill() {
 	m_shutdown = true;
 }
@@ -1254,7 +1254,7 @@ bool GenParticleSystem::isDead() {
 	return !m_alive;
 }
 
-/*	
+/*
 void GenParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene) {
 
 	std::string textureName;
@@ -1271,7 +1271,7 @@ void GenParticleSystem::prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene,
 	m_mesh.resize(m_maxParticles);
 	for(int i = 0; i < m_parts.size(); i++)
 		m_parts[i].alive = false;
-	
+
 	m_animInfo.colums = eds.particleTextureUSubDivs;
 	m_animInfo.rows = eds.particleTextureVSubDivs;
 	m_animInfo.frames = eds.particleAnimationFrameCount;

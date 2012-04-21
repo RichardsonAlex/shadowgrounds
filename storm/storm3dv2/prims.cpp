@@ -53,7 +53,7 @@ void Storm3D_Model_Object::CreatePlane(float width,float height,int xsegs,int ys
 		// Texturecoordinates
 		VC2 tc=
 			VC2((1.0f-((float)x/(float)xsegs))*xtexrep,((float)y/(float)ysegs)*ytexrep);
-	
+
 		// Add the vertex in to the array
 		vert[vi++]=Storm3D_Vertex(pos,nvec,tc);
 	}
@@ -71,11 +71,11 @@ void Storm3D_Model_Object::CreatePlane(float width,float height,int xsegs,int ys
 		// Coordinates
 		VC3 pos=
 			VC3((-width/2.0f)+(float)tx*xadd,0,(-height/2.0f)+(float)ty*yadd);
-		
+
 		// Texturecoordinates
 		VC2 tc=
 			VC2((1.0f-((float)tx/(float)xsegs))*xtexrep,((float)ty/(float)ysegs)*ytexrep);
-	
+
 		// Add the vertex in to the array
 		vert[vi++]=Storm3D_Vertex(pos,tc);
 	}*/
@@ -87,11 +87,11 @@ void Storm3D_Model_Object::CreatePlane(float width,float height,int xsegs,int ys
 		// Coordinates
 		VC3 pos=
 			VC3((-width/2.0f)+(float)x*xadd,0,(-height/2.0f)+(float)y*yadd);
-		
+
 		// Texturecoordinates
 		VC2 tc=
 			VC2((1.0f-((float)x/(float)xsegs))*xtexrep,((float)y/(float)ysegs)*ytexrep);
-	
+
 		// Add the vertex in to the array
 		vert[vi++]=Storm3D_Vertex(pos,tc);
 	}*/
@@ -145,7 +145,7 @@ void Storm3D_Model_Object::CreatePlane(float width,float height,int xsegs,int ys
 			fs[fi++]=(y+1)*(xsegs+1)+x;
 		}
 	}*/
-	
+
 	// Create faces
 	uint16_t *fs=new uint16_t[2*(xsegs+2)*ysegs];
 	int dir=0;
@@ -197,7 +197,7 @@ void Storm3D_Model_Object::CreatePlane(float width,float height,int xsegs,int ys
 		if (dir==0) dir=1; else dir=0;
 	}
 
-	
+
 	// Create faces
 	/*uint16_t *fs=new uint16_t[2*(xsegs+2)*ysegs];
 	int dir=0;
@@ -246,7 +246,7 @@ void Storm3D_Model_Object::CreatePlane(float width,float height,int xsegs,int ys
 		// Change the direction (in each row)
 		if (dir==0) dir=1; else dir=0;
 	}*/
-	
+
 
 	/*uint16_t *fs=new uint16_t[2*(xsegs+1)];
 	for (x=0;x<(xsegs+1);x++)
@@ -318,11 +318,11 @@ void Storm3D_Model_Object::CreateSphere(float radius,int rsegs,int hsegs,float r
 	int ylen=hsegs+1;
 	float xadd=(PI*2.0f)/((float)rsegs);	// Precalculate
 	for (y=0;y<ylen;y++)
-	{	
+	{
 		// Precalculate
 		float yc=cosf((((float)y)/(float)hsegs)*PI)*radius*0.5f;
 		float x_mul=sinf((((float)y)/(float)hsegs)*PI)*radius*0.5f;
-		
+
 		for (x=0;x<xlen;x++)
 		{
 			// Coordinates
@@ -336,19 +336,19 @@ void Storm3D_Model_Object::CreateSphere(float radius,int rsegs,int hsegs,float r
 			/*nvec=nvec+cosf(x)*0.2f;
 			nvec.Normalize();
 			pos=pos*(1+sinf(x)*0.01f);*/
-			
+
 			/*int xt=x;if (xt>198) xt=198;
 			int yt=y;if (yt>99) yt=99;
 			float bn=((tab[yt][xt+1])-(tab[yt][xt]))*0.03;
 			nvec=nvec+bn*0.2f;
 			nvec.Normalize();*/
-			
+
 			//pos=pos*(1.0f+tab[xt][yt]*0.01f);
 
 			// Texturecoordinates
 			VC2 tc=
 				VC2((1.0f-((float)x/(float)rsegs))*rtexrep,((float)y/(float)hsegs)*htexrep);
-	
+
 			// Add the vertex in to the array
 			vert[vi++]=Storm3D_Vertex(pos,nvec,tc);
 		}
@@ -432,7 +432,7 @@ void Storm3D_Model_Object::CreateSphere(float radius,int rsegs,int hsegs,float r
 		// Change the direction (in each row)
 		if (dir==0) dir=1; else dir=0;
 	}
-	
+
 	// Set facestrip to object
 	SetFaceStrip(fs,fi);
 
@@ -466,7 +466,7 @@ void Storm3D_Model_Object::CreateBox(float width,float length,float height,int x
 	for (x=0;x<xlen;x++)
 	{
 		// Coordinates and normal vector
-		VC3 pos;		
+		VC3 pos;
 		VC3 nvec;
 
 		switch (side)
@@ -519,11 +519,11 @@ void Storm3D_Model_Object::CreateBox(float width,float length,float height,int x
 					(length/2.0f)-(float)y*yadd,-height/2);
 				break;
 		}
-		
+
 		// Texturecoordinates
 		VC2 tc=
 			VC2((1.0f-((float)x/(float)xsegs))*xtexrep,((float)y/(float)ysegs)*ytexrep);
-	
+
 		// Add the vertex in to the array
 		vert[vi++]=Storm3D_Vertex(pos,nvec,tc);
 	}
@@ -564,7 +564,7 @@ void Storm3D_Model_Object::CreateBox(float width,float length,float height,int x
 			fs[fi++]=sx*(side+1);
 		}
 	}*/
-	
+
 	// Create faces
 	uint16_t *fs=new uint16_t[2*(xsegs+2)*ysegs*6];
 	int sx=(xsegs+1)*(ysegs+1);
@@ -627,7 +627,7 @@ void Storm3D_Model_Object::CreateBox(float width,float length,float height,int x
 			fs[fi++]=sx*(side+1);
 		}
 	}
-	
+
 	// Set facestrip to object
 	SetFaceStrip(fs,fi);
 

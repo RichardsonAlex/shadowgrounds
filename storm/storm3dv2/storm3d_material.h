@@ -31,11 +31,11 @@ public:
 		MTYPE_REF				=3,		// 0 texcoords, 1 layers, ref
 		MTYPE_TEX_REF			=4,		// 1 texcoords, 2 layers, base+ref
 		MTYPE_DUALTEX_REF		=5,		// 2 texcoords, 3 layers, base+base2+ref
-		
+
 		MTYPE_EMBM_REF			=6,		// 1 texcoords, 2 layers, bump+ref
 		MTYPE_TEX_EMBM_REF		=7,		// 2 texcoords, 3 layers, base+bump+ref
 		MTYPE_DUALTEX_EMBM_REF	=8,		// 3 texcoords, 4 layers, base+base2+bump+ref
-		
+
 		MTYPE_DOT3				=9,		// 1 texcoords, 1 layers, bump
 		MTYPE_DOT3_TEX			=10,	// 2 texcoords, 2 layers, base+bump
 		MTYPE_DOT3_REF			=11,	// 1 texcoords, 2 layers, bump+ref

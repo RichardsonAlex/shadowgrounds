@@ -22,7 +22,7 @@ namespace game
 	 */
 	class MapScripting
 	{
-		public:			
+		public:
 			/**
 			 * Just processes one command...
 			 */

@@ -25,7 +25,7 @@ void ChangeToUncompressed(IStorm3D *storm3d, IStorm3D_Model *model)
 		material->SetBaseTexture(nt);
 		material->SetSelfIllumination(Color(1,1,1));
 	}
-	
+
 	delete object_iterator;
 }
 

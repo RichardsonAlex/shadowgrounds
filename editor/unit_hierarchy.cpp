@@ -53,7 +53,7 @@ struct UnitHierarchy::Data
 		for(int i = 0; i < scripts.getUnitCount(); ++i)
 		{
 			const Unit &unit = scripts.getUnit(i);
-			
+
 			string primaryName, secondaryName;
 			getGroups(unit, primaryName, secondaryName);
 
@@ -106,7 +106,7 @@ struct UnitHierarchy::Data
 	PrimaryGroups::const_iterator getPrimary(int index) const
 	{
 		assert(index >= 0 && index < int(primaryGroups.size()));
-		
+
 		int i = 0;
 		PrimaryGroups::const_iterator it = primaryGroups.begin();
 		for(; it != primaryGroups.end(); ++it)
