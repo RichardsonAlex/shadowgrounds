@@ -123,7 +123,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
   mouseEventCaptureWindow( NULL ),
 
   controlUpdate( -1 ),
-  
+
   sliderButtons(),
   textLabels(),
 
@@ -133,7 +133,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
   difficultActiveSelection( -1 ),
   difficultImageSelectDown( NULL ),
   difficultImageSelectNorm( NULL )	,
-  
+
   sliderMusicValue( 0.75f ),
   sliderSoundValue( 0.00f ),
   sliderSpeechValue( 0.00f ),
@@ -167,7 +167,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
   cameraModeHack( NULL ),
   cameraLockYAxis( NULL ),
   cameraModeTextHack( NULL ),
-  
+
   cameraRotateStrength( NULL ),
   cameraSpringStrength( NULL ),
   cameraRotateSpeed( getCameraRotateRate() ),
@@ -408,12 +408,12 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 		OguiSlider* slider;
 
-		slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH, 
+		slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH,
 					sliderButtonBackgroundNormal, sliderButtonBackgroundDown, sliderButtonBackgroundHigh,
-					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh, 
+					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh,
 					COMMANDS_SLIDERMUSIC, sliderMusicValue );
 
-		addText( textMusic, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted ); 
+		addText( textMusic, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted );
 
 		slider->setBarPosition( sliderButtonX + sliderClipX, sliderButtonY + sliderClipY, sliderClipW, sliderClipH );
 		slider->setListener( this );
@@ -426,12 +426,12 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		sliderTextY += sliderTextAddY;
 
 
-		slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH, 
+		slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH,
 					sliderButtonBackgroundNormal, sliderButtonBackgroundDown, sliderButtonBackgroundHigh,
-					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh, 
+					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh,
 					COMMANDS_SLIDERSOUND, sliderSoundValue );
 
-		addText( textSoundFx, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted ); 
+		addText( textSoundFx, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted );
 
 		slider->setBarPosition( sliderButtonX + sliderClipX, sliderButtonY + sliderClipY, sliderClipW, sliderClipH );
 		slider->setListener( this );
@@ -442,12 +442,12 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		sliderTextX += sliderTextAddX;
 		sliderTextY += sliderTextAddY;
 
-		slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH, 
+		slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH,
 					sliderButtonBackgroundNormal, sliderButtonBackgroundDown, sliderButtonBackgroundHigh,
-					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh, 
+					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh,
 					COMMANDS_SLIDERSPEECH, sliderSpeechValue );
 
-		addText( textSpeech, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted ); 
+		addText( textSpeech, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted );
 
 		slider->setBarPosition( sliderButtonX + sliderClipX, sliderButtonY + sliderClipY, sliderClipW, sliderClipH );
 		slider->setListener( this );
@@ -466,12 +466,12 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		{
 			std::string textAmbient = getLocaleGuiString( "gui_optionsmenu_text_ambient" );
 
-			slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH, 
+			slider = new OguiSlider( win, ogui, sliderButtonX, sliderButtonY, sliderButtonW, sliderButtonH,
 						sliderButtonBackgroundNormal, sliderButtonBackgroundDown, sliderButtonBackgroundHigh,
-						sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh, 
+						sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh,
 						COMMANDS_SLIDERAMBIENT, sliderAmbientValue );
 
-			addText( textAmbient, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted ); 
+			addText( textAmbient, sliderTextX, sliderTextY, sliderTextW, sliderTextH, fonts->medium.highlighted );
 
 			slider->setBarPosition( sliderButtonX + sliderClipX, sliderButtonY + sliderClipY, sliderClipW, sliderClipH );
 			slider->setListener( this );
@@ -506,21 +506,21 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		difficultImageSelectDown = o_gui->LoadOguiImage( optionsDifficultButtonHigh.c_str() );
 		difficultImageSelectNorm = o_gui->LoadOguiImage( optionsDifficultButtonNormal.c_str() );
 
-		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 			optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 			fonts->little.normal, optionsEasyText, COMMANDS_EASY );
 
 		difficultButtonX += difficultButtonAddX;
 		difficultButtonY += difficultButtonAddY;
 
-		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 			optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 			fonts->little.normal, optionsNormalText, COMMANDS_NORMAL );
 		
 		difficultButtonX += difficultButtonAddX;
 		difficultButtonY += difficultButtonAddY;
 
-		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 			optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 			fonts->little.normal, optionsHardText, COMMANDS_HARD );
 
@@ -594,12 +594,12 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	{
 
 		// Camera mode temp hack for demo
-		cameraModeHack = new OguiCheckBox( win, ogui, 
-			getLocaleGuiInt( "gui_optionsmenu_camerabox_x", 0 ), 
-			getLocaleGuiInt( "gui_optionsmenu_camerabox_y", 0 ), 
-			getLocaleGuiInt( "gui_optionsmenu_camerabox_w", 0 ), 
+		cameraModeHack = new OguiCheckBox( win, ogui,
+			getLocaleGuiInt( "gui_optionsmenu_camerabox_x", 0 ),
+			getLocaleGuiInt( "gui_optionsmenu_camerabox_y", 0 ),
+			getLocaleGuiInt( "gui_optionsmenu_camerabox_w", 0 ),
 			getLocaleGuiInt( "gui_optionsmenu_camerabox_h", 0 ), 	
-			getLocaleGuiString( "gui_optionsmenu_camerabox_img_norm" ), "", "", 
+			getLocaleGuiString( "gui_optionsmenu_camerabox_img_norm" ), "", "",
 			getLocaleGuiString( "gui_optionsmenu_camerabox_img_fill" ) );
 
 		cameraModeHack->setText( ( (std::string)getLocaleGuiString( "demo_camera_name" ) ).c_str(), OguiCheckBox::TEXT_ALIGN_RIGHT, 200, fonts->little.highlighted );
@@ -655,9 +655,9 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 		OguiSlider* slider;
 
-		slider = new OguiSlider( win, ogui, x, y, w, h, 
+		slider = new OguiSlider( win, ogui, x, y, w, h,
 					sliderButtonBackgroundNormal, sliderButtonBackgroundDown, sliderButtonBackgroundHigh,
-					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh, 
+					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh,
 					COMMANDS_SLIDERGAMMA, value );
 
 
@@ -671,7 +671,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		int text_w = getLocaleGuiInt( "gui_optionsmenu_gammatext_w", 0 );
 		int text_h = getLocaleGuiInt( "gui_optionsmenu_gammatext_h", 0 );
 
-		addText( getLocaleGuiString( "gui_optionsmenu_gammatext" ), text_x, text_y, text_w, text_h, fonts->medium.highlighted ); 
+		addText( getLocaleGuiString( "gui_optionsmenu_gammatext" ), text_x, text_y, text_w, text_h, fonts->medium.highlighted );
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -874,7 +874,7 @@ void OptionsMenu::openMenu( int m )
 void OptionsMenu::applyChanges()
 {
 	// assert( menuCollection );
-	// Save volume 
+	// Save volume
 	int musicVolume = (int) ( sliderMusicValue * 100.0f );
 	int soundVolume = (int) ( sliderSoundValue * 100.0f );
 	int speechVolume = (int) ( sliderSpeechValue * 100.0f );
@@ -1030,7 +1030,7 @@ void OptionsMenu::CursorEvent( OguiButtonEvent* eve )
 			{
 
 			}
-			return; 
+			return;
 		}
 
 		if( discartNextCursorEvent )
@@ -1044,7 +1044,7 @@ void OptionsMenu::CursorEvent( OguiButtonEvent* eve )
 		switch( eve->triggerButton->GetId() )
 		{
 		case COMMANDS_CLOSEME:
-			game->gameUI->playGUISound( soundClick.c_str() ); 
+			game->gameUI->playGUISound( soundClick.c_str() );
 			menuClose();
 			break;
 
@@ -1056,14 +1056,14 @@ void OptionsMenu::CursorEvent( OguiButtonEvent* eve )
 			break;
 
 		case COMMANDS_DEFAULTS:
-			game->gameUI->playGUISound( soundClick.c_str() ); 
+			game->gameUI->playGUISound( soundClick.c_str() );
 			menuDefaults();
 			break;
 
 		case COMMANDS_EASY:
 		case COMMANDS_NORMAL:
 		case COMMANDS_HARD:
-			game->gameUI->playGUISound( soundClick.c_str() ); 
+			game->gameUI->playGUISound( soundClick.c_str() );
 			selectDifficultButton( eve->triggerButton->GetId() );
 			break;
 
@@ -1206,7 +1206,7 @@ void OptionsMenu::update()
 
 	if( sliderSoundPlayNow && ( Timer::getTime() - lastPlayTime ) > sliderSoundLoopTime )
 	{
-		if( !sliderSoundPlayfile.empty() ) 
+		if( !sliderSoundPlayfile.empty() )
 			game->getGameUI()->playGUISound( sliderSoundPlayfile.c_str(), (int)( 100 ) );
 		
 		lastPlayTime = Timer::getTime();
@@ -1214,7 +1214,7 @@ void OptionsMenu::update()
 
 	if( sliderSpeechPlayNow && ( Timer::getTime() - lastPlayTime ) > sliderSpeechLoopTime )
 	{
-		if( !sliderSpeechPlayfile.empty() ) 
+		if( !sliderSpeechPlayfile.empty() )
 			game->getGameUI()->playGUISpeech( sliderSpeechPlayfile.c_str(), (int)( 100 ) );
 		
 		lastPlayTime = Timer::getTime();
@@ -1254,7 +1254,7 @@ void OptionsMenu::update()
 		} else {
 			discartNextCursorEvent = true;
 		}
-		return; 
+		return;
 	}
 
 	if( controlUpdate != -1 )
@@ -1266,18 +1266,18 @@ void OptionsMenu::update()
 
 
 
-		for( i = KEYCODE_NAME_AMOUNT - 1; i >= 0; i-- ) 
+		for( i = KEYCODE_NAME_AMOUNT - 1; i >= 0; i-- )
 		{
-			// NOTE: ignore mouse movement, but NOT joystick movement... 
-			if( gameController->isKeyDownByKeyCode( i ) 
+			// NOTE: ignore mouse movement, but NOT joystick movement...
+			if( gameController->isKeyDownByKeyCode( i )
 				&& ( i < 256 || i > 259 )
-				&&!( i >=KEYCODE_MOUSE(0, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(0, KEYCODE_MOUSE_RIGHT) ) 
-				&&!( i >=KEYCODE_MOUSE(1, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(1, KEYCODE_MOUSE_RIGHT) ) 
-				&&!( i >=KEYCODE_MOUSE(2, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(2, KEYCODE_MOUSE_RIGHT) ) 
-				&&!( i >=KEYCODE_MOUSE(3, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(3, KEYCODE_MOUSE_RIGHT) ) 
-				&&!( i >=KEYCODE_MOUSE(4, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(4, KEYCODE_MOUSE_RIGHT) ) 
-				&&!( i >=KEYCODE_MOUSE(5, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(5, KEYCODE_MOUSE_RIGHT) ) 
-				&&!( i >=KEYCODE_MOUSE(6, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(6, KEYCODE_MOUSE_RIGHT) ) 
+				&&!( i >=KEYCODE_MOUSE(0, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(0, KEYCODE_MOUSE_RIGHT) )
+				&&!( i >=KEYCODE_MOUSE(1, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(1, KEYCODE_MOUSE_RIGHT) )
+				&&!( i >=KEYCODE_MOUSE(2, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(2, KEYCODE_MOUSE_RIGHT) )
+				&&!( i >=KEYCODE_MOUSE(3, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(3, KEYCODE_MOUSE_RIGHT) )
+				&&!( i >=KEYCODE_MOUSE(4, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(4, KEYCODE_MOUSE_RIGHT) )
+				&&!( i >=KEYCODE_MOUSE(5, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(5, KEYCODE_MOUSE_RIGHT) )
+				&&!( i >=KEYCODE_MOUSE(6, KEYCODE_MOUSE_UP) && i <=KEYCODE_MOUSE(6, KEYCODE_MOUSE_RIGHT) )
 				)
 				//&& ( i < 310 || i > 341 ) )
 			{
@@ -1292,7 +1292,7 @@ void OptionsMenu::update()
 			 keycode == KEYCODE_GEN_KEYBID(1, 1) ||
 			 keycode == KEYCODE_GEN_KEYBID(2, 1) ||
 			 keycode == KEYCODE_GEN_KEYBID(3, 1) ||
-			 keycode == KEYCODE_GEN_KEYBID(4, 1) 
+			 keycode == KEYCODE_GEN_KEYBID(4, 1)
 			)
 		{
 			updateControlDescriptions();
@@ -1304,7 +1304,7 @@ void OptionsMenu::update()
 			return;
 		}
 
-		// if pressed key found 
+		// if pressed key found
 		if( keycode != -1 )
 		{
 			// set the keycodeArray for that key to what it should be
@@ -1359,7 +1359,7 @@ void OptionsMenu::update()
 				discartNextCursorEvent = true;
 		}
 		
-	} 
+	}
 }
 
 //.............................................................................
@@ -1373,13 +1373,13 @@ void OptionsMenu::selectButton( int i )
 	
 	// }
 	
-	if( i != -1 ) 
+	if( i != -1 )
 	{
 		if( i >= 0 && i < (int)controlDescriptions.size() )
 		{
 			// hack me up
 			assert( mouseEventCaptureWindow == NULL );
-			mouseEventCaptureWindow = ogui->CreateSimpleWindow(	0, 0, 1024, 768, NULL ); 
+			mouseEventCaptureWindow = ogui->CreateSimpleWindow(	0, 0, 1024, 768, NULL );
 			mouseEventCaptureWindow->SetUnmovable();
 			mouseEventCaptureWindow->Show();
 			mouseEventCaptureWindow->SetOnlyActive();
@@ -1388,7 +1388,7 @@ void OptionsMenu::selectButton( int i )
 			// closeMenuByEsc = false;
 			canWeCloseTheMenuNow = false;
 		}
-	} 
+	}
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -1535,8 +1535,8 @@ void OptionsMenu::selectDifficultButton( int i )
 
 //.............................................................................
 
-void OptionsMenu::addDifficultButton( int x, int y, int w, int h, 
-		const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+void OptionsMenu::addDifficultButton( int x, int y, int w, int h,
+		const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 		IOguiFont* font, const std::string& text, int command )
 {
 	assert( ogui );
@@ -1544,10 +1544,10 @@ void OptionsMenu::addDifficultButton( int x, int y, int w, int h,
 	assert( command >= 0 );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-		button_norm.empty()?NULL:button_norm.c_str(), 
-		button_down.empty()?NULL:button_down.c_str(), 
-		button_high.empty()?NULL:button_high.c_str(), 
+	b = ogui->CreateSimpleTextButton( win, x, y, w, h,
+		button_norm.empty()?NULL:button_norm.c_str(),
+		button_down.empty()?NULL:button_down.c_str(),
+		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
 	
 	b->SetListener( this );
@@ -1640,7 +1640,7 @@ void OptionsMenu::determineCurrentController()
 	int max = 0;
 	for( i = 0; i < (int)type_array.size(); i++ )
 	{
-		if( type_array[ i ] > max ) 
+		if( type_array[ i ] > max )
 		{
 			max = type_array[ i ];
 			type = ( GameController::CONTROLLER_TYPE )i;
@@ -1670,7 +1670,7 @@ void OptionsMenu::joystickSelection( int i )
 	MenuBaseImpl::selectButton( i );
 	
 	
-	if( i != -1 ) 
+	if( i != -1 )
 	{
 		if( i >= 0 && i < (int)controlDescriptions.size() )
 		{
@@ -1678,7 +1678,7 @@ void OptionsMenu::joystickSelection( int i )
 
 			// hack me up
 			assert( mouseEventCaptureWindow == NULL );
-			mouseEventCaptureWindow = ogui->CreateSimpleWindow(	0, 0, 1024, 768, NULL ); 
+			mouseEventCaptureWindow = ogui->CreateSimpleWindow(	0, 0, 1024, 768, NULL );
 			mouseEventCaptureWindow->SetUnmovable();
 			mouseEventCaptureWindow->Show();
 			mouseEventCaptureWindow->SetOnlyActive();
@@ -1686,7 +1686,7 @@ void OptionsMenu::joystickSelection( int i )
 			// closeMenuByEsc = false;
 			canWeCloseTheMenuNow = false;
 		}
-	} 
+	}
 }
 
 //=============================================================================
@@ -2002,11 +2002,11 @@ void OptionsMenu::createMouseButtons()
 	// Lock y axis
 	{
 		cameraLockYAxis = new OguiCheckBox( win, ogui,
-			getLocaleGuiInt( "gui_optionsmenu_cameralock_x", 0 ), 
-			getLocaleGuiInt( "gui_optionsmenu_cameralock_y", 0 ), 
-			getLocaleGuiInt( "gui_optionsmenu_cameralock_w", 0 ), 
+			getLocaleGuiInt( "gui_optionsmenu_cameralock_x", 0 ),
+			getLocaleGuiInt( "gui_optionsmenu_cameralock_y", 0 ),
+			getLocaleGuiInt( "gui_optionsmenu_cameralock_w", 0 ),
 			getLocaleGuiInt( "gui_optionsmenu_cameralock_h", 0 ), 	
-			getLocaleGuiString( "gui_optionsmenu_camerabox_img_norm" ), "", "", 
+			getLocaleGuiString( "gui_optionsmenu_camerabox_img_norm" ), "", "",
 			getLocaleGuiString( "gui_optionsmenu_camerabox_img_fill" ) );
 
 		cameraLockYAxis->setText( ( (std::string)getLocaleGuiString( "camera_lock_y_axis" ) ).c_str(), OguiCheckBox::TEXT_ALIGN_RIGHT, 200, fonts->little.highlighted );
@@ -2041,9 +2041,9 @@ void OptionsMenu::createMouseButtons()
 		
 		OguiSlider* slider;
 
-		cameraRotateStrength = new OguiSlider( win, ogui, x, y, w, h, 
+		cameraRotateStrength = new OguiSlider( win, ogui, x, y, w, h,
 					sliderButtonBackgroundNormal, sliderButtonBackgroundDown, sliderButtonBackgroundHigh,
-					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh, 
+					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh,
 					COMMANDS_SLIDERROTATESPEED, value );
 
 		slider = cameraRotateStrength;
@@ -2091,16 +2091,16 @@ void OptionsMenu::createMouseButtons()
 		
 		// OguiSlider* slider;
 
-		cameraSpringStrength = new OguiSlider( win, ogui, x, y, w, h, 
+		cameraSpringStrength = new OguiSlider( win, ogui, x, y, w, h,
 					sliderButtonBackgroundNormal, sliderButtonBackgroundDown, sliderButtonBackgroundHigh,
-					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh, 
+					sliderButtonForegroundNormal, sliderButtonForegroundDown, sliderButtonForegroundHigh,
 					COMMANDS_SLIDERMOUSESPRING, value );
 
 		slider = cameraSpringStrength;
 		slider->setValue( mouseSpring );
 
 		std::string textMouseSpring = getLocaleGuiString( "gui_optionsmenu_text_mousespring" );
-		// addText( textMouseSpring, text_x, text_y, text_w, text_h, fonts->little.highlighted ); 
+		// addText( textMouseSpring, text_x, text_y, text_w, text_h, fonts->little.highlighted );
 		{
 			const std::string& text = textMouseSpring;
 			int x = text_x;
@@ -2130,7 +2130,7 @@ void OptionsMenu::createMouseButtons()
 
 void OptionsMenu::freeMouseButtons()
 {
-	if( cameraLockYAxis ) 
+	if( cameraLockYAxis )
 		camera_lock_y_axis = cameraLockYAxis->getValue();
 
 	delete cameraSpringStrength;

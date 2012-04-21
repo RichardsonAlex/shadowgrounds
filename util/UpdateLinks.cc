@@ -7,7 +7,7 @@
 
 using namespace util;
 
-void UpdateLinks::getLinkedUpdatesFromFile(std::string linksFilename, std::string linkClass, 
+void UpdateLinks::getLinkedUpdatesFromFile(std::string linksFilename, std::string linkClass,
   std::string fileUpdater, std::string stripOffExtension)
 {
 	std::vector<std::string> linklist = getLinksFromFile(linksFilename, linkClass, stripOffExtension);
@@ -24,7 +24,7 @@ void UpdateLinks::getLinkedUpdatesFromFile(std::string linksFilename, std::strin
 }
 
 
-std::vector<std::string> UpdateLinks::getLinksFromFile(std::string linksFilename, std::string linkClass, 
+std::vector<std::string> UpdateLinks::getLinksFromFile(std::string linksFilename, std::string linkClass,
 	std::string stripOffExtension)
 {
 	std::string htmlBuffer = "";
@@ -68,7 +68,7 @@ std::vector<std::string> UpdateLinks::getLinksFromFile(std::string linksFilename
 			std::string stripped = links[i].linkURL;
 			if (links[i].linkURL.length() >= stripOffExtension.length())
 			{
-				if (links[i].linkURL.substr(links[i].linkURL.length() - stripOffExtension.length(), stripOffExtension.length()) 
+				if (links[i].linkURL.substr(links[i].linkURL.length() - stripOffExtension.length(), stripOffExtension.length())
 					== stripOffExtension)
 				{
 					stripped = links[i].linkURL.substr(0, links[i].linkURL.length() - stripOffExtension.length());

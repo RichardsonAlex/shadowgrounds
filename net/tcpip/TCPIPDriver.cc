@@ -36,14 +36,14 @@ namespace net
       return "tcpip";
     }
 
-    
+
     INetConnection *TCPIPDriver::connectTo(const char *to)
       throw (NetDriverException*)
     {
       if (to == NULL)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "TCPIPDriver::connectTo - Invalid parameter (null)."); 
+          "TCPIPDriver::connectTo - Invalid parameter (null).");
       }
 
       int slen = strlen(to);
@@ -59,7 +59,7 @@ namespace net
       if (sep == -1)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "TCPIPDriver::connectTo - Invalid parameter (expected \"hostname:port\")."); 
+          "TCPIPDriver::connectTo - Invalid parameter (expected \"hostname:port\").");
       }
       char *hostname = new char[slen + 1];
       strncpy(hostname, to, sep);
@@ -74,13 +74,13 @@ namespace net
       if (connOk != 0)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_CONNECTION_REFUSED,
-          "TCPIPDriver::connectTo - Connection refused."); 
+          "TCPIPDriver::connectTo - Connection refused.");
       } else {
         c->setNonBlocking(true);
       }
       return new TCPIPConnection(c);
     }
-   
+
 
     INetBind *TCPIPDriver::bind(const char *port)
       throw (NetDriverException*)
@@ -100,7 +100,7 @@ namespace net
       return tcpipBind;
     }
 
-      
+
     void TCPIPDriver::setNetModeFlags(int netModeFlags)
       throw (NetDriverException*)
     {
@@ -108,7 +108,7 @@ namespace net
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_UNSUPPORTED_PARAMETER,
           "TCPIPDriver::setNetModeFlags - Unsupported flags set.");
     }
- 
+
 
     int TCPIPDriver::getNetModeFlags()
     {

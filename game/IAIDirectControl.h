@@ -11,7 +11,7 @@ namespace game
 
   /**
 	 * Interface for direct AI control of units.
-	 * 
+	 *
 	 * @author Jukka Kokkonen <jukka.kokkonen@postiloota.net>
 	 */
 
@@ -23,8 +23,8 @@ namespace game
 		virtual void doDirectControls(AIDirectControlActions &actionsOut) = 0;
 
 		/**
-		 * This method should return a pointer to the name of the AI direct control class. 
-		 * (such as "scriptable" in case of ScriptableAIDirectControl) 
+		 * This method should return a pointer to the name of the AI direct control class.
+		 * (such as "scriptable" in case of ScriptableAIDirectControl)
 		 * @return name of the AI direct control class. Null value should be never returned.
 		 */
 		virtual const char *getDirectControlName() = 0;

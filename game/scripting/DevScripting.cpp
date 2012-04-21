@@ -69,7 +69,7 @@ namespace game
 {
   extern PhysicsContactDamageManager *gameui_physicsDamageManager;
 
-	void DevScripting::process(util::ScriptProcess *sp, 
+	void DevScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{
@@ -125,7 +125,7 @@ namespace game
 					Logger::getInstance()->debug(dump);
 					delete [] dump;
 				} else {
-					Logger::getInstance()->debug("Null output."); 				
+					Logger::getInstance()->debug("Null output.");
 					assert(0);
 				}
 			}
@@ -140,7 +140,7 @@ namespace game
 					Logger::getInstance()->debug(dump);
 					delete [] dump;
 				} else {
-					Logger::getInstance()->debug("Null output."); 				
+					Logger::getInstance()->debug("Null output.");
 					assert(0);
 				}
 			}
@@ -158,7 +158,7 @@ namespace game
 					Logger::getInstance()->debug(dump);
 					delete [] dump;
 				} else {
-					Logger::getInstance()->debug("Null output."); 				
+					Logger::getInstance()->debug("Null output.");
 					assert(0);
 				}
 			}
@@ -177,7 +177,7 @@ namespace game
 						Logger::getInstance()->debug(dump);
 						delete [] dump;
 					} else {
-						Logger::getInstance()->debug("Null output."); 				
+						Logger::getInstance()->debug("Null output.");
 						assert(0);
 					}
 				}
@@ -189,7 +189,7 @@ namespace game
 			{
 				if (SimpleOptions::getBool(DH_OPT_B_SCRIPT_DEV_MODE))
 				{
-					if (game->devUnit == NULL 
+					if (game->devUnit == NULL
 						|| gsd->unit == game->devUnit)
 					{
 						sp->warning(stringData);
@@ -215,7 +215,7 @@ namespace game
 					sp->debug("DevScripting::process - Swapping sides.");
 
 					game->unitSelections[game->singlePlayerNumber]->selectAllUnits(false);
-					
+
 					game->gameUI->closeCombatWindow(game->singlePlayerNumber);
 					game->singlePlayerNumber = intData;
 					game->gameUI->openCombatWindow(game->singlePlayerNumber);
@@ -232,7 +232,7 @@ namespace game
 					&& game->inCombat)
 				{
 					sp->debug("DevScripting::process - Swapping sides.");
-					
+
 					game->gameUI->closeCombatWindow(game->singlePlayerNumber);
 					game->singlePlayerNumber = *lastValue;
 					game->gameUI->openCombatWindow(game->singlePlayerNumber);
@@ -248,7 +248,7 @@ namespace game
 				sp->warning("DevScripting::process - devUnit for null unit.");
 				game->devUnit = NULL;
 			} else {
-				game->devUnit = gsd->unit;	
+				game->devUnit = gsd->unit;
 			}
 			break;
 
@@ -262,7 +262,7 @@ namespace game
 				char *stats = game->getGameScene()->getStorm3D()->GetPrintableStatusInfo();
 				Logger::getInstance()->info(stats);
 				game->getGameScene()->getStorm3D()->DeletePrintableStatusInfo(stats);
-				
+
 				Logger::getInstance()->info("Visual effects running:");
 				Logger::getInstance()->info(int2str(ui::visual_effect_allocations));
 			} else {
@@ -405,8 +405,8 @@ namespace game
 					game->gameUI->openScoreWindow( game->singlePlayerNumber );
 				}
 			}
-			break;      
-      
+			break;
+
 		case GS_CMD_openMissionSelectionWindow:
 			{
 				if( game && game->gameUI )
@@ -450,7 +450,7 @@ namespace game
 
 		case GS_CMD_devRunSingleCommand:
 			if (stringData != NULL)
-			{				
+			{
 				int slen = strlen(stringData);
 				char *cmdName = new char[slen + 1];
 				char *param = new char[slen + 1];
@@ -508,9 +508,9 @@ namespace game
 					bool success;
 					if (!readingParam)
 					{
-						success = game->gameScripting->runSingleSimpleStringCommand(cmdName, NULL, &tmpInt, &tmpInt2); 
+						success = game->gameScripting->runSingleSimpleStringCommand(cmdName, NULL, &tmpInt, &tmpInt2);
 					} else {
-						success = game->gameScripting->runSingleSimpleStringCommand(cmdName, param, &tmpInt, &tmpInt2); 
+						success = game->gameScripting->runSingleSimpleStringCommand(cmdName, param, &tmpInt, &tmpInt2);
 					}
 					if (!success)
 					{
@@ -536,7 +536,7 @@ namespace game
 			{
 #ifdef FROZENBYTE_DEBUG_MEMORY
 				frozenbyte::debug::dumpLeakSnapshot();
-				frozenbyte::debug::markLeakSnapshot();					
+				frozenbyte::debug::markLeakSnapshot();
 #endif
 			}
 			break;

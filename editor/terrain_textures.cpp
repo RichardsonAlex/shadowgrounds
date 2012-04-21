@@ -869,7 +869,7 @@ void TerrainTextures::removeTexture(int index)
 	if(data->textures.size() < 2)
 		return;
 
-	// Should really remove & renormalize 
+	// Should really remove & renormalize
 	// -> currently just do nothing if set to terrain
 	if(!data->blendMap.canRemove(index))
 		return;

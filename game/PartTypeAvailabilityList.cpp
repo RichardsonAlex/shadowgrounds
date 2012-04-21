@@ -63,7 +63,7 @@ namespace game
     return ownedPartTypes[player];
   }
 
-  
+
   bool PartTypeAvailabilityList::isPartTypeAvailable(int player, PartType *partType)
   {
     ownedPartTypes[player]->resetIterate();

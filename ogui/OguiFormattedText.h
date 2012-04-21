@@ -15,10 +15,10 @@ class IOguiFormattedCommand;
 
 class OguiFormattedText
 {
-public: 
+public:
 	struct ParseData
 	{
-		ParseData( int x, int y, int w, int h ) : 
+		ParseData( int x, int y, int w, int h ) :
 			next_tag( 0 ),
 			next_linebrk( 0 ),
 			next_hardbreak( 0 ),
@@ -28,9 +28,9 @@ public:
 			my( 0 ),
 			cur_w( 0 ),
 			add_x( 0 ),
-			x( x ), 
-			y( y ), 
-			w( w ), 
+			x( x ),
+			y( y ),
+			w( w ),
 			h( h ),
 			after_y( h ),
 			after_y_x_value( 0 ),
@@ -62,7 +62,7 @@ public:
 
 	//.........................................................................
 
-	// Registers a font to a certain tag. For example, 
+	// Registers a font to a certain tag. For example,
 	// registerFont( "b", arial_bold );
 	// would register the text between <b></b> tags to be used as arial_bold
 	void registerFont( const std::string& tag_name, IOguiFont*font );
@@ -92,7 +92,7 @@ public:
 	// Sets new position
 	void move(int x, int y);
 	
-	// These tell us up to where did the clipping happen. 
+	// These tell us up to where did the clipping happen.
 	// Returns clip sizes if half_clip is true
 	int getClipPositionTop() const;
 	int getClipPositionBottom() const;
@@ -119,7 +119,7 @@ public:
 	// creates a new ogui button from the given image
 	void createImageButton( int button_x, int button_y, int button_w, int button_h, const std::string& image );
 
-	// creates a new ogui button from the given IOguiImage* pointer. The 
+	// creates a new ogui button from the given IOguiImage* pointer. The
 	// instance of the image is stored and freed when the button is freed
 	void createImageButton( int button_x, int button_y, int button_w, int button_h, IOguiImage* image );
 
@@ -147,12 +147,12 @@ private:
 
 	void					parseFormattedCommand( const std::string& command, ParseData* data );
 
-	// returns the line width in pixels. Parses the text ( the member 
+	// returns the line width in pixels. Parses the text ( the member
 	// variable ) startting from curpos
 	int						getLineWidth( int curpos, const std::stack< std::string >& tagstack, ParseData* data );
 	
-	// finds a place where the text goes over the width with the given cursor. 
-	// Returns the string position in pair.first and the length of it in pixels 
+	// finds a place where the text goes over the width with the given cursor.
+	// Returns the string position in pair.first and the length of it in pixels
 	// in pair.second. The Length in pixels isn't that useful anymore.
 	std::pair< int, int >	findLineWidthBreak( std::string::size_type pos, int width, IOguiFont* cur_font );
 

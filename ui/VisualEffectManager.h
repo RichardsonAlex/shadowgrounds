@@ -65,20 +65,20 @@ namespace ui
 			 */
 			VisualEffect *createNewVisualEffect(int visualEffectId,
 				IPointableObject *object, IPointableObject *origin,
-				const VC3 &position, const VC3 &endPosition, 
+				const VC3 &position, const VC3 &endPosition,
 				const VC3 &rotation, const VC3 &velocity, game::Game *game,
 				int muzzleflashBarrelNumber = 1, IStorm3D_Model *spawnModel = NULL);
 
 			/**
 			 * Creates a new FULLY MANAGED visual effect. Meaning that the
-			 * caller should not permanently store the returned visualeffect 
+			 * caller should not permanently store the returned visualeffect
 			 * pointer. The VisualEffectManager will have full ownership
 			 * of the effect and will handle destruction of the created effect.
 			 */
 			VisualEffect *createNewManagedVisualEffect(int visualEffectId,
 				int lifetimeInTicks,
 				IPointableObject *object, IPointableObject *origin,
-				const VC3 &position, const VC3 &endPosition, 
+				const VC3 &position, const VC3 &endPosition,
 				const VC3 &rotation, const VC3 &velocity, game::Game *game,
 				int muzzleflashBarrelNumber = 1, IStorm3D_Model *spawnModel = NULL);
 
@@ -87,18 +87,18 @@ namespace ui
 
 			void deleteVisualEffect(VisualEffect *v);
 
-			// had to change this to static for easy access from 
+			// had to change this to static for easy access from
 			// bullet code.
 			static int getVisualEffectIdByName(const char *effectname);
 
 			void loadParticleEffects();
 
 			void freeParticleEffects();
-			
+
 			void loadDecalEffects();
 
 			void freeDecalEffects();
-			
+
 			void run();
 
 			void prepareForRender(game::GameMap *gameMap, util::ColorMap *colorMap, ui::LightManager *lightManager);

@@ -66,7 +66,7 @@ namespace tracking
 		std::vector<ITrackableObject *> ret;
 
 		// TODO: optimize, create an iterator that can hold and iterate multiple ITrackableUnifiedHandleObjectIterators
-		// and return that instead of SimpleTrackableObjectIterator... 
+		// and return that instead of SimpleTrackableObjectIterator...
 
 		for (int i = 0; i < (int)impl->implementations.size(); i++)
 		{

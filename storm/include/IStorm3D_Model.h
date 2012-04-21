@@ -13,7 +13,7 @@
 #include "c2_sphere.h"
 
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include "Storm3D_Datatypes.h"
 #include "IStorm3D_Model.h"
@@ -98,7 +98,7 @@ public:
 	// Lights
 	virtual void SetSelfIllumination(const COL &color) = 0;
 	//virtual void SetLighting(int index, const VC3 &position, const COL &color, float range) = 0;
-	virtual void SetLighting(int index, signed short light_index_) = 0; 
+	virtual void SetLighting(int index, signed short light_index_) = 0;
 
 	virtual void useAlwaysDirectional(bool use) = 0;
 	virtual void SetDirectional(const VC3 &direction, float strength) = 0;
@@ -132,7 +132,7 @@ public:
 	virtual void SetOccluded(bool occluded) = 0;
 	virtual bool GetOccluded() const = 0;
 
-	// Dummy data 
+	// Dummy data
 	virtual void SetCustomData(IStorm3D_Model_Data *data) = 0;
 	virtual IStorm3D_Model_Data *GetCustomData() = 0;
 	virtual void SetTypeFlag(unsigned int flag) = 0;

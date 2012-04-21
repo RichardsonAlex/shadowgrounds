@@ -49,7 +49,7 @@ struct gs_commands_listtype
 // ---------
 
 /*
-struct GSCommandSorter: 
+struct GSCommandSorter:
 public std::binary_function<gs_commands_listtype, gs_commands_listtype, bool>
 {
 	bool operator() (const gs_commands_listtype &a, const gs_commands_listtype &b) const
@@ -89,7 +89,7 @@ int main(int argc, char *argv[])
 	if (snapshotPath[0] != '\0')
 	{
 //#ifndef _DEBUG
-		// WARNING: this will changedir to scriptdev.exe's directory 
+		// WARNING: this will changedir to scriptdev.exe's directory
 		// BUT, only on release build... not on debug build
 		if (_chdir(snapshotPath) != 0)
 		{
@@ -359,7 +359,7 @@ int main(int argc, char *argv[])
 	game::GameOptionManager::getInstance()->load();
 
 	//util::ScriptManager::getInstance()->setProcessor(this);
-	util::ScriptManager::getInstance()->setKeywords(GS_CMD_AMOUNT, 
+	util::ScriptManager::getInstance()->setKeywords(GS_CMD_AMOUNT,
 		gs_keywords, gs_datatypes);
 
 	util::SimpleParser sp;
@@ -453,9 +453,9 @@ int main(int argc, char *argv[])
 						|| strncmp(&buf[i + 1], "WARNING: ", 9) == 0
 						|| stillInError)
 					{
-						if (strncmp(&buf[i + 1], "ERROR: ", 7) == 0) 
+						if (strncmp(&buf[i + 1], "ERROR: ", 7) == 0)
 							skipErr = 7;
-						if (strncmp(&buf[i + 1], "WARNING: ", 9) == 0) 
+						if (strncmp(&buf[i + 1], "WARNING: ", 9) == 0)
 							skipErr = 9;
 						stillInError = true;
 

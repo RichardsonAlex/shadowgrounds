@@ -20,7 +20,7 @@ namespace game
   class UnitSelections
   {
   private:
-    int unitsSelected; 
+    int unitsSelected;
     IUnitSelectionListener *listener;
     int player;
     UnitList *unitList;
@@ -29,7 +29,7 @@ namespace game
     UnitSelections(UnitList *unitList, int player);
 
     void reset();
-     
+
     inline int getUnitsSelected() { return unitsSelected; }
 
     void setListener(IUnitSelectionListener *listener);

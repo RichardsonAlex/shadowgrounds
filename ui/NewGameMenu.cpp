@@ -152,7 +152,7 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	game = g;
 
 	ogui = o_gui;
-	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_newgamemenu_window_x", 0 ), getLocaleGuiInt( "gui_newgamemenu_window_y", 0 ), 
+	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_newgamemenu_window_x", 0 ), getLocaleGuiInt( "gui_newgamemenu_window_y", 0 ),
 									getLocaleGuiInt( "gui_newgamemenu_window_w", 1024 ), getLocaleGuiInt( "gui_newgamemenu_window_h", 768 ), NULL );
 	win->Hide();
 	win->SetUnmovable();
@@ -228,8 +228,8 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		difficultToolTipText = NULL;
 	}
 
-	if( selectedDifficultSelection != -1 ) 
-		selectDifficultButton( selectedDifficultSelection  ); 
+	if( selectedDifficultSelection != -1 )
+		selectDifficultButton( selectedDifficultSelection  );
 
 #ifdef GAME_MODE_OPTION_ENABLED
 	if( selectedGameplaySelection != -1 )
@@ -242,7 +242,7 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		for( i = 0; i < 4; i++ )
 		{
 			std::string name = gameProfiles->getCurrentProfile( i );
-			if( name.empty() ) 
+			if( name.empty() )
 				name = none;
 			
 			if( coopPlayerNames.find( convertToPlayerNum( i ) ) == coopPlayerNames.end() )
@@ -259,8 +259,8 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 	///////////////////////////////////////////////////////////////////////////
 	{
-		startGame = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_newgamemenu_startgame_x", 0 ), getLocaleGuiInt( "gui_newgamemenu_startgame_y", 0 ), 
-														getLocaleGuiInt( "gui_newgamemenu_startgame_w", 0 ), getLocaleGuiInt( "gui_newgamemenu_startgame_h", 0 ), 
+		startGame = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_newgamemenu_startgame_x", 0 ), getLocaleGuiInt( "gui_newgamemenu_startgame_y", 0 ),
+														getLocaleGuiInt( "gui_newgamemenu_startgame_w", 0 ), getLocaleGuiInt( "gui_newgamemenu_startgame_h", 0 ),
 														getLocaleGuiString( "gui_newgamemenu_startgame_norm" ), getLocaleGuiString( "gui_newgamemenu_startgame_high" ), getLocaleGuiString( "gui_newgamemenu_startgame_high" ), NULL, COMMANDS_STARTGAME );
 
 		startGame->SetListener( this );
@@ -275,13 +275,13 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 	///////////////////////////////////////////////////////////////////////////
 
 	assert( game  );
-	assert( game->gameUI ); 
+	assert( game->gameUI );
 	assert( game->gameUI->getController(0) );
 
 	if( game->inCombat )
 	{
 		closeMenuByEsc = false;
-	} 
+	}
 	else
 	{
 		
@@ -302,8 +302,8 @@ NewGameMenu::NewGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 		const char *text = getLocaleGuiString( "gui_newgamemenu_tutorialhints_text" );
 
-		tutorialHintsButton = new OguiCheckBox( win, ogui, x, y, w, h, 
-			img_norm, "", "", 
+		tutorialHintsButton = new OguiCheckBox( win, ogui, x, y, w, h,
+			img_norm, "", "",
 			img_fill,	"", "", 0 );
 		
 		tutorialHintsButton->setText( text, OguiCheckBox::TEXT_ALIGN_RIGHT, text_w, fonts->medium.highlighted, OguiButton::TEXT_V_ALIGN_TOP  );
@@ -459,7 +459,7 @@ void NewGameMenu::applyChanges()
 		for( i = 0; i < 4; i++ )
 		{
 			std::string profile = coopPlayerNames[ convertToPlayerNum( i ) ];
-			if( profile == none ) 
+			if( profile == none )
 				profile = "";
 
 			gameProfiles->setCurrentProfile( profile.c_str(), i );
@@ -733,32 +733,32 @@ void NewGameMenu::createDifficultyButtons()
 	difficultImageSelectDown = ogui->LoadOguiImage( optionsDifficultButtonHigh.c_str() );
 	difficultImageSelectNorm = ogui->LoadOguiImage( optionsDifficultButtonNormal.c_str() );
 
-	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, optionsEasyText, COMMANDS_EASY );
 
 	difficultButtonX += difficultButtonAddX;
 	difficultButtonY += difficultButtonAddY;
 
-	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, optionsNormalText, COMMANDS_NORMAL );
 	
 	difficultButtonX += difficultButtonAddX;
 	difficultButtonY += difficultButtonAddY;
 
-	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, optionsHardText, COMMANDS_HARD );
 
-	bool veryHardAvail = SimpleOptions::getBool(DH_OPT_B_GAME_VERY_HARD_AVAILABLE); 
+	bool veryHardAvail = SimpleOptions::getBool(DH_OPT_B_GAME_VERY_HARD_AVAILABLE);
 	bool extremelyHardAvail = false;
 	if (veryHardAvail)
 	{
 		difficultButtonX = difficultButtonLine2X;
 		difficultButtonY = difficultButtonLine2Y;
 
-		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonLine2W, difficultButtonLine2H, 
+		addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonLine2W, difficultButtonLine2H,
 			optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 			fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, optionsVeryHardText, COMMANDS_VERY_HARD );
 
@@ -768,7 +768,7 @@ void NewGameMenu::createDifficultyButtons()
 			difficultButtonX += difficultButtonLine2AddX;
 			difficultButtonY += difficultButtonLine2AddY;
 
-			addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonLine2W, difficultButtonLine2H, 
+			addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonLine2W, difficultButtonLine2H,
 				optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 				fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, optionsExtremelyHardText, COMMANDS_EXTREMELY_HARD );
 		}
@@ -867,8 +867,8 @@ void NewGameMenu::selectDifficultButton( int i )
 
 //.............................................................................
 
-void NewGameMenu::addDifficultButton( int x, int y, int w, int h, 
-		const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+void NewGameMenu::addDifficultButton( int x, int y, int w, int h,
+		const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 		IOguiFont* font, IOguiFont* high, IOguiFont* down, IOguiFont* disa, const std::string& text, int command )
 {
 	assert( ogui );
@@ -876,10 +876,10 @@ void NewGameMenu::addDifficultButton( int x, int y, int w, int h,
 	assert( command >= 0 );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-		button_norm.empty()?NULL:button_norm.c_str(), 
-		button_down.empty()?NULL:button_down.c_str(), 
-		button_high.empty()?NULL:button_high.c_str(), 
+	b = ogui->CreateSimpleTextButton( win, x, y, w, h,
+		button_norm.empty()?NULL:button_norm.c_str(),
+		button_down.empty()?NULL:button_down.c_str(),
+		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
 	
 	b->SetListener( this );
@@ -932,15 +932,15 @@ void NewGameMenu::createGameModeButtons()
 	std::string modeSingle =	getLocaleGuiString( "gui_newgamemenu_gamemode_singleplayer" );
 	std::string modeCoop =		getLocaleGuiString( "gui_newgamemenu_gamemode_cooperative" );
 
-	addGameModeButton( x, y, w, h, img_norm, img_down, img_high, 
-		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, 
+	addGameModeButton( x, y, w, h, img_norm, img_down, img_high,
+		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled,
 		modeSingle, COMMANDS_SINGLEPLAYER );
 
 	x += addX;
 	y += addY;
 
-	addGameModeButton( x, y, w, h, img_norm, img_down, img_high, 
-		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled, 
+	addGameModeButton( x, y, w, h, img_norm, img_down, img_high,
+		fonts->medium.normal, fonts->medium.highlighted, fonts->medium.down, fonts->medium.disabled,
 		modeCoop, COMMANDS_MULTIPLAYER );
 
 	selectGameModeButton( COMMANDS_SINGLEPLAYER );
@@ -996,7 +996,7 @@ void NewGameMenu::selectGameModeButton( int i )
 
 //.............................................................................
 
-void NewGameMenu::addGameModeButton( int x, int y, int w, int h, const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+void NewGameMenu::addGameModeButton( int x, int y, int w, int h, const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 					   	IOguiFont* font, IOguiFont* high, IOguiFont* down, IOguiFont* disa, const std::string& text, int command )
 {
 	assert( ogui );
@@ -1004,10 +1004,10 @@ void NewGameMenu::addGameModeButton( int x, int y, int w, int h, const std::stri
 	assert( command >= 0 );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-		button_norm.empty()?NULL:button_norm.c_str(), 
-		button_down.empty()?NULL:button_down.c_str(), 
-		button_high.empty()?NULL:button_high.c_str(), 
+	b = ogui->CreateSimpleTextButton( win, x, y, w, h,
+		button_norm.empty()?NULL:button_norm.c_str(),
+		button_down.empty()?NULL:button_down.c_str(),
+		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
 	
 	b->SetListener( this );
@@ -1330,8 +1330,8 @@ void NewGameMenu::createBonusOptions(game::Game *game, OguiWindow *win, Ogui *og
 			else
 			{
 				OguiCheckBox* b;
-				b = new OguiCheckBox( win, ogui, x, y, w, h, 
-					img_norm.c_str(), "", "", 
+				b = new OguiCheckBox( win, ogui, x, y, w, h,
+					img_norm.c_str(), "", "",
 					img_fill.c_str(),	"", "", i );
 				
 				b->setText( text.c_str(), OguiCheckBox::TEXT_ALIGN_RIGHT, text_w, fonts->medium.highlighted, OguiButton::TEXT_V_ALIGN_TOP  );

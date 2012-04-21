@@ -46,7 +46,7 @@ struct Storm
 	IStorm3D_Terrain *terrain;
 	::ui::LightManager *lightManager;
 
-	VC2I heightmapResolution; 
+	VC2I heightmapResolution;
 	VC3 heightmapSize;
 
 	AlignUnits unitAligner;

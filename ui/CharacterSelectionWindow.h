@@ -18,7 +18,7 @@ namespace game {
 
 namespace ui {
 
-class CharacterSelectionWindow 
+class CharacterSelectionWindow
 	: private IOguiButtonListener
 {
 public:
@@ -79,7 +79,7 @@ private:
 	unsigned int frame;
 
 	std::vector<unsigned int> switchToVideoInFrame;
-}; 
+};
 
 } // end of namespace ui
 

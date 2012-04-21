@@ -88,7 +88,7 @@ namespace game
 
 	extern Bullet *gs_hitscript_hit_bullet_type;
 
-	void UnitScripting::process(util::ScriptProcess *sp, 
+	void UnitScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, const char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{
@@ -190,7 +190,7 @@ namespace game
 							std::string temp = "GameScripting::process - setTarget idvalue, no unit found with given id string: ";
 							temp += std::string( gsd->stringValue );
 							sp->warning( temp.c_str() );
-						
+
 						}
 					} else {
 						sp->error("UnitScripting::process - setTarget called with idstring parameter, but string value is null.");
@@ -244,7 +244,7 @@ namespace game
 						if (ntpu != unit && ntpu->isActive() && !ntpu->isDestroyed())
 						{
 							VC3 distVec = ntpu->getPosition() - unit->getPosition();
-							if (closest == NULL || 
+							if (closest == NULL ||
 								distVec.GetSquareLength() < closestDistSq)
 							{
 								closest = ntpu;
@@ -253,7 +253,7 @@ namespace game
 						}
 					}
 					if (closest != NULL)
-						unit->targeting.setTarget(closest); 
+						unit->targeting.setTarget(closest);
 					break;
 				}
 				if (strcmp(stringData, "nearest_of_player_to_position") == 0)
@@ -269,7 +269,7 @@ namespace game
 						if (ntpu != unit && ntpu->isActive() && !ntpu->isDestroyed())
 						{
 							VC3 distVec = ntpu->getPosition() - unit->getPosition();
-							if (closest == NULL || 
+							if (closest == NULL ||
 								distVec.GetSquareLength() < closestDistSq)
 							{
 								closest = ntpu;
@@ -278,7 +278,7 @@ namespace game
 						}
 					}
 					if (closest != NULL)
-						unit->targeting.setTarget(closest); 
+						unit->targeting.setTarget(closest);
 					break;
 				}
 				sp->warning("UnitScripting::process - setTarget parameter invalid.");
@@ -308,7 +308,7 @@ namespace game
 						UnitActor *ua = getUnitActorForUnit(unit);
 						if (ua != NULL)
 						{
-							frozenbyte::ai::Path *path = ua->solvePath(unit, oldPos, 
+							frozenbyte::ai::Path *path = ua->solvePath(unit, oldPos,
 								gsd->position);
 							// notice: gsd->position may have been changed by getPath
 							// if it was blocked.
@@ -335,7 +335,7 @@ namespace game
 					UnitActor *ua = getUnitActorForUnit(unit);
 					if (ua != NULL)
 					{
-						frozenbyte::ai::Path *path = ua->solvePath(unit, unit->getPosition(), 
+						frozenbyte::ai::Path *path = ua->solvePath(unit, unit->getPosition(),
 							gsd->position, intData);
 						// notice: gsd->position may have been changed by getPath
 						// if it was blocked.
@@ -455,7 +455,7 @@ namespace game
 				}
 				gsd->waitDestination = true;
 				gsd->waitCounter = 10; // 1 sec? or 0.1 sec? or 100/67 sec?
-				
+
 			} else {
 				sp->warning("UnitScripting::process - Attempt to moveToPath for null unit.");
 			}
@@ -470,7 +470,7 @@ namespace game
 				{
 					bool success = ua->setPathTo(unit, gsd->position);
 					unit->setLastPathfindSuccess(success);
-				} 			 
+				}
 				gsd->waitDestination = true;
 				gsd->waitCounter = 100; // 1 sec? or 0.1 sec? or 100/67 sec?
 			} else {
@@ -487,7 +487,7 @@ namespace game
 				{
 					bool success = ua->setPathTo(unit, gsd->position);
 					unit->setLastPathfindSuccess(success);
-				} 			 
+				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to moveToPositionNoWait for null unit.");
 			}
@@ -623,7 +623,7 @@ namespace game
 				}
 				// if "position" special case, handled seperately below...
 
-				if (unit->targeting.hasTarget()) 
+				if (unit->targeting.hasTarget())
 				{
 					VC3 pos1;
 					Unit *u1 = unit->targeting.getTargetUnit();
@@ -636,7 +636,7 @@ namespace game
 					}
 					dist1 = tmp.GetSquareLength();
 				}
-				if (u2 != NULL) 
+				if (u2 != NULL)
 				{
 					VC3 tmp = u2->getPosition() - unit->getPosition();
 					dist2 = tmp.GetSquareLength();
@@ -679,7 +679,7 @@ namespace game
 			if (unit != NULL)
 			{
 				float posangle = unit->getAngleTo(gsd->position);
-				float curangle = unit->getRotation().y; 
+				float curangle = unit->getRotation().y;
 				float relRot = util::AngleRotationCalculator::getFactoredRotationForAngles(curangle, posangle, 0.0f);
 				*lastValue = (int)(relRot);
 			}
@@ -909,7 +909,7 @@ namespace game
 		case GS_CMD_CHANGEMAINSCRIPT:
 			if (unit != NULL)
 			{
-				if (stringData == NULL 
+				if (stringData == NULL
 					|| stringData[0] == '\0')
 				{
 					unit->setScript(NULL);
@@ -1108,11 +1108,11 @@ namespace game
 							//	0, game->gameMap->pathfindToScaledX(partialpath->getPointY(0)));
 							unit->setPath(partialpath);
 							unit->setPathIndex(unit->getPathIndex() + 1);
-							// (...path object is now contained within the unit, 
+							// (...path object is now contained within the unit,
 							// unit will handle it's proper deletion)
 							unit->setWaypoint(unit->getPosition());
-							unit->setFinalDestination(VC3(lastPos.x, 
-								game->gameMap->getScaledHeightAt(lastPos.x, lastPos.z), 
+							unit->setFinalDestination(VC3(lastPos.x,
+								game->gameMap->getScaledHeightAt(lastPos.x, lastPos.z),
 								lastPos.z));
 							unit->setLastPathfindSuccess(true);
 						} else {
@@ -1125,7 +1125,7 @@ namespace game
 						{
 							delete fullpath;
 						}
-					} 			 
+					}
 					gsd->waitDestination = true;
 					gsd->waitCounter = 50; // 1 sec? or 0.1 sec? or 100/67 sec?
 					*pause = true;
@@ -1193,11 +1193,11 @@ namespace game
 							//	0, game->gameMap->pathfindToScaledX(partialpath->getPointY(0)));
 							unit->setPath(partialpath);
 							unit->setPathIndex(unit->getPathIndex() + 1);
-							// (...path object is now contained within the unit, 
+							// (...path object is now contained within the unit,
 							// unit will handle it's proper deletion)
 							unit->setWaypoint(unit->getPosition());
-							unit->setFinalDestination(VC3(lastPos.x, 
-								game->gameMap->getScaledHeightAt(lastPos.x, lastPos.z), 
+							unit->setFinalDestination(VC3(lastPos.x,
+								game->gameMap->getScaledHeightAt(lastPos.x, lastPos.z),
 								lastPos.z));
 							unit->setLastPathfindSuccess(true);
 						} else {
@@ -1210,7 +1210,7 @@ namespace game
 						{
 							delete fullpath;
 						}
-					} 			 
+					}
 					//gsd->waitDestination = true;
 					//gsd->waitCounter = 100; // 1 sec? or 0.1 sec? or 100/67 sec?
 					//*pause = true;
@@ -1237,7 +1237,7 @@ namespace game
 							&& unit->scriptPaths.isStoredPathStart(i))
 						{
 							atOrder++;
-							if (atOrder == seeking) 
+							if (atOrder == seeking)
 							{
 								*lastValue = i;
 								break;
@@ -1267,7 +1267,7 @@ namespace game
 						{
 							*lastValue = 1;
 							sp->debug("UnitScripting::process - solvePathNumberByOrder failed to find free path.");
-						} 					 
+						}
 					}
 				}
 			} else {
@@ -1317,7 +1317,7 @@ namespace game
 				if (unit->getRootPart() != NULL
 					&& unit->getRootPart()->getType()->getMaxDamage() > 0)
 				{
-					*lastValue = 100 - (100 * unit->getRootPart()->getDamage() 
+					*lastValue = 100 - (100 * unit->getRootPart()->getDamage()
 						/ unit->getRootPart()->getType()->getMaxDamage());
 				} else {
 					*lastValue = 0;
@@ -1337,7 +1337,7 @@ namespace game
 				if (unit->getRootPart() != NULL
 					&& unit->getRootPart()->getType()->getMaxDamage() > 0)
 				{
-					*lastValue = 100 - (100 * unit->getRootPart()->getDamage() 
+					*lastValue = 100 - (100 * unit->getRootPart()->getDamage()
 						/ unit->getRootPart()->getType()->getMaxDamage());
 				} else {
 					*lastValue = 0;
@@ -1397,11 +1397,11 @@ namespace game
 					{
 						if (unit->getWeaponMaxAmmoAmount(weap) > 0)
 						{
-							int ammoperc = (100 * unit->getWeaponAmmoAmount(weap) 
+							int ammoperc = (100 * unit->getWeaponAmmoAmount(weap)
 								/ unit->getWeaponMaxAmmoAmount(weap));
 							if (ammoperc > *lastValue)
 								*lastValue = ammoperc;
-						} 						 
+						}
 					}
 				}
 			} else {
@@ -1646,7 +1646,7 @@ namespace game
 				if (unit->targeting.hasTarget())
 				{
 					Unit *targu = unit->targeting.getTargetUnit();
-					if (targu != NULL) 
+					if (targu != NULL)
 						epos = targu->getPosition();
 					else
 						if (unit->getSeeUnit() != NULL)
@@ -1663,16 +1663,16 @@ namespace game
 
 					int destx;
 					int desty;
-					CoverFinder::findCover(game->gameMap->getCoverMap(), 
+					CoverFinder::findCover(game->gameMap->getCoverMap(),
 						upathPosX, upathPosY, &destx, &desty, epathPosX, epathPosY);
 
 					gsd->position.x = game->gameMap->pathfindToScaledX(destx);
 					gsd->position.z = game->gameMap->pathfindToScaledY(desty);
 					gsd->position.y = game->gameMap->getScaledHeightAt(gsd->position.x, gsd->position.z);
 
-					*lastValue = 1; 			
+					*lastValue = 1;
 				} else {
-					*lastValue = 0; 
+					*lastValue = 0;
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to findCover for null unit.");
@@ -1852,7 +1852,7 @@ namespace game
 			} else {
 				sp->warning("UnitScripting::process - Attempt to unitOwnerPlayer for null unit.");
 			}
-			
+
 			break;
 
 		case GS_CMD_ISUNITCHARACTERNAME:
@@ -1941,7 +1941,7 @@ namespace game
 					sp->error("UnitScripting::process - setOwnedUnitOfType / setOwnedUnitOfTypeIncludingInActiveUnits, reference to unknown unit type.");
 					break;
 				}
-				
+
 				bool only_active = true;
 				if(command == GS_CMD_setOwnedUnitOfTypeIncludingInActiveUnits)
 				{
@@ -2027,7 +2027,7 @@ namespace game
 				} else {
 					Unit *reuse = NULL;
 
-					// TODO: don't do this while initializing a mission, this should be absolutely useless waste of 
+					// TODO: don't do this while initializing a mission, this should be absolutely useless waste of
 					// time at that point, as there should be no destroyed units to re-use.
 
 					if (ut->doesAllowRespawn())
@@ -2074,8 +2074,8 @@ namespace game
 					sp->error("UnitScripting::process - addUnitRootPart, illegal part type id.");
 			} else {
 				PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-				if (pt == NULL) 
-				{ 
+				if (pt == NULL)
+				{
 					sp->error("UnitScripting::process - addUnitRootPart, reference to unloaded part type.");
 				} else {
 					if (unit == NULL)
@@ -2110,8 +2110,8 @@ namespace game
 					sp->error("UnitScripting::process - addSubPart, illegal part type id.");
 			} else {
 				PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-				if (pt == NULL) 
-				{ 
+				if (pt == NULL)
+				{
 					sp->error("UnitScripting::process - addSubPart, reference to unloaded part type.");
 				} else {
 					// TODO: check that the part is actually attached to a unit!
@@ -2119,19 +2119,19 @@ namespace game
 					if (gsd->part == NULL)
 					{
 						sp->error("UnitScripting::process - addSubPart, attempted to add sub-part to null parent part.");
-					} 
+					}
 					else if(unit == NULL)
 					{
 						sp->error("UnitScripting::process - addSubPart, attempted to add sub-part to null unit.");
 					}
-					else 
+					else
 					{
 						Part *parentPart = gsd->part;
 						int slotamount = parentPart->getType()->getSlotAmount();
 						int slot;
 						for (slot = 0; slot < slotamount; slot++)
 						{
-							if (parentPart->getSubPart(slot) == NULL 
+							if (parentPart->getSubPart(slot) == NULL
 								&& pt->isInherited(parentPart->getType()->getSlotType(slot)))
 							break;
 						}
@@ -2177,7 +2177,7 @@ namespace game
 								// if this is a weapon, redo unit weaponry
 								if (pt->isInherited(
 									getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap"))))
-								{ 
+								{
 									// WARNING: unsafe cast!
 									WeaponObject *wo = (WeaponObject *)gsd->part;
 									int ammos = wo->getAmmoAmount();
@@ -2269,8 +2269,8 @@ namespace game
 						sp->error("UnitScripting::process - setSelectedWeapon, illegal part type id.");
 				} else {
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("UnitScripting::process - setSelectedWeapon, reference to unloaded part type.");
 					} else {
 						assert(unit->isActive());
@@ -2309,8 +2309,8 @@ namespace game
 						sp->error("UnitScripting::process - setSelectedSecondaryWeapon, illegal part type id.");
 				} else {
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("UnitScripting::process - setSelectedSecondaryWeapon, reference to unloaded part type.");
 					} else {
 						assert(unit->isActive());
@@ -2347,8 +2347,8 @@ namespace game
 					sp->error("UnitScripting::process - seekSubPart, illegal part type id.");
 			} else {
 				PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-				if (pt == NULL) 
-				{ 
+				if (pt == NULL)
+				{
 					sp->error("UnitScripting::process - seekSubPart, reference to unloaded part type.");
 				} else {
 					// TODO: check that the part is actually attached to a unit!
@@ -2362,7 +2362,7 @@ namespace game
 						int slot;
 						for (slot = 0; slot < slotamount; slot++)
 						{
-							if (parentPart->getSubPart(slot) != NULL 
+							if (parentPart->getSubPart(slot) != NULL
 								&& (parentPart->getSubPart(slot)->getType() == pt
 								|| parentPart->getSubPart(slot)->getType()->isInherited(pt)))
 							{
@@ -2385,7 +2385,7 @@ namespace game
 		case GS_CMD_ISPARTAVAILABLE:
 			if (gsd->part != NULL)
 			{
-				*lastValue = 1; 
+				*lastValue = 1;
 			} else {
 				*lastValue = 0;
 			}
@@ -2618,7 +2618,7 @@ namespace game
 		case GS_CMD_ISUNITTARGETINSIDEBUILDING:
 			if (unit != NULL)
 			{
-				if (unit->targeting.hasTarget() 
+				if (unit->targeting.hasTarget()
 					&& unit->targeting.getTargetUnit() != NULL)
 				{
 					VC3 pos = unit->targeting.getTargetUnit()->getPosition();
@@ -2736,7 +2736,7 @@ namespace game
 			{
 				VC3 spawnCoords = unit->getSpawnCoordinates();
 				gsd->position = spawnCoords;
-				//VC3 unitPos = VC3(game->gameMap->configToScaledX((int)spawnCoords.x), 0, 
+				//VC3 unitPos = VC3(game->gameMap->configToScaledX((int)spawnCoords.x), 0,
 				//	game->gameMap->configToScaledY((int)spawnCoords.z));
 				//gsd->position = unitPos;
 			} else {
@@ -2786,7 +2786,7 @@ namespace game
 				if (unit->targeting.hasTarget())
 				{
 					Unit *targu = unit->targeting.getTargetUnit();
-					if (targu != NULL) 
+					if (targu != NULL)
 						epos = targu->getPosition();
 					else
 						if (unit->getSeeUnit() != NULL)
@@ -2828,7 +2828,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to warpUnitToPosition for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_CANUNITWARPTOPOSITION:
@@ -2846,7 +2846,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to canUnitWarpToPosition for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_WARPUNITTOUNIT:
@@ -2870,7 +2870,7 @@ namespace game
 					}
 				} else {
 					sp->warning("UnitScripting::process - Attempt to warpUnitToUnit for null unit.");
-				} 					
+				}
 			} else {
 				sp->error("UnitScripting::process - warpUnitToUnit parameter missing, another unit id string expected.");
 			}
@@ -2914,7 +2914,7 @@ namespace game
 					}
 				} else {
 					sp->warning("UnitScripting::process - Attempt to setUnitRotationToFace for null unit.");
-				} 					
+				}
 			} else {
 				sp->error("UnitScripting::process - setUnitRotationToFace parameter missing, another unit id string expected.");
 			}
@@ -2933,7 +2933,7 @@ namespace game
 					unit->setOnGround(false);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to warpUnitToHeight for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_WARPUNITTOFLOATHEIGHT:
@@ -2950,7 +2950,7 @@ namespace game
 					unit->setOnGround(false);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to warpUnitToHeight for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETUNITROTATIONYTOVALUE:
@@ -2961,7 +2961,7 @@ namespace game
 				unit->setRotation(rot.x, yAngle, rot.z);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setUnitRotationYToValue for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETUNITROTATIONXTOVALUE:
@@ -2971,7 +2971,7 @@ namespace game
 				unit->setRotation((float)*lastValue, rot.y, rot.z);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setUnitRotationXToValue for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETUNITROTATIONZTOVALUE:
@@ -2981,7 +2981,7 @@ namespace game
 				unit->setRotation(rot.x, rot.y, (float)*lastValue);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setUnitRotationZToValue for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SLIDEUNITROTATIONYTOWARDVALUE:
@@ -2993,7 +2993,7 @@ namespace game
 				unit->setRotation(rot.x, rot.y, rot.z);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to slideUnitRotationYTowardValue for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SLIDEUNITROTATIONXTOWARDVALUE:
@@ -3007,7 +3007,7 @@ namespace game
 				unit->setRotation(rot.x, rot.y, rot.z);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to slideUnitRotationXTowardValue for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SLIDEUNITROTATIONZTOWARDVALUE:
@@ -3021,7 +3021,7 @@ namespace game
 				unit->setRotation(rot.x, rot.y, rot.z);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to slideUnitRotationZTowardValue for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_STOPUNITVELOCITY:
@@ -3030,7 +3030,7 @@ namespace game
 				unit->setVelocity(VC3(0,0,0));
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setUnitVelocity for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_MAKEUNITVISIBLE:
@@ -3042,7 +3042,7 @@ namespace game
 					unit->getVisualObject()->setVisible(true);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to makeUnitVisible for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_ADDHEALTH:
@@ -3057,7 +3057,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to addHealth for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_ADDARMOR:
@@ -3071,7 +3071,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to addArmor for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_GETARMOR:
@@ -3080,7 +3080,7 @@ namespace game
 				*lastValue = unit->getArmorAmount();
 			} else {
 				sp->warning("UnitScripting::process - Attempt to getArmor for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETARMORCLASS:
@@ -3089,7 +3089,7 @@ namespace game
 				unit->setArmorClass(intData);
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setArmorClass for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_GETARMORCLASS:
@@ -3098,7 +3098,7 @@ namespace game
 				*lastValue = unit->getArmorClass();
 			} else {
 				sp->warning("UnitScripting::process - Attempt to getArmorClass for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETARMORATLEASTTO:
@@ -3117,7 +3117,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setArmorAtLeastTo for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETARMORCLASSATLEASTTO:
@@ -3136,7 +3136,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setArmorClassAtLeastTo for null unit.");
-			} 					
+			}
 			break;
 
 		case GS_CMD_SETHEALTH:
@@ -3153,7 +3153,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setHealth for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_ADDAMMOTOPART:
@@ -3166,9 +3166,9 @@ namespace game
 						// TODO: should allow loading of "Weap" type parts...?
 						PartType *ammopt = getPartTypeById(
 							PARTTYPE_ID_STRING_TO_INT("Ammo"));
-						
+
 						if (gsd->part->getType()->isInherited(ammopt))
-						{ 						
+						{
 							// WARNING: unsafe cast (checked by the above if clause)
 							AmmoPack *ap = (AmmoPack *)gsd->part->getType();
 							if (unit->addWeaponAmmo(ap, intData))
@@ -3201,7 +3201,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to addAmmoToPart for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_ISPARTTYPE:
@@ -3213,8 +3213,8 @@ namespace game
 					sp->error("UnitScripting::process - isPartType, illegal part type id.");
 			} else {
 				PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-				if (pt == NULL) 
-				{ 
+				if (pt == NULL)
+				{
 					sp->error("UnitScripting::process - isPartType, reference to unloaded part type.");
 				} else {
 					if (gsd->part == NULL)
@@ -3267,7 +3267,7 @@ namespace game
 				sp->warning("GameScripting::process - Attempt to forceUnitAnimation for null unit.");
 			}
 			break;
-								
+
 		case GS_CMD_ENDFORCEDUNITANIMATION:
 			if (unit != NULL)
 			{
@@ -3283,11 +3283,11 @@ namespace game
 				// WARNING: unsafe cast!
 				UnitLevelAI *ai = (UnitLevelAI *)unit->getAI();
 				ai->setEnabled(false);
-			} else { 
+			} else {
 				sp->warning("GameScripting::process - Attempt to disableUnitAI for null unit.");
 			}
 			break;
-						
+
 		case GS_CMD_ENABLEUNITAI:
 			if (unit != NULL)
 			{
@@ -3297,9 +3297,9 @@ namespace game
 			} else {
 				sp->warning("GameScripting::process - Attempt to enableUnitAI for null unit.");
 			}
-			break;					 
-		
-		case GS_CMD_CLEARTARGET: 
+			break;
+
+		case GS_CMD_CLEARTARGET:
 			if (unit != NULL)
 			{
 				unit->targeting.clearTarget();
@@ -3657,7 +3657,7 @@ namespace game
 						} else {
 							*lastValue = 0;
 							sp->error("GameScripting::process - setTargetByIdString, Unit with given id is the same as current unit (cannot target self).");
-						} 
+						}
 					} else {
 						*lastValue = 0;
 						sp->warning("GameScripting::process - setTargetByIdString, No unit found with given id.");
@@ -3711,7 +3711,7 @@ namespace game
 					} else {
 						*lastValue = 0;
 						sp->error("GameScripting::process - setTargetByIdValue, Unit with given id is the same as current unit (cannot target self).");
-					} 
+					}
 				} else {
 					sp->error("GameScripting::process - Attempt to setTargetByIdValue for non-unit-id value.");
 					*lastValue = 0;
@@ -3759,7 +3759,7 @@ namespace game
 				if (unit->getFlashlight() != NULL)
 				{
 					unit->getFlashlight()->setFlashlightEnergy(*lastValue);
-				} 			
+				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setFlashlightEnergy for null unit.");
 			}
@@ -3772,7 +3772,7 @@ namespace game
 				{
 					unit->getFlashlight()->setFlashlightOperable(true);
 					game->gameUI->getCombatWindow( gsd->player )->showFlashlight();
-				} 			
+				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setFlashlightOperable for null unit.");
 			}
@@ -3785,7 +3785,7 @@ namespace game
 				{
 					unit->getFlashlight()->setFlashlightOperable(false);
 					game->gameUI->getCombatWindow( gsd->player )->hideFlashlight();
-				} 			
+				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setFlashlightInoperable for null unit.");
 			}
@@ -3811,7 +3811,7 @@ namespace game
 				if (unit->getFlashlight() != NULL)
 				{
 					unit->getFlashlight()->setFlashlightOn(true);
-				} 			
+				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setFlashlightOn for null unit.");
 			}
@@ -3823,7 +3823,7 @@ namespace game
 				if (unit->getFlashlight() != NULL)
 				{
 					unit->getFlashlight()->setFlashlightOn(false);
-				} 			
+				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setFlashlightOff for null unit.");
 			}
@@ -4050,7 +4050,7 @@ namespace game
 
 					ua->doSpecialMove(unit, forward, backward, left, right, intData / GAME_TICK_MSEC);
 
-					gsd->waitCounter = intData / GAME_TICK_MSEC + 1; 
+					gsd->waitCounter = intData / GAME_TICK_MSEC + 1;
 					*pause = true;
 				} else {
 					sp->warning("UnitScripting::process - Attempt to makeJump/makeJumpTowardPosition with zero length parameter.");
@@ -4223,10 +4223,10 @@ namespace game
 				LinkedListIterator<Unit*> iter(ulist);
 				bool foundit = false;
 				while (iter.iterateAvailable())
-				{ 		
+				{
 					Unit *other = iter.iterateNext();
 					// TODO: some treshold to the position...?
-					if (other != unit 
+					if (other != unit
 						&& other->getSpawnCoordinates().x == unit->getSpawnCoordinates().x
 						&& other->getSpawnCoordinates().z == unit->getSpawnCoordinates().z
 						&& other->getUnitType()->hasDoorExecute())
@@ -4263,7 +4263,7 @@ namespace game
 					{
 						if (game->gameUI->getFirstPerson(c) == unit)
 						{
-							game->gameUI->setFirstPerson(game->singlePlayerNumber, NULL, c);							
+							game->gameUI->setFirstPerson(game->singlePlayerNumber, NULL, c);
 						}
 					}
 					game->gameUI->setFirstPerson(game->singlePlayerNumber, unit, *lastValue);
@@ -4424,8 +4424,8 @@ namespace game
 								int selWeap = unit->getSelectedWeapon();
 								if (selWeap != -1)
 								{
-									Weapon *weapType = unit->getWeaponType(selWeap);									
-									if (weapType != NULL && (weapType->getPartTypeId() == pt->getPartTypeId() 
+									Weapon *weapType = unit->getWeaponType(selWeap);
+									if (weapType != NULL && (weapType->getPartTypeId() == pt->getPartTypeId()
 										|| weapType->isInherited(pt)))
 									{
 										*lastValue = 1;
@@ -4628,7 +4628,7 @@ namespace game
 			if (unit != NULL)
 			{
 				for (int i = 0; i < 4; i++)
-				{ 					
+				{
 					Unit *fpGhost = NULL;
 					if (game->gameUI->getFirstPerson(0) != NULL)
 					{
@@ -5006,8 +5006,8 @@ namespace game
 						sp->error("UnitScripting::process - getAmmoForUnitWeapon, illegal part type id.");
 				} else {
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("UnitScripting::process - getAmmoForUnitWeapon, reference to unloaded part type.");
 					} else {
 						if (unit->isActive())
@@ -5063,9 +5063,9 @@ namespace game
 					// TODO: should allow loading of "Weap" type parts...?
 					PartType *ammopt = getPartTypeById(
 						PARTTYPE_ID_STRING_TO_INT("Ammo"));
-					
+
 					if (gsd->part->getType()->isInherited(ammopt))
-					{ 					
+					{
 						int val = *lastValue;
 						if (val < 0)
 						{
@@ -5095,7 +5095,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setAmmoToPartByValue for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_STOPALLHOSTILES:
@@ -5489,7 +5489,7 @@ namespace game
 										// copied: "storeNextPath"
 										gsd->lastStoredPath++;
 										unit->scriptPaths.moveStoredPath(0, gsd->lastStoredPath);
-									}								
+									}
 								} else {
 									sp->error("UnitScripting::process - copyExtPathFromOriginalUnit failed to find end point for given path (internal error).");
 								}
@@ -5543,7 +5543,7 @@ namespace game
 								unit->setUnitEffectLayerType(Unit::UNIT_EFFECT_LAYER_PROTECTIVESKIN, effDuration);
 							else if (strcmp(stringData, "red_cloak") == 0)
 								unit->setUnitEffectLayerType(Unit::UNIT_EFFECT_LAYER_CLOAKRED, effDuration);
-							else 
+							else
 								effTypeOk = false;
 
 							if (effTypeOk)
@@ -5675,7 +5675,7 @@ namespace game
 			{
 				if( stringData != NULL )
 					unit->setHighlightText( stringData );
-				else 
+				else
 					unit->setHighlightText( "" );
 			} else {
 				sp->warning("UnitScripting::process - Attempt to setUnitHighlightText for null unit.");
@@ -5803,8 +5803,8 @@ namespace game
 						sp->error("UnitScripting::process - setUnitWeaponInoperable/Operable, illegal part type id.");
 				} else {
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("UnitScripting::process - setUnitWeaponInoperable/Operable, reference to unloaded part type.");
 					} else {
 						assert(unit->isActive());
@@ -5819,7 +5819,7 @@ namespace game
 							}
 #ifdef PROJECT_SURVIVOR
 							// update weapon window
-							WeaponWindow *win;						
+							WeaponWindow *win;
 							win = (WeaponWindow *)game->gameUI->getCombatWindow( 0 )->getSubWindow( "SurvivorMarineWeaponWindow" );
 							if(win)	win->forceUpdate();
 							win = (WeaponWindow *)game->gameUI->getCombatWindow( 0 )->getSubWindow( "SurvivorNapalmWeaponWindow" );
@@ -5841,7 +5841,7 @@ namespace game
 			if (unit != NULL)
 			{
 				unit->setSpottable(false);
-				// TODO: should loop thru all units and clear targets for ones that 
+				// TODO: should loop thru all units and clear targets for ones that
 				// have targeted this unit?
 			} else {
 				sp->warning("UnitScripting::process - Attempt to makeUnitUnspottable for null unit.");
@@ -5901,15 +5901,15 @@ namespace game
 						sp->error("UnitScripting::process - isUnitHitByBullet, illegal part type id.");
 				} else {
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("UnitScripting::process - isUnitHitByBullet, reference to unloaded part type.");
 					} else {
 						PartType *bulletpt = getPartTypeById(
 							PARTTYPE_ID_STRING_TO_INT("Bull"));
 
 						if (bulletpt != NULL && pt->isInherited(bulletpt))
-						{ 						
+						{
 							Bullet *b = (Bullet *)pt;
 
 							if (b == gs_hitscript_hit_bullet_type)
@@ -5934,7 +5934,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to isUnitHitByBullet for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_isUnitHitByElectricBullet:
@@ -5955,7 +5955,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to isUnitHitByElectricBullet for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_isUnitElectrified:
@@ -5969,7 +5969,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to isUnitHitByBullet for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_rotateUnitAroundUnitByValue:
@@ -6011,7 +6011,7 @@ namespace game
 					}
 				} else {
 					sp->warning("UnitScripting::process - Attempt to rotateUnitAroundUnitByValue for null unit.");
-				} 					
+				}
 			} else {
 				sp->error("UnitScripting::process - rotateUnitAroundUnitByValue parameter missing, another unit id string expected.");
 			}
@@ -6101,7 +6101,7 @@ namespace game
 			}
 			break;
 
-			
+
 		case GS_CMD_closeUnitHealthBar:
 			if( game && game->gameUI && game->gameUI->getCombatWindow( 0 ) )
 			{
@@ -6250,7 +6250,7 @@ namespace game
 			// THE HORRIBLE COPY PASTE HACK!!!
 			// COPY-PASTED FROM THE HORRIBLE COPY PAST HACK OF GS_CMD_COPYEXTPATHFROMORIGINALUNIT
 			{
-			
+
 				Unit* unit1 = gsd->originalUnit;
 				Unit* unit2 = unit;
 				if (unit1 != NULL)
@@ -6362,7 +6362,7 @@ namespace game
 											// copied: "storeNextPath"
 											gsd->lastStoredPath++;
 											unit1->scriptPaths.moveStoredPath(0, gsd->lastStoredPath);
-										}								
+										}
 									} else {
 										sp->error("UnitScripting::process - copyExtPathFromOriginalUnit failed to find end point for given path (internal error).");
 									}
@@ -6415,7 +6415,7 @@ namespace game
 				{
 					if (!u->isActive())
 					{
-						UnitSpawner::spawnUnit(game, u);						
+						UnitSpawner::spawnUnit(game, u);
 					} else {
 						sp->warning("GameScripting::process - activateUnitByIdString, unit is already active.");
 					}
@@ -6464,7 +6464,7 @@ namespace game
 				{
 					if (!u->isActive())
 					{
-						UnitSpawner::spawnUnit(game, u);						
+						UnitSpawner::spawnUnit(game, u);
 					} else {
 						sp->warning("GameScripting::process - activateUnit, unit is already active.");
 					}
@@ -6539,12 +6539,12 @@ namespace game
 				{
 					sp->warning("UnitScripting::process - Attempt to setPlayerWeaponry with invalid string parameter.");
 				}
-				
+
 				/*
-				
+
 				if( stringData != NULL )
 				{
-					
+
 					if (PARTTYPE_ID_STRING_VALID(partTypeIdString))
 					{
 						int weapon_id = PARTTYPE_ID_STRING_TO_INT(partTypeIdString);
@@ -6650,7 +6650,7 @@ namespace game
 				{
 					sp->warning("UnitScripting::process - Attempt to doesWeaponExistInPlayerWeaponry with invalid string parameter.");
 				}
-				
+
 			}
 			else
 			{
@@ -7012,8 +7012,8 @@ namespace game
 						sp->error("UnitScripting::process - setUnitWeaponInvisible/Visible, illegal part type id.");
 				} else {
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("UnitScripting::process - setUnitWeaponInvisible/Visible, reference to unloaded part type.");
 					} else {
 						assert(unit->isActive());
@@ -7215,7 +7215,7 @@ namespace game
 				}
 			} else {
 				sp->warning("UnitScripting::process - Attempt to isUnitHitByPoison for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_setUnitShielded:
@@ -7224,7 +7224,7 @@ namespace game
 				unit->setShielded(intData == 0 ? false : true);
 			} else {
 				sp->error("UnitScripting::process - Attempt to setUnitShielded for null unit.");
-			} 								
+			}
 			break;
 
 		case GS_CMD_reloadUnitWeapons:
@@ -7246,7 +7246,7 @@ namespace game
 	}
 
 
-	void UnitScripting::moveUnitToDirection(Unit *unit, int direction, 
+	void UnitScripting::moveUnitToDirection(Unit *unit, int direction,
 		float amount)
 	{
 		VC3 position = unit->getPosition();
@@ -7256,9 +7256,9 @@ namespace game
 
 		if (direction == MOVE_DIR_LEFT)
 			angle += 270;
-		else if (direction == MOVE_DIR_RIGHT) 		
+		else if (direction == MOVE_DIR_RIGHT)
 			angle += 90;
-		else if (direction == MOVE_DIR_BACKWARD)			
+		else if (direction == MOVE_DIR_BACKWARD)
 			angle += 180;
 		while (angle < 0) angle += 360;
 		while (angle >= 360) angle -= 360;
@@ -7279,7 +7279,7 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& u->getOwner() == unit->getOwner())
 			{
 				// NOTICE: not a good comparision here...
@@ -7361,7 +7361,7 @@ namespace game
 			if (u->isActive() && !u->isDestroyed())
 //				&& u->getOwner() == player)
 			{
-				if (num >= randNum) 
+				if (num >= randNum)
 				{
 					return u;
 				} else {
@@ -7383,12 +7383,12 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& game->isHostile(player, u->getOwner()))
 			{
 				VC3 pos2 = u->getPosition();
 				float distsq = (position - pos2).GetSquareLength();
-				if ((distsq < closestRangeSq || closest == NULL) 
+				if ((distsq < closestRangeSq || closest == NULL)
 					&& u != ignore)
 				{
 					closest = u;
@@ -7409,12 +7409,12 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& !game->isHostile(player, u->getOwner()))
 			{
 				VC3 pos2 = u->getPosition();
 				float distsq = (position - pos2).GetSquareLength();
-				if ((distsq < closestRangeSq || closest == NULL) 
+				if ((distsq < closestRangeSq || closest == NULL)
 					&& u != ignore)
 				{
 					closest = u;
@@ -7435,12 +7435,12 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& player == u->getOwner())
 			{
 				VC3 pos2 = u->getPosition();
 				float distsq = (position - pos2).GetSquareLength();
-				if ((distsq < closestRangeSq || closest == NULL) 
+				if ((distsq < closestRangeSq || closest == NULL)
 					&& u != ignore)
 				{
 					closest = u;
@@ -7485,7 +7485,7 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() 
+			if (u->isActive()
 				&& !u->isDestroyed()
 				&& u->getUnitType()->getName() != NULL)
 			{
@@ -7516,7 +7516,7 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() 
+			if (u->isActive()
 				&& !u->isDestroyed())
 			{
 				int varVal = u->variables.getVariable(varid);

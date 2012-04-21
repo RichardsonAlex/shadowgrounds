@@ -19,7 +19,7 @@ public:
 	~Storm3D_ResourceManager();
 
 	// Should only be called right before delete!
-	// Does not need to be called, but can be called in order to 
+	// Does not need to be called, but can be called in order to
 	// clean up sooner (because otherwise this won't be deleted by
 	// storm3d before d3d is released) -jpk
 	void uninitialize();

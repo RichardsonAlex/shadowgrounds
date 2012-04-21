@@ -21,7 +21,7 @@ void assertImp(const char *predicate, const char *file, int line);
 	} \
 	while(false)
 
-// ToDO: 
+// ToDO:
 // logic to choose assert/expensive assert imps depending on build settings
 
 #ifdef FB_TESTBUILD

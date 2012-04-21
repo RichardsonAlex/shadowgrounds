@@ -86,7 +86,7 @@ void GenericBarWindow::loadDataFromLocales( const std::string& locale_name )
 		const std::string& background = getLocaleGuiString( ( prefix + "background" ).c_str() );
 		const std::string& foreground = getLocaleGuiString( ( prefix + "foreground" ).c_str() );
 
-		slider = new OguiSlider( win, ogui, x, y, w, h, 
+		slider = new OguiSlider( win, ogui, x, y, w, h,
 								background, background, background,
 								foreground, foreground, foreground );
 
@@ -109,7 +109,7 @@ void GenericBarWindow::loadDataFromLocales( const std::string& locale_name )
 
 	}
 	{
-		// 
+		//
 		isOfFadingType = getLocaleGuiInt( (prefix + "fading").c_str(), 0 )==0?false:true;
 
 		messageOnShowStyle = getLocaleGuiString( (prefix + "message_on_show_style" ).c_str() );
@@ -248,7 +248,7 @@ void GenericBarWindow::fadeHide( int fadeTime )
 
 void GenericBarWindow::fadeShow( int fadeTime )
 {
-	if( reallyHidden ) 
+	if( reallyHidden )
 		return;
 
 	if( win )

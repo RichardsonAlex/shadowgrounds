@@ -36,7 +36,7 @@ namespace ui
 
     this->flashlightBackgroundOnImage = ogui->LoadOguiImage(getLocaleGuiString("gui_flashlight_on_image"));
     this->flashlightBackgroundLowImage = ogui->LoadOguiImage(getLocaleGuiString("gui_flashlight_low_image"));
-    this->flashlightBackgroundOffImage = ogui->LoadOguiImage(getLocaleGuiString("gui_flashlight_off_image")); 
+    this->flashlightBackgroundOffImage = ogui->LoadOguiImage(getLocaleGuiString("gui_flashlight_off_image"));
 
     this->fillupImage = ogui->LoadOguiImage(getLocaleGuiString("gui_flashlight_fillup_image"));
     this->fillupLowImage = ogui->LoadOguiImage(getLocaleGuiString("gui_flashlight_fillup_low_image"));
@@ -48,7 +48,7 @@ namespace ui
     fillupButton = ogui->CreateSimpleImageButton(win, getLocaleGuiInt("gui_flashlight_fillup_offset_x", 0), getLocaleGuiInt("gui_flashlight_fillup_offset_y", 0), getLocaleGuiInt("gui_flashlight_fillup_size_x", 0), getLocaleGuiInt("gui_flashlight_fillup_size_y", 0), NULL, NULL, NULL);
 		fillupButton->SetDisabled(true);
 		fillupButton->SetDisabledImage(fillupImage);
- 
+
 		win->SetEffectListener(this);
 
 #ifdef PROJECT_SURVIVOR

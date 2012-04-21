@@ -27,12 +27,12 @@ class RawInputDeviceHandler
 	//		* The last mouse in list of mouses is sum of all mouses. getMouseInfo(MOUSEHANDLER_ALL_MOUSES_ID)
 	//		  returns this one. Notice that getMouseInfo(numMice - 1) returns it as well, so keep this in
 	//		  mind when looping through mice or doing something like that.
-	//		* Seems like RawInput gives handle(s) to some device(s) that doesn't seem to 
+	//		* Seems like RawInput gives handle(s) to some device(s) that doesn't seem to
 	//		  physically exist. So you can't assume that mouse 0 is first mouse, mouse 1 second,
 	//		  etc.. Instead, I think the best way to solve which mouse ID is which, is to let
 	//		  the user bind the mouses from configuration or something.
 	//		* wndproc_ptr Eventhandler MUST be called from the window event handler at some point like this:
-	//		  if(RawInputDeviceHandler::Eventhandler) 
+	//		  if(RawInputDeviceHandler::Eventhandler)
 	//				RawInputDeviceHandler::Eventhandler( hWnd, msg, wParam, lParam);
 	//		  Otherwise input devices won't give any response when rawinput is enabled.
 	//

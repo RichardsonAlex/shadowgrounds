@@ -10,7 +10,7 @@
 // Common datatype includes
 #include "DatatypeDef.h"
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include "Storm3D_Datatypes.h"
 #include "IStorm3D_Material.h"

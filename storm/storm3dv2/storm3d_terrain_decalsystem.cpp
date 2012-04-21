@@ -34,7 +34,7 @@ using namespace frozenbyte::storm;
 	typedef vector<DecalMaterial> DecalMaterialList;
 
 
-	// position + normal + texcoord + color 
+	// position + normal + texcoord + color
 	static const int VERTEX_SIZE = 3*4 + 3*4 + 4*4 + 1*4;
 	static const int STORM_MAX_DECAL_AMOUNT = 10000;
 

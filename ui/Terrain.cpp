@@ -96,7 +96,7 @@ using namespace frozenbyte;
 #define TERRAIN_OBJECT_BREAK_TEXTURE_TYPE_SCALE_HP 1
 #define TERRAIN_OBJECT_BREAK_TEXTURE_TYPE_ALWAYS 2
 #define TERRAIN_OBJECT_BREAK_TEXTURE_TYPE_SCRIPTABLE 3
-// TODO: and apparently there are some different types of break textures??? number 1 and number 2. 
+// TODO: and apparently there are some different types of break textures??? number 1 and number 2.
 // which mean exactly what?
 
 
@@ -121,7 +121,7 @@ extern bool signal_this_terrain_object_break_hack;
 
 
 bool terrain_object_variables_inited = false;
-std::string terrain_object_variable_name[TERRAIN_OBJECT_VARIABLES_AMOUNT] = 
+std::string terrain_object_variable_name[TERRAIN_OBJECT_VARIABLES_AMOUNT] =
 {
 	"", "", "", "", "", "", "", "",
 };
@@ -944,7 +944,7 @@ struct TerrainData
 		clear_static_physics_temp_models();
 #endif
 
-		// TODO: should we delete the heightMapData here... 
+		// TODO: should we delete the heightMapData here...
 		// it is a shared buffer (someone else may delete it - gameMap maybe?)
 
 		if(backgroundStormModel)
@@ -1015,24 +1015,24 @@ struct TerrainData
 
 		float dx1, dx2, dx3;
 
-		if (B.y-A.y > 0) 
-			dx1=(B.x-A.x)/(B.y-A.y); 
-		else 
+		if (B.y-A.y > 0)
+			dx1=(B.x-A.x)/(B.y-A.y);
+		else
 			dx1=B.x - A.x;
 		
-		if (C.y-A.y > 0) 
-			dx2=(C.x-A.x)/(C.y-A.y); 
-		else 
+		if (C.y-A.y > 0)
+			dx2=(C.x-A.x)/(C.y-A.y);
+		else
 			dx2=0;
 		
-		if (C.y-B.y > 0) 
-			dx3=(C.x-B.x)/(C.y-B.y); 
-		else 
+		if (C.y-B.y > 0)
+			dx3=(C.x-B.x)/(C.y-B.y);
+		else
 			dx3=0;
 
 		VC2 S = A;
 		VC2 E = A;
-		if( dx1 > dx2 ) 
+		if( dx1 > dx2 )
 		{
 			for( ;S.y<=B.y;S.y++,E.y++,S.x+=dx2,E.x+=dx1 )
 				horizline( S.x, E.x, S.y, add );
@@ -1050,7 +1050,7 @@ struct TerrainData
 
 	void paintDynamicObstacle( int modelId, int instanceId, VC2I ox_pos, float angle, bool add )
 	{
-		if( modelId >= (signed)objects.size() || 
+		if( modelId >= (signed)objects.size() ||
 			objects[modelId].model.get() == NULL ||
 			objects[modelId].instances[instanceId].deleted )
 		{
@@ -1090,7 +1090,7 @@ struct TerrainData
 				angle += ( 3.1415962f / 2.0f );
 				for( int i = 0; i < 4; i++ )
 				{
-					// rotate 
+					// rotate
 					float ca = sin( angle );
 					float sa = cos( angle );
 		
@@ -1109,7 +1109,7 @@ struct TerrainData
 						corners[ i ].y > 0 && corners[ i ].y < gameMap->getPathfindSizeY() ) )
 					{
 						draw = false;
-						Logger::getInstance()->error( "Terrain::paintDynamicObstacle() - leaking all over the map" ); 
+						Logger::getInstance()->error( "Terrain::paintDynamicObstacle() - leaking all over the map" );
 					}
 				}
 
@@ -1168,12 +1168,12 @@ struct TerrainData
 			bool draw = true;
 
 			if( !( ox_min.x > 0 && ox_min.x < gameMap->getPathfindSizeX() &&
-				ox_min.y > 0 && ox_min.y < gameMap->getPathfindSizeY() ) || 
+				ox_min.y > 0 && ox_min.y < gameMap->getPathfindSizeY() ) ||
 				!( ox_max.x > 0 && ox_max.x < gameMap->getPathfindSizeX() &&
 				ox_max.y > 0 && ox_max.y < gameMap->getPathfindSizeY() ) )
 			{
 				draw = false;
-				Logger::getInstance()->error( "Terrain::paintDynamicObstacle() - leaking all over the map" ); 
+				Logger::getInstance()->error( "Terrain::paintDynamicObstacle() - leaking all over the map" );
 			}
 
 
@@ -1186,7 +1186,7 @@ struct TerrainData
 					{
 						if( add )
 							gameScene_instance->addDoorObstacle(tx, ty, TERRAIN_DYNAMIC_OBSTACLE_HEIGHT);
-						else 
+						else
 							gameScene_instance->removeDoorObstacle(tx, ty, TERRAIN_DYNAMIC_OBSTACLE_HEIGHT);
 					}
 				}
@@ -1196,7 +1196,7 @@ struct TerrainData
 
 	void removeDynamicObstacle(int modelId, int instanceId)
 	{
-		if (!useDynamicObstacles) 
+		if (!useDynamicObstacles)
 			return;
 
 		if (!objects[modelId].instances[instanceId].dynamicObstacleExists)
@@ -1212,7 +1212,7 @@ struct TerrainData
 
 	void addDynamicObstacle(int modelId, int instanceId)
 	{
-		if (!useDynamicObstacles) 
+		if (!useDynamicObstacles)
 			return;
 
 		assert(!objects[modelId].instances[instanceId].dynamicObstacleExists);
@@ -1873,7 +1873,7 @@ static util::ObjectDurabilityParser durp;
 
 			Object &object = objects[i];
 			object.model = model;
-			object.data = data; 
+			object.data = data;
 			object.instances.resize(instanceAmount);
 			objectIndices[data.fileName] = i;
 
@@ -2676,7 +2676,7 @@ static util::ObjectDurabilityParser durp;
 				int prevSize = (int)staticPhysicsTempModels.size();
 				if (prevSize < modelId + 1)
 				{
-					// TODO: optimize, could already resize it a bit bigger (or else, we end up resizeing this 
+					// TODO: optimize, could already resize it a bit bigger (or else, we end up resizeing this
 					// each time a new model is loaded..
 					staticPhysicsTempModels.resize(modelId + 1);
 					// just to be sure, set all of the new pointers to null... (assuming vector does not init them properly)
@@ -2839,8 +2839,8 @@ static util::ObjectDurabilityParser durp;
 #endif
 #endif
 			totalCreated++;
-		} 
-		else 
+		}
+		else
 		{
 			if(data.physicsType == TERRAIN_OBJECT_PHYSICS_TYPE_STATIC)
 			{
@@ -3244,7 +3244,7 @@ void Terrain::updatePhysics(game::GamePhysics *gamePhysics, std::vector<TerrainO
 				bool needsUpdate = false;
 				if (fabs(instance.position.x - pos.x) > UPDATE_PHYSICS_RANGE || fabs(instance.position.y - pos.z) > UPDATE_PHYSICS_RANGE || fabs(instance.height - pos.y) > UPDATE_PHYSICS_RANGE)
 					needsUpdate = true;
-				if (fabs(instance.setRotation.x - rot.x) > 0.0015f 
+				if (fabs(instance.setRotation.x - rot.x) > 0.0015f
 					|| fabs(instance.setRotation.y - rot.y) > 0.0015f
 					|| fabs(instance.setRotation.z - rot.z) > 0.0015f
 					|| fabs(instance.setRotation.w - rot.w) > 0.0015f)
@@ -3345,7 +3345,7 @@ void Terrain::updatePhysics(game::GamePhysics *gamePhysics, std::vector<TerrainO
 	// FIXME: this is a total hack!
 	// should not use some position/radius iterator, instead, see the above commented-out code...
 	/*
-	VC3 foopos = VC3(0,0,0); 
+	VC3 foopos = VC3(0,0,0);
 	float fooradius = 1000.0f;
 	boost::shared_ptr<IStorm3D_TerrainModelIterator> it = data->terrain->getModelIterator(foopos, fooradius * data->terrainScale);
 	for(; !it->end(); it->next())
@@ -3362,7 +3362,7 @@ void Terrain::updatePhysics(game::GamePhysics *gamePhysics, std::vector<TerrainO
 			VC3 pos = bp->getPosition();
 			QUAT rot = bp->getRotation();
 
-			if (fabs(instance.position.x - pos.x) > 0.01f 
+			if (fabs(instance.position.x - pos.x) > 0.01f
 				|| fabs(instance.position.y - pos.z) > 0.01f
 				|| fabs(instance.height - pos.y) > 0.01f)
 			{
@@ -3665,7 +3665,7 @@ void Terrain::BreakTerrainObject(UnifiedHandle uh, std::vector<TerrainObstacle> 
 
 	if(data->breakObjects(modelId, objectId, damage, removedObjects, events, position, velocity, position3, false, only_breaktexture))
 	{
-		data->terrain->removeInstance(modelId, objectId); 
+		data->terrain->removeInstance(modelId, objectId);
 	}
 }
 
@@ -3831,7 +3831,7 @@ bool Terrain::doesTerrainObjectExist(int terrainModelId, int terrainObstacleId) 
 VC3 Terrain::getTerrainObjectPosition(int terrainModelId, int terrainObstacleId) const
 {
 	VC2 tmp = data->objects[terrainModelId].instances[terrainObstacleId].position;
-	float height = data->objects[terrainModelId].instances[terrainObstacleId].height; 
+	float height = data->objects[terrainModelId].instances[terrainObstacleId].height;
 	return VC3(tmp.x, height, tmp.y);
 }
 
@@ -3896,7 +3896,7 @@ game::tracking::ITrackableUnifiedHandleObjectIterator *Terrain::getTrackableUnif
 		int modelId = it->getModelId();
 		int instanceId = it->getInstanceId();
 
-		// TODO: check for burnable flag instead... 
+		// TODO: check for burnable flag instead...
 		//if (strcmp(data->objects[modelId].data.material.c_str(), "wood") == 0)
 		if ((data->objects[modelId].data.trackableType & typeMask) != 0)
 		{

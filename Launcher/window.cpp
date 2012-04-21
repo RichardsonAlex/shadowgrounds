@@ -25,7 +25,7 @@ public:
 		windowClass.hInstance = GetModuleHandle( 0 );
 		windowClass.hIcon = LoadIcon( GetModuleHandle( 0 ), reinterpret_cast<const char *> ( iconId ) );
 		windowClass.hCursor = LoadCursor( NULL, IDC_ARROW );
-		windowClass.hbrBackground = 0; //CreateSolidBrush(0); //COLOR_TEXT; 
+		windowClass.hbrBackground = 0; //CreateSolidBrush(0); //COLOR_TEXT;
 		windowClass.lpszMenuName = 0;
 		windowClass.lpszClassName = windowClassName;
 		windowClass.hIconSm = 0;

@@ -309,7 +309,7 @@ namespace util
 		VariableIPHashType *variableIPHash;
 
 		//static VariableHashType *globalVariableHash;
-		
+
 		int allocedSize;
 
 		int commandAmount;

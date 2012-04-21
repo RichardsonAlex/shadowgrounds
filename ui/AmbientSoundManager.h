@@ -5,7 +5,7 @@ namespace sfx {
 	class SoundLooper;
 } // sfx
 
-namespace game 
+namespace game
 {
 	class GameUI;
 }
@@ -15,7 +15,7 @@ namespace ui
 {
 	struct AmbientSoundManagerData;	
 
-	class AmbientSoundManager 
+	class AmbientSoundManager
 	{
 
 	public:
@@ -24,11 +24,11 @@ namespace ui
 
 		virtual ~AmbientSoundManager();
 
-		void clearAllAmbientSounds(); 
+		void clearAllAmbientSounds();
 	 		
 		void setNextFreeAmbientSound();
 
-		void setSelectedAmbientSound(int i); 
+		void setSelectedAmbientSound(int i);
 
 		int getSelectedAmbientSound();
 

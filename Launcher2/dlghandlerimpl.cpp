@@ -63,7 +63,7 @@ void DlgHandlerImpl::addComboItems( HWND hwnd, const std::vector< std::string >&
 		std::wstring str;
 		convertToWide( game::getLocaleGuiString( items[ i ].c_str() ), str );
 
-		localizationComboBox.insert( std::pair< std::wstring, std::string >( str, items[ i ] ) ); 
+		localizationComboBox.insert( std::pair< std::wstring, std::string >( str, items[ i ] ) );
 
 		if( SendMessageW( hwnd, CB_FINDSTRING, -1, (LPARAM) str.c_str() ) == CB_ERR )
 			SendMessageW( hwnd, CB_ADDSTRING, 0, ( LPARAM ) str.c_str() );
@@ -72,7 +72,7 @@ void DlgHandlerImpl::addComboItems( HWND hwnd, const std::vector< std::string >&
 	if( !select.empty() )
 	{
 		//std::wstring str = ::game::DHLocaleManager::getInstance()->getWideString(::game::DHLocaleManager::BANK_GUI, select.c_str());
-		std::wstring str; 
+		std::wstring str;
 		convertToWide( game::getLocaleGuiString( select.c_str() ), str );
 		SendMessageW( hwnd, CB_SELECTSTRING, -1, (LPARAM)str.c_str() );
 	}
@@ -80,7 +80,7 @@ void DlgHandlerImpl::addComboItems( HWND hwnd, const std::vector< std::string >&
 #else
 	for( int i = 0; i < (int)items.size(); i++ )
 	{
-		localizationComboBox.insert( std::pair< std::string, std::string >( game::getLocaleGuiString( items[ i ].c_str() ), items[ i ] ) ); 
+		localizationComboBox.insert( std::pair< std::string, std::string >( game::getLocaleGuiString( items[ i ].c_str() ), items[ i ] ) );
 
 		if( SendMessage( hwnd, CB_FINDSTRING, -1, (LPARAM) (LPCSTR)game::getLocaleGuiString( items[ i ].c_str() ) ) == CB_ERR )
 			SendMessage( hwnd, CB_ADDSTRING, 0, ( LPARAM ) game::getLocaleGuiString( items[ i ].c_str() ) );

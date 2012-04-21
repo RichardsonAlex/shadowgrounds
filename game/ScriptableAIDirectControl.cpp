@@ -11,7 +11,7 @@
 namespace game
 {
 
-static const char *eventMaskNames[ScriptableAIDirectControl::NUM_EVENT_MASK + 1] = 
+static const char *eventMaskNames[ScriptableAIDirectControl::NUM_EVENT_MASK + 1] =
 {
 	"tick",
 	"timer",
@@ -36,7 +36,7 @@ static const char *eventMaskNames[ScriptableAIDirectControl::NUM_EVENT_MASK + 1]
 };
 
 
-static const char *aimModeNames[ScriptableAIDirectControl::NUM_AIM_MODE + 1] = 
+static const char *aimModeNames[ScriptableAIDirectControl::NUM_AIM_MODE + 1] =
 {
 	"offset_self",
 	"absolute",
@@ -119,13 +119,13 @@ void ScriptableAIDirectControl::doDirectControls(AIDirectControlActions &actions
 	bool objectTouchLeft = false;
 	bool objectTouchRight = false;
 
-	// optimization, do this only if event mask allows. (even though that will 
-	// result into slightly erronous behaviour when event mask is changed while 
+	// optimization, do this only if event mask allows. (even though that will
+	// result into slightly erronous behaviour when event mask is changed while
 	// these conditions are true!)
 	if (this->eventMask & (EVENT_MASK_DROP_ON_LEFT | EVENT_MASK_DROP_ON_RIGHT))
 	{
 		static const int dropCheckDist = 3;
-		if (unit->obstacleX >= dropCheckDist && unit->obstacleX < game->gameMap->getObstacleSizeX() - dropCheckDist 
+		if (unit->obstacleX >= dropCheckDist && unit->obstacleX < game->gameMap->getObstacleSizeX() - dropCheckDist
 			&& unit->obstacleY >= dropCheckDist && unit->obstacleY < game->gameMap->getObstacleSizeY() - dropCheckDist)
 		{
 			assert(dropCheckDist >= 3);
@@ -144,7 +144,7 @@ void ScriptableAIDirectControl::doDirectControls(AIDirectControlActions &actions
 		// TODO: read from physics object feedback instead!
 
 		static const int dropCheckDist = 3;
-		if (unit->obstacleX >= dropCheckDist && unit->obstacleX < game->gameMap->getObstacleSizeX() - dropCheckDist 
+		if (unit->obstacleX >= dropCheckDist && unit->obstacleX < game->gameMap->getObstacleSizeX() - dropCheckDist
 			&& unit->obstacleY >= dropCheckDist && unit->obstacleY < game->gameMap->getObstacleSizeY() - dropCheckDist)
 		{
 			assert(dropCheckDist >= 2);

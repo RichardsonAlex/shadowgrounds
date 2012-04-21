@@ -12,7 +12,7 @@
 namespace game
 {
 
-Water::Water() 
+Water::Water()
 {
 
 	minY = 0.0f;
@@ -26,11 +26,11 @@ Water::Water()
 
 }
 
-Water::~Water() 
+Water::~Water()
 {
 }
 
-void Water::setName(const char *name) 
+void Water::setName(const char *name)
 {
 	// helou!!!
 	// with stl string this could be simply: this->name = name; :)
@@ -46,19 +46,19 @@ void Water::setName(const char *name)
 	}
 }
 
-void Water::setDecoration(ui::Decoration *decor) 
+void Water::setDecoration(ui::Decoration *decor)
 {
 	decoration = decor;
 	updateBoundaries();
 }
 
-void Water::setHeight(float height) 
+void Water::setHeight(float height)
 {
 	this->height = height;
 	updateBoundaries();
 }
 
-void Water::setPosition(const VC3 &position) 
+void Water::setPosition(const VC3 &position)
 {
 	this->position.x = position.x;
 	this->position.z = position.z;
@@ -66,7 +66,7 @@ void Water::setPosition(const VC3 &position)
 }
 
 // based on current position and decoration...
-void Water::updateBoundaries() 
+void Water::updateBoundaries()
 {	
 	if(decoration) {
 		float sizeX, sizeY;

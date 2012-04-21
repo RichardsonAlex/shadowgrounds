@@ -24,7 +24,7 @@
 namespace game
 {
 
-  // NOTE: clone method or =operator needed if memory allocations or 
+  // NOTE: clone method or =operator needed if memory allocations or
 	// pointers are used, because = operator is used for objects of this
 	// class.
 
@@ -242,7 +242,7 @@ namespace game
     if (visualObject != NULL)
     {
       //if ((seenByPlayerBits & (1<<0)) != 0
-      if (seenByFirstPerson) 
+      if (seenByFirstPerson)
       {
         visualObject->setVisible(true);
       } else {

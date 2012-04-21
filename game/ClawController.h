@@ -72,7 +72,7 @@ public:
 	// Temp controlling
 	void removeActor(NxActor *actor);
 	bool hasActor() const;
-	void setActor( NxActor * ); 
+	void setActor( NxActor * );
 	void pickActor();
 	void dropActor();
 	void setGrabFlag(bool value);

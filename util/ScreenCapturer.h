@@ -6,7 +6,7 @@ class IStorm3D;
 
 namespace util
 {
-  
+
   class ScreenCapturer
   {
   public:

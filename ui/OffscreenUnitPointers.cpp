@@ -42,7 +42,7 @@ namespace ui
 
 		int i;
 		for (i = 0; i < OFFSCREEN_UNIT_POINTERS_MAX_UNITS; i++)
-		{ 
+		{
 			pointerButs[i] = NULL;
 			pointedUnits[i] = NULL;
 		}
@@ -64,7 +64,7 @@ namespace ui
 	OffscreenUnitPointers::~OffscreenUnitPointers()
 	{
 		for (int i = 0; i < OFFSCREEN_UNIT_POINTERS_MAX_UNITS; i++)
-		{ 
+		{
 			if (pointerButs[i] != NULL)
 				delete pointerButs[i];
 		}
@@ -86,7 +86,7 @@ namespace ui
 
 
 	void OffscreenUnitPointers::addUnitForChecklist(game::Unit *unit)
-	{ 
+	{
 		LinkedListIterator<Unit*> iter(checkUnits);
 		while (iter.iterateAvailable())
 		{
@@ -145,8 +145,8 @@ namespace ui
 					if (pointerButs[num] == NULL)
 					{
 						// create a new button for this unit.
-						b = ogui->CreateSimpleImageButton(win, 
-							0, 0, 16, 16, 
+						b = ogui->CreateSimpleImageButton(win,
+							0, 0, 16, 16,
 							NULL, NULL, NULL, COMBATW_OFFSCREEN_UNIT_START + num);
 						pointerButs[num] = b;
 					} else {
@@ -160,23 +160,23 @@ namespace ui
 					b->SetDisabled(true);
 
 					IOguiImage *butDir = NULL;
-					if (y < 0) 
+					if (y < 0)
 					{
 						y = 0;
 						butDir = upImage;
 					}
-					if (y >= 768) 
+					if (y >= 768)
 					{
 						y = 1024-1;
 						butDir = downImage;
 					}
-					if (x < 0) 
+					if (x < 0)
 					{
 						x = 0;
 						if (abs(x-1024/2) > abs(y-768/2))
 							butDir = leftImage;
 					}
-					if (x >= 1024) 
+					if (x >= 1024)
 					{
 						x = 1024-1;
 						if (abs(x-1024/2) > abs(y-768/2))

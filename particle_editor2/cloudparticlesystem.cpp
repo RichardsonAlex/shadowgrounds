@@ -90,7 +90,7 @@ public:
 			v.z = -radius + 2.0f * radius * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 			r = v.x * v.x + v.z + v.z;
 		} while(r > radius);
-		v.y = -height * 0.5f + height * (float)(rand() % RAND_MAX) / (float)RAND_MAX;  
+		v.y = -height * 0.5f + height * (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 
 	}
 };

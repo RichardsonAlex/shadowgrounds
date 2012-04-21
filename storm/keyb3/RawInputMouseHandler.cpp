@@ -42,11 +42,11 @@ LRESULT WINAPI MouseHandler_MessageProc(HWND hWnd,UINT msg,WPARAM wParam,LPARAM 
 	if(msg == WM_INPUT && RawInputDeviceHandler::initialized)
 	{
 		UINT dataSize;
-		RawInputDeviceHandler::GetRawInputData_c((HRAWINPUT)lParam, RID_INPUT, NULL, &dataSize, 
+		RawInputDeviceHandler::GetRawInputData_c((HRAWINPUT)lParam, RID_INPUT, NULL, &dataSize,
 			sizeof(RAWINPUTHEADER));
 		unsigned char *rawData = new unsigned char [ dataSize ];
 
-		RawInputDeviceHandler::GetRawInputData_c((HRAWINPUT)lParam, RID_INPUT, rawData, &dataSize, 
+		RawInputDeviceHandler::GetRawInputData_c((HRAWINPUT)lParam, RID_INPUT, rawData, &dataSize,
 			sizeof(RAWINPUTHEADER));
 		RAWINPUT *rawInput = (RAWINPUT*)rawData;
 
@@ -206,7 +206,7 @@ LRESULT WINAPI MouseHandler_MessageProc(HWND hWnd,UINT msg,WPARAM wParam,LPARAM 
 		}
 
 		return retval;
-	} 
+	}
 	return retval;
 }
 
@@ -376,7 +376,7 @@ bool RawInputDeviceHandler::init( HWND hwnd, bool initmouse, bool initkeyb )
 	if(ri_deviceList)
 		delete [] ri_deviceList;
 
-	// Took this from the old mouse init from keyb.cpp 
+	// Took this from the old mouse init from keyb.cpp
 	{
 		int width = GetSystemMetrics (SM_CXSCREEN);
 		int height = GetSystemMetrics (SM_CYSCREEN);

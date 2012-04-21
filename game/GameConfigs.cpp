@@ -131,7 +131,7 @@ namespace game
 	int GameConfigs::getInt(const char *confname)
 	{
 		GameConfNodeImpl *n = getNode(confname);
-		if (n == NULL) 
+		if (n == NULL)
 		{
 			Logger::getInstance()->warning("GameConfigs::getInt - Requested conf not found.");
 			Logger::getInstance()->debug(confname);
@@ -146,7 +146,7 @@ namespace game
 	float GameConfigs::getFloat(const char *confname)
 	{
 		GameConfNodeImpl *n = getNode(confname);
-		if (n == NULL) 
+		if (n == NULL)
 		{
 			Logger::getInstance()->warning("GameConfigs::getFloat - Requested conf not found.");
 			Logger::getInstance()->debug(confname);
@@ -161,7 +161,7 @@ namespace game
 	char *GameConfigs::getString(const char *confname)
 	{
 		GameConfNodeImpl *n = getNode(confname);
-		if (n == NULL) 
+		if (n == NULL)
 		{
 			Logger::getInstance()->warning("GameConfigs::getString - Requested conf not found.");
 			Logger::getInstance()->debug(confname);
@@ -248,7 +248,7 @@ namespace game
 			return NULL;
 		} else {
 			return n->confName;
-		}		
+		}
 	}
 
 
@@ -256,7 +256,7 @@ namespace game
 		int id)
 	{
 		GameConfNodeImpl *n = getNode(confname);
-		if (n == NULL) 
+		if (n == NULL)
 		{
 			n = new GameConfNodeImpl();
 			n->confName = new char[strlen(confname) + 1];
@@ -286,7 +286,7 @@ namespace game
 		int id)
 	{
 		GameConfNodeImpl *n = getNode(confname);
-		if (n == NULL) 
+		if (n == NULL)
 		{
 			n = new GameConfNodeImpl();
 			n->confName = new char[strlen(confname) + 1];
@@ -316,7 +316,7 @@ namespace game
 		int id)
 	{
 		GameConfNodeImpl *n = getNode(confname);
-		if (n == NULL) 
+		if (n == NULL)
 		{
 			n = new GameConfNodeImpl();
 			n->confName = new char[strlen(confname) + 1];
@@ -346,7 +346,7 @@ namespace game
 		int id)
 	{
 		GameConfNodeImpl *n = getNode(confname);
-		if (n == NULL) 
+		if (n == NULL)
 		{
 			n = new GameConfNodeImpl();
 			n->confName = new char[strlen(confname) + 1];

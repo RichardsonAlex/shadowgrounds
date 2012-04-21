@@ -20,7 +20,7 @@
 namespace frozenbyte {
 namespace editor {
 
-BOOL CALLBACK getChildRectProc(HWND hwndChild, LPARAM lParam) 
+BOOL CALLBACK getChildRectProc(HWND hwndChild, LPARAM lParam)
 {
 	RECT &childRect = *(RECT *)lParam;
 
@@ -87,7 +87,7 @@ struct DialogData
 		if(message == WM_COMMAND)
 		{
 			int command = LOWORD(wParam);
-			if(command == WM_DESTROY) 
+			if(command == WM_DESTROY)
 			{
 				EndDialog(windowHandle, 0);
 				data->windowHandle = NULL;
@@ -100,7 +100,7 @@ struct DialogData
 		{
 			data->updateSize();
 		}
-		else if(message == WM_HSCROLL) 
+		else if(message == WM_HSCROLL)
 		{
 			HWND hwndScrollBar = (HWND) lParam;
 			int id = GetDlgCtrlID(hwndScrollBar);
@@ -224,7 +224,7 @@ struct DialogData
 		RECT childRect;
 		childRect.bottom = -INT_MAX;
 		childRect.top = INT_MAX;
-		EnumChildWindows(windowHandle, getChildRectProc, (LPARAM) &childRect); 
+		EnumChildWindows(windowHandle, getChildRectProc, (LPARAM) &childRect);
 		if(childRect.bottom > childRect.top)
 		{
 			RECT windowRect;
@@ -293,7 +293,7 @@ Dialog::Dialog(int resourceId, const Window &parentWindow, ResizeType type)
 	data.swap(tempData);
 }
 
-Dialog::Dialog(int resourceId, HWND parentWindowHandle, ResizeType type) 
+Dialog::Dialog(int resourceId, HWND parentWindowHandle, ResizeType type)
 {
 	boost::scoped_ptr<DialogData> tempData(new DialogData());
 	tempData->resizeType = type;
@@ -372,12 +372,12 @@ HWND Dialog::getParentWindowHandle() const
 	return GetParent(data->windowHandle);
 }
 
-HWND Dialog::getItem(int id) const 
+HWND Dialog::getItem(int id) const
 {
 	return GetDlgItem(data->windowHandle, id);
 }
 
-void Dialog::setCustomHandler(IDlgHandler* handler) 
+void Dialog::setCustomHandler(IDlgHandler* handler)
 {
 	data->handler = handler;
 }

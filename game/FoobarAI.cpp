@@ -81,7 +81,7 @@ void ::FoobarAI::doStuff()
 
 	      // skip the the current unit and dead units
 	      if (other != u && !other->isDestroyed())
-	      { 
+	      {
 		      //if (other->getOwner() == player)
 		      if (other->getOwner() != 0)
 		      {
@@ -136,7 +136,7 @@ void ::FoobarAI::doStuff()
 		      }
 	      }
 	    }
-    } 
+    }
   }
   */
   // ;)

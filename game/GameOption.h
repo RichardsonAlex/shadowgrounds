@@ -10,7 +10,7 @@ namespace game
 
 	/**
 	 * A class that holds one game configuration option.
-	 * 
+	 *
    * @version 1.0, 13.3.2003
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
 	 * @see GameOptionManager

@@ -628,7 +628,7 @@ struct TerrainUnitsData
 		*/
 
 		ui::PointLights lights;
-		lights.ambient = state.getColorMap().getColor(position2) + state.getLightMap().getColor(position2); 
+		lights.ambient = state.getColorMap().getColor(position2) + state.getLightMap().getColor(position2);
 		if(storm.lightManager)
 			storm.lightManager->getLighting(position, lights, ui::getRadius(&model), true, true, &model);
 

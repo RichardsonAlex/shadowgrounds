@@ -18,7 +18,7 @@ namespace ui
 
 	/**
 	 *
-	 * Combat message window class. 
+	 * Combat message window class.
 	 * Shows the on-screen messages while in combat (= in mission).
 	 *
 	 * @version 0.9, 30.9.2002
@@ -31,7 +31,7 @@ namespace ui
 	{
 	public:
 
-		CombatMessageWindow(Ogui *ogui, game::Game *game, int player, 
+		CombatMessageWindow(Ogui *ogui, game::Game *game, int player,
 			const char *textConfName, const char *iconConfName);
 		virtual ~CombatMessageWindow();
 

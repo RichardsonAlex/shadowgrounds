@@ -86,7 +86,7 @@ public:
 	OguiButton*				backgroundImage;
 	OguiButton* wideScreenBars[2];
 	std::string cinematic_name;
-  
+
 	std::list< IOguiImage* >			images;
 	std::list< IOguiFont* >				fonts;
 	std::vector< OguiFormattedText* >	textAreas;
@@ -140,7 +140,7 @@ public:
 	};
 
 	std::vector<TypingEffect> typingEffects;
-  
+
 
 
   struct TextFader
@@ -216,7 +216,7 @@ public:
 
 		*/
 		timeToDie = getLocaleGuiInt( ( prefix + "_time_to_die" ).c_str(), -1 );
-		window = ogui->CreateSimpleWindow(	getLocaleGuiInt( ( prefix + "_window_x" ).c_str(), 0 ), getLocaleGuiInt( ( prefix + "_window_y" ).c_str(), 0 ), 
+		window = ogui->CreateSimpleWindow(	getLocaleGuiInt( ( prefix + "_window_x" ).c_str(), 0 ), getLocaleGuiInt( ( prefix + "_window_y" ).c_str(), 0 ),
 											getLocaleGuiInt( ( prefix + "_window_w" ).c_str(), 0 ), getLocaleGuiInt( ( prefix + "_window_h" ).c_str(), 0 ),
 											NULL );
 
@@ -339,7 +339,7 @@ public:
 			for( int i = 0; i < num_of; i++ )
 			{
 				const std::string& pre_text = ( prefix + "_textarea_" + boost::lexical_cast< std::string >( i ) );
-				textAreas[ i ] = new OguiFormattedText( window, ogui, 
+				textAreas[ i ] = new OguiFormattedText( window, ogui,
 														getLocaleGuiInt( ( pre_text + "_x" ).c_str(), 0 ), getLocaleGuiInt( ( pre_text + "_y" ).c_str(), 0 ),
 														getLocaleGuiInt( ( pre_text + "_w" ).c_str(), 0 ), getLocaleGuiInt( ( pre_text + "_h" ).c_str(), 0 ) );
 				
@@ -400,7 +400,7 @@ public:
 					int time = getLocaleGuiInt( ( pre_text + "_text_" + boost::lexical_cast< std::string >( j )  + "_insert_time" ).c_str(), 0 );
 
 					// get text
-					std::string text = getLocaleGuiString( ( pre_text + "_text_" + boost::lexical_cast< std::string >( j ) ).c_str() ); 
+					std::string text = getLocaleGuiString( ( pre_text + "_text_" + boost::lexical_cast< std::string >( j ) ).c_str() );
 
 					// translate $(locales)
 #ifdef PROJECT_SURVIVOR
@@ -867,7 +867,7 @@ public:
 
 		if( pictureFadeByTime.empty() == false && pictureFadeByTime.begin()->first + initTime < time )
 		{
-			if( imageFadeEffect ) 
+			if( imageFadeEffect )
 				delete imageFadeEffect;
 
 			imageFadeEffect = new ImageFadeEffect;

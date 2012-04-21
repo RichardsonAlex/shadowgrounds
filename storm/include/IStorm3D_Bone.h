@@ -1,6 +1,6 @@
 #pragma once
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include <DatatypeDef.h>
 

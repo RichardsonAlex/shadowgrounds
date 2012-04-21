@@ -160,8 +160,8 @@ void Storm3D_Scene::RenderSceneWithParams(bool flip,bool disable_hsr, bool updat
 			// should work just fine for factor values like 0.5 though.
 			time_dif = (int)(float(time_dif) * this->Storm3D2->timeFactor);
 			last_time+=(int)(float(time_dif) / this->Storm3D2->timeFactor);
-		} 
-		else 
+		}
+		else
 		{
 			last_time+=time_dif;
 		}
@@ -233,7 +233,7 @@ void Storm3D_Scene::RenderSceneWithParams(bool flip,bool disable_hsr, bool updat
 			if (fabsf(camera.position.z-model_position.z)>nr) continue;
 
 			// Test sphere visibility
-			if (!camera.TestSphereVisibility(model_position, radius)) 
+			if (!camera.TestSphereVisibility(model_position, radius))
 				continue;
 		}
 
@@ -1373,7 +1373,7 @@ int Storm3D_Scene::RenderScene(bool present)
 		++haxValue;
 
 		IStorm3D_Texture *target = Storm3D2->getReflectionTexture();
-		if(target /*&& haxValue > 1*/) 
+		if(target /*&& haxValue > 1*/)
 		{
 			haxValue = 0;
 
@@ -1504,7 +1504,7 @@ int Storm3D_Scene::RenderScene(bool present)
 int Storm3D_Scene::RenderSceneToDynamicTexture(IStorm3D_Texture *target,int face)
 {
 	// Test params
-	if (!target) 
+	if (!target)
 		return 0;
 
 	// Reset polygon counter

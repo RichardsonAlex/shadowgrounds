@@ -15,7 +15,7 @@
 
 
 // 100 ms * 50 = 5 secs
-#define BUILDINGHANDLER_REMOVED_DELAY 50 
+#define BUILDINGHANDLER_REMOVED_DELAY 50
 
 
 namespace frozenbyte {
@@ -122,7 +122,7 @@ void BuildingHandler::endUpdate(bool noDelay)
 	if (!data->updateEnabled)
 		return;
 
-	// modified to handle timeout counter too for removed buildings. 
+	// modified to handle timeout counter too for removed buildings.
 	// -jpk
 
 	unsigned int remModSize = data->removedModels.size();
@@ -158,7 +158,7 @@ void BuildingHandler::endUpdate(bool noDelay)
 
 	//for(unsigned int j = 0; j < data->removedModels.size(); ++j)
 	//{
-	while (it != data->removedModels.end()) 
+	while (it != data->removedModels.end())
 	{
 		// If already removed
 		IStorm3D_Model *model = (*it).first;
@@ -167,8 +167,8 @@ void BuildingHandler::endUpdate(bool noDelay)
 		{
 			(*it).second--;
 			++it;
-		} 
-		else 
+		}
+		else
 		{
 			data->setVisibility(model, true);
 			it = data->removedModels.erase(it);
@@ -247,7 +247,7 @@ void BuildingHandler::setUpdateEnabled(bool updateEnabled)
 	{
 		// TODO: do something?? (to ensure immediate restoration of roof hiddeness)
 		// showAllRoofs(); // maybe???
-		// or 
+		// or
 		data->removedModels.clear();
 		data->removableModels.clear();
 		showAllRoofs();

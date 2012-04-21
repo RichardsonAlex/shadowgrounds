@@ -12,15 +12,15 @@
 
 namespace game
 {
-	SpherePhysicsObject::SpherePhysicsObject(GamePhysics *gamePhysics, float radius, float mass) 
+	SpherePhysicsObject::SpherePhysicsObject(GamePhysics *gamePhysics, float radius, float mass)
 		: AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->radius = radius;
 		this->mass = mass;
 	}
 
-	SpherePhysicsObject::~SpherePhysicsObject() 
-	{ 
+	SpherePhysicsObject::~SpherePhysicsObject()
+	{
 		// nop, ~AbstractPhysicsObject handles everything of any interest...
 	}
 

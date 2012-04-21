@@ -65,7 +65,7 @@ bool parseIn(ParserGroup& g, const std::string& name, Vector& value) {
 	value.z = 0.0f;
 
 	x = str;
-	std::string::size_type pos = x.find_first_of(","); 
+	std::string::size_type pos = x.find_first_of(",");
 	if(pos != std::string::npos) {
 		x.erase(pos, str.size() - pos);
 	}

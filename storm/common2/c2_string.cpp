@@ -6,7 +6,7 @@
   String routines
 
   Classes:
-  
+
 	String			- String class
 
 */

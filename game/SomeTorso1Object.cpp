@@ -14,8 +14,8 @@ namespace game
     // TODO
     return NULL;
   }
-    
-  PartType *SomeTorso1Object::getType() 
+
+  PartType *SomeTorso1Object::getType()
   {
     //return &someTorso1;
     return NULL;

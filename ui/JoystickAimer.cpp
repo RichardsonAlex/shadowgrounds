@@ -20,7 +20,7 @@
 namespace ui
 {
 
-	JoystickAimer::JoystickAimer(game::Unit *unit, Ogui *ogui, 
+	JoystickAimer::JoystickAimer(game::Unit *unit, Ogui *ogui,
 		game::Game *game, GameController *gameController,
 		int clientNumber)
 	{

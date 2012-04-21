@@ -9,7 +9,7 @@
 #include <istorm3d_streambuffer.h>
 #include "igios.h"
 
-extern "C" { 
+extern "C" {
 #include <libavutil/log.h>
 
 #if LIBAVCODEC_VERSION_MAJOR==52
@@ -40,7 +40,7 @@ VideoBackgroundLoader::VideoBackgroundLoader()
 	mContext = new avctx;
 }
 
-VideoBackgroundLoader::~VideoBackgroundLoader() 
+VideoBackgroundLoader::~VideoBackgroundLoader()
 {
 	stop();
 	if (mContext->audiobuffer) delete [] mContext->audiobuffer;
@@ -171,7 +171,7 @@ void VideoBackgroundLoader::restart()
 	start();
 }
 
-bool VideoBackgroundLoader::finished() 
+bool VideoBackgroundLoader::finished()
 {
 	{
 		boost::mutex::scoped_lock lock(backgroundMutex);
@@ -195,7 +195,7 @@ bool VideoBackgroundLoader::finished()
 	}
 }
 
-void VideoBackgroundLoader::start() 
+void VideoBackgroundLoader::start()
 {
 	boost::mutex::scoped_lock lock(backgroundMutex);
 	if (mState == STOPPED) {
@@ -204,7 +204,7 @@ void VideoBackgroundLoader::start()
 	}
 }
 
-void VideoBackgroundLoader::stop() 
+void VideoBackgroundLoader::stop()
 {
 	{
 		boost::mutex::scoped_lock lock(backgroundMutex);
@@ -238,7 +238,7 @@ void VideoBackgroundLoader::getVideoInfo(unsigned int *fps_num, unsigned int *fp
 	*h = mContext->videoheight;
 }
 
-bool VideoBackgroundLoader::readFrame(char *buffer, const unsigned int w, const unsigned int h) 
+bool VideoBackgroundLoader::readFrame(char *buffer, const unsigned int w, const unsigned int h)
 {
 	boost::shared_array<unsigned char> frame;
 	{
@@ -272,7 +272,7 @@ bool VideoBackgroundLoader::readFrame(char *buffer, const unsigned int w, const 
 	return true;
 }
 
-void VideoBackgroundLoader::startLoadingThread() 
+void VideoBackgroundLoader::startLoadingThread()
 {
 	{
 		boost::mutex::scoped_lock lock(backgroundMutex);
@@ -379,7 +379,7 @@ TReader::TReader()
 	frame_height = 1;
 }
 
-TReader::~TReader() 
+TReader::~TReader()
 {
 	finish();
 	delete mLoader;

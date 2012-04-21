@@ -224,11 +224,11 @@ VC3 AlignUnits::getMovedPosition(const VC3 &position, IStorm3D_Camera &camera, b
 		if((GetKeyState(VK_SHIFT) & 0x80))
 		{
 //#ifdef PROJECT_AOV
-//			x *= 10.0f; 
-//			y *= 10.0f; 
+//			x *= 10.0f;
+//			y *= 10.0f;
 //#else
-			x *= 10.0f; 
-			y *= 10.0f; 
+			x *= 10.0f;
+			y *= 10.0f;
 //#endif
 		}
 

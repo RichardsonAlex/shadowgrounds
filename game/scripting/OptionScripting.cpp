@@ -37,7 +37,7 @@ using namespace ui;
 
 namespace game
 {
-	void OptionScripting::process(util::ScriptProcess *sp, 
+	void OptionScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{
@@ -273,7 +273,7 @@ namespace game
 		case GS_CMD_getBonusOptionsAvailable:
 			{
 #ifdef PROJECT_SURVIVOR
-				
+
 				*lastValue = 0;
 
 				if(game && game->bonusManager)

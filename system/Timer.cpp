@@ -84,7 +84,7 @@ void Timer::setTimeFactor(float factor)
 	float newFactor = float(int(factor * TIMER_FACTOR_MULTIPLIER)) / TIMER_FACTOR_MULTIPLIER;
 
 	Sint64 curActualTime = SDL_GetTicks();
-	int newFactorTimeAdd = 
+	int newFactorTimeAdd =
 		oldFactorTimeAdd + (int)((float)curActualTime * (oldFactor - newFactor));
 
 	//int foo = curActualTime;

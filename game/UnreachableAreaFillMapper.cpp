@@ -53,7 +53,7 @@ namespace game
 				{
 					fillmap[x + y * sizex] = UNR_VALUE_EMPTY;
 				}
-				else 
+				else
 				{
 					fillmap[x + y * sizex] = UNR_VALUE_OBSTACLE;
 				}

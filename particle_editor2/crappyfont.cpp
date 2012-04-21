@@ -30,7 +30,7 @@ struct CrappyFontData {
 		init();
 	}
 
-	void init() 
+	void init()
 	{
 		font = storm.storm->CreateNewFont();
 		font->SetFont("Times New Roman", 0, 17, false, false);

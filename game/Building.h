@@ -38,7 +38,7 @@ namespace game
 
     ~Building();
 
-    /** 
+    /**
      * TODO!
      * To implement GameObject "interface" class.
      * @return SaveData, data to be saved. TODO, currently NULL.

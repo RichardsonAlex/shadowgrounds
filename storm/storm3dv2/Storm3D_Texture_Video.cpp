@@ -105,7 +105,7 @@ void Storm3D_Texture_Video::AnimateVideo()
 			{
 				switch (loop_params)
 				{
-					case VIDEOLOOP_DEFAULT: 
+					case VIDEOLOOP_DEFAULT:
 						frame=0;
 						texhandle=frames[frame];
 						break;
@@ -143,7 +143,7 @@ void Storm3D_Texture_Video::AnimateVideo()
 			{
 				switch (loop_params)
 				{
-					case VIDEOLOOP_DEFAULT: 
+					case VIDEOLOOP_DEFAULT:
 						frame=frame_amount-1;
 						texhandle=frames[frame];
 						break;

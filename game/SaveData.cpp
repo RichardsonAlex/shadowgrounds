@@ -7,7 +7,7 @@
 namespace game
 {
 
-  SaveData::SaveData(int id, int size, uint8_t *data, int childAmount, 
+  SaveData::SaveData(int id, int size, uint8_t *data, int childAmount,
     GameObject **children)
   {
     this->id = id;
@@ -23,7 +23,7 @@ namespace game
     {
       if (children == NULL) abort();
       this->children = new GameObject *[childAmount];
-      for (int i = 0; i < childAmount; i++) 
+      for (int i = 0; i < childAmount; i++)
       {
         this->children[i] = children[i];
       }

@@ -79,7 +79,7 @@ public:
 			return;
 		
 		IStorm3D_Model* model = s3d->CreateNewModel();
-		if(model->LoadS3D(fileName.c_str())) 
+		if(model->LoadS3D(fileName.c_str()))
 		{
 			Iterator<IStorm3D_Model_Object*>* obj = model->ITObject->Begin();
 			IStorm3D_Mesh* mesh = obj->GetCurrent()->GetMesh();
@@ -134,7 +134,7 @@ public:
 	void* create() { return new PointArrayParticleSystem(); }
 	const char* getClassName() { return "point_array"; }
 };
- 
+
 static PointArrayParticleSystemClassDesc thePointArrayParticleSystemClassDesc;
 
 ParticleSystemClassDesc* getPointArrayParticleSystemClassDesc() {

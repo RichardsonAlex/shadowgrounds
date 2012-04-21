@@ -35,10 +35,10 @@ namespace game
 
   protected:
     const ListNode<GameObject*>* listSelfPointer;
-    GameObjectList *gameObjectList;
+    GameObjectList* gameObjectList;
 
   public:
-    // removes this object from the object list it has been added to 
+    // removes this object from the object list it has been added to
     virtual ~GameObject()
     {
       if (gameObjectList != NULL)

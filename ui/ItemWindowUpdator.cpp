@@ -48,7 +48,7 @@ ItemWindowUpdator::ItemWindowUpdator( Game* game, ItemWindow* item ) :
 	updateInFrames( 30 ),
 	currentFrame( 0 ),
 	itemWindow( item )
-{ 
+{
 
 	EditorParser parser;
 
@@ -86,7 +86,7 @@ void ItemWindowUpdator::update()
 
 	if( currentFrame >= updateInFrames )
 	{
-		currentFrame = 0; 
+		currentFrame = 0;
 		// check for the stuff in scripting which stuff is in use and what arent
 		doUpdate( item );
 
@@ -120,7 +120,7 @@ void ItemWindowUpdator::doUpdate( ItemWindow* itemwindow )
 			{
 				itemwindow->addItem( i->location, i->image );
 			}
-			else 
+			else
 			{
 				itemwindow->removeItem( i->location, i->image );
 			}

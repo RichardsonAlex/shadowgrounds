@@ -220,7 +220,7 @@ namespace game
 				}
 			}
 
-			// find spawn points 
+			// find spawn points
 			if( scriptId != -1 )
 			{
 				for (int i = 0; i < ALIENSPAWNER_MAX_SPAWNPOINTS; i++)

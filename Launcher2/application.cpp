@@ -38,10 +38,10 @@ public:
 	void run()
 	{
 		MSG msg;
-		while ( GetMessage( &msg, NULL, 0, 0 ) && quit == false ) 
+		while ( GetMessage( &msg, NULL, 0, 0 ) && quit == false )
 		{
-			TranslateMessage (&msg); 
-			DispatchMessage (&msg); 
+			TranslateMessage (&msg);
+			DispatchMessage (&msg);
 		}
 		
 	}
@@ -53,7 +53,7 @@ public:
 
 ///////////////////////////////////////////////////////////////////////////////
 
-Application::Application() 
+Application::Application()
 {
 	FilePackageManager &manager = FilePackageManager::getInstance();
 	boost::shared_ptr<IFilePackage> standardPackage( new StandardPackage() );

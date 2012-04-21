@@ -49,7 +49,7 @@ namespace ui
 
     IOguiImage *flashlightBackgroundOnImage;
     IOguiImage *flashlightBackgroundLowImage;
-    IOguiImage *flashlightBackgroundOffImage;   
+    IOguiImage *flashlightBackgroundOffImage;
 		OguiButton *flashlightBackgroundButton;
   };
 

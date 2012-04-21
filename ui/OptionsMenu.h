@@ -29,9 +29,9 @@ namespace ui
 
 // class GameController;
 
-class OptionsMenu : public MenuBaseImpl, 
-					public IOguiSliderListener, 
-					public IOguiSelectListListener, 
+class OptionsMenu : public MenuBaseImpl,
+					public IOguiSliderListener,
+					public IOguiSelectListListener,
 					public IOguiCheckBoxListener
 {
 public:
@@ -118,8 +118,8 @@ private:
 
 	void selectButton( int i );
 
-	void addDifficultButton( int x, int y, int w, int h, 
-		const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+	void addDifficultButton( int x, int y, int w, int h,
+		const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 		IOguiFont* font, const std::string& text, int id );
 
 	void addText( const std::string& text, int x, int y, int w, int h, IOguiFont* font );

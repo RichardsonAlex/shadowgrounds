@@ -111,7 +111,7 @@ void TerrainLegacy::apply(const Parser::ParserGroup &group)
 {
 	clear();
 
-	const Parser::string_map properties = group.GetProperties();  
+	const Parser::string_map properties = group.GetProperties();
 	if (!Parser::HasProperty(properties, "map"))
 	{
 		return;

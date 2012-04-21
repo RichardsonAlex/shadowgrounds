@@ -98,7 +98,7 @@ namespace ui
 	//        false, if position NOT ok and decal should NOT be added
 	bool DecalPositionCalculator::calculateDecalPosition(
 		game::GameScene *gameScene,
-		const VC3 &origin, const VC3 &velocity, 
+		const VC3 &origin, const VC3 &velocity,
 		DECAL_POSITIONING positioning, int positionRandom,
 		VC3 *resultPosition, QUAT *resultRotation)
 	{
@@ -129,7 +129,7 @@ namespace ui
 				velocityRandomized.x += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
 				velocityRandomized.z += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
 				
-				// add to y too? maybe should add downward only? 
+				// add to y too? maybe should add downward only?
 				// NOTE: biased downward
 				velocityRandomized.y += float((SystemRandom::getInstance()->nextInt() % (positionRandom * 2 + 1)) - positionRandom) / 100.0f;
 				velocityRandomized.y -= float(positionRandom) / 100.0f * 0.5f;
@@ -324,7 +324,7 @@ namespace ui
 		}
 
 		// check that not on top of metal grid area...
-		if (game::MaterialManager::isMaterialUnderPosition(gameMap, 
+		if (game::MaterialManager::isMaterialUnderPosition(gameMap,
 			*resultPosition, MATERIAL_METAL_GRATE))
 		{
 			// on top of grid, no decal here.

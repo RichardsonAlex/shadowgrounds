@@ -36,7 +36,7 @@ namespace game
     this->position = VC3(0,0,0);
     this->direction = VC3(0,0,0);
 
-    this->weapon = NULL; 
+    this->weapon = NULL;
 
     this->enabled = true;
 		this->outsideScreen = false;
@@ -124,7 +124,7 @@ namespace game
 	{
 		assert(weapon != NULL);
 		this->enabled = true;
-		// TODO: start the actual effect.. ? 
+		// TODO: start the actual effect.. ?
 		// (immediately? waittime to zero?)
 	}
 
@@ -165,7 +165,7 @@ namespace game
 				float soundrange = bullet->getChainSoundRange(HITCHAIN_NOTHING);
 
 				// HACK: only play sound if in sound range (+5m)...
-				if (soundrange == 0 
+				if (soundrange == 0
 					|| distanceToListener < soundrange + PARTICLESPAWNER_EXTRA_SOUND_RANGE)
 				{
 					int priority = bullet->getChainSoundPriority(HITCHAIN_NOTHING);

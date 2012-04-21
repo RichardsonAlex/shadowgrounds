@@ -10,14 +10,14 @@
 #ifdef FROZENBYTE_DEBUG_MEMORY // Define this to enable tracking
 
 /*
-Debug versions of C++ heap memory handling operators. Using is 
-transparent to client code. Note that this system might increase 
+Debug versions of C++ heap memory handling operators. Using is
+transparent to client code. Note that this system might increase
 memory footprint considerably if you are allocating lots of small chunks.
 
 This header doesn`t have to be included from client code. Operators
 will be overrided anyway (on linking), this 'just' gives ability to
 store allocations file / line number.
-Should also be used on headers which do dynamic memory management. 
+Should also be used on headers which do dynamic memory management.
 Just remember to #undef new to avoid breaking things later on.
 
 Note that MSVC doesn't separate arrayed versions unless this header
@@ -33,7 +33,7 @@ This does the following:
 		-> Checking done only on deallocation, can`t tell where it happened.
 			-> Use validatePointer() on tricky situations
 	- Notices if one tries to delete new[]`ed memory or vice versa
-		-> Mixing array new/delete to normal versions, that is 
+		-> Mixing array new/delete to normal versions, that is
 		-> At least on MSVC, requires including this header thought
 			-> GCC works fine without it. Surprise, surprise
 	- Reports has the information of where buffer was allocated
@@ -45,7 +45,7 @@ This does the following:
 	- Ability to query some useful statistics
 		-> ToDo but see below
 		
-Started coding this on my own but later on found Paul Nettle's manager. 
+Started coding this on my own but later on found Paul Nettle's manager.
 Some ideas from there.
 	-- psd
 */

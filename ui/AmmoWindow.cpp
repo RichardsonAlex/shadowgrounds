@@ -59,7 +59,7 @@ namespace ui
 		
 		std::string prefix = "gui_ammo_";
 
-		if( coop ) 
+		if( coop )
 		{
 			prefix = "gui_ammo_coop" + boost::lexical_cast< std::string >( clientNum ) + "_";
 		}

@@ -20,7 +20,7 @@ using namespace ui;
 
 namespace game
 {
-	void StringScripting::process(util::ScriptProcess *sp, 
+	void StringScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{

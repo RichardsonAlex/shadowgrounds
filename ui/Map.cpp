@@ -390,7 +390,7 @@ namespace {
 
 // --- DISABLED BECAUSE THIS CAUSES A SIGNIFICANT FPS DROP UNLESS RENDERER IS RESET AFTERWARDS. ---
 // --jpk
-//#pragma message("--- FIXME: map file image generation causes fps drop, therefore disabled. ---") 
+//#pragma message("--- FIXME: map file image generation causes fps drop, therefore disabled. ---")
 //			if(!fileExists(layerFile1))
 //				generateFile(layerFile1, start, size, areaStart, areaSize, game, Before);
 // --- END OF DISABLED ---

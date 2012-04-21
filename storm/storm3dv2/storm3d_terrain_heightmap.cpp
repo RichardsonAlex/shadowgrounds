@@ -855,7 +855,7 @@ unsigned short *Storm3D_TerrainHeightmap::getCollisionHeightmap()
 */
 void Storm3D_TerrainHeightmap::forcemapHeight(const VC2 &position, float radius, bool above, bool below)
 {
-	if(!data->forcemap) 
+	if(!data->forcemap)
 		return;
 
 	VC2I pint=data->convertWorldToCollisionMap(position);
@@ -874,13 +874,13 @@ void Storm3D_TerrainHeightmap::forcemapHeight(const VC2 &position, float radius,
 	int ymin=(pint.y-bint-1);
 	int ymax=(pint.y+bint+1);
 
-	if (xmin < 0) 
+	if (xmin < 0)
 		xmin = 0;
-	if (ymin < 0) 
+	if (ymin < 0)
 		ymin = 0;
-	if (xmax >= data->collResolution.x) 
+	if (xmax >= data->collResolution.x)
 		xmax = data->collResolution.x - 1;
-	if (ymax >= data->collResolution.y) 
+	if (ymax >= data->collResolution.y)
 		ymax = data->collResolution.y - 1;
 
 	unsigned short *forcemap = data->forcemap;
@@ -892,7 +892,7 @@ void Storm3D_TerrainHeightmap::forcemapHeight(const VC2 &position, float radius,
 			if ((1<<i) == data->collResolution.x)
 			{
 				hmapsh = i;
-				break; 
+				break;
 			}
 		}
 	}
@@ -921,7 +921,7 @@ void Storm3D_TerrainHeightmap::forcemapHeight(const VC2 &position, float radius,
 			if (forceval != 0)
 			{
 				if ((newval < forceval && above)
-					|| (newval > forceval && below)) 
+					|| (newval > forceval && below))
 				{
 					newval = forceval;
 					data->collisionHeightMap[(y<<hmapsh) + x]=newval;
@@ -1235,7 +1235,7 @@ void Storm3D_TerrainHeightmap::removeTerrainTextures()
 void Storm3D_TerrainHeightmap::setBlendMap(int blockIndex, Storm3D_Texture &blend, int textureA, int textureB)
 {
 	assert(!data->blocks.empty());
-	assert(blockIndex >= 0 && blockIndex < int(data->blocks.size())); 
+	assert(blockIndex >= 0 && blockIndex < int(data->blocks.size()));
 	assert(textureA >= 0 && textureA < int(data->textures.size()));
 	assert(textureB >= -1 && textureB < int(data->textures.size()));
 
@@ -1256,7 +1256,7 @@ void Storm3D_TerrainHeightmap::setBlendMap(int blockIndex, Storm3D_Texture &blen
 void Storm3D_TerrainHeightmap::setPartialBlendMap(int blockIndex, int subMask, Storm3D_Texture &blend, int textureA, int textureB)
 {
 	assert(!data->blocks.empty());
-	assert(blockIndex >= 0 && blockIndex < int(data->blocks.size())); 
+	assert(blockIndex >= 0 && blockIndex < int(data->blocks.size()));
 	assert(subMask > 0 && subMask < 16);
 	assert(textureA >= 0 && textureA < int(data->textures.size()));
 	assert(textureB >= 0 && textureB < int(data->textures.size()));
@@ -1469,7 +1469,7 @@ VC3 Storm3D_TerrainHeightmap::solveObstacleNormal(const VC2I &obstaclePosition, 
 			if ((1<<i) == data->collResolution.x)
 			{
 				hmapsh = i;
-				break; 
+				break;
 			}
 		}
 	}
@@ -1633,7 +1633,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 				if ((1<<i) == data->collResolution.x)
 				{
 					hmapsh = i;
-					break; 
+					break;
 				}
 			}
 		}
@@ -1653,7 +1653,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 
 		int prevObstacleHeight = 0;
 
-		if (dy > dx) 
+		if (dy > dx)
 		{
 			steep = 1;
 			x ^= y;
@@ -1673,7 +1673,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 		int maxy_minus_one = maxy - (1<<obstacle_map_mult_shift);
 
 		e = 2 * dy - dx;
-		for (i = 0; i < dx; i++) 
+		for (i = 0; i < dx; i++)
 		{
 			// for better accuracy...
 			h = 3 * hs + (3 * hdiff * i) / dx;
@@ -1708,10 +1708,10 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 			int obstacleBlockIndex;
 
 			// improve raytrace accuracy with hmap interpolation... slow :(
-			// designed for obstacle/height map multiplier 2 (should work for 
+			// designed for obstacle/height map multiplier 2 (should work for
 			// other multiplier values too, but result may be less desirable)
 
-			if (steep) 
+			if (steep)
 			{
 				blockIndex = ((x>>obstacle_minus_heightmap_shift)<<hmapsh) + (y>>obstacle_minus_heightmap_shift);
 				// TEMP: heightmap interpolation disabled!
@@ -1735,7 +1735,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 				rti.model = NULL;
 				rti.object = NULL;
 				VC2 hitpos;
-				if (steep) 
+				if (steep)
 				{
 					hitpos = data->convertObstacleMapToWorld(VC2I(y,x));
 				} else {
@@ -1772,7 +1772,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 				rti.range = hitvec.GetLength();
 				rti.position = position + directionNormalized*rti.range;
 
-				// FIXME: why exactly does this assert sometimes fail near the edge 
+				// FIXME: why exactly does this assert sometimes fail near the edge
 				// of the map? x and y should be inside boundaries, why does this go outside.
 				// (note, hitvec direction != directionNormalized direction - possibly explains that?)
 				if (rti.position.x < -(data->collResolution.x * mmult_map_world.x)/2)
@@ -1795,14 +1795,14 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 					int obstacleHeight = mapHeight + 3 * ((int)(data->obstacleHeightmap[obstacleBlockIndex] & OBSTACLE_MAP_MASK_HEIGHT));
   					if (obstacleHeight > h)
 					{
-						// make sure that the obstacle is something we want to 
+						// make sure that the obstacle is something we want to
 						// hit... (not seethrough or unhittable)
 						if (!data->areaMap->isAreaAnyValue(obstacleBlockIndex, skipObstacleMask)
 							&& !data->areaMap->isAreaValue(obstacleBlockIndex, skipObstacle2Mask, skipObstacle2Value))
 						{
 							oci.hit = true;
 							VC2 hitpos;
-							if (steep) 
+							if (steep)
 							{
 								hitpos = data->convertObstacleMapToWorld(VC2I(y,x));
 							}
@@ -1819,7 +1819,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
     							oci.position = realpos;
 							}
 							// did we perhaps hit the obstacle from above?
-							// (the logic is that if previous block was almost as high but did not 
+							// (the logic is that if previous block was almost as high but did not
 							// collide to that, now we must have just hit the top of the obstacle...
 							// (0.2m is the difference limit...)
 							VC3 hitnormal;
@@ -1853,7 +1853,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 				}
 			}
 
-			while (e >= 0) 
+			while (e >= 0)
 			{
 				y += sy;
 				e -= 2 * dx;
@@ -1868,7 +1868,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 				if (i >= dx)
 					break;
 
-				while (e >= 0) 
+				while (e >= 0)
 				{
 					y += sy;
 					e -= 2 * dx;
@@ -1916,7 +1916,7 @@ void Storm3D_TerrainHeightmap::rayTrace(const VC3 &position, const VC3 &directio
 				continue;
 
 			blockIndex = ((positionY >> accuracyShift) * data->collResolution.x) + (positionX >> accuracyShift);
-			if(blockIndex < 0 || blockIndex >= maxIndex) 
+			if(blockIndex < 0 || blockIndex >= maxIndex)
 				return;
 
 			if(data->collisionHeightMap[blockIndex] > (heightPosition >> accuracyShift))

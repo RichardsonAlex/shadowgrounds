@@ -350,7 +350,7 @@ namespace game
 					{
 						insideAni = true;
 					}
-					// NEW: Must not confuse this with aniEndBlend - thus expecting space 
+					// NEW: Must not confuse this with aniEndBlend - thus expecting space
 					// or end of line immediately after the aniEnd
 					if ((strncmp(line, "aniEnd", 6) == 0
 						&& (line[6] == ' ' || line[6] == '\r' || line[6] == '\n'))
@@ -381,7 +381,7 @@ namespace game
 							impl->writeToRecordBuf(int2str(atTick / GAME_TICKS_PER_SECOND));
 							impl->writeToRecordBuf(" secs \r\n");
 						}
-						if (appendAfterTick != -1 
+						if (appendAfterTick != -1
 							&& atTick > appendAfterTick)
 						{
 							impl->atTick = atTick;
@@ -607,7 +607,7 @@ namespace game
 				{
 					for (int a = 0; a < ANIM_AMOUNT; a++)
 					{
-						if (impl->unit->getAnimationSet()->getAnimationFileNumber(a) 
+						if (impl->unit->getAnimationSet()->getAnimationFileNumber(a)
 							== impl->unit->getAnimation()
 							&& (!impl->unit->getAnimationSet()->isAnimationStaticFactored(a)
 							|| impl->unit->getAnimationSet()->getAnimationStaticFactor(a)
@@ -950,7 +950,7 @@ namespace game
 		impl->unit->setPhysicsObjectFeedbackEnabled(false);
 	}
 
-  
+
 	void Ani::aniEnd()
 	{
 		impl->unit->setAnimated(false);
@@ -1025,14 +1025,14 @@ namespace game
 				ui::Animator::setAnimationSpeedFactor(impl->unit, timefact);
 			}
 		}
-		//ui::Animator::setAnimation(impl->unit, anim); 
+		//ui::Animator::setAnimation(impl->unit, anim);
 	}
 
 	
 	void Ani::aniEndAnim(int anim)
 	{
 		// TODO: umm.. how exactly is this done...??
-		// probably need to ask AnimationSet about the blend number and 
+		// probably need to ask AnimationSet about the blend number and
 		// then use the Animator class directly to end the blend anim...
 
 		ui::AnimationSet *animset = impl->unit->getAnimationSet();
@@ -1206,7 +1206,7 @@ namespace game
 	bool Ani::aniWaitUntilAnisEnded()
 	{
 		if (impl->skippingToTick < ANI_MAX_TICKS)
-		{ 
+		{
 			return true;
 		}
 		return false;
@@ -1229,7 +1229,7 @@ namespace game
 
 	void Ani::aniEndBlend()
 	{
-		ui::Animator::endBlendAnimation(impl->unit, 0, true); 
+		ui::Animator::endBlendAnimation(impl->unit, 0, true);
 	}
 
 	void Ani::aniBlend(int anim)
@@ -1249,8 +1249,8 @@ namespace game
 			{
 				int animfile = animset->getAnimationFileNumber(anim);
 				// NOTE: blending-in disabled, as that would interfere with shooting anims (that have to be instant)
-				//ui::Animator::setBlendAnimation(impl->unit, 0, animfile, true, true); 
-				ui::Animator::setBlendAnimation(impl->unit, 0, animfile, false, true); 
+				//ui::Animator::setBlendAnimation(impl->unit, 0, animfile, true, true);
+				ui::Animator::setBlendAnimation(impl->unit, 0, animfile, false, true);
 			}
 		}
 	}

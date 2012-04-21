@@ -33,20 +33,20 @@ namespace net
       return "dummy";
     }
 
-    
+
     INetConnection *DummyDriver::connectTo(const char *to)
       throw (NetDriverException*)
     {
       if (to == NULL)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "DummyDriver::connectTo - Invalid parameter (null)."); 
+          "DummyDriver::connectTo - Invalid parameter (null).");
       }
 
       if (strncmp(to, "dummy:", 6) != 0)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "DummyDriver::connectTo - Invalid parameter (can only connect to dummy host)."); 
+          "DummyDriver::connectTo - Invalid parameter (can only connect to dummy host).");
       }
 
       LinkedListIterator iter = LinkedListIterator(portBindList);
@@ -66,9 +66,9 @@ namespace net
         }
       }
       throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_CONNECTION_REFUSED,
-        "DummyDriver::connectTo - Connection refused (port is not being listened)."); 
+        "DummyDriver::connectTo - Connection refused (port is not being listened).");
     }
-   
+
 
     INetBind *DummyDriver::bind(const char *port)
       throw (NetDriverException*)
@@ -82,7 +82,7 @@ namespace net
       if (strncmp(port, "dummy:", 6) != 0 || strlen(port) < 7)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "DummyDriver::bind - Invalid parameter (can only bind to dummy host)."); 
+          "DummyDriver::bind - Invalid parameter (can only bind to dummy host).");
       }
       */
       LinkedListIterator iter = LinkedListIterator(portBindList);
@@ -116,7 +116,7 @@ namespace net
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_UNSUPPORTED_PARAMETER,
           "DummyDriver::setNetModeFlags - Unsupported flags set.");
     }
- 
+
 
     int DummyDriver::getNetModeFlags()
     {
@@ -131,7 +131,7 @@ namespace net
       return 0;
     }
 
-   
+
     LinkedList *DummyDriver::portBindList = new LinkedList();
   }
 }

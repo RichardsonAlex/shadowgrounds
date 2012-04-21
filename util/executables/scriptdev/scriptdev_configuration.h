@@ -5,7 +5,7 @@
 #pragma warning ( disable: 4786 )
 #pragma warning ( disable: 4103 )
 
-// allow script preprocessing 
+// allow script preprocessing
 #define SCRIPT_PREPROCESS 1
 
 #ifdef _DEBUG

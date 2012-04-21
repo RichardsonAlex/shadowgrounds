@@ -353,7 +353,7 @@ struct CollisionVolumeData
 
 			//get(collision, i) = get(collisionData.rayOrigin, i) + get(maxT, whichPlane) * get(collisionData.rayDirection, i);
 			get(collision, i) = get(rayOrigin, i) + get(maxT, whichPlane) * get(rayDirection, i);
-			if(get(collision, i) < get(minB, i) || get(collision, i) > get(maxB, i)) 
+			if(get(collision, i) < get(minB, i) || get(collision, i) > get(maxB, i))
 				return false;
 		}
 

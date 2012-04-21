@@ -17,7 +17,7 @@
 
 #define DIRECT_CTRL_AMOUNT 11
 
-// returns direct control id or direct_ctrl_invalid if no such control 
+// returns direct control id or direct_ctrl_invalid if no such control
 
 extern int getDirectControlIdForName(const char *name);
 

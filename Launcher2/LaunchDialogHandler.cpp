@@ -26,7 +26,7 @@ LaunchDialogHandler::~LaunchDialogHandler( )
 
 extern util::ModSelector modSelector;
 
-void LaunchDialogHandler::updateInfoText( ) 
+void LaunchDialogHandler::updateInfoText( )
 {
 	HWND hwnd_text = GetDlgItem( dialogData->getHwnd(), IDC_INFOTEXT );
 
@@ -136,7 +136,7 @@ BOOL LaunchDialogHandler::handleMessages(HWND hwnd, UINT msg, WPARAM wParam, LPA
 	return TRUE;
 }
 
-void LaunchDialogHandler::launchGame() 
+void LaunchDialogHandler::launchGame()
 {
 	PostQuitMessage( 0 );
 

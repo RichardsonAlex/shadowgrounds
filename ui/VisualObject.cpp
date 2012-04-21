@@ -107,15 +107,15 @@ namespace ui
   VisualObject::~VisualObject()
   {
     // not like this, the animations are shared!
-    //if (animation != NULL) 
+    //if (animation != NULL)
     //{
     //  animation->Release();
     //}
-    if (objectName != NULL) 
+    if (objectName != NULL)
     {
       delete [] objectName;
     }
-    if (model != NULL) 
+    if (model != NULL)
     {
       if (inScene)
       {
@@ -143,7 +143,7 @@ namespace ui
     {
       if (scene != NULL)
       {
-        scene->AddModel(model); 
+        scene->AddModel(model);
       }
       this->inScene = true;
     } else {
@@ -303,27 +303,27 @@ Logger::getInstance()->error(int2str(foo2));
 				if (renderYAngle < 180)
 				{
 					rot = QUAT(
-						UNIT_ANGLE_TO_RAD(90), 
-						UNIT_ANGLE_TO_RAD(0), 
+						UNIT_ANGLE_TO_RAD(90),
+						UNIT_ANGLE_TO_RAD(0),
 						UNIT_ANGLE_TO_RAD(270));
 				} else {
 					rot = QUAT(
-						UNIT_ANGLE_TO_RAD(90), 
-						UNIT_ANGLE_TO_RAD(0), 
+						UNIT_ANGLE_TO_RAD(90),
+						UNIT_ANGLE_TO_RAD(0),
 						UNIT_ANGLE_TO_RAD(90));
 				}
 			} else {
 	      rot = QUAT(
-	        UNIT_ANGLE_TO_RAD(renderXAngle), 
-	        UNIT_ANGLE_TO_RAD(renderYAngle), 
+	        UNIT_ANGLE_TO_RAD(renderXAngle),
+	        UNIT_ANGLE_TO_RAD(renderYAngle),
 	        UNIT_ANGLE_TO_RAD(renderZAngle));
 			}
 
 			if (staticRotationYAngle != 0.0f)
 			{
 				QUAT rot2 = QUAT(
-					0, 
-					UNIT_ANGLE_TO_RAD(staticRotationYAngle), 
+					0,
+					UNIT_ANGLE_TO_RAD(staticRotationYAngle),
 					0);
 
 				rot = rot2 * rot;
@@ -564,7 +564,7 @@ Logger::getInstance()->error(int2str(foo2));
 					renderZAngle = zAngle;
 				}
 			} else {
-				if (xAngle != renderXAngle || yAngle != renderYAngle 
+				if (xAngle != renderXAngle || yAngle != renderYAngle
 					|| zAngle != renderZAngle)
 				{
 					renderNeedRotationUpdate = true;
@@ -632,29 +632,29 @@ Logger::getInstance()->error(int2str(foo2));
 					if (attachTo != NULL && strcmp(attachTo, "HELPER_MODEL_WeaponBarrel") == 0)
 					{
 						helper = to->SearchHelper("HELPER_BONE_WeaponBarrel");
-					} 
+					}
 					if (attachTo != NULL && strcmp(attachTo, "HELPER_MODEL_WeaponBarrel2") == 0)
 					{
 						helper = to->SearchHelper("HELPER_BONE_WeaponBarrel2");
-					} 
+					}
 					if (attachTo != NULL && strcmp(attachTo, "HELPER_MODEL_WeaponBarrel3") == 0)
 					{
 						helper = to->SearchHelper("HELPER_BONE_WeaponBarrel3");
-					} 
+					}
 					if (attachTo != NULL && strcmp(attachTo, "HELPER_MODEL_WeaponBarrel4") == 0)
 					{
 						helper = to->SearchHelper("HELPER_BONE_WeaponBarrel4");
-					} 
+					}
 
 					if (helper == 0)
 					{
-						Logger::getInstance()->error("VisualObject::combine - Failed to find helper to attach to.");					
+						Logger::getInstance()->error("VisualObject::combine - Failed to find helper to attach to.");
 						return;
 					}
-          //Logger::getInstance()->error("VisualObject::combine - Failed to find helper to attach to.");					
+          //Logger::getInstance()->error("VisualObject::combine - Failed to find helper to attach to.");
           //return;
         }
-                
+
         IStorm3D_Bone *b = helper->GetParentBone();
         if (b == 0)
         {
@@ -676,15 +676,15 @@ Logger::getInstance()->error(int2str(foo2));
           new_object->SetMesh(object->GetMesh());
 					new_object->SetPosition(object->GetPosition());
 					new_object->SetRotation(object->GetRotation());
-  
+
           // Set to helper transform
           Matrix tm = helper->GetTM();
           Vector position = tm.GetTranslation();
           Rotation rotation = tm.GetRotation();
-        
+
           new_object->SetPosition(position);
           new_object->SetRotation(rotation);
-                
+
           // Link to bone
           b->AddChild(new_object);
 
@@ -693,7 +693,7 @@ Logger::getInstance()->error(int2str(foo2));
 						new_object->UpdateVisibility();
 					}
         }
-         
+
         delete object_iterator;
 
         // end rip n' roll
@@ -727,7 +727,7 @@ Logger::getInstance()->error(int2str(foo2));
 					}
 
         }
-         
+
         delete helper_iterator;
 
         // end rip n' roll
@@ -786,7 +786,7 @@ Logger::getInstance()->error(int2str(foo2));
 					{
 						objCopy->UpdateVisibility();
 					}
-        }      
+        }
         delete object_iterator;
       }
 
@@ -805,7 +805,7 @@ Logger::getInstance()->error(int2str(foo2));
 				if (delObject != NULL)
 				{
 					foundObjects++;
-					model->Object_Delete(delObject);	
+					model->Object_Delete(delObject);
 				} else {
 					if (foundObjects == 0)
 					{
@@ -824,9 +824,9 @@ Logger::getInstance()->error(int2str(foo2));
   {
     if (model != NULL)
     {
-      //IStorm3D_Model_Object *obj = 
+      //IStorm3D_Model_Object *obj =
       //  sourceObject->model->SearchObject(sourceObject->objectName);
-      
+
       // no such object in the source model?
       //if (obj == NULL) abort();
 
@@ -841,7 +841,7 @@ Logger::getInstance()->error(int2str(foo2));
       delete object_iterator;
       */
       LinkedList<IStorm3D_Model_Object*> objlist;
-      Iterator<IStorm3D_Model_Object *> *object_iterator;
+      Iterator<IStorm3D_Model_Object*> *object_iterator;
       for(object_iterator = model->ITObject->Begin(); !object_iterator->IsEnd(); object_iterator->Next())
       {
 	      IStorm3D_Model_Object *object = object_iterator->GetCurrent();
@@ -901,7 +901,7 @@ Logger::getInstance()->error(int2str(foo2));
 		delete object_iterator;
 	}
 
-	
+
   void VisualObject::rotateBone(const char *boneName, float angle, float betaAngle)
   {
 		if (boneName == NULL)
@@ -916,7 +916,7 @@ Logger::getInstance()->error(int2str(foo2));
 			return;
 		}
 
-		// if rotation interpolation on, need to compensate the 
+		// if rotation interpolation on, need to compensate the
 		// error caused by interpolation to bone rotation (torso twist aiming)
 		if (this->rotationInterpolationAmount > 1)
 		{
@@ -968,7 +968,7 @@ Logger::getInstance()->error(int2str(foo2));
 	}
 
 
-	// FIXME: THIS MAY ONLY BE CALLED ONCE, AFTER THE WHOLE 
+	// FIXME: THIS MAY ONLY BE CALLED ONCE, AFTER THE WHOLE
 	// VISUALMODELOBJECT HAS BEEN CONSTRUCTED (COMBINED/LOADED).
 	// NOT BEFORE NOR AGAIN AFTER THIS CALL.
 
@@ -990,7 +990,7 @@ Logger::getInstance()->error(int2str(foo2));
 
 
 
-	// FIXME: THIS MAY ONLY BE CALLED ONCE, AFTER THE WHOLE 
+	// FIXME: THIS MAY ONLY BE CALLED ONCE, AFTER THE WHOLE
 	// VISUALMODELOBJECT HAS BEEN CONSTRUCTED (COMBINED/LOADED).
 	// NOT BEFORE NOR AGAIN AFTER THIS CALL.
 
@@ -998,7 +998,7 @@ Logger::getInstance()->error(int2str(foo2));
 	{
 		LinkedList<IStorm3D_Model_Object*> copylist;
 
-		Iterator<IStorm3D_Model_Object *> *object_iterator;
+		Iterator<IStorm3D_Model_Object*> *object_iterator;
 		for (object_iterator = model->ITObject->Begin(); !object_iterator->IsEnd(); object_iterator->Next())
 		{
 			IStorm3D_Model_Object *object = object_iterator->GetCurrent();
@@ -1051,7 +1051,7 @@ Logger::getInstance()->error(int2str(foo2));
 			{
 				Vector position = object->GetPosition();
 				Rotation rotation = object->GetRotation();
-    
+
 				new_object->SetPosition(position);
 				new_object->SetRotation(rotation);
 
@@ -1066,7 +1066,7 @@ Logger::getInstance()->error(int2str(foo2));
 	{
 		LinkedList<IStorm3D_Model_Object*> copylist;
 
-		Iterator<IStorm3D_Model_Object *> *object_iterator;
+		Iterator<IStorm3D_Model_Object*> *object_iterator;
 		for (object_iterator = model->ITObject->Begin(); !object_iterator->IsEnd(); object_iterator->Next())
 		{
 			IStorm3D_Model_Object *object = object_iterator->GetCurrent();
@@ -1119,7 +1119,7 @@ Logger::getInstance()->error(int2str(foo2));
 			{
 				Vector position = object->GetPosition();
 				Rotation rotation = object->GetRotation();
-    
+
 				new_object->SetPosition(position);
 				new_object->SetRotation(rotation);
 
@@ -1188,7 +1188,7 @@ Logger::getInstance()->error(int2str(foo2));
 								tex = visualobject_textureCache->getTexture("protectiveskin.dds");
 							else
 								tex = visualobject_textureCache->getTexture("electricity.dds");
-							
+
 							if(tex != NULL)
 								mat->SetBaseTexture(tex);
 							mat->SetAlphaType(IStorm3D_Material::ATYPE_USE_TEXTRANSPARENCY);
@@ -1334,7 +1334,7 @@ Logger::getInstance()->error(int2str(foo2));
 			{
 				mat->SetColor(COL(0.5f, 0.5f, 0.5f));
 			}
-		} 		 
+		}
 		delete object_iterator;
 	}
 
@@ -1384,7 +1384,7 @@ Logger::getInstance()->error(int2str(foo2));
 		this->positionInterpolationAmount = interpolationAmount;
 	}
 
-	
+
 	void VisualObject::setPositionInterpolationTreshold(float interpolationTreshold)
 	{
 		if (interpolationTreshold < 0.0f)
@@ -1392,7 +1392,7 @@ Logger::getInstance()->error(int2str(foo2));
 		this->positionInterpolationTreshold = interpolationTreshold;
 	}
 
-	
+
 	void VisualObject::setRotationInterpolationAmount(int interpolationAmount)
 	{
 		if (interpolationAmount > VISUALOBJECT_MAX_ROTATION_INTERPOLATION)
@@ -1400,7 +1400,7 @@ Logger::getInstance()->error(int2str(foo2));
 		this->rotationInterpolationAmount = interpolationAmount;
 	}
 
-	
+
 	void VisualObject::setRotationInterpolationTreshold(float interpolationTreshold)
 	{
 		// NOTE: max. ~180 deg treshold (to keep the logic simple)
@@ -1411,7 +1411,7 @@ Logger::getInstance()->error(int2str(foo2));
 		this->rotationInterpolationTreshold = interpolationTreshold;
 	}
 
-  
+
 	void VisualObject::advanceHistory()
 	{
 		lastRenderPosition = renderPosition;
@@ -1425,7 +1425,7 @@ Logger::getInstance()->error(int2str(foo2));
 			for (int i = 1; i < positionInterpolationAmount; i++)
 			{
 				VC3 tmp = positionHistory[(atPositionHistory + (positionInterpolationAmount-i)) % positionInterpolationAmount];
-				// TODO: should use position distance vector length, 
+				// TODO: should use position distance vector length,
 				// not individual components
 				if (fabs(tmp.x - positionHistory[atPositionHistory].x) <= positionInterpolationTreshold
 					&& fabs(tmp.y - positionHistory[atPositionHistory].y) <= positionInterpolationTreshold
@@ -1747,7 +1747,7 @@ Logger::getInstance()->error(int2str(foo2));
 		this->skyModel = true;
 		if (this->model != NULL)
 		{
-			this->model->MakeSkyModel();			
+			this->model->MakeSkyModel();
 		}
 		this->setCollidable(false);
 	}

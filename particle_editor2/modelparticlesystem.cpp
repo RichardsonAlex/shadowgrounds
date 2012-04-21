@@ -293,7 +293,7 @@ void ModelParticleSystem::update()
 	// Update forces
 	{
 		/*
-		for(unsigned int i = 0; i < m_forces.size(); ++i) 
+		for(unsigned int i = 0; i < m_forces.size(); ++i)
 		{
 			Vector f;	
 			m_forces[i]->preCalc(m_time);
@@ -301,7 +301,7 @@ void ModelParticleSystem::update()
 			for(unsigned int j = 0; j < particles.size(); ++j)
 			{
 				Particle &p = particles[j];
-				if(p.alive) 
+				if(p.alive)
 				{
 					m_forces[i]->calcForce(f, p.position, p.velocity);
 					p.velocity += f;
@@ -329,7 +329,7 @@ void ModelParticleSystem::update()
 				{
 					Particle &p = particles[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -350,7 +350,7 @@ void ModelParticleSystem::update()
 				{
 					Particle &p = particles[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -371,7 +371,7 @@ void ModelParticleSystem::update()
 				{
 					Particle &p = particles[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -392,7 +392,7 @@ void ModelParticleSystem::update()
 				{
 					Particle &p = particles[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -602,18 +602,18 @@ void ModelParticleSystem::init(IStorm3D *s3d, IStorm3D_Scene *scene)
 		sm.Multiply(rm);
 
 		IStorm3D_Model *model = s3d->CreateNewModel();
-		if(model && model->LoadS3D(fileName.c_str())) 
+		if(model && model->LoadS3D(fileName.c_str()))
 		{
 			Iterator<IStorm3D_Model_Object*>* obj = model->ITObject->Begin();
 			IStorm3D_Mesh *mesh = obj->GetCurrent()->GetMesh();
-			if(mesh) 
+			if(mesh)
 			{
 				boost::shared_ptr<PointArray> pm(new PointArray());
 				pm->verts.resize(mesh->GetVertexCount());
 				pm->normals.resize(mesh->GetVertexCount());
 
 				Storm3D_Vertex *v = mesh->GetVertexBuffer();
-				for(int i = 0; i < mesh->GetVertexCount(); i++) 
+				for(int i = 0; i < mesh->GetVertexCount(); i++)
 				{
 					Vector pos = v[i].position;
 					Vector nor = v[i].normal;
@@ -641,7 +641,7 @@ void ModelParticleSystem::init(IStorm3D *s3d, IStorm3D_Scene *scene)
 		IStorm3D_Model *model = s3d->CreateNewModel();
 		original.model.reset(model);
 
-		if(model && model->LoadS3D(fileName.c_str())) 
+		if(model && model->LoadS3D(fileName.c_str()))
 		{
 			Iterator<IStorm3D_Model_Object*> *obj = model->ITObject->Begin();
 			for(; !obj->IsEnd(); obj->Next())

@@ -62,7 +62,7 @@ public:
 		window->SetEffectListener( this );
 		init();
 
-		effectWindow = new GUIEffectWindow( &ogui, getLocaleGuiString( "gui_log_window_effect_layer1_image" ), 
+		effectWindow = new GUIEffectWindow( &ogui, getLocaleGuiString( "gui_log_window_effect_layer1_image" ),
 			getLocaleGuiString( "gui_log_window_effect_layer2_image" ), getLocaleGuiString( "gui_log_window_effect_layer3_image" )  );
 
 		// selectList = ogui.CreateSelectList( window, x, y, );
@@ -202,7 +202,7 @@ public:
 			int w = getLocaleGuiInt( "gui_log_text_area_background_w", 0 );
 			int h = getLocaleGuiInt( "gui_log_text_area_background_h", 0 );
 			
-			textAreaBackground = ogui.CreateSimpleImageButton( window, x, y, w, h, 
+			textAreaBackground = ogui.CreateSimpleImageButton( window, x, y, w, h,
 				NULL, NULL, NULL, getLocaleGuiString( "gui_log_text_area_background_image" ), 0 );
 			if( textAreaBackground != NULL )
 				textAreaBackground->SetDisabled( true );
@@ -215,7 +215,7 @@ public:
 			int w = getLocaleGuiInt( "gui_log_selectlist_background_w", 0 );
 			int h = getLocaleGuiInt( "gui_log_selectlist_background_h", 0 );
 			
-			selectListBackground = ogui.CreateSimpleImageButton( window, x, y, w, h, 
+			selectListBackground = ogui.CreateSimpleImageButton( window, x, y, w, h,
 				NULL, NULL, NULL, getLocaleGuiString( "gui_log_selectlist_background_image" ), 0 );
 			if( selectListBackground != NULL )
 				selectListBackground->SetDisabled( true );
@@ -228,7 +228,7 @@ public:
 			int w = getLocaleGuiInt( "gui_log_exit_w", 0 );
 			int h = getLocaleGuiInt( "gui_log_exit_h", 0 );
 			
-			exitButton = ogui.CreateSimpleTextButton( window, x, y, w, h, 
+			exitButton = ogui.CreateSimpleTextButton( window, x, y, w, h,
 				getLocaleGuiString( "gui_log_exit_image" ), getLocaleGuiString( "gui_log_exit_image_down" ), getLocaleGuiString( "gui_log_exit_image_highlight" ), getLocaleGuiString( "gui_map_exit" ) );
 			exitButton->SetListener( this );
 
@@ -306,7 +306,7 @@ public:
 			}
 		}
 
-		delete textAreaBackground; 
+		delete textAreaBackground;
 		textAreaBackground = NULL;
 		
 		delete selectListBackground;

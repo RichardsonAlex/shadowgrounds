@@ -135,9 +135,9 @@ public:
 	void* create() { return new SprayParticleSystem(); }
 	const char* getClassName() { return "spray"; }
 };
- 
+
 static SprayParticleSystemClassDesc theSprayParticleSystemClassDesc;
-						 
+						
 ParticleSystemClassDesc* getSprayParticleSystemClassDesc() {
 	return &theSprayParticleSystemClassDesc;
 }

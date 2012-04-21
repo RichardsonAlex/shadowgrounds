@@ -42,7 +42,7 @@ namespace game
   Part *SomeTorso1::getNewPartInstance()
   {
     return new SomeTorso1Object();
-  } 
+  }
 
   //SomeTorso1 someTorso1 = SomeTorso1();
 

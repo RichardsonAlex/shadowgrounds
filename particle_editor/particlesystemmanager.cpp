@@ -20,7 +20,7 @@ namespace particle {
 
 ParticleSystemManager* ParticleSystemManager::m_singleton = NULL;
 
-ParticleSystemManager::ParticleSystemManager(IStorm3D* s3d, IStorm3D_Scene* scene) : 
+ParticleSystemManager::ParticleSystemManager(IStorm3D* s3d, IStorm3D_Scene* scene) :
 m_s3d(s3d), m_scene(scene), m_timeCount(0) {
 	m_singleton = this;
 	m_stats.numParticles = 0;

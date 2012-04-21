@@ -116,22 +116,22 @@ void AmbientSound::tick(game::GameUI* gameUI, SoundLooper* looper,
 
 	bool inArea = util::ClippedCircle::isInsideArea(listenerPosition, position, range, clip);
 
-	//if(distSq < range * range)  
+	//if(distSq < range * range)
 	if (inArea)
 	{
-		if(!played) 
+		if(!played)
 		{			
-			if(rollOff == 0) 
+			if(rollOff == 0)
 			{
 				if(gameUI->parseSoundFromDefinitionString(const_cast<char*>(defString.c_str()), listenerPosition.x, listenerPosition.y, listenerPosition.z,
-					&looped, &handle, &key, false, range, DEFAULT_SOUND_PRIORITY_LOW, false, true) != -1) 
+					&looped, &handle, &key, false, range, DEFAULT_SOUND_PRIORITY_LOW, false, true) != -1)
 				{
 					assert(looped);
 					played = true;
 				}
 			} else {
 				if(gameUI->parseSoundFromDefinitionString(const_cast<char*>(defString.c_str()), position.x, position.y, position.z,
-					&looped, &handle, &key, false, range, DEFAULT_SOUND_PRIORITY_LOW, false, true) != -1) 
+					&looped, &handle, &key, false, range, DEFAULT_SOUND_PRIORITY_LOW, false, true) != -1)
 				{
 					assert(looped);
 					played = true;			
@@ -140,7 +140,7 @@ void AmbientSound::tick(game::GameUI* gameUI, SoundLooper* looper,
 			
 		}
 	} else {
-		if(played) 
+		if(played)
 		{
 			//looper->stopLoopedSound(handle, key, false);
 			looper->stopLoopedSound(handle, key, true);

@@ -29,7 +29,7 @@ namespace util
 			// if first before using this method.
 			void setAreaValue(int x, int y, int areaMask, int value);
 
-			// there's no point in this, as it is actually the same as setAreaValue, after the buggy setAreaValue has 
+			// there's no point in this, as it is actually the same as setAreaValue, after the buggy setAreaValue has
 			// been fixed. --jpk ;)
 			// same as above, but clears current value first
 			//void resetAreaValue(int x, int y, int areaMask, int value);
@@ -37,11 +37,11 @@ namespace util
 			// same as above, but applies to whole area
 			void fillAreaValue(int areaMask, int value);
 
-			// Use of this not recommended, added for backward 
+			// Use of this not recommended, added for backward
 			// compatibility with terrain raytrace (ugly optimizations).
 			bool isAreaAnyValue(int index, int areaMask) const;
 
-			// Use of this not recommended, added for backward 
+			// Use of this not recommended, added for backward
 			// compatibility with terrain raytrace (ugly optimizations).
 			bool isAreaValue(int index, int areaMask, int value) const;
 

@@ -84,7 +84,7 @@ namespace game
 		for (int i = 0; i < 2; i++)
 		{
 			AbstractPhysicsObject *o = o1;
-			if (i == 1) 
+			if (i == 1)
 			{
 				o = o2;
 			}

@@ -169,7 +169,7 @@ namespace ui
     assert(messageText[messages % ERRORWINDOW_MSG_TEXTS] == NULL);
 
     // change current message to this msg
-    messageText[messages % ERRORWINDOW_MSG_TEXTS] = 
+    messageText[messages % ERRORWINDOW_MSG_TEXTS] =
       ogui->CreateTextLabel(win, 0, 8 + 16 * (messages % ERRORWINDOW_MSG_TEXTS), 1008, 16, (char *)msg);
     messageText[messages % ERRORWINDOW_MSG_TEXTS]->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
     if (defaultThinFont != NULL)
@@ -184,7 +184,7 @@ namespace ui
       messageText[messages % ERRORWINDOW_MSG_TEXTS] = NULL;
     }
 
-		// set message positions so that the lowest one is the next 
+		// set message positions so that the lowest one is the next
 		// message...
 		for (int i = 0; i < ERRORWINDOW_MSG_TEXTS; i++)
 		{

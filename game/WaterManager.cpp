@@ -15,7 +15,7 @@
 namespace game
 {
 
-WaterManager::WaterManager() 
+WaterManager::WaterManager()
 {
 
    waterList = new LinkedList<Water*>();
@@ -23,7 +23,7 @@ WaterManager::WaterManager()
 
 }
 
-WaterManager::~WaterManager() 
+WaterManager::~WaterManager()
 {
 
 	while (!waterList->isEmpty())
@@ -31,23 +31,23 @@ WaterManager::~WaterManager()
 		Water *w = (Water *)waterList->popLast();
 		delete w;
 	}
-	
+
 	delete waterList;
-	
+
 }
 
-Water *WaterManager::createWater() 
+Water *WaterManager::createWater()
 {
 
 	Water* water = new Water();
-	
+
 	waterList->append(water);
 
 	return water;
 
 }
-       
-void WaterManager::deleteWater(Water *water) 
+
+void WaterManager::deleteWater(Water *water)
 {
 
 	/*
@@ -64,10 +64,10 @@ void WaterManager::deleteWater(Water *water)
 	*/
 	waterList->remove(water);
 	delete water;
-	
+
 }
 
-Water *WaterManager::getWaterByName(const char *name) const 
+Water *WaterManager::getWaterByName(const char *name) const
 {
 
 	LinkedListIterator<Water*> iter(waterList);
@@ -83,7 +83,7 @@ Water *WaterManager::getWaterByName(const char *name) const
 	return NULL;
 }
 
-float WaterManager::getWaterDepthAt(const VC3 &position) const 
+float WaterManager::getWaterDepthAt(const VC3 &position) const
 {
 
 	// optimization, only if the point is below hihghest water plane
@@ -91,39 +91,39 @@ float WaterManager::getWaterDepthAt(const VC3 &position) const
 	if(position.y > highest) {
 		return 0.0f;
 	}
-	
+
 	LinkedListIterator<Water*> iter(waterList);
 	while (iter.iterateAvailable())
 	{
 		Water *water = iter.iterateNext();
 		// if this point is in the are of this water?
-		if((position.y > water->minX) && (position.x < water->maxX) 
-			&& (position.z > water->minY) && (position.z < water->maxY)) 
+		if((position.y > water->minX) && (position.x < water->maxX)
+			&& (position.z > water->minY) && (position.z < water->maxY))
 		{
-			
+
 			// return the depth how much this point is below water plane
 			// zero, if above water
 			float d = 0.0f;
-			if(water->height > position.y) 
+			if(water->height > position.y)
 			{
 				d = water->height - position.y;
 			}
 			return d;
 
 		}
-	
+
 	}
 
 	// not in water at all.
 	return 0.0f;
 }
 
-void WaterManager::recalculate() 
+void WaterManager::recalculate()
 {
 
 	// shoould we remove all updateBoundaries from Water class methods
 	// and call it simple here for each Water?
-	
+
 	// recalculate highest
 
 	LinkedListIterator<Water*> iter = LinkedListIterator<Water*>(waterList);
@@ -137,7 +137,7 @@ void WaterManager::recalculate()
 		Water *water = (Water *)iter.iterateNext();
 		if(water->height > highest) {
 			highest = water->height;
-		}	
+		}
 	}
 
 }

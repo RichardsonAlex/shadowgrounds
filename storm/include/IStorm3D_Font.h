@@ -10,7 +10,7 @@
 // Common datatypes
 #include "DatatypeDef.h"
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include "Storm3D_Datatypes.h"
 #include "IStorm3D_Texture.h"
@@ -49,7 +49,7 @@ public:
 	virtual COL &GetColor()=0;
 
 	virtual void SetFont(const char *face, int width, int height, bool bold, bool italic) = 0;
-	virtual int GetCharacterWidth(wchar_t *string, int length) const = 0; 
+	virtual int GetCharacterWidth(wchar_t *string, int length) const = 0;
 
 	virtual bool isUnicode() const = 0;
 	virtual const char *GetFace() const = 0;

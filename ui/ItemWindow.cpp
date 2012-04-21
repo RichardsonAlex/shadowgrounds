@@ -21,7 +21,7 @@ ItemWindow::ItemWindow( Ogui* ogui, Game* game, int player ) :
 	game( game )
 {
 	FB_ASSERT( ogui );
-    
+
 	{
 		windowX = getLocaleGuiInt( "gui_item_window_x", 0 );
 		windowY = getLocaleGuiInt( "gui_item_window_y", 0 );
@@ -78,7 +78,7 @@ void ItemWindow::addItemWindow( const std::string& item_window_name )
 	ItemList* tmp = new ItemList( x, y, add_x, add_y );
 
 	FB_ASSERT( itemWindows.find( item_window_name ) == itemWindows.end() );
-	itemWindows.insert( std::pair< std::string, ItemList* >( item_window_name, tmp ) ); 
+	itemWindows.insert( std::pair< std::string, ItemList* >( item_window_name, tmp ) );
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -113,7 +113,7 @@ void ItemWindow::removeItem( const std::string& target, const Item& item )
 
 ///////////////////////////////////////////////////////////////////////////////
 
-ItemWindow::ItemList::ItemList( int x, int y, int addX, int addY ) : 
+ItemWindow::ItemList::ItemList( int x, int y, int addX, int addY ) :
 	startX( x ),
 	startY( y ),
 	curX( x ),

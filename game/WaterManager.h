@@ -16,7 +16,7 @@ namespace game
       ~WaterManager();
 
       Water *createWater();
-       
+
       void deleteWater(Water *water);
 
       Water *getWaterByName(const char *name) const;
@@ -32,7 +32,7 @@ namespace game
     private:
       LinkedList<Water*> *waterList;
 
-      // updated by the updateWater script command 
+      // updated by the updateWater script command
       // (which will also update the water's dimensions based on decoration)
       float highest;
   };

@@ -16,16 +16,16 @@ public:
 	~BuildingHandler();
 
 	// Clears previous frame
-	void beginUpdate(); 
+	void beginUpdate();
 	// Call between update
-	void removeTopFrom(IStorm3D_Model *model); 
+	void removeTopFrom(IStorm3D_Model *model);
 	// Update models which have changes
-	void endUpdate(bool noDelay = false); 
+	void endUpdate(bool noDelay = false);
 
 	// Clear all models
 	void clear();
 
-	void removeAllTops(); 
+	void removeAllTops();
 
 	// To help with cursor raytracing
 	void setCollisions(bool collisionOn);

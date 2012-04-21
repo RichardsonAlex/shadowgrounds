@@ -5,8 +5,8 @@
 
 namespace util
 {
-	ClippedCircleValues ClippedCircle::getValuesFor(const VC3 &position, 
-		const VC3 &circlePosition, float circleRadius, int quarterBitMask, 
+	ClippedCircleValues ClippedCircle::getValuesFor(const VC3 &position,
+		const VC3 &circlePosition, float circleRadius, int quarterBitMask,
 		float clipSmoothRange)
 	{
 		ClippedCircleValues ret;
@@ -30,7 +30,7 @@ namespace util
 		ret.rangeToCenter = dist;
 
 		// outside circle radius?
-		if(distSq > circleRadius * circleRadius)  
+		if(distSq > circleRadius * circleRadius)
 		{
 			return ret;
 		}
@@ -52,14 +52,14 @@ namespace util
 					if ((quarterBitMask & CLIPPEDCIRCLE_QUARTER_NW) == 0)
 					{
 						// TODO: clipSmoothRange
-						ret.distanceFactor = 0.0f; 
+						ret.distanceFactor = 0.0f;
 						ret.insideArea = false;
 					}
 				} else {
 					if ((quarterBitMask & CLIPPEDCIRCLE_QUARTER_NE) == 0)
 					{
 						// TODO: clipSmoothRange
-						ret.distanceFactor = 0.0f; 
+						ret.distanceFactor = 0.0f;
 						ret.insideArea = false;
 					}
 				}
@@ -69,14 +69,14 @@ namespace util
 					if ((quarterBitMask & CLIPPEDCIRCLE_QUARTER_SW) == 0)
 					{
 						// TODO: clipSmoothRange
-						ret.distanceFactor = 0.0f; 
+						ret.distanceFactor = 0.0f;
 						ret.insideArea = false;
 					}
 				} else {
 					if ((quarterBitMask & CLIPPEDCIRCLE_QUARTER_SE) == 0)
 					{
 						// TODO: clipSmoothRange
-						ret.distanceFactor = 0.0f; 
+						ret.distanceFactor = 0.0f;
 						ret.insideArea = false;
 					}
 				}
@@ -88,7 +88,7 @@ namespace util
 
 
 
-	bool ClippedCircle::isInsideArea(const VC3 &position, 
+	bool ClippedCircle::isInsideArea(const VC3 &position,
 		const VC3 &circlePosition, float circleRadius, int quarterBitMask)
 	{
 		VC3 diff = position - circlePosition;
@@ -96,7 +96,7 @@ namespace util
 
 		float distSq = diff.GetSquareLength();
 
-		if(distSq > circleRadius * circleRadius)  
+		if(distSq > circleRadius * circleRadius)
 		{
 			return false;
 		}

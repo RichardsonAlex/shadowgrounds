@@ -8,8 +8,8 @@ class OguiWindow;
 class IOguiFont;
 
 namespace game
-{ 
-	class Game; 
+{
+	class Game;
 }
 
 namespace ui
@@ -19,7 +19,7 @@ namespace ui
 
    /**
 	* MenuCollection a collection of menus
-	* This is the interface for the collection of menus 
+	* This is the interface for the collection of menus
 	* ( mainmenu, options, loadgame )
 	*
 	* @version 0.1, 15.02.2005

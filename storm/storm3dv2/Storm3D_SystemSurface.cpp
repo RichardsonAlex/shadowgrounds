@@ -473,7 +473,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 				}
 				for (int yy=ystart;yy<yend;yy++)
 				{
-					// Clip Y (end) 
+					// Clip Y (end)
 					//if (yy>=size) break;
 
 					// Clip Y (beginning)
@@ -529,7 +529,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 				}
 				for (yy=ystart;yy<=yend;yy++)
 				{
-					// Clip Y (end) 
+					// Clip Y (end)
 					//if (yy>=size) break;
 
 					// Clip Y (beginning)
@@ -589,7 +589,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 				}
 				for (int yy=ystart;yy<yend;yy++)
 				{
-					// Clip Y (end) 
+					// Clip Y (end)
 					//if (yy>=size) break;
 
 					// Clip Y (beginning)
@@ -645,7 +645,7 @@ void Storm3D_SystemSurface::RenderFaceList(Storm3D_Scene *scene,D3DMATRIX worldm
 				}
 				for (yy=ystart;yy<=yend;yy++)
 				{
-					// Clip Y (end) 
+					// Clip Y (end)
 					//if (yy>=size) break;
 
 					// Clip Y (beginning)

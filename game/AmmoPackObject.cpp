@@ -9,7 +9,7 @@
 namespace game
 {
 
-  
+
   AmmoPackObject::AmmoPackObject()
   {
     amount = 0;
@@ -31,7 +31,7 @@ namespace game
       // WARNING: unsafe cast!
       AmmoPack *ap = (AmmoPack *)this->getType();
       return (((maxAmount - amount) * ap->getPrice()) / ap->getAmount());
-    }    
+    }
     return 0;
   }
 

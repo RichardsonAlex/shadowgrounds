@@ -86,7 +86,7 @@ extern IStorm3D_Scene *disposable_scene;
 
 
 #ifndef PROJECT_SHADOWGROUNDS
-// #include "ComboWindow.h"	
+// #include "ComboWindow.h"
 #endif
 
 #ifdef PROJECT_SURVIVOR
@@ -245,10 +245,10 @@ int getNumberOfPlayers()
 		this->player = player;
 		this->game = game;
 		this->ogui = ogui;
-		
+
 		win = ogui->CreateSimpleWindow(0, 0, 1024, 768, NULL);
 		win->Hide();
-		
+
 		winVisible = false;
 		guiMode = GUI_MODE_BOTTOM;
 		radarMode = RADAR_MODE_RADAR;
@@ -263,20 +263,20 @@ int getNumberOfPlayers()
 		radarDisabled = false;
 		radarWasDisabled = false;
 #endif
-		
+
 		int i;
 		for (i = 0; i < COMBATW_UNITS; i++)
 		{
 			//unitWindows[i] = NULL;
 		}
-		
+
 		dragStartX = 0;
 		dragStartY = 0;
 		dragStartTime = 0;
 
 		lastMoveClickTime = 0;
 		lastMoveTarget = VC3(0,0,0);
-		
+
 		areas = new OguiButton *[COMBATW_AREAS];
 		for (i = 0; i < COMBATW_AREAS; i++)
 		{
@@ -287,22 +287,22 @@ int getNumberOfPlayers()
 		{
 			weaponSelectionWindows[i] = NULL;
 		}
-		
-		
+
+
 		// the whole screen area is clickable...
 		OguiButton *b;
-		b = ogui->CreateSimpleImageButton(win, 0, 0, 1024, 768, NULL, NULL, NULL, 
+		b = ogui->CreateSimpleImageButton(win, 0, 0, 1024, 768, NULL, NULL, NULL,
 			COMBATW_AREA_SCREEN);
 		areas[COMBATW_AREA_SCREEN] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_PRESS | OGUI_EMASK_OUT | OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
-		
-		//createUnitWindows();		
-		
+
+		//createUnitWindows();
+
 		//unitsSelected = 0;
-		
+
 		cursorOnScene = false;
-		
+
 		// gotta do radar before corner areas, or it will block them...
 		// RADAR REMOVED!
 		if (!radarTemporarilyDisabled && !radarDisabled)
@@ -313,102 +313,102 @@ int getNumberOfPlayers()
 		}
 
 		offscreenUnitPointers = new OffscreenUnitPointers(ogui, game, player, win);
-		
+
 		// then the screen edges that will move the camera
-		b = ogui->CreateSimpleImageButton(win, 8, 0, 1024-16, 8, NULL, NULL, NULL, 
+		b = ogui->CreateSimpleImageButton(win, 8, 0, 1024-16, 8, NULL, NULL, NULL,
 			COMBATW_AREA_FWD);
 		areas[COMBATW_AREA_FWD] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
-		b = ogui->CreateSimpleImageButton(win, 8, 768-8, 1024-16, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 8, 768-8, 1024-16, 8, NULL, NULL, NULL,
 			COMBATW_AREA_BACK);
 		areas[COMBATW_AREA_BACK] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
-		b = ogui->CreateSimpleImageButton(win, 0, 8, 8, 768-16, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 0, 8, 8, 768-16, NULL, NULL, NULL,
 			COMBATW_AREA_LEFT);
 		areas[COMBATW_AREA_LEFT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
-		b = ogui->CreateSimpleImageButton(win, 1024-8, 8, 8, 768-16, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 1024-8, 8, 8, 768-16, NULL, NULL, NULL,
 			COMBATW_AREA_RIGHT);
 		areas[COMBATW_AREA_RIGHT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
-		b = ogui->CreateSimpleImageButton(win, 0, 768-8, 8, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 0, 768-8, 8, 8, NULL, NULL, NULL,
 			COMBATW_AREA_DOWNLEFT);
 		areas[COMBATW_AREA_DOWNLEFT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
-		b = ogui->CreateSimpleImageButton(win, 1024-8, 768-8, 8, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 1024-8, 768-8, 8, 8, NULL, NULL, NULL,
 			COMBATW_AREA_DOWNRIGHT);
 		areas[COMBATW_AREA_DOWNRIGHT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
-		b = ogui->CreateSimpleImageButton(win, 0, 0, 8, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 0, 0, 8, 8, NULL, NULL, NULL,
 			COMBATW_AREA_UPLEFT);
 		areas[COMBATW_AREA_UPLEFT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
-		b = ogui->CreateSimpleImageButton(win, 1024-8, 0, 8, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 1024-8, 0, 8, 8, NULL, NULL, NULL,
 			COMBATW_AREA_UPRIGHT);
 		areas[COMBATW_AREA_UPRIGHT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		// HACK: scrollers off
 		b->SetDisabled(true);
-		
+
 		// orbiting and rotation disabled
 		/*
-		b = ogui->CreateSimpleImageButton(win, 0, 768-8, 8, 8, NULL, NULL, NULL, 
+		b = ogui->CreateSimpleImageButton(win, 0, 768-8, 8, 8, NULL, NULL, NULL,
 		COMBATW_AREA_ORBITLEFT);
 		areas[COMBATW_AREA_ORBITLEFT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
-		
-		b = ogui->CreateSimpleImageButton(win, 1024-8, 768-8, 8, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 1024-8, 768-8, 8, 8, NULL, NULL, NULL,
 		COMBATW_AREA_ORBITRIGHT);
 		areas[COMBATW_AREA_ORBITRIGHT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
-		
-		b = ogui->CreateSimpleImageButton(win, 0, 0, 8, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 0, 0, 8, 8, NULL, NULL, NULL,
 		COMBATW_AREA_ROTATELEFT);
 		areas[COMBATW_AREA_ROTATELEFT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
-		
-		b = ogui->CreateSimpleImageButton(win, 1024-8, 0, 8, 8, NULL, NULL, NULL, 
+
+		b = ogui->CreateSimpleImageButton(win, 1024-8, 0, 8, 8, NULL, NULL, NULL,
 		COMBATW_AREA_ROTATERIGHT);
 		areas[COMBATW_AREA_ROTATERIGHT] = b;
 		b->SetListener(this);
 		b->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		*/
-		
+
 		crosshair = NULL;
 		crosshairImage = NULL;
-		
+
 		bool cooperative = game->isCooperative();
 
 
@@ -461,7 +461,7 @@ int getNumberOfPlayers()
 			// openSubWindow( "SurvivorNapalmFlameBar", player );
 		}
 #endif
-		
+
 		messageWindow = new CombatMessageWindow(ogui, game, player, "converse", "face1");
 		messageWindow->setBoxed(true);
 
@@ -480,16 +480,16 @@ int getNumberOfPlayers()
 		//hintMessageWindow->setFont(ui::defaultSmallIngameFont, true);
 		hintMessageWindow->setFont(ui::defaultIngameFont, true);
 		//hintMessageWindow->setBoxed(false);
-		
+
 		executeTipMessageWindow = new CombatMessageWindow(ogui, game, player, "executetip", "");
 		//executeTipMessageWindow->setFont(ui::defaultSmallIngameFont, true);
 		executeTipMessageWindow->setFont(ui::defaultIngameFont, true);
-		
+
 		gamePointers = new GamePointers(game->getGameScene());
-		
+
 		// set us the listener for unit selections
 		game->unitSelections[player]->setListener(this);
-		
+
 #ifdef PROJECT_SHADOWGROUNDS
 		tacticalUnitWindow = new TacticalUnitWindow(ogui, game);
 #endif
@@ -534,7 +534,7 @@ int getNumberOfPlayers()
 		openSubWindow( "ComboWindow" );
 #endif
 	}
-	
+
 
 	CombatWindow::~CombatWindow()
 	{
@@ -542,7 +542,7 @@ int getNumberOfPlayers()
 
 		// we are no-longer listening to unit selections
 		game->unitSelections[player]->setListener(NULL);
-		
+
 		{
 			std::map< std::string, ICombatSubWindow* >::iterator i;
 			for( i = subWindowMap.begin(); i != subWindowMap.end(); ++i )
@@ -645,12 +645,12 @@ int getNumberOfPlayers()
 		delete tacticalUnitWindow;
 #endif
 		delete selectionBox;
-	
+
 		// delete unitHealthBar;
 		// unitHealthBar = NULL;
 
 	}
-	
+
 
 	void CombatWindow::createUnitWindows()
 	{
@@ -690,14 +690,14 @@ int getNumberOfPlayers()
 		//setUnitWindowPositions();
 	}
 
-	
+
 	void CombatWindow::toggleGUIMode()
 	{
 		guiMode++;
 		if (guiMode > MAX_GUI_MODE)
 			guiMode = MIN_GUI_MODE;
 		setUnitWindowPositions();
-		
+
 		if (!guiVisible || guiMode == GUI_MODE_INVISIBLE)
 		{
 			/*
@@ -777,7 +777,7 @@ int getNumberOfPlayers()
 			hintMessageWindow->show( fadeTime );
 			executeTipMessageWindow->show( fadeTime );
 			timerWindow->show( 0 );
-		
+
 		}
 		if(radarMode == RADAR_MODE_RADAR)
 		{
@@ -823,14 +823,14 @@ int getNumberOfPlayers()
 			}
 		}
 	}
-	
-	
+
+
 	bool CombatWindow::isGUIVisible()
 	{
 		return guiVisible;
 	}
-	
-	
+
+
 	void CombatWindow::setGUIVisibility(bool guiVisible)
 	{
 		this->guiVisible = guiVisible;
@@ -881,7 +881,7 @@ int getNumberOfPlayers()
 			}
 		}
 	}
-	
+
 
 	void CombatWindow::setUnitWindowPositions()
 	{
@@ -891,7 +891,7 @@ int getNumberOfPlayers()
 			if (unitWindows[i] != NULL)
 			{
 				if (guiMode == GUI_MODE_BOTTOM)
-					unitWindows[i]->moveTo(UNITSTAT_BOTTOM_START_X + 
+					unitWindows[i]->moveTo(UNITSTAT_BOTTOM_START_X +
 					UNITSTAT_BOTTOM_PAD_X * i, UNITSTAT_BOTTOM_START_Y);
 				if (guiMode == GUI_MODE_RIGHT)
 					unitWindows[i]->moveTo(UNITSTAT_RIGHT_START_X,
@@ -908,8 +908,8 @@ int getNumberOfPlayers()
 		tacticalClickExpected = true;
 		tacticalClickCursorType = cursorType;
 	}
-	
-	
+
+
 	void CombatWindow::updateOffscreenUnitPointers()
 	{
 		if (offscreenUnitPointers != NULL)
@@ -917,7 +917,7 @@ int getNumberOfPlayers()
 			offscreenUnitPointers->update();
 		}
 	}
-	
+
 
 	void CombatWindow::addHostileUnitPointer(game::Unit *unit)
 	{
@@ -945,8 +945,8 @@ int getNumberOfPlayers()
 			radar->update();
 		}
 	}
-	
-	
+
+
 	void CombatWindow::setRadarAngle(float angle)
 	{
 		if (radar != NULL)
@@ -954,8 +954,8 @@ int getNumberOfPlayers()
 			radar->setAngle(angle);
 		}
 	}
-	
-	
+
+
 	void CombatWindow::setCrosshair(bool crosshairVisible)
 	{
 		if (crosshairVisible)
@@ -982,7 +982,7 @@ int getNumberOfPlayers()
 				{
 					crosshairImage = ogui->LoadOguiImage("Data/GUI/Ingame/crosshair.tga");
 				}
-				crosshair = ogui->CreateSimpleImageButton(win, 
+				crosshair = ogui->CreateSimpleImageButton(win,
 					(1024-32)/2, (768+8-32)/2, 32, 32, NULL, NULL, NULL);
 				crosshair->SetDisabledImage(crosshairImage);
 				// the unit seem to shoot a bit lower than this... thus +8
@@ -1006,7 +1006,7 @@ int getNumberOfPlayers()
 			}
 		}
 	}
-	
+
 
 	void CombatWindow::setCrosshairProperties(int screenX, int screenY, float sizeFactor)
 	{
@@ -1056,10 +1056,10 @@ int getNumberOfPlayers()
 			size = (size & (0xffff - 1));
 			crosshair->Move(screenX - size / 2, screenY - size / 2);
 			crosshair->Resize(size, size);
-		}		
+		}
 	}
 
-	
+
 	void CombatWindow::hide()
 	{
 		winVisible = false;
@@ -1073,8 +1073,8 @@ int getNumberOfPlayers()
 		}
 		*/
 	}
-	
-	
+
+
 	void CombatWindow::show()
 	{
 		winVisible = true;
@@ -1091,15 +1091,15 @@ int getNumberOfPlayers()
 			*/
 		}
 	}
-	
-	
+
+
 	bool CombatWindow::isWindowVisible()
 	{
 		return winVisible;
 		//return win->IsVisible();
 	}
-	
-	
+
+
 	void CombatWindow::update(int delta)
 	{
 		if(messageWindow)
@@ -1255,7 +1255,7 @@ int getNumberOfPlayers()
 					if (game->gameUI->getFirstPerson(cl)->isClipReloading())
 					{
 						ogui->SetCursorImageState(cl, DH_CURSOR_PLAYER1_RELOADING + cl);
-					} else {			 
+					} else {
 						ogui->SetCursorImageState(cl, DH_CURSOR_PLAYER1_AIM + cl);
 					}
 				}
@@ -1264,21 +1264,21 @@ int getNumberOfPlayers()
 		}
 #endif
 #endif
-		
+
 #ifdef PROJECT_SHADOWGROUNDS
 		if (!cursorOnScene) return;
-		
+
 		// TODO: client number
 		SceneSelection *sel = game->gameUI->getSceneSelection(0);
-		
+
 		if (tacticalClickExpected)
 		{
 			ogui->SetCursorImageState(0, tacticalClickCursorType);
 			return;
 		}
 
-		if (game->unitSelections[player]->getUnitsSelected() > 0 
-			&& game->gameUI->getController(player)->isKeyDown(DH_CTRL_FORCE_ATTACK)) 
+		if (game->unitSelections[player]->getUnitsSelected() > 0
+			&& game->gameUI->getController(player)->isKeyDown(DH_CTRL_FORCE_ATTACK))
 		{
 			ogui->SetCursorImageState(0, DH_CURSOR_AIM_HEAVY);
 		} else {
@@ -1323,8 +1323,8 @@ int getNumberOfPlayers()
 #endif
 
 	}
-	
-	
+
+
 	void CombatWindow::doCombatControls(int timeDelta)
 	{
 		GameController *gameController = game->gameUI->getController(player);
@@ -1356,7 +1356,7 @@ int getNumberOfPlayers()
 				{
 					unitVector.push_back(u);
 				}
-			}			
+			}
 			if (gameController->wasKeyClicked(DH_CTRL_STOP)
 				|| gameController->wasKeyClicked(DH_CTRL_STOP_AND_CEASE_FIRE))
 				game->formations.clearMovePoint(&unitVector);
@@ -1377,7 +1377,7 @@ int getNumberOfPlayers()
 			{
 				Unit *u = ulist->iterateNext();
 				if (u->isActive())
-				{					
+				{
 					if (passedCurrent)
 					{
 						if (game->gameUI->getFirstPerson(0) != NULL)
@@ -1416,7 +1416,7 @@ int getNumberOfPlayers()
 			}
 		}
 
-		
+
 		for (int c = 0; c < MAX_PLAYERS_PER_CLIENT; c++)
 		{
 			Unit *fp = game->gameUI->getFirstPerson(c);
@@ -1496,7 +1496,7 @@ int getNumberOfPlayers()
 					{
 						UnitActor *ua = getUnitActorForUnit(fp);
 						ua->reload(fp);
-					}			
+					}
 
 					// medkit...
 
@@ -1508,7 +1508,7 @@ int getNumberOfPlayers()
 						{
 							game::UnitInventory::useUnitItem(game, fp, "medikit");
 						}
-					}			
+					}
 
 					// flashlight on/off...
 
@@ -1534,7 +1534,7 @@ int getNumberOfPlayers()
 								//}
 							}
 						}
-					}			
+					}
 
 					if (game->gameUI->getController(c)->wasKeyClicked(DH_CTRL_EXECUTE)
 						&& fp->getJumpCounter() == 0)
@@ -1548,14 +1548,14 @@ int getNumberOfPlayers()
 							/*
 							// if an item pickup script should be run, run the execute
 							// script for it instead.
-							// FIXME: this method cannot handle multiple units, 
+							// FIXME: this method cannot handle multiple units,
 							// just one at a time.
 							game->itemManager->setExecuteUnit(fp);
 							*/
 
 							bool didItemExecute = game->itemManager->doItemExecute(fp);
 
-							if (!(didUnitExecute || didItemExecute))					
+							if (!(didUnitExecute || didItemExecute))
 							{
 								// does execute use items too (combined use/execute)?
 								if (SimpleOptions::getBool(DH_OPT_B_GAME_EXECUTE_USE_SELECTED_ITEM))
@@ -1605,7 +1605,7 @@ int getNumberOfPlayers()
 
 					if (canChangeWeaponImmediately)
 					{
-						// pending requests (ones that were not completed 
+						// pending requests (ones that were not completed
 						// immediately because of jump/firing/reload in progress)
 
 						if (fp->getPendingWeaponChangeRequest() != -1)
@@ -1657,7 +1657,7 @@ int getNumberOfPlayers()
 							{
 								newweap = fp->getWeaponByWeaponType(weapId);
 								if (!fp->isWeaponOperable(newweap)
-									|| (fp->getWeaponAmmoAmount(newweap) == 0 
+									|| (fp->getWeaponAmmoAmount(newweap) == 0
 										&& fp->getWeaponType(newweap) != NULL
 										&& fp->getWeaponType(newweap)->getAmmoUsage() > 0))
 								{
@@ -1667,7 +1667,7 @@ int getNumberOfPlayers()
 							if (newweap != -1)
 							{
 								break;
-							} else { 
+							} else {
 								weapId = 0;
 							}
 
@@ -1680,7 +1680,7 @@ int getNumberOfPlayers()
 							}
 						}
 
-					}			
+					}
 
 					// direct weapon change
 
@@ -1851,7 +1851,7 @@ int getNumberOfPlayers()
 							}
 							weaponSelectionWindows[c]->setSelectedWeapon(selectNumber);
 						}
-						
+
 						if (newweap != -1 && newweap != prevSelection)
 						{
 							fp->setSelectedWeapon(newweap);
@@ -1933,8 +1933,8 @@ int getNumberOfPlayers()
 			} // /first person exists
 		} // /for each player
 	}
-	
-	
+
+
 	void CombatWindow::showMessage(const char *message, Visual2D *image, bool rightSide)
 	{
 		if (rightSide)
@@ -1952,14 +1952,14 @@ int getNumberOfPlayers()
 			messageWindow->showMessage(message, image);
 		}
 	}
-	
-	
+
+
 	void CombatWindow::showCenterMessage(const char *message)
 	{
 		centerMessageWindow->showMessage(message, NULL);
 	}
-	
-	
+
+
 	void CombatWindow::clearMessage()
 	{
 		messageWindow->clearMessage();
@@ -1998,18 +1998,18 @@ int getNumberOfPlayers()
 	{
 		hintMessageWindow->showMessage(message, NULL);
 	}
-	
-	
+
+
 	void CombatWindow::showExecuteTipMessage(const char *message)
 	{
 		executeTipMessageWindow->showMessage(message, NULL);
 	}
-	
-	
+
+
 	void CombatWindow::unitSelectionEvent(game::Unit *unit)
 	{
 		/*
-		for (int i = 0; i < COMBATW_UNITS; i++) 
+		for (int i = 0; i < COMBATW_UNITS; i++)
 		{
 			if (unitWindows[i] != NULL)
 			{
@@ -2026,8 +2026,8 @@ int getNumberOfPlayers()
 		}
 		recreatePointers();
 	}
-	
-	
+
+
 	void CombatWindow::CursorEvent(OguiButtonEvent *eve)
 	{
 #ifdef PROJECT_SHADOWGROUNDS
@@ -2161,7 +2161,7 @@ int getNumberOfPlayers()
 #endif
 			if (eve->triggerButton->GetId() == COMBATW_AREA_SCREEN)
 			{
-				cursorOnScene = true; 
+				cursorOnScene = true;
 			}
 		}
 		if (eve->eventType == OguiButtonEvent::EVENT_TYPE_LEAVE)
@@ -2197,7 +2197,7 @@ int getNumberOfPlayers()
 			dragStartX = eve->cursorScreenX;
 			dragStartY = eve->cursorScreenY;
 			dragStartTime = Timer::getTime();
-			
+
 			// possible selection box started
 			if (eve->cursorButtonMask & OGUI_BUTTON_1_MASK)
 			{
@@ -2264,19 +2264,19 @@ int getNumberOfPlayers()
 				|| eve->cursorOldButtonMask & OGUI_BUTTON_2_MASK) != 0)
 			{
 				// TODO: netgame: do a proper game request!
-				
-				// psd. these checks should be moved here to avoid a lot of code duplication. 
+
+				// psd. these checks should be moved here to avoid a lot of code duplication.
 				// should set all movement/firing through formations
-				
+
 				if (eve->cursorOldButtonMask & OGUI_BUTTON_1_MASK)
 				{
 					int now = Timer::getTime();
 					if (abs(eve->cursorScreenX - dragStartX) < SELECTION_BOX_MIN_SIZE
 						&& abs(eve->cursorScreenY - dragStartY) < SELECTION_BOX_MIN_SIZE)
 						//&& now < dragStartTime + 400)
-					{ 
-						// clicked somewhere on scene, pass on to game ui...	
-						// TODO: client number		
+					{
+						// clicked somewhere on scene, pass on to game ui...
+						// TODO: client number
 						SceneSelection *sel = game->gameUI->getSceneSelection(0);
 
 						// was a tactical menu (3rd) click expected?
@@ -2287,8 +2287,8 @@ int getNumberOfPlayers()
 							tacticalClickExpected = false;
 							if (sel->hit)
 							{
-								VC3 pos = VC3(sel->scaledMapX, 
-									game->gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY), 
+								VC3 pos = VC3(sel->scaledMapX,
+									game->gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY),
 									sel->scaledMapY);
 								tacticalUnitWindow->doTacticalClick(pos, sel->unit);
 							}
@@ -2308,17 +2308,17 @@ int getNumberOfPlayers()
 								if (game->unitSelections[player]->getUnitsSelected() > 0)
 								{
 									if (game->gameUI->getController(player)->
-										isKeyDown(DH_CTRL_FORCE_ATTACK)) 
+										isKeyDown(DH_CTRL_FORCE_ATTACK))
 									{
 										// shoot the ground
-										VC3 targ = VC3(sel->scaledMapX, 
-											game->gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY), 
+										VC3 targ = VC3(sel->scaledMapX,
+											game->gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY),
 											sel->scaledMapY);
 										doUnitAttack(targ, NULL);
 									} else {
 										// move selected units there
-										VC3 targ = VC3(sel->scaledMapX, 
-											game->gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY), 
+										VC3 targ = VC3(sel->scaledMapX,
+											game->gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY),
 											sel->scaledMapY);
 										std::vector<Unit *> unitVector;
 										LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
@@ -2341,7 +2341,7 @@ int getNumberOfPlayers()
 												&& targdiff.GetSquareLength() < 3*3
 												&& SimpleOptions::getBool(DH_OPT_B_DOUBLE_CLICK_MOVE_FAST))
 											{
-												game->formations.addMovePoint(&unitVector, targ, game::Unit::MoveTypeFast);	
+												game->formations.addMovePoint(&unitVector, targ, game::Unit::MoveTypeFast);
 											} else {
 												game->formations.addMovePoint(&unitVector, targ, game::Unit::MoveTypeNormal);
 											}
@@ -2373,11 +2373,11 @@ int getNumberOfPlayers()
 												}
 
 												UnitActor *ua = getUnitActorForUnit(u);
-												
-												ua->setPathTo(u, 
+
+												ua->setPathTo(u,
 													VC3(sel->scaledMapX + movePointOffsetX[finalPointNum],
 													0, sel->scaledMapY + movePointOffsetY[finalPointNum]));
-												
+
 												finalPointNum = (finalPointNum + 1) % 6;
 											}
 										}
@@ -2387,19 +2387,19 @@ int getNumberOfPlayers()
 								}
 							}
 						}
-					} 
-					else 
+					}
+					else
 					{
 						selectionBox->selectionEnded(
 							eve->cursorScreenX, eve->cursorScreenY);
-						
+
 						recreatePointers();
 					}
 				}
 				if (eve->cursorOldButtonMask & OGUI_BUTTON_2_MASK)
 				{
 					// check that we were not dragging (rotating/orbiting) the view
-					// TODO: proper check in case the cursor end up back to drag 
+					// TODO: proper check in case the cursor end up back to drag
 					// starting location.
 					int now = Timer::getTime();
 					if (abs(eve->cursorScreenX - dragStartX) < 4
@@ -2410,17 +2410,17 @@ int getNumberOfPlayers()
 						tacticalClickExpected = false;
 
 						std::vector<Unit *> unitsSelected;
-						
+
 						for (int i = 0; i < COMBATW_UNITS; i++)
 						{
 							Unit *u = solveUnitForNumber(i);
 							if (u != NULL)
 							{
-								if (u->isSelected()) 
+								if (u->isSelected())
 									unitsSelected.push_back(u);
 							}
 						}
-						
+
 						if(unitsSelected.empty() == false)
 						{
 							// TODO: client number
@@ -2428,7 +2428,7 @@ int getNumberOfPlayers()
 							if (selection->hit)
 							{
 #ifdef PROJECT_SHADOWGROUNDS
-								// first make sure the previous tactical menu 
+								// first make sure the previous tactical menu
 								// "session" has properly ended
 								tacticalUnitWindow->tacticalDone();
 								// open tactical menu
@@ -2451,7 +2451,7 @@ int getNumberOfPlayers()
 		if ((game->isHostile(player, unit->getOwner())
 			&& unit->visibility.isSeenByPlayer(player))
 			|| game->gameUI->getController(player)->
-			isKeyDown(DH_CTRL_FORCE_ATTACK)) 
+			isKeyDown(DH_CTRL_FORCE_ATTACK))
 		{
 			if (game->unitSelections[player]->getUnitsSelected() > 0)
 			{
@@ -2468,8 +2468,8 @@ int getNumberOfPlayers()
 			}
 		}
 	}
-	
-	
+
+
 	void CombatWindow::doUnitAttack(const VC3 &target, game::Unit *targetUnit)
 	{
 		// make all selected units attack the target...
@@ -2479,7 +2479,7 @@ int getNumberOfPlayers()
 			Unit *u = solveUnitForNumber(i);
 			if (u != NULL)
 			{
-				if (u->isSelected()) 
+				if (u->isSelected())
 				{
 					if (targetUnit != NULL)
 					{
@@ -2539,19 +2539,19 @@ int getNumberOfPlayers()
 
 		recreatePointers();
 	}
-	
+
 	void CombatWindow::doUnitSelectionByNumber(int unitNum)
 	{
 		Unit *u = solveUnitForNumber(unitNum);
 		doUnitSelection(u);
 	}
-	
+
 	void CombatWindow::doUnitSelection(Unit *unit)
 	{
 		if (unit != NULL)
 		{
 			int unitNum = solveNumberForUnit(unit);
-			
+
 			if (unitNum != -1)
 			{
 				/*
@@ -2568,8 +2568,8 @@ int getNumberOfPlayers()
 			}
 		}
 	}
-	
-	
+
+
 	void CombatWindow::doAllUnitSelection()
 	{
 		bool selectAll = false;
@@ -2594,8 +2594,8 @@ int getNumberOfPlayers()
 			game->unitSelections[player]->selectUnit(game->gameUI->getFirstPerson(0), false);
 #endif
 	}
-	
-	
+
+
 	void CombatWindow::recreateUnitSelections()
 	{
 		game->unitSelections[player]->reset();
@@ -2610,19 +2610,19 @@ int getNumberOfPlayers()
 		}
 		*/
 	}
-	
-	
+
+
 	void CombatWindow::recreatePointers()
 	{
 		// TODO: optimize, as usual...
-		
+
 		gamePointers->clearPointers();
 
 		if (game->isCinematicScriptRunning())
 		{
 			return;
 		}
-		
+
 #ifdef CRIMSON_MODE
 		if (game->gameUI->getFirstPerson(0) != NULL
 			&& !game->gameUI->isThirdPersonView(game->singlePlayerNumber)
@@ -2637,7 +2637,7 @@ int getNumberOfPlayers()
 			return;
 		}
 #endif
-		
+
 		LinkedList<Unit*> *ulist;
 		// cheat?
 		if (SimpleOptions::getBool(DH_OPT_B_SHOW_ENEMY_TACTICAL))
@@ -2655,7 +2655,7 @@ int getNumberOfPlayers()
 			{
 #ifdef CRIMSON_MODE
 				assert(MAX_PLAYERS_PER_CLIENT == 4);
-				if (!u->isDestroyed() 
+				if (!u->isDestroyed()
 					&& u != game->gameUI->getFirstPerson(0)
 					&& u != game->gameUI->getFirstPerson(1)
 					&& u != game->gameUI->getFirstPerson(2)
@@ -2666,12 +2666,12 @@ int getNumberOfPlayers()
 				{
 					if (u->isSelected())
 					{
-						gamePointers->addPointer(u->getPosition(), 
+						gamePointers->addPointer(u->getPosition(),
 							GPOINTER_SELECTED, u, NULL);
 					} else {
 						if (game->isTacticalMode())
 						{
-							gamePointers->addPointer(u->getPosition(), 
+							gamePointers->addPointer(u->getPosition(),
 								GPOINTER_UNSELECTED, u, NULL);
 						}
 					}
@@ -2723,24 +2723,24 @@ int getNumberOfPlayers()
 								tpos.y += 2.0f;
 							if (u->isSelected())
 							{
-								gamePointers->addPointer(tpos, 
+								gamePointers->addPointer(tpos,
 									GPOINTER_GROUNDTARGET, u->targeting.getTargetUnit(), lineFrom, (float)maxDist);
 							} else {
-								gamePointers->addPointer(tpos, 
+								gamePointers->addPointer(tpos,
 									GPOINTER_UNSEL_GROUNDTARGET, u->targeting.getTargetUnit(), lineFrom, (float)maxDist);
 							}
 						} else {
 							if (u->isSelected())
 							{
-								gamePointers->addPointer(tpos, 
+								gamePointers->addPointer(tpos,
 									GPOINTER_TARGET, u->targeting.getTargetUnit(), lineFrom, (float)maxDist);
 							} else {
-								gamePointers->addPointer(tpos, 
+								gamePointers->addPointer(tpos,
 									GPOINTER_UNSEL_TARGET, u->targeting.getTargetUnit(), lineFrom, (float)maxDist);
 							}
 						}
 					}
-										
+
 					if (!u->atFinalDestination())
 					{
 						Unit *lineFrom = NULL;
@@ -2752,10 +2752,10 @@ int getNumberOfPlayers()
 						{
 							if (u->isSelected())
 							{
-								gamePointers->addPointer(u->getFinalDestination(), 
+								gamePointers->addPointer(u->getFinalDestination(),
 									GPOINTER_SNEAKPOINT, NULL, lineFrom);
 							} else {
-								gamePointers->addPointer(u->getFinalDestination(), 
+								gamePointers->addPointer(u->getFinalDestination(),
 									GPOINTER_UNSEL_SNEAKPOINT, NULL, lineFrom);
 							}
 						}
@@ -2763,23 +2763,23 @@ int getNumberOfPlayers()
 						{
 							if (u->isSelected())
 							{
-								gamePointers->addPointer(u->getFinalDestination(), 
+								gamePointers->addPointer(u->getFinalDestination(),
 									GPOINTER_SPRINTPOINT, NULL, lineFrom);
 							} else {
-								gamePointers->addPointer(u->getFinalDestination(), 
+								gamePointers->addPointer(u->getFinalDestination(),
 									GPOINTER_UNSEL_SPRINTPOINT, NULL, lineFrom);
 							}
 						} else {
 							if (u->isSelected())
 							{
-								gamePointers->addPointer(u->getFinalDestination(), 
+								gamePointers->addPointer(u->getFinalDestination(),
 									GPOINTER_FINALPOINT, NULL, lineFrom);
 							} else {
-								gamePointers->addPointer(u->getFinalDestination(), 
+								gamePointers->addPointer(u->getFinalDestination(),
 									GPOINTER_UNSEL_FINALPOINT, NULL, lineFrom);
 							}
 						}
-						
+
 						if (SimpleOptions::getBool(DH_OPT_B_SHOW_PATHS))
 						{
 							if (game->isTacticalMode())
@@ -2803,7 +2803,7 @@ int getNumberOfPlayers()
 			}
 		}
 
-		// others than player...				
+		// others than player...
 		ulist = game->units->getAllUnits();
 		iter = LinkedListIterator<Unit*>(ulist);
 		while (iter.iterateAvailable())
@@ -2811,7 +2811,7 @@ int getNumberOfPlayers()
 			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
 			{
-				if (u->getOwner() != player 
+				if (u->getOwner() != player
 					//&& (u->visibility.isInRadarByPlayer(player)
 					//|| u->visibility.isSeenByPlayer(player)))
 					&& u->visibility.isSeenByPlayer(player))
@@ -2822,17 +2822,17 @@ int getNumberOfPlayers()
 					if (size > 0.2f && size < 3.0f)
 					{
 						if (game->isTacticalMode())
-						{							
+						{
 							if (game->isHostile(player, u->getOwner()))
-								gamePointers->addPointer(u->getPosition(), 
+								gamePointers->addPointer(u->getPosition(),
 								GPOINTER_ENEMY, u, NULL);
 							else
-								gamePointers->addPointer(u->getPosition(), 
+								gamePointers->addPointer(u->getPosition(),
 								GPOINTER_FRIENDLY, u, NULL);
 						} else {
 							/*
 							if (game->isHostile(player, u->getOwner()))
-								gamePointers->addPointer(u->getPosition(), 
+								gamePointers->addPointer(u->getPosition(),
 								GPOINTER_HOSTILE_SIGHT, u, NULL);
 							*/
 						}
@@ -2841,25 +2841,25 @@ int getNumberOfPlayers()
 			}
 		}
 	}
-			
+
 	void CombatWindow::updateUnitPointers()
 	{
 		if( targetDisplayWindow )
 			targetDisplayWindow->update();
 	}
-	
+
 	void CombatWindow::updatePointers()
 	{
 		gamePointers->updatePositions();
 	}
-	
-	
+
+
 	void CombatWindow::renderPointers()
 	{
 		gamePointers->prepareForRender();
 	}
-	
-	
+
+
 	void CombatWindow::updateHPMeters()
 	{
 		// TODO: really need to optimize!!!
@@ -2873,7 +2873,7 @@ int getNumberOfPlayers()
 		}
 		*/
 	}
-	
+
 	void CombatWindow::updateMeters()
 	{
 		// TODO: really need to optimize!!!
@@ -2883,10 +2883,10 @@ int getNumberOfPlayers()
 			if (unitWindows[i] != NULL)
 			{
 				unitWindows[i]->updateMiscInfo();
-				
-				unitWindows[i]->updateWeaponInfo();				
+
+				unitWindows[i]->updateWeaponInfo();
 			}
-		} 
+		}
 		*/
 #ifdef PROJECT_SURVIVOR
 		int value = 0;
@@ -2929,7 +2929,7 @@ int getNumberOfPlayers()
 		if( healthWindow )
 			healthWindow->updateAnimation();
 	}
-	
+
 	void CombatWindow::updateCameraDependedElements()
 	{
 		if( targetDisplayWindow )
@@ -2946,11 +2946,11 @@ int getNumberOfPlayers()
 			{
 				unitWindows[i]->updateModeInfo();
 			}
-		} 
+		}
 		*/
 	}
 
-			
+
 	int CombatWindow::solveNumberForUnit(game::Unit *unit)
 	{
 		/*
@@ -2962,7 +2962,7 @@ int getNumberOfPlayers()
 		*/
 		return -1;
 	}
-	
+
 	game::Unit *CombatWindow::solveUnitForNumber(int number)
 	{
 		/*
@@ -2981,8 +2981,8 @@ int getNumberOfPlayers()
 		{
 			if (tacticalModeBut == NULL)
 			{
-				tacticalModeBut = ogui->CreateSimpleTextButton(win, 
-					4, UNITSTAT_BOTTOM_START_Y - 20, 64, 16, NULL, NULL, NULL, 
+				tacticalModeBut = ogui->CreateSimpleTextButton(win,
+					4, UNITSTAT_BOTTOM_START_Y - 20, 64, 16, NULL, NULL, NULL,
 					"TACTICAL MODE", COMBATW_TACTICAL_MODE);
 				tacticalModeBut->SetFont(ui::defaultIngameFont);
 				tacticalModeBut->SetLineBreaks(true);
@@ -2994,21 +2994,21 @@ int getNumberOfPlayers()
 			{
 				delete tacticalModeBut;
 				tacticalModeBut = NULL;
-			}			
+			}
 		}
 	}
-			
+
 	void CombatWindow::updateUnitHighlight()
 	{
 		unitHighlight->run();
 	}
-			
+
 	void CombatWindow::setUnitHighlight(const game::Unit *unit)
 	{
 		if (!highlightLocked)
 		{
 			float size = 1.0f;
-			if (unit != NULL) 
+			if (unit != NULL)
 				size = unit->getUnitType()->getSize();
 			if (size > 0.2f && size < 3.0f)
 			{
@@ -3048,10 +3048,10 @@ int getNumberOfPlayers()
 			openSubWindow( "UnitHealthBarWindow", player );
 			// unitHealthBar = windowFactory->CreateNewWindow( "UnitHealthBarWindow", ogui, game, player );
 		}
-		
+
 		if( unitHealthBar )
 			((UnitHealthBarWindow*)unitHealthBar )->setUnit( unit );
-			
+
 	}
 
 	void CombatWindow::setUnitHealthBarFlashing(int value)
@@ -3073,10 +3073,10 @@ int getNumberOfPlayers()
 	{
 		closeSubWindow( "FlashlightWindow" );
 	}
-	
+
 	void CombatWindow::showFlashlight()
 	{
-		openSubWindow( "FlashlightWindow", player );	
+		openSubWindow( "FlashlightWindow", player );
 	}
 
 
@@ -3088,7 +3088,7 @@ int getNumberOfPlayers()
 		executeTipMessageWindow->raise();
 		centerMessageWindow->raise();
 	}
-	
+
 	HealthWindow* CombatWindow::getHealthWindow() const
 	{
 		return (HealthWindow*)healthWindow;
@@ -3165,7 +3165,7 @@ int getNumberOfPlayers()
 		// }
 	}
 
-	ICombatSubWindow* CombatWindow::getSubWindow( const std::string& window_name ) const 
+	ICombatSubWindow* CombatWindow::getSubWindow( const std::string& window_name ) const
 	{
 		std::map< std::string, ICombatSubWindow* >::const_iterator i;
 		i = subWindowMap.find( window_name );

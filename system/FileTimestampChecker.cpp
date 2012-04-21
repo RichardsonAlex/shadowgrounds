@@ -87,7 +87,7 @@ bool FileTimestampChecker::isFileUpToDateComparedTo(const char *file, const char
 #endif
 
 int FileTimestampChecker::getFileTimestamp(const char *file)
-{  
+{
   struct _stat buf;
   FILE *f;
   int fh, result;

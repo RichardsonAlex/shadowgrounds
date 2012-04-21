@@ -41,8 +41,8 @@ using namespace ui;
 
 namespace game
 {
-	void TerrainObjectScripting::process(util::ScriptProcess *sp, 
-		int command, int intData, char *stringData, ScriptLastValueType *lastValue, 
+	void TerrainObjectScripting::process(util::ScriptProcess *sp,
+		int command, int intData, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
 		switch(command)

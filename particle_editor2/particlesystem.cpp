@@ -80,10 +80,10 @@ void QuadParticleRenderer::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl,
 	IStorm3D_Camera *camera = scene->GetCamera();
 
 	int a = 0;
-	for(int i = 0; i < (int)parts.size(); i++) 
+	for(int i = 0; i < (int)parts.size(); i++)
 	{
 		Particle &p = parts[i];
-		if(p.alive) 
+		if(p.alive)
 		{
 			VC3 size;
 			float alpha = 0;
@@ -126,7 +126,7 @@ void LineParticleRenderer1::prepareForLaunch(int maxParts) {
 }
 	
 void LineParticleRenderer1::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl,
-			GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward) 
+			GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward)
 {
 	m_animInfo.textureUSubDivs = eds.particleTextureUSubDivs;
 	m_animInfo.textureVSubDivs = eds.particleTextureVSubDivs;
@@ -135,10 +135,10 @@ void LineParticleRenderer1::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl
 	IStorm3D_Camera *camera = scene->GetCamera();
 
 	int a = 0;
-	for(int i = 0; i < (int)parts.size(); i++) 
+	for(int i = 0; i < (int)parts.size(); i++)
 	{
 		Particle& p = parts[i];
-		if(p.alive) 
+		if(p.alive)
 		{
 			VC3 size;
 			float alpha = 0;
@@ -194,7 +194,7 @@ void LineParticleRenderer2::prepareForLaunch(int maxParts) {
 }
 	
 void LineParticleRenderer2::render(IStorm3D_Scene* scene, IStorm3D_Material* mtl,
-			GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward) 
+			GenParticleSystemEditables& eds, std::vector<Particle>& parts, const COL &factor, bool distortion, bool faceUpward)
 {
 	m_animInfo.textureUSubDivs = eds.particleTextureUSubDivs;
 	m_animInfo.textureVSubDivs = eds.particleTextureVSubDivs;
@@ -359,7 +359,7 @@ void GenParticleSystem::copyTo(GenParticleSystem& other) {
 }
 
 
-void GenParticleSystem::defaultPrepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene, const GenParticleSystemEditables& eds) 
+void GenParticleSystem::defaultPrepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene, const GenParticleSystemEditables& eds)
 {
 	int reserveAmount = eds.maxParticles;
 	if(eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID || eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID_INTERACTION)
@@ -402,7 +402,7 @@ void GenParticleSystem::defaultInit(IStorm3D* s3d,
 	m_mtl->SetBaseTexture(tex);
 }
 
-void GenParticleSystem::defaultTick(IStorm3D_Scene* scene, const GenParticleSystemEditables& eds) 
+void GenParticleSystem::defaultTick(IStorm3D_Scene* scene, const GenParticleSystemEditables& eds)
 {
 	if(!moveAndAnimateSystem(eds))
 		return;
@@ -418,7 +418,7 @@ void GenParticleSystem::defaultTick(IStorm3D_Scene* scene, const GenParticleSyst
 }
 
 
-void GenParticleSystem::defaultRender(IStorm3D_Scene* scene, GenParticleSystemEditables& eds) 
+void GenParticleSystem::defaultRender(IStorm3D_Scene* scene, GenParticleSystemEditables& eds)
 {
 	bool usingFluids = false;
 	if(eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID || eds.physicsType == GenParticleSystemEditables::PHYSICS_TYPE_FLUID_INTERACTION)
@@ -613,17 +613,17 @@ if (gameRand == 0)
 	m_renderer->render(scene, m_mtl, eds, m_parts, factor, eds.distortion, eds.faceUpward);
 }
 
-bool GenParticleSystem::moveAndAnimateSystem(const GenParticleSystemEditables& eds) 
+bool GenParticleSystem::moveAndAnimateSystem(const GenParticleSystemEditables& eds)
 {
 	// tick inner timer	
  	m_time += PARTICLE_TIME_SCALE;
 	if(m_time < eds.emitStartTime)
 		return false;
 	
-	if(m_time > eds.emitStopTime) 
+	if(m_time > eds.emitStopTime)
 	{
 		m_shutdown = true;
-		if(m_numParts == 0) 
+		if(m_numParts == 0)
 		{
 			m_alive = false;
 			return false;
@@ -642,7 +642,7 @@ struct P
 	unsigned int id;
 };
 
-void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds) 
+void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 {
 	if(m_time < eds.emitStartTime)
 		return;
@@ -662,10 +662,10 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 	Vector dir;
 	if(eds.launchDirectionType == GenParticleSystemEditables::DIRECTION_NEGATIVE_VELOCITY) {
 		dir = -m_velocity;
-	} 
+	}
 	else if(eds.launchDirectionType == GenParticleSystemEditables::DIRECTION_VELOCITY) {
 		dir = m_velocity;
-	} 
+	}
 	else {
 		dir = eds.defaultLaunchDirection;
 	}
@@ -686,7 +686,7 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 	}
 
 	float needed = (eds.emitRate * emit_factor) + m_particleResidue;
-	while(needed >= 1.0f) 
+	while(needed >= 1.0f)
 	{
 		bool found = false;
 		int a = 0;
@@ -790,12 +790,12 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 		}
 		else
 		{
-			for(int i = 1; i < bufferSize + 1; ++i) 
+			for(int i = 1; i < bufferSize + 1; ++i)
 			{
 				a = (i + lastParticleIndex) % bufferSize;
 
 				Particle& p = m_parts[a];
-				if(!p.alive) 
+				if(!p.alive)
 				{
 					found = true;
 					lastParticleIndex = a;
@@ -893,7 +893,7 @@ void GenParticleSystem::emitParticles(const GenParticleSystemEditables& eds)
 }
 
 
-void GenParticleSystem::moveAndExpireParticles(const GenParticleSystemEditables& eds) 
+void GenParticleSystem::moveAndExpireParticles(const GenParticleSystemEditables& eds)
 {
 	bool hasParticles = false;
 	assert(m_numParts >= 0);
@@ -902,19 +902,19 @@ void GenParticleSystem::moveAndExpireParticles(const GenParticleSystemEditables&
 	{
 		Particle &p = m_parts[i];
 
-		if(p.alive) 
+		if(p.alive)
 		{
 			hasParticles = true;
 
 			p.age += PARTICLE_TIME_SCALE;
-			if(p.age >= p.life) 
+			if(p.age >= p.life)
 			{
 				p.alive = false;
 				m_numParts--;
 
 				assert(m_numParts >= 0);
-			} 
-			else 
+			}
+			else
 			{
 				p.position += p.velocity;
 				p.origin = m_position;
@@ -944,7 +944,7 @@ void GenParticleSystem::moveAndExpireParticles(const GenParticleSystemEditables&
 }
 
 
-void GenParticleSystem::applyForces(const GenParticleSystemEditables &eds) 
+void GenParticleSystem::applyForces(const GenParticleSystemEditables &eds)
 {
 	VC3 f;
 
@@ -993,7 +993,7 @@ void GenParticleSystem::applyForces(const GenParticleSystemEditables &eds)
 				{
 					Particle &p = m_parts[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -1009,7 +1009,7 @@ void GenParticleSystem::applyForces(const GenParticleSystemEditables &eds)
 				{
 					Particle &p = m_parts[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -1025,7 +1025,7 @@ void GenParticleSystem::applyForces(const GenParticleSystemEditables &eds)
 				{
 					Particle &p = m_parts[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -1041,7 +1041,7 @@ void GenParticleSystem::applyForces(const GenParticleSystemEditables &eds)
 				{
 					Particle &p = m_parts[j];
 
-					if(p.alive) 
+					if(p.alive)
 					{
 						force->calcForce(f, p.position, p.velocity);
 						p.velocity += f;
@@ -1055,7 +1055,7 @@ void GenParticleSystem::applyForces(const GenParticleSystemEditables &eds)
 			{
 				Particle &p = m_parts[j];
 
-				if(p.alive) 
+				if(p.alive)
 				{
 					iforce->calcForce(f, p.position, p.velocity);
 					p.velocity += f;
@@ -1122,12 +1122,12 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 	eds.launchSpeed = convertFromString<float>(pg.getValue("launch_speed", ""), eds.launchSpeed) * PARTICLE_TIME_SCALE;
 	eds.launchSpeedVar = convertFromString<float>(pg.getValue("launch_speed_var", ""), eds.launchSpeedVar) * PARTICLE_TIME_SCALE;	
 	eds.darkening = convertFromString<float>(pg.getValue("emit_darkening", ""), eds.darkening);	
-	const ParserGroup& cg = pg.getSubGroup("particle_color"); 
+	const ParserGroup& cg = pg.getSubGroup("particle_color");
 	parseVectorKeyControlFrom(cg, eds.particleColor.getKeyControl());	
-	const ParserGroup& sg = pg.getSubGroup("particle_size"); 
+	const ParserGroup& sg = pg.getSubGroup("particle_size");
 	//parseFloatKeyControlFrom(sg, eds.particleSize.getKeyControl());	
 	parseVectorKeyControlFrom(sg, eds.particleSize.getKeyControl());	
-	const ParserGroup& ag = pg.getSubGroup("particle_alpha"); 
+	const ParserGroup& ag = pg.getSubGroup("particle_alpha");
 	parseFloatKeyControlFrom(ag, eds.particleAlpha.getKeyControl());
 	eds.particleLife = convertFromString<float>(pg.getValue("particle_life", ""), eds.particleLife);
 	eds.particleLifeVar = convertFromString<float>(pg.getValue("particle_life_var", ""), eds.particleLifeVar);
@@ -1171,13 +1171,13 @@ void GenParticleSystem::defaultParseFrom(const ParserGroup& pg, GenParticleSyste
 	}
 	else if(pg.getValue("launch_direction", "default") == "negative_velocity") {
 		eds.launchDirectionType = GenParticleSystemEditables::DIRECTION_NEGATIVE_VELOCITY;
-	} 
+	}
 	else if(pg.getValue("launch_direction", "default") == "explosion") {
 		eds.launchDirectionType = GenParticleSystemEditables::DIRECTION_EXPLOSION;
 	}
 	else if(pg.getValue("launch_direction", "default") == "negative_explosion") {
 		eds.launchDirectionType = GenParticleSystemEditables::DIRECTION_NEGATIVE_EXPLOSION;
-	} 
+	}
 	else {
 		eds.launchDirectionType = GenParticleSystemEditables::DIRECTION_DEFAULT;
 	}
@@ -1264,7 +1264,7 @@ void GenParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene) {
 }
 */
 /*
-void GenParticleSystem::prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene, 
+void GenParticleSystem::prepareForLaunch(IStorm3D* s3d, IStorm3D_Scene* scene,
 										 const GenParticleSystemEditables& eds) {
 
 	m_maxParticles = eds.maxParticles;

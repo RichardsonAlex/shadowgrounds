@@ -10,7 +10,7 @@
 // Common datatypes
 #include "DatatypeDef.h"
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include "Storm3D_Datatypes.h"
 
@@ -35,7 +35,7 @@ class ST3D_EXP_DLLAPI IStorm3D_Helper
 
 public:
 
-	enum HTYPE 
+	enum HTYPE
 	{
 		HTYPE_POINT		=0,
 		HTYPE_VECTOR	=1,

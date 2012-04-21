@@ -31,7 +31,7 @@ namespace tracking
 		// (parameter is null if being detached)
 		virtual void attachedToTrackable(ITrackableObject *trackable) = 0;
 
-		// called when the tracker is being deleted. 
+		// called when the tracker is being deleted.
 		// (only for tracker types that do not give ownership to the object tracker - assuming that is ok?)
 		virtual void trackerDeleted() = 0;
 

@@ -8,7 +8,7 @@ namespace particle{
 
 struct CrappyFontData;
 
-class CrappyFont 
+class CrappyFont
 {
 	boost::scoped_ptr<CrappyFontData> m;
 

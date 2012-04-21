@@ -31,20 +31,20 @@ namespace net
       return "file";
     }
 
-    
+
     INetConnection *FileDriver::connectTo(const char *to)
       throw (NetDriverException*)
     {
       if (to == NULL)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "FileDriver::connectTo - Invalid parameter (null)."); 
+          "FileDriver::connectTo - Invalid parameter (null).");
       }
 
       if (strncmp(to, "file:", 5) != 0)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "FileDriver::connectTo - Invalid parameter (can only connect to file host)."); 
+          "FileDriver::connectTo - Invalid parameter (can only connect to file host).");
       }
 
       const char *port = &to[6];
@@ -58,9 +58,9 @@ namespace net
       }
 
       throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_CONNECTION_REFUSED,
-        "FileDriver::connectTo - Connection refused (port is not being listened)."); 
+        "FileDriver::connectTo - Connection refused (port is not being listened).");
     }
-   
+
 
     INetBind *FileDriver::bind(const char *port)
       throw (NetDriverException*)
@@ -74,7 +74,7 @@ namespace net
       if (strncmp(port, "file:", 5) != 0 || strlen(port) < 6)
       {
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_INVALID_PARAMETER,
-          "FileDriver::bind - Invalid parameter (can only bind to file host)."); 
+          "FileDriver::bind - Invalid parameter (can only bind to file host).");
       }
       */
 			FILE *f = fopen(port, "wb+");
@@ -95,7 +95,7 @@ namespace net
         throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_UNSUPPORTED_PARAMETER,
           "FileDriver::setNetModeFlags - Unsupported flags set.");
     }
- 
+
 
     int FileDriver::getNetModeFlags()
     {

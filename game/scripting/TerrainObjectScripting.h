@@ -15,11 +15,11 @@ namespace game
 	class TerrainObjectScripting
 	{
 		public:			
-			/** 
+			/**
 			 * Just processes one command...
 			 */
-			static void TerrainObjectScripting::process(util::ScriptProcess *sp, 
-				int command, int intData, char *stringData, ScriptLastValueType *lastValue, 
+			static void TerrainObjectScripting::process(util::ScriptProcess *sp,
+				int command, int intData, char *stringData, ScriptLastValueType *lastValue,
 				GameScriptData *gsd, Game *game);
 	};
 }

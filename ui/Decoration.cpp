@@ -270,7 +270,7 @@ namespace ui
 	}
 
 
-  
+
 	void Decoration::setStartRotation(const VC3 &rotation)
 	{
 		this->startRotation = rotation;
@@ -315,7 +315,7 @@ namespace ui
 	}
 
 
-  void Decoration::setEffect(Decoration::DECORATION_EFFECT effect, 
+  void Decoration::setEffect(Decoration::DECORATION_EFFECT effect,
 		bool enabled)
 	{
 		effectOn[effect] = enabled;
@@ -337,7 +337,7 @@ namespace ui
 		}
 	}
 
-  void Decoration::parseBoundingQuadSize(const char* modelFileName) 
+  void Decoration::parseBoundingQuadSize(const char* modelFileName)
   {
 	 boundingQuadSizeX = 0.0f;
 	 boundingQuadSizeY = 0.0f;
@@ -382,7 +382,7 @@ namespace ui
 		 // decoration model file name doesn't have Y boundaries
 		 boundingQuadSizeX = 0.0f;
 		 boundingQuadSizeY = 0.0f;
-		 return;	  
+		 return;	
 	  }
 	  i++; // skip x
 	  a = 0;

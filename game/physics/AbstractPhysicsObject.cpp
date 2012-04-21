@@ -14,8 +14,8 @@
 
 namespace game
 {
-	AbstractPhysicsObject::AbstractPhysicsObject(GamePhysics *gamePhysics) 
-	{ 
+	AbstractPhysicsObject::AbstractPhysicsObject(GamePhysics *gamePhysics)
+	{
 		this->handle = 0;
 		this->position = VC3(0,0,0);
 		this->rotation = QUAT();
@@ -37,7 +37,7 @@ namespace game
 		this->moveToAngularVelocity = false;
 		this->moveToPosition = false;
 		this->moveToRotation = false;
-		// is the this movement "softly forced", that is only attempt to get the object to new parameters, but 
+		// is the this movement "softly forced", that is only attempt to get the object to new parameters, but
 		// don't force it there if blocked or something like that.
 		this->attemptedPosition = false;
 		this->attemptedRotation = false;
@@ -75,7 +75,7 @@ namespace game
 			gamePhysics->addNewObject(this);
 	}
 
-	AbstractPhysicsObject::~AbstractPhysicsObject() 
+	AbstractPhysicsObject::~AbstractPhysicsObject()
 	{
 		// FIXME: ugly hack
 		// workaround gamePhysics sometimes being NULL

@@ -28,7 +28,7 @@
 
 namespace game
 {
-	void SyncScripting::process(util::ScriptProcess *sp, 
+	void SyncScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{

@@ -21,7 +21,7 @@ static const float NEAR_Z = 1.0f;
 //IStorm3D_Model *bar;
 
 
-CursorRayTracer::CursorRayTracer(IStorm3D *s3d, IStorm3D_Scene *scene, 
+CursorRayTracer::CursorRayTracer(IStorm3D *s3d, IStorm3D_Scene *scene,
   IStorm3D_Terrain *terrain, int screenSizeX, int screenSizeY)
 {
   this->screenSizeX = screenSizeX;
@@ -98,10 +98,10 @@ void CursorRayTracer::rayTrace(int x, int y, Storm3D_CollisionInfo &cinfo, bool 
   */
 
   /*
-  scene->RayTrace(rayOrigin, rayDirNorm, 
+  scene->RayTrace(rayOrigin, rayDirNorm,
     CURSOR_RAY_MAX_LENGTH, cinfo);
 
-  terrain->RayTrace(rayOrigin, rayDirNorm, 
+  terrain->RayTrace(rayOrigin, rayDirNorm,
     CURSOR_RAY_MAX_LENGTH, cinfo);
   */
 
@@ -111,11 +111,11 @@ void CursorRayTracer::rayTrace(int x, int y, Storm3D_CollisionInfo &cinfo, bool 
 
 	if (!terrainOnly)
 	{
-		scene->RayTrace(rayOrigin, rayDirNorm, 
+		scene->RayTrace(rayOrigin, rayDirNorm,
 			CURSOR_RAY_MAX_LENGTH, sceneColl, accurate);
 	}
 
-  terrain->rayTrace(rayOrigin, rayDirNorm, 
+  terrain->rayTrace(rayOrigin, rayDirNorm,
     CURSOR_RAY_MAX_LENGTH, terrainColl, obstacleColl, true);
 
 	if (terrainOnly)

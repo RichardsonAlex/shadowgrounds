@@ -64,7 +64,7 @@ namespace ui
 {
 	extern int visual_effect_allocations;
 
-	class ManagedVisualEffectEntry 
+	class ManagedVisualEffectEntry
 	{
 	public:
 		ManagedVisualEffectEntry(VisualEffect *visualEffect, int lifetimeInTicks)
@@ -103,7 +103,7 @@ namespace ui
 		particleRunCounter = 0;
 
 		if (visualEffectTypes == NULL)
-			loadVisualEffectTypes();		
+			loadVisualEffectTypes();
 	}
 
 
@@ -481,7 +481,7 @@ namespace ui
 							}
 						}
 					}
-					
+
 				} else {
 					char *l = sp.getLine();
 					if (strcmp(l, "visualeffect") == 0)
@@ -515,7 +515,7 @@ namespace ui
 				{
 					sp.error("VisualEffectManager - Unknown command or bad key/value pair.");
 				}
-			}				
+			}
 #ifdef LEGACY_FILES
 		}	else {
 			Logger::getInstance()->error("VisualEffectManager - Failed to load effects.");
@@ -564,9 +564,9 @@ namespace ui
 
 			// effect_types :
 			//		explosion			// explosions, smoke (position)
-			//		ammo				// flame_thrower, (start, end) 
+			//		ammo				// flame_thrower, (start, end)
 			//		environment			// rain, snow
-			
+
 			// spawn new particle effect?
 			int particleEffectID = visualEffectTypes[visualEffectId].getParticleEffectID();
 
@@ -593,8 +593,8 @@ namespace ui
 				}
 			}
 
-			if(particleEffectID != -1) 
-			{				
+			if(particleEffectID != -1)
+			{
 #ifdef PHYSICS_PHYSX
 				if(game::SimpleOptions::getBool(DH_OPT_B_PHYSICS_PARTICLES) && game->getGamePhysics() && game->getGamePhysics()->getPhysicsLib())
 				{
@@ -608,7 +608,7 @@ namespace ui
 					particleEffectManager->enableParticlePhysics(false);
 #endif
 
-				v->setParticleEffect(particleEffectManager->addEffectToScene(particleEffectID), 
+				v->setParticleEffect(particleEffectManager->addEffectToScene(particleEffectID),
 					velocity, rotation);
 
 				if(v->particleEffect)
@@ -662,11 +662,11 @@ namespace ui
 				int shakeTime = 500;
 				game->gameUI->getGameCamera()->setShakeEffect(visualEffectTypes[visualEffectId].getCameraShakeAmount(), shakeTime, position);
 			}
-			
+
 			// spawn new decals?
 			int decalEffectID = visualEffectTypes[visualEffectId].getDecalEffectID();
 			int decalAmount = visualEffectTypes[visualEffectId].getDecalAmount();
-			if(decalEffectID != -1 && decalAmount > 0) 
+			if(decalEffectID != -1 && decalAmount > 0)
 			{
 				DecalPositionCalculator::DECAL_POSITIONING decalPosType
 					= visualEffectTypes[visualEffectId].getDecalPositioning();
@@ -675,8 +675,8 @@ namespace ui
 
 				assert(decalSystem != NULL);
 
-				decalSystem->setEraseProperties(game::SimpleOptions::getInt(DH_OPT_I_DECAL_FADE_TIME));	
-				decalSystem->setMaxDecalAmount(game::SimpleOptions::getInt(DH_OPT_I_DECAL_MAX_AMOUNT));	
+				decalSystem->setEraseProperties(game::SimpleOptions::getInt(DH_OPT_I_DECAL_FADE_TIME));
+				decalSystem->setMaxDecalAmount(game::SimpleOptions::getInt(DH_OPT_I_DECAL_MAX_AMOUNT));
 
 				int amountVariation = visualEffectTypes[visualEffectId].getDecalAmountVariation();
 				int randomVariation = (SystemRandom::getInstance()->nextInt() % (amountVariation * 2 + 1) - amountVariation);
@@ -773,7 +773,7 @@ namespace ui
 				}
 			}
 
-			
+
 		} else {
 			assert(!"visual effect id out of range.");
 		}
@@ -781,7 +781,7 @@ namespace ui
 	}
 
 
-	void VisualEffectManager::updateSpotlightPosition(VisualEffect *v, 
+	void VisualEffectManager::updateSpotlightPosition(VisualEffect *v,
 		const VC3 &position, IPointableObject *origin, const VC3 &rotation)
 	{
 		assert(v != NULL);
@@ -843,7 +843,7 @@ namespace ui
 			sppos.x -= dir.x * 9.5f;
 			sppos.z -= dir.z * 9.5f;
 			sp->setPosition(sppos);
-			
+
 			sppos = origin->getPointerPosition();
 			sppos.x -= dir.x * 9.f;
 			sppos.z -= dir.z * 9.f;
@@ -860,7 +860,7 @@ namespace ui
 			}
 			sp->setPosition(sppos);
 			float angle = UNIT_ANGLE_TO_RAD(rotation.y);
-			//float angle = 
+			//float angle =
 			//	3.1415f * (float)(SystemRandom::getInstance()->nextInt() & SYSTEMRANDOM_MAX_VALUE)
 			//	/ (float)(SYSTEMRANDOM_MAX_VALUE+1);
 			VC3 dir = VC3(sinf(angle), -0.05f, cosf(angle));
@@ -881,7 +881,7 @@ namespace ui
 		assert(effectname != NULL);
 
 		if (visualEffectTypes == NULL)
-			loadVisualEffectTypes();		
+			loadVisualEffectTypes();
 
 		// TODO: this is not very effective, but on the other hand
 		// this is not meant to be called very often.
@@ -1001,7 +1001,7 @@ namespace ui
 
 		if (GAME_TICKS_PER_SECOND == 100)
 		{
-			// HACK: call the particle effect tick twice in every 3 frames to get ~67Hz 
+			// HACK: call the particle effect tick twice in every 3 frames to get ~67Hz
 			if(++particleRunCounter == 3)
 				particleRunCounter = 0;
 			else
@@ -1084,7 +1084,7 @@ namespace ui
 		particleEffectManager->render();
 	}
 
-	void VisualEffectManager::loadParticleEffects() 
+	void VisualEffectManager::loadParticleEffects()
 	{
 		for (int i = 0; i < MAX_VISUAL_EFFECT_TYPES; i++)
 		{
@@ -1094,7 +1094,7 @@ namespace ui
 
 			// load the particle effect for this visual effect, if one was defined in conf
 			const char *particleEffect = visualEffectTypes[i].getParticleEffect();
-			if(particleEffect != NULL) 
+			if(particleEffect != NULL)
 			{
 				frozenbyte::editor::EditorParser parser(false, false);
 
@@ -1123,7 +1123,7 @@ namespace ui
 			if (game::SimpleOptions::getBool(DH_OPT_B_PHYSICS_FLUIDS_ENABLED))
 			{
 				const char *particleEffectHardwareFluid = visualEffectTypes[i].getParticleEffectHardwareFluid();
-				if(particleEffectHardwareFluid != NULL) 
+				if(particleEffectHardwareFluid != NULL)
 				{
 					frozenbyte::editor::EditorParser parser(false, false);
 
@@ -1151,7 +1151,7 @@ namespace ui
 			if (game::SimpleOptions::getBool(DH_OPT_B_PHYSICS_PARTICLES))
 			{
 				const char *particleEffectHardwareRigid = visualEffectTypes[i].getParticleEffectHardwareRigid();
-				if(particleEffectHardwareRigid != NULL) 
+				if(particleEffectHardwareRigid != NULL)
 				{
 					frozenbyte::editor::EditorParser parser;
 
@@ -1175,16 +1175,16 @@ namespace ui
 			}
 
 		}
-	
+
 	}
 
-	void VisualEffectManager::freeParticleEffects() 
-	{	
-		// not used yet	
+	void VisualEffectManager::freeParticleEffects()
+	{
+		// not used yet
 	}
 
 
-	void VisualEffectManager::loadDecalEffects() 
+	void VisualEffectManager::loadDecalEffects()
 	{
 		assert(this->decalSystem == NULL);
 		assert(this->terrain != NULL);
@@ -1195,7 +1195,7 @@ namespace ui
 		{
 			visualEffectTypes[i].setDecalEffectID(-1);
 			const char *decalEffect = visualEffectTypes[i].getDecalEffect();
-			if(decalEffect != NULL) 
+			if(decalEffect != NULL)
 			{
 				int id = decalSystem->getEffectId(decalEffect);
 				visualEffectTypes[i].setDecalEffectID(id);
@@ -1205,13 +1205,13 @@ namespace ui
 					Logger::getInstance()->warning("VisualEffectManager::loadDecalEffects - Decal effect was defined for visual effect, but was not found.");
 					Logger::getInstance()->debug(decalEffect);
 				}
-			}						
+			}
 		}
-	
+
 	}
 
-	void VisualEffectManager::freeDecalEffects() 
-	{	
+	void VisualEffectManager::freeDecalEffects()
+	{
 		if (decalSystem != NULL)
 		{
 			delete decalSystem;
@@ -1219,8 +1219,8 @@ namespace ui
 		}
 	}
 
-	void VisualEffectManager::setGameScene(game::GameScene *gameScene) 
-	{	
+	void VisualEffectManager::setGameScene(game::GameScene *gameScene)
+	{
 		this->gameScene = gameScene;
 
 		if(gameScene)

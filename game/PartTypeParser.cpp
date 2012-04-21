@@ -74,7 +74,7 @@ namespace game
 
   void PartTypeParser::error(const char *err, int linenum)
   {
-    impl->ptp_error = err; 
+    impl->ptp_error = err;
     impl->ptp_errorline = linenum;
 
     char *buf = new char[strlen(err) + 1 + 60 + strlen(impl->ptp_currentfile)];
@@ -149,8 +149,8 @@ namespace game
     {
       if (buf[i] == '\r' || buf[i] == '\n')
       {
-        // TODO: linenumbering goes wrong if carriage return missing 
-        // so if non-windows text format, it's real line number + 1 
+        // TODO: linenumbering goes wrong if carriage return missing
+        // so if non-windows text format, it's real line number + 1
         if (buf[i] == '\n') lineNumber++;
 
         buf[i] = '\0';
@@ -158,14 +158,14 @@ namespace game
         // remove trailing spaces
         for (ssize_t j = i - 1; j >= lastpos; j--)
         {
-          if (buf[j] == ' ' || buf[j] == '\t')  
+          if (buf[j] == ' ' || buf[j] == '\t')
             buf[j] = '\0';
-          else 
+          else
             break;
         }
 
         // process if not empty and not start with comments
-        if (buf[lastpos] != '\0' 
+        if (buf[lastpos] != '\0'
           && strncmp(&buf[lastpos], "//", 2) != 0)
         {
           bool lineok = false;
@@ -308,8 +308,8 @@ namespace game
               int hasEqual = -1;
               for (ssize_t j = lastpos; j < i; j++)
               {
-                if (buf[j] == '=') 
-                { 
+                if (buf[j] == '=')
+                {
                   buf[j] = '\0';
 									// trim left side of equal sign
 									for (ssize_t backtrim = j-1; backtrim >= lastpos; backtrim--)
@@ -333,7 +333,7 @@ namespace game
                     hasEqual++;
                     buf[i - 1] = '\0';
                   }
-                  break; 
+                  break;
                 }
               }
               if (hasEqual != -1)
@@ -342,7 +342,7 @@ namespace game
                 {
                   error("Expected { at part or sub level.", lineNumber);
                 } else {
-                  if (parsingUnit) 
+                  if (parsingUnit)
                   {
 										if (parseUnit != NULL)
 										{
@@ -364,7 +364,7 @@ namespace game
                 }
               } else {
                 stateAwait = true;
-                if (parsingUnit) 
+                if (parsingUnit)
                 {
 									if (parseUnit != NULL)
 									{
@@ -386,16 +386,16 @@ namespace game
               }
             }
           }
-          if (!lineok) 
-          { 
+          if (!lineok)
+          {
             error("Syntax error.", lineNumber);
           }
         }
 
         // skip leading spaces for next entry
-        while (buf[i + 1] == ' ') 
-        { 
-          i++; 
+        while (buf[i + 1] == ' ')
+        {
+          i++;
         }
         lastpos = i + 1;
       }

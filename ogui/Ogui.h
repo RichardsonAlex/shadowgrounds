@@ -81,8 +81,8 @@ public:
 
 	void UpdateCursorPositions();
 
-  /** 
-   * Set the render scale. 
+  /**
+   * Set the render scale.
    * Values are relative to OGUI_SCALE_MULTIPLIER.
    * (fixed point numbers where 1024 equals 1, and 1 equals 1/1024)
    */
@@ -104,7 +104,7 @@ public:
    */
   void skipCursorMovement();
 
-  /** 
+  /**
    * Initialize (call after setting the driver).
    */
   void Init();
@@ -124,7 +124,7 @@ public:
    */
   void LoadDefaultFont(const char *filename) throw (OguiException *);
 
-  /** 
+  /**
    * Returns maximum number of cursors (numbers are from 0 to returnvalue-1).
    */
   int GetMaxCursors();
@@ -167,7 +167,7 @@ public:
   /**
    * Change cursor image offset for given cursor and state.
    */
-  void SetCursorImageOffset(int cursornum, int offsetX, int offsetY, 
+  void SetCursorImageOffset(int cursornum, int offsetX, int offsetY,
     int forstate = 0)
     throw (OguiException *);
 
@@ -207,13 +207,13 @@ public:
 
 	/**
 	 * Set menu index mode enabled or disabled.
-	 * (While in menu index mode, joystick will make the cursor warp 
+	 * (While in menu index mode, joystick will make the cursor warp
 	 * from one button to another)
 	 */
 	void SetMenuIndexMode(int cursor, bool menuIndexModeEnabled);
 
-  // returns true if user is pressing escape 
-  // if a window is set "onlyactive", always returns false, in such a case 
+  // returns true if user is pressing escape
+  // if a window is set "onlyactive", always returns false, in such a case
   // the only active window should use a keyreader if wants to be escaped.
   bool isEscape();
 
@@ -231,37 +231,37 @@ public:
   //void SetMoveTopHeight(int height);
 
   // Create a simple window loading given background image
-  OguiWindow *CreateSimpleWindow(int x, int y, int sizex, int sizey, 
+  OguiWindow *CreateSimpleWindow(int x, int y, int sizex, int sizey,
     const char *imagefilename, int id = 0) throw (OguiException *);
 
   // Create a simple image button
-  OguiButton *CreateSimpleImageButton(OguiWindow *win, int x, int y, int sizex, int sizey, 
+  OguiButton *CreateSimpleImageButton(OguiWindow *win, int x, int y, int sizex, int sizey,
     const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename,
     int id = 0, void *argument = NULL) throw (OguiException *);
 
   // Create a simple image button w/ disabled image
-  OguiButton *CreateSimpleImageButton(OguiWindow *win, int x, int y, int sizex, int sizey, 
+  OguiButton *CreateSimpleImageButton(OguiWindow *win, int x, int y, int sizex, int sizey,
     const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename, const char *imageDisabledFilename,
     int id = 0, void *argument = NULL, bool clipToWindow = true ) throw (OguiException *);
 
   // Create a simple image+text button
-  OguiButton *CreateSimpleTextButton(OguiWindow *win, int x, int y, int sizex, int sizey, 
-    const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename, 
+  OguiButton *CreateSimpleTextButton(OguiWindow *win, int x, int y, int sizex, int sizey,
+    const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename,
     const char *text, int id = 0, const void *argument = NULL, bool clipToWindow = true ) throw (OguiException *);
 
   // Create a text label
-  OguiTextLabel *CreateTextLabel(OguiWindow *win, int x, int y, 
+  OguiTextLabel *CreateTextLabel(OguiWindow *win, int x, int y,
     int sizex, int sizey, const char *text) throw (OguiException *);
 
   // Create a text area (which wraps text automatically to multiple lines)
-  OguiTextLabel *CreateTextArea(OguiWindow *win, int x, int y, 
+  OguiTextLabel *CreateTextArea(OguiWindow *win, int x, int y,
     int sizex, int sizey, const char *text) throw (OguiException *);
 
-  // Create a select list 
+  // Create a select list
   // Works fine as a button/checkbutton/radiobutton group too...
   // (Just use proper images and argument values to make them)
-  OguiSelectList *CreateSelectList(OguiWindow *win, int x, int y, 
-    OguiSelectListStyle *style, int valueAmount, const char **values, const char **descs, 
+  OguiSelectList *CreateSelectList(OguiWindow *win, int x, int y,
+    OguiSelectListStyle *style, int valueAmount, const char **values, const char **descs,
     bool multiSelectable = false, int defaultSelection = -1, int id = 0,
     void *argument = NULL) throw (OguiException *);
 
@@ -281,7 +281,7 @@ public:
    */
   IOguiFont *LoadFont(const char *filename) throw (OguiException *);
 
-  /** 
+  /**
    * Run Ogui.
    */
   void Run(int timeDelta);

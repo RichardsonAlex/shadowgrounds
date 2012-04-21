@@ -268,7 +268,7 @@ void LocaleManager::loadResource(int resourceId, const char *filename, const cha
 		bool inside_quete = false;
 		for(unsigned int k = 0; k < result.size(); ++k)
 		{
-			if(result[k] == '"') 
+			if(result[k] == '"')
 				inside_quete = !inside_quete;
 
 			if(result[k] == '_' && !inside_quete)

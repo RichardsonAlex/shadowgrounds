@@ -25,7 +25,7 @@ namespace util
 
 	static int next_script_process_id = SCRIPTPROCESS_MIN_ID;
 
- 
+
 	ScriptProcess::ScriptProcess()
 	{
 		ipStack = new LinkedList<intptr_t>();
@@ -195,7 +195,7 @@ namespace util
 		this->finished = otherScriptProcess->finished;
 		this->secondaryValue = otherScriptProcess->secondaryValue;
 		this->misbehaveCounter = otherScriptProcess->misbehaveCounter;
-		
+
 		this->ifDepth = otherScriptProcess->ifDepth;
 		this->thenBranch = otherScriptProcess->thenBranch;
 
@@ -382,7 +382,7 @@ namespace util
 	{
 		if (this->scopeStackUsed > 0)
 		{
-			this->scopeStackUsed--;			
+			this->scopeStackUsed--;
 			int popToUsed = this->scopeStack[this->scopeStackUsed];
 			if (this->localVarStackUsed >= popToUsed)
 			{

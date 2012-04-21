@@ -30,14 +30,14 @@ namespace game
 	 *
    * In other word, suppose a unit wishes to walk forward and therefore
 	 * set the walk animation, but the unit happens to be dying at the same
-	 * time (which therefore requires dying animation). So we cannot just 
-	 * set the walk animation and ignore the other things going on, we 
-	 * need to mark which animations are requested at that time and 
-	 * use the most significant one(s). Which, in this case would be the 
+	 * time (which therefore requires dying animation). So we cannot just
+	 * set the walk animation and ignore the other things going on, we
+	 * need to mark which animations are requested at that time and
+	 * use the most significant one(s). Which, in this case would be the
 	 * dying animation. The walk animation may not be set.
 	 *
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
-   * @version 1.0, 9.1.2003 
+   * @version 1.0, 9.1.2003
    * @see UnitActor
    * @see ArmorUnitActor
    * @see AnimationSet

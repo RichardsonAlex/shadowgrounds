@@ -235,9 +235,9 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 		window->Hide();
 
 #ifndef PROJECT_SURVIVOR
-		closeButton.reset(ogui.CreateSimpleTextButton(window.get(), getLocaleGuiInt("gui_map_exit_position_x", 0), getLocaleGuiInt("gui_map_exit_position_y", 0), 
-			getLocaleGuiInt("gui_map_exit_size_x", 0), getLocaleGuiInt("gui_map_exit_size_y", 0), 
-			getLocaleGuiString("gui_map_exit_image"), getLocaleGuiString("gui_map_exit_image_down"), 
+		closeButton.reset(ogui.CreateSimpleTextButton(window.get(), getLocaleGuiInt("gui_map_exit_position_x", 0), getLocaleGuiInt("gui_map_exit_position_y", 0),
+			getLocaleGuiInt("gui_map_exit_size_x", 0), getLocaleGuiInt("gui_map_exit_size_y", 0),
+			getLocaleGuiString("gui_map_exit_image"), getLocaleGuiString("gui_map_exit_image_down"),
 			getLocaleGuiString("gui_map_exit_image_highlight"), ""));
 		closeButton->SetListener(this);
 #endif
@@ -385,15 +385,15 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 
 		playerSize.x = getLocaleGuiInt("gui_map_player_arrow_size_x", 0);
 		playerSize.y = getLocaleGuiInt("gui_map_player_arrow_size_y", 0);
-		playerButton.reset(ogui.CreateSimpleTextButton(window.get(), 0, 0, playerSize.x, playerSize.y, 
-			getLocaleGuiString("gui_map_player_arrow_image"), getLocaleGuiString("gui_map_player_arrow_image"), 
+		playerButton.reset(ogui.CreateSimpleTextButton(window.get(), 0, 0, playerSize.x, playerSize.y,
+			getLocaleGuiString("gui_map_player_arrow_image"), getLocaleGuiString("gui_map_player_arrow_image"),
 			getLocaleGuiString("gui_map_player_arrow_image_highlight"), 0, 0, 0, false));
 		playerButton->SetListener(this);
 
 		checkpointSize.x = getLocaleGuiInt("gui_map_checkpoint_size_x", 0);
 		checkpointSize.y = getLocaleGuiInt("gui_map_checkpoint_size_y", 0);
-		checkpointButton.reset(ogui.CreateSimpleTextButton(window.get(), 0, 0, checkpointSize.x, checkpointSize.y, 
-			getLocaleGuiString("gui_map_checkpoint_image"), getLocaleGuiString("gui_map_checkpoint_image"), 
+		checkpointButton.reset(ogui.CreateSimpleTextButton(window.get(), 0, 0, checkpointSize.x, checkpointSize.y,
+			getLocaleGuiString("gui_map_checkpoint_image"), getLocaleGuiString("gui_map_checkpoint_image"),
 			getLocaleGuiString("gui_map_checkpoint_image_highlight"), 0, 0, 0, false));
 
 
@@ -416,9 +416,9 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 			primaryBackground.reset(ogui.CreateSimpleImageButton(window.get(), x, y, xs, ys, fname, fname, fname, fname, 0, 0, true));
 			primaryBackground->SetDisabled(true);
 		}
-		closeButton.reset(ogui.CreateSimpleTextButton(window.get(), getLocaleGuiInt("gui_map_exit_position_x", 0), getLocaleGuiInt("gui_map_exit_position_y", 0), 
-			getLocaleGuiInt("gui_map_exit_size_x", 0), getLocaleGuiInt("gui_map_exit_size_y", 0), 
-			getLocaleGuiString("gui_map_exit_image"), getLocaleGuiString("gui_map_exit_image_down"), 
+		closeButton.reset(ogui.CreateSimpleTextButton(window.get(), getLocaleGuiInt("gui_map_exit_position_x", 0), getLocaleGuiInt("gui_map_exit_position_y", 0),
+			getLocaleGuiInt("gui_map_exit_size_x", 0), getLocaleGuiInt("gui_map_exit_size_y", 0),
+			getLocaleGuiString("gui_map_exit_image"), getLocaleGuiString("gui_map_exit_image_down"),
 			getLocaleGuiString("gui_map_exit_image_highlight"), ""));
 		closeButton->SetEventMask( OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE );
 		closeButton->SetListener(this);
@@ -1232,8 +1232,8 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 						highlight.reset(ogui.CreateSimpleTextButton(window.get(), x, y, xs, ys, fname, fname, fname, 0));
 					}
 					
-					shared_ptr<OguiCheckBox> checkbox( new OguiCheckBox( window.get(), &ogui, getLocaleGuiInt( "gui_map_checkbox_position_x", 0 ), yPos, getLocaleGuiInt( "gui_map_checkbox_size_x", 0 ), getLocaleGuiInt( "gui_map_checkbox_size_y", 0 ), 
-						getLocaleGuiString("gui_map_checkbox_image"), "", "", 
+					shared_ptr<OguiCheckBox> checkbox( new OguiCheckBox( window.get(), &ogui, getLocaleGuiInt( "gui_map_checkbox_position_x", 0 ), yPos, getLocaleGuiInt( "gui_map_checkbox_size_x", 0 ), getLocaleGuiInt( "gui_map_checkbox_size_y", 0 ),
+						getLocaleGuiString("gui_map_checkbox_image"), "", "",
 						getLocaleGuiString("gui_map_checkbox_done_image"), "", "", 0, it->completed, false )  );
 
 					std::string text;
@@ -1252,7 +1252,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 #endif
 					checkbox->setText( getLocaleGuiString(text.c_str()), OguiCheckBox::TEXT_ALIGN_LEFT, getLocaleGuiInt( "gui_map_primary_objects_label_size_x", 0 ), font );
 					objectiveCheckboxs[i].push_back( checkbox );
-					int yAdd = (yOff > checkbox->getHeight()) ? yOff : checkbox->getHeight(); 
+					int yAdd = (yOff > checkbox->getHeight()) ? yOff : checkbox->getHeight();
 
 					yPos += yAdd + offsetBetween;
 					if(yAdd > highsizeY && (i == 0 && it - list.begin() == currentObjective) && highlight)
@@ -1281,9 +1281,9 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 			return;
 
 		{
-			effectWindow.reset(new GUIEffectWindow(&ogui, 
-				getLocaleGuiString("gui_map_window_effect_layer1_image"), 
-				getLocaleGuiString("gui_map_window_effect_layer2_image"), 
+			effectWindow.reset(new GUIEffectWindow(&ogui,
+				getLocaleGuiString("gui_map_window_effect_layer1_image"),
+				getLocaleGuiString("gui_map_window_effect_layer2_image"),
 				getLocaleGuiString("gui_map_window_effect_layer3_image")
 				));
 		}

@@ -42,7 +42,7 @@ namespace util
   }
 
 
-  void DistanceFloodfill::fillRanges(unsigned char areaByte, 
+  void DistanceFloodfill::fillRanges(unsigned char areaByte,
     int mapSizeX, int mapSizeY, unsigned char *map,
 		unsigned char *rangeMap,
     bool areaIsBlocking, bool corners, IDistanceFloodfillMonitor *monitor)
@@ -60,12 +60,12 @@ namespace util
 		{
 			// unoptimized...
 
-			DistanceFloodfillByteArrayMapper mapper = 
+			DistanceFloodfillByteArrayMapper mapper =
 				DistanceFloodfillByteArrayMapper(mapSizeX, mapSizeY, map);
-			DistanceFloodfillByteArrayMapper rangeMapper = 
+			DistanceFloodfillByteArrayMapper rangeMapper =
 				DistanceFloodfillByteArrayMapper(mapSizeX, mapSizeY, rangeMap);
 
-			fillRanges(areaByte, mapSizeX, mapSizeY, &mapper, 
+			fillRanges(areaByte, mapSizeX, mapSizeY, &mapper,
 				&rangeMapper, areaIsBlocking, corners, monitor);
 
 			return;
@@ -145,16 +145,16 @@ namespace util
             {
               rangeMap[x + 1 + (y << sh)] = rp;
             }
-            if (moveUp) 
+            if (moveUp)
             {
 							linedone = false;
               y--;
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
               else
                 x--;
             } else {
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
             }
           }
@@ -241,16 +241,16 @@ namespace util
             {
               rangeMap[x + 1 + (y << sh)] = rp;
             }
-            if (moveUp) 
+            if (moveUp)
             {
 							linedone = false;
               y--;
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
               else
                 x--;
             } else {
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
             }
           }
@@ -271,7 +271,7 @@ namespace util
   }
 
 
-  void DistanceFloodfill::fillRanges(unsigned char areaByte, 
+  void DistanceFloodfill::fillRanges(unsigned char areaByte,
     int mapSizeX, int mapSizeY, IDistanceFloodfillByteMapper *mapper,
 		IDistanceFloodfillByteMapper *rangeMapper,
     bool areaIsBlocking, bool corners, IDistanceFloodfillMonitor *monitor)
@@ -349,16 +349,16 @@ namespace util
             {
               rangeMapper->setByte(x + 1, y, r + 1);
             }
-            if (moveUp) 
+            if (moveUp)
             {
 							linedone = false;
               y--;
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
               else
                 x--;
             } else {
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
             }
           }
@@ -444,16 +444,16 @@ namespace util
             {
               rangeMapper->setByte(x + 1, y, r + 1);
             }
-            if (moveUp) 
+            if (moveUp)
             {
 							linedone = false;
               y--;
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
               else
                 x--;
             } else {
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
             }
           }

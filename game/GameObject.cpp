@@ -11,7 +11,7 @@ namespace game
 {
 
   GameObjectList *GameObject::constructorList = NULL;
-  
+
   void GameObject::setConstructorList(GameObjectList *objectList)
   {
     constructorList = objectList;

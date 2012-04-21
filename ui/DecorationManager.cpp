@@ -17,7 +17,7 @@
 
 namespace ui
 {
-  
+
 	DecorationManager::DecorationManager()
   {
     decorList = new LinkedList<Decoration*>();
@@ -84,7 +84,7 @@ namespace ui
 			Decoration *decor = iter.iterateNext();
 			for (int i = 0; i < DECORATION_MAX_EFFECTS; i++)
 				decor->effectValue[i] = 0;
-		}		
+		}
   }
 
 	void DecorationManager::updateDecorationIllumination(util::ColorMap *colorMap)
@@ -99,7 +99,7 @@ namespace ui
 				COL col = colorMap->getColorAtScaled(pos.x, pos.z);
 				decor->getVisualObject()->setSelfIllumination(col);
 			}
-		}		
+		}
 	}
 
 

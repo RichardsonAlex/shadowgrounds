@@ -6,7 +6,7 @@ namespace game
 {
   /**
    * A simple replacement for permanent global script variables for holding values that
-	 * are kept during the lifetime of the game engine instance, but are not saved to 
+	 * are kept during the lifetime of the game engine instance, but are not saved to
 	 * savegames as permanent global script variables are.
 	 *
    * @version 1.0, 27.7.2007

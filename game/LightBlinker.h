@@ -41,7 +41,7 @@ namespace game
 
 			void setBlinkingLightRandomVariation(float value);
 			void setBlinkingLightStrength(float value);
-			// not really frequency, actually "cycle time in millisec" 
+			// not really frequency, actually "cycle time in millisec"
 			void setBlinkingLightFrequency(int cycleTime);
 
 			void setBlinkingLightPauseTime(int pauseTime);

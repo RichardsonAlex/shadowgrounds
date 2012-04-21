@@ -18,7 +18,7 @@ class IStorm3D_Terrain;
 namespace util
 {
 	bool PathDeformer::deformForDarkness(
-		frozenbyte::ai::PathFind *pathfinder, frozenbyte::ai::Path *path, 
+		frozenbyte::ai::PathFind *pathfinder, frozenbyte::ai::Path *path,
 		int pathIndex,
 		IStorm3D_Terrain *terrain, game::GameMap *gameMap, float height)
 	{

@@ -16,7 +16,7 @@ public:
 	~ScoreWindow();
 	
 	bool AllowLoading() const;
-	bool CloseMePlease() const; 
+	bool CloseMePlease() const;
 	bool shouldRestart() const;
 
 	void PleaseClose();

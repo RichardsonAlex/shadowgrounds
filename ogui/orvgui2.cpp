@@ -212,7 +212,7 @@ void og_set_skip_cursor_movement()
 /* ----------------------------------------------------------- */
 
 int og_get_mouse_ID(unsigned int controlflags)
-// RawInput: return ID to the array from the controlflags. 
+// RawInput: return ID to the array from the controlflags.
 {
 	RawInputDeviceHandler mh;
 	if(mh.isInitialized ())
@@ -222,7 +222,7 @@ int og_get_mouse_ID(unsigned int controlflags)
 			return Keyb3_DefaultMouseID ();
 		if(controlflags & OG_CTRL_MASK_MOUSE0)
 			return 0;
-		if(controlflags & OG_CTRL_MASK_MOUSE1) 
+		if(controlflags & OG_CTRL_MASK_MOUSE1)
 			return 1;
 		if(controlflags & OG_CTRL_MASK_MOUSE2)
 			return 2;
@@ -758,9 +758,9 @@ void og_run_gui(void)
 
 		if (cursor_x[g] < 0) cursor_x[g] = 0;
 		if (cursor_y[g] < 0) cursor_y[g] = 0;
-		if (cursor_x[g] >= scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x) 
+		if (cursor_x[g] >= scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x)
 			cursor_x[g] = (scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x) - 1;
-		if (cursor_y[g] >= scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y) 
+		if (cursor_y[g] >= scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y)
 			cursor_y[g] = (scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y) - 1;
 
 
@@ -1329,14 +1329,14 @@ static void og_draw_cursors(void)
 			{
 				// note, cursor images are not scaled, position is though
 				// now they are...
-				og_renderer->Render2D_Picture(cursor_pic[g], 
-					VC2((float)(cursor_x[g] * og_scale_x / (float)OG_SCALE_MULTIPLIER + cursor_offset_x[g] * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
-					(float)(cursor_y[g] * og_scale_y / (float)OG_SCALE_MULTIPLIER + cursor_offset_y[g] * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 
+				og_renderer->Render2D_Picture(cursor_pic[g],
+					VC2((float)(cursor_x[g] * og_scale_x / (float)OG_SCALE_MULTIPLIER + cursor_offset_x[g] * og_scale_x / (float)OG_SCALE_MULTIPLIER),
+					(float)(cursor_y[g] * og_scale_y / (float)OG_SCALE_MULTIPLIER + cursor_offset_y[g] * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
 					VC2((float)(CURSOR_SIZE_X * og_scale_x / (float)OG_SCALE_MULTIPLIER), (float)(CURSOR_SIZE_Y * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 1.f, 0.f, false);
 					//VC2((float)tsizex, (float)tsizey));
-				//og_renderer->Render2D_Picture(cursor_pic[g], 
-					//VC2((float)(cursor_x[g] * og_scale_x / OG_SCALE_MULTIPLIER + cursor_offset_x[g]), 
-					//(float)(cursor_y[g] * og_scale_y / OG_SCALE_MULTIPLIER + cursor_offset_y[g])), 
+				//og_renderer->Render2D_Picture(cursor_pic[g],
+					//VC2((float)(cursor_x[g] * og_scale_x / OG_SCALE_MULTIPLIER + cursor_offset_x[g]),
+					//(float)(cursor_y[g] * og_scale_y / OG_SCALE_MULTIPLIER + cursor_offset_y[g])),
 					//VC2(CURSOR_SIZE_X, CURSOR_SIZE_Y));
 			}
 		}
@@ -1416,8 +1416,8 @@ void og_refresh_screen(void)
 #endif
 			if (rf_win->visible == 1)
 			{
-				og_renderer->Render2D_Picture(rf_win->bg_pic, 
-					VC2(rf_win->put_x, rf_win->put_y), 
+				og_renderer->Render2D_Picture(rf_win->bg_pic,
+					VC2(rf_win->put_x, rf_win->put_y),
 					VC2(rf_win->sizex, rf_win->sizey));
 				// not needed anymore
 				//og_refresh_overlapping(rf_win);
@@ -1682,7 +1682,7 @@ orvgui_but *og_create_button(orvgui_win *parent, unsigned char type,
 void og_delete_button(orvgui_but *but)
 {
 	int i;
-	// can't do this check because the cursor may have the 
+	// can't do this check because the cursor may have the
 	// last_highlight set, even if the button is not highlighted
 	// (due to reactmask not allowing that)
 	//if (but->highlighted != 0)
@@ -1826,7 +1826,7 @@ void og_draw_button(orvgui_but *but)
 				font = but->font_down;
 				font_color = but->font_down_color;
 			}
-		} 
+		}
 	}
 	if (tmp != NULL)
 	{
@@ -1847,10 +1847,10 @@ void og_draw_button(orvgui_but *but)
 
 		if(but->vertices == NULL || but->num_vertices == 0)
 		{
-			og_renderer->Render2D_Picture(tmp, 
-			VC2((float)((but->parent->put_x + but->put_x + (float)((but->clipleftx * but->sizex ) / 100)) * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
-			(float)((but->parent->put_y + but->put_y + (float)((but->cliptopy * but->sizey ) / 100)) * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 
-			VC2((float)but->sizex * (but->cliprightx - but->clipleftx) * og_scale_x / 100 / (float)OG_SCALE_MULTIPLIER, 
+			og_renderer->Render2D_Picture(tmp,
+			VC2((float)((but->parent->put_x + but->put_x + (float)((but->clipleftx * but->sizex ) / 100)) * og_scale_x / (float)OG_SCALE_MULTIPLIER),
+			(float)((but->parent->put_y + but->put_y + (float)((but->cliptopy * but->sizey ) / 100)) * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
+			VC2((float)but->sizex * (but->cliprightx - but->clipleftx) * og_scale_x / 100 / (float)OG_SCALE_MULTIPLIER,
 			(float)but->sizey * (but->clipbottomy-but->cliptopy) * og_scale_y / 100 / (float)OG_SCALE_MULTIPLIER),
 			but->parent->alpha * but->alpha, but->rotation, tx1, ty1, tx2, ty2, but->wrap);
 		}
@@ -1884,10 +1884,10 @@ void og_draw_button(orvgui_but *but)
 		IStorm3D_Material *mat = debug_button_material;
 		if(!but->enabled) mat = debug_button_disabled_material;
 
-		VC2 pos((float)((but->parent->put_x + but->put_x + (float)((but->clipleftx * but->sizex ) / 100)) * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
+		VC2 pos((float)((but->parent->put_x + but->put_x + (float)((but->clipleftx * but->sizex ) / 100)) * og_scale_x / (float)OG_SCALE_MULTIPLIER),
 		(float)((but->parent->put_y + but->put_y + (float)((but->cliptopy * but->sizey ) / 100)) * og_scale_y / (float)OG_SCALE_MULTIPLIER));
 
-		VC2 size((float)but->sizex * (but->cliprightx - but->clipleftx) * og_scale_x / 100 / (float)OG_SCALE_MULTIPLIER, 
+		VC2 size((float)but->sizex * (but->cliprightx - but->clipleftx) * og_scale_x / 100 / (float)OG_SCALE_MULTIPLIER,
 		(float)but->sizey * (but->clipbottomy-but->cliptopy) * og_scale_y / 100 / (float)OG_SCALE_MULTIPLIER);
 
 		og_renderer->Render2D_Picture(mat, pos, size, 0.1f, but->rotation, 0, 0, 0, 0);
@@ -1952,21 +1952,21 @@ void og_draw_button(orvgui_but *but)
 					{
 						char tmp = txt[i];
 						txt[i] = '\0';
-						og_write_text_transp(but->parent, font, 
-							(short)(but->put_x + tx), 
+						og_write_text_transp(but->parent, font,
+							(short)(but->put_x + tx),
 							(short)(but->put_y + ty + curline * but->text_pixheight), &txt[brpos],
-							(short)(but->fontwidth), 
-							(short)(but->fontheight), but->alpha, font_color); 
+							(short)(but->fontwidth),
+							(short)(but->fontheight), but->alpha, font_color);
 						txt[i] = tmp;
 						curline++;
 						brpos = i + 1;
 					}
 				}
 			} else {
-				og_write_text_transp(but->parent, font, (short)(but->put_x + tx), 
+				og_write_text_transp(but->parent, font, (short)(but->put_x + tx),
 					(short)(but->put_y + ty), but->text,
-					(short)(but->fontwidth), 
-					(short)(but->fontheight), but->alpha, font_color); 
+					(short)(but->fontwidth),
+					(short)(but->fontheight), but->alpha, font_color);
 			}
 		}
 	}
@@ -2122,7 +2122,7 @@ void og_highlight_button(orvgui_but *but)
 /* ----------------------------------------------------------- */
 
 // WARNING: calling this for a button that has been highlighted by a cursor
-// may have undefined results 
+// may have undefined results
 // (may invalidate the cursor_last_highligh pointer)
 void og_unhighlight_button(orvgui_but *but)
 {
@@ -2145,7 +2145,7 @@ void og_set_react_button(orvgui_but *but, unsigned int mask)
 
 /* ----------------------------------------------------------- */
 
-void og_set_pic_button(orvgui_but *but, IStorm3D_Material *pic, 
+void og_set_pic_button(orvgui_but *but, IStorm3D_Material *pic,
 	IStorm3D_Material *picdown, IStorm3D_Material *picdisabled,
 	IStorm3D_Material *pichighlighted)
 {
@@ -2342,11 +2342,11 @@ orvgui_win *og_create_window(unsigned char type, short x, short y,
 	orvgui_win *new_win;
 
 	/*
-	if (sizex * og_scale_x / OG_SCALE_MULTIPLIER > scr_size_x 
+	if (sizex * og_scale_x / OG_SCALE_MULTIPLIER > scr_size_x
 		|| sizey * og_scaly_y / OG_SCALE_MULTIPLIER > scr_size_y)
 	{
 		og_show_error("og_create_window - Window does not fit in screen.");
-		if (sizex * og_scaly_x / OG_SCALE_MULTIPLIER > scr_size_x) 
+		if (sizex * og_scaly_x / OG_SCALE_MULTIPLIER > scr_size_x)
 			sizex = (short)scr_size_x;
 		if (sizey * og_scaly_y / OG_SCALE_MULTIPLIER > scr_size_y) sizey = (short)scr_size_y;
 	}
@@ -2520,10 +2520,10 @@ void og_draw_window(orvgui_win *win)
 		IStorm3D_Material *mat = debug_window_material;
 		if (!win->visible) mat = debug_window_hidden_material;
 
-		VC2 pos((float)(win->put_x * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
+		VC2 pos((float)(win->put_x * og_scale_x / (float)OG_SCALE_MULTIPLIER),
 		(float)(win->put_y * og_scale_y / (float)OG_SCALE_MULTIPLIER));
 
-		VC2 size((float)(win->sizex * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
+		VC2 size((float)(win->sizex * og_scale_x / (float)OG_SCALE_MULTIPLIER),
 		(float)(win->sizey * og_scale_y / (float)OG_SCALE_MULTIPLIER));
 
 		og_renderer->Render2D_Picture(mat, pos, size, 0.1f, 0.0f, 0, 0, 0, 0);
@@ -2546,10 +2546,10 @@ void og_draw_window(orvgui_win *win)
 
 		if (win->bg_pic != NULL)
 		{
-			og_renderer->Render2D_Picture(win->bg_pic, 
-				VC2((float)(win->put_x * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
-				(float)(win->put_y * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 
-				VC2((float)(win->sizex * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
+			og_renderer->Render2D_Picture(win->bg_pic,
+				VC2((float)(win->put_x * og_scale_x / (float)OG_SCALE_MULTIPLIER),
+				(float)(win->put_y * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
+				VC2((float)(win->sizex * og_scale_x / (float)OG_SCALE_MULTIPLIER),
 				(float)(win->sizey * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
 				win->alpha, 0.0f, win->scroll_x, win->scroll_y, win->scroll_x + (1.0f * win->bg_repeat_factor_x), win->scroll_y + (1.0f * win->bg_repeat_factor_y), win->wrap);
 		}
@@ -2633,18 +2633,18 @@ void og_move_window(orvgui_win *win, short x, short y)
 	{
 		if (x < 0) x = 0;
 		if (y < 0) y = 0;
-		if ((x+win->sizex) > scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x) 
+		if ((x+win->sizex) > scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x)
 			x = (short)(scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x - win->sizex);
-		if ((y+win->sizey)> scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y ) 
+		if ((y+win->sizey)> scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y )
 			y = (short)(scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y - win->sizey);
 	}
 	else if (win->move_bound == OG_MOVE_BOUND_PART_IN_SCREEN)
 	{
 		if (x < -(win->sizex-1)) x = -(win->sizex-1);
 		if (y < -(win->sizey-1)) y = -(win->sizey-1);
-		if ((x+1) > scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x) 
+		if ((x+1) > scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x)
 			x = (short)(scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x - 1);
-		if ((y+1) > scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y ) 
+		if ((y+1) > scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y )
 			y = (short)(scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y - 1); 	
 	}
 
@@ -2685,9 +2685,9 @@ void og_resize_window(orvgui_win *win, short sizex, short sizey)
 	{
 		if (win->put_x < 0) win->put_x = 0;
 		if (win->put_y < 0) win->put_y = 0;
-		if ((win->put_x+sizex) > scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x) 
+		if ((win->put_x+sizex) > scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x)
 			win->put_x = (short)(scr_size_x * OG_SCALE_MULTIPLIER / og_scale_x - sizex);
-		if ((win->put_y+sizey)> scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y ) 
+		if ((win->put_y+sizey)> scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y )
 			win->put_y = (short)(scr_size_y * OG_SCALE_MULTIPLIER / og_scale_y - sizey);
 	}
 	// TODO: else if (win->move_bound == OG_MOVE_BOUND_PART_IN_SCREEN)
@@ -2813,7 +2813,7 @@ void og_write_text(orvgui_win *win, short x, short y, char *text)
 
 /* ----------------------------------------------------------- */
 
-void og_write_text_transp(orvgui_win *win, IStorm3D_Font *font, 
+void og_write_text_transp(orvgui_win *win, IStorm3D_Font *font,
 	short x, short y, char *text, short fontwidth, short fontheight, float alpha, const COL &color )
 {
 	// TODO: should actually change the text alpha, not just make
@@ -2826,11 +2826,11 @@ void og_write_text_transp(orvgui_win *win, IStorm3D_Font *font,
 
 		/*if(font && !font->isUnicode())
 		{*/
-			og_renderer->Render2D_Text(font, 
-				VC2((float)((win->put_x + x) * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
-				(float)((win->put_y + y) * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 
-				VC2((float)(fontwidth * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
-				(float)(fontheight * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 
+			og_renderer->Render2D_Text(font,
+				VC2((float)((win->put_x + x) * og_scale_x / (float)OG_SCALE_MULTIPLIER),
+				(float)((win->put_y + y) * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
+				VC2((float)(fontwidth * og_scale_x / (float)OG_SCALE_MULTIPLIER),
+				(float)(fontheight * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
 				text,f,color);
 		/*}
 		else
@@ -2838,23 +2838,23 @@ void og_write_text_transp(orvgui_win *win, IStorm3D_Font *font,
 			std::wstring uniText;
 			frozenbyte::util::convertToWide(text, uniText);
 
-			og_renderer->Render2D_Text(font, 
-				VC2((float)((win->put_x + x) * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
-				(float)((win->put_y + y) * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 
-				VC2((float)(fontwidth * og_scale_x / (float)OG_SCALE_MULTIPLIER), 
-				(float)(fontheight * og_scale_y / (float)OG_SCALE_MULTIPLIER)), 
+			og_renderer->Render2D_Text(font,
+				VC2((float)((win->put_x + x) * og_scale_x / (float)OG_SCALE_MULTIPLIER),
+				(float)((win->put_y + y) * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
+				VC2((float)(fontwidth * og_scale_x / (float)OG_SCALE_MULTIPLIER),
+				(float)(fontheight * og_scale_y / (float)OG_SCALE_MULTIPLIER)),
 				uniText.c_str(),f,color);
 		}*/
 	}
 
 
-//	og_renderer->Render2D_Text(font, 
-//		VC2((float)((win->put_x + x) * og_scale_x / OG_SCALE_MULTIPLIER), 
-//		(float)((win->put_y + y) * og_scale_y / OG_SCALE_MULTIPLIER)), 
-//		VC2((float)(OG_FONT_SIZEX * og_scale_x / OG_SCALE_MULTIPLIER), 
-//		(float)(OG_FONT_SIZEY * og_scale_y / OG_SCALE_MULTIPLIER)), 
+//	og_renderer->Render2D_Text(font,
+//		VC2((float)((win->put_x + x) * og_scale_x / OG_SCALE_MULTIPLIER),
+//		(float)((win->put_y + y) * og_scale_y / OG_SCALE_MULTIPLIER)),
+//		VC2((float)(OG_FONT_SIZEX * og_scale_x / OG_SCALE_MULTIPLIER),
+//		(float)(OG_FONT_SIZEY * og_scale_y / OG_SCALE_MULTIPLIER)),
 //		text);
-//	og_renderer->Render2D_Text(font, VC2((float)win->put_x + x, (float)win->put_y + y), 
+//	og_renderer->Render2D_Text(font, VC2((float)win->put_x + x, (float)win->put_y + y),
 //		VC2((float)win->sizex - x, (float)win->sizey - y), text);
 
 	// now this written text is just temporary... and should be.

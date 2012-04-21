@@ -37,7 +37,7 @@ public:
 };
 
 /**
- * A simple wrapper class for CSoundLib. 
+ * A simple wrapper class for CSoundLib.
  * Implementing music fade in/out feature and looping.
  *
  * Use this to set game's background music instead of using the
@@ -45,11 +45,11 @@ public:
  *
  * (See also GameUI, it kinda wraps this one, normally should use it)
  *
- * @version v1.0.1, 2.7.2002 
+ * @version v1.0.1, 2.7.2002
  * @author Jukka Kokkonen <jukka@frozenbyte.com>
  * @see GameUI
  * @see CSoundLib
- * 
+ *
  */
 
 class SoundMixer
@@ -84,7 +84,7 @@ public:
 	void cleanTemporarySampleCache();
 
 	/**
-	 * Stops all sounds currently playing. 
+	 * Stops all sounds currently playing.
 	 * (Does not effect the music though.)
 	 */
 	void stopAllSounds();
@@ -96,7 +96,7 @@ public:
 	/**
 	* Run the mixer.
 	* Must be called pretty much all the time to make sure fading
-	* gets done correctly - the more often you call this, the 
+	* gets done correctly - the more often you call this, the
 	* smoother the fade out and fade in is.
 	* If not called often enough, music does not fade.
 	* Basically, calling this every ~10 ms is more than good enough
@@ -115,7 +115,7 @@ public:
 	/**
 	* Check if music is fading in or out.
 	* Returns true if music is currently fading in or out.
-	* Can be used in while loop to wait for music to fade out, for 
+	* Can be used in while loop to wait for music to fade out, for
 	* example.
 	* @return  bool, true if music is fading in or out.
 	*/

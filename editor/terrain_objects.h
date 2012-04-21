@@ -143,12 +143,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainObjects &objects)
-{ 
+{
 	return objects.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainObjects &objects)
-{ 
+{
 	return objects.readStream(stream);
 }
 

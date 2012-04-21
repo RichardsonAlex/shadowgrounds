@@ -17,7 +17,7 @@ namespace ui
 
 	PlayerUnitCameraBoundary::PlayerUnitCameraBoundary(game::UnitList *unitList, int player)
 	{
-		this->unitList = unitList; 
+		this->unitList = unitList;
 		this->player = player;
 	}
 
@@ -52,7 +52,7 @@ namespace ui
 		// position. then the area formed is grown a bit.
 		// notice: coordinates x,y - x,y,z. (y=z)
 		float minX, maxX;
-		float minY, maxY; 
+		float minY, maxY;
 		minX = maxX = position.x;
 		minY = maxY = position.z;
 
@@ -67,7 +67,7 @@ namespace ui
 			{
 				VC3 pos = u->getPosition();
 				if (firstUnit)
-				{ 
+				{
 					minX = pos.x;
 					maxX = pos.x;
 					minY = pos.z;
@@ -86,7 +86,7 @@ namespace ui
 		minY -= BOUNDARY_MAX_DISTANCE_FROM_UNITS;
 		maxX += BOUNDARY_MAX_DISTANCE_FROM_UNITS;
 		maxY += BOUNDARY_MAX_DISTANCE_FROM_UNITS;
-		
+
 		// solve the vector to keep position inside the rectangle.
 		VC3 ret = VC3(0,0,0);
 		if (position.x < minX) ret.x = minX - position.x;

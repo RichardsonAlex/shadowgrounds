@@ -56,7 +56,7 @@ namespace game
 	bool projs_chainedOriginToHitUnit;
 
 
-	void HitChainScripting::process(util::ScriptProcess *sp, 
+	void HitChainScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -145,7 +145,7 @@ namespace game
 					float angle = tmp.GetAngleTo(projs_hitPlaneNormal) / 3.1415927f * 180.0f;
 					if (angle >= (float)intData && angle <= 90.0f)
 						*lastValue = 1;
-					else 
+					else
 						*lastValue = 0;
 				}
 				break;
@@ -156,7 +156,7 @@ namespace game
 					float angle = tmp.GetAngleTo(projs_hitPlaneNormal) / 3.1415927f * 180.0f;
 					if (angle >= (float)intData && angle <= 90.0f)
 						*lastValue = 1;
-					else 
+					else
 						*lastValue = 0;
 				}
 				break;
@@ -296,13 +296,13 @@ namespace game
 						sp->error("UnitScripting::process - projIsOriginBullet, illegal part type id.");
 					} else {
 						PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-						if (pt == NULL) 
-						{ 
+						if (pt == NULL)
+						{
 							sp->error("UnitScripting::process - projIsOriginBullet, reference to unloaded part type.");
 						} else {
 							if (pt->isInherited(
 								getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
-							{ 
+							{
 								// WARNING: unsafe cast (based on check above)
 								Bullet *bullet = (Bullet *)pt;
 								if (projs_originBulletType == bullet)
@@ -326,7 +326,7 @@ namespace game
 				{					
 					if (projs_hitChain >= 0 && projs_hitChain < HITCHAIN_AMOUNT)
 					{
-						if (hitChainName[projs_hitChain] != NULL 
+						if (hitChainName[projs_hitChain] != NULL
 							&& strcmp(stringData, hitChainName[projs_hitChain]) == 0)
 							*lastValue = 1;
 						else
@@ -369,13 +369,13 @@ namespace game
 						sp->error("UnitScripting::process - projSetChainedBullet, illegal part type id.");
 					} else {
 						PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-						if (pt == NULL) 
-						{ 
+						if (pt == NULL)
+						{
 							sp->error("UnitScripting::process - projSetChainedBullet, reference to unloaded part type.");
 						} else {
 							if (pt->isInherited(
 								getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
-							{ 
+							{
 								// WARNING: unsafe cast (based on check above)
 								Bullet *bullet = (Bullet *)pt;
 								projs_chainedBulletType = bullet;

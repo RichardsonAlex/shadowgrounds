@@ -30,18 +30,18 @@ namespace util
 			// returns position of string to find or -1 if not found
 			// updates current finder position to beginning of the found string or
 			// at the end of buffer in string not found
-			// NOTE: remember to moveToStart or appropriate position before calling this 
+			// NOTE: remember to moveToStart or appropriate position before calling this
 			int findNext(const char *stringToFind);
 
-			// finds the n'th occurance of the string from the beginning 
+			// finds the n'th occurance of the string from the beginning
 			// returns position of string to find or -1 if not found
 			// updates current finder position to beginning of the found string or
 			// at the end of buffer in string not found
-			// NOTE: remember to moveToStart or appropriate position before calling this 
+			// NOTE: remember to moveToStart or appropriate position before calling this
 			int findOneOfMany(const char *stringToFind, int findNumber);
 
 			// returns the number of occurances for the given string in the buffer
-			// NOTE: remember to moveToStart or appropriate position before calling this 
+			// NOTE: remember to moveToStart or appropriate position before calling this
 			int countOccurances(const char *stringToFind);
 
 		private:

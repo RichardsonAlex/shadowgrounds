@@ -65,7 +65,7 @@ struct SelfIlluminationChanger::Data
 
 			float glow = material->GetGlow();
 
-			// ToDo: 
+			// ToDo:
 			// Choose only certain materials -> name flag?
 
 			MaterialList::iterator it = materials.find(material);

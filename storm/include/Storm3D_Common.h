@@ -33,7 +33,7 @@
 
 #ifdef STORM3DV2_EXPORTS	// Do not define this inside your program!
 	#define ST3D_EXP_DLLAPI __attribute__((visibility("default")))
-	#define ST3D_IMP_DLLAPI 
+	#define ST3D_IMP_DLLAPI
 #else
 	#define ST3D_EXP_DLLAPI
 	#define ST3D_IMP_DLLAPI

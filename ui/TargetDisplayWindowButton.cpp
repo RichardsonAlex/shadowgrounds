@@ -22,7 +22,7 @@ TargetDisplayWindowButton::TargetDisplayWindowButton()
 	updatedInTick = 0;
 	oldW = 0;
 	oldH = 0;
-	// temp hack fix me 
+	// temp hack fix me
 	// imageWidth = 16;
 	// imageHeight = 16;
 }
@@ -149,7 +149,7 @@ void TargetDisplayWindowButton::setRect( int x, int y, int w, int h, float dista
 
 	if( b.hasText )
 	{
-		if( beginAnimPos < 1.0f ) 
+		if( beginAnimPos < 1.0f )
 			setButtonTextPosition( topx, bottomy, bottomx + imageWidth, transparency );
 		else
 			hideButton( buttontext );	
@@ -168,8 +168,8 @@ void TargetDisplayWindowButton::setRect( int x, int y, int w, int h, float dista
 		}
 	}
 
-	if( beginAnimPos > 1.0f ) 
-		if( transparency < 50 ) 
+	if( beginAnimPos > 1.0f )
+		if( transparency < 50 )
 			getAnimPos( Timer::getTime() - startTicks );
 		else transparency = 100;
 	else beginAnimPos = 0.0f;
@@ -358,7 +358,7 @@ void TargetDisplayWindowButton::setButtonPosition( int i, int x, int y, int tran
 	FB_ASSERT( i >= 0 && i < (int)b.buttons.size() );
 
 	if( i >= 0 && i < (int)b.buttons.size() &&
-		x - imageWidth >= 0 && x < 1024 && 
+		x - imageWidth >= 0 && x < 1024 &&
 		y - imageHeight >= 0 && y < 768 )
 	{
 		b[ i ]->Move( x, y );
@@ -379,7 +379,7 @@ void TargetDisplayWindowButton::setButtonSliderPosition( int x, int y, int botto
 
 	if( b.healthSlider )
 	{
-		if( x - imageWidth >= 0 && x < 1024 && 
+		if( x - imageWidth >= 0 && x < 1024 &&
 			y - imageHeight >= 0 && y < 768 )
 		{
 			int x_pos = x;
@@ -411,7 +411,7 @@ void TargetDisplayWindowButton::setButtonTextPosition( int x, int y, int bottomx
 
 	if( b.hasText )
 	{
-		if( x - imageWidth >= 0 && x < 1024 && 
+		if( x - imageWidth >= 0 && x < 1024 &&
 		y - imageHeight >= 0 && y < 768 )
 		{
 			int x_pos = x;
@@ -468,7 +468,7 @@ void TargetDisplayRisingScoreButton::setRect( int x, int y, int w, int h, float 
 	const int bottomx = x + w - imageWidth / 2;
 	const int bottomy = y + h - imageHeight / 2;
 
-	float t =  ( Timer::getTime() - startTicks ) / how_long; 
+	float t =  ( Timer::getTime() - startTicks ) / how_long;
 	int transparency = (int)( t * 255.0f + 0.5f);
 
 	const int text_pos_y = (int)( ( bottomy - ( bottomy - topy ) / 2.0f ) - (t * rising_length) + 0.5f );

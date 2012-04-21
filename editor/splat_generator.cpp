@@ -37,7 +37,7 @@ namespace {
 
 struct SplatGeneratorData
 {
-	Storm &storm; 
+	Storm &storm;
 	TerrainTextures &textures;
 
 	SplatGeneratorData(Storm &storm_, TerrainTextures &textures_)
@@ -81,7 +81,7 @@ void SplatGenerator::generate(int textureId, const VC3 &position, int size, floa
 {
 	VC2I splatPosition = sceneToTexturing(position, data->textures.getMapSize(), data->storm.heightmapSize);
 	VC2I splatSize = unitToTexturing(VC3(float(size * 2), 0, float(size * 2)), data->textures.getMapSize(), data->storm.heightmapSize);
-	//VC2I splatSize(5, 5); 
+	//VC2I splatSize(5, 5);
 
 	splatPosition -= splatSize / 2;
 	data->generate(textureId, splatPosition, splatSize, strength);

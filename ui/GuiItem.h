@@ -16,21 +16,21 @@ namespace ui {
 class GuiItem
 {
 public:
-	GuiItem() : 
-		imageFile( "" ), 
-		w( 0 ), 
-		h( 0 ), 
-		image( NULL ) 
+	GuiItem() :
+		imageFile( "" ),
+		w( 0 ),
+		h( 0 ),
+		image( NULL )
 	{ }
 	
-	GuiItem( const GuiItem& item ) : 
-		imageFile( item.imageFile ), 
-		w( item.w ), 
-		h( item.h ), 
-		image( item.image ) 
+	GuiItem( const GuiItem& item ) :
+		imageFile( item.imageFile ),
+		w( item.w ),
+		h( item.h ),
+		image( item.image )
 	{ }
 
-	GuiItem( const std::string& locale_name ) : 
+	GuiItem( const std::string& locale_name ) :
 		imageFile( "" ),
 		w( 0 ),
 		h( 0 ),
@@ -44,11 +44,11 @@ public:
 	~GuiItem()  { 	}
 
 
-	void operator=( const GuiItem& item ) 
-	{ 
-		imageFile = item.imageFile; 
-		w = item.w; 
-		h = item.h; 
+	void operator=( const GuiItem& item )
+	{
+		imageFile = item.imageFile;
+		w = item.w;
+		h = item.h;
 		image = item.image;
 	}
 

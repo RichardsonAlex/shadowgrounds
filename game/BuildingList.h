@@ -11,7 +11,7 @@ namespace game
 {
   /**
    * A class holding game buildings.
-   * 
+   *
    * @version 1.0, 4.7.2002
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
    * @see Building

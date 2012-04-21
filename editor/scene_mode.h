@@ -37,7 +37,7 @@ public:
 	void update();
 	VC3 getSunDirection() const;
 
-	bool doesShowFolds() const; 
+	bool doesShowFolds() const;
 	bool doesShowGrid() const;
 	bool doesShowTriggers() const;
 	bool doesShowUnits() const;

@@ -39,8 +39,8 @@ struct VectorTrackDialogData {
 			Key() {}
 			Key(float t) : time(t) { value = Vector(0.0f, 0.0f, 0.0f); }
 			Key(const Key& other) { *this = other; }
-			Key& operator=(const Key& other) { 
-				time = other.time; 
+			Key& operator=(const Key& other) {
+				time = other.time;
 				value = other.value;
 				return *this; }
 			float time;
@@ -95,11 +95,11 @@ struct VectorTrackDialogData {
 
 		}
 		
-		void update() 
+		void update()
 		{
 			pg.setValue("num_keys", convertToString<int>(keys.size()));
 
-			for(unsigned int i = 0; i < keys.size(); ++i) 
+			for(unsigned int i = 0; i < keys.size(); ++i)
 			{
 				std::string str = "key" + convertToString<int>(i);
 				pg.setValue((str + ".time"), convertToString<float>(keys[i].time));
@@ -111,11 +111,11 @@ struct VectorTrackDialogData {
 			}
 		}
 		
-		void updateDialog() 
+		void updateDialog()
 		{	
 			ListBox_ResetContent(dlg.getItem(IDC_KEYSV));
 
-			for(unsigned int i = 0; i < keys.size(); i++) 
+			for(unsigned int i = 0; i < keys.size(); i++)
 			{
 				std::string str = "key" + convertToString<int>(i);
 				ListBox_AddString(dlg.getItem(IDC_KEYSV), str.c_str());
@@ -124,7 +124,7 @@ struct VectorTrackDialogData {
 			selectKey();
 		}
 
-		void addKey() 
+		void addKey()
 		{
 			keys.push_back(Key(1.0f));
 			updateDialog();
@@ -234,7 +234,7 @@ struct VectorTrackDialogData {
 
 	VectorTrackDialogData(Dialog& parent, int id, ParserGroup& pg, bool floatMode) : dialog(id, parent.getWindowHandle()),
 		data(dialog, pg, floatMode), selectKeyCommand(data),
-		addKeyCommand(data), removeKeyCommand(data), okCommand(dialog, data), 
+		addKeyCommand(data), removeKeyCommand(data), okCommand(dialog, data),
 		cancelCommand(dialog), updateCommand(data) {
 	
 		dialog.getCommandList().addCommand(IDC_KEYSV, &selectKeyCommand);

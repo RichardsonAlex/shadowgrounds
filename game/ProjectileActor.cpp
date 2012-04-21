@@ -162,22 +162,22 @@ namespace game
 
 		// HACK: ...
 		IStorm3D_Model *spawnModel = NULL;
-		if (originUnit != NULL 
-			&& originUnit->getVisualObject() != NULL) 
+		if (originUnit != NULL
+			&& originUnit->getVisualObject() != NULL)
 		{
 			spawnModel = originUnit->getVisualObject()->getStormModel();
 		}
 
 		VisualEffect *ve =
 			game->gameUI->getVisualEffectManager()->createNewVisualEffect(
-			visualType, projectile, originUnit, 
+			visualType, projectile, originUnit,
 			position, endPosition, rotFixed, velFixed,
 			game, 1, spawnModel);
 		projectile->setVisualEffect(ve);
 
 		// TODO: only if options allow this - and only if fullscreen.
 		// (no point in causing fps drop if it is not even gonna show)
-		
+
 		// TODO: a better check for explosions.
 		// should move this whole thing inside visualeffectmanager.
 		/*
@@ -187,7 +187,7 @@ namespace game
 			//game->gameUI->getEffects()->startFlashEffect(ui::UIEffects::FLASH_EFFECT_TYPE_EXPLOSION);
 		}
 		*/
-		// FIXME: these static ids may become invalid when visual effect manager gets reloaded, if the 
+		// FIXME: these static ids may become invalid when visual effect manager gets reloaded, if the
 		// conf file (visualeffects.txt) has changed since the ids were solved.
 		static int ve_id_explosion_cluster = -1;
 		static int ve_id_explosion3 = -1;
@@ -259,7 +259,7 @@ namespace game
 			VisualObject *unitVisual = projectile->getParentUnit()->getVisualObject();
 			IStorm3D_Model *unitModel = 0;
 			if(unitVisual)
-			{				
+			{
 				unitVisual->prepareForRender();
 
 				unitModel = unitVisual->getStormModel();
@@ -337,7 +337,7 @@ namespace game
 
 			VC3 dist;
 			float distLen;
-			if (destination.x != origin.x 
+			if (destination.x != origin.x
 				|| destination.y != origin.y
 				|| destination.z != origin.z)
 			{
@@ -414,7 +414,7 @@ namespace game
 					// HACK: !!!
 					// UBERHACK: flamethrower (B_Flam... & B_FExt...) ignite it!!!
 					// TODO: should definately be a conf for this, not hardcoded here!
-					if (other != projectile 
+					if (other != projectile
 //						&& other->getShooter() == projectile->getShooter()
 						&& other->getBulletType() != NULL
 						&& (strncmp(other->getBulletType()->getPartTypeIdString(), "B_Flam", 6) == 0
@@ -445,7 +445,7 @@ namespace game
 
 					Projectile *cproj = new Projectile(projectile->getShooter(), hitbull);
 					game->projectiles->addProjectile(cproj);
-						
+
 					VC3 position = projectile->getPosition();
 
 					cproj->setPosition(position);
@@ -471,7 +471,7 @@ namespace game
 				VC3 pathgrav = projectile->getBulletType()->getPathGravity();
 				if (pathgrav.x != 0 || pathgrav.y != 0 || pathgrav.z != 0)
 				{
-					gravPath = true;	
+					gravPath = true;
 				}
 
 				int splitPos = projectile->getCurrentSplitPosition();
@@ -638,8 +638,8 @@ if (ltime < 1) ltime = 1;
 				&& projectile->getOriginalLifeTime() > 2)
 			{
 				// y = y - H * t / T*T
-				projpos.y -= projectile->getParabolicPathHeight() 
-					* ((float)(projectile->getOriginalLifeTime() - ltime * 2) / 2.0f 
+				projpos.y -= projectile->getParabolicPathHeight()
+					* ((float)(projectile->getOriginalLifeTime() - ltime * 2) / 2.0f
 					/ (float)projectile->getOriginalLifeTime())
 					/ (float)projectile->getOriginalLifeTime();
 				projectile->setPosition(projpos);
@@ -718,13 +718,13 @@ if (ltime < 1) ltime = 1;
 							{
 								if (cinfo.hitUnit)
 								{
-									if (cinfo.unit != NULL 
+									if (cinfo.unit != NULL
 										&& projectile->getShooter() != NULL
 										&& cinfo.unit->getOwner() != projectile->getShooter()->getOwner()
 										&& !cinfo.unit->getUnitType()->isMetallic()
 										&& !cinfo.unit->isDestroyed())
 									{
-										if (ltime > 1) 
+										if (ltime > 1)
 										{
 #ifndef PROJECT_SHADOWGROUNDS
 // this was missing from sg - it's an error, but to make sure nothing breaks, keeping it that way with sg
@@ -778,7 +778,7 @@ if (ltime < 1) ltime = 1;
 							}
 						}
 					}
-					
+
 					projectile->setVelocity(projvel);
 
 					projectile->setDestination(projpos);
@@ -840,11 +840,11 @@ if (ltime < 1) ltime = 1;
 			// special case: mine
 			// TODO: proper configuration key/value for this
 			if (projectile->getBulletType() != NULL
-				&& (projectile->getBulletType()->getPartTypeId() == 
+				&& (projectile->getBulletType()->getPartTypeId() ==
 					PARTTYPE_ID_STRING_TO_INT("B_MineA")))
-//				|| projectile->getBulletType()->getPartTypeId() == 
+//				|| projectile->getBulletType()->getPartTypeId() ==
 //					PARTTYPE_ID_STRING_TO_INT("B_Grenl")
-//				|| projectile->getBulletType()->getPartTypeId() == 
+//				|| projectile->getBulletType()->getPartTypeId() ==
 //					PARTTYPE_ID_STRING_TO_INT("B_Clust")))
 			{
 				if ((game->gameTimer & 15) == 0)
@@ -861,7 +861,7 @@ if (ltime < 1) ltime = 1;
 							VC3 posDiff = u->getPosition() - projpos;
 							if (posDiff.GetSquareLength() < 4 * 4)
 							{
-								if (ltime > 5) 
+								if (ltime > 5)
 								{
 									projectile->setLifeTime(5);
 								}
@@ -934,7 +934,7 @@ if (ltime < 1) ltime = 1;
 									projectile->setPosition(projpos + posDiff * sqrtf(diff));
 								}
 								// change lifetime
-								if (ltime > projectile->getBulletType()->getProximityDropLifeTime()) 
+								if (ltime > projectile->getBulletType()->getProximityDropLifeTime())
 								{
 									projectile->setLifeTime(projectile->getBulletType()->getProximityDropLifeTime());
 									projectile->setDestination(projectile->getPosition());
@@ -956,7 +956,7 @@ if (ltime < 1) ltime = 1;
 			//if (projectile->getVisualType() == PROJECTILE_VIS_FLAME1)
 			//{
 				if (projectile->getBulletType() != NULL
-					&& projectile->getBulletType()->getPartTypeId() == 
+					&& projectile->getBulletType()->getPartTypeId() ==
 						PARTTYPE_ID_STRING_TO_INT("B_Flame1"))
 				{
 					Terrain *terrain = game->gameUI->getTerrain();
@@ -974,7 +974,7 @@ if (ltime < 1) ltime = 1;
 			*/
 
 /*
-			if (ltime >= 12 
+			if (ltime >= 12
 				&& projectile->getVisualType() == PROJECTILE_VIS_FLAME1)
 			{
 				if ((ltime & 1) == 0)
@@ -985,7 +985,7 @@ if (ltime < 1) ltime = 1;
 
 					game->gameUI->getParticleManager()->spawnParticleSystem(
 						ui::ParticleSystem::FLAME,
-						projectile->getPosition() - projectile->getVelocity() * (float)(20 - projectile->getLifeTime()), 
+						projectile->getPosition() - projectile->getVelocity() * (float)(20 - projectile->getLifeTime()),
 						vel, 0);
 				}
 			}
@@ -993,7 +993,7 @@ if (ltime < 1) ltime = 1;
 
 			// another quick haxor...
 			if (projectile->getBulletType() != NULL
-				&& projectile->getBulletType()->getPartTypeId() == 
+				&& projectile->getBulletType()->getPartTypeId() ==
 					PARTTYPE_ID_STRING_TO_INT("B_HvRoc"))
 			{
 				if ((ltime & 1) == 0)
@@ -1003,7 +1003,7 @@ if (ltime < 1) ltime = 1;
 					/*
 					game->gameUI->getParticleManager()->spawnParticleSystem(
 					ui::ParticleSystem::ROCKETTAIL,
-					projectile->getPosition(), 
+					projectile->getPosition(),
 					VC3(0,0,0), 0);
 					*/
 				}
@@ -1022,7 +1022,7 @@ if (ltime < 1) ltime = 1;
 					// not all of them...
 					//LinkedList *ulist = game->units->getAllUnits();
 					//LinkedListIterator uiter = LinkedListIterator(ulist);
-					
+
 					// WARNING: some magic number here
 					// (max. 35 meter radius for area damage checks)
 					IUnitListIterator *uiter = game->units->getNearbyAllUnits(projectile->getPosition(), 35.0f);
@@ -1169,7 +1169,7 @@ if (ltime < 1) ltime = 1;
 					// TODO!
 					// HACK: 15m distance considered a static limit.
 					// should be based on weapons max range, but we don't have
-					// that available. 
+					// that available.
 
 					float distFactor = 1.0f;
 					VC3 distVec = hitUnit->getPosition() - projectile->getOrigin();
@@ -1181,20 +1181,20 @@ if (ltime < 1) ltime = 1;
 						{
 							distFactor -= 0.75f * (distLen / 15.0f);
 						} else {
-							distFactor = 0.25f; 
+							distFactor = 0.25f;
 						}
 					} else {
 						if (distLen < 15.0f)
 						{
 							distFactor -= 0.5f * (distLen / 15.0f);
 						} else {
-							distFactor = 0.5f; 
+							distFactor = 0.5f;
 						}
 					}
 
 					pushVect *= distFactor;
 
-					doUnitHit(projectile, hitUnit, hitPart, 
+					doUnitHit(projectile, hitUnit, hitPart,
 						pushVect, distFactor, true);
 
 					// we hit unit so do damage to terrain if close enough...
@@ -1221,13 +1221,13 @@ if (ltime < 1) ltime = 1;
 					if (projectile->getChain() == HITCHAIN_GROUND)
 					{
 						// hit ground
-						//createChainedProjectile(projectile, 
+						//createChainedProjectile(projectile,
 						//	projectile->getPosition(), projectile->getChain());
 						VC3 gpos = projectile->getDestination();
 						game->gameMap->keepWellInScaledBoundaries(&gpos.x, &gpos.z);
 						gpos.y = game->gameMap->getScaledHeightAt(gpos.x, gpos.z);
 
-						createChainedProjectile(projectile, 
+						createChainedProjectile(projectile,
 							gpos, projectile->getChain(), projectile->getDirection());
 
 						// we hit ground so do damage to terrain...
@@ -1239,9 +1239,9 @@ if (ltime < 1) ltime = 1;
 						}
 					} else {
 						if (projectile->getChain() == HITCHAIN_BUILDING)
-						{ 						
+						{
 							// hit building
-							createChainedProjectile(projectile, 
+							createChainedProjectile(projectile,
 								projectile->getDestination(), projectile->getChain(), projectile->getDirection());
 						}
 						if (projectile->getChain() == HITCHAIN_TERRAINOBJECT
@@ -1249,13 +1249,13 @@ if (ltime < 1) ltime = 1;
 							&& projectile->getChain() <= LAST_HITCHAIN_MATERIAL))
 						{
 							// hit terrain object
-							createChainedProjectile(projectile, 
+							createChainedProjectile(projectile,
 								projectile->getDestination(), projectile->getChain(), projectile->getDirection());
 						}
 						if (projectile->getChain() == HITCHAIN_NOTHING)
 						{
 							// hit nothing
-							createChainedProjectile(projectile, 
+							createChainedProjectile(projectile,
 								projectile->getDestination(), projectile->getChain(), projectile->getDirection());
 						}
 
@@ -1295,10 +1295,10 @@ if (ltime < 1) ltime = 1;
 
 					Vector position = projectile->getPosition();
 					float mapHeight = game->gameMap->getScaledHeightAt(position.x, position.z);
-					if (position.y < mapHeight) 
+					if (position.y < mapHeight)
 						position.y = mapHeight;
 					const Vector &direction = projectile->getVelocity();
-					
+
 					Vector2D blastPosition(position.x, position.z);
 					Vector2D blastDirection(direction.x, direction.z);
 
@@ -1336,8 +1336,8 @@ if (ltime < 1) ltime = 1;
 						Terrain *terrain = game->gameUI->getTerrain();
 						const Vector &position = projectile->getPosition();
 						const Vector2D blastPosition(position.x, position.z);
-						terrain->BlastTerrainObjects(blastPosition, 
-							projectile->getBulletType()->getTerrainHoleRadius(), 
+						terrain->BlastTerrainObjects(blastPosition,
+							projectile->getBulletType()->getTerrainHoleRadius(),
 							removedObjects, blastHeight);
 					}
 				}
@@ -1372,19 +1372,19 @@ if (ltime < 1) ltime = 1;
 					Terrain *terrain = game->gameUI->getTerrain();
 					const Vector &position = projectile->getPosition();
 					//const Vector2D blastPosition(position.x, position.z);
-					terrain->BreakTerrainObjects(position, projectile->getVelocity(), 
-						projectile->getBulletType()->getTerrainHoleRadius(), 
+					terrain->BreakTerrainObjects(position, projectile->getVelocity(),
+						projectile->getBulletType()->getTerrainHoleRadius(),
 						removedObjects, objectEvents, projectile->getBulletType()->getTerrainObjectRadiusDamageAmount(), false, only_breaktexture);
-					terrain->BlastTerrainObjects(position, 
-						projectile->getBulletType()->getTerrainHoleRadius(), 
+					terrain->BlastTerrainObjects(position,
+						projectile->getBulletType()->getTerrainHoleRadius(),
 						removedObjects, blastHeight);
 
 					if (!overrideHoleRadiusForImpulse)
 					{
-						terrain->physicsImpulse(position, projectile->getVelocity(), 
+						terrain->physicsImpulse(position, projectile->getVelocity(),
 							projectile->getBulletType()->getTerrainHoleRadius(), projectile->getBulletType()->getPhysicsImpulseFactor() * push_factor, false);
 					}
-			
+
 					if(game && game->getGameUI() && game->getGameUI()->getVisualEffectManager() && game->getGameUI()->getVisualEffectManager()->getParticleEffectManager())
 					{
 						game->getGameUI()->getVisualEffectManager()->getParticleEffectManager()->addPhysicsExplosion(position, 1.f);
@@ -1397,8 +1397,8 @@ if (ltime < 1) ltime = 1;
 					{
 						Terrain *terrain = game->gameUI->getTerrain();
 						const Vector &position = projectile->getPosition();
-						terrain->physicsImpulse(position, projectile->getVelocity(), 
-							projectile->getBulletType()->getPhysicsImpulseRadius(), projectile->getBulletType()->getPhysicsImpulseFactor() * push_factor, false);	
+						terrain->physicsImpulse(position, projectile->getVelocity(),
+							projectile->getBulletType()->getPhysicsImpulseRadius(), projectile->getBulletType()->getPhysicsImpulseFactor() * push_factor, false);
 
 						if(game && game->getGameUI() && game->getGameUI()->getVisualEffectManager() && game->getGameUI()->getVisualEffectManager()->getParticleEffectManager())
 						{
@@ -1431,8 +1431,8 @@ if (ltime < 1) ltime = 1;
 						{
 							position = projectile->getDestination();
 						}
-						terrain->BreakTerrainObjects(position, projectile->getVelocity(), 
-							0.4f, 
+						terrain->BreakTerrainObjects(position, projectile->getVelocity(),
+							0.4f,
 							removedObjects, objectEvents, projectile->getBulletType()->getTerrainObjectDirectDamageAmount(), true, only_breaktexture);
 					}
 				}
@@ -1454,7 +1454,7 @@ if (ltime < 1) ltime = 1;
 				/*
 				bool dontBlend = false;
 				if (projectile->getBulletType() != NULL
-					&& projectile->getBulletType()->getPartTypeId() == 
+					&& projectile->getBulletType()->getPartTypeId() ==
 						PARTTYPE_ID_STRING_TO_INT("B_Flame1"))
 					dontBlend = true;
 
@@ -1466,7 +1466,7 @@ if (ltime < 1) ltime = 1;
 
 					const Vector &position = projectile->getPosition();
 					Vector2D blastPosition(position.x, position.z);
-			
+
 					terrain->BlendDamage(blastPosition, doBlendRadius, projectile->getBulletType()->getTerrainBlendAmount(), projectile->getBulletType()->getTerrainBlendMax());
 				}
 				*/
@@ -1475,20 +1475,20 @@ if (ltime < 1) ltime = 1;
 			{
 				// lifetime exhausted, but still has some afterlife left :)
 				// (even though the projectile is now dead when considering the
-				// gameplay, we still want it to be visible a while, thus 
+				// gameplay, we still want it to be visible a while, thus
 				// we have an afterlife.)
 				projectile->setAfterLifeTime(projectile->getAfterLifeTime() - 1);
 
 				// special case: laser and xenon beam fadeout
 				// TODO: proper configuration key/value for this
 				if (projectile->getBulletType() != NULL
-					&& (projectile->getBulletType()->getPartTypeId() == 
+					&& (projectile->getBulletType()->getPartTypeId() ==
 						PARTTYPE_ID_STRING_TO_INT("B_Xenon1")
-						|| projectile->getBulletType()->getPartTypeId() == 
+						|| projectile->getBulletType()->getPartTypeId() ==
 							PARTTYPE_ID_STRING_TO_INT("B_Laser2")))
 				{
 					int origAfterLife = projectile->getBulletType()->getAfterLifeTime();
-					if (origAfterLife >= 1) 
+					if (origAfterLife >= 1)
 					{
 						float visRatio = (float)(projectile->getAfterLifeTime()) / (float)(origAfterLife);
 						if (projectile->getVisualEffect() != NULL
@@ -1496,7 +1496,7 @@ if (ltime < 1) ltime = 1;
 						{
 							projectile->getVisualEffect()->setObjectVisibility(visRatio);
 						}
-					}				
+					}
 				}
 
 
@@ -1558,7 +1558,7 @@ if (ltime < 1) ltime = 1;
 							// note: normal death sound will be played too, but it will
 							// be somewhere far away from map area due to gore warp (i think).
 							game->gameUI->playSoundEffect(goresnd, upos.x, upos.y, upos.z, false, DEFAULT_SOUND_EFFECT_VOLUME, DEFAULT_SOUND_RANGE, DEFAULT_SOUND_PRIORITY_NORMAL);
-							
+
 						}
 
 						if (effname != NULL && effname[0] != '\0')
@@ -1621,7 +1621,7 @@ if (ltime < 1) ltime = 1;
 	}
 
 
-	void ProjectileActor::doHitMisses(Projectile *projectile, 
+	void ProjectileActor::doHitMisses(Projectile *projectile,
 		const Unit *hitUnit)
 	{
 		Unit *shooter = projectile->getShooter();
@@ -1653,7 +1653,7 @@ if (ltime < 1) ltime = 1;
 			{
 				// a "pipelike" area check from shooter to hit position...
 
-				// TODO: 
+				// TODO:
 				// should use dot product / cross product maybe instead
 				// to avoid the nasty sqrtf at length call.
 
@@ -1662,8 +1662,8 @@ if (ltime < 1) ltime = 1;
 
 				VC3 hitAndUnitDiff = upos - projPos;
 				float hitAndUnitDiffLenSq = hitAndUnitDiff.GetSquareLength();
-				
-				int damRange = (PROJECTILE_HIT_NOISE_MIN_RADIUS / PROJECTILE_HIT_NOISE_RADIUS_FACTOR); 
+
+				int damRange = (PROJECTILE_HIT_NOISE_MIN_RADIUS / PROJECTILE_HIT_NOISE_RADIUS_FACTOR);
 				if (projectile->getBulletType() != NULL)
 					damRange = projectile->getBulletType()->getDamageRange();
 				damRange *= PROJECTILE_HIT_NOISE_RADIUS_FACTOR;
@@ -1694,7 +1694,7 @@ if (ltime < 1) ltime = 1;
 
 
   // hitUnit is not const
-	void ProjectileActor::doUnitHit(Projectile *projectile, 
+	void ProjectileActor::doUnitHit(Projectile *projectile,
 		Unit *hitUnit, Part *hitPart, VC3 &pushVector, float damageFactor,
 		bool directHit)
 	{
@@ -1716,7 +1716,7 @@ if (ltime < 1) ltime = 1;
 		//if (projectile->getBulletType()->getVisualEffectNumber()
 		//	== PROJECTILE_VIS_GLOWFLARE)
 		if (projectile->getBulletType() != NULL
-			&& projectile->getBulletType()->getPartTypeId() == 
+			&& projectile->getBulletType()->getPartTypeId() ==
 				PARTTYPE_ID_STRING_TO_INT("B_GFlare"))
 		{
 			runHitScript = false;
@@ -1732,11 +1732,11 @@ if (ltime < 1) ltime = 1;
 			//if (projectile->getBulletType()->getFlyPath() == Bullet::FLYPATH_RAY)
 			//{
 				// ray creates the chained bullet to target units position
-			//	createChainedProjectile(projectile, 
+			//	createChainedProjectile(projectile,
 			//		hitUnit->getPosition(), projectile->getChain(), VC3(0,0,0));
 			//} else {
 				// others to current projectiles position
-				Projectile *proj = createChainedProjectile(projectile, 
+				Projectile *proj = createChainedProjectile(projectile,
 					projectile->getDestination(), projectile->getChain(), projectile->getDirection());
 
 				// stick new projectile to hitUnit
@@ -1774,7 +1774,7 @@ if (ltime < 1) ltime = 1;
 				chaintype = HITCHAIN_INDIRECT_TYPE2;
 			}
 
-			createChainedProjectile(projectile, 
+			createChainedProjectile(projectile,
 				hitUnit->getPosition(), chaintype, dir, hitUnit);
 		}
 
@@ -1858,7 +1858,7 @@ if (ltime < 1) ltime = 1;
 				if (!directHit)
 					fallByPushVector = true;
 				pushVector *= impactPush;
-				if (hitUnit->isDestroyed() 
+				if (hitUnit->isDestroyed()
 					|| hitUnit->getSpeed() == Unit::UNIT_SPEED_CRAWL
 					|| hitUnit->getMoveState() == Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
 				{
@@ -1917,7 +1917,7 @@ if (ltime < 1) ltime = 1;
 		int subPartNum = -1;
 		int destroyedCriticalParts = 0;
 
-		if (hitPart == NULL) 
+		if (hitPart == NULL)
 		{
 			// no hit part defined, choose root part or one of its sub parts
 			// it should always be defined though (?)
@@ -1925,7 +1925,7 @@ if (ltime < 1) ltime = 1;
 			if (hitPart != NULL)
 			{
 				// torso has 2x much chance of getting hit than other parts
-				int randNum = game->gameRandom->nextInt() 
+				int randNum = game->gameRandom->nextInt()
 					% (hitPart->getType()->getSlotAmount() + 2);
 				if (randNum < hitPart->getType()->getSlotAmount())
 				{
@@ -1948,7 +1948,7 @@ if (ltime < 1) ltime = 1;
 				|| slotPos == SLOT_POSITION_RIGHT_ARM)
 			{
 				if (rootp->getSubPart(i) != NULL
-					&& rootp->getSubPart(i)->getDamage() 
+					&& rootp->getSubPart(i)->getDamage()
 					>= rootp->getSubPart(i)->getType()->getMaxDamage())
 				{
 					destroyedCriticalParts++;
@@ -1992,7 +1992,7 @@ if (ltime < 1) ltime = 1;
 			// if we got surprised from behind (or actually just shot into back)
 			// does not apply to friendly (own) fire.
 			float surpriseFactor = 1.0f;
-			if (hitBack && directHit 
+			if (hitBack && directHit
 				&& (projectile->getShooter() != NULL
 				&& hitUnit->getOwner() != projectile->getShooter()->getOwner()))
 			{
@@ -2007,7 +2007,7 @@ if (ltime < 1) ltime = 1;
 #endif
 			}
 
-			
+
 			// DISABLED!!!
 			// NO MORE PART DAMAGE!!!
 
@@ -2019,7 +2019,7 @@ if (ltime < 1) ltime = 1;
 			if (projectile->doesInflictDamage())
 			{
 				// damage the hit part...
-				heatadd = projectile->getBulletType()->createDamageTo(hitPart, 
+				heatadd = projectile->getBulletType()->createDamageTo(hitPart,
 					heatFactor * damageFactor * surpriseFactor);
 				heatadd = 0;
 				int dmg = projectile->getBulletType()->getHPDamage() - hitUnit->calculateArmorRating();
@@ -2034,7 +2034,7 @@ if (ltime < 1) ltime = 1;
 
 				assert(hitPart->getType()->getMaxDamage() != 0);
 				int hitPartDamageRatio = 100 * hitPart->getDamage() / hitPart->getType()->getMaxDamage();
-		
+
 				for (int i = 0; i < slotAmount; i++)
 				{
 					// if other part in better shape than this part, damage it too
@@ -2068,7 +2068,7 @@ if (ltime < 1) ltime = 1;
 
 			bool isCriticalPart = false;	// arms, legs, etc.
 			bool isVeryCriticalPart = false; // head or torso
-			if (hitPart == hitUnit->getRootPart()) 
+			if (hitPart == hitUnit->getRootPart())
 			{
 				isCriticalPart = true;
 				isVeryCriticalPart = true;
@@ -2355,14 +2355,14 @@ if (ltime < 1) ltime = 1;
 							((TargetDisplayWindowUpdator*)game->gameUI->getCombatWindow( player )->getSubWindow( "TargetDisplayWindow" ))->risingMessage( hitUnit, message );
 							// game->gameUI->getCombatWindow( player )->
 						}
-						
+
 						// Logger::getInstance()->error( "Critical Hit" );
 					}
 				}
 #endif
 
 				int newHP = hitUnit->getHP() - hpDamage;
-				if (newHP < hitUnit->getUnitType()->getMinHP()) 
+				if (newHP < hitUnit->getUnitType()->getMinHP())
 					newHP = hitUnit->getUnitType()->getMinHP();
 
 				if (hitUnit->getDirectControlType() == Unit::UNIT_DIRECT_CONTROL_TYPE_LOCAL_PLAYER)
@@ -2379,7 +2379,7 @@ if (ltime < 1) ltime = 1;
 					// HACK: 1 poison does more slowdown damage if unit has no target...
 					// (effectively allowing "poison-surprises" (otherwise the enemies would just
 					// immediately rush to kill player).
-					// (HACK TODO: 2 poison slows down only some of the enemies, it makes others 
+					// (HACK TODO: 2 poison slows down only some of the enemies, it makes others
 					// go crazy...)
 					if (!projectile->getBulletType()->doesNoPlayerSlowdown()
 						|| (hitUnit->getDirectControlType() != Unit::UNIT_DIRECT_CONTROL_TYPE_LOCAL_PLAYER
@@ -2438,10 +2438,10 @@ if (ltime < 1) ltime = 1;
 
 					Forcewear::SendEffect ( ef, side );
 				}
-				
+
 				hitUnit->setHP(newHP);
 
-				if (newHP <= 0) 
+				if (newHP <= 0)
 				{
 					fallDown = true;
 				}
@@ -2479,7 +2479,7 @@ if (ltime < 1) ltime = 1;
 				// was already destroyed, but dead ones can be blown up too...
 				if (projectile->getBulletType() != NULL)
 				{
-					if (projectile->getBulletType()->getGoreProbability(GORETYPE_EXPLODE) > 0 
+					if (projectile->getBulletType()->getGoreProbability(GORETYPE_EXPLODE) > 0
 						&& hitUnit->getUnitType()->getGoreAmount(GORETYPE_EXPLODE) > 0
 						&& (directHit || damageFactor > 0.5f))
 					{
@@ -2527,7 +2527,7 @@ if (ltime < 1) ltime = 1;
 				// If falls down from physics impact, let the physics object
 				// drag the unit for a while, at least.
 				if (projectile->getBulletType() != NULL
-					&& projectile->getBulletType()->getPartTypeId() == 
+					&& projectile->getBulletType()->getPartTypeId() ==
 						PARTTYPE_ID_STRING_TO_INT("B_Phys2"))
 				{
 					// disabled for now: friction doesn't apply for physics object for some reason.
@@ -2759,7 +2759,7 @@ if (ltime < 1) ltime = 1;
 							Projectile *expproj = new Projectile(NULL, unitExplosionBullet);
 							game->projectiles->addProjectile(expproj);
 
-							expproj->setDirectPath(hitUnit->getPosition(), hitUnit->getPosition(), 
+							expproj->setDirectPath(hitUnit->getPosition(), hitUnit->getPosition(),
 								unitExplosionBullet->getVelocity());
 
 							ProjectileActor pa = ProjectileActor(game);
@@ -2880,7 +2880,7 @@ if (ltime < 1) ltime = 1;
 				}
 			}
 
-		} 
+		}
 
 		if (runHitScript)
 		{
@@ -2896,16 +2896,16 @@ if (ltime < 1) ltime = 1;
 
 
 
-	Projectile *ProjectileActor::createChainedProjectile(Projectile *projectile, 
+	Projectile *ProjectileActor::createChainedProjectile(Projectile *projectile,
 		const VC3 &position, int hitchain, const VC3 &direction, Unit *indirectHitUnit)
 	{
-		Bullet *chainBullet = 
+		Bullet *chainBullet =
 			projectile->getBulletType()->getChainBullet(hitchain);
 
 		Projectile *cproj = NULL;
 
 		// create new projectile
-		if (projectile->getBulletType()->getChainScript(hitchain) != NULL) 
+		if (projectile->getBulletType()->getChainScript(hitchain) != NULL)
 		{
 			Unit *hitUnit = projectile->getHitUnit();
 			if (indirectHitUnit != NULL)
@@ -2918,7 +2918,7 @@ if (ltime < 1) ltime = 1;
 			}
 
 			game->gameScripting->runHitChainScript(projectile->getBulletType()->getChainScript(hitchain),
-				projectile, hitUnit, projectile->getShooter(), 
+				projectile, hitUnit, projectile->getShooter(),
 				chainBullet, position, hitchain, direction, projectile->getHitNormal());
 				projectile->getBulletType()->getChainBullet(hitchain);
 
@@ -2954,16 +2954,16 @@ if (ltime < 1) ltime = 1;
 		// make sound
 		if (projectile->doesHitSound())
 		{
-			int chainSoundAmount = 
+			int chainSoundAmount =
 				projectile->getBulletType()->getChainSoundAmount(hitchain);
-			
+
 			if (chainSoundAmount > 0)
 			{
 				int snum = (game->gameRandom->nextInt() % chainSoundAmount);
 				int priority = projectile->getBulletType()->getChainSoundPriority(hitchain);
 				projectile->getBulletType()->getChainSoundRange(hitchain);
 
-				const char *chainSound =			 
+				const char *chainSound =
 					projectile->getBulletType()->getChainSound(hitchain, snum);
 
 				if (chainSound != NULL && chainSound[0] != '\0')
@@ -2995,7 +2995,7 @@ if (ltime < 1) ltime = 1;
 
 #ifdef PROJECT_CLAW_PROTO
 			{
-				// don't let cops to kill each other	
+				// don't let cops to kill each other
 				LinkedList<Unit*> *unitList = game->units->getAllUnits();
 				LinkedListIterator<Unit*> unitListIter = LinkedListIterator(unitList);
 				while (unitListIter.iterateAvailable())
@@ -3036,7 +3036,7 @@ if (ltime < 1) ltime = 1;
 					while (ownUnitsIter->iterateAvailable())
 					{
 						Unit *ownu = ownUnitsIter->iterateNext();
-						
+
 						if(ignore_all_but_self && ownu != unit) continue;
 
 						if (ownu->isActive())
@@ -3109,7 +3109,7 @@ if (ltime < 1) ltime = 1;
 		// actually, "collision disabled units"
 		LinkedList<Unit*> ownUnitsNear;
 
-		if (bulletType != NULL 
+		if (bulletType != NULL
 			&& bulletType->getSplitRaytrace() > 1)
 		{
 			// disable collision to _all_ units!
@@ -3135,7 +3135,7 @@ if (ltime < 1) ltime = 1;
 						ownUnitsNear.append(allu);
 						allu->getVisualObject()->setCollidable(false);
 					}
-				}				
+				}
 			}
 
 		} else {
@@ -3187,7 +3187,7 @@ if (ltime < 1) ltime = 1;
 
 				// flypath is not parabolic...
 				// ????
-				// would be way too fast... 
+				// would be way too fast...
 				// (parabolic/non-parabolic velocity don't match)
 				// FIXME...?
 				flypathParabolic = true;
@@ -3234,7 +3234,7 @@ if (ltime < 1) ltime = 1;
 			ownu->getVisualObject()->setCollidable(true);
 		}
 
-		// HACK: if we hit near a unit lying on the ground, 
+		// HACK: if we hit near a unit lying on the ground,
 		// and we are almost next to it, just make it probably hit.
 		if (!parabolic && cinfo.hitGround)
 		{
@@ -3451,15 +3451,15 @@ if (ltime < 1) ltime = 1;
 			// VC3 targVector = (target - weaponPosition);
 			// flypath top height is about 10 meters... (or something...?)
 			proj->setParabolicPathHeight((float)bulletType->getParabolicPathHeight());
-			// velocity gets scaled based on distance 
+			// velocity gets scaled based on distance
 			// 100 meters = 1x ratio (200m = 2x, and so on.)
-			//proj->setDirectPath(weaponPosition, target, 
+			//proj->setDirectPath(weaponPosition, target,
 			//	bulletType->getVelocity() * (targDist / 100.0f));
 			// ...no more scaled velocity...
-			proj->setDirectPath(weaponPosition, target, 
+			proj->setDirectPath(weaponPosition, target,
 				bulletType->getVelocity() * velocityFactor);
 		} else {
-			// Try to avoid problems with barrel being intruded inside 
+			// Try to avoid problems with barrel being intruded inside
 			// the target unit...
 			if (cinfo.hit)
 			{
@@ -3474,7 +3474,7 @@ if (ltime < 1) ltime = 1;
 					}
 				}
 			}
-			proj->setDirectPath(weaponPosition, target, 
+			proj->setDirectPath(weaponPosition, target,
 				bulletType->getVelocity() * velocityFactor);
 
 			proj->setHitNormal(cinfo.hitPlaneNormal);
@@ -3489,7 +3489,7 @@ if (ltime < 1) ltime = 1;
 		{
 			game->getGameScene()->removeTerrainObstacles(removedObjects);
 		}
-		// TODO: delete contents of removedObjects (objects within) 
+		// TODO: delete contents of removedObjects (objects within)
 		// not relevant anymore. should be handled automagically...?
 
 		// events...
@@ -3508,7 +3508,7 @@ if (ltime < 1) ltime = 1;
 						{
 							if (pt->isInherited(
 								getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
-							{ 
+							{
 								// WARNING: unsafe cast! (check above)
 								Bullet *evebull = (Bullet *)pt;
 								Projectile *eveproj = new Projectile(NULL, evebull);
@@ -3516,7 +3516,7 @@ if (ltime < 1) ltime = 1;
 
 								VC3 evepos = events[i].position;
 
-								eveproj->setDirectPath(evepos, evepos, 
+								eveproj->setDirectPath(evepos, evepos,
 									evebull->getVelocity());
 
 								ProjectileActor pa = ProjectileActor(game);

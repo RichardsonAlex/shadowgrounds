@@ -45,9 +45,9 @@ namespace game
 		// destroy
 		for (int i = 0; i < allocedPaths; i++)
 		{
-			if (storedPaths[i] != NULL) 
+			if (storedPaths[i] != NULL)
 				delete storedPaths[i];
-			if (storedPathNames[i] != NULL) 
+			if (storedPathNames[i] != NULL)
 				delete [] storedPathNames[i];
 		}
 		allocedPaths = 0;
@@ -99,7 +99,7 @@ namespace game
 
 
 	int UnitScriptPaths::getStoredPathNumber()
-	{ 
+	{
 		return storedPathNumber;
 	}
 
@@ -186,7 +186,7 @@ namespace game
 			{
 				// NOTE: because of this, we depend on Unit class...
 				// should solve this somehow nicely.
-				if (unit->getPath() == storedPaths[pathNumber]) 
+				if (unit->getPath() == storedPaths[pathNumber])
 					unit->setPath(NULL);
 				delete storedPaths[pathNumber];
 			}
@@ -223,7 +223,7 @@ namespace game
 			{
 				// NOTE: because of this, we depend on Unit class...
 				// should solve this somehow nicely.
-				if (unit->getPath() == storedPaths[pathNumber]) 
+				if (unit->getPath() == storedPaths[pathNumber])
 					unit->setPath(NULL);
 				delete storedPaths[pathNumber];
 			}
@@ -265,7 +265,7 @@ namespace game
 			{
 				// NOTE: because of this, we depend on Unit class...
 				// should solve this somehow nicely.
-				if (unit->getPath() == storedPaths[pathNumber]) 
+				if (unit->getPath() == storedPaths[pathNumber])
 					unit->setPath(NULL);
 				delete storedPaths[pathNumber];
 			}

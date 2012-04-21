@@ -91,7 +91,7 @@ namespace game
 			VC3 pos = (unitPos * fact) + (endPos * (1-fact));
 			int ox = game->gameMap->scaledToObstacleX(pos.x);
 			int oy = game->gameMap->scaledToObstacleY(pos.z);
-			if (game->getGameScene()->isBlockedAtScaled(pos.x, pos.z, 
+			if (game->getGameScene()->isBlockedAtScaled(pos.x, pos.z,
 				game->gameMap->getScaledHeightAt(pos.x, pos.z) + 0.01f)
 				&& !game->gameMap->isMovingObstacle(ox, oy))
 			{

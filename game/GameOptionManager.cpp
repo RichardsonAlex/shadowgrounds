@@ -200,20 +200,20 @@ namespace game
 
 		"extra_gamma_effects", "b+", "Graphics", "1", "-", "-",
 		"weather_effects", "b+", "Graphics", "1", "-", "-",
-		"particle_effects_level", "i+", "Graphics", "50", "100", "50", // few particles, medium, high amount 
-		"green_blood", "b+", "Graphics", "0", "-", "-", 
+		"particle_effects_level", "i+", "Graphics", "50", "100", "50", // few particles, medium, high amount
+		"green_blood", "b+", "Graphics", "0", "-", "-",
 		"gore_level", "i+", "Graphics", "50", "100", "50", // blood off, little blood, lots of blood
 		"shadows_level", "ia+", "Graphics", "100", "100", "100", // flashlight/lightning shadows only, static light fake shadows too
 		"lighting_level", "ia+", "Graphics", "50", "100", "50", // flashlight/lightning only spot, muzzleflash spot too, other spots?, explosion spots!
 		                                   // 100 would be very high (extreme, explosion pointlights and stuff..)
-		"speech_language", "i+", "Locale", "0", "4", "1", 
-		"menu_language", "i+", "Locale", "0", "4", "1", 
-		"subtitle_language", "i+", "Locale", "0", "4", "1", 
+		"speech_language", "i+", "Locale", "0", "4", "1",
+		"menu_language", "i+", "Locale", "0", "4", "1",
+		"subtitle_language", "i+", "Locale", "0", "4", "1",
 
-		"show_fps", "b", "Debug", "0", "-", "-", 
-		"show_polys", "b", "Debug", "0", "-", "-", 
+		"show_fps", "b", "Debug", "0", "-", "-",
+		"show_polys", "b", "Debug", "0", "-", "-",
 
-		"camera_autotilt_amount", "i", "Camera", "50", "100", "10", 
+		"camera_autotilt_amount", "i", "Camera", "50", "100", "10",
 		"render_mode", "ia", "Graphics", "0", "2", "1",
 		"render_spot_shadows", "ba", "Graphics", "-", "-", "-",
 		"render_glow", "ba+", "Graphics", "-", "-", "-",
@@ -221,8 +221,8 @@ namespace game
 		"render_models", "ba", "Graphics", "-", "-", "-",
 		"render_terrainobjects", "ba", "Graphics", "-", "-", "-",
 		"render_heightmap", "ba", "Graphics", "-", "-", "-",
-		"camera_autotilt_alpha", "i", "Camera", "0", "100", "10", 
-		"camera_autotilt_beta", "i", "Camera", "100", "100", "10", 
+		"camera_autotilt_alpha", "i", "Camera", "0", "100", "10",
+		"camera_autotilt_beta", "i", "Camera", "100", "100", "10",
 		"old_model_bin_recreate", "b", "Precalc", "0", "-", "-",
 		"show_debug_data_view", "b", "Debug", "0", "-", "-",
 		"debug_data_view_type_mask", "i", "Debug", "0", "31", "1",
@@ -252,7 +252,7 @@ namespace game
 		"controller_script_14", "s", "Controllers", "controller_script_14", "-", "-",
 		"controller_script_15", "s", "Controllers", "controller_script_15", "-", "-",
 		"controller_script_16", "s", "Controllers", "controller_script_16", "-", "-",
-		
+
 		"decal_fade_time", "i+", "Effects", "10000", "30000", "5000",
 		"decal_max_amount", "i+", "Effects", "500", "3000", "250",
 		"autoaim_horizontal", "b", "Cheats", "-", "-", "-",
@@ -527,16 +527,16 @@ namespace game
 #endif
 
 		"render_reflection", "ba+", "Graphics", "0", "-", "-",
-    
+
 #ifdef PROJECT_SHADOWGROUNDS
 		"game_contact_damage_required_force_unit", "f", "Game", "100000.0f", "-", "-",
 #else
 		"game_contact_damage_required_force_unit", "f", "Game", "100.0f", "-", "-",
-#endif    
+#endif
 		"game_contact_damage_required_unit_damage_velocity", "f", "Game", "2.0f", "-", "-",
-    
+
 		"occlusion_culling_enabled", "b", "Graphics", "0", "-", "-",
-    
+
 		"game_combo_required_time", "i", "Game", "1000", "-", "-",
 		"game_combo_shown_on_screen_time", "i", "Game", "1000", "-", "-",
 
@@ -656,7 +656,7 @@ namespace game
 
 		"***", "***", "***", "***", "***", "***",
 	};
-	
+
 	std::auto_ptr<GameOptionManager> GameOptionManager::instance;
 
 
@@ -698,7 +698,7 @@ namespace game
 		delete options;
 	}
 
-	
+
 	void GameOptionManager::load()
 	{
 #ifdef _DEBUG
@@ -831,7 +831,7 @@ namespace game
 				}
 			}
 
-			
+
 			char typeChar = gameOptions[i * GAMEOPTIONS_PARAMS + GAMEOPTIONS_PARAM_TYPE][0];
 
 			if (typeChar == 'b')
@@ -871,7 +871,7 @@ namespace game
 				} else {
 					value = parser::getInt(*props, gameOptions[i * GAMEOPTIONS_PARAMS]);
 				}
-				GameConfigs::getInstance()->addInt(gameOptions[i * GAMEOPTIONS_PARAMS], value, i);				
+				GameConfigs::getInstance()->addInt(gameOptions[i * GAMEOPTIONS_PARAMS], value, i);
 			}
 			else if (typeChar == 'f')
 			{
@@ -889,7 +889,7 @@ namespace game
 					value = parser::getFloat(*props, gameOptions[i * GAMEOPTIONS_PARAMS]);
 				}
 
-				GameConfigs::getInstance()->addFloat(gameOptions[i * GAMEOPTIONS_PARAMS], value, i);				
+				GameConfigs::getInstance()->addFloat(gameOptions[i * GAMEOPTIONS_PARAMS], value, i);
 			}
 			else if (typeChar == 's')
 			{
@@ -913,7 +913,7 @@ namespace game
 					value = valstr.c_str();
 				}
 
-				GameConfigs::getInstance()->addString(gameOptions[i * GAMEOPTIONS_PARAMS], value, i);	
+				GameConfigs::getInstance()->addString(gameOptions[i * GAMEOPTIONS_PARAMS], value, i);
 			} else {
 				assert(!"GameOptionManager::load - Option type invalid.");
 			}
@@ -927,7 +927,7 @@ namespace game
 		}
 	}
 
-	
+
 	void GameOptionManager::save()
 	{
 		// implentation created by Pete,
@@ -943,12 +943,12 @@ namespace game
 		for (int i = 0; i < DH_OPT_AMOUNT; i++)
 		{
 			std::string type = gameOptions[i * GAMEOPTIONS_PARAMS + GAMEOPTIONS_PARAM_TYPE];
-			
+
 			// check if we should save the poor bastard
 			if( !type.empty() && type[ type.size() - 1 ] == '+' )
 			{
 				std::string grpName = gameOptions[i * GAMEOPTIONS_PARAMS + 2];
-			
+
 				editor::ParserGroup& group = options_config.getGlobals().getSubGroup( grpName );
 
 				group.setValue( gameOptions[i * GAMEOPTIONS_PARAMS], getAsStringValue( optionsById[ i ] ) );
@@ -1089,7 +1089,7 @@ namespace game
 		if (gameOptions[id * GAMEOPTIONS_PARAMS + GAMEOPTIONS_PARAM_TYPE][0] == 'b')
 		{
 			return IScriptVariable::VARTYPE_BOOLEAN;
-		} 
+		}
 		else if (gameOptions[id * GAMEOPTIONS_PARAMS + GAMEOPTIONS_PARAM_TYPE][0] == 'i')
 		{
 			return IScriptVariable::VARTYPE_INT;
@@ -1227,7 +1227,7 @@ namespace game
 					val = 0.0f;
 				gameConf->setFloat(id, val);
 			}
-			
+
 		}
 	}
 

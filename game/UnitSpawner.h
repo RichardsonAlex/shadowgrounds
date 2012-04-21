@@ -17,13 +17,13 @@ namespace game
 			 * or in other words activates the unit.)
 			 * The created unit should have been placed to appropriate
 			 * unitlist before this call.
-			 * If the unit has already been spawned, will first retire it 
+			 * If the unit has already been spawned, will first retire it
 			 * and then respawn it.
 			 */
 			static void spawnUnit(Game *game, Unit *unit);
 
 			/**
-			 * Retires a unit from the battlefield. 
+			 * Retires a unit from the battlefield.
 			 * In case of a computer opponent owned unit, just dispose
 			 * of it. Human player controlled units will be kept.
 			 * (May affect unit's parts and stuff - some things still TODO)

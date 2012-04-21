@@ -48,7 +48,7 @@ namespace ui
   SelectionBox::~SelectionBox()
   {
 		delete selectionbox_mat;
-    // TODO 
+    // TODO
     // (nop?)
   }
 
@@ -90,19 +90,19 @@ namespace ui
 		SceneSelection dragUpperRight=game->gameUI->cursorRayTrace(boxStartX,endY);
 		SceneSelection dragLowerLeft=game->gameUI->cursorRayTrace(endX,boxStartY);
 		SceneSelection dragLowerRight=game->gameUI->cursorRayTrace(endX,endY);
-		
+
 		VC2 v1(dragUpperLeft.scaledMapX, dragUpperLeft.scaledMapY);
 		VC2 v2(dragUpperRight.scaledMapX,dragUpperRight.scaledMapY);
 		VC2 v3(dragLowerLeft.scaledMapX, dragLowerLeft.scaledMapY);
 		VC2 v4(dragLowerRight.scaledMapX,dragLowerRight.scaledMapY);
 		*/
 
-		if(game->gameUI->getController(player)->isKeyDown(DH_CTRL_MULTIPLE_UNIT_SELECT)) 
+		if(game->gameUI->getController(player)->isKeyDown(DH_CTRL_MULTIPLE_UNIT_SELECT))
 		{
 			//doBoxSelection(BOX_ADD_SELECTION,v1,v2,v3,v4);
 			doBoxSelection(BOX_ADD_SELECTION);
-		} 
-		else 
+		}
+		else
 		{
 			//doBoxSelection(BOX_SELECT,v1,v2,v3,v4);
 			doBoxSelection(BOX_SELECT);
@@ -138,7 +138,7 @@ namespace ui
 			// thus causing lots of lines...
 			// and if would draw the lines to world coordinates (near terrain)
       			IStorm3D_Scene *scene = game->getGameScene()->getStormScene();
-			
+
 			int sx = boxStartX * renderScaleX / OGUI_SCALE_MULTIPLIER;
 			int sy = boxStartY * renderScaleY / OGUI_SCALE_MULTIPLIER;
 			int cx = currentX * renderScaleX / OGUI_SCALE_MULTIPLIER;
@@ -164,7 +164,7 @@ namespace ui
 
 
   void SelectionBox::doBoxSelection(SelectionBox::BoxSelectionType type)
-//		                                VC2& a, VC2& b, VC2& c, VC2& d) 
+//		                                VC2& a, VC2& b, VC2& c, VC2& d)
 	{
     //int now = Timer::getTime();
 		IStorm3D_Scene *scene = game->getGameScene()->getStormScene();
@@ -212,7 +212,7 @@ namespace ui
 
 				VC3 position=u->getPosition();
 
-				if(!u->isDestroyed() && u->isActive()) 
+				if(!u->isDestroyed() && u->isActive())
 				{
 					//bool isInside1=util::isPointInsideTriangle(VC2(position.x,position.z),a,b,c);
 					//bool isInside2=util::isPointInsideTriangle(VC2(position.x,position.z),b,c,d);
@@ -272,7 +272,7 @@ namespace ui
 					}
 				}
 
-				if(!u->isSelected() && !u->isDestroyed() && u->isActive()) 
+				if(!u->isSelected() && !u->isDestroyed() && u->isActive())
 				{
 					//bool isInside1=util::isPointInsideTriangle(VC2(position.x,position.z),a,b,c);
 					//bool isInside2=util::isPointInsideTriangle(VC2(position.x,position.z),b,c,d);
@@ -284,7 +284,7 @@ namespace ui
 						//unitButs[i]->SetImage(unitBackSelectedImage);
 						//unitsSelected++;
 						//unitSelectTime[i]=now;
-					} 
+					}
 				}
 			}
 			break;

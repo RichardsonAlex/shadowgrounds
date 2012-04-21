@@ -38,12 +38,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainColorMap &map)
-{ 
+{
 	return map.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainColorMap &map)
-{ 
+{
 	return map.readStream(stream);
 }
 

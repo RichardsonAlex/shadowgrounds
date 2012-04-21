@@ -89,7 +89,7 @@ namespace game
         delete unitActorArray[i];
         unitActorArray[i] = NULL;
       }
-    } 
+    }
   }
 
 
@@ -215,14 +215,14 @@ namespace game
 
 		UnitType *parseUnit = NULL;
 
-		if (strcmp(baseclass, "ArmorUnit") == 0) 
+		if (strcmp(baseclass, "ArmorUnit") == 0)
 			parseUnit = new ArmorUnitType();
 #ifdef PROJECT_CLAW_PROTO
-		if (strcmp(baseclass, "ClawUnit") == 0) 
+		if (strcmp(baseclass, "ClawUnit") == 0)
 			parseUnit = new ClawUnitType();
 #endif
 #ifdef PROJECT_AOV
-		if (strcmp(baseclass, "SidewaysUnit") == 0) 
+		if (strcmp(baseclass, "SidewaysUnit") == 0)
 			parseUnit = new SidewaysUnitType();
 #endif
 

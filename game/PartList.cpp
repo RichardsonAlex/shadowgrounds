@@ -105,7 +105,7 @@ namespace game
     {
       if (own < 0 || own >= ABS_MAX_PLAYERS) abort();
       ownedParts[own]->remove(part);
-    }    
+    }
   }
 
 }

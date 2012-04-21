@@ -55,12 +55,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainOptions &options)
-{ 
+{
 	return options.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainOptions &options)
-{ 
+{
 	return options.readStream(stream);
 }
 

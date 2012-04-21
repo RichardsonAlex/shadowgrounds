@@ -51,11 +51,11 @@ public:
 
 	struct ButtonData
 	{
-		ButtonData() 
-		{ 
-			style = -1; 
-			font = NULL; 
-			hasText = false; 
+		ButtonData()
+		{
+			style = -1;
+			font = NULL;
+			hasText = false;
 			width = 0;
 			height = 0;
 			beginAnimPos = 0;
@@ -77,9 +77,9 @@ public:
 			sliderCurrentImages = 0;
 		}
 
-		ButtonData( const ButtonData& b ) : 
-			buttons( b.buttons ), 
-			style( b.style ), 
+		ButtonData( const ButtonData& b ) :
+			buttons( b.buttons ),
+			style( b.style ),
 			font( b.font ),
 			hasText( b.hasText ),
 			width( b.width ),
@@ -106,7 +106,7 @@ public:
 
 		~ButtonData() { }
 
-		void operator=( const ButtonData& b ) 
+		void operator=( const ButtonData& b )
 		{
 			buttons = b.buttons;
 			style = b.style;
@@ -133,7 +133,7 @@ public:
 			sliderCurrentImages = b.sliderCurrentImages;
 		}
 
-		OguiButton*& operator[] (int i) 
+		OguiButton*& operator[] (int i)
 		{
 			return buttons[ i ];
 		}

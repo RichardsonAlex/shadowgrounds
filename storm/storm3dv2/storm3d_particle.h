@@ -20,7 +20,7 @@ void releaseBuffers();
 class Storm3D_ParticleSystem : public IStorm3D_ParticleSystem {
 public:
 
-	class IParticleArray 
+	class IParticleArray
 	{
 	public:
 		virtual ~IParticleArray() {}
@@ -33,7 +33,7 @@ public:
 		virtual void render(Storm3D* Storm3D2, Storm3D_Scene* scene)=0;
 	};
 
-	class PointArray : public IParticleArray 
+	class PointArray : public IParticleArray
 	{
 	public:
 
@@ -57,7 +57,7 @@ public:
 		static void release();
 
 	public:
-		PointArray(IStorm3D_Material* mtl, Storm3D_PointParticle* parts, int nParts, const COL &factor_, bool distortion_) 
+		PointArray(IStorm3D_Material* mtl, Storm3D_PointParticle* parts, int nParts, const COL &factor_, bool distortion_)
 		: m_parts(parts), m_numParts(nParts), m_partOffset(0), m_mtl(mtl), factor(factor_), distortion(distortion_)
 		{
 		}
@@ -71,7 +71,7 @@ public:
 		void render(Storm3D* Storm3D2, Storm3D_Scene* scene);
 	};
 
-	class QuadArray : public IParticleArray 
+	class QuadArray : public IParticleArray
 	{
 	public:
 		friend class Storm3D_ParticleSystem;
@@ -97,7 +97,7 @@ public:
 		static void release();
 	
 	public:
-		QuadArray(IStorm3D_Material* mtl, Storm3D_PointParticle* parts, int nParts, Storm3D_ParticleTextureAnimationInfo* info, const COL &factor_, bool distortion_, bool faceUp_) 
+		QuadArray(IStorm3D_Material* mtl, Storm3D_PointParticle* parts, int nParts, Storm3D_ParticleTextureAnimationInfo* info, const COL &factor_, bool distortion_, bool faceUp_)
 		: m_parts(parts), m_numParts(nParts), m_partOffset(0), m_mtl(mtl), factor(factor_), distortion(distortion_), faceUp(faceUp_)
 		{
 			if(info) {
@@ -125,7 +125,7 @@ public:
 		void render(Storm3D* Storm3D2, Storm3D_Scene* scene);
 	};
 	
-	class LineArray : public IParticleArray 
+	class LineArray : public IParticleArray
 	{
 	public:
 		friend class Storm3D_ParticleSystem;
@@ -150,8 +150,8 @@ public:
 		static void release();
 	
 	public:
-		LineArray(IStorm3D_Material* mtl, Storm3D_LineParticle* parts, int nParts, Storm3D_ParticleTextureAnimationInfo* info, const COL &factor_, bool distortion_) 
-		: m_parts(parts), m_numParts(nParts), m_partOffset(0), m_mtl(mtl), factor(factor_), distortion(distortion_) 
+		LineArray(IStorm3D_Material* mtl, Storm3D_LineParticle* parts, int nParts, Storm3D_ParticleTextureAnimationInfo* info, const COL &factor_, bool distortion_)
+		: m_parts(parts), m_numParts(nParts), m_partOffset(0), m_mtl(mtl), factor(factor_), distortion(distortion_)
 		{
 			if(info) {
 				m_animInfo.numFrames = info->numFrames;
@@ -229,7 +229,7 @@ public:
 		recreateDynamicBuffers();
 	}
 
-	Storm3D_ParticleSystem(Storm3D *storm) 
+	Storm3D_ParticleSystem(Storm3D *storm)
 	:	Storm3D2(storm),
 		offsetShader()
 	{

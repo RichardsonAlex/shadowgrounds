@@ -17,7 +17,7 @@ class TSingleton
 	static T *instance;
 
 public:
-	TSingleton() 
+	TSingleton()
 	{
 		assert(instance == 0);
 

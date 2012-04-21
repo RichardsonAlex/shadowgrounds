@@ -71,7 +71,7 @@ void Mouse::update()
 		GetClientRect(window, &r);
 		if((x < r.left) || (y < r.top) || (x > r.right) || (y > r.bottom))
 			insideWindow = false;
-		else 
+		else
 			insideWindow = true;
 
 		return;

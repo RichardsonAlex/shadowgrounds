@@ -16,7 +16,7 @@ public:
 	~MissionSelectionWindow();
 	
 	// bool AllowLoading() const;
-	// bool CloseMePlease() const; 
+	// bool CloseMePlease() const;
 	
 	void AddMissionButton( const std::string& id );
 	void Update( int update_l );

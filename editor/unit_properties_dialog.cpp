@@ -22,7 +22,7 @@ typedef map<string, string> StringMap;
 
 struct UnitPropertiesDialog::Data
 {
-	UnitProperties &properties; 
+	UnitProperties &properties;
 	const StringList &usedStrings;
 	const StringProperties &stringProperties;
 

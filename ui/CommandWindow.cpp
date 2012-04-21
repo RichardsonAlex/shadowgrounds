@@ -42,38 +42,38 @@ namespace ui
     win = ogui->CreateSimpleWindow(0, 0, 1024, 768, "Data/GUI/Windows/menu_nebula_background.tga");
     win->Hide();
 
-	
+
 
     OguiButton *b;
 
     /*
-    b = ogui->CreateSimpleTextButton(win, 16, 16, 200, 50, 
+    b = ogui->CreateSimpleTextButton(win, 16, 16, 200, 50,
       "Data/Buttons/mainmenu.tga", "Data/Buttons/mainmenu_down.tga",
       "Data/Buttons/mainmenu_highlight.tga", "Main menu", COMMANDW_MAINMENU);
     b->SetListener(this);
     buttons->append(b);
     */
 
-    //b = ogui->CreateSimpleTextButton(win, 512-250, 700, 250, 50, 
+    //b = ogui->CreateSimpleTextButton(win, 512-250, 700, 250, 50,
     //  "Data/GUI/Buttons/armormod.tga", "Data/GUI/Buttons/armormod_down.tga",
     //  "Data/GUI/Buttons/armormod_highlight.tga", "Modify armors", COMMANDW_ARMOR);
     //b->SetListener(this);
 		//b->SetDisabled(true); // disable armor modification button
     //buttons->append(b);
 
-	
 
-    //b = ogui->CreateSimpleTextButton(win, 512, 700, 250, 50, 
+
+    //b = ogui->CreateSimpleTextButton(win, 512, 700, 250, 50,
     //  "Data/GUI/Buttons/storage.tga", "Data/GUI/Buttons/storage_down.tga",
     //  "Data/GUI/Buttons/storage_highlight.tga", "Storage", COMMANDW_STORAGE);
     //b->SetListener(this);
 		//b->SetDisabled(true); // disable storage button
     //buttons->append(b);
 
-	
+
 	font = ogui->LoadFont( "Data/Fonts/mainmenu_big.ogf" );
 
-	b = ogui->CreateSimpleTextButton( win, 65, 315, 573, 27, 
+	b = ogui->CreateSimpleTextButton( win, 65, 315, 573, 27,
 		"Data/GUI/Buttons/mainmenu_button_normal.tga", "Data/GUI/Buttons/mainmenu_button_high.tga",
 		"Data/GUI/Buttons/mainmenu_button_high.tga", getLocaleGuiString( "gui_mm_new_game" ), COMMANDW_COMBAT );
 	b->SetListener( this );
@@ -85,7 +85,7 @@ namespace ui
 	int i;
 	for( i = 1; i <= 3; i++ )
 	{
-		b = ogui->CreateSimpleTextButton( win, 65, 315+(28*i), 573, 27, 
+		b = ogui->CreateSimpleTextButton( win, 65, 315+(28*i), 573, 27,
 			"Data/GUI/Buttons/mainmenu_button_normal.tga", "Data/GUI/Buttons/mainmenu_button_high.tga",
 			"Data/GUI/Buttons/mainmenu_button_high.tga", getLocaleGuiString( "gui_mm_options" ), COMMANDW_COMBAT );
 		b->SetListener( this );
@@ -94,7 +94,7 @@ namespace ui
 		b->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 	}
 
-	b = ogui->CreateSimpleTextButton( win, 65, 462, 573, 27, 
+	b = ogui->CreateSimpleTextButton( win, 65, 462, 573, 27,
 		"Data/GUI/Buttons/mainmenu_button_normal.tga", "Data/GUI/Buttons/mainmenu_button_high.tga",
 		"Data/GUI/Buttons/mainmenu_button_high.tga", getLocaleGuiString( "gui_mm_credits" ), COMMANDW_COMBAT );
 	b->SetListener( this );
@@ -102,7 +102,7 @@ namespace ui
 	b->SetFont( font );
 	b->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 
-	b = ogui->CreateSimpleTextButton( win, 65, 462+28, 573, 27, 
+	b = ogui->CreateSimpleTextButton( win, 65, 462+28, 573, 27,
 		"Data/GUI/Buttons/mainmenu_button_normal.tga", "Data/GUI/Buttons/mainmenu_button_high.tga",
 		"Data/GUI/Buttons/mainmenu_button_high.tga", getLocaleGuiString( "gui_mm_quit" ), COMMANDW_QUIT );
 	b->SetListener( this );
@@ -111,13 +111,13 @@ namespace ui
 	b->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 
 	/*
-    b = ogui->CreateSimpleTextButton(win, 512-250*2, 710, 250, 50, 
+    b = ogui->CreateSimpleTextButton(win, 512-250*2, 710, 250, 50,
       "Data/GUI/Buttons/mainquit.tga", "Data/GUI/Buttons/mainquit_down.tga",
       "Data/GUI/Buttons/mainquit_highlight.tga", getLocaleGuiString("gui_quit"), COMMANDW_QUIT);
     b->SetListener(this);
     buttons->append(b);
 
-    b = ogui->CreateSimpleTextButton(win, 512+250, 710, 250, 50, 
+    b = ogui->CreateSimpleTextButton(win, 512+250, 710, 250, 50,
       "Data/GUI/Buttons/combat.tga", "Data/GUI/Buttons/combat_down.tga",
       "Data/GUI/Buttons/combat_highlight.tga", getLocaleGuiString("gui_mission_start_mission"), COMMANDW_COMBAT);
     b->SetListener(this);
@@ -139,7 +139,7 @@ namespace ui
 
 	optionsWindow = new OptionsWindow(game, ogui, player);
 
-	// Foreground 
+	// Foreground
 	foreground = ogui->CreateSimpleWindow( 0, 0, 1024, 768, "Data/GUI/Windows/menu_planet_foreground.tga" );
 	foreground->SetReactMask( 0 );
   }
@@ -149,7 +149,7 @@ namespace ui
 	delete optionsWindow;
 
 	delete foreground;
-		
+
     while (!buttons->isEmpty())
     {
       delete (OguiButton *)buttons->popLast();
@@ -180,7 +180,7 @@ namespace ui
     //refresh();
     win->Show();
 	foreground->Show();
-	
+
 
 		// TODO: cursor number!
 		startButton->Focus(0);
@@ -230,18 +230,18 @@ namespace ui
             wasOk = false;
           }
           int slotAmount = u->getRootPart()->getType()->getSlotAmount();
-          for (int i = 0; i < slotAmount; i++) 
+          for (int i = 0; i < slotAmount; i++)
           {
             if (u->getRootPart()->getSubPart(i) == NULL)
             {
               if (
-                u->getRootPart()->getType()->getSlotType(i)->getPartTypeId() 
+                u->getRootPart()->getType()->getSlotType(i)->getPartTypeId()
                 == PARTTYPE_ID_STRING_TO_INT("Head")
-                || u->getRootPart()->getType()->getSlotType(i)->getPartTypeId() 
+                || u->getRootPart()->getType()->getSlotType(i)->getPartTypeId()
                 == PARTTYPE_ID_STRING_TO_INT("Arm")
-                || u->getRootPart()->getType()->getSlotType(i)->getPartTypeId() 
+                || u->getRootPart()->getType()->getSlotType(i)->getPartTypeId()
                 == PARTTYPE_ID_STRING_TO_INT("Leg")
-                || u->getRootPart()->getType()->getSlotType(i)->getPartTypeId() 
+                || u->getRootPart()->getType()->getSlotType(i)->getPartTypeId()
                 == PARTTYPE_ID_STRING_TO_INT("Reac")
                 )
               {
@@ -251,7 +251,7 @@ namespace ui
             }
           }
         }
-        if (wasOk) 
+        if (wasOk)
         {
           // at least one armor is complete and purchased!
           notAnyArmor = false;
@@ -261,10 +261,10 @@ namespace ui
     if (noArmor || notPaid || incompleteArmor || notAnyArmor)
     {
       game->gameUI->openArmorIncompleteConfirm(player, notAnyArmor,
-        incompleteArmor, noArmor, notPaid); 
+        incompleteArmor, noArmor, notPaid);
     } else {
       // TODO: open loading window for players on this client in netgame...
-      game->gameUI->openLoadingWindow(game->singlePlayerNumber); 
+      game->gameUI->openLoadingWindow(game->singlePlayerNumber);
       hide();
     }
 	}
@@ -291,7 +291,7 @@ namespace ui
     {
       // TODO: proper game request!
 
-      // TODO: won't work properly if for example one complete armor, but 
+      // TODO: won't work properly if for example one complete armor, but
       // it has an unpurchased weapon or something...
 
 			startMission();

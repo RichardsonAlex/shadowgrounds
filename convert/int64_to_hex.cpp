@@ -54,7 +54,7 @@ __int64 hex_to_int64(const char *string)
   unsigned __int64 exp = 1;
 
 	assert(len == 16);
-  if (len != 16) 
+  if (len != 16)
 	{
     _last_hex_to_int64_errno = 1;
 		return 0;

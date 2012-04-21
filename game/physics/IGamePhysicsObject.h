@@ -45,7 +45,7 @@ namespace game
 		virtual PHYSICS_ACTOR createImplementationObject() = 0;
 		virtual void syncImplementationObject(PHYSICS_ACTOR &obj) = 0;
 
-		// optimized method to be called in place to syncImplementationObject, when the implementation object is known 
+		// optimized method to be called in place to syncImplementationObject, when the implementation object is known
 		// to be inactive (has not moved or anything)
 		virtual void syncInactiveImplementationObject(PHYSICS_ACTOR &obj) = 0;
 

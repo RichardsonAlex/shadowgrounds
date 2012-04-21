@@ -110,7 +110,7 @@ void parseParamBlockFrom(const editor::ParserGroup& g, ParamBlock& pb) {
 		case PARAM_FLOAT:
 			{
 				if(pb.getTrack(i)) {
-					const ParserGroup& kg = g.getSubGroup(pb.getParamName(i)); 
+					const ParserGroup& kg = g.getSubGroup(pb.getParamName(i));
 					parseFloatKeyControlFrom(kg, pb.getTrack(i)->getKeyControl());	
 				} else {
 					float def;
@@ -122,7 +122,7 @@ void parseParamBlockFrom(const editor::ParserGroup& g, ParamBlock& pb) {
 		case PARAM_VECTOR:
 			{
 				if(pb.getTrack(i)) {
-					const ParserGroup& kg = g.getSubGroup(pb.getParamName(i)); 
+					const ParserGroup& kg = g.getSubGroup(pb.getParamName(i));
 					parseVectorKeyControlFrom(kg, pb.getTrack(i)->getKeyControl());	
 				} else {
 					Vector def;

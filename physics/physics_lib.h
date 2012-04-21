@@ -34,13 +34,13 @@ struct PhysicsLogger: public NxUserOutputStream
 	{
 		print(message);
 	}
- 
+
 	NxAssertResponse reportAssertViolation(const char *message, const char *file, int line)
 	{
 		print(message);
 		return NX_AR_CONTINUE;
 	}
- 
+
 	void print(const char *message)
 	{
 		//MessageBox(0, message, "Shit happens", MB_OK);
@@ -77,7 +77,7 @@ class CarActor;
 struct ContactListEntry
 {
 	ContactListEntry(
-		const ActorBase *actor1, 
+		const ActorBase *actor1,
 		const ActorBase *actor2,
 		const VC3 &contactNormal,
 		const VC3 &contactPosition,
@@ -189,7 +189,7 @@ public:
 	void connectToRemoteDebugger(const char *host, unsigned short port);
 
 	// Get the list of contact events
-	// Should be called right after finishSimulation, before creating or deleting any actors 
+	// Should be called right after finishSimulation, before creating or deleting any actors
 	const std::vector<ContactListEntry> &getContactList() const;
 	void getActiveActors(std::vector<ActorBase *> &list, bool includeOnlyIfHasUserData) const;
 

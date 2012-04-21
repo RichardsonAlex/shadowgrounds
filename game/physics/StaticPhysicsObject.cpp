@@ -126,9 +126,9 @@ namespace game
 #endif
 
 
-	StaticPhysicsObject::StaticPhysicsObject(GamePhysics *gamePhysics, const char *filename, IStorm3D_Model *model, const VC3 &position, const QUAT &rotation) 
+	StaticPhysicsObject::StaticPhysicsObject(GamePhysics *gamePhysics, const char *filename, IStorm3D_Model *model, const VC3 &position, const QUAT &rotation)
 		: AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->impl = new StaticPhysicsObjectImpl(filename, model);
 		this->position = position;
 		this->rotation = rotation;
@@ -146,7 +146,7 @@ namespace game
 	}
 #endif
 
-	StaticPhysicsObject::~StaticPhysicsObject() 
+	StaticPhysicsObject::~StaticPhysicsObject()
 	{
 		delete impl;
 	}

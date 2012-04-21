@@ -14,7 +14,7 @@ namespace ui
 	/**
 	 * The normal camera boundary checker while in mission.
 	 * Checks that the camera is near the given player's units.
-	 * See the NoCameraBoundary if you don't want this sort of 
+	 * See the NoCameraBoundary if you don't want this sort of
 	 * limitation for the camera.
 	 *
    * @version 0.5, 28.3.2003

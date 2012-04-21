@@ -123,7 +123,7 @@ Window::Window(const char *title, int iconId, bool maximize, bool disableSizing,
 	windowClass.hInstance = GetModuleHandle(0);
 	windowClass.hIcon = LoadIcon(GetModuleHandle(0), reinterpret_cast<const char *> (iconId));
 	windowClass.hCursor = LoadCursor(NULL, IDC_ARROW);
-	windowClass.hbrBackground = 0; // CreateSolidBrush(0x383838); //COLOR_TEXT; 
+	windowClass.hbrBackground = 0; // CreateSolidBrush(0x383838); //COLOR_TEXT;
 	windowClass.lpszMenuName = MAKEINTRESOURCE(IDR_MENU); //0;
 	windowClass.lpszClassName = windowClassName;
 	windowClass.hIconSm = 0;

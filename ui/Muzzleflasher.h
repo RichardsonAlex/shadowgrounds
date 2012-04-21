@@ -15,7 +15,7 @@ namespace ui
 			// (will do a nasty cast to that)
 			// should use some "muzzleflashable" interface instead.
 
-			static void createMuzzleflash(IPointableObject *unit, 
+			static void createMuzzleflash(IPointableObject *unit,
 				VisualObject *muzzleflash, int muzzleFlashBarrelNumber);
 
 

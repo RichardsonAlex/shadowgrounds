@@ -252,12 +252,12 @@ namespace ui
   };
 
   LinkedList<AnimationSet*> *AnimationSet::setFilenames = NULL;
-  
+
   AnimationSet *AnimationSet::getSetByName(char *setName)
   {
     if (setFilenames == NULL)
     {
-			if (anim_names[ANIM_AMOUNT] == NULL 
+			if (anim_names[ANIM_AMOUNT] == NULL
 				|| strcmp(anim_names[ANIM_AMOUNT], "***") != 0)
 			{
 				assert(!"AnimationSet - Bad amount of animation names.");
@@ -407,7 +407,7 @@ namespace ui
           bool keyok = false;
 					// Ilkka addon: If the key begins with "transition:", handle it as such. Somebody better check this one...
 					// (Checked and modified. ;) --jpk
-					if (strncmp(key, "transition:", 11) == 0) 
+					if (strncmp(key, "transition:", 11) == 0)
 					{
 							Transition trans = Transition();
 							// these would do a buffer overflow to strings over 64 chars (since no check for that)
@@ -437,7 +437,7 @@ namespace ui
 										trans.from = this->getAnimationFileNumber(j);
 										break;
 								}
-							}							
+							}
 							for (int j = 0; j < ANIM_AMOUNT; j++)
 							{
 								if (strcmp(to.c_str(), anim_names[j]) == 0) {
@@ -445,7 +445,7 @@ namespace ui
 										break;
 								}
 							}
-							if ((animTo==-1) || (trans.from==-1)) 
+							if ((animTo==-1) || (trans.from==-1))
 							{
 								LOG_ERROR("AnimationSet - Invalid transition definition.");
 								LOG_DEBUG(from.c_str());
@@ -564,7 +564,7 @@ namespace ui
                       && value[k + 9] >= '0' && value[k + 9] <= '9')
                     {
 											*staticFactor = true;
-                      *staticFactorValue = 
+                      *staticFactorValue =
 												(value[k + 7] - '0') + 0.1f * (value[k + 9] - '0');
 											if (value[k + 10] >= '0' && value[k + 10] <= '9')
 											{
@@ -671,7 +671,7 @@ namespace ui
 		assert(staticFactorTable[anim]);
     return staticFactorValueTable[anim];
 	}
-  
+
   bool AnimationSet::isAnimationNonInterpolating(int anim)
   {
     return noInterpolateTable[anim];
@@ -699,15 +699,15 @@ namespace ui
       {
         Animator::setAnimation(animatable,
 					transition ? transition->fileNumber : -1,
-          getAnimationFileNumber(anim), 
-          !isAnimationImmediate(anim), 
+          getAnimationFileNumber(anim),
+          !isAnimationImmediate(anim),
 					blendTime,
           isAnimationLooping(anim),
 					isAnimationNonInterpolating(anim));
       } else {
-        Animator::setBlendAnimation(animatable, blend - 1, 
+        Animator::setBlendAnimation(animatable, blend - 1,
 					transition ? transition->fileNumber : -1,
-          getAnimationFileNumber(anim), 
+          getAnimationFileNumber(anim),
           !isAnimationImmediate(anim),
 					blendTime,
           isAnimationLooping(anim),
@@ -728,7 +728,7 @@ namespace ui
     }
     return -1;
 	}
- 
+
   const char *AnimationSet::getAnimName(int anim)
   {
 		assert(anim >= 0 && anim < ANIM_AMOUNT);
@@ -767,7 +767,7 @@ namespace ui
 	  return 0;
   }
 
- 
+
   //void AnimationSet::stopBlendedAnimation()
 
 }

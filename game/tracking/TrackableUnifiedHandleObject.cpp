@@ -45,9 +45,9 @@ namespace tracking
 	}
 
 
-	TrackableUnifiedHandleObject::TrackableUnifiedHandleObject(UnifiedHandle unifiedHandle) 
+	TrackableUnifiedHandleObject::TrackableUnifiedHandleObject(UnifiedHandle unifiedHandle)
 	{
-		this->handle = unifiedHandle; 
+		this->handle = unifiedHandle;
 		this->refCount = 0;
 	}
 
@@ -75,7 +75,7 @@ namespace tracking
 		}
 
 	}
- 
+
 
 	QUAT TrackableUnifiedHandleObject::getTrackableObjectRotation() const
 	{
@@ -95,7 +95,7 @@ namespace tracking
 		}
 
 	}
- 
+
 
 	TRACKABLE_TYPEID_DATATYPE TrackableUnifiedHandleObject::getTrackableTypes() const
 	{
@@ -118,9 +118,9 @@ return TRACKABLE_TYPE_BURNABLE;
 	}
 
 
-	void TrackableUnifiedHandleObject::setGame(game::Game *game) 
-	{ 
-		tuho_game = game; 
+	void TrackableUnifiedHandleObject::setGame(game::Game *game)
+	{
+		tuho_game = game;
 
 		if (tuho_pool == NULL)
 		{
@@ -135,12 +135,12 @@ return TRACKABLE_TYPE_BURNABLE;
 		assert(tuho_pool != NULL);
 		assert(unifiedHandle != 0);
 
-		// allow only 3/4 of the pool to be used for now... after that, start failing. 
+		// allow only 3/4 of the pool to be used for now... after that, start failing.
 		// (it would get way too slow at this point anyway)
 		// TODO: should increase the pool size once exhausted
 		// notice however, that the pool array does not contain pointers, but rather the data itself, so it cannot
 		// be just copied to new array - the old references to old array would become invalid after array deletion
-		// so, the old array would have to be preserved for a while... -> just make the initial pool size to be 
+		// so, the old array would have to be preserved for a while... -> just make the initial pool size to be
 		// big enough for the largest case scenario.
 		if (tuho_pool_used >= TUHO_POOL_SIZE * 3 / 4)
 		{

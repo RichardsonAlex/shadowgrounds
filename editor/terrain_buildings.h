@@ -34,7 +34,7 @@ public:
 	Building()
 		:	index(-1), rotation(0) {}
 
-	float getRotation() 
+	float getRotation()
 	{
 		return rotation;
 	}
@@ -86,12 +86,12 @@ public:
 
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainBuildings &objects)
-{ 
+{
 	return objects.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainBuildings &objects)
-{ 
+{
 	return objects.readStream(stream);
 }
 

@@ -22,7 +22,7 @@ HeightmapActor::HeightmapActor(NxPhysicsSDK &sdk_, NxScene &scene, const unsigne
     NxU8 *currentByte = (NxU8 *) heightDesc.samples;
 	for(int row = 0; row < samplesY; ++row)
 	for(int column = 0; column < samplesX; ++column)
-	{            
+	{
 		NxHeightFieldSample *currentSample = (NxHeightFieldSample *) currentByte;
 
 		//int sample = buffer[row * samplesX + column];
@@ -53,7 +53,7 @@ HeightmapActor::HeightmapActor(NxPhysicsSDK &sdk_, NxScene &scene, const unsigne
 		shapeDesc.rowScale = scaleZ;
 		shapeDesc.columnScale = scaleX;
 		shapeDesc.materialIndexHighBits = 0;
-		shapeDesc.holeMaterial = 2;    
+		shapeDesc.holeMaterial = 2;
 
 		NxVec3 pos;
 		pos.x = -size.x * 0.5f;

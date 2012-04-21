@@ -86,15 +86,15 @@ public:
 		{
 			A deg = -xang/(A)2;
 			qx.x=(A)sin(deg);
-			qx.y=0; 
-			qx.z=0; 
+			qx.y=0;
+			qx.z=0;
 			qx.w=(A)cos(deg);
 		}
 
 		if (yrot)
 		{
 			A deg=-yang/(A)2;
-			qy.x=0; 
+			qy.x=0;
 			qy.y=(A)sin(deg);
 			qy.z=0;
 			qy.w=(A)cos(deg);
@@ -238,7 +238,7 @@ public:
 		A fCosTheta=x*ox+y*oy+z*oz+w*ow;
 
 		// Check angle to see if quaternions are in opposite hemispheres
-		if(fCosTheta<0) 
+		if(fCosTheta<0)
 		{
 			// If so, flip one of the quaterions
 			fCosTheta=-fCosTheta;
@@ -251,10 +251,10 @@ public:
 		// Set factors to do linear interpolation, as a special case where the
 		// quaternions are close together.
 		A fBeta=(A)1-interpolation;
-    
+
 		// If the quaternions aren't close, proceed with spherical interpolation
-		if((A)1-fCosTheta>(A)0.001) 
-		{   
+		if((A)1-fCosTheta>(A)0.001)
+		{
 	        A fTheta=(A)acos(fCosTheta);
 		    fBeta=(A)sin(fTheta*fBeta)/(A)sin(fTheta);
 			interpolation=(A)sin(fTheta*interpolation)/(A)sin(fTheta);
@@ -319,7 +319,7 @@ public:
 		A y2=y+y;
 		A z2=z+z;
 
-		A xx2=x*x2; 
+		A xx2=x*x2;
 		A yy2=y*y2;
 		A zz2=z*z2;
 		A xy2=x*y2;
@@ -328,7 +328,7 @@ public:
 		A wx2=w*x2;
 		A wy2=w*y2;
 		A wz2=w*z2;
-    
+
 		A mat[9];
 		mat[0]=(A)1-yy2-zz2;
 		mat[1]=xy2-wz2;

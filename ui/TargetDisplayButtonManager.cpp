@@ -128,12 +128,12 @@ void TargetDisplayButtonManager::releaseButton( button b )
 
 	FB_ASSERT( i != buttonStack.end() );
 	
-	if( i == buttonStack.end() ) 
+	if( i == buttonStack.end() )
 		return;
 	
 	i->second.push( b );
 
-	/*if( (signed)i->second.size() > stackMaxCount ) 
+	/*if( (signed)i->second.size() > stackMaxCount )
 		stackMaxCount = i->second.size();*/
 }
 
@@ -146,7 +146,7 @@ void TargetDisplayButtonManager::setText( button& b, const std::string& txt )
 
 	const std::string& text = getLocaleGuiString( txt.c_str() );
 
-	if( b.hasText ) 
+	if( b.hasText )
 	{
 		// b.buttons[ 4 ]->SetDisabled( false );
 		textW = b.font?b.font->getStringWidth( text.c_str() ):0;
@@ -192,7 +192,7 @@ TargetDisplayButtonManager::button TargetDisplayButtonManager::newButton( int st
 
 	FB_ASSERT( i != buttonOriginals.end() );
 	
-	if( i == buttonOriginals.end() ) 
+	if( i == buttonOriginals.end() )
 		return result;
 	
 	result.buttons.resize( i->second.buttonImages.size() );
@@ -200,7 +200,7 @@ TargetDisplayButtonManager::button TargetDisplayButtonManager::newButton( int st
 	int j = 0;
 	for( j = 0; j < (int)i->second.buttonImages.size(); j++ )
 	{
-		result[ j ] = ogui->CreateSimpleImageButton( window, 0, 0, i->second.width, i->second.height, 
+		result[ j ] = ogui->CreateSimpleImageButton( window, 0, 0, i->second.width, i->second.height,
 			i->second.buttonImages[ j ].c_str(), NULL, NULL, 0 );
 
 		result[ j ]->SetReactMask( 0 );
@@ -220,7 +220,7 @@ TargetDisplayButtonManager::button TargetDisplayButtonManager::newButton( int st
 	if( i->second.hasSlider )
 	{
 		// result.hasHealthSlider = true;
-		result.healthSlider = new OguiGfxSlider( window, ogui, 0, 0, i->second.sliderWidth, i->second.sliderHeight, 
+		result.healthSlider = new OguiGfxSlider( window, ogui, 0, 0, i->second.sliderWidth, i->second.sliderHeight,
 								i->second.sliderBackground, i->second.sliderBackground, i->second.sliderBackground,
 								i->second.sliderForeground, i->second.sliderForeground, i->second.sliderForeground );
 

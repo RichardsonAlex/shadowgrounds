@@ -30,8 +30,8 @@
 		int lodFactor;
 
 		enum Type
-		{ 
-			FullBuffer, 
+		{
+			FullBuffer,
 			CenterBuffer,
 			LinkBuffer
 		};

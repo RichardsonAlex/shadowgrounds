@@ -185,7 +185,7 @@ namespace game
 				break;
 			}
 			failcount++;
-			if (failcount > 1000) 
+			if (failcount > 1000)
 			{
 				Logger::getInstance()->error("UnitInventory::setUnitItemCount - Failed to set proper item count (internal error).");
 				break;

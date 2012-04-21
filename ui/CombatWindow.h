@@ -55,9 +55,9 @@ namespace ui
 	class ICombatSubWindow;
 	/**
 	*
-	* Combat window class. 
+	* Combat window class.
 	* Invisible overlay to be used when in combat mode (not in menus).
-	* Has invisible buttons and stuff to react when user clicks mouse 
+	* Has invisible buttons and stuff to react when user clicks mouse
 	* on scene.
 	* Contains a collection of CombatUnitWindows.
 	*
@@ -71,7 +71,7 @@ namespace ui
 	*
 	*/
 	
-	class CombatWindow : public IOguiButtonListener, 
+	class CombatWindow : public IOguiButtonListener,
 		private game::IUnitSelectionListener
 	{
 	public:
@@ -92,8 +92,8 @@ namespace ui
 		// (they are a different things)
 		bool isWindowVisible();
 		
-		// affects gui visibility, not window visibility 
-		// (well, the actual implementation may use window visibility to do 
+		// affects gui visibility, not window visibility
+		// (well, the actual implementation may use window visibility to do
 		// that, but externally window visibility is unchanged)
 		void setGUIVisibility(bool guiVisible);
 		void toggleGUIMode();
@@ -284,7 +284,7 @@ namespace ui
 
 		CombatWindowImpl *impl;
 	};
-  
+
 }
 
 #endif

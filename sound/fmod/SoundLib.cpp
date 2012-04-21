@@ -849,7 +849,7 @@ void SoundLib::setListener(const VC3 &position, const VC3 &velocity, const VC3 &
 	float p[3] = { position.x, position.y, position.z };
 	float v[3] = { 0 }; //{ velocity.x, velocity.y, velocity.z };
 
-	FSOUND_3D_Listener_SetAttributes(p, v, 
+	FSOUND_3D_Listener_SetAttributes(p, v,
 		forwardDirection.x, forwardDirection.y, forwardDirection.z,
 		upDirection.x, upDirection.y, upDirection.z);
 }
@@ -1034,7 +1034,7 @@ struct StormStream: public IStorm3D_Stream
 	}
 };
 
-signed char __stdcall streamcallback(FSOUND_STREAM *stream, void *buff, int len, void *param) 
+signed char __stdcall streamcallback(FSOUND_STREAM *stream, void *buff, int len, void *param)
 {
 	StormStream *ptr = (StormStream *) (param);
 	SDL_LockMutex(ptr->lock);

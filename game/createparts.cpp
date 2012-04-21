@@ -38,7 +38,7 @@ namespace game
   void createPartTypes()
   {
     // these get stored to the linked list containing all id'ed parts
-    
+
     Bullet *b = new Bullet();
     b->setPartTypeId(PARTTYPE_ID_STRING_TO_INT("Bull"));
     new Reactor(PARTTYPE_ID_STRING_TO_INT("Reac"));

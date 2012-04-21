@@ -9,7 +9,7 @@ namespace frozenbyte {
 
 namespace util {
 
-class BuildingBlinker 
+class BuildingBlinker
 {
 	struct Data;
 	boost::scoped_ptr<Data> data;
@@ -20,7 +20,7 @@ public:
 
 	void addBlinkTexture(const char *original, const char *to, int delta);
 	void update(int timeDelta);
-}; 
+};
 
 } // util
 

@@ -153,13 +153,13 @@ IStorm3D_Material *Storm3D_Material::CreateNewClone()
 	*ret = *this;
 	ret->name = namebuf;
 
-	if (texture_base) 
+	if (texture_base)
 		ret->texture_base = texture_base->CreateNewClone();
-	if (texture_base2) 
+	if (texture_base2)
 		ret->texture_base2 = texture_base2->CreateNewClone();
-	if (texture_bump) 
+	if (texture_bump)
 		ret->texture_bump = texture_bump->CreateNewClone();
-	if (texture_reflection) 
+	if (texture_reflection)
 		ret->texture_reflection = texture_reflection->CreateNewClone();
 
 	return ret;
@@ -563,7 +563,7 @@ IStorm3D_Texture *Storm3D_Material::GetReflectionTexture()
 */
 IStorm3D_Texture *Storm3D_Material::GetDistortionTexture()
 {
-	if ((texture_distortion)&&(texture_distortion->texture)) 
+	if ((texture_distortion)&&(texture_distortion->texture))
 		return texture_distortion->texture;
 
 	return NULL;
@@ -604,12 +604,12 @@ void Storm3D_Material::SetDistortionTexture(IStorm3D_Texture *itexture)
 	if (texture) texture->AddRef();
 
 	// Delete old texturelayer if exists
-	if (texture_distortion) 
+	if (texture_distortion)
 		delete texture_distortion;
 	texture_distortion = NULL;
 
 	// Create new texturelayer
-	if (texture) 
+	if (texture)
 		texture_distortion=new Storm3D_Material_TextureLayer(Storm3D2,texture);
 }
 
@@ -892,7 +892,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 		}
 		else	// Projective texture
 		{
-			// Create matrix, tu=(0.5+0.87*x)/z, tv=(0.5-0.87*y)/z 
+			// Create matrix, tu=(0.5+0.87*x)/z, tv=(0.5-0.87*y)/z
 		    D3DXMATRIX mat;
 			mat._11=0.866f;mat._12=0.0f;mat._13=0.0f;
 			mat._21=0.0f;mat._22=-0.866f;mat._23=0.0f;
@@ -977,7 +977,7 @@ bool Storm3D_Material::Apply(Storm3D_Scene *scene,int pass,uint32_t fvf,D3DMATRI
 		}
 		else	// Projective mirror texture
 		{
-			// Create matrix, tu=(0.5+0.87*x)/z, tv=(0.5-0.87*y)/z 
+			// Create matrix, tu=(0.5+0.87*x)/z, tv=(0.5-0.87*y)/z
 			D3DXMATRIX mat;
 			mat._11=0.866f;mat._12=0.0f;mat._13=0.0f;
 			mat._21=0.0f;mat._22=-0.866f;mat._23=0.0f;

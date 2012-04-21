@@ -223,7 +223,7 @@ void Storm3D::createTargets() {
 }
 
 //! Constructor
-Storm3D::Storm3D(bool _no_info, filesystem::FilePackageManager *fileManager, IStorm3D_Logger *logger_) : 
+Storm3D::Storm3D(bool _no_info, filesystem::FilePackageManager *fileManager, IStorm3D_Logger *logger_) :
 	logger(logger_),
 	active_material((Storm3D_Material*)1),	// NULL is not right!
 	active_mesh(NULL),
@@ -714,7 +714,7 @@ void Storm3D::SetReflectionQuality(int quality)
 
 //! Adds render targets
 /*!
-	\param size 
+	\param size
 	\param amount
 */
 void Storm3D::addAdditionalRenderTargets(const VC2 &size, int amount)
@@ -797,8 +797,8 @@ void Storm3D::SetGammaRamp(float gamma, float brightness, float contrast, float 
 					g += gammaPeakGreen * fact * 65536.0f;
 					b += gammaPeakBlue * fact * 65536.0f;
 				}
-			} 
-			else 
+			}
+			else
 			{
 				if (ifl < gammaPeakPosition + gammaPeakHighShape)
 				{
@@ -810,17 +810,17 @@ void Storm3D::SetGammaRamp(float gamma, float brightness, float contrast, float 
 			}
 		}
 
-		if (r < 0) 
+		if (r < 0)
 			r = 0;
-		if (r > 65535) 
+		if (r > 65535)
 			r = 65535;
-		if (g < 0) 
+		if (g < 0)
 			g = 0;
-		if (g > 65535) 
+		if (g > 65535)
 			g = 65535;
-		if (b < 0) 
+		if (b < 0)
 			b = 0;
-		if (b > 65535) 
+		if (b > 65535)
 			b = 65535;
 
 		currentGammaRampRed[i] = (Uint16)r;

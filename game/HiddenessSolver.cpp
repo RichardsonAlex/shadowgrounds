@@ -27,7 +27,7 @@ namespace game
 
 		// heighest value... endpoint totally significant
 		// others are not taken fully into account... their values are
-		// halved. 
+		// halved.
 		int max = 0;
 //		int tmp;
 

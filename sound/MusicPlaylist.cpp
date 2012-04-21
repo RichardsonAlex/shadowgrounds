@@ -58,7 +58,7 @@ void MusicPlaylist::play()
 
 	static int musicplaylist_last_playing_track_msg_time = -MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT ;
 	
-	if (Timer::getTime() > musicplaylist_last_playing_track_msg_time + MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT) 
+	if (Timer::getTime() > musicplaylist_last_playing_track_msg_time + MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT)
 	{
 		Logger::getInstance()->debug("MusicPlaylist::play - Playing track.");
 		musicplaylist_last_playing_track_msg_time = Timer::getTime();
@@ -122,7 +122,7 @@ void MusicPlaylist::nextTrack()
   {
     SystemRandom r;
     if (tracksInBank[currentBank] > 0)
-      atTrack[currentBank] = r.nextInt() % 
+      atTrack[currentBank] = r.nextInt() %
         tracksInBank[currentBank];
     else
       atTrack[currentBank] = 0;
@@ -172,7 +172,7 @@ void MusicPlaylist::loadPlaylist(int bank, const char *filename)
       {
         char *tmpcopy = new char[strlen(tmp) + 1];
         strcpy(tmpcopy, tmp);
-        fileList[bank].push_back(tmpcopy); 
+        fileList[bank].push_back(tmpcopy);
       }
     }
   } else {
@@ -193,7 +193,7 @@ void MusicPlaylist::setBank(int bank)
 void MusicPlaylist::setSuffle(bool suffle)
 {
   // TODO: proper suffle implementation.
-  // (now we'll just rely on random track selection, which is not 
+  // (now we'll just rely on random track selection, which is not
   // a real suffle, the way it should be.)
   this->suffle = suffle;
 }
@@ -216,7 +216,7 @@ void MusicPlaylist::run()
 			static int musicplaylist_last_track_changing_msg_time = -MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT;
 			static bool musicplaylist_last_track_changing_msg_multi = false;
 			
-			if (Timer::getTime() > musicplaylist_last_track_changing_msg_time + MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT) 
+			if (Timer::getTime() > musicplaylist_last_track_changing_msg_time + MUSICPLAYLIST_ALLOWED_TRACK_CHANGE_TIME_LIMIT)
 			{
 				Logger::getInstance()->debug("MusicPlaylist::run - Track changing.");
 				musicplaylist_last_track_changing_msg_time = Timer::getTime();

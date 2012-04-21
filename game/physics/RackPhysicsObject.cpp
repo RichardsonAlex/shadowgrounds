@@ -11,15 +11,15 @@
 
 namespace game
 {
-	RackPhysicsObject::RackPhysicsObject(GamePhysics *gamePhysics, float mass, int collisionGroup, const VC3 &position) 
+	RackPhysicsObject::RackPhysicsObject(GamePhysics *gamePhysics, float mass, int collisionGroup, const VC3 &position)
 	:	AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->position = position;
 		this->mass = mass;
 		this->collisionGroup = collisionGroup;
 	}
 
-	RackPhysicsObject::~RackPhysicsObject() 
+	RackPhysicsObject::~RackPhysicsObject()
 	{
 		// nop, ~AbstractPhysicsObject handles everything of any interest...
 	}

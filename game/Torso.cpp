@@ -12,20 +12,20 @@ namespace game
 {
   /*
   // we should make these with new when creating the torso object.
-  // would leak memory, but don't care, because these objects are created 
+  // would leak memory, but don't care, because these objects are created
   // only once and kept alive through the whole program run time.
   // now there's just null pointers...
-  PartType *torso_slots[TORSO_SLOTS] = 
+  PartType *torso_slots[TORSO_SLOTS] =
   {
-    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Head")), 
-    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm")), 
-    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm")), 
-    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg")), 
-    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg")) 
+    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Head")),
+    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm")),
+    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm")),
+    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg")),
+    getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg"))
   };
 
   int torso_positions[TORSO_SLOTS] =
-  { 
+  {
     SLOT_POSITION_HEAD,
     SLOT_POSITION_LEFT_ARM,
     SLOT_POSITION_RIGHT_ARM,

@@ -240,7 +240,7 @@ namespace game
 			// NOTE: visibility may not necessarily mean the same thing as existance/progressing
 			// in this case, we can assume it to be true though.
 
-			// delete it now? 
+			// delete it now?
 			// (note: can't delete it if it's not done, or it will lose its current progress)
 			if (progressBar->isDone())
 			{

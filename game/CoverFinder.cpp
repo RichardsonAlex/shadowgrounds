@@ -16,7 +16,7 @@ namespace game
 		int *destx, int *desty, int fromx, int fromy)
 	{
 		/*
-		CoverMap::COVER_DIRECTION dir 
+		CoverMap::COVER_DIRECTION dir
 			= covermap->getNearestCoverDirection(upathPosX, upathPosY);
 
 		if (dir == CoverMap::COVER_DIRECTION_N)
@@ -72,7 +72,7 @@ namespace game
 			d = covermap->getDistanceToNearestCover(tx, ty);
 			if (prevd == d)
 				break;
-			if (d == 0) 
+			if (d == 0)
 				break;
 		}
 
@@ -140,7 +140,7 @@ namespace game
 						}
 						if (covermap->isCoveredFromAll(secondaryCoverMask, j, i))
 						{
-							// well, if we won't find a primary direction cover, 
+							// well, if we won't find a primary direction cover,
 							// this will do...
 							dx = j;
 							dy = i;

@@ -30,7 +30,7 @@ namespace game
 
 			void setHiddeness(int x, int y, int value);
 
-			void addHiddenessToArea(int x, int y, int radius, int amount, 
+			void addHiddenessToArea(int x, int y, int radius, int amount,
 				HIDDENESS_TYPE hidType);
 
 			int getHiddenessAt(int x, int y);

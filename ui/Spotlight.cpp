@@ -121,8 +121,8 @@ struct SpotlightData
 			spotAmount = 1;
 
 			fakeLight = false;
-		} 
-		else if(spottype == "environmentlightning") 
+		}
+		else if(spottype == "environmentlightning")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Projective_Lights\\lightninglight.tga");
 			if(!texture)
@@ -144,7 +144,7 @@ struct SpotlightData
 			spotAmount = 1;
 			fadeRange = 50;
 		}
-		else if(spottype == "explosion") 
+		else if(spottype == "explosion")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Lights\\explosionlight.dds");
 			if(!texture)
@@ -160,7 +160,7 @@ struct SpotlightData
 			fakeLightOriginalColor = fakeLightColor;
 			flashType = SpotTypeProperties::FLASH_TYPE_EXPLOSION;
 		}
-		else if(spottype == "electric_flow") 
+		else if(spottype == "electric_flow")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Lights\\electriclight.tga");
 			if(!texture)
@@ -176,7 +176,7 @@ struct SpotlightData
 			fakeLightOriginalColor = fakeLightColor;
 			flashType = SpotTypeProperties::FLASH_TYPE_ELECTRIC_FLOW;
 		}
-		else if(spottype == "flamethrower") 
+		else if(spottype == "flamethrower")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Lights\\flamethrowerlight.tga");
 			if(!texture)
@@ -192,7 +192,7 @@ struct SpotlightData
 			fakeLightOriginalColor = fakeLightColor;
 			flashType = SpotTypeProperties::FLASH_TYPE_FLAMETHROWER;
 		}
-		else if (spottype == "playerhalo") 
+		else if (spottype == "playerhalo")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Lights\\PlayerDefaultVision.dds");
 			if(!texture)
@@ -209,7 +209,7 @@ struct SpotlightData
 			fakeLightColor = COL(0.1f,0.1f,0.1f);
 			fakeLightOriginalColor = fakeLightColor;
 		}
-		else if (spottype == "crystalhalo") 
+		else if (spottype == "crystalhalo")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Lights\\PlayerDefaultVision.dds");
 			if(!texture)
@@ -224,7 +224,7 @@ struct SpotlightData
 			fakeLightColor = COL(0.2f,0.25f,0.3f);
 			fakeLightOriginalColor = fakeLightColor;
 		}
-		else if (spottype == "weaponhalo" || spottype == "healthhalo") 
+		else if (spottype == "weaponhalo" || spottype == "healthhalo")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Lights\\ItemHalo.tga");
 			if(!texture)
@@ -242,7 +242,7 @@ struct SpotlightData
 				fakeLightColor = COL(0.7f,0.5f,0.5f);
 			fakeLightOriginalColor = fakeLightColor;
 		}
-		else if (spottype == "streetlight") 
+		else if (spottype == "streetlight")
 		{
 			IStorm3D_Texture *texture = storm.CreateNewTexture("Data\\Textures\\Lights\\PlayerDefaultVision.dds");
 			if(!texture)
@@ -454,8 +454,8 @@ struct SpotlightData
 			spotAmount = 1;
 
 			fakeLight = false;
-		} 
-		else 
+		}
+		else
 		{
 			assert(!"Unknown spotlight type.");
 		}
@@ -468,7 +468,7 @@ struct SpotlightData
 		for (int i = 0; i < (int)spotTypes.size(); i++)
 		{
 			// TODO: handle low detail version...?
-			// (if low detail settings, automagically select the spot that has the lowdetail property name of the 
+			// (if low detail settings, automagically select the spot that has the lowdetail property name of the
 			// originally matching spot... clearly stated :P)
 
 			if (spotTypes[i].name == spottype)
@@ -500,7 +500,7 @@ struct SpotlightData
 					spotAmount = 1;
 
 					IStorm3D_Texture *coneStormTexture = NULL;
-					if (props.coneTextureFilename.empty() 
+					if (props.coneTextureFilename.empty()
 						&& props.coneAlphaMultiplier != 0.0f)
 					{
 						LOG_WARNING_W_DEBUG("Spotlight - Spot type has no cone texture filename but non-zero cone alpha multiplier.", spottype.c_str());
@@ -568,7 +568,7 @@ struct SpotlightData
 					else
 						spot->enableFeature(IStorm3D_Spotlight::ScissorRect, false);
 
-					if (coneTexture 
+					if (coneTexture
 						&& props.coneAlphaMultiplier != 0.0f)
 					{
 						spot->enableFeature(IStorm3D_Spotlight::ConeVisualization, true);
@@ -830,7 +830,7 @@ void Spotlight::fadeOut(int timeElapsed)
 	{
 		// TODO: fix the faderange change to absolute values, not to relative
 		// (otherwise won't work with resetFadeOut)
-		// NOTE: but take care of handling different fadeRanges!!! 
+		// NOTE: but take care of handling different fadeRanges!!!
 		// (need to store the original faderange value somewhere)
 
 
@@ -886,7 +886,7 @@ void Spotlight::fadeOut(int timeElapsed)
 			float value = 1.0f;
 			if(data->effectTimeElapsed > 30)
 				value = 1.0f - (float((data->effectTimeElapsed - 30)) * 0.025f);
-			if(value < 0.0f) 
+			if(value < 0.0f)
 				value = 0.0f;
 
 			if(data->spot)

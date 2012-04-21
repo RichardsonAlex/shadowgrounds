@@ -23,17 +23,17 @@ namespace net
     public:
       FileBind(const char *name);
 
-      virtual INetConnection *acceptConnection() 
+      virtual INetConnection *acceptConnection()
         throw (NetDriverException*);
 
-      virtual void listen(int backlog) 
+      virtual void listen(int backlog)
         throw (NetDriverException*);
 
       virtual int getMaxBacklog();
 
-      virtual void unbind() 
+      virtual void unbind()
         throw (NetDriverException*);
-     
+
       virtual ~FileBind();
 
       const char *getName();

@@ -92,7 +92,7 @@ namespace {
 
 			CheckDlgButton(dialog.getWindowHandle(), IDC_BUILDING_REMOVEMODE, BST_UNCHECKED);
 			CheckDlgButton(dialog.getWindowHandle(), IDC_BUILDING_INSERTMODE, BST_CHECKED);
-			CheckDlgButton(dialog.getWindowHandle(), IDC_HIDE_ROOF, BST_UNCHECKED); 
+			CheckDlgButton(dialog.getWindowHandle(), IDC_HIDE_ROOF, BST_UNCHECKED);
 		}
 
 		int getSelection()

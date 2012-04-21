@@ -6,7 +6,7 @@
 
 #include "ICombatSubWindow.h"
 
-namespace game 
+namespace game
 {
 	class Game;
 }

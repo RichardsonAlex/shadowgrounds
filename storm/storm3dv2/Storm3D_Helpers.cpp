@@ -160,7 +160,7 @@ void Storm3D_Helper_Camera::Animation_SetCurrentTime(int time)
 
 void Storm3D_Helper_Camera::UpdateGlobals()
 {
-	if (update_globals) 
+	if (update_globals)
 	{
 		update_globals=false;
 		position_global=position;
@@ -299,7 +299,7 @@ void Storm3D_Helper_Vector::Animation_SetCurrentTime(int time)
 
 void Storm3D_Helper_Vector::UpdateGlobals()
 {
-	if (update_globals) 
+	if (update_globals)
 	{
 		update_globals=false;
 		position_global=position;
@@ -514,7 +514,7 @@ void Storm3D_Helper_Box::Animation_SetCurrentTime(int time)
 
 void Storm3D_Helper_Box::UpdateGlobals()
 {
-	if (update_globals) 
+	if (update_globals)
 	{
 		update_globals=false;
 		position_global=position;
@@ -618,7 +618,7 @@ void Storm3D_Helper_Sphere::Animation_SetCurrentTime(int time)
 
 void Storm3D_Helper_Sphere::UpdateGlobals()
 {
-	if (update_globals) 
+	if (update_globals)
 	{
 		update_globals=false;
 		position_global=position;

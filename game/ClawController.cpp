@@ -1171,7 +1171,7 @@ if(grabInfo.actor)
 					bool streetLamp = false;
 
 					// Discard based on various properties
-					{ 
+					{
 						int collisionGroup = shapes[i]->getGroup();
 						if(collisionGroup == PHYSICS_COLLISIONGROUP_MODEL_PARTICLES_WO_UNIT_COLL_NO_SOUND)
 							continue;
@@ -2743,8 +2743,8 @@ void ClawController::update()
 				data->targetPosition.x = targetPoint.x + (distanceVec.x * limit);
 				data->targetPosition.z = targetPoint.z + (distanceVec.z * limit);
 
-				// HAX HAX 
-				// Remove speedDelta based on distanceVec so that there can be no acceleration 
+				// HAX HAX
+				// Remove speedDelta based on distanceVec so that there can be no acceleration
 				// towards that direction
 
 				VC2 dir2(distanceVec.x, distanceVec.z);

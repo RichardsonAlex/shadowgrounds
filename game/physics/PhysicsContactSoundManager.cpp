@@ -83,13 +83,13 @@ namespace game
 		for (int i = 0; i < 2; i++)
 		{
 			AbstractPhysicsObject *o = o1;
-			if (i == 1) 
+			if (i == 1)
 			{
 				o = o2;
 			}
 #ifdef PHYSICS_PHYSX
 			int smindex = sm1;
-			if (i == 1) 
+			if (i == 1)
 			{
 				smindex = sm2;
 			}
@@ -155,7 +155,7 @@ namespace game
 								assert(volumeFactor <= 1.0f);
 							}
 
-							impl->gameUI->playSoundEffect(soundfile, soundpos.x, soundpos.y, soundpos.z, 
+							impl->gameUI->playSoundEffect(soundfile, soundpos.x, soundpos.y, soundpos.z,
 								false, (int)(DEFAULT_SOUND_EFFECT_VOLUME * volumeFactor), DEFAULT_SOUND_RANGE, DEFAULT_SOUND_PRIORITY_NORMAL);
 						}
 						*/
@@ -166,7 +166,7 @@ namespace game
 				// not to repeat the effect too frequently
 				if( o != NULL && makeSound && ( impl->gameUI->game->gameTimer - o->getLastEffectSoundTick() ) > ( 200 / GAME_TICK_MSEC ) )
 				{
-					o->setLastEffectSoundTick( impl->gameUI->game->gameTimer ); 
+					o->setLastEffectSoundTick( impl->gameUI->game->gameTimer );
 				}
 				else
 				{
@@ -204,16 +204,16 @@ namespace game
 					{
 						// 100% required force - 500% required force
 						float contactFactor = contact.contactForceLen / ( smlist[smindex].requiredForce * 5.0f );
-						if( contactFactor > 1.0f ) 
+						if( contactFactor > 1.0f )
 							contactFactor = 1.0f;
 
 						int sndnum = (int)((float)( soundlist.size() - 1 ) * contactFactor + 0.5f);
 						sndnum += ( rand() % 3 ) - 1;
 
-						if( sndnum < 0 ) 
+						if( sndnum < 0 )
 							sndnum = 0;
 						
-						if( sndnum > (signed)( soundlist.size() - 1 ) ) 
+						if( sndnum > (signed)( soundlist.size() - 1 ) )
 							sndnum = (signed)( soundlist.size() - 1 );
 						
 						soundfile = soundlist[sndnum];
@@ -230,7 +230,7 @@ namespace game
 						*/
 					}
 
-					impl->gameUI->playSoundEffect(soundfile.c_str(), soundpos.x, soundpos.y, soundpos.z, 
+					impl->gameUI->playSoundEffect(soundfile.c_str(), soundpos.x, soundpos.y, soundpos.z,
 						false, (int)(DEFAULT_SOUND_EFFECT_VOLUME * volumeFactor), DEFAULT_SOUND_RANGE, DEFAULT_SOUND_PRIORITY_NORMAL);
 				}
 			}

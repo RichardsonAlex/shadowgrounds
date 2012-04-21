@@ -19,7 +19,7 @@
 
 extern int storm3d_dip_calls;
 
-void Storm3D_ParticleSystem::PointArray::init(Storm3D* /*Storm3D2*/) 
+void Storm3D_ParticleSystem::PointArray::init(Storm3D* /*Storm3D2*/)
 {
 }
 
@@ -39,19 +39,19 @@ void Storm3D_ParticleSystem::PointArray::setRender(int &vertexOffset, int &parti
 {
 }
 
-void Storm3D_ParticleSystem::PointArray::render(Storm3D* Storm3D2, Storm3D_Scene* scene) 
+void Storm3D_ParticleSystem::PointArray::render(Storm3D* Storm3D2, Storm3D_Scene* scene)
 {
 }
 
-void Storm3D_ParticleSystem::PointArray::release() 
+void Storm3D_ParticleSystem::PointArray::release()
 {
 }
 
-void Storm3D_ParticleSystem::PointArray::createDynamicBuffers(Storm3D* /*Storm3D2*/) 
+void Storm3D_ParticleSystem::PointArray::createDynamicBuffers(Storm3D* /*Storm3D2*/)
 {
 }
 
-void Storm3D_ParticleSystem::PointArray::releaseDynamicBuffers() 
+void Storm3D_ParticleSystem::PointArray::releaseDynamicBuffers()
 {
 }
 
@@ -82,7 +82,7 @@ void Storm3D_ParticleSystem::QuadArray::release()
 		glDeleteBuffers(1, &m_ib);
 }
 
-void Storm3D_ParticleSystem::QuadArray::createDynamicBuffers(Storm3D* /*Storm3D2*/) 
+void Storm3D_ParticleSystem::QuadArray::createDynamicBuffers(Storm3D* /*Storm3D2*/)
 {
 }
 
@@ -107,7 +107,7 @@ int Storm3D_ParticleSystem::QuadArray::lock(VXFORMAT_PART *pointer, int particle
 
 	float frameWidth = 0.0f;
 	float frameHeight = 0.0f;
-	if(m_animInfo.numFrames > 1) 
+	if(m_animInfo.numFrames > 1)
 	{
 		frameWidth = 1.0f / m_animInfo.textureUSubDivs;
 		frameHeight = 1.0f / m_animInfo.textureVSubDivs;
@@ -310,16 +310,16 @@ void Storm3D_ParticleSystem::QuadArray::render(Storm3D* Storm3D2, Storm3D_Scene*
 
 		VC3 v;
 			
-		v.x = p.position.x * mv.m[0][0] + 
-			p.position.y * mv.m[1][0] + 
+		v.x = p.position.x * mv.m[0][0] +
+			p.position.y * mv.m[1][0] +
 			p.position.z * mv.m[2][0] + mv.m[3][0];
 		
-		v.y = p.position.x * mv.m[0][1] + 
-			p.position.y * mv.m[1][1] + 
+		v.y = p.position.x * mv.m[0][1] +
+			p.position.y * mv.m[1][1] +
 			p.position.z * mv.m[2][1] + mv.m[3][1];
 
-		v.z = p.position.x * mv.m[0][2] + 
-			p.position.y * mv.m[1][2] + 
+		v.z = p.position.x * mv.m[0][2] +
+			p.position.y * mv.m[1][2] +
 			p.position.z * mv.m[2][2] + mv.m[3][2];
 
 		VC3 v1(v.x + x1, v.y + y1, v.z);
@@ -434,9 +434,9 @@ float computeConstantScale(const Vector& pos, const D3DXMATRIX& view, const D3DX
 
 void computeScreenQuad(
 					   const D3DXMATRIX& inverseview, const D3DXMATRIX& view, const D3DXMATRIX& proj,
-					   uint8_t* verts, uint8_t* colors, uint32_t stride, 
-					   const Vector& p0, uint32_t col0, float size0, 
-					   const Vector& p1, uint32_t col1, float size1, bool constantsize) 
+					   uint8_t* verts, uint8_t* colors, uint32_t stride,
+					   const Vector& p0, uint32_t col0, float size0,
+					   const Vector& p1, uint32_t col1, float size1, bool constantsize)
 {
 	// Compute delta in camera space
 	Vector Delta;
@@ -513,7 +513,7 @@ int Storm3D_ParticleSystem::LineArray::lock(VXFORMAT_PART *pointer, int particle
 
 	float frameWidth = 0.0f;
 	float frameHeight = 0.0f;
-	if(m_animInfo.numFrames > 1) 
+	if(m_animInfo.numFrames > 1)
 	{
 		frameWidth = 1.0f / m_animInfo.textureUSubDivs;
 		frameHeight = 1.0f / m_animInfo.textureVSubDivs;
@@ -532,7 +532,7 @@ int Storm3D_ParticleSystem::LineArray::lock(VXFORMAT_PART *pointer, int particle
 	D3DXMatrixInverse(inview, NULL, view);
 	proj = scene->camera.GetProjectionMatrix();
 
-	for(int i = 0; i < m_numParts; i++) 
+	for(int i = 0; i < m_numParts; i++)
 	{
 		Storm3D_LineParticle& p = m_parts[i];
 
@@ -552,7 +552,7 @@ int Storm3D_ParticleSystem::LineArray::lock(VXFORMAT_PART *pointer, int particle
 			p.position[1], c1, p.size[1], false);
 
 		// Fill texturecoords
-		if(m_animInfo.numFrames > 1) 
+		if(m_animInfo.numFrames > 1)
 		{	
 			int frame = (int)p.frame % m_animInfo.numFrames;
 			int col = frame % m_animInfo.textureUSubDivs;
@@ -566,7 +566,7 @@ int Storm3D_ParticleSystem::LineArray::lock(VXFORMAT_PART *pointer, int particle
 			*((float*)uvs) = tx; uvs += 4; *((float*)uvs) = ty + frameHeight; uvs += (stride - 4);
 			*((float*)uvs) = tx + frameWidth; uvs += 4; *((float*)uvs) = ty + frameHeight; uvs += (stride - 4);
 		}
-		else 
+		else
 		{
 			*((float*)uvs) = 0.0f; uvs += 4; *((float*)uvs) = 0.0f; uvs += (stride - 4);
 			*((float*)uvs) = 1.0f; uvs += 4; *((float*)uvs) = 0.0f; uvs += (stride - 4);

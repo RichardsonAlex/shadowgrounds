@@ -21,7 +21,7 @@ namespace game
 
 			UpgradeType *getUpgradeTypeById(int upgradeId);
 
-			// NOTE: costPending (in/out) is the amount of "money" allocated for pending 
+			// NOTE: costPending (in/out) is the amount of "money" allocated for pending
 			// upgrades. this function uses that for checking that enough "money" is
 			// available, and changes the value based on the upgrade part's cost
 			// if it can be upgraded. Give NULL for ignoring the pending upgrade costs.

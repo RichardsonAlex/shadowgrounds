@@ -51,7 +51,7 @@ namespace game
 	int SoundScripting::soundScriptVolume = DEFAULT_SOUND_SCRIPT_VOLUME;
 
 
-	void SoundScripting::process(util::ScriptProcess *sp, 
+	void SoundScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -230,7 +230,7 @@ namespace game
 		case GS_CMD_SETAMBIENTSOUNDROLLOFF:
 			{
 				//sp->debug("setAmbientSoundRollOff");
-				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();			 
+				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();			
 				asman->setAmbientSoundRollOff(asman->getSelectedAmbientSound(), intData);
 			}
 			break;
@@ -561,7 +561,7 @@ namespace game
 
 		case GS_CMD_setAmbientSoundVolume:
 			{
-				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();			 
+				ui::AmbientSoundManager *asman = game->gameUI->getAmbientSoundManager();			
 				asman->setAmbientSoundVolume(asman->getSelectedAmbientSound(), intData);
 			}
 			break;

@@ -36,10 +36,10 @@ namespace game
 {
 	// adding joints? what type?
 	static bool physicsscripting_adding_joint = false;
-	static std::string physicsscripting_adding_joint_type = ""; 
+	static std::string physicsscripting_adding_joint_type = "";
 
 	static bool physicsscripting_joint_param_name_given = false;
-	static std::string physicsscripting_setting_param_name = ""; 
+	static std::string physicsscripting_setting_param_name = "";
 
 	// for "physics" type...
 	//static frozenbyte::physics::JointProperties physicsscripting_joint_physics_props;
@@ -86,8 +86,8 @@ namespace game
 
 
 
-	void PhysicsScripting::process(util::ScriptProcess *sp, 
-		int command, int intData, char *stringData, ScriptLastValueType *lastValue, 
+	void PhysicsScripting::process(util::ScriptProcess *sp,
+		int command, int intData, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
 		float floatData = *((float *)&intData);
@@ -437,7 +437,7 @@ namespace game
 				{
 					// NOTE: this may be caused by leaking properties from one joint creation to another...
 					// (if some joint creation is cancelled in the middle of setting properties, use cancelJoint to prevent
-					// this from happening) 
+					// this from happening)
 					sp->error("PhysicsScripting::process - supplied both UH and UEOH for joint object (only one expected).");
 					jointParameters = JointParameters();
 					break;

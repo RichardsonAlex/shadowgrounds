@@ -55,7 +55,7 @@ namespace game
 	char *itemCustomTipText = NULL;
 	char *itemCustomHighlightText = NULL;
 
-	void ItemScripting::process(util::ScriptProcess *sp, 
+	void ItemScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{
@@ -111,7 +111,7 @@ namespace game
 					item->setCustomTipText(itemCustomTipText);
 
 #ifndef PHYSICS_NONE
-					if( game::SimpleOptions::getBool( DH_OPT_B_PHYSICS_ENABLED ) ) 
+					if( game::SimpleOptions::getBool( DH_OPT_B_PHYSICS_ENABLED ) )
 					{
 						game->itemManager->enablePhysics( item, ItemManager::getItemIdByName(stringData) );
 					}

@@ -8,7 +8,7 @@ namespace util {
 
 class BuildingBlinker;
 
-class BlinkerManager 
+class BlinkerManager
 {
 	struct Data;
 	boost::scoped_ptr<Data> data;
@@ -19,7 +19,7 @@ public:
 
 	void addBlinker(boost::shared_ptr<BuildingBlinker> blinker);
 	void update(int timeDelta);
-}; 
+};
 
 } // util
 

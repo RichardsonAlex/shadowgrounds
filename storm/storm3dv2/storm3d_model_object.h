@@ -150,7 +150,7 @@ public:
 	void SetForceAlpha(float value) { force_alpha = value; };
 	void SetForceLightingAlpha(bool enable, float value) { force_lighting_alpha_enable = enable; force_lighting_alpha = (enable) ? value : 0.f; };
 	void SetLight(int index, int id)
-	{ 
+	{
 		if(index >= 0 && index < LIGHT_MAX_AMOUNT)
 			light_index[index] = id;
 	};

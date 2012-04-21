@@ -98,7 +98,7 @@ namespace tracking
 			trackerTicksSinceLastDump = 0;
 			runsSinceLastDump = 0;
 
-#ifdef OBJECTTRACKER_COLLECT_PERF_STATS 
+#ifdef OBJECTTRACKER_COLLECT_PERF_STATS
 			runTimePeak = 0;
 			runTimeAvg = 0;
 #endif
@@ -126,7 +126,7 @@ namespace tracking
 		int trackerTicksSinceLastDump;
 		int runsSinceLastDump;
 
-#ifdef OBJECTTRACKER_COLLECT_PERF_STATS 
+#ifdef OBJECTTRACKER_COLLECT_PERF_STATS
 		int runTimePeak;
 		int runTimeAvg;
 #endif
@@ -244,7 +244,7 @@ namespace tracking
 
 
 		UnifiedHandle createTracker(TrackerTypeNumber trackerTypeNumber)
-		{ 
+		{
 			if (trackerTypeNumber < 0 || trackerTypeNumber >= OBJECTTRACKER_MAX_TRACKERTYPES)
 			{
 				LOG_ERROR("ObjectTracker::createTracker - Parameter out of range.");
@@ -620,7 +620,7 @@ namespace tracking
 		void run(int msec)
 		{
 
-#ifdef OBJECTTRACKER_COLLECT_PERF_STATS 
+#ifdef OBJECTTRACKER_COLLECT_PERF_STATS
 			Timer::update();
 			int startTime = Timer::getTime();
 #endif
@@ -734,7 +734,7 @@ namespace tracking
 				runsSinceLastDump++;
 			}
 
-#ifdef OBJECTTRACKER_COLLECT_PERF_STATS 
+#ifdef OBJECTTRACKER_COLLECT_PERF_STATS
 			Timer::update();
 			int endTime = Timer::getTime();
 
@@ -977,7 +977,7 @@ namespace tracking
 			ret += std::string("Tracker balancing, peak tracker ticks per run: ") + "N/A (first tracker dump or no runs)";
 			ret += std::string("\r\n");
 		}
-#ifdef OBJECTTRACKER_COLLECT_PERF_STATS 
+#ifdef OBJECTTRACKER_COLLECT_PERF_STATS
 		ret += std::string("Trackers run peak time usage (msec in one run): ") + int2str(impl->runTimePeak);
 		ret += std::string("\r\n");
 		ret += std::string("Trackers run avg time usage (msec in one second): ") + int2str(impl->runTimeAvg);

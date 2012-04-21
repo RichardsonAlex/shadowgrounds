@@ -50,7 +50,7 @@ namespace game
 	AniManager *AniManagerImpl::instance = NULL;
 
 	namespace {
-		
+
 		struct AniTracker
 		{
 			AniTracker()
@@ -251,7 +251,7 @@ namespace game
 		}
 
 		// NEW: run one tick for all anis (to make sure they are at the end state
-		// when this call returns (so that cinematic scripts can assume the leap actually 
+		// when this call returns (so that cinematic scripts can assume the leap actually
 		// immediately runs the ani)
 		this->run();
 	}

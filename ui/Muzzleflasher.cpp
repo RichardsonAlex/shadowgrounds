@@ -13,7 +13,7 @@
 namespace ui
 {
 
-	void Muzzleflasher::createMuzzleflash(IPointableObject *unit, 
+	void Muzzleflasher::createMuzzleflash(IPointableObject *unit,
 		VisualObject *muzzleflash, const std::string &name, const std::string &helper)
 	{
 		// WARNING: unsafe cast!
@@ -23,7 +23,7 @@ namespace ui
 		vo->combine(muzzleflash, name.c_str(), helper.c_str());
 	}
 
-	void Muzzleflasher::createMuzzleflash(IPointableObject *unit, 
+	void Muzzleflasher::createMuzzleflash(IPointableObject *unit,
 		VisualObject *muzzleflash, int muzzleFlashBarrelNumber)
 	{
 		// WARNING: unsafe cast!

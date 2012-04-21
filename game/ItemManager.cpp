@@ -94,14 +94,14 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 					AABB bounding_box = item->getVisualObject()->getStormModel()->GetBoundingBox();
 					box_measurements = bounding_box.mmax - bounding_box.mmin;
 					box_measurements *= 0.5f;
-					
+
 					// item->getVisualObject()->getStormModel()->SetRotation();
 					// rotation = item->getVisualObject()->getStormModel()->GetRotation();
-					rotation = QUAT( 
-						UNIT_ANGLE_TO_RAD(item->getRotation().x), 
-						UNIT_ANGLE_TO_RAD(item->getRotation().y), 
+					rotation = QUAT(
+						UNIT_ANGLE_TO_RAD(item->getRotation().x),
+						UNIT_ANGLE_TO_RAD(item->getRotation().y),
 						UNIT_ANGLE_TO_RAD(item->getRotation().z) );
-					
+
 				}
 
 				// float mass = 1.0f;
@@ -110,11 +110,11 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 				physobj = new game::BoxPhysicsObject( physics, box_measurements, mass, collGroup, pos );
 				physobj->setRotation( rotation );
 			}
-			
+
 			if (physobj != NULL)
 			{
 				item->setGamePhysicsObject( physobj );
-				
+
 				/*if (ut->hasPhysicsObjectDisabledAngularVelocity())
 				{
 					physobj->disableAngularVelocity();
@@ -181,7 +181,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 			Logger::getInstance()->error("ItemManager::getItemTypeById - Item id number out of range.");
 			fb_assert(!"ItemManager::getItemTypeById - Item id number out of range.");
 			return NULL;
-		}		
+		}
 	}
 
 
@@ -252,7 +252,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 				vo->setInScene(true);
 				vo->setVisible(true);
 			}
-			
+
 			VC3 itempos = position;
 			if (itemTypes[itemId].isWeaponType())
 			{
@@ -261,7 +261,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 			}
 			item->setPosition(itempos);
 
-			
+
 			{
 				item->setHighlightStyle( itemTypes[itemId].getHighlightStyle() );
 				item->setHighlightText( itemTypes[itemId].getHighlightText() );
@@ -289,7 +289,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 				createPhysicsForItem( item, game->getGamePhysics(), type->getPhysicsMass() );
 			}
 		}
-#endif	
+#endif
 	}
 
 	void ItemManager::setListener( IItemListener* listener )
@@ -345,7 +345,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 		fb_assert(itemname != NULL);
 
 		if (itemTypes == NULL)
-			loadItemTypes();		
+			loadItemTypes();
 
 		// TODO: this is not very effective, but on the other hand
 		// this is not meant to be called very often.
@@ -579,7 +579,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 
 		if (itemType == NULL)
 		{
-			Logger::getInstance()->warning("ItemManager::getNearestItemOfType - Null itemType parameter given.");	
+			Logger::getInstance()->warning("ItemManager::getNearestItemOfType - Null itemType parameter given.");
 			fb_assert(!"ItemManager::getNearestItemOfType - Null itemType parameter given.");
 			return NULL;
 		}
@@ -637,7 +637,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 			Item *item = iter.iterateNext();
 
 			if(game->gameMap->colorMap)
-			{				
+			{
 				VisualObject *vo = item->getVisualObject();
 				if (vo != NULL)
 				{
@@ -835,7 +835,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 						}
 						lineok = true;
 					}
-					
+
 				} else {
 					char *l = sp.getLine();
 					if (strcmp(l, "item") == 0)
@@ -869,10 +869,10 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 				{
 					sp.error("ItemManager - Unknown command or bad key/value pair.");
 				}
-			}				
+			}
 		}	else {
 			Logger::getInstance()->error("ItemManager - Failed to load item types.");
-		}		
+		}
 	}
 
 
@@ -893,7 +893,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 		// effect some ticks later on, thus, may be invalid by the
 		// time we get there!
 		// therefore, the executeUnit pointer should never be directly
-		// used to access the unit, just to compare if some given unit		
+		// used to access the unit, just to compare if some given unit
 		// pointer matches that pointer.
 
 		this->executeUnit = unit;
@@ -1097,7 +1097,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 	void ItemManager::spawnItem(ItemSpawner *spawner)
 	{
 		VC3 pos;
-		
+
 		// try different positions
 		for(int i = 0; i < 10; i++)
 		{
@@ -1122,7 +1122,7 @@ void createPhysicsForItem( Item* item, GamePhysics* physics, float mass )
 				spawner->spawned_item->spawner = spawner;
 
 #ifndef PHYSICS_NONE
-				if( game::SimpleOptions::getBool( DH_OPT_B_PHYSICS_ENABLED ) ) 
+				if( game::SimpleOptions::getBool( DH_OPT_B_PHYSICS_ENABLED ) )
 				{
 					enablePhysics( spawner->spawned_item, spawner->item_id );
 				}

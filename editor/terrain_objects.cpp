@@ -976,7 +976,7 @@ struct TerrainObjectsData
 			}
 		}
 
-		// HACK: 
+		// HACK:
 		// if no terrain objects were missing, get rid of the useless file... --jpk
 		std::string delFileName = "missing_terrainobjects_";
 		delFileName += mission_id_global;

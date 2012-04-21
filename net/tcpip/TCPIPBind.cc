@@ -35,7 +35,7 @@ namespace net
       {
         c->unbind();
         delete c;
-      } 
+      }
     }
 
 
@@ -81,7 +81,7 @@ namespace net
       return TCPIPBIND_MAX_BACKLOG;
     }
 
- 
+
     void TCPIPBind::unbind()
       throw (NetDriverException*)
     {

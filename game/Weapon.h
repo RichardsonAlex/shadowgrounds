@@ -26,7 +26,7 @@ namespace game
     virtual Part *getNewPartInstance();
 
     Bullet *getBulletType() const;
-  
+
     AmmoPack *getAmmoType() const;
 
     const char *getFireSound() const;
@@ -34,19 +34,19 @@ namespace game
     const char *getRepeatSound() const;
 
     const char *getPrepareFireSound() const;
- 
+
     int getHeatGeneration() const;
-  
+
     int getPowerUsage() const;
-  
+
     int getAmmoUsage() const;
-  
+
     int getMinAmmoForUsage() const;
 
     int getWalkStopTime() const;
-  
+
     int getWalkStopAtPhase() const;
-  
+
     int getFireReloadTime() const;
 
     int getFireWaitTime() const;
@@ -292,7 +292,7 @@ namespace game
     Bullet *continuousFireBulletType;
 		int continuousFireTime;
 
-		int sweepAngle; 
+		int sweepAngle;
 
 		int rechargeMinTime;
 		int rechargePeakTime;

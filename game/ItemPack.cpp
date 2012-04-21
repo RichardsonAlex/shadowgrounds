@@ -35,12 +35,12 @@ namespace game
   void ItemPack::prepareNewForInherit(PartType *partType)
   {
     this->PartType::prepareNewForInherit(partType);
-    
+
     // WARNING!
     // TODO: should really check that the given parameter is of class!
     ItemPack *ret = (ItemPack *)partType;
 
-    ret->amount = amount;    
+    ret->amount = amount;
   }
 
 	void ItemPack::saveOriginals()

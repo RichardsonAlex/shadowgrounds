@@ -52,18 +52,18 @@ namespace ui
     win = ogui->CreateSimpleWindow(0, 0, 1024, 768, "Data/GUI/Windows/storagewindow.dds");
     win->Hide();
 
-    closeBut = ogui->CreateSimpleTextButton(win, 800, 695, 200, 50, 
-      "Data/Buttons/storageexit.tga", "Data/Buttons/storageexit_down.tga", 
+    closeBut = ogui->CreateSimpleTextButton(win, 800, 695, 200, 50,
+      "Data/Buttons/storageexit.tga", "Data/Buttons/storageexit_down.tga",
       "Data/Buttons/storageexit_highlight.tga", "Exit", STORAGEW_EXIT);
     closeBut->SetListener(this);
 
-    buyBut = ogui->CreateSimpleTextButton(win, 800, 595, 200, 50, 
-      "Data/Buttons/purchase1.tga", "Data/Buttons/purchase1_down.tga", 
+    buyBut = ogui->CreateSimpleTextButton(win, 800, 595, 200, 50,
+      "Data/Buttons/purchase1.tga", "Data/Buttons/purchase1_down.tga",
       "Data/Buttons/purchase1_highlight.tga", "Buy", STORAGEW_BUY);
     buyBut->SetListener(this);
 
-    sellBut = ogui->CreateSimpleTextButton(win, 800, 645, 200, 50, 
-      "Data/Buttons/purchase1.tga", "Data/Buttons/purchase1_down.tga", 
+    sellBut = ogui->CreateSimpleTextButton(win, 800, 645, 200, 50,
+      "Data/Buttons/purchase1.tga", "Data/Buttons/purchase1_down.tga",
       "Data/Buttons/purchase1_highlight.tga", "Sell", STORAGEW_SELL);
     sellBut->SetListener(this);
 
@@ -86,10 +86,10 @@ namespace ui
     partTypeSelectImage = NULL; //ogui->LoadOguiImage("Data/Pictures/Parts/unitselect1.tga");
     partTypeSelectActiveImage = ogui->LoadOguiImage("Data/GUI/Buttons/parttypeselect_active.tga");
     partTypeSelectDisabledImage = NULL; //ogui->LoadOguiImage("Data/Pictures/Parts/unitselect3.tga");
-    partTypeSelectStyle = new OguiButtonStyle(partTypeSelectImage, 
+    partTypeSelectStyle = new OguiButtonStyle(partTypeSelectImage,
       partTypeSelectActiveImage, partTypeSelectDisabledImage, partTypeSelectImage,
       defaultFont, 116, 80);
-    partTypeSelectActiveStyle = new OguiButtonStyle(partTypeSelectActiveImage, 
+    partTypeSelectActiveStyle = new OguiButtonStyle(partTypeSelectActiveImage,
       partTypeSelectActiveImage, partTypeSelectDisabledImage, partTypeSelectActiveImage,
       defaultFont, 116, 80);
 
@@ -164,7 +164,7 @@ namespace ui
     delete buttons;
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-    
+
     // TODO: delete stuff!!!
 
     // !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -199,8 +199,8 @@ namespace ui
     }
     if (partType != NULL)
     {
-      descriptionArea = 
-        ogui->CreateTextArea(win, 128, 550, 490, 200, 
+      descriptionArea =
+        ogui->CreateTextArea(win, 128, 550, 490, 200,
         partType->getDescription());
     }
     if (partType != NULL && partType->getVisual2D() != NULL)
@@ -243,17 +243,17 @@ namespace ui
       moneyValText = NULL;
     }
 
-    moneyText = ogui->CreateTextLabel(win, 800, 514, 200, 20, 
+    moneyText = ogui->CreateTextLabel(win, 800, 514, 200, 20,
       "Money:");
     moneyText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
-    moneyValText = ogui->CreateTextLabel(win, 800, 530, 200, 20, 
+    moneyValText = ogui->CreateTextLabel(win, 800, 530, 200, 20,
       int2str(game->money[player]));
     moneyValText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_RIGHT);
 
     // add parttype selection buttons
     OguiButton *b;
 
-    b = ogui->CreateSimpleTextButton(win, 103 + 0 * 116, 4, 
+    b = ogui->CreateSimpleTextButton(win, 103 + 0 * 116, 4,
       116, 80, NULL, NULL, NULL, "Torso", STORAGEW_PARTTYPE, "Tors");
     if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Tors")))
       b->SetStyle(partTypeSelectActiveStyle);
@@ -262,7 +262,7 @@ namespace ui
     b->SetListener(this);
     buttons->append(b);
 
-    b = ogui->CreateSimpleTextButton(win, 103 + 1 * 116, 4, 
+    b = ogui->CreateSimpleTextButton(win, 103 + 1 * 116, 4,
       116, 80, NULL, NULL, NULL, "Head", STORAGEW_PARTTYPE, "Head");
     if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Head")))
       b->SetStyle(partTypeSelectActiveStyle);
@@ -271,7 +271,7 @@ namespace ui
     b->SetListener(this);
     buttons->append(b);
 
-    b = ogui->CreateSimpleTextButton(win, 103 + 2 * 116, 4, 
+    b = ogui->CreateSimpleTextButton(win, 103 + 2 * 116, 4,
       116, 80, NULL, NULL, NULL, "Arm", STORAGEW_PARTTYPE, "Arm");
     if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm")))
       b->SetStyle(partTypeSelectActiveStyle);
@@ -280,7 +280,7 @@ namespace ui
     b->SetListener(this);
     buttons->append(b);
 
-    b = ogui->CreateSimpleTextButton(win, 103 + 3 * 116, 4, 
+    b = ogui->CreateSimpleTextButton(win, 103 + 3 * 116, 4,
       116, 80, NULL, NULL, NULL, "Leg", STORAGEW_PARTTYPE, "Leg");
     if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg")))
       b->SetStyle(partTypeSelectActiveStyle);
@@ -289,7 +289,7 @@ namespace ui
     b->SetListener(this);
     buttons->append(b);
 
-    b = ogui->CreateSimpleTextButton(win, 103 + 4 * 116, 4, 
+    b = ogui->CreateSimpleTextButton(win, 103 + 4 * 116, 4,
       116, 80, NULL, NULL, NULL, "Weapon", STORAGEW_PARTTYPE, "Weap");
     if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap")))
       b->SetStyle(partTypeSelectActiveStyle);
@@ -298,7 +298,7 @@ namespace ui
     b->SetListener(this);
     buttons->append(b);
 
-    b = ogui->CreateSimpleTextButton(win, 103 + 5 * 116, 4, 
+    b = ogui->CreateSimpleTextButton(win, 103 + 5 * 116, 4,
       116, 80, NULL, NULL, NULL, "Misc", STORAGEW_PARTTYPE, "Pack");
     if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Pack")))
       b->SetStyle(partTypeSelectActiveStyle);
@@ -326,7 +326,7 @@ namespace ui
     while (avail->iterateAvailable())
     {
       PartType *pt = avail->iterateNext();
-      
+
       // PartType *secondPartType = NULL;
       //if (partType == getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Pack")))
       //  PartType *secondPartType = getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Reac"))
@@ -335,11 +335,11 @@ namespace ui
       // TODO: this is limited to part type's grand grand parent!
       // need to check further...
       /*
-      if ((pt == partType 
-        || pt->getParentType() == partType 
-        || (pt->getParentType() != NULL 
+      if ((pt == partType
+        || pt->getParentType() == partType
+        || (pt->getParentType() != NULL
         && (pt->getParentType()->getParentType() == partType
-        || (pt->getParentType()->getParentType() != NULL 
+        || (pt->getParentType()->getParentType() != NULL
         && pt->getParentType()->getParentType()->getParentType() == partType))))
         && (pt->getLevel() & levelMask) != 0
         && partType != NULL)
@@ -365,20 +365,20 @@ namespace ui
         }
 
         // slot type is parent or grandparent of the parttype in list
-        selectList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
-          pt->getName());        
+        selectList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
+          pt->getName());
 
         // TODO: add "(damaged)" after a damaged part's name
 
-        storageAmountList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
+        storageAmountList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
           int2str(storageAmount));
         const char *tmp = "";
         if (storageAmount > 0) tmp = int2str((pt->getPrice() / 2) - lowestRepairPrice);
-        sellPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
+        sellPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
           tmp);
         tmp = "";
         tmp = int2str(pt->getPrice());
-        buyPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
+        buyPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
           tmp);
       }
     }
@@ -438,7 +438,7 @@ namespace ui
 
       /*
       if (infoPartType != NULL)
-      { 
+      {
         if (game->money[player] >= infoPartType->getPrice())
         {
           game->money[player] -= infoPartType->getPrice();
@@ -465,7 +465,7 @@ namespace ui
 
       /*
       if (infoPartType != NULL)
-      { 
+      {
         // check how much we have these in storage...
         int storageAmount = 0;
         int lowestRepairPrice = 999999;
@@ -535,7 +535,7 @@ namespace ui
           // (...not needed maybe - does not affect game state?)
 
           if (infoPartType != NULL)
-          { 
+          {
             if (game->money[player] >= infoPartType->getPrice())
             {
               game->money[player] -= infoPartType->getPrice();
@@ -554,7 +554,7 @@ namespace ui
           // (...not needed maybe - does not affect game state?)
 
           if (infoPartType != NULL)
-          { 
+          {
             // check how much we have these in storage...
             int storageAmount = 0;
             int lowestRepairPrice = 999999;

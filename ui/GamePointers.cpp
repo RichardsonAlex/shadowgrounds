@@ -1,7 +1,7 @@
 
 #include "precompiled.h"
 
-// UNPREFERRED DEPENDENCY! 
+// UNPREFERRED DEPENDENCY!
 // (due to directly modifying the visualobject models)
 #include <Storm3D_UI.h>
 
@@ -114,12 +114,12 @@ namespace ui
 						{
               mat->SetColor(Color(0.1f, 0.93f, 0.8f));
               mat->SetSelfIllumination(Color(0.1f, 0.1f, 1.0f));
-						} 
+						}
             else if (i == GPOINTER_SNEAKPOINT || i == GPOINTER_UNSEL_SNEAKPOINT)
 						{
               mat->SetColor(Color(0.8f, 0.93f, 0.1f));
               mat->SetSelfIllumination(Color(1.0f, 1.0f, 0.1f));
-						} 
+						}
             else if (i == GPOINTER_TARGET || i == GPOINTER_GROUNDTARGET
               || i == GPOINTER_ENEMY
 							|| i == GPOINTER_UNSEL_TARGET || i == GPOINTER_UNSEL_GROUNDTARGET
@@ -184,7 +184,7 @@ namespace ui
   }
 
 
-  void GamePointers::addPointer(const VC3 &position, int pointerType, 
+  void GamePointers::addPointer(const VC3 &position, int pointerType,
     const IPointableObject *lockedTo, const IPointableObject *lineFrom,
 		float maxDistance)
   {
@@ -251,7 +251,7 @@ namespace ui
 			unsigned int alpha = 0x80000000;
 			unsigned int color = 0x00000000;
 			float thickness = 0.4f;
-      if (pointerType == GPOINTER_UNSEL_TARGET 
+      if (pointerType == GPOINTER_UNSEL_TARGET
 				|| pointerType == GPOINTER_UNSEL_GROUNDTARGET
 				|| pointerType == GPOINTER_UNSEL_FINALPOINT
 				|| pointerType == GPOINTER_UNSEL_SNEAKPOINT
@@ -267,13 +267,13 @@ namespace ui
 				|| pointerType == GPOINTER_UNSEL_SNEAKPOINT)
 			{
 				color = 0x00ccee00;
-			} 
+			}
       else if (pointerType == GPOINTER_SPRINTPOINT
 				|| pointerType == GPOINTER_UNSEL_SPRINTPOINT)
 			{
 				color = 0x0000eecc;
 			}
-      else if (pointerType == GPOINTER_TARGET 
+      else if (pointerType == GPOINTER_TARGET
 				|| pointerType == GPOINTER_GROUNDTARGET
 				|| pointerType == GPOINTER_HOSTILE_SIGHT
 				|| pointerType == GPOINTER_UNSEL_TARGET
@@ -294,7 +294,7 @@ namespace ui
 			for (float p = 0; p < dist; p += 1.0f)
 			{
 				VC3 pmid = startPos + (distVector * (p / dist));
-				pmid.y = gameScene->getGameMap()->getScaledHeightAt(pmid.x, pmid.z) 
+				pmid.y = gameScene->getGameMap()->getScaledHeightAt(pmid.x, pmid.z)
 					+ 0.3f;
 				if (split)
 					gp->outRangeLineObject->AddPoint(pmid);

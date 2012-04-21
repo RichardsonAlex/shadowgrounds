@@ -88,7 +88,7 @@ namespace {
 			{
 				// ignore these mission directories -jpk
 #ifdef LEGACY_FILES
-				if (fileName  != "Common" 
+				if (fileName  != "Common"
 					&& fileName != "CVS"
 					&& fileName != ".svn"
 					&& fileName != "MissionMenu"
@@ -97,7 +97,7 @@ namespace {
 					sharedData.fileNames.push_back(missionFolder + fileName);
 				}
 #else
-				if (fileName != "common" 
+				if (fileName != "common"
 					&& fileName != "CVS"
 					&& fileName != ".svn"
 					&& fileName != "missionmenu"
@@ -226,7 +226,7 @@ namespace {
 			for(unsigned int i = 0; i < mission_name.length(); ++i)
 				mission_name[i] = tolower(mission_name[i]);
 
-			std::string mission_folder = getMissionFolder(exporter_dialog); 
+			std::string mission_folder = getMissionFolder(exporter_dialog);
 			std::string mission_file = mission_folder + mission_name + "\\" + mission_name + ".dhm";
 			if(fileExists(mission_file))
 			{

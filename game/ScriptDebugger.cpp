@@ -32,7 +32,7 @@ namespace game
       if (remove(namebuf) != 0)
         deleteMore = false;
       i++;
-    }    
+    }
   }
 
   void ScriptDebugger::run(GameScripting *gs)

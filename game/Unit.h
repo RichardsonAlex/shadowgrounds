@@ -92,7 +92,7 @@ namespace game
 	 *
 	 */
 
-	class Unit : public GameObject, public ui::IPointableObject, 
+	class Unit : public GameObject, public ui::IPointableObject,
 		public ui::IVisualObjectData, public ui::IAnimatable,
 		public util::ITrackable
 	{
@@ -178,7 +178,7 @@ namespace game
 			FireTypeAll = 4,
 		};
 
-		/** 
+		/**
 		 * Base class initialization.
 		 * Usually you should create instances of subclasses, not this class.
 		 */
@@ -187,7 +187,7 @@ namespace game
 
 		virtual ~Unit();
 
-		/** 
+		/**
 		 * TODO!
 		 * To implement GameObject "interface" class.
 		 * Should return the SaveData object containing all necessary
@@ -200,10 +200,10 @@ namespace game
 
 		virtual void *getVisualObjectDataId() const;
 
-		/** 
+		/**
 		 * This method is here to implement IPointerObject interface.
 		 * That allows the units to be tracked by the 3d game pointers.
-		 * (For targeting enemy units and marking selected units.) 
+		 * (For targeting enemy units and marking selected units.)
 		 * @return VC3, the world position where any pointer tracking this
 		 * unit should be placed.
 		 */
@@ -219,15 +219,15 @@ namespace game
 		 */
 		Part *getRootPart() const;
 
-		/** 
+		/**
 		 * Set the root part of the unit (armor's root is usually a torso).
 		 * Before setting a part as a part of the unit, the part should have
 		 * been removed from the players storage list (that is, if it was
 		 * previously put there). Also, proper handling of the previous
-		 * root part (and it's children) should be done before setting a new 
+		 * root part (and it's children) should be done before setting a new
 		 * root part. Set to NULL if you don't want the unit to have any parts.
 		 * Generally it is a better idea to use ready made methods for handling
-		 * unit parts than to modify them directly (see Game::detachParts method). 
+		 * unit parts than to modify them directly (see Game::detachParts method).
 		 * @param part	Part* to be set as this units root part.
 		 * @see Game::detachParts
 		 */
@@ -236,8 +236,8 @@ namespace game
 		/**
 		 * Get the character assigned to this unit.
 		 * For human player armors, this is the mercenary inside the armor.
-		 * If a human owned armor has no character, it should not take part in 
-		 * combat. 
+		 * If a human owned armor has no character, it should not take part in
+		 * combat.
 		 * @return Character*, the character assigned to this unit or NULL if none.
 		 */
 		Character *getCharacter() const;
@@ -245,7 +245,7 @@ namespace game
 		/**
 		 * Set the character for this unit.
 		 * For human player armors, this is the mercenary inside the armor.
-		 * If a human owned armor has no character, it should not take part in 
+		 * If a human owned armor has no character, it should not take part in
 		 * combat. Remember to handle the previous character properly before
 		 * assigning a new one (as otherwise you may leak memory).
 		 * @return Character*, the character assigned to this unit or NULL if
@@ -253,9 +253,9 @@ namespace game
 		 */
 		void setCharacter(Character *character);
 
-		/** 
+		/**
 		 * Returns player owning this unit (who's side this unit is on)
-		 * @return int, the number of the player owning this unit or 
+		 * @return int, the number of the player owning this unit or
 		 * NO_UNIT_OWNER if none.
 		 */
 		//int getOwner();
@@ -264,11 +264,11 @@ namespace game
 			return owner;
 		}
 
-		/** 
+		/**
 		 * Tells whether this unit is in the combat or not.
-		 * May be out of the game for injury, not having a character or 
+		 * May be out of the game for injury, not having a character or
 		 * having an incomplete armor, etc.
-		 * @return boolean, true if unit is active (can take part in combat), 
+		 * @return boolean, true if unit is active (can take part in combat),
 		 * else false.
 		 */
 		inline bool isActive() const
@@ -276,72 +276,72 @@ namespace game
 			return active;
 		}
 
-		/** 
+		/**
 		 * Sets the unit active or inactive.
 		 * Do NOT change while in combat. Change only while in menus (before
-		 * or after combat). 
+		 * or after combat).
 		 * @param active	bool, true if the unit can take part in combat,
 		 * false if the unit won't take part in combat.
 		 */
 		void setActive(bool active);
 
-		/** 
+		/**
 		 * Returns true if this unit is one of the selected units.
 		 * @return bool, true if unit is selected, else false.
 		 */
 		bool isSelected() const;
 
-		/** 
+		/**
 		 * Sets the unit selected or unselected.
 		 * @param selected	bool, true if unit is selected, false if not.
 		 */
 		void setSelected(bool selected);
 
-		/** 
+		/**
 		 * Returns unit's current behaviour mode.
 		 * @return UNIT_MODE, the unit's behaviour mode.
 		 */
 		UNIT_MODE getMode() const;
 
-		/** 
+		/**
 		 * Returns the overall heat of the unit.
 		 * @return int, the unit's heat.
 		 */
 		int getHeat() const;
 
-		/** 
+		/**
 		 * Returns the maximum overall heat.
 		 * @return int, the unit's max heat.
 		 */
 		int getMaxHeat() const;
 
-		/** 
+		/**
 		 * Returns the energy of the unit.
 		 * @return int, the unit's energy.
 		 */
 		int getEnergy() const;
 
-		/** 
+		/**
 		 * Returns the cooling amount of the unit.
 		 * @return int, the unit's cooling amount (done every coolrate ticks).
 		 */
 		int getCoolingAmount() const;
 
-		/** 
+		/**
 		 * Returns the recharging amount of the unit.
 		 * @return int, the unit's recharging amount (done every rechargerate ticks).
 		 */
 		int getRechargingAmount() const;
 
-		/** 
+		/**
 		 * Returns the max energy of the unit.
-		 * (may have lowered since the beginning of the combat because of 
+		 * (may have lowered since the beginning of the combat because of
 		 * damage inflicted to power cells.)
 		 * @return int, the unit's current max energy.
 		 */
 		int getMaxEnergy() const;
 
-		/** 
+		/**
 		 * Returns the starting max energy of the unit.
 		 * @return int, the max energy of the unit at the start of the combat.
 		 */
@@ -355,7 +355,7 @@ namespace game
 		 */
 		void calculateMaxEnergy();
 
-		/** 
+		/**
 		 * Set start energy (set based on max energy on combat start-up).
 		 * That is, first calculateMaxEnery(), then setStartEnergy(getMaxEnergy())
 		 * @param startEnergy  int, the energy the unit has at the beginning of combat
@@ -368,7 +368,7 @@ namespace game
 		 */
 		void setEnergy(int energy);
 
-		/** 
+		/**
 		 * Set heat
 		 * @param heat	int, amount of heat
 		 */
@@ -391,7 +391,7 @@ namespace game
 
 		/**
 		 * TODO: should calculate based on parts?
-		 * set max heat 
+		 * set max heat
 		 * @param maxHeat  int, maximum heat for the unit.
 		 */
 		//void setMaxHeat(int maxHeat);
@@ -412,7 +412,7 @@ namespace game
 
 		void setUnitMirrorSide(bool mirrorSide);
 
-		/** 
+		/**
 		 * Sets the unit's behaviour mode.
 		 * @param mode	UNIT_MODE, unit's mode.
 		 */
@@ -442,18 +442,18 @@ namespace game
 		inline void setVelocity(const VC3 &velocity) { assert(velocity.y >= -2.0f && velocity.y <= 2.0f); this->velocity = velocity; }
 
 		/**
-		 * Sets waypoint position for the unit. 
+		 * Sets waypoint position for the unit.
 		 * Waypoint coordinates unit (x, y, z) = map (x, height, y).
 		 */
 		inline void setWaypoint(const VC3 &waypoint) { this->waypoint = waypoint; }
 		
 		/**
-		 * Sets final destination position for the unit. 
+		 * Sets final destination position for the unit.
 		 * Destination coordinates unit (x, y, z) = map (x, height, y).
 		 */
-		inline void setFinalDestination(const VC3 &finalDestination) 
-		{ 
-			this->finalDestination = finalDestination; 
+		inline void setFinalDestination(const VC3 &finalDestination)
+		{
+			this->finalDestination = finalDestination;
 		}
 
 		/**
@@ -551,7 +551,7 @@ namespace game
 
 		inline int getWalkDelay() const
 		{
-			return walkDelay; 
+			return walkDelay;
 		}
 		void setWalkDelay(int delayTicks);
 		inline int getFireReloadDelay(unsigned int weapon) const
@@ -563,7 +563,7 @@ namespace game
 		inline int getFireWaitDelay(unsigned int weapon) const
 		{
 			assert(weapon < UNIT_MAX_WEAPONS);
-			return fireWaitDelay[weapon]; 
+			return fireWaitDelay[weapon];
 		}
 		void setFireWaitDelay(unsigned int weapon, int delayTicks);
 
@@ -602,7 +602,7 @@ namespace game
 		// returns false if was out of ammo
 		bool useWeaponAmmo(unsigned int weapon);
 
-		// returns false, if no reload was done 
+		// returns false, if no reload was done
 		// (out of ammo or clip already full)
 		bool reloadWeaponAmmoClip(unsigned int weapon, bool instantReload = false);
 
@@ -1185,7 +1185,7 @@ namespace game
 		bool increaseEjectRateCounter(int maxValue);
 
 
-		// --- FOR UNITACTOR's USE... 
+		// --- FOR UNITACTOR's USE...
 		// (optimization, trying to avoid unnecessary float->int casts)
 		int obstacleX;
 		int obstacleY;
@@ -1640,7 +1640,7 @@ namespace game
 		float physicsObjectDifference;
 		bool physicsObjectLock;
 
-		// for survivors snow levels 
+		// for survivors snow levels
 		float visualizationOffsetInterpolation;
 		static float visualizationOffset;
 		static bool visualOffsetInUse;

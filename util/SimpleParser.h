@@ -37,9 +37,9 @@ namespace util
      * Loads a memory buffer into the parser.
      */
     void loadMemoryBuffer(const char *buffer, int length);
-    
+
     /**
-     * Moves to next line. 
+     * Moves to next line.
      * After loading a file, the position is set before the first line.
      * Should call this once before getting any values.
      * @return  bool, true if line is available, false if no more lines.
@@ -49,7 +49,7 @@ namespace util
     /**
      * Returns the key at current position. NULL is returned if the
      * line has no key - or in other words, if no equal sign on that line.
-     * If there is no equal sign at the line, you must use getLine to 
+     * If there is no equal sign at the line, you must use getLine to
      * get the whole line if you want to know what the line contains.
      * @return  char*, key at current position or NULL if line has no key.
      */
@@ -65,7 +65,7 @@ namespace util
     /**
      * Return the int value at curret position.
      * If the line has no equal sign, value being returned is undefined.
-     * (Hint: its really zero, but to do it properly, use getKey to 
+     * (Hint: its really zero, but to do it properly, use getKey to
      * check that the equal sign exists)
      */
     int getIntValue();
@@ -86,7 +86,7 @@ namespace util
      * Notice: value will be off by one when the file has *nix line breaks
      * (lf only) instead of having DOS line breaks (cr+lf).
      */
-    int getLineNumber(); 
+    int getLineNumber();
 
     /**
      * Used by the class internally, but can also be used by other classes

@@ -13,13 +13,13 @@
 namespace game
 {
 	/**
-	 * Script variable defining the game state. 
+	 * Script variable defining the game state.
 	 * Game state can be used to flag all sorts of game events.
 	 * A successfull mission may for example set a specific gamestate
-	 * variable and later some other mission may appear different 
+	 * variable and later some other mission may appear different
 	 * based on that gamestate. Gamestate variables should be preserved
 	 * by save and load.
-	 * 
+	 *
    * @version 1.0, 13.3.2003
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
 	 * @see GameStateVariable

@@ -99,10 +99,10 @@ struct AmbientSoundManagerData {
 		m_sounds[sel].disable(immediately, m_soundLooper);
 	}
 
-	void run() 
+	void run()
 	{
 		std::map< int, AmbientSound >::iterator it = m_sounds.begin();
-		while(it != m_sounds.end()) 
+		while(it != m_sounds.end())
 		{
 			it->second.tick(m_gameUI, m_soundLooper, m_listenerPosition);
 			it++;
@@ -141,7 +141,7 @@ void AmbientSoundManager::setNextFreeAmbientSound()
 	{
 		bool usedAlready = false;
 		std::map<int, AmbientSound>::iterator it = m->m_sounds.begin();
-		while(it != m->m_sounds.end()) 
+		while(it != m->m_sounds.end())
 		{
 			if (it->first == i)
 			{
@@ -224,7 +224,7 @@ int AmbientSoundManager::getAmbientSoundNumberByName(const char *name)
 	int ret = -1;
 
 	std::map<int, AmbientSound>::iterator it = m->m_sounds.begin();
-	while(it != m->m_sounds.end()) 
+	while(it != m->m_sounds.end())
 	{
 		if (it->second.getName() != NULL
 			&& strcmp(it->second.getName(), name) == 0)

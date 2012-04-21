@@ -32,7 +32,7 @@
 #include "resource.h"
 
 #include <commctrl.h>
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/stat.h>
 
 using namespace game;

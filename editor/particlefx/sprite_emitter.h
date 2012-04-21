@@ -41,7 +41,7 @@ public:
 
 struct FloatTrackData;
 class FloatTrack {
-	ScopedPtr<FloatTrackData> m; 
+	ScopedPtr<FloatTrackData> m;
 public:
 	FloatTrack();
 	~FloatTrack();
@@ -56,7 +56,7 @@ public:
 
 struct VectorTrackData;
 class VectorTrack {
-	ScopedPtr<VectorTrackData> m; 
+	ScopedPtr<VectorTrackData> m;
 public:
 	VectorTrack();
 	~VectorTrack();
@@ -260,7 +260,7 @@ public:
 	
 	float setGravity(float f);
 
-	void addEmitter(SharedPtr<EmitterDesc> emitter, 
+	void addEmitter(SharedPtr<EmitterDesc> emitter,
 		SharedPtr<ParticleDesc> particle);
 
 	int getNumEmitters();
@@ -396,7 +396,7 @@ public:
 
 	void loadTexture(const std::string& name, const std::string& path, IStorm3D* s3d);
 	
-	virtual bool tick(IStorm3D_Scene* scene, const Matrix& tm, 
+	virtual bool tick(IStorm3D_Scene* scene, const Matrix& tm,
 		const Vector& velocity, int timeDif);	
 	
 	virtual void render(IStorm3D_Scene* scene);

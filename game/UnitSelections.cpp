@@ -27,7 +27,7 @@ namespace game
     LinkedList<Unit*> *ulist = unitList->getOwnedUnits(player);
     LinkedListIterator<Unit*> iter(ulist);
     while (iter.iterateAvailable())
-    { 
+    {
       Unit *u = iter.iterateNext();
       if (u->isSelected())
       {
@@ -71,7 +71,7 @@ namespace game
     LinkedList<Unit*> *ulist = unitList->getOwnedUnits(player);
     LinkedListIterator<Unit*> iter(ulist);
     while (iter.iterateAvailable())
-    { 
+    {
       Unit *u = iter.iterateNext();
 			if (u->isActive())
 			{
@@ -89,6 +89,6 @@ namespace game
 			}
     }
   }
- 
+
 }
 

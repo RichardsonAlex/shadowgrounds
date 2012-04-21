@@ -11,10 +11,10 @@ namespace game
 	class Game;
 }
 
-namespace ui 
+namespace ui
 {
 
-class LogManager 
+class LogManager
 {
 public:
 	LogManager();

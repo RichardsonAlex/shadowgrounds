@@ -41,13 +41,13 @@ namespace {
 }
 
 
-SprayParticleSystem::SprayParticleSystem() 
+SprayParticleSystem::SprayParticleSystem()
 {
 }
 
 boost::shared_ptr<IParticleSystem> SprayParticleSystem::createNew() {
 	SprayParticleSystem* ps = new SprayParticleSystem();
-	boost::shared_ptr<IParticleSystem> ptr(ps); 
+	boost::shared_ptr<IParticleSystem> ptr(ps);
 	boost::shared_ptr<SprayParticleSystemEditables> eds(new SprayParticleSystemEditables);
 	ps->m_eds.swap(eds);
 	return ptr;

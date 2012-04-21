@@ -72,9 +72,9 @@ public:
   void warning(const char *msg);
   void error(const char *msg);
 
-  // sets a listener object 
+  // sets a listener object
   // (if you want to forward the logged messages to some other object too)
-  // the message forwarded may or may not contain level info before the 
+  // the message forwarded may or may not contain level info before the
   // actual message. (probably will change over time)
   void setListener(ILoggerListener *listener);
 

@@ -126,7 +126,7 @@ namespace ui
 
 		int curTime = Timer::getTime();
 		int timeDiff = curTime - lastTime;
-		if (timeDiff > 100) 
+		if (timeDiff > 100)
 		{
 			timeDiff = 100;
 			lastTime = curTime;
@@ -153,10 +153,10 @@ namespace ui
 		/*
 		VC3 posDiffVector = position - lastPosition;
 		VC3 posDiffVectorRotated = VC3(
-			posDiffVector.x * cosf(UNIT_ANGLE_TO_RAD(rotAngle)) 
+			posDiffVector.x * cosf(UNIT_ANGLE_TO_RAD(rotAngle))
 			+ posDiffVector.z * sinf(UNIT_ANGLE_TO_RAD(rotAngle)),
 			0,
-			posDiffVector.x * sinf(UNIT_ANGLE_TO_RAD(rotAngle)) 
+			posDiffVector.x * sinf(UNIT_ANGLE_TO_RAD(rotAngle))
 			+ posDiffVector.z * cosf(UNIT_ANGLE_TO_RAD(rotAngle)));
 		*/
 

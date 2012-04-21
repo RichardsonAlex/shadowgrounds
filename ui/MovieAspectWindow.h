@@ -9,7 +9,7 @@ namespace ui
   class BlackEdgeWindow;
 
   /**
-   * A window used just for creating a black areas at both top and bottom 
+   * A window used just for creating a black areas at both top and bottom
 	 * of the screen (approx. 16:9 movie effect - 2:1 to be precise).
    * @version 1.0, 30.12.2002
    * @author Jukka Kokkonen <jukka@frozenbyte.com>

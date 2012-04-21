@@ -14,7 +14,7 @@ namespace ui {
 
 class IngameGuiTabsImpl;
 
-class IngameGuiTabs 
+class IngameGuiTabs
 {
 public:
 	/*

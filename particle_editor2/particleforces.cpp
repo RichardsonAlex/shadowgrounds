@@ -147,22 +147,22 @@ int WindParticleForce::getType()
 	return windId;
 }
 
-void WindParticleForce::setWindEffectFactor(float f) 
+void WindParticleForce::setWindEffectFactor(float f)
 {
 	m_wind_effect_factor = f;
 }
 	
-float WindParticleForce::getWindEffectFactor() 
+float WindParticleForce::getWindEffectFactor()
 {
 	return m_wind_effect_factor;
 }
 
-void WindParticleForce::setSpiralAmount(float f) 
+void WindParticleForce::setSpiralAmount(float f)
 {
 	m_spiral_amount = f;
 }
 	
-float WindParticleForce::getSpiralAmount() 
+float WindParticleForce::getSpiralAmount()
 {
 	return m_spiral_amount;
 }
@@ -177,7 +177,7 @@ static float wind_timer_spiral_speed_cos = 0.0f;
 static float wind_timer_spiral_speed_sin = 0.0f;
 
 
-void WindParticleForce::setSpiralSpeed(float f) 
+void WindParticleForce::setSpiralSpeed(float f)
 {
 	m_spiral_speed = f;
 	wind_timer_spiral_speed_cos = cosf(wind_timer * m_spiral_speed);
@@ -185,17 +185,17 @@ void WindParticleForce::setSpiralSpeed(float f)
 	wind_timer_changed = false;
 }
 	
-float WindParticleForce::getSpiralSpeed() 
+float WindParticleForce::getSpiralSpeed()
 {
 	return m_spiral_speed;
 }
 
-void WindParticleForce::preCalc(float t) 
+void WindParticleForce::preCalc(float t)
 {
 }
 
 
-void WindParticleForce::calcForce(Vector &force, const Vector &pos, const Vector &vel) 
+void WindParticleForce::calcForce(Vector &force, const Vector &pos, const Vector &vel)
 {
 	force.x = global_wind_velocity * global_wind_angle_cos;
 	force.y = 0.0f;

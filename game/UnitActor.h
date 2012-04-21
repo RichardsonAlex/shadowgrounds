@@ -37,7 +37,7 @@ namespace game
 
 /**
  *
- * A class that moves units. 
+ * A class that moves units.
  * This is a baseclass for subclasses having actual implementations.
  * A proper subclass of this should be selected based on unit's type.
  * For example, an armor unit should be moved by the ArmorUnitActor class.
@@ -52,8 +52,8 @@ class UnitActor
 {
 public:
 
-  /** 
-   * Extending classes should implement this. 
+  /**
+   * Extending classes should implement this.
    * @param unit  Unit to move
    */
 	virtual void act(Unit *unit);
@@ -98,16 +98,16 @@ public:
 	// creates an eject effect for this unit, for given weapon
 	void createEject(Unit *unit, int weaponNumber);
 
-	UnitActor() : 
-		game( NULL ), 
-		movementParticleEffectCreationTime( 0 ), 
+	UnitActor() :
+		game( NULL ),
+		movementParticleEffectCreationTime( 0 ),
 		movementSoundEffectCreationTime( 0 ),
 		breathingParticleEffectCreationTime( 0 ),
 		forceFootStep(0)
 	{ }
 
-	virtual ~UnitActor() 
-	{ 
+	virtual ~UnitActor()
+	{
 	// nop
 	}
 
@@ -146,7 +146,7 @@ protected:
 	// do targeting and stuff...
 	void actTargeting(Unit *unit, UnitActAnimationRequests *animRequests,
 		bool doFire, bool rotated,
-		bool doMove, bool doForwardMove, bool doBackMove, 
+		bool doMove, bool doForwardMove, bool doBackMove,
 		bool doLeftMove, bool doRightMove);
 
 	// fire/reload the weapons and stuff...
@@ -181,7 +181,7 @@ protected:
 	// see if the unit seems idle and act based on that (idle animations)
 	void decideIdle(Unit *unit, UnitActAnimationRequests *animRequests);
 
-	// should be called when the unit is not allowed to walk, due to 
+	// should be called when the unit is not allowed to walk, due to
 	// unit's walkdelay, caused by shooting a big gun, for example.
 	void actNotYetAllowedToWalk(Unit *unit, UnitActAnimationRequests *animRequests);
 
@@ -191,31 +191,31 @@ protected:
 
 	// call when the unit is supposed to walk (move forward)
 	void actWalk(Unit *unit, UnitActAnimationRequests *animRequests,
-		bool doMove, bool doForwardMove, bool doBackMove, 
+		bool doMove, bool doForwardMove, bool doBackMove,
 		bool doLeftMove, bool doRightMove, bool rotated, bool *accelerated);
 
 	// call if the unit is under direct player control (first person mode),
 	// will return player's movement for the unit.
 	void decideBasedOnLocalPlayerDirectControl(Unit *unit,
-		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove, 
-		bool *doLeftMove, bool *doRightMove, 
-		bool *doLeftRotation, bool *doRightRotation, 
+		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove,
+		bool *doLeftMove, bool *doRightMove,
+		bool *doLeftRotation, bool *doRightRotation,
 		bool *doFire, float *rotationAngle);
 
 	// direct control mode for AI
 	void decideBasedOnAIDirectControl(Unit *unit,
-		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove, 
-		bool *doLeftMove, bool *doRightMove, 
-		bool *doLeftRotation, bool *doRightRotation, 
+		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove,
+		bool *doLeftMove, bool *doRightMove,
+		bool *doLeftRotation, bool *doRightRotation,
 		bool *doFire, float *rotationAngle);
 
 	// call if the unit is NOT under direct player control
 	// will return the AI movement for the unit.
-	void decideTurnAndWalk(Unit *unit, 
+	void decideTurnAndWalk(Unit *unit,
 		bool *doMove, bool *doRotation, float *rotationAngle);
 
   // act jumping (call after decideTurnAndWalk)
-	void actJump(Unit *unit, bool *doFire, bool *doMove, 
+	void actJump(Unit *unit, bool *doFire, bool *doMove,
 		bool *doForwardMove, bool *doBackMove, bool *doLeftMove, bool *doRightMove);
 
 	// unconscious?

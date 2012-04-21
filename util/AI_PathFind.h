@@ -90,7 +90,7 @@ public:
 	void addPortal(int xPosition, int yPosition);
 	void removePortal(int xPosition, int yPosition);
 
-	void setBlockArea(int xPosition, int yPosition); // All blocks which belong to this 
+	void setBlockArea(int xPosition, int yPosition); // All blocks which belong to this
 	void setFreeArea(int xPosition, int yPosition); // Mark as free space (might be blocked on pathfinder, thought)
 
 	void setModel(IStorm3D_Model *model);
@@ -152,7 +152,7 @@ class PathFind
 	// Not implemented
 	PathFind(const PathFind &rhs);
 	PathFind &operator = (const PathFind &rhs);
-		 
+		
 public:
 	PathFind();
 	~PathFind();

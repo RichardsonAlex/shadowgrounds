@@ -16,7 +16,7 @@
 namespace game
 {
 
-	bool gs_coordinate_convert(const char *stringData, int *x, int *y, 
+	bool gs_coordinate_convert(const char *stringData, int *x, int *y,
 		bool *scaled, float *scaledX, float *scaledY)
 	{
 		const unsigned int buffer_size = 80; // original 40, but that caused some problems
@@ -68,7 +68,7 @@ namespace game
 
 
 
-	bool gs_coordinate_param(GameMap *gameMap, const char *stringData, 
+	bool gs_coordinate_param(GameMap *gameMap, const char *stringData,
 		VC3 *result)
 	{
 		if (stringData != NULL)
@@ -86,7 +86,7 @@ namespace game
 					return false;
 				} else {
 					float x;
-					float y; 
+					float y;
 					if (scaled)
 					{
 						x = sx;
@@ -115,7 +115,7 @@ namespace game
 	}
 
 
-	bool gs_tricoord_param(const char *stringData, 
+	bool gs_tricoord_param(const char *stringData,
 		VC3 *result)
 	{
 		if (stringData == NULL)

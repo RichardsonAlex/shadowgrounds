@@ -73,7 +73,7 @@ MenuBaseImpl::MenuBaseImpl( OguiWindow* window ) :
 
   imageSelectNorm( NULL ),
   imageSelectDown( NULL ),
-  
+
   fontSelectNorm( NULL ),
   fontSelectDown( NULL ),
   fontDescNorm( NULL ),
@@ -164,7 +164,7 @@ MenuBaseImpl::~MenuBaseImpl()
 	smallButtonDisabledImage = NULL;
 
 /*	assert( game  );
-	assert( game->gameUI ); 
+	assert( game->gameUI );
 	assert( game->gameUI->getController(0) );
 	// if( editButtonP )
 	if( closeMenuByEsc )
@@ -209,7 +209,7 @@ bool MenuBaseImpl::isVisible() const
 bool MenuBaseImpl::wasQuitPressed() const
 {
 	return false;
-} 
+}
 
 //.............................................................................
 
@@ -239,7 +239,7 @@ void MenuBaseImpl::selectButton( int i )
 		{
 			downlightSelectButton( activeSelection );
 		}
-	} 
+	}
 }
 
 //=============================================================================
@@ -335,7 +335,7 @@ void MenuBaseImpl::CursorEvent( OguiButtonEvent* eve )
 				game->gameUI->playGUISound( soundClick.c_str() );
 		}
 
-	} 
+	}
 	else if( eve->eventType == OGUI_EMASK_OVER )
 	{
 		if( game )
@@ -410,7 +410,7 @@ void MenuBaseImpl::readKey( char ascii, int keycode, const char *keycodeName )
 
 		if( editButtonP )
 			editButtonP->SetText( ( editBufferBefore + editBuffer + editBufferAfter ).c_str() );
-	} 
+	}
 	else if( closeMenuByEsc )
 	{
 		switch( keycode )
@@ -435,7 +435,7 @@ void MenuBaseImpl::handleEsc()
 
 void MenuBaseImpl::editButton( OguiButton* button, const std::string& defaultstring, const std::string& before )
 {
-	if( editButtonP ) 
+	if( editButtonP )
 		editButtonEnter( editBuffer );
 
 	editBufferBefore = before;
@@ -468,8 +468,8 @@ OguiButton* MenuBaseImpl::addButton( const std::string& text, int command, IOgui
 	assert( win );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, buttonX, buttonY, buttonW, buttonH, 
-		buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(), 
+	b = ogui->CreateSimpleTextButton( win, buttonX, buttonY, buttonW, buttonH,
+		buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(),
 		( buttonPaddingString + text ).c_str(), command );
 	b->SetListener( this );
 	if ( font ) b->SetFont( font );
@@ -502,7 +502,7 @@ OguiButton* MenuBaseImpl::addDescription( const std::string& text, int x_add, in
 	b->SetListener( this );
 	b->SetReactMask( 0 );
 	b->SetDisabled( true );
-	if( font ) 
+	if( font )
 		b->SetFont( font );
 	b->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 
@@ -525,8 +525,8 @@ OguiButton*	MenuBaseImpl::addSmallButton( const std::string& text, int command, 
 	}
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, smallButtonX, smallButtonY, smallButtonW, smallButtonH, 
-		smallButtonNormal.c_str(), smallButtonDown.c_str(), smallButtonHigh.c_str(), 
+	b = ogui->CreateSimpleTextButton( win, smallButtonX, smallButtonY, smallButtonW, smallButtonH,
+		smallButtonNormal.c_str(), smallButtonDown.c_str(), smallButtonHigh.c_str(),
 		text.c_str(), command );
 	b->SetListener( this );
 
@@ -559,7 +559,7 @@ void MenuBaseImpl::addCloseButton( const std::string& text, int command, IOguiFo
 	assert( win );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, closeMeButtonX, closeMeButtonY, 
+	b = ogui->CreateSimpleTextButton( win, closeMeButtonX, closeMeButtonY,
 		closeMeButtonW, closeMeButtonH, closeMeButtonNormal.c_str(), closeMeButtonDown.c_str(),
 		closeMeButtonHigh.c_str(), text.c_str(), command );
 
@@ -584,8 +584,8 @@ void MenuBaseImpl::addSelectionButton( const std::string& text, int command, IOg
 	if( command > numberOfWorkingSelectButtons ) numberOfWorkingSelectButtons = command;
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, buttonX, buttonY, buttonW, buttonH, 
-		buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(), 
+	b = ogui->CreateSimpleTextButton( win, buttonX, buttonY, buttonW, buttonH,
+		buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(),
 		( buttonPaddingString + text ).c_str(), command, param );
 	b->SetListener( this );
 	if ( font ) b->SetFont( font );
@@ -625,7 +625,7 @@ void MenuBaseImpl::addHeaderText( const std::string& text, IOguiFont* font )
 	headerText = ogui->CreateTextLabel( win, headerTextX, headerTextY, headerTextW, headerTextH, text.c_str() );
 	headerText->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 	
-	if ( font ) 
+	if ( font )
 		headerText->SetFont( font );
 
 }

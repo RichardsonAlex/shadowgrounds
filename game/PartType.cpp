@@ -141,7 +141,7 @@ namespace game
       ret->slotTypes = new PartType *[slotAmount];
       ret->slotPositions = new int[slotAmount];
       ret->slotLevelMask = new int[slotAmount];
-      for (int i = 0; i < slotAmount; i++) 
+      for (int i = 0; i < slotAmount; i++)
       {
         ret->slotTypes[i] = slotTypes[i];
         ret->slotPositions[i] = slotPositions[i];
@@ -234,7 +234,7 @@ namespace game
   }
 
   // TODO: leaks memory...
-  // (but that is not important, these are global variables, 
+  // (but that is not important, these are global variables,
   // inited only once)
   bool PartType::setRootData(const char *key, char *value)
   {
@@ -244,7 +244,7 @@ namespace game
     {
       if (strcmp(key, "id") == 0)
       {
-        if (!PARTTYPE_ID_STRING_VALID(value)) 
+        if (!PARTTYPE_ID_STRING_VALID(value))
 				{
 					Logger::getInstance()->error("PartType::setRootData - Part type id string is invalid.");
 					return false;
@@ -263,7 +263,7 @@ namespace game
       }
       if (strcmp(key, "type") == 0)
       {
-        if (!PARTTYPE_ID_STRING_VALID(value)) 
+        if (!PARTTYPE_ID_STRING_VALID(value))
 				{
 					Logger::getInstance()->error("PartType::setRootData - Part parent type string is invalid.");
 					return false;
@@ -271,7 +271,7 @@ namespace game
 
         int val = PARTTYPE_ID_STRING_TO_INT(value);
         PartType *parent = getPartTypeById(val);
-        if (parent == NULL) 
+        if (parent == NULL)
 				{
 					Logger::getInstance()->error("PartType::setRootData - Part parent type does not exist or has not yet been loaded.");
 					return false;
@@ -438,7 +438,7 @@ namespace game
           slotTypes = new PartType *[slotAmount];
           slotPositions = new int[slotAmount];
           slotLevelMask = new int[slotAmount];
-          for (int i = 0; i < slotAmount; i++) 
+          for (int i = 0; i < slotAmount; i++)
           {
             slotTypes[i] = NULL;
             slotPositions[i] = SLOT_POSITION_INVALID;
@@ -490,7 +490,7 @@ namespace game
         return true;
       }
     }
-    
+
     // slots
     if (atSub == PARTTYPE_SUB_SLOT)
     {
@@ -525,7 +525,7 @@ namespace game
         return true;
       }
     }
- 
+
     return false;
   }
 
@@ -536,7 +536,7 @@ namespace game
       if (atSub == PARTTYPE_SUB_SLOT)
       {
         atSlot++;
-      } 
+      }
       atSub = PARTTYPE_SUB_NONE;
       return true;
     }
@@ -571,18 +571,18 @@ namespace game
   {
     if (partTypeId != 0)
     {
-      // TODO: might actually want to create instances of some other 
+      // TODO: might actually want to create instances of some other
       // classes than this based on the id
       Part *ret = new Part();
       ret->setType(this);
       return ret;
     } else {
-      // not allowed to create instances of the abstract parttype 
+      // not allowed to create instances of the abstract parttype
       // must define some id for it, then it's allowed
       abort();
     }
     return NULL;
-  } 
+  }
 
   bool PartType::isInherited(PartType *partType)
   {
@@ -698,54 +698,54 @@ namespace game
     return slotLevelMask[slotNumber];
   }
 
-  int PartType::getPrice() 
-  { 
-    return price; 
+  int PartType::getPrice()
+  {
+    return price;
   }
 
-  int PartType::getLevel() 
-  { 
-    return level; 
+  int PartType::getLevel()
+  {
+    return level;
   }
 
-  int PartType::getMaxDamage() 
-  { 
-    return maxDamage; 
+  int PartType::getMaxDamage()
+  {
+    return maxDamage;
   }
 
-  int PartType::getMaxHeat() 
-  { 
-    return maxHeat; 
+  int PartType::getMaxHeat()
+  {
+    return maxHeat;
   }
 
-  int PartType::getDestroyHeatPercentage() 
-  { 
-    return destroyHeat; 
+  int PartType::getDestroyHeatPercentage()
+  {
+    return destroyHeat;
   }
 
-  int PartType::getArmorRating() 
-  { 
-    return armorRating; 
+  int PartType::getArmorRating()
+  {
+    return armorRating;
   }
 
-  int PartType::getWeight() 
-  { 
-    return weight; 
+  int PartType::getWeight()
+  {
+    return weight;
   }
 
-  int PartType::getReconEffect() 
-  { 
-    return reconEffect; 
+  int PartType::getReconEffect()
+  {
+    return reconEffect;
   }
 
-  int PartType::getRunningEffect() 
-  { 
-    return runningEffect; 
+  int PartType::getRunningEffect()
+  {
+    return runningEffect;
   }
 
-  int PartType::getStealthEffect() 
-  { 
-    return stealthEffect; 
+  int PartType::getStealthEffect()
+  {
+    return stealthEffect;
   }
 
   char *PartType::getBonesFilename()
@@ -771,7 +771,7 @@ namespace game
 	void PartType::deleteVisual()
 	{
 	  if (visualObjectModel != NULL) { delete visualObjectModel; visualObjectModel = NULL; }
-    if (mirrorVisualObjectModel != NULL) { delete mirrorVisualObjectModel; mirrorVisualObjectModel = NULL; }	
+    if (mirrorVisualObjectModel != NULL) { delete mirrorVisualObjectModel; mirrorVisualObjectModel = NULL; }
 	}
 
 

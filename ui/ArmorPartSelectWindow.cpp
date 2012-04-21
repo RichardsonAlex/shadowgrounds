@@ -24,7 +24,7 @@ using namespace game;
 namespace ui
 {
 
-  ArmorPartSelectWindow::ArmorPartSelectWindow(Ogui *ogui, game::Game *game, 
+  ArmorPartSelectWindow::ArmorPartSelectWindow(Ogui *ogui, game::Game *game,
     int player)
   {
     this->player = player;
@@ -139,12 +139,12 @@ namespace ui
     delete buyPriceStyle;
     delete repairPriceStyle;
     delete storageAmountStyle;
-    if (selImage != NULL) 
+    if (selImage != NULL)
     {
       delete selImage;
       selImage = NULL;
     }
-    if (selDownImage != NULL) 
+    if (selDownImage != NULL)
     {
       delete selDownImage;
       selDownImage = NULL;
@@ -200,13 +200,13 @@ namespace ui
 
         if (strcmp(eve->selectionValue, "/CAN") != 0)
         {
-          PartType *pt = NULL; 
+          PartType *pt = NULL;
 
           if (strcmp(eve->selectionValue, "/DEL") != 0)
           {
             // selected a new part
-            pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(eve->selectionValue)); 
-            if (pt == NULL) 
+            pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(eve->selectionValue));
+            if (pt == NULL)
             {
               (Logger::getInstance())->
                 error("ArmorPartSelectWindow::SelectEvent - Part type id unknown.");
@@ -254,7 +254,7 @@ namespace ui
           }
 
           // is this a sub part or the root part (torso)?
-          if (parentPart == NULL) 
+          if (parentPart == NULL)
           {
             if (parentUnit == NULL)
             {
@@ -272,9 +272,9 @@ namespace ui
             Part *oldp = parentPart->getSubPart(slotNumber);
             if (oldp != NULL)
             {
-              // TODO: 
+              // TODO:
               // can we change for example torso, so that arms,
-              // head and legs are kept unremoved... 
+              // head and legs are kept unremoved...
               // how about if slot types are wrong...?
               game->detachParts(parentUnit, oldp);
             }
@@ -338,8 +338,8 @@ namespace ui
     }
     if (partType != NULL)
     {
-      descriptionArea = 
-        ogui->CreateTextArea(win, 88, 380, 490, 212, 
+      descriptionArea =
+        ogui->CreateTextArea(win, 88, 380, 490, 212,
         partType->getDescription());
     }
     if (partType != NULL && partType->getVisual2D() != NULL)
@@ -379,7 +379,7 @@ namespace ui
     repairPriceList->scrollTo(0);
     buyPriceList->scrollTo(0);
 
-    if (partType == NULL) 
+    if (partType == NULL)
     {
       #ifdef _DEBUG
         abort();
@@ -399,8 +399,8 @@ namespace ui
     {
       oldp = parentPart->getSubPart(slotNumber);
     }
-    if (oldp != NULL 
-      || (parentPart == NULL 
+    if (oldp != NULL
+      || (parentPart == NULL
       && parentUnit != NULL && parentUnit->getRootPart() != NULL))
     {
       selectList->addItem("/DEL", "(Remove part)");
@@ -419,18 +419,18 @@ namespace ui
       // check if the part is of correct type and level...
       // TODO: this is limited to part type's grand grand parent!
       // need to check further...
-      if ((pt == partType 
-        || pt->getParentType() == partType 
-        || (pt->getParentType() != NULL 
+      if ((pt == partType
+        || pt->getParentType() == partType
+        || (pt->getParentType() != NULL
         && (pt->getParentType()->getParentType() == partType
-        || (pt->getParentType()->getParentType() != NULL 
+        || (pt->getParentType()->getParentType() != NULL
         && pt->getParentType()->getParentType()->getParentType() == partType))))
         && (pt->getLevel() & levelMask) != 0)
       {
         // slot type is parent or grandparent of the parttype in list
-        selectList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
+        selectList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
           pt->getName());
-        
+
         // check how much we have these in storage...
         // find out lowest repair price
         int storageAmount = 0;
@@ -448,15 +448,15 @@ namespace ui
           }
         }
 
-        storageAmountList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
+        storageAmountList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
           int2str(storageAmount));
         const char *tmp = "";
         if (storageAmount > 0) tmp = int2str(lowestRepairPrice);
-        repairPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
+        repairPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
           tmp);
         tmp = "";
         if (storageAmount == 0) tmp = int2str(pt->getPrice());
-        buyPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()), 
+        buyPriceList->addItem(PARTTYPE_ID_INT_TO_STRING(pt->getPartTypeId()),
           tmp);
       }
     }
@@ -478,7 +478,7 @@ namespace ui
 
   bool ArmorPartSelectWindow::isVisible()
   {
-    return win->IsVisible(); 
+    return win->IsVisible();
   }
 
 }

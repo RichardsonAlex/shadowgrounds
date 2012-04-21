@@ -51,12 +51,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainDecorators &objects)
-{ 
+{
 	return objects.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainDecorators &objects)
-{ 
+{
 	return objects.readStream(stream);
 }
 

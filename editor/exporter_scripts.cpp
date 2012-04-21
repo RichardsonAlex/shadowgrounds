@@ -96,7 +96,7 @@ struct ExporterScriptsData
 			stream << std::endl;
 			stream << "   pathName " << it->first << std::endl;
 
-			stream << "   " << "pathStart "; 
+			stream << "   " << "pathStart ";
 			exportPoint(stream, points[0]) << std::endl;
 
 			stream << "   storeNextPath" << std::endl;

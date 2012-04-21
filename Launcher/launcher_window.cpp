@@ -36,7 +36,7 @@ public:
 		dialog.show();
 	}
 
-	~LauncherWindowImpl() 
+	~LauncherWindowImpl()
 	{
 	}
 

@@ -745,7 +745,7 @@ void ParticlePhysics::update()
 
 			data->actorList.resize(size - index);
 		}
-		else 
+		else
 			data->actorList.clear();
 	}
 

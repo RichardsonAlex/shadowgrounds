@@ -1239,7 +1239,7 @@ for(int i = nodes[currentNode].xIndex - 2; i <= nodes[currentNode].xIndex + 2; i
 			if (coverAvoidDistance > 0)
 			{
 				assert(coverMap != NULL);
-				if (coverMap->getDistanceToNearestCover(i, j) 
+				if (coverMap->getDistanceToNearestCover(i, j)
 					< coverAvoidDistance)
 				{
 					int coverCost = coverAvoidDistance - coverMap->getDistanceToNearestCover(i, j);
@@ -1355,7 +1355,7 @@ bool PathFind::isMovable(int xStart, int yStart, int xEnd, int yEnd, int maxHeig
 	if (coverBlockDistance > 0)
 	{
 		assert(coverMap != NULL);
-		if (coverMap->getDistanceToNearestCover(xEnd, yEnd) 
+		if (coverMap->getDistanceToNearestCover(xEnd, yEnd)
 			< coverBlockDistance)
 		{
 			return false;
@@ -1366,7 +1366,7 @@ bool PathFind::isMovable(int xStart, int yStart, int xEnd, int yEnd, int maxHeig
 	uint16 h1 = getHeight(xStart, yStart);
 	uint16 h2 = getHeight(xEnd, yEnd);
 
-	int delta = h2 - h1; 
+	int delta = h2 - h1;
 	if(delta < 0)
 		delta = -delta;
 

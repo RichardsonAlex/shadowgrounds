@@ -53,16 +53,16 @@ namespace game
 	ConvexMeshHash ConvexPhysicsObjectImpl::meshHash = ConvexMeshHash();
 
 
-	ConvexPhysicsObject::ConvexPhysicsObject(GamePhysics *gamePhysics, const char *filename, float mass, int collisionGroup, const VC3 &position) 
+	ConvexPhysicsObject::ConvexPhysicsObject(GamePhysics *gamePhysics, const char *filename, float mass, int collisionGroup, const VC3 &position)
 		: AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->mass = mass;
 		this->position = position;
 		this->impl = new ConvexPhysicsObjectImpl(filename);
 		this->collisionGroup = collisionGroup;
 	}
 
-	ConvexPhysicsObject::~ConvexPhysicsObject() 
+	ConvexPhysicsObject::~ConvexPhysicsObject()
 	{
 		delete impl;
 	}

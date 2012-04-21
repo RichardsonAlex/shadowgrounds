@@ -208,7 +208,7 @@ FBMatrix LWTransforms::GetBoneTransform(LWItemID itemId, float time)
 
 						FBMatrix rotationTm;
 						rotationTm.CreateRotationMatrix(goalTm.GetRotation());
-						FBMatrix positionTm; 
+						FBMatrix positionTm;
 						positionTm.CreateTranslationMatrix(currentTm.GetTranslation());
 
 						FBMatrix offsetTm = result * currentTm.GetInverse();

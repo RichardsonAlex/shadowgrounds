@@ -167,7 +167,7 @@ namespace ui
 		visualObject->setCollidable(false);
 		visualObject->setInScene(true);
 
-		// set position, rotation and scale based on type and the 
+		// set position, rotation and scale based on type and the
 		// given parameters...
 		if (effectType->getType() == VisualEffectType::VISUALEFFECT_TYPE_NORMAL)
 		{
@@ -262,12 +262,12 @@ namespace ui
 	void VisualEffect::setPosition(const VC3 &position)
 	{
 		this->position = position;
-		if(particleEffect.get()) 
+		if(particleEffect.get())
 		{	
 			particleEffect->setPosition(position);
 			//particleEffect->setVelocity(position - oldPosition);
 		}
-		if(visualObject != NULL) 
+		if(visualObject != NULL)
 		{	
 			visualObject->setPosition(position);
 		}
@@ -276,11 +276,11 @@ namespace ui
 
 	void VisualEffect::setRotation(const VC3 &rotation)
 	{
-		if(particleEffect.get()) 
+		if(particleEffect.get())
 		{	
 			particleEffect->setRotation(rotation);
 		}
-		if(visualObject != NULL) 
+		if(visualObject != NULL)
 		{	
 			visualObject->setRotation(rotation.x, rotation.y, rotation.z);
 		}
@@ -290,12 +290,12 @@ namespace ui
 	/*
 	void VisualEffect::setRotation(const QUAT &rotation)
 	{
-		if(visualObject != NULL) 
+		if(visualObject != NULL)
 		{	
 			// TODO: QUAT to axis angles...
 			//visualObject->setRotation(rotation.x, rotation.y, rotation.z);
 		}
-		if(particleEffect.get()) 
+		if(particleEffect.get())
 		{	
 			particleEffect->setRotation(rotation);
 		}
@@ -314,7 +314,7 @@ namespace ui
 				position = follow->getPointerPosition() + follow->getPointerMiddleOffset();
 			}
 		}
-		if(particleEffect) 
+		if(particleEffect)
 			particleEffect->setPosition(position);
 		
 		if(particleEffect)

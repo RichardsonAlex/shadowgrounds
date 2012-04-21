@@ -43,7 +43,7 @@ using namespace ui;
 
 namespace game
 {
-	void MissionScripting::process(util::ScriptProcess *sp, 
+	void MissionScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -70,7 +70,7 @@ namespace game
 			break;
 
 		case GS_CMD_COUNTALIVEUNITS:
-			*lastValue = calculateAliveUnits(game, gsd->player); 
+			*lastValue = calculateAliveUnits(game, gsd->player);
 			break;
 
 		case GS_CMD_COUNTCONSCIOUSUNITS:
@@ -132,7 +132,7 @@ namespace game
 			{
 				// this just sets the failure mission, loading actually just makes the
 				// current mission fail (thus effectively changing to this one)
-				// 
+				//
 				// but if in menus, set the current mission.
 				if (game->inCombat)
 				{
@@ -192,7 +192,7 @@ namespace game
 			break;
 
 		case GS_CMD_ISEVERYUNITNEARCHECKPOINT:
-			if (CheckpointChecker::isEveryUnitNearCheckpoint(game, 
+			if (CheckpointChecker::isEveryUnitNearCheckpoint(game,
 				(float)intData, gsd->player))
 				*lastValue = 1;
 			else
@@ -200,7 +200,7 @@ namespace game
 			break;
 
 		case GS_CMD_ISANYUNITNEARCHECKPOINT:
-			if (CheckpointChecker::isAnyUnitNearCheckpoint(game, 
+			if (CheckpointChecker::isAnyUnitNearCheckpoint(game,
 				(float)intData, gsd->player))
 				*lastValue = 1;
 			else
@@ -208,7 +208,7 @@ namespace game
 			break;
 
 		case GS_CMD_ISPOSITIONNEARCHECKPOINT:
-			if (CheckpointChecker::isPositionNearCheckpoint(game, 
+			if (CheckpointChecker::isPositionNearCheckpoint(game,
 				(float)intData, gsd->position))
 				*lastValue = 1;
 			else
@@ -225,7 +225,7 @@ namespace game
 			break;
 
 		case GS_CMD_ISANYUNITNEARPOSITION:
-			if (isAnyUnitNearPosition(game, gsd->player, 
+			if (isAnyUnitNearPosition(game, gsd->player,
 				(float)intData, gsd->position))
 				*lastValue = 1;
 			else
@@ -233,7 +233,7 @@ namespace game
 			break;
 
 		case GS_CMD_ISEVERYUNITNEARPOSITION:
-			if (isEveryUnitNearPosition(game, gsd->player, 
+			if (isEveryUnitNearPosition(game, gsd->player,
 				(float)intData, gsd->position))
 				*lastValue = 1;
 			else
@@ -449,7 +449,7 @@ namespace game
 		case GS_CMD_setAlphaTestPassEnabled:
 			game->gameUI->enableAlphaTestPass(intData == 0 ? false : true);
 			break;
-		
+
 		case GS_CMD_unlockSurvivalMission:
 			if(stringData != NULL)
 			{
@@ -471,7 +471,7 @@ namespace game
 				else if(std::find(locked.begin(), locked.end(), name) != locked.end())
 				{
 					SurvivalMenu::unlockMission(name);
-					
+
 					if(game->gameUI->getCombatWindow( 0 ))
 					{
 						SurvivalMenu::MissionInfo mi;
@@ -590,7 +590,7 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& game->isHostile(player, u->getOwner())
 				&& (u->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS
 				|| !consciousOnly))
@@ -616,7 +616,7 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& !game->isHostile(player, u->getOwner()))
 			{
 				VC3 pos2 = u->getPosition();
@@ -640,7 +640,7 @@ namespace game
 		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& player == u->getOwner())
 			{
 				VC3 pos2 = u->getPosition();
@@ -656,7 +656,7 @@ namespace game
 
 
 
-	bool MissionScripting::isEveryUnitNearPosition(Game *game, int player, 
+	bool MissionScripting::isEveryUnitNearPosition(Game *game, int player,
 		float range, const VC3 &position)
 	{
 		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
@@ -679,7 +679,7 @@ namespace game
 
 
 
-	bool MissionScripting::isAnyUnitNearPosition(Game *game, int player, 
+	bool MissionScripting::isAnyUnitNearPosition(Game *game, int player,
 		float range, const VC3 &position)
 	{
 		LinkedList<Unit*> *ulist = game->units->getOwnedUnits(player);
@@ -711,7 +711,7 @@ namespace game
 		{
 			Unit *u = iter.iterateNext();
 			if (u->isActive() && !u->isDestroyed())
-			{ 							
+			{
 				if (u->getOwner() == player)
 				{
 					if (u->getSeeUnit() != NULL)

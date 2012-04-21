@@ -30,7 +30,7 @@
 
 // WARNING: unsafe direct control scripting feature...
 // define this to remove some type/parameter checks for the direct control scripting
-// (will give a small performance increase, but will make the program crash if 
+// (will give a small performance increase, but will make the program crash if
 // a script error occurs in direct control scripts.)
 
 //#define UNSAFE_DIRECT_CONTROL_SCRIPTING
@@ -39,7 +39,7 @@
 
 namespace game
 {
-	void DirectControlScripting::process(util::ScriptProcess *sp, 
+	void DirectControlScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{

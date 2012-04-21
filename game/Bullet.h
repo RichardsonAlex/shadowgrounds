@@ -86,7 +86,7 @@ namespace game
 		/**
 		 * Get amount of terrain blending caused by this bullet when hitting
 		 * the ground or hitting a unit near ground (within damagerange).
-		 * @return int, the amount of blending caused by this bullet 
+		 * @return int, the amount of blending caused by this bullet
 		 * (0 is no blending, 255 is maximum blend).
 		 */
 		int getTerrainBlendAmount();
@@ -223,7 +223,7 @@ namespace game
 
 		int splitRaytrace;
 
-		// skip distance at origin and possibly "padding" near end to 
+		// skip distance at origin and possibly "padding" near end to
 		// hit the target exactly
 		float startSkipAmount;
 		bool endPadToHit;

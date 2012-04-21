@@ -145,12 +145,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainLights &lights)
-{ 
+{
 	return lights.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainLights &lights)
-{ 
+{
 	return lights.readStream(stream);
 }
 

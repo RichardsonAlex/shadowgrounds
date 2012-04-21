@@ -41,7 +41,7 @@ namespace particle {
 
 using namespace frozenbyte::editor;
 
-class ParticleEffect : public IParticleEffect 
+class ParticleEffect : public IParticleEffect
 {
 	friend class ParticleEffectManager;
 
@@ -91,7 +91,7 @@ public:
 	
 	void setPosition(const Vector& position) {
 		
-//		m_velocity = position - m_position; 
+//		m_velocity = position - m_position;
 		m_position = position;
 			
 	}
@@ -110,7 +110,7 @@ public:
 
 	void setEmitFactor(float factor)
 	{
-		for(int i = 0; i < (int)m_systems.size(); i++) 
+		for(int i = 0; i < (int)m_systems.size(); i++)
 			m_systems[i]->setEmitFactor(factor);
 	}
 
@@ -142,7 +142,7 @@ public:
 
 	void setSpawnModel(IStorm3D_Model *model)
 	{
-		for(int i = 0; i < (int)m_systems.size(); ++i) 
+		for(int i = 0; i < (int)m_systems.size(); ++i)
 		{
 			m_systems[i]->setSpawnModel(model);
 		}		
@@ -152,7 +152,7 @@ public:
 
 //		m_position += m_velocity;
 		
-		for(int i = 0; i < (int)m_systems.size(); ++i) 
+		for(int i = 0; i < (int)m_systems.size(); ++i)
 		{
 			m_systems[i]->setLighting(ambient, lightIndices);
 
@@ -170,7 +170,7 @@ public:
 	
 	void kill() {
 		// psd
-		//if(m_dieWithEffect) 
+		//if(m_dieWithEffect)
 		{
 			for(int i = 0; i < (int)m_systems.size(); i++) {
 				m_systems[i]->kill();
@@ -208,10 +208,10 @@ public:
 		}
 		else if(className == "parray") {
 			ps = PointArrayParticleSystem::createNew();
-		} 
+		}
 		else if(className == "modelp") {
 			ps = ModelParticleSystem::createNew();
-		} 
+		}
 		else
 		{
 			assert(!"undefined class name");
@@ -237,9 +237,9 @@ ParticleEffectManager& ParticleEffectManager::getSingleton() {
 	return *m_singleton;
 }
 
-ParticleEffectManager::ParticleEffectManager(IStorm3D* s3d, IStorm3D_Scene* scene) : 
+ParticleEffectManager::ParticleEffectManager(IStorm3D* s3d, IStorm3D_Scene* scene) :
 	m_s3d(s3d), m_scene(scene), physicsEnabled(false), particlePhysicsEnabled(true)
-{ 
+{
 	assert(m_singleton == NULL);
 	m_singleton = this;
 	assert(s3d != NULL);
@@ -334,7 +334,7 @@ int ParticleEffectManager::getEffectPrototypeAmount()
 	return m_protos.size();
 }
 
-boost::shared_ptr<IParticleEffect> ParticleEffectManager::getEffectPrototype(int id) 
+boost::shared_ptr<IParticleEffect> ParticleEffectManager::getEffectPrototype(int id)
 {
 	return m_protos[id];
 }
@@ -347,7 +347,7 @@ boost::shared_ptr<IParticleEffect> ParticleEffectManager::addEffectToScene(int i
 	boost::shared_ptr<IParticleEffect> ptr(effect);
 	ParticleEffect* proto = static_cast<ParticleEffect*>(m_protos[id].get());
 	
-	for(int i = 0; i < (int)proto->m_systems.size(); i++) 
+	for(int i = 0; i < (int)proto->m_systems.size(); i++)
 	{	
 		boost::shared_ptr<IParticleSystem> ps = proto->getParticleSystem(i)->clone();
 		
@@ -453,7 +453,7 @@ void ParticleEffectManager::releasePhysicsResources()
 		for(; it != m_protos.end(); ++it)
 		{
 			ParticleEffect *proto = static_cast<ParticleEffect *> (it->get());
-			for(int i = 0; i < int(proto->m_systems.size()); i++) 
+			for(int i = 0; i < int(proto->m_systems.size()); i++)
 				proto->m_systems[i]->releasePhysicsResources();
 		}
 	}
@@ -472,10 +472,10 @@ void ParticleEffectManager::tick() {
 	m_stats.numParticles = 0;
 	m_stats.numSystems = 0;
 	std::list< boost::shared_ptr<IParticleSystem> >::iterator it = m_systems.begin();
-	while(it != m_systems.end()) 
+	while(it != m_systems.end())
 	{
 		(*it)->tick(m_scene);
-		if((*it)->isDead()) 
+		if((*it)->isDead())
 		{
 			(*it)->releasePhysicsResources();
 			it = m_systems.erase(it);
@@ -496,7 +496,7 @@ void ParticleEffectManager::tick() {
 	}
 }
 
-void ParticleEffectManager::render() 
+void ParticleEffectManager::render()
 {
 #ifdef PHYSICS_PHYSX
 #ifndef NX_DISABLE_FLUIDS
@@ -506,7 +506,7 @@ void ParticleEffectManager::render()
 #endif
 
 	std::list< boost::shared_ptr<IParticleSystem> >::iterator it = m_systems.begin();
-	while(it != m_systems.end()) 
+	while(it != m_systems.end())
 	{
 		(*it)->render(m_scene);
 		it++;

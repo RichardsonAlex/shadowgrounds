@@ -104,11 +104,11 @@ void solveSlopeType(GameMap *gameMap, GameScene *gameScene, const VC3 &pos, bool
 						int maskX = x + 2;
 						//int maskX = 2 - x;
 						//int maskZ = 2 - z; // flipping z
-						int maskZ = 1 + z; 
+						int maskZ = 1 + z;
 
 						// TODO: should optimize, use obstaclemap directly, using int coordinates
 						float chkX = pos.x + scaleX*x;
-						float chkZ = pos.z - scaleY*z; // flipping z 
+						float chkZ = pos.z - scaleY*z; // flipping z
 						bool blocked = gameScene->isBlockedAtScaled(chkX, chkZ, gameMap->getScaledHeightAt(chkX, chkZ));
 
 						if (slope_type_mask[stype][maskZ][maskX] != '?')
@@ -347,8 +347,8 @@ void solveSlopeType(GameMap *gameMap, GameScene *gameScene, const VC3 &pos, bool
 			if (bl && br)
 			{
 				ongroundOut = true;
-			} 
-			else if (bl || br) 
+			}
+			else if (bl || br)
 			{
 				// NOTE: relies on +0.5 added by gamemap conversion routines to get center of the obstacle block...
 				int obstX = game->gameMap->scaledToObstacleX(pos.x);
@@ -385,7 +385,7 @@ void solveSlopeType(GameMap *gameMap, GameScene *gameScene, const VC3 &pos, bool
 						}
 					}
 				}
-			} 
+			}
 		} // if(bu)
 		*/
 	}

@@ -12,7 +12,7 @@
 // Common datatypes
 #include "DatatypeDef.h"
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include "Storm3D_Datatypes.h"
 #include "IStorm3D_Scene.h"
@@ -102,8 +102,8 @@ public:
 	virtual void SetGammaRamp(float gamma, float brightness, float contrast,
 		float red, float green, float blue, bool calibrate)=0;
 
-	virtual void SetGammaPeak(bool peakEnabled, float peakPosition, 
-    float peakLowShape, float peakHighShape, 
+	virtual void SetGammaPeak(bool peakEnabled, float peakPosition,
+    float peakLowShape, float peakHighShape,
     float peakRed, float peakGreen, float peakBlue)=0;
 
 	// Texture LOD (mipmap) level
@@ -122,7 +122,7 @@ public:
 	// Set application name (window title)
 	virtual void SetApplicationName(const char *shortName, const char *applicationName)=0;
 
-	virtual Storm3D_SurfaceInfo GetCurrentDisplayMode()=0; 
+	virtual Storm3D_SurfaceInfo GetCurrentDisplayMode()=0;
 	virtual Storm3D_SurfaceInfo GetScreenSize()=0;	// backbuffer dimension (normally same as displaymode, but not in windowed mode)
 
 	// Screenshot

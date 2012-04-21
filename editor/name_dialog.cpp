@@ -54,7 +54,7 @@ struct NameDialogData {
 
 	bool doModal(HWND parent, int resourceID) {
 
-		if(IDOK==DialogBoxParam(GetModuleHandle(NULL), MAKEINTRESOURCE(resourceID), parent, dlgProc, 
+		if(IDOK==DialogBoxParam(GetModuleHandle(NULL), MAKEINTRESOURCE(resourceID), parent, dlgProc,
 			(LPARAM)&mString))
 			return true;
 

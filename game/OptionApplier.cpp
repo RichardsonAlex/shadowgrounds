@@ -82,7 +82,7 @@ namespace game
 		blue_correction = SimpleOptions::getFloat(DH_OPT_F_BLUE_CORRECTION);
 		calibrate = SimpleOptions::getBool(DH_OPT_B_CALIBRATE_GAMMA);
 
-		s3d->SetGammaRamp(gamma, brightness, contrast, 
+		s3d->SetGammaRamp(gamma, brightness, contrast,
 			red_correction, green_correction, blue_correction, calibrate);
 	}
 

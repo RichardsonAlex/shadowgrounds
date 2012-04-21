@@ -30,9 +30,9 @@ struct ColorMapData
 	float scaledSizeX;
 	float scaledSizeY;
 
-	// NOTE: these scales are not the "scaled:colormap" scale - 
+	// NOTE: these scales are not the "scaled:colormap" scale -
 	// they are "scaled:heightmap" scale.
-	float scaleX; 
+	float scaleX;
 	float scaleY;
 
 	//float multiplier;
@@ -257,14 +257,14 @@ COL ColorMap::getColor(float x, float y) const
 }
 
 COL ColorMap::getColorAtScaled(float scaledX, float scaledY) const
-{	 	 
+{	 	
 	float x = scaledX / data->scaledSizeX + .5f;
 	float y = scaledY / data->scaledSizeY + .5f;
 	return getColor(x,y);
 }
 
 COL ColorMap::getUnmultipliedColorAtScaled(float scaledX, float scaledY) const
-{	 	 
+{	 	
 	float x = scaledX / data->scaledSizeX + .5f;
 	float y = scaledY / data->scaledSizeY + .5f;
 	return getUnmultipliedColor(x,y);

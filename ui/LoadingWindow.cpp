@@ -198,7 +198,7 @@ namespace ui
 			int h = getLocaleGuiInt( "gui_loadingwindow_briefing_area_h", 0 );
 
 			std::string font_file			= getLocaleGuiString( "gui_loadingwindow_font" );
-			std::string font_bold_file		= getLocaleGuiString( "gui_loadingwindow_font_bold" ); 
+			std::string font_bold_file		= getLocaleGuiString( "gui_loadingwindow_font_bold" );
 			std::string font_italic_file	= getLocaleGuiString( "gui_loadingwindow_font_italic" );
 			std::string font_underline_file = getLocaleGuiString( "gui_loadingwindow_font_underline" );
 
@@ -209,7 +209,7 @@ namespace ui
 			
 			briefingArea = new OguiFormattedText( win, ogui, x, y, w, h, 0 );	
 			
-			if( fontNormal ) 
+			if( fontNormal )
 			{
 				briefingArea->setFont( fontNormal );
 				
@@ -258,8 +258,8 @@ namespace ui
 			std::string close_high	 = getLocaleGuiString( "gui_loadingwindow_closebutton_high" );
 			std::string close_text	 = getLocaleGuiString( "gui_loadingwindow_closebutton_text" );
 
-			closebut = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-				close_normal.empty()?NULL:close_normal.c_str(), 
+			closebut = ogui->CreateSimpleTextButton( win, x, y, w, h,
+				close_normal.empty()?NULL:close_normal.c_str(),
 				close_down.empty()?NULL:close_down.c_str(),
 				close_high.empty()?NULL:close_high.c_str(), close_text.c_str(), LOADINGW_CLOSE );
 			closebut->SetListener(this);
@@ -285,8 +285,8 @@ namespace ui
 			std::string high	 = getLocaleGuiString( "gui_loadingwindow_loadingbutton_high" );
 			std::string loadingtext = getLocaleGuiString( "gui_loadingwindow_loadingbutton_text" );
 
-			loadingbut = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-				normal.empty()?NULL:normal.c_str(), 
+			loadingbut = ogui->CreateSimpleTextButton( win, x, y, w, h,
+				normal.empty()?NULL:normal.c_str(),
 				down.empty()?NULL:down.c_str(),
 				high.empty()?NULL:high.c_str(), loadingtext.c_str(), LOADINGW_PROGRESS );
 		
@@ -346,7 +346,7 @@ namespace ui
 			int h = getLocaleGuiInt( "gui_loadingwindow_scrollingtext_h", 0 );
 
 			scrolling_font_file = getLocaleGuiString( "gui_loadingwindow_scrollingtext_font_normal" );
-			scrolling_font_bold_file = getLocaleGuiString( "gui_loadingwindow_scrollingtext_font_bold" ); 
+			scrolling_font_bold_file = getLocaleGuiString( "gui_loadingwindow_scrollingtext_font_bold" );
 			scrolling_font_italic_file	= getLocaleGuiString( "gui_loadingwindow_scrollingtext_font_italic" );
 			scrolling_font_h1_file = getLocaleGuiString( "gui_loadingwindow_scrollingtext_font_h1" );
 
@@ -538,7 +538,7 @@ namespace ui
 		}
 	}
 
-	bool LoadingWindow::isFadingOut()  
+	bool LoadingWindow::isFadingOut()
 	{
 		return fadingOut;
 	}
@@ -621,8 +621,8 @@ namespace ui
 			std::string close_high	 = getLocaleGuiString( "gui_loadingwindow_closebutton_high" );
 			std::string close_text	 = getLocaleGuiString( "gui_loadingwindow_closebutton_text" );
 
-			closebut = ogui->CreateSimpleTextButton( scrollingFader, x, y, w, h, 
-				close_normal.empty()?NULL:close_normal.c_str(), 
+			closebut = ogui->CreateSimpleTextButton( scrollingFader, x, y, w, h,
+				close_normal.empty()?NULL:close_normal.c_str(),
 				close_down.empty()?NULL:close_down.c_str(),
 				close_high.empty()?NULL:close_high.c_str(), close_text.c_str(), LOADINGW_CLOSE );
 			closebut->SetListener(this);
@@ -710,8 +710,8 @@ namespace ui
 						std::string close_high	 = getLocaleGuiString( "gui_loadingwindow_closebutton_high" );
 						std::string close_text	 = getLocaleGuiString( "gui_loadingwindow_closebutton_text" );
 
-						closebut = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-							close_normal.empty()?NULL:close_normal.c_str(), 
+						closebut = ogui->CreateSimpleTextButton( win, x, y, w, h,
+							close_normal.empty()?NULL:close_normal.c_str(),
 							close_down.empty()?NULL:close_down.c_str(),
 							close_high.empty()?NULL:close_high.c_str(), close_text.c_str(), LOADINGW_CLOSE );
 						closebut->SetListener(this);
@@ -908,8 +908,8 @@ namespace ui
 			// y = y - 35;
 			// upgradetext = "Upgrade menu";
 
-			upgradeMenuBut = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-				normal.empty()?NULL:normal.c_str(), 
+			upgradeMenuBut = ogui->CreateSimpleTextButton( win, x, y, w, h,
+				normal.empty()?NULL:normal.c_str(),
 				down.empty()?NULL:down.c_str(),
 				high.empty()?NULL:high.c_str(), upgradetext.c_str(), LOADINGW_UPGRADEMENU );
 

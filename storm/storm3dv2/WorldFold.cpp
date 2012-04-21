@@ -151,7 +151,7 @@ void WorldFold::setCameraPosition(const VC3 &position)
 	if (fabs(wfCameraPosition.x - position.x) > 0.001f)
 	{
 		// TODO: rotate camera toward half angle when approacing a fold...
-		// once past the fold, on the other side, flip rotation to negative half angle to match new fold 
+		// once past the fold, on the other side, flip rotation to negative half angle to match new fold
 		wfCameraMatrix.CreateIdentityMatrix();
 
 		// TODO: update only if camera matrix has changed.

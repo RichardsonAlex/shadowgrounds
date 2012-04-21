@@ -257,7 +257,7 @@ struct Storm3D_ProceduralManager::Data
 				float width = 1.f;
 				float height = 1.f;
 
-				float buffer[] = 
+				float buffer[] =
 				{
 					-width, height,         1.f, 1.f,   0.f, 1.f, 0.f, 1.f,
 					-width, -height,  1.f, 1.f,   0.f, 0.f, 0.f, 0.f,

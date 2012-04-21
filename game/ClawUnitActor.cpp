@@ -68,7 +68,7 @@ void ClawUnitActor::stopUnit(Unit *unit)
 }
 
 
-frozenbyte::ai::Path *ClawUnitActor::solvePath(Unit *unit, const VC3 &startPosition, VC3 &endPosition, 
+frozenbyte::ai::Path *ClawUnitActor::solvePath(Unit *unit, const VC3 &startPosition, VC3 &endPosition,
 	int maxDepth)
 {
 	frozenbyte::ai::Path *path = new frozenbyte::ai::Path();
@@ -90,11 +90,11 @@ bool ClawUnitActor::setPathTo(Unit *unit, VC3 &destination_)
 	{
 		unit->setPath(path);
 		unit->setPathIndex(unit->getPathIndex() + 1);
-		// (...path object is now contained within the unit, 
+		// (...path object is now contained within the unit,
 		// unit will handle it's proper deletion)
 		unit->setWaypoint(unit->getPosition());
-		unit->setFinalDestination(VC3(destination.x, 
-			game->gameMap->getScaledHeightAt(destination.x, destination.z), 
+		unit->setFinalDestination(VC3(destination.x,
+			game->gameMap->getScaledHeightAt(destination.x, destination.z),
 			destination.z));
 		return true;
 	} else {		
@@ -102,7 +102,7 @@ bool ClawUnitActor::setPathTo(Unit *unit, VC3 &destination_)
 		unit->setFinalDestination(unit->getPosition());
 		unit->setWaypoint(unit->getPosition());
 		return false;
-	} 
+	}
 }
 
 
@@ -122,16 +122,16 @@ void ClawUnitActor::actDirectClawControls(Unit *unit)
 	const game::ControlSettings &controlSettings = game->getClawController()->getControlSettings();
 	if(game->getClawController()->hasActor())
 	{
-		if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) > controlSettings.animationSwitchFarPoseRange) 
+		if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) > controlSettings.animationSwitchFarPoseRange)
 		 claw_near = false;
-    if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) < controlSettings.animationSwitchNearPoseRange && !rotating) 
+    if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) < controlSettings.animationSwitchNearPoseRange && !rotating)
 		 claw_near = true;
 	}
 	else
 	{
-    if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) > controlSettings.animationSwitchFarPoseRange) 
+    if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) > controlSettings.animationSwitchFarPoseRange)
 		 claw_near = false;
-    if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) < controlSettings.animationSwitchNearPoseRange && !rotating) 
+    if(game->getClawController()->getTargetPosition(TARGET_ADVANCE_TICKS).GetRangeTo(unit->getPosition()) < controlSettings.animationSwitchNearPoseRange && !rotating)
 		 claw_near = true;
 	}
 
@@ -671,7 +671,7 @@ if (unit->getIdString() != NULL
 static int fooRight = 0;
 static int fooLeft = 0;
 
-	if (newYRotation > oldYRotation + 1.0f 
+	if (newYRotation > oldYRotation + 1.0f
 		|| newYRotation < oldYRotation - 180.0f)
 	{
 		//animRequests.turnRight = true;

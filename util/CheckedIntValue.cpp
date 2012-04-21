@@ -263,7 +263,7 @@ int operator/ (const CheckedIntValue &v1, const CheckedIntValue &v2)
 
 
 
-CheckedIntValue::CheckedIntValue() 
+CheckedIntValue::CheckedIntValue()
 	: value(0),
 	initialized(false)
 {

@@ -33,16 +33,16 @@ namespace game
 			unsigned char *rangemap;
 			
 		public:
-			CoverMapMonitor(char *filename, unsigned char *rangemap, 
-				int sizeX, int sizeY) 
-			{ 
+			CoverMapMonitor(char *filename, unsigned char *rangemap,
+				int sizeX, int sizeY)
+			{
 				this->sizeX = sizeX;
-				this->sizeY = sizeY; 
+				this->sizeY = sizeY;
 				this->rangemap = rangemap;
 				this->filename = new char[strlen(filename) + 1];
 				strcpy(this->filename, filename);
 			}
-			virtual ~CoverMapMonitor() 
+			virtual ~CoverMapMonitor()
 			{
 				delete [] filename;
 			}
@@ -154,11 +154,11 @@ namespace game
 	}
 
 
-	void CoverMap::create(unsigned short *obstacleMap, 
+	void CoverMap::create(unsigned short *obstacleMap,
 		unsigned short *heightMap)
 	{
 		// NOTICE: heightmap unused.
-		// it is half the size of the obstacle map 
+		// it is half the size of the obstacle map
 		// (1/2 width, 1/2 height, 1/4 in size)
 		// depends on pathfind accuracy factor (which is 2)
 
@@ -187,7 +187,7 @@ namespace game
 		CoverMapMonitor mon("monitor.raw", rmap, sizeX, sizeY);
 		monitor = &mon;
 #endif
-		util::DistanceFloodfill::fillRanges(0, sizeX, sizeY, amap, rmap, 
+		util::DistanceFloodfill::fillRanges(0, sizeX, sizeY, amap, rmap,
 			false, true, monitor);
 
 		for (y = 0; y < sizeY; y++)

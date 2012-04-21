@@ -37,7 +37,7 @@ namespace {
 namespace game
 {
   const char *charSkillNames[CHAR_SKILLS_AMOUNT] =
-  { 
+  {
     "aiming",
     "stealth",
     "speed",
@@ -112,7 +112,7 @@ namespace game
     for (int i = 0; i < got; i++)
     {
       if (buf[i] == '\r') buf[i] = '\0';
-      if (buf[i] == '\n') 
+      if (buf[i] == '\n')
       {
         buf[i] = '\0';
 
@@ -201,7 +201,7 @@ namespace game
             int biolen = 0;
             if (bio != NULL) biolen = strlen(bio);
             char *newbio = new char[biolen + strlen(&buf[lastpos + 6]) + 1];
-            if (bio != NULL) 
+            if (bio != NULL)
             {
               strcpy(newbio, bio);
               delete [] bio;
@@ -235,7 +235,7 @@ namespace game
       }
     }
 
-    if (name == NULL || fullname == NULL) 
+    if (name == NULL || fullname == NULL)
     {
       Logger::getInstance()->error("Character - No name or fullname defined.");
       assert(0);

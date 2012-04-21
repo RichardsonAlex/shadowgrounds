@@ -760,7 +760,7 @@ namespace {
 							// object is first in the list... so we may need to flip the contant normal, depending
 							// on which object is which...
 
-							// WARNING: can we really rely on this physx behaviour??? 
+							// WARNING: can we really rely on this physx behaviour???
 							// (so that normal direction is always from po2 toward po1?)
 
 							if (pc.obj1 != NULL && pc.obj2 != NULL)

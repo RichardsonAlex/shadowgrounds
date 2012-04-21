@@ -175,12 +175,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainUnits &units)
-{ 
+{
 	return units.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainUnits &units)
-{ 
+{
 	return units.readStream(stream);
 }
 

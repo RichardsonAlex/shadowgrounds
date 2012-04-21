@@ -24,7 +24,7 @@
 #include "../util/Debug_MemoryManager.h"
 
 
-namespace game 
+namespace game
 {
 
 struct UnitFormationData
@@ -64,7 +64,7 @@ UnitFormation::~UnitFormation()
 
 // Mutators
 
-void UnitFormation::addMovePoint(std::vector<Unit *> *units, 
+void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 	const VC3 &scaledMapPos, Unit::MoveType moveType)
 {
 	// If some units have waypoints set, they are overriden
@@ -157,7 +157,7 @@ void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 		float minDist = 0.5f;
 		float maxDist = 3.0f;
 
-		if (units->size() == 1) 
+		if (units->size() == 1)
 		{
 			minDist = 0;
 			maxDist = 1.0f;
@@ -250,7 +250,7 @@ void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 					int factSq;
 					if (CoverFinder::isCoveredFrom(data->gameMap->getCoverMap(), tx, ty, coverFromX, coverFromY))
 					{
-						factSq = (tx - ox)*(tx - ox) + (ty - oy)*(ty - oy); 
+						factSq = (tx - ox)*(tx - ox) + (ty - oy)*(ty - oy);
 /*
 					}
 					else if (data->gameMap->getHideMap()->getHiddenessAt(tx, ty) == HideMap::maxHiddeness)
@@ -309,7 +309,7 @@ void UnitFormation::addMovePoint(std::vector<Unit *> *units,
 
 					// blocked really gets penalty :)
 					if (data->gameScene->isBlockedAtScaled(
-						data->gameMap->obstacleToScaledX(tx), 
+						data->gameMap->obstacleToScaledX(tx),
 						data->gameMap->obstacleToScaledY(ty), 0))
 					{
 						factSq += 100*100;

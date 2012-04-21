@@ -98,8 +98,8 @@ namespace game
     {
       if (buf[i] == '\r' || buf[i] == '\n')
       {
-        // TODO: linenumbering goes wrong if carriage return missing 
-        // so if non-windows text format, it's real line number + 1 
+        // TODO: linenumbering goes wrong if carriage return missing
+        // so if non-windows text format, it's real line number + 1
         if (buf[i] == '\n') lineNumber++;
 
         buf[i] = '\0';
@@ -107,14 +107,14 @@ namespace game
         // remove trailing spaces
         for (int j = i - 1; j >= lastpos; j--)
         {
-          if (buf[j] == ' ') 
+          if (buf[j] == ' ')
             buf[j] = '\0';
-          else 
+          else
             break;
         }
 
         // process if not empty and not start with comments
-        if (buf[lastpos] != '\0' 
+        if (buf[lastpos] != '\0'
           && strncmp(&buf[lastpos], "//", 2) != 0)
         {
           int tokenSep = -1;
@@ -129,7 +129,7 @@ namespace game
           }
           char *cmd = &buf[lastpos];
           char *data = NULL;
-          if (tokenSep != -1) 
+          if (tokenSep != -1)
             data = &buf[tokenSep + 1];
 
           bool lineok = false;
@@ -150,7 +150,7 @@ namespace game
             }
             if (section == atSection)
               okSection = true;
-            else 
+            else
               okSection = false;
             lineok = true;
           }
@@ -158,7 +158,7 @@ namespace game
           if (strcmp(cmd, "includeScript") == 0)
           {
             if (data != NULL)
-            { 
+            {
 							if (data[0] == '\"')
 							{
 								char *stringedData = new char[strlen(&data[1]) + 1];
@@ -370,8 +370,8 @@ namespace game
                   error("Illegal part type id.", lineNumber);
               } else {
                 PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(data));
-                if (pt == NULL) 
-                { 
+                if (pt == NULL)
+                {
                   error("Reference to unloaded part type.", lineNumber);
                 } else {
                   if (game->partTypesAvailable->isPartTypeAvailable(player, pt))
@@ -446,8 +446,8 @@ namespace game
                   error("Illegal part type id.", lineNumber);
               } else {
                 PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(data));
-                if (pt == NULL) 
-                { 
+                if (pt == NULL)
+                {
                   error("Reference to unloaded part type.", lineNumber);
                 } else {
                   part = pt->getNewPartInstance();
@@ -470,8 +470,8 @@ namespace game
                   error("Illegal part type id.", lineNumber);
               } else {
                 PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(data));
-                if (pt == NULL) 
-                { 
+                if (pt == NULL)
+                {
                   error("Reference to unloaded part type.", lineNumber);
                 } else {
                   if (unit == NULL)
@@ -544,8 +544,8 @@ namespace game
                   error("Illegal part type id.", lineNumber);
               } else {
                 PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(data));
-                if (pt == NULL) 
-                { 
+                if (pt == NULL)
+                {
                   error("Reference to unloaded part type.", lineNumber);
                 } else {
                   if (!partInUnit || part == NULL)
@@ -557,7 +557,7 @@ namespace game
                     int slot;
                     for (slot = 0; slot < slotamount; slot++)
                     {
-                      if (parentPart->getSubPart(slot) == NULL 
+                      if (parentPart->getSubPart(slot) == NULL
                         && pt->isInherited(parentPart->getType()->getSlotType(slot)))
                       break;
                     }
@@ -591,7 +591,7 @@ namespace game
                   part = part->getParent();
                 }
               }
-              lineok = true; 
+              lineok = true;
             }
 */
 /*
@@ -623,9 +623,9 @@ namespace game
         }
 
         // skip leading spaces for next entry
-        while (buf[i + 1] == ' ') 
-        { 
-          i++; 
+        while (buf[i + 1] == ' ')
+        {
+          i++;
         }
         lastpos = i + 1;
       }

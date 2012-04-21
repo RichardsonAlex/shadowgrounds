@@ -91,7 +91,7 @@ SurvivalMenu::SurvivalMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	buttonH	= getLocaleGuiInt( "gui_survivalmenu_button_h", getLocaleGuiInt( "gui_menu_common_button_h", 0 ) );
 
 	buttonXStart = buttonX;
-	buttonXLimit= getLocaleGuiInt( "gui_survivalmenu_buttons_max_width", 0 ); 
+	buttonXLimit= getLocaleGuiInt( "gui_survivalmenu_buttons_max_width", 0 );
 
 	buttonAddX = getLocaleGuiInt( "gui_survivalmenu_button_add_x", getLocaleGuiInt( "gui_menu_common_button_add_x", 0 ) );
 	buttonAddY = getLocaleGuiInt( "gui_survivalmenu_button_add_y", getLocaleGuiInt( "gui_menu_common_button_add_y", 28 ) );
@@ -122,7 +122,7 @@ SurvivalMenu::SurvivalMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 		std::string buttonText = getLocaleGuiString( "gui_survivalmenu_load" );
 		OguiButton* b;
 		std::string imageCrap;
-		b = ogui->CreateSimpleTextButton( win, x, y, w, h, 
+		b = ogui->CreateSimpleTextButton( win, x, y, w, h,
 			imageCrap.c_str(), imageCrap.c_str(), imageCrap.c_str(), buttonText.c_str(), COMMANDS_LOAD );
 		b->SetListener( this );
 
@@ -137,12 +137,12 @@ SurvivalMenu::SurvivalMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	}
 
 
-	showCustomMissions = new OguiCheckBox( win, ogui, 
-			getLocaleGuiInt( "gui_survivalmenu_showcustom_x", 0 ), 
-			getLocaleGuiInt( "gui_survivalmenu_showcustom_y", 0 ), 
-			getLocaleGuiInt( "gui_survivalmenu_showcustom_w", 0 ), 
+	showCustomMissions = new OguiCheckBox( win, ogui,
+			getLocaleGuiInt( "gui_survivalmenu_showcustom_x", 0 ),
+			getLocaleGuiInt( "gui_survivalmenu_showcustom_y", 0 ),
+			getLocaleGuiInt( "gui_survivalmenu_showcustom_w", 0 ),
 			getLocaleGuiInt( "gui_survivalmenu_showcustom_h", 0 ), 	
-			getLocaleGuiString( "gui_survivalmenu_showcustom_img_norm" ), "", "", 
+			getLocaleGuiString( "gui_survivalmenu_showcustom_img_norm" ), "", "",
 			getLocaleGuiString( "gui_survivalmenu_showcustom_img_fill" ));
 
 	showCustomMissions->setText( getLocaleGuiString( "gui_survivalmenu_showcustom_text" ), OguiCheckBox::TEXT_ALIGN_LEFT, getLocaleGuiInt( "gui_survivalmenu_showcustom_textwidth", 200 ), fonts->little.highlighted );
@@ -396,7 +396,7 @@ void SurvivalMenu::CursorEvent( OguiButtonEvent* eve )
 
 void SurvivalMenu::menuClose()
 {
-	closeMenu(); 
+	closeMenu();
 }
 
 void SurvivalMenu::reloadLastMission(game::Game *game)
@@ -830,7 +830,7 @@ void SurvivalMenu::scrollMissionsUp()
 			i->second->MoveBy( 0, buttonAddY );
 			if( i->second->GetY() < buttonYMaxLimit + 900 && i->second->GetY() > buttonYMaxLimit )
 			{
-				i->second->MoveBy( 0, +1000 ); 
+				i->second->MoveBy( 0, +1000 );
 			}
 
 			if( i->second->GetY() < buttonYMinLimit && i->second->GetY() >= buttonYMinLimit - 1000 )

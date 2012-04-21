@@ -34,7 +34,7 @@ void FBCopyFile::copyFile(const std::string &from, const std::string &to)
 		{
 			std::string temp;
 			std::getline( in, ( temp ) );
-			out << temp << std::endl; 
+			out << temp << std::endl;
 		}
 	// }*/
 

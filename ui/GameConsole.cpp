@@ -127,7 +127,7 @@ namespace ui
 	void GameConsole::enter()
 	{
 		if (inputBufUsed + inputBufRightUsed != 0)
-		{ 
+		{
 			strcpy(historyBufs[historyNumber % GAMECONSOLE_HISTORY], inputBuf);
 			strcat(historyBufs[historyNumber % GAMECONSOLE_HISTORY], inputBufRight);
 
@@ -173,22 +173,22 @@ namespace ui
 						if (opt->getVariableType() == game::IScriptVariable::VARTYPE_STRING)
 						{
 							opt->setStringValue(&inp[valueSep + 1]);
-						} 
+						}
 						else if (opt->getVariableType() == game::IScriptVariable::VARTYPE_INT)
 						{
 							opt->setIntValue(str2int(&inp[valueSep + 1]));
-						} 
+						}
 						else if (opt->getVariableType() == game::IScriptVariable::VARTYPE_FLOAT)
 						{
 							opt->setFloatValue((float)atof(&inp[valueSep + 1]));
-						} 
+						}
 						else if (opt->getVariableType() == game::IScriptVariable::VARTYPE_BOOLEAN)
 						{
 							if (str2int(&inp[valueSep + 1]) != 0)
 								opt->setBooleanValue(true);
 							else
 								opt->setBooleanValue(false);
-						} 
+						}
 						if (opt->doesNeedApply())
 							::apply_options_request = true;
 						Logger::getInstance()->info("GameConsole::enter - Option value changed.");
@@ -346,7 +346,7 @@ namespace ui
 							if (smallestMatchLength > i)
 								smallestMatchLength = i;
 							break;
-						} 						 
+						}
 					}
 				}
 				matches++;
@@ -422,7 +422,7 @@ namespace ui
 				inputBuf[optStart + smallestMatchLength] = '\0';
 				if (matches == 1)
 					strcat(inputBuf, " ");
-				inputBufUsed = strlen(inputBuf); 
+				inputBufUsed = strlen(inputBuf);
 				errorWindow->setInputLine(inputBuf, inputBufRight);
 			}
 			return true;
@@ -490,7 +490,7 @@ namespace ui
 				assert((int)strlen(buf) >= smallestMatchLength);
 				strncpy(&inputBuf[matchCut], buf, smallestMatchLength);
 				inputBuf[matchCut + smallestMatchLength] = '\0';
-				inputBufUsed = strlen(inputBuf); 
+				inputBufUsed = strlen(inputBuf);
 				errorWindow->setInputLine(inputBuf, inputBufRight);
 			}
 			delete [] buf;
@@ -602,7 +602,7 @@ namespace ui
 					break;
 				}
 			}
-			historyNumber = h;			
+			historyNumber = h;
 			atHistory = historyNumber;
 		} else {
 			Logger::getInstance()->warning("GameConsole::loadHistory - Error loading history file even though it existed.");

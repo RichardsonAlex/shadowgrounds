@@ -35,7 +35,7 @@ using namespace frozenbyte;
 
 namespace game
 {
-	// to assist in "BlockedHeightArea" floodfilling, implements the 
+	// to assist in "BlockedHeightArea" floodfilling, implements the
 	// required mapper interface.
 	class BlockedHeightAreaFillMapper : public util::IFloodfillByteMapper
 	{
@@ -75,7 +75,7 @@ namespace game
 				}
 			}
 
-			// this has already been floodfilled 
+			// this has already been floodfilled
 			// (or just otherwise fully blocked)
 			return 0;
 		}
@@ -109,7 +109,7 @@ namespace game
 
 	};
 
- 
+
   GameMap::GameMap()
   {
 
@@ -134,7 +134,7 @@ namespace game
 		colorMap = 0;
 		lightMap = 0;
 		precalcedPathfindHeightMap = NULL;
-  } 
+  }
 
   GameMap::~GameMap()
   {
@@ -200,7 +200,7 @@ namespace game
   {
     // shared buffer! (now owned by this object)
     this->heightMap = heightMap;
-    
+
     // 2x resolution. shared. (owned by storm)
     this->pathfindHeightMap = doubledMap;
 
@@ -374,7 +374,7 @@ namespace game
 	/*
   void GameMap::loadHideMap()
   {
-		// either load the hidemap from disk or if the file is not 
+		// either load the hidemap from disk or if the file is not
 		// up-to-date, set not-loaded flag.
 
 		// NOTE: copy&pasted to saveHideMap below.
@@ -476,7 +476,7 @@ namespace game
 
   void GameMap::loadObstacleAndAreaMap(frozenbyte::ai::PathFind *pathfinder)
   {
-		// either load the hidemap from disk or if the file is not 
+		// either load the hidemap from disk or if the file is not
 		// up-to-date, set not-loaded flag.
 
 		// NOTE: copy&pasted to saveHideMap below.
@@ -582,7 +582,7 @@ namespace game
 			}
 		}
 
-		// NOTE: set loaded flag to false - this allows dynamic obstacle/areamap changes 
+		// NOTE: set loaded flag to false - this allows dynamic obstacle/areamap changes
 		// to take effect (when breaking terrainobjects)
 		// (otherwise they would be ignored)
 		obstacleAndAreaMapLoaded = false;
@@ -595,7 +595,7 @@ namespace game
     // TODO: read/solve map size from file
 
     FILE *f = fopen(filename, "rb");
-    if (f == NULL) 
+    if (f == NULL)
     {
       heightMap = NULL;
       sizeX = 0;
@@ -722,7 +722,7 @@ namespace game
 
 	void GameMap::makeHeightAreaBlocked(int heightMapX, int heightMapY)
 	{
-		// FIXME: this implementation blocks ALL (even non-connected) areas 
+		// FIXME: this implementation blocks ALL (even non-connected) areas
 		// of this height. should only block the connected area!!!
 
 		int x = heightMapX;

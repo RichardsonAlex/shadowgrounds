@@ -17,11 +17,11 @@ class IOguiImage;
 class OguiSlider : public IOguiButtonListener
 {
 public:
-	OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h, 
+	OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 		const std::string& background_norm, const std::string& background_down, const std::string& background_high,
 		const std::string& foreground_norm, const std::string& foreground_down, const std::string& foreground_high, int id = 0, float value = 1.0f );
 
-	/*OguiWindow *win, int x, int y, int sizex, int sizey, 
+	/*OguiWindow *win, int x, int y, int sizex, int sizey,
     const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename,
     int id = 0, void *argument = NULL*/
 	
@@ -98,11 +98,11 @@ protected:
 
 ///////////////////////////////////////////////////////////////////////////////
 // Good old dirty inheritance hack
-// A slider that can't be manipulated with mouse 
+// A slider that can't be manipulated with mouse
 class OguiGfxSlider : public OguiSlider
 {
 public:
-	OguiGfxSlider(  OguiWindow* win, Ogui* ogui, int x, int y, int w, int h, 
+	OguiGfxSlider(  OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 		const std::string& background_norm, const std::string& background_down, const std::string& background_high,
 		const std::string& foreground_norm, const std::string& foreground_down, const std::string& foreground_high, int id = 0, float value = 1.0f  );
 	virtual ~OguiGfxSlider();

@@ -18,8 +18,8 @@ namespace game
 			}
 
 
-			~Checkpoints() 
-			{ 
+			~Checkpoints()
+			{
 				// nop
 			}
 
@@ -107,7 +107,7 @@ namespace game
         float distSq = pos.x * pos.x + pos.z * pos.z;
         float dist = sqrtf(distSq);
 				float angle;
-				if (dist == 0) 
+				if (dist == 0)
 					angle = 0;
 				else
 					angle = (float)acos(pos.x / dist);

@@ -8,7 +8,7 @@ namespace game
 {
 	class GameMap;
 
-	// to assist in "BlockedHeightArea" floodfilling, implements the 
+	// to assist in "BlockedHeightArea" floodfilling, implements the
 	// required mapper interface.
 	class BlockedHeightAreaFillMapper : public util::IFloodfillByteMapper
 	{

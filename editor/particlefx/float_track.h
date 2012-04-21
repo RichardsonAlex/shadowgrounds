@@ -3,7 +3,7 @@
 
 struct FloatTrackData;
 class FloatTrack {
-	ScopedPtr<FloatTrackData> m; 
+	ScopedPtr<FloatTrackData> m;
 public:
 	FloatTrack();
 	~FloatTrack();

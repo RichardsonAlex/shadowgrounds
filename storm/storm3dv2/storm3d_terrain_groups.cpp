@@ -226,7 +226,7 @@ namespace {
 			tree->collectSphere(instances, position, radius);
 		}
 
-		~TerrainIterator() 
+		~TerrainIterator()
 		{
 		}
 
@@ -693,7 +693,7 @@ void Storm3D_TerrainGroup::removeInstances()
 				data->terrainModels.removeModel(*instance.fadeModel);
 		}
 
-		model.instances.clear();   
+		model.instances.clear();
 	}
 
 	data->instanceMap.clear();

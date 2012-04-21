@@ -28,7 +28,7 @@ namespace game
 	VC3 gs_global_temp_position(0,0,0);
 	bool gs_global_temp_position_used = false;
 
-	void PositionScripting::process(util::ScriptProcess *sp, 
+	void PositionScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -95,11 +95,11 @@ namespace game
 		case GS_CMD_GETPOSITIONZ:
 			*lastValue = (int)gsd->position.z;
 			break;
-							 
+							
 		case GS_CMD_GETPOSITIONHEIGHT:
 			*lastValue = (int)gsd->position.y;
 			break;
-							 
+							
 		case GS_CMD_GETACCURATEPOSITIONX:
 			*lastValue = (int)(gsd->position.x * 1000.0f);
 			break;
@@ -107,7 +107,7 @@ namespace game
 		case GS_CMD_GETACCURATEPOSITIONZ:
 			*lastValue = (int)(gsd->position.z * 1000.0f);
 			break;
-							 
+							
 		case GS_CMD_SETPOSITIONHEIGHT:
 			if (stringData != NULL)
 			{
@@ -162,7 +162,7 @@ namespace game
 		case GS_CMD_SETPOSITIONZ:
 			gsd->position.z = (float)*lastValue;
 			break;
-							 
+							
 		case GS_CMD_SETACCURATEPOSITIONX:
 			gsd->position.x = (float)*lastValue / 1000.0f;
 			break;
@@ -187,7 +187,7 @@ namespace game
 			gs_global_temp_position_used = true;
 			gs_global_temp_position = gsd->position;
 			break;
-							 
+							
 		case GS_CMD_POPGLOBALTEMPPOSITION:
 			if (!gs_global_temp_position_used)
 			{
@@ -197,7 +197,7 @@ namespace game
 			gs_global_temp_position_used = false;
 			gs_global_temp_position = VC3(0,0,0);
 			break;
-							 
+							
 		case GS_CMD_MOVEPOSITIONTOANGLEVALUE:
 			{
 				float angle = (float)(*lastValue);

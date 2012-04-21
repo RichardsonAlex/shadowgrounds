@@ -28,8 +28,8 @@ struct Storm3D_CollisionInfo
 	int terrainInstanceId;
 	int terrainModelId;
 
-	Storm3D_CollisionInfo() 
-	:	hit(false), 
+	Storm3D_CollisionInfo()
+	:	hit(false),
 		position(0.0f),
 		plane_normal(0.0f),
 		range(static_cast<float>(HUGE)),

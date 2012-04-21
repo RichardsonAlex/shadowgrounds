@@ -145,7 +145,7 @@ void Storm3D_Font::SetCharacters(const char *characters,uint8_t *_letter_width)
 		int slen = 0;
 		for (int i = 0; i < letter_amt; i++)
 		{
-			if (characters[i] != '\0') 
+			if (characters[i] != '\0')
 				slen++;
 		}
 				

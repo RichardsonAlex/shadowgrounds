@@ -117,7 +117,7 @@ public:
 // Common datatypes
 #include "DatatypeDef.h"
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include "Storm3D_Datatypes.h"
 #include "IStorm3D_Texture.h"
@@ -170,7 +170,7 @@ public:
 	virtual void RegenerateTexturing()=0;
 
 	// Sets the memory reserving amount, affects block degeneration
-	// The more memory reserve, the more extra blocks are kept in 
+	// The more memory reserve, the more extra blocks are kept in
 	// memory. (valid values 0 - xxx).
 	virtual void SetMemoryReserve(int memoryReserveAmount)=0;
 
@@ -212,7 +212,7 @@ public:
 	// modify the height with 3D sphere rather than 2D circle as the above
 	// cuts off a spheric area from the terrain
 
-	// Forces the heightmap in given area to below or above the forcemap 
+	// Forces the heightmap in given area to below or above the forcemap
 	virtual void forcemapHeight(const VC2 &position, float radius, bool above = true,
 		bool below = false) = 0;
 

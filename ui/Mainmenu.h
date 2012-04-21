@@ -16,7 +16,7 @@ namespace game
 namespace ui
 {
 
-// The main menu the single menu from in the begin of the game, this does 
+// The main menu the single menu from in the begin of the game, this does
 // not include options / load game / profiles / credits or any other sub window!
 class MainMenu : public MenuBaseImpl
 {
@@ -89,8 +89,8 @@ private:
 	void createDifficultyButtons();
 	void setDifficulty( int difficulty );
 	void selectDifficultButton( int i );
-	void addDifficultButton( int x, int y, int w, int h, 
-		const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+	void addDifficultButton( int x, int y, int w, int h,
+		const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 		IOguiFont* font, const std::string& text, int command );
 
 	MenuCollection*			menuCollection;

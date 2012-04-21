@@ -77,7 +77,7 @@ namespace ui
 			color(1,1,1),
 			fakelightColor(1,1,1),
 			flashType(FLASH_TYPE_NONE)
-		{ 
+		{
 			// (nothing else.)
 		}
 	};

@@ -70,14 +70,14 @@ namespace util
 #endif
 	}
 
-	
+
 	ScriptManager::~ScriptManager()
 	{
 		/*
 		ScriptHashType::iterator iter;
 		for (iter = scriptNameHash->begin(); iter != scriptNameHash->end(); )
 		{
-			Script *s = (*iter).second; 			
+			Script *s = (*iter).second;
 			delete s;
 			//scriptNameHash->erase(iter);
 			++iter;
@@ -91,14 +91,14 @@ namespace util
 
 		scriptNameHash->clear();
 		delete scriptNameHash;
-	
-		{		
+
+		{
 			for(ScriptFileHashType::iterator it = fileHash->begin(); it != fileHash->end(); ++it)
 			{
 				delete[] it->second.first;
 			}
 		}
-		
+
 		fileHash->clear();
 		delete fileHash;
 
@@ -148,7 +148,7 @@ namespace util
 
 		SimpleParser sp;
 		bool loadOk = sp.loadFile(filename);
-		
+
 		if (loadOk)
 		{
 			while (sp.next())
@@ -183,7 +183,7 @@ namespace util
 							} else {
 								if (seppos < 10)
 								{
-									sp.error("ScriptManager::loadInternalPreprocessorMacros - Macro names less than 2 chars not accepted.");								
+									sp.error("ScriptManager::loadInternalPreprocessorMacros - Macro names less than 2 chars not accepted.");
 								} else {
 									char *tmp = new char[slen + 1];
 									strcpy(tmp, l);
@@ -193,7 +193,7 @@ namespace util
 
 									std::pair<std::string, std::string> macropair;
 									macropair.first = std::string(name);
-									macropair.second = std::string(expansion); 
+									macropair.second = std::string(expansion);
 									internalMacros.push_back(macropair);
 
 									delete [] tmp;
@@ -205,7 +205,7 @@ namespace util
 // (but cannot use that, 'cos simpleparser will remove those lines)
 //						sp.error("ScriptManager::loadInternalPreprocessorMacros - Invalid non-#define line encountered.");
 						sp.error("ScriptManager::loadInternalPreprocessorMacros - Invalid non-define line encountered.");
-					}					
+					}
 				} else {
 					sp.error("ScriptManager::loadInternalPreprocessorMacros - Invalid non-preprocessor line encountered.");
 				}
@@ -230,7 +230,7 @@ namespace util
 				Logger::getInstance()->warning("ScriptManager::loadInternalPreprocessorMacros - Empty internal preprocessor macros file.");
 				Logger::getInstance()->debug(filename);
 			}
-			
+
 			fb_fclose(f);
 			*/
 
@@ -319,7 +319,7 @@ namespace util
 
 		char *filename_preprocessed = new char[strlen(filename) + 10];
 		strcpy(filename_preprocessed, filename);
-		if (strlen(filename) > 4 
+		if (strlen(filename) > 4
 			&& strcmp(&filename[strlen(filename) - 4], ".dhs") == 0)
 		{
 			filename_preprocessed[strlen(filename) - 4] = '\0';
@@ -374,9 +374,9 @@ namespace util
 					{
 						Logger::getInstance()->debug("About to copy a nopp-flagged script...");
 						// no preprocess script, just copy the original .dhs
-						
+
 						fseek(noppf, 0, SEEK_SET);
-												
+
 						char *noppbuf2 = new char[flen + 1];
 						noppbuf2[0] = '\0';
 						int got = fread(noppbuf2, flen, 1, noppf);
@@ -649,8 +649,8 @@ namespace util
 		ScriptFileHashType::iterator iter = fileHash->find(hc);
 		if (iter != fileHash->end())
 		{
-			char *loaded = (*iter).second.first; 
-			if (loaded != NULL) 
+			char *loaded = (*iter).second.first;
+			if (loaded != NULL)
 			{
 				if (replace)
 				{
@@ -665,7 +665,7 @@ namespace util
 
 					for (int i = 0; i < scrman_importdepth; i++)
 					{
-						if (scrman_importfilestack[i] != NULL 
+						if (scrman_importfilestack[i] != NULL
 							&& strcmp(scrman_importfilestack[i], filename) == 0)
 						{
 							Logger::getInstance()->warning("ScriptManager::loadScripts - Cyclic script import chain.");
@@ -739,7 +739,7 @@ namespace util
 			// WARNING: semicolon now treated like a newline!
 			// should check that it really works and won't cause problems!
 
-			if (buf[i] == '\r' || buf[i] == '\n' 
+			if (buf[i] == '\r' || buf[i] == '\n'
 				|| (buf[i] == ';' && !insideQuotes && !atCommentLine))
 			{
 				if (buf[i] == '\n')
@@ -749,9 +749,9 @@ namespace util
 
 				bool endCommentLine = false;
 
-				// TODO: linenumbering goes wrong if carriage return missing 
-				// so if non-windows text format, it's real line number + 1 
-				if (buf[i] == '\r' || buf[i] == '\n') 
+				// TODO: linenumbering goes wrong if carriage return missing
+				// so if non-windows text format, it's real line number + 1
+				if (buf[i] == '\r' || buf[i] == '\n')
 				{
 					endCommentLine = true;
 				}
@@ -762,9 +762,9 @@ namespace util
 				// remove trailing spaces
 				for (int j = i - 1; j >= lastpos; j--)
 				{
-					if (buf[j] == ' ') 
+					if (buf[j] == ' ')
 						buf[j] = '\0';
-					else 
+					else
 						break;
 				}
 
@@ -797,7 +797,7 @@ namespace util
 					}
 					char *cmd = &buf[lastpos];
 					char *data = NULL;
-					if (tokenSep != -1) 
+					if (tokenSep != -1)
 					{
 						data = &buf[tokenSep + 1];
 						while (data[0] == ' ' || data[0] == '\t')
@@ -819,7 +819,7 @@ namespace util
 					if (strcmp(cmd, "import") == 0)
 					{
             if (scrman_importdepth < SCRIPT_MAX_IMPORT_DEPTH)
-            { 
+            {
               if (scrman_importdepth >= 0)
               {
                 if (scrman_currentfile != NULL)
@@ -857,7 +857,7 @@ namespace util
 
             scrman_importdepth--;
             if (scrman_importdepth < SCRIPT_MAX_IMPORT_DEPTH)
-            { 
+            {
               if (scrman_importdepth >= 0)
               {
                 strcpy(scrman_currentfile, scrman_importfilestack[scrman_importdepth]);
@@ -871,7 +871,7 @@ namespace util
 					}
 
 					if (strcmp(cmd, "script") == 0)
-					{ 					 
+					{
 						if (currentScript != NULL)
 						{
 							error("Expected endScript, script block not properly ended before next script block.", lineNumber, true);
@@ -931,7 +931,7 @@ namespace util
 					}
 
 					if (strcmp(cmd, "endScript") == 0)
-					{ 					 
+					{
 						if (currentScript == NULL)
 						{
 							error("Unexpected endScript, no script block started before end.", lineNumber, true);
@@ -960,7 +960,7 @@ namespace util
                 error("Whitespaces after likely string data, probably unintended?", lineNumber, false);
               }
 
-							if (data != NULL && data[0] == '"' 
+							if (data != NULL && data[0] == '"'
 								&& data[strlen(data) - 1] == '"')
 							{
 								char *datastrip = new char[strlen(data) + 1];
@@ -980,7 +980,7 @@ namespace util
 										{
 											char depthbuf[16];
 											strcpy(depthbuf, int2str((ifDepth << (32-4))));
-											bool retconvok = currentScript->addCommand("_returnMultiple", depthbuf); 
+											bool retconvok = currentScript->addCommand("_returnMultiple", depthbuf);
 											if (!retconvok)
 											{
 												error("Internal error while trying to convert nested return (bug).", lineNumber, true);
@@ -1013,7 +1013,7 @@ namespace util
 									commandCountIf++;
                   ifDepth++;
                   ifNestMask *= 2;
-                  // just some limit to make sure this thing does not 
+                  // just some limit to make sure this thing does not
                   // totally screw something up.
                   if (ifDepth >= 8)
                   {
@@ -1030,9 +1030,9 @@ namespace util
                       //  assert(!"Cannot automatically nest if block because of loop.");
                       //} else {
 												scrman_currentline = lineNumber;
-								        bool autonestok = currentScript->addCommand("_externCallPush", NULL); 
+								        bool autonestok = currentScript->addCommand("_externCallPush", NULL);
                         if (!autonestok)
-                        {                      
+                        {
                           error("Internal error while trying to autonest if blocks, at _externCallPush (bug).", lineNumber, true);
                           assert(!"if autonesting bugged at _externCallPush.");
                         }
@@ -1060,9 +1060,9 @@ namespace util
                       didABreakLoop = false;
 
 											scrman_currentline = lineNumber;
-								      bool autonestok = currentScript->addCommand("_externCallPop", NULL); 
+								      bool autonestok = currentScript->addCommand("_externCallPop", NULL);
                       if (!autonestok)
-                      {                      
+                      {
                         error("Internal error while trying to autonest if blocks, at _externCallPop (bug).", lineNumber, true);
                         assert(!"if autonesting bugged at _externCallPop.");
                       }
@@ -1083,7 +1083,7 @@ namespace util
                 {
                   didABreakLoop = true;
                   if (nestedInsideLoop)
-                  {                    
+                  {
                     error("Possibly an erronous use of manual _externCallPush/Pop nesting inside loop.", lineNumber, false);
                     assert(!"Possibly an erronous use of manual _externCallPush/Pop nesting inside loop.");
                   }
@@ -1187,7 +1187,7 @@ namespace util
 								}
 							}
 						} else {
-							error("Command outside script block.", lineNumber, true); 
+							error("Command outside script block.", lineNumber, true);
 							lineok = true;
 						}
 					}
@@ -1201,9 +1201,9 @@ namespace util
 				}
 
 				// skip leading spaces or tabs for next entry
-				while (buf[i + 1] == ' ' || buf[i + 1] == '\t') 
-				{ 
-					i++; 
+				while (buf[i + 1] == ' ' || buf[i + 1] == '\t')
+				{
+					i++;
 				}
 				lastpos = i + 1;
 
@@ -1219,7 +1219,7 @@ namespace util
 				}
 
 
-				if (lastpos < datalen && 
+				if (lastpos < datalen &&
 					(strncmp(&buf[lastpos], "//", 2) == 0 || buf[lastpos] == '#'))
 				{
 					atCommentLine = true;
@@ -1248,7 +1248,7 @@ namespace util
 
     if (ifDepth != 0)
     {
-			error("Error processing if clauses, if depth not zero at end of file.", lineNumber, true); 
+			error("Error processing if clauses, if depth not zero at end of file.", lineNumber, true);
       assert(!"ScriptManager::loadMemoryScripts - if depth not zero at end of file.");
     }
 
@@ -1263,7 +1263,7 @@ namespace util
     if (manualNestedIfs > 0 && !loopReasonForManualNest)
     {
       // NOTICE: this is for temporary use only (maybe..?)
-			error("Manually nested blocks (_externCallPush/Pop) found, they should be removed.", lineNumber, false); 
+			error("Manually nested blocks (_externCallPush/Pop) found, they should be removed.", lineNumber, false);
       Logger::getInstance()->debug("Manually nested blocks, amount follows.");
       Logger::getInstance()->debug(int2str(manualNestedIfs));
     }
@@ -1276,14 +1276,14 @@ namespace util
 	Script *ScriptManager::getScript(const char *scriptName)
 	{
 		assert(scriptName != NULL);
-		
+
 		int hc;
 		SCRIPT_HASHCODE_CALC(scriptName, &hc);
 
 		ScriptHashType::iterator iter = scriptNameHash->find(hc);
 		if (iter != scriptNameHash->end())
 		{
-			Script *loaded = (*iter).second; 
+			Script *loaded = (*iter).second;
 			return loaded;
 		}
 		return NULL;
@@ -1318,7 +1318,7 @@ namespace util
 			keywordDatatypes[j] = datatypes[j];
 		}
 	}
-		
+
 	void ScriptManager::setProcessor(IScriptProcessor *processor)
 	{
 		this->processor = processor;

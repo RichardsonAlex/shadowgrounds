@@ -10,7 +10,7 @@
 #include "DatatypeDef.h"
 
 
-// Forward Declarations 
+// Forward Declarations
 struct Storm3D_PointParticle;
 struct Storm3D_LineParticle;
 class IStorm3D_ParticleSystem;
@@ -53,7 +53,7 @@ public:
 	/** Deconstructor for the ParticleSystem.
 		*/
 	~ParticleSystem();
-  
+
 	/** solver is a integrator for the particle system.
 	*/
 	void solver(const Vector &velocity, const Vector &forces, Vector *result, float mass, float step);
@@ -100,7 +100,7 @@ private:
 	Storm3D_LineParticle  *lineParticles_;
 
 	/* Uh. A hack. particles store everything I need except velocities,
-	   so I made an another array that does that. Not really elegant. */ 
+	   so I made an another array that does that. Not really elegant. */
 	Vector *velocities_;
 
 	/* The number of particles */
@@ -110,7 +110,7 @@ private:
 	   given to storm when we render */
 	IStorm3D_ParticleSystem *particleSystem_;
 
-	/* Returns a value between [0,1]. This should really be 
+	/* Returns a value between [0,1]. This should really be
 		 in util or something, but for now this will suffice */
 	float random();
 

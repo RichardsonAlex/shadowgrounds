@@ -12,9 +12,9 @@
 
 namespace game
 {
-	CapsulePhysicsObject::CapsulePhysicsObject(GamePhysics *gamePhysics, float height, float radius, float mass, int collisionGroup, const VC3 &position) 
+	CapsulePhysicsObject::CapsulePhysicsObject(GamePhysics *gamePhysics, float height, float radius, float mass, int collisionGroup, const VC3 &position)
 		: AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->radius = radius;
 		this->height = height;
 		this->mass = mass;
@@ -22,8 +22,8 @@ namespace game
 		this->collisionGroup = collisionGroup;
 	}
 
-	CapsulePhysicsObject::~CapsulePhysicsObject() 
-	{ 
+	CapsulePhysicsObject::~CapsulePhysicsObject()
+	{
 		// nop, ~AbstractPhysicsObject handles everything of any interest...
 	}
 

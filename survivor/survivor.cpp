@@ -170,7 +170,7 @@ namespace {
 
 		{
 		}
-		
+
 		void debug(const char *msg)
 		{
 			logger.debug(msg);
@@ -325,9 +325,9 @@ void error_whine()
 					|| strncmp(&buf[i + 1], "WARNING: ", 9) == 0
 					|| stillInError)
 				{
-					if (strncmp(&buf[i + 1], "ERROR: ", 7) == 0) 
+					if (strncmp(&buf[i + 1], "ERROR: ", 7) == 0)
 						skipErr = 7;
-					if (strncmp(&buf[i + 1], "WARNING: ", 9) == 0) 
+					if (strncmp(&buf[i + 1], "WARNING: ", 9) == 0)
 						skipErr = 9;
 					stillInError = true;
 
@@ -557,7 +557,7 @@ public:
 
 			mission_name = game->getMissionId();
 			updateTick = game->gameTimer;
-			
+
 			memset(&currentstats, 0, sizeof(StatData));
 			memset(&totalstats, 0, sizeof(StatData));
 			clearCounters();
@@ -615,7 +615,7 @@ public:
 			filesystem::FB_FILE *f = filesystem::fb_fopen(filename, "rb");
 			if(f == NULL) break;
 			filesystem::fb_fclose(f);
-			
+
 			images.push_back( ogui->LoadOguiImage(filename) );
 			id++;
 		}
@@ -642,7 +642,7 @@ public:
 		delete quit_button;
 		delete win;
 	}
-	
+
 	void CursorEvent( OguiButtonEvent *eve )
 	{
 		if(eve->eventType == OguiButtonEvent::EVENT_TYPE_CLICK)
@@ -653,7 +653,7 @@ public:
 			}
 			else if(eve->triggerButton->GetId() == BUTTON_ID_NEXT)
 			{
-				
+
 				if((unsigned int)(current_image + 1) < images.size())
 				{
 					current_image++;
@@ -964,7 +964,7 @@ int main(int argc, char *argv[]) {
 
 		using namespace frozenbyte::filesystem;
 		boost::shared_ptr<IFilePackage> standardPackage(new StandardPackage());
-		
+
 #ifdef PROJECT_SURVIVOR_DEMO
 		boost::shared_ptr<IFilePackage> zipPackage1(new ScrambledZipPackage("data1.fbz"));
 		boost::shared_ptr<IFilePackage> zipPackage2(new ScrambledZipPackage("data2.fbz"));
@@ -1059,7 +1059,7 @@ int main(int argc, char *argv[]) {
 				vbf_buf[vbf_size] = '\0';
 				if (strncmp(vbf_buf, version_branch_name, strlen(version_branch_name)) != 0)
 				{
-					version_branch_failure = true;					
+					version_branch_failure = true;
 				}
 			} else {
 				version_branch_failure = true;
@@ -1119,7 +1119,7 @@ int main(int argc, char *argv[]) {
 	if (checksumfailure)
 	{
 		Logger::getInstance()->error("Checksum mismatch.");
-		MessageBox(0,"Checksum mismatch or required data missing.\nMake sure you have all the application files properly installed.\n\nContact Frozenbyte for more info.","Error",MB_OK); 
+		MessageBox(0,"Checksum mismatch or required data missing.\nMake sure you have all the application files properly installed.\n\nContact Frozenbyte for more info.","Error",MB_OK);
 		assert(!"Checksum mismatch");
 		return EXIT_FAILURE;
 	}
@@ -1309,12 +1309,12 @@ int main(int argc, char *argv[]) {
 		RawInputDeviceHandler mh;
 		if(mh.isInitialized()) {
 			char msg [1024];
-			sprintf( msg, "RawInput mouse system initialized succesfully. Number of mouses found: %d, num of keyboards found (if initialized): %d", 
+			sprintf( msg, "RawInput mouse system initialized succesfully. Number of mouses found: %d, num of keyboards found (if initialized): %d",
 				mh.getNumOfMouses(), mh.getNumOfKeyboards() );
 			Logger::getInstance()->info ( msg );
 		} else {
 			char msg [1024];
-			sprintf(msg, "RawInput initialization error: %s", mh.getError().c_str() );		
+			sprintf(msg, "RawInput initialization error: %s", mh.getError().c_str() );
 			Logger::getInstance()->warning ( msg );
 		}
 	}
@@ -1324,18 +1324,18 @@ int main(int argc, char *argv[]) {
 	{
 		Forcewear::enable();
 	}
-	
+
 	if (force_given_boundary)
 	{
-		Keyb3_SetMouseBorders((int)(scr_width / mouse_sensitivity), 
+		Keyb3_SetMouseBorders((int)(scr_width / mouse_sensitivity),
 			(int)(scr_height / mouse_sensitivity));
-		Keyb3_SetMousePos((int)(scr_width / mouse_sensitivity) / 2, 
+		Keyb3_SetMousePos((int)(scr_width / mouse_sensitivity) / 2,
 			(int)(scr_height / mouse_sensitivity) / 2);
 	} else {
 		Storm3D_SurfaceInfo screenInfo = s3d->GetScreenSize();
-		Keyb3_SetMouseBorders((int)(screenInfo.width / mouse_sensitivity), 
+		Keyb3_SetMouseBorders((int)(screenInfo.width / mouse_sensitivity),
 			(int)(screenInfo.height / mouse_sensitivity));
-		Keyb3_SetMousePos((int)(screenInfo.width / mouse_sensitivity) / 2, 
+		Keyb3_SetMousePos((int)(screenInfo.width / mouse_sensitivity) / 2,
 			(int)(screenInfo.height / mouse_sensitivity) / 2);
 	}
 	Keyb3_UpdateDevices();
@@ -1375,7 +1375,7 @@ int main(int argc, char *argv[]) {
 		m->SetBaseTexture(t);
 
 		Storm3D_SurfaceInfo surfinfo = s3d->GetScreenSize();
-	
+
 		disposable_scene->Render2D_Picture(m, Vector2D(0,0), Vector2D((float)surfinfo.width-1,(float)surfinfo.height-1));
 		disposable_scene->RenderScene();
 		delete m;
@@ -1397,8 +1397,8 @@ int main(int argc, char *argv[]) {
 	Ogui *ogui = new Ogui();
 	OguiStormDriver *ogdrv = new OguiStormDriver(s3d, disposable_scene);
 	ogui->SetDriver(ogdrv);
-	ogui->SetScale(OGUI_SCALE_MULTIPLIER * scr_width / 1024, 
-		OGUI_SCALE_MULTIPLIER * scr_height / 768); 
+	ogui->SetScale(OGUI_SCALE_MULTIPLIER * scr_width / 1024,
+		OGUI_SCALE_MULTIPLIER * scr_height / 768);
 	ogui->SetMouseSensitivity(mouse_sensitivity, mouse_sensitivity);
 	ogui->Init();
 
@@ -1462,10 +1462,10 @@ int main(int argc, char *argv[]) {
 	}
 
 	// cursors images for controller 0,1,2,3
-	loadDHCursors(ogui, 0); 
-	loadDHCursors(ogui, 1); 
-	loadDHCursors(ogui, 2); 
-	loadDHCursors(ogui, 3); 
+	loadDHCursors(ogui, 0);
+	loadDHCursors(ogui, 1);
+	loadDHCursors(ogui, 2);
+	loadDHCursors(ogui, 3);
 
 	ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
 
@@ -1566,7 +1566,7 @@ int main(int argc, char *argv[]) {
 	msgproc_gameUI = gameUI;
 
 	MusicPlaylist *musicPlaylist = gameUI->getMusicPlaylist(game->singlePlayerNumber);
-	
+
 	if (SimpleOptions::getBool(DH_OPT_B_MUSIC_SHUFFLE))
 	{
 		musicPlaylist->setSuffle(true);
@@ -1622,12 +1622,12 @@ int main(int argc, char *argv[]) {
 		ui::GameVideoPlayer::playVideo(disposable_scene, "Data\\Videos\\logo.wmv", builder);
 		ui::GameVideoPlayer::playVideo(disposable_scene, "Data\\Videos\\logo_ag.ogg", builder);
 	}
-	
+
 	gameUI->startCommandWindow( 0 );
 	// do the loop...
 
 	Timer::update();
-	uint32_t startTime = Timer::getTime(); 
+	uint32_t startTime = Timer::getTime();
 	uint32_t curTime = startTime;
 	uint32_t movementTime = startTime;
 	uint32_t frameCountTime = startTime;
@@ -1649,7 +1649,7 @@ int main(int argc, char *argv[]) {
 
 	Keyb3_UpdateDevices();
 
-	
+
 
 	while (!quitRequested)
 	{
@@ -1683,11 +1683,11 @@ int main(int argc, char *argv[]) {
 		}
 
 		// read input
-		
+
 		Keyb3_UpdateDevices();
 
 		// can't use curTime here, because game may have just
-		// loaded a map, or something else alike -> curTime 
+		// loaded a map, or something else alike -> curTime
 		// would be badly behind... thus Timer::update and getTime.
 		Timer::update();
 
@@ -1723,7 +1723,7 @@ int main(int argc, char *argv[]) {
 			// because the game is still alive - thus projectiles may still
 			// refer to visualeffects (which gameui would delete ;)
 			if (game->inCombat)
-				game->endCombat(); 
+				game->endCombat();
 			quitRequested = true;
 			// break; // why break here?
 		}
@@ -1739,7 +1739,7 @@ int main(int argc, char *argv[]) {
 
 			if (curTime - movementTime > 0)
 			{
-				// VEEERY jerky... 
+				// VEEERY jerky...
 				//doMovement(game->gameMap, curTime - movementTime);
 				// attempt to fix that...
 				float delta;
@@ -1769,7 +1769,7 @@ int main(int argc, char *argv[]) {
 		// frame/poly counting
 		frames++;
 		{
-			if (curTime - frameCountTime >= 100) 
+			if (curTime - frameCountTime >= 100)
 			{
 			 float seconds = (curTime - frameCountTime) / 1000.0f;
 			 fps = (int)(frames / seconds);
@@ -2092,7 +2092,7 @@ int main(int argc, char *argv[]) {
 
 	Animator::uninit();
 
-	unloadDHCursors(ogui, 0); 
+	unloadDHCursors(ogui, 0);
 
 	delete gameUI;
 	game->gameUI = NULL;
@@ -2125,7 +2125,7 @@ int main(int argc, char *argv[]) {
 	Forcewear::disable();
 
 	Keyb3_Free();
-	
+
 	delete s3d;
 
 	GameOptionManager::cleanInstance();

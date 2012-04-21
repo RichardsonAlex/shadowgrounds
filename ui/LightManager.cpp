@@ -427,18 +427,18 @@ namespace ui {
 				{
 					return 0.0f;
 				}
-				else 
+				else
 				{
 					if(blinkTime >= 5 * properties.blinkTime / 8 && blinkTime < 6 * properties.blinkTime / 8)
 					{
 						return 0.0f;
-					} 
-					else 
+					}
+					else
 					{
 						return 1.0f;
 					}
 				}
-			} 
+			}
 
 			return 1.0f;
 		}
@@ -568,7 +568,7 @@ namespace ui {
 					{
 						VC3 clipPoint;
 #ifndef NDEBUG
-						bool clip = 
+						bool clip =
 #endif
 							frustumPlane.GetClip( vS, vP, &clipPoint );
 						//frustumPlane.clipLine( vS, vP, clipPoint );
@@ -805,8 +805,8 @@ Light::Light()
 
 struct LightManager::Data
 {
-	IStorm3D &storm; 
-	IStorm3D_Scene &scene; 
+	IStorm3D &storm;
+	IStorm3D_Scene &scene;
 	IStorm3D_Terrain &terrain;
 
 	SpotList spots;
@@ -1440,7 +1440,7 @@ if(fabsf(haxP.y - l.position.z) > 0.1f)
 					continue;
 				if(position.z > l.maxPlane.y + radius)
 					continue;
-			} 
+			}
 			else
 			{
 				// New range check

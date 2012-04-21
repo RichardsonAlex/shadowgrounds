@@ -21,7 +21,7 @@ static int oguiScrollHoldAmount = 0;
 
 void OguiSelectList::CursorEvent(OguiButtonEvent *eve)
 {
-	OguiSelectListEvent::EVENT_TYPE et = 
+	OguiSelectListEvent::EVENT_TYPE et =
 		OguiSelectListEvent::EVENT_TYPE_SCROLL;
 	bool sendEvent = false;
 
@@ -41,7 +41,7 @@ void OguiSelectList::CursorEvent(OguiButtonEvent *eve)
 		scrollDown ();
 		et = OguiSelectListEvent::EVENT_TYPE_SCROLL;
 		sendEvent = true;
-	} 
+	}
 	else if (eve->triggerButton == downScrollBut
 		|| eve->triggerButton == upScrollBut)
 	{
@@ -84,7 +84,7 @@ void OguiSelectList::CursorEvent(OguiButtonEvent *eve)
 	} else {
 		num = scrolly + eve->triggerButton->GetId();
 		
-		if (num < 0 || num >= amount) 
+		if (num < 0 || num >= amount)
 		{
 			#ifdef _DEBUG
 				abort();
@@ -110,7 +110,7 @@ void OguiSelectList::CursorEvent(OguiButtonEvent *eve)
 				{
 					et = OguiSelectListEvent::EVENT_TYPE_DOUBLESELECT;
 				} else {
-					for (int i = 0; i < amount; i++) 
+					for (int i = 0; i < amount; i++)
 						selected[i] = false;
 					selected[num] = true;
 					et = OguiSelectListEvent::EVENT_TYPE_SELECT;
@@ -135,7 +135,7 @@ void OguiSelectList::CursorEvent(OguiButtonEvent *eve)
 	{
 		char *val = NULL;
 		char *desc = NULL;
-		if (num >= 0 && num < amount) 
+		if (num >= 0 && num < amount)
 		{
 			val = values[num];
 			desc = descs[num];
@@ -173,7 +173,7 @@ void OguiSelectList::setStyle(OguiSelectListStyle *style)
 
 void OguiSelectList::scrollUp()
 {
-	if (scrolly > 0) 
+	if (scrolly > 0)
 	{
 		scrolly--;
 		refresh();
@@ -238,9 +238,9 @@ void OguiSelectList::refresh()
 	{
 		if (scrolly + i >= 0 && scrolly + i < amount)
 		{
-			if( style && 
-				style->highlightedSelectedItem && 
-				style->highlightedUnselectedItem && 
+			if( style &&
+				style->highlightedSelectedItem &&
+				style->highlightedUnselectedItem &&
 				highlighted[ scrolly + i ] )
 			{
 				if (selected[scrolly + i])
@@ -314,7 +314,7 @@ void OguiSelectList::refresh()
 }
 
 void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, void *argument)
-{ 
+{
 	// old stuff...
 	//win->addTransparentButton(x, y, sizex - 16, sizey, cback_clk, this, listtabi);
 	//win->addPicButton(x + sizex - 16, y, 16, 16, DEFBUT_X_SCROLLUP, DEFBUT_Y_SCROLLUP, cback_up, uptabi, this);
@@ -333,7 +333,7 @@ void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, c
 	
 	if( style->unselectedItem->sizeY != 0 )
 		this->listButAmount = style->sizeY / style->unselectedItem->sizeY;
-	else 
+	else
 		this->listButAmount = 0;
 
 	this->listButs = new OguiButton *[listButAmount];
@@ -403,7 +403,7 @@ void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, c
 
 void OguiSelectList::setSelected(int position, bool selected)
 {
-	if (position < 0 || position > amount) 
+	if (position < 0 || position > amount)
 	{
 #ifdef _DEBUG
 		abort();
@@ -416,10 +416,10 @@ void OguiSelectList::setSelected(int position, bool selected)
 }
 
 // position -1 can be used to add after last item (0 adds before first item)
-// WARNING: calling this inside a select event may invalidate value pointers 
+// WARNING: calling this inside a select event may invalidate value pointers
 // given to event listener
 void OguiSelectList::addItem(const char *value, const char *desc, bool selected, int position)
-{ 
+{
 	// TODO: replace the array structure with a some better one
 
 	if (position < 0 || position > amount) position = amount;
@@ -479,7 +479,7 @@ void OguiSelectList::addItem(const char *value, const char *desc, bool selected,
 		strcpy(values[position], value);
 	} else {
 		values[position] = NULL;
-	} 
+	}
 	descs[position] = new char[strlen(desc) + 1];
 	strcpy(descs[position], desc);
 	this->selected[position] = selected;
@@ -511,7 +511,7 @@ void OguiSelectList::highlightItem( int position, bool highlight )
 
 // position -1 can be used to delete last item (0 deletes first item)
 void OguiSelectList::deleteItem(int position)
-{ 
+{
 	if (amount == 0) abort(); // can't delete, already empty
 
 	if (position < 0 || position >= amount) position = amount - 1;
@@ -548,7 +548,7 @@ void OguiSelectList::deleteItem(int position)
 
 bool OguiSelectList::isEmpty()
 {
-	if (amount == 0) 
+	if (amount == 0)
 		return true;
 	else
 		return false;
@@ -579,7 +579,7 @@ void OguiSelectList::uninit()
 	
 	for (i = 0; i < amount; i++)
 	{
-		if (values[i] != NULL) 
+		if (values[i] != NULL)
 		{
 			delete [] values[i];
 		}
@@ -597,11 +597,11 @@ int OguiSelectList::getId()
 }
 
 OguiSelectList::OguiSelectList(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, void *argument)
-{ 
+{
 	this->init(x, y, defsel, multisel, amount, values, descs, listButs, upBut, downBut, style, id, argument);
 }
 
 OguiSelectList::~OguiSelectList()
-{ 
+{
 	this->uninit();
 }

@@ -35,7 +35,7 @@ public:
 	// 1 -> Blocked, 0 -> free
 	const std::vector<std::vector<unsigned char> > &getObstacleMap() const;
 	
-	// Height in units (meters). 
+	// Height in units (meters).
 	// Terrain should be set to height on models origo IFF height from here is not 0
 	const std::vector<std::vector<unsigned char> > &getHeightMap() const;
 

@@ -55,16 +55,16 @@ OguiButton::~OguiButton()
 	parent->buttonDeleted(this);
 	og_delete_button((orvgui_but *)but);
 	
-	if (imageAutodel && image != NULL) 
+	if (imageAutodel && image != NULL)
 		delete image;
 
-	if (imageDownAutodel && imageDown != NULL) 
+	if (imageDownAutodel && imageDown != NULL)
 		delete imageDown;
 
-	if (imageDisabledAutodel && imageDisabled != NULL) 
+	if (imageDisabledAutodel && imageDisabled != NULL)
 		delete imageDisabled;
 	
-	if (imageHighlightedAutodel && imageHighlighted != NULL) 
+	if (imageHighlightedAutodel && imageHighlighted != NULL)
 		delete imageHighlighted;
 	
 	delete imageSelected;
@@ -96,7 +96,7 @@ void OguiButton::SetDownImage(IOguiImage *imageDown)
 
 void OguiButton::SetDisabledImage(IOguiImage *imageDisabled)
 {
-	if (imageDisabledAutodel && this->imageDisabled != NULL) 
+	if (imageDisabledAutodel && this->imageDisabled != NULL)
 		delete this->imageDisabled;
 	this->imageDisabled = imageDisabled;
 	this->imageDisabledAutodel = false;
@@ -105,7 +105,7 @@ void OguiButton::SetDisabledImage(IOguiImage *imageDisabled)
 
 void OguiButton::SetHighlightedImage(IOguiImage *imageHighlighted)
 {
-	if (imageHighlightedAutodel && this->imageHighlighted != NULL) 
+	if (imageHighlightedAutodel && this->imageHighlighted != NULL)
 		delete this->imageHighlighted;
 	this->imageHighlighted = imageHighlighted;
 	this->imageHighlightedAutodel = false;
@@ -202,7 +202,7 @@ void OguiButton::SetListener(IOguiButtonListener *listener)
 {
 	this->listener = listener;
 }
- 
+
 void OguiButton::SetEventMask(int allowedEvents)
 {
 	this->eventMask = allowedEvents;
@@ -255,7 +255,7 @@ bool OguiButton::SetText(const char *text)
 		return false;
 	
 	if( ( text != NULL && !std::string( text ).empty() ) &&
-		( this->text.empty() ||	this->text.size() < strlen( text ) || 
+		( this->text.empty() ||	this->text.size() < strlen( text ) ||
 		this->text.substr( 0, strlen( text ) ) != text ) )
 	{
 		this->text = text;
@@ -380,7 +380,7 @@ void OguiButton::ApplyFonts()
 		fnt_disabled = ((OguiStormFont *)fontDisabled)->fnt;
 		fnt_disabled_color = ((OguiStormFont *)fontDisabled)->color;
 	}
-	if (fontHighlighted != NULL) 
+	if (fontHighlighted != NULL)
 	{
 		fnt_highlighted = ((OguiStormFont *)fontHighlighted)->fnt;
 		fnt_highlighted_color = ((OguiStormFont *)fontHighlighted)->color;
@@ -389,8 +389,8 @@ void OguiButton::ApplyFonts()
 	og_set_fonts_button( (orvgui_but *)but, fnt, fnt_color, fnt_down, fnt_down_color, fnt_disabled, fnt_disabled_color, fnt_highlighted, fnt_highlighted_color );
 
 	// need to update font metrics (set the text again)
-	// a hack to do that 
-	// need to copy the original text first, as the method call will 
+	// a hack to do that
+	// need to copy the original text first, as the method call will
 	// delete the original text
 	if (((orvgui_but *)but)->text != NULL)
 	{
@@ -516,8 +516,8 @@ IOguiFont* OguiButton::GetTheFontCurrentlyInUse()
 	{
 		if( fontDisabled != NULL )
 			result = fontDisabled;
-	} 
-	else 
+	}
+	else
 	{
 		if( orv_button->pressed == 0 )
 		{
@@ -526,12 +526,12 @@ IOguiFont* OguiButton::GetTheFontCurrentlyInUse()
 				if( fontHighlighted != NULL )
 					result = fontHighlighted;
 			}
-		} 
+		}
 		else
 		{
 			if( fontDown != NULL )
 				result = fontDown;
-		} 
+		}
 	}
 
 	return result;

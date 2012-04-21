@@ -21,7 +21,7 @@
 #include "../system/Timer.h"
 #include <sstream>
 
-namespace ui { 
+namespace ui {
 
 const std::string fadingTextWindowName = "elaborate_hint";
 bool elaborateLoggingEnabled = false;
@@ -90,14 +90,14 @@ public:
 		Update();
 	}
 
-	~CFadingTextMessage() 
-	{ 
+	~CFadingTextMessage()
+	{
 		delete formattedText;
 		formattedText = NULL;
 	}
 
-	void Update() 
-	{ 
+	void Update()
+	{
 		// bool fadeIn = false;
 		switch( fadeStatus )
 		{
@@ -122,7 +122,7 @@ public:
 			}
 			break;
 
-		case FS_FadeOut: 
+		case FS_FadeOut:
 			if( immortal == false )
 			{
 				float t = 1.0f - ( (float)( ( creationTime + lifeTime ) - getTime() ) / (float)fadeTime );
@@ -207,8 +207,8 @@ public:
 		return false;
 	}
 
-	void SetText( const std::string& text ) 
-	{ 
+	void SetText( const std::string& text )
+	{
 		if( formattedText )
 		{
 			// try to queue
@@ -266,7 +266,7 @@ public:
 
 	bool IsDead() const { return dead; }
 
-	int getTime() const 
+	int getTime() const
 	{
 		return Timer::getTime();
 	}

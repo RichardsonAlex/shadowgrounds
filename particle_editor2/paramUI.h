@@ -20,7 +20,7 @@ namespace particle
 		PARAM_SELECTION
 	};
 
-	struct ParamDesc 
+	struct ParamDesc
 	{
 		ParamDesc(const std::string _name, int _id, PARAM_TYPE _type);
 		ParamDesc(const std::string _name, int _id, PARAM_TYPE _type, const std::string &default_);

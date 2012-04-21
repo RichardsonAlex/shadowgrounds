@@ -96,7 +96,7 @@ namespace {
 
 		SharedData(Gui &gui_, Storm &storm_, IEditorState &editorState_)
 		:	gui(gui_),
-			dialog(gui_.getObjectsDialog()), 
+			dialog(gui_.getObjectsDialog()),
 			storm(storm_),
 			menu(gui_.getMenuDialog()),
 			editorState(editorState_),
@@ -2064,7 +2064,7 @@ namespace {
 
 			// WTF, the position variable that this function takes in, is never actually used...
 			// the position variable defined below overrides that...
-			// now, named position_clicked instead of just position. 
+			// now, named position_clicked instead of just position.
 			// still, nasty shadowing variable names here.
 			// --jpk
 			*/
@@ -2091,7 +2091,7 @@ namespace {
 			static bool invert = false;
 
 			static const int maxFilters = 32;
-			static const char *filter[maxFilters] = { 
+			static const char *filter[maxFilters] = {
 				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 				"", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",
 			};
@@ -2261,7 +2261,7 @@ namespace {
 		}
 	};
 
-} // end of unnamed namespace 
+} // end of unnamed namespace
 
 struct ObjectModeData
 {

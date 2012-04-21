@@ -27,13 +27,13 @@ public:
 	virtual filesystem::InputStream &readStream(filesystem::InputStream &stream) = 0;
 };
 
-inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const IMode &mode) 
-{ 
+inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const IMode &mode)
+{
 	return mode.writeStream(stream);
 }
 
-inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, IMode &mode) 
-{ 
+inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, IMode &mode)
+{
 	return mode.readStream(stream);
 }
 

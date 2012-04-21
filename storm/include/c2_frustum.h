@@ -46,25 +46,25 @@ struct TFrustum
 
 		// Back/Front planes
 		float distance = dif.GetDotWith(planeNormals[0]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return false;
-		if(distance > range + sphere.radius) 
+		if(distance > range + sphere.radius)
 			return false;
 
 		// Side Planes
 		distance = dif.GetDotWith(planeNormals[1]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return false;
 		distance = dif.GetDotWith(planeNormals[2]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return false;
 
 		// Up/Down planes
 		distance = dif.GetDotWith(planeNormals[3]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return false;
 		distance = dif.GetDotWith(planeNormals[4]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return false;
 
 		return true;
@@ -112,7 +112,7 @@ struct TFrustum
 
 		return true;
 	}
-  
+
 	enum VisibilityValue
 	{
 		None,
@@ -130,38 +130,38 @@ struct TFrustum
 
 		// Back/Front planes
 		float distance = dif.GetDotWith(planeNormals[0]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return None;
 		else if(distance < sphere.radius)
 			result = Partial;
 
-		if(distance > range + sphere.radius) 
+		if(distance > range + sphere.radius)
 			return None;
 		else if(distance > range - sphere.radius)
 			result = Partial;
 
 		// Side Planes
 		distance = dif.GetDotWith(planeNormals[1]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return None;
 		else if(distance < sphere.radius)
 			result = Partial;
 
 		distance = dif.GetDotWith(planeNormals[2]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return None;
 		else if(distance < sphere.radius)
 			result = Partial;
 
 		// Up/Down planes
 		distance = dif.GetDotWith(planeNormals[3]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return None;
 		else if(distance < sphere.radius)
 			return Partial;
 
 		distance = dif.GetDotWith(planeNormals[4]);
-		if(distance < -sphere.radius) 
+		if(distance < -sphere.radius)
 			return None;
 		else if(distance < sphere.radius)
 			return Partial;

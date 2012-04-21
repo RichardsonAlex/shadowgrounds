@@ -49,7 +49,7 @@ struct ParticleSystemData {
 			return (float)(rand() % RAND_MAX) / (float)RAND_MAX;
 		}
 		
-		Entry(SharedPtr<EmitterDesc> _ed, SharedPtr<ParticleDesc> _pd, int& totParts, int& maxParts) 
+		Entry(SharedPtr<EmitterDesc> _ed, SharedPtr<ParticleDesc> _pd, int& totParts, int& maxParts)
 			: ed(_ed), pd(_pd), totalParticles(totParts), maxParticles(maxParts),
 			mParticles(0), mFreeParticles(0), mTime(0), mNumParticles(0), mRemainder(0) {
 				
@@ -73,7 +73,7 @@ struct ParticleSystemData {
 			Particle** pp = &mParticles;
 			while(*pp) {
 				Particle* p = *pp;
-				float t = (pd->maxLife - p->life) / pd->maxLife; 
+				float t = (pd->maxLife - p->life) / pd->maxLife;
 				p->t += ParticleSystem::TIME_SCALE;
 				p->life -= ParticleSystem::TIME_SCALE;
 				p->position += p->velocity;	
@@ -183,7 +183,7 @@ struct ParticleSystemData {
 
 		}
 
-		int render(IStorm3D_Scene* scene, Storm3D_PointParticle* pointParticles, 
+		int render(IStorm3D_Scene* scene, Storm3D_PointParticle* pointParticles,
 			Storm3D_LineParticle* lineParticles) {
 			
 			Storm3D_ParticleAnimationInfo info;
@@ -268,7 +268,7 @@ struct ParticleSystemData {
 
 	IStorm3D* s3d;
 
-	ParticleSystemData(IStorm3D* _s3d, int maxParts) : 
+	ParticleSystemData(IStorm3D* _s3d, int maxParts) :
 		s3d(_s3d),
 		mTimeCounter(0), mNumParticles(0) {
 		mVelocity = Vector(0.0f, 0.0f, 0.0f);
@@ -342,7 +342,7 @@ struct ParticleSystemData {
 			for(int i = 0; i < mEntries.size(); i++) {
 				if(mEntries[i]->tick(mTM, mVelocity, scene))
 					b = true;
-			} 
+			}
 			if(!b) {
 				dead = true;
 				return false;
@@ -554,7 +554,7 @@ int ParticleSystem::getMaxParticles() {
 	std::string mName;
 	int mTimeCounter;
 
-	ParticleSystemData(const std::string& name, IStorm3D* storm, IStorm3D_Scene* scene) 
+	ParticleSystemData(const std::string& name, IStorm3D* storm, IStorm3D_Scene* scene)
 		: mName(name), mStorm(storm), mScene(scene), mTimeCounter(0) {
 		mTM.CreateIdentityMatrix();
 		mPosition = Vector(0.0f, 0.0f, 0.0f);
@@ -617,7 +617,7 @@ int ParticleSystem::getMaxParticles() {
 
 };
 
-ParticleSystem::ParticleSystem(const std::string& name, IStorm3D* storm, 
+ParticleSystem::ParticleSystem(const std::string& name, IStorm3D* storm,
 							   IStorm3D_Scene* scene) {
 
 	ScopedPtr<ParticleSystemData> temp(new ParticleSystemData(name, storm, scene));

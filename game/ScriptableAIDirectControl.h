@@ -12,9 +12,9 @@ namespace game
 
   /**
 	 * A class for units controlled directly by scripts.
-	 * (Directly AI controlled unit acts as if it was controlled by a player keybinds, but it is rather 
+	 * (Directly AI controlled unit acts as if it was controlled by a player keybinds, but it is rather
 	 * controlled by AI decision "keybinds")
-	 * 
+	 *
 	 * @author Jukka Kokkonen <jukka.kokkonen@postiloota.net>
 	 */
 

@@ -170,15 +170,15 @@ void set_mouse_borders()
 
 	if (force_given_boundary)
 	{
-		Keyb3_SetMouseBorders((int)(scr_width / mouse_sensitivity), 
+		Keyb3_SetMouseBorders((int)(scr_width / mouse_sensitivity),
 			(int)(scr_height / mouse_sensitivity));
-		Keyb3_SetMousePos((int)(scr_width / mouse_sensitivity) / 2, 
+		Keyb3_SetMousePos((int)(scr_width / mouse_sensitivity) / 2,
 			(int)(scr_height / mouse_sensitivity) / 2);
 	} else {
 		Storm3D_SurfaceInfo screenInfo = disposable_s3d->GetScreenSize();
-		Keyb3_SetMouseBorders((int)(screenInfo.width / mouse_sensitivity), 
+		Keyb3_SetMouseBorders((int)(screenInfo.width / mouse_sensitivity),
 			(int)(screenInfo.height / mouse_sensitivity));
-		Keyb3_SetMousePos((int)(screenInfo.width / mouse_sensitivity) / 2, 
+		Keyb3_SetMousePos((int)(screenInfo.width / mouse_sensitivity) / 2,
 			(int)(screenInfo.height / mouse_sensitivity) / 2);
 	}
 }
@@ -195,7 +195,7 @@ namespace {
 
 		{
 		}
-		
+
 		void debug(const char *msg)
 		{
 			logger.debug(msg);
@@ -349,9 +349,9 @@ void error_whine()
 					|| strncmp(&buf[i + 1], "WARNING: ", 9) == 0
 					|| stillInError)
 				{
-					if (strncmp(&buf[i + 1], "ERROR: ", 7) == 0) 
+					if (strncmp(&buf[i + 1], "ERROR: ", 7) == 0)
 						skipErr = 7;
-					if (strncmp(&buf[i + 1], "WARNING: ", 9) == 0) 
+					if (strncmp(&buf[i + 1], "WARNING: ", 9) == 0)
 						skipErr = 9;
 					stillInError = true;
 
@@ -570,7 +570,7 @@ try {
 
 		using namespace frozenbyte::filesystem;
 		boost::shared_ptr<IFilePackage> standardPackage(new StandardPackage());
-		
+
 #ifdef DEMOVERSION
 		boost::shared_ptr<IFilePackage> zipPackage1(new ScrambledZipPackage("data1.fbz"));
 #else
@@ -659,7 +659,7 @@ try {
 				vbf_buf[vbf_size] = '\0';
 				if (strncmp(vbf_buf, version_branch_name, strlen(version_branch_name)) != 0)
 				{
-					version_branch_failure = true;					
+					version_branch_failure = true;
 				}
 			} else {
 				version_branch_failure = true;
@@ -738,7 +738,7 @@ try {
 	editor::EditorParser main_config;
 	filesystem::InputStream configFile = filesystem::FilePackageManager::getInstance().getFile("Config/main.txt");
 	configFile >> main_config;
-	
+
 	GameOptionManager::getInstance()->load();
 	atexit(&GameConfigs::cleanInstance);
 	atexit(&GameOptionManager::cleanInstance);
@@ -747,7 +747,7 @@ try {
 	if (checksumfailure)
 	{
 		Logger::getInstance()->error("Checksum mismatch.");
-		MessageBox(0,"Checksum mismatch or required data missing.\nMake sure you have all the application files properly installed.\n\nContact Frozenbyte for more info.","Error",MB_OK); 
+		MessageBox(0,"Checksum mismatch or required data missing.\nMake sure you have all the application files properly installed.\n\nContact Frozenbyte for more info.","Error",MB_OK);
 		assert(!"Checksum mismatch");
 		return EXIT_FAILURE;
 	}
@@ -928,7 +928,7 @@ try {
 #endif
 
 	set_mouse_borders();
-	
+
 	Keyb3_UpdateDevices();
 
 	/*
@@ -966,7 +966,7 @@ try {
 		m->SetBaseTexture(t);
 
 		Storm3D_SurfaceInfo surfinfo = s3d->GetScreenSize();
-	
+
 		disposable_scene->Render2D_Picture(m, Vector2D(0,0), Vector2D((float)surfinfo.width-1,(float)surfinfo.height-1));
 		disposable_scene->RenderScene();
 		delete m;
@@ -981,8 +981,8 @@ try {
 	Ogui *ogui = new Ogui();
 	OguiStormDriver *ogdrv = new OguiStormDriver(s3d, disposable_scene);
 	ogui->SetDriver(ogdrv);
-	ogui->SetScale(OGUI_SCALE_MULTIPLIER * scr_width / 1024, 
-		OGUI_SCALE_MULTIPLIER * scr_height / 768); 
+	ogui->SetScale(OGUI_SCALE_MULTIPLIER * scr_width / 1024,
+		OGUI_SCALE_MULTIPLIER * scr_height / 768);
 	ogui->SetMouseSensitivity(mouse_sensitivity, mouse_sensitivity);
 	ogui->Init();
 
@@ -1042,10 +1042,10 @@ try {
 	}
 
 	// cursors images for controller 0,1,2,3
-	loadDHCursors(ogui, 0); 
-	loadDHCursors(ogui, 1); 
-	loadDHCursors(ogui, 2); 
-	loadDHCursors(ogui, 3); 
+	loadDHCursors(ogui, 0);
+	loadDHCursors(ogui, 1);
+	loadDHCursors(ogui, 2);
+	loadDHCursors(ogui, 3);
 
 	ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
 
@@ -1146,7 +1146,7 @@ try {
 	msgproc_gameUI = gameUI;
 
 	MusicPlaylist *musicPlaylist = gameUI->getMusicPlaylist(game->singlePlayerNumber);
-	
+
 	if (SimpleOptions::getBool(DH_OPT_B_MUSIC_SHUFFLE))
 	{
 		musicPlaylist->setSuffle(true);
@@ -1200,7 +1200,7 @@ try {
 		ui::GameVideoPlayer::playVideo(disposable_scene, "Data\\Videos\\logo.wmv", builder);
 		ui::GameVideoPlayer::playVideo(disposable_scene, "Data\\Videos\\logo_ag.ogg", builder);
 	}
-	
+
 	gameUI->startCommandWindow( 0 );
 	// do the loop...
 
@@ -1225,7 +1225,7 @@ try {
 
 	Keyb3_UpdateDevices();
 
-	
+
 
 	while (!quitRequested)
 	{
@@ -1259,11 +1259,11 @@ try {
 		}
 
 		// read input
-		
+
 		Keyb3_UpdateDevices();
 
 		// can't use curTime here, because game may have just
-		// loaded a map, or something else alike -> curTime 
+		// loaded a map, or something else alike -> curTime
 		// would be badly behind... thus Timer::update and getTime.
 		Timer::update();
 
@@ -1300,7 +1300,7 @@ try {
 			// because the game is still alive - thus projectiles may still
 			// refer to visualeffects (which gameui would delete ;)
 			if (game->inCombat)
-				game->endCombat(); 
+				game->endCombat();
 			quitRequested = true;
 			// break; // why break here?
 		}
@@ -1316,7 +1316,7 @@ try {
 
 			if (curTime - movementTime > 0)
 			{
-				// VEEERY jerky... 
+				// VEEERY jerky...
 				//doMovement(game->gameMap, curTime - movementTime);
 				// attempt to fix that...
 				float delta;
@@ -1346,7 +1346,7 @@ try {
 		// frame/poly counting
 		frames++;
 		{
-			if (Timer::getUnfactoredTime() - frameCountTime >= 100) 
+			if (Timer::getUnfactoredTime() - frameCountTime >= 100)
 			{
 				float seconds = (Timer::getUnfactoredTime() - frameCountTime) / 1000.0f;
 				fps = (int)(frames / seconds);
@@ -1367,9 +1367,9 @@ try {
 							physicsStatsLogger->setLogLevel(LOGGER_LEVEL_INFO);
 							physicsStatsLogger->info("fps;frametime;dynamic_actors;active_actors;reported_contacts;fluids_system_count;fluid_particle_count;sim_start;sim_end;");
 						}
-						
+
 						int frametime = 1000;
-						if (fps > 0) 
+						if (fps > 0)
 							frametime = 1000/fps;
 						if (frametime > 500)
 							frametime = 500;
@@ -1605,7 +1605,7 @@ try {
 
 	Animator::uninit();
 
-	unloadDHCursors(ogui, 0); 
+	unloadDHCursors(ogui, 0);
 
 	game->setUI(NULL);
 	delete gameUI;
@@ -1636,7 +1636,7 @@ try {
 	delete ogdrv;
 
 	Keyb3_Free();
-	
+
 	delete s3d;
 
 	GameOptionManager::cleanInstance();

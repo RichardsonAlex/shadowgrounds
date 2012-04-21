@@ -115,7 +115,7 @@ public:
 		A y2=rotation.y+rotation.y;
 		A z2=rotation.z+rotation.z;
 
-		A xx2=rotation.x*x2; 
+		A xx2=rotation.x*x2;
 		A yy2=rotation.y*y2;
 		A zz2=rotation.z*z2;
 		A xy2=rotation.x*y2;
@@ -124,7 +124,7 @@ public:
 		A wx2=rotation.w*x2;
 		A wy2=rotation.w*y2;
 		A wz2=rotation.w*z2;
-    
+
 		A mat[9];
 		mat[0]=1.0f-yy2+zz2;
 		mat[1]=xy2-wz2;

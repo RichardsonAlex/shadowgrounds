@@ -58,7 +58,7 @@ void ArmorUnitActor::addUnitObstacle(Unit *unit)
 		bool rightside = unit->isUnitMirrorSide();
 		bool bothLineSides = unit->getUnitType()->hasBothLineSides();
 		int lineWidth = unit->getUnitType()->getLineBlockWidth();
-		ObstacleMapUnitObstacle::addObstacle(game, unit, unit->getUnitType()->getBlockRadius(), 
+		ObstacleMapUnitObstacle::addObstacle(game, unit, unit->getUnitType()->getBlockRadius(),
 			(int)(UNIT_OBSTACLE_HEIGHT / game->gameMap->getScaleHeight()),
 			lineblock, !rightside || bothLineSides, rightside || bothLineSides, lineWidth);
 	}
@@ -67,7 +67,7 @@ void ArmorUnitActor::addUnitObstacle(Unit *unit)
 
 void ArmorUnitActor::removeUnitObstacle(Unit *unit)
 {
-	if (!unit->getUnitType()->isFlying() 
+	if (!unit->getUnitType()->isFlying()
 		&& ((!unit->isDestroyed()
 		&& unit->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
 		 || unit->obstacleExists))
@@ -76,7 +76,7 @@ void ArmorUnitActor::removeUnitObstacle(Unit *unit)
 		bool rightside = unit->isUnitMirrorSide();
 		bool bothLineSides = unit->getUnitType()->hasBothLineSides();
 		int lineWidth = unit->getUnitType()->getLineBlockWidth();
-		ObstacleMapUnitObstacle::removeObstacle(game, unit, unit->getUnitType()->getBlockRadius(), 
+		ObstacleMapUnitObstacle::removeObstacle(game, unit, unit->getUnitType()->getBlockRadius(),
 			(int)(UNIT_OBSTACLE_HEIGHT / game->gameMap->getScaleHeight()),
 			lineblock, !rightside || bothLineSides, rightside || bothLineSides, lineWidth);
 	}
@@ -89,7 +89,7 @@ void ArmorUnitActor::moveUnitObstacle(Unit *unit, int x, int y)
 		return;
 
 	if (
-		!unit->getUnitType()->isFlying() 
+		!unit->getUnitType()->isFlying()
 		&& ( ( !unit->isDestroyed()
 		       && unit->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS )
 	        || unit->getUnitType()->isBlockIfDestroyed()
@@ -101,7 +101,7 @@ void ArmorUnitActor::moveUnitObstacle(Unit *unit, int x, int y)
 		bool rightside = unit->isUnitMirrorSide();
 		bool bothLineSides = unit->getUnitType()->hasBothLineSides();
 		int lineWidth = unit->getUnitType()->getLineBlockWidth();
-		ObstacleMapUnitObstacle::moveObstacle(game, unit, x, y, unit->getUnitType()->getBlockRadius(), 
+		ObstacleMapUnitObstacle::moveObstacle(game, unit, x, y, unit->getUnitType()->getBlockRadius(),
 			(int)(UNIT_OBSTACLE_HEIGHT / game->gameMap->getScaleHeight()),
 			lineblock, !rightside || bothLineSides, rightside || bothLineSides, lineWidth);
 	}
@@ -122,7 +122,7 @@ void ArmorUnitActor::stopUnit(Unit *unit)
 }
 
 
-frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosition, VC3 &endPosition, 
+frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosition, VC3 &endPosition,
 	int maxDepth)
 {
 	// WARNING: may modify the endPosition value, which is a reference!
@@ -177,7 +177,7 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 		|| game->gameMap->getCoverMap()->getDistanceToNearestCover(px, py) < coverAvoid)
 	{
 		failCount++;
-		if (failCount > 1000) 
+		if (failCount > 1000)
 		{
 			Logger::getInstance()->debug("ArmorUnitActor::solvePath - Failed to find suitable end position.");
 			break;
@@ -211,7 +211,7 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 	if (unitType->isFlying())
 	{
 		path = new frozenbyte::ai::Path();
-		//path->addPoint((int)((ex + game->gameMap->getScaledSizeX()/2.0f) / game->gameMap->getScaleX()), 
+		//path->addPoint((int)((ex + game->gameMap->getScaledSizeX()/2.0f) / game->gameMap->getScaleX()),
 		//	(int)((ey + game->gameMap->getScaledSizeY()/2.0f) / game->gameMap->getScaleY()));
 		path->addPoint(game->gameMap->scaledToPathfindX(ex), game->gameMap->scaledToPathfindY(ey));
 		path->addPoint(0, 0); // gets skipped
@@ -245,7 +245,7 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 				else if (game->getGameScene()->getBlockingCount(psx + 1, psy - 1, 0) == 0)
 					{ psx += 1; psy -= 1; }
 				//assert(game->getGameScene()->getBlockingCount(psx, psy, 0) == 0);
-			
+
 				sx = game->gameMap->pathfindToScaledX(psx);
 			  sy = game->gameMap->pathfindToScaledY(psy);
 			}
@@ -253,9 +253,9 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 
 		path = new frozenbyte::ai::Path();
 
-		// HACK: human player gets full depth pathfind 
-		// (if path not found here while units block), other have to do with 
-		// half of that 
+		// HACK: human player gets full depth pathfind
+		// (if path not found here while units block), other have to do with
+		// half of that
 		// first start out with this 30% pathfind (when units are blocking)
 		int depth = 30;
 
@@ -281,11 +281,11 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 		*/
 
 
-		foundPath = game->getGameScene()->findPath(path, 
+		foundPath = game->getGameScene()->findPath(path,
 			sx, sy, ex, ey, maxClimb, climbCost, coverAvoid, coverBlock,
 			depth, lightAvoid);
 
-		// no path? maybe blocked by another unit... 
+		// no path? maybe blocked by another unit...
 		// try again, ignoring units...
 		if (!foundPath)
 		{
@@ -309,7 +309,7 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 				}
 			}
 
-			// HACK: human player gets full depth pathfind, other have to do with 
+			// HACK: human player gets full depth pathfind, other have to do with
 			// half of that
 			depth = 50;
 			if (unit->getOwner() == game->singlePlayerNumber)
@@ -318,7 +318,7 @@ frozenbyte::ai::Path *ArmorUnitActor::solvePath(Unit *unit, const VC3 &startPosi
 			if (depth > maxDepth)
 				depth = maxDepth;
 
-			foundPath = game->getGameScene()->findPath(path, 
+			foundPath = game->getGameScene()->findPath(path,
 				sx, sy, ex, ey, maxClimb, climbCost, coverAvoid, coverBlock,
 				depth, lightAvoid);
 
@@ -364,7 +364,7 @@ bool ArmorUnitActor::setPathTo(Unit *unit, const VC3 &destination_)
 {
 	VC3 destination = destination_;
 	frozenbyte::ai::Path *path = solvePath(unit, unit->getPosition(), destination);
-	
+
 	// luckily, getPath may modify the destination value, if it is blocked
 	// so no need to check that here.
 
@@ -372,19 +372,19 @@ bool ArmorUnitActor::setPathTo(Unit *unit, const VC3 &destination_)
 	{
 		unit->setPath(path);
 		unit->setPathIndex(unit->getPathIndex() + 1);
-		// (...path object is now contained within the unit, 
+		// (...path object is now contained within the unit,
 		// unit will handle it's proper deletion)
 		unit->setWaypoint(unit->getPosition());
-		unit->setFinalDestination(VC3(destination.x, 
-			game->gameMap->getScaledHeightAt(destination.x, destination.z), 
+		unit->setFinalDestination(VC3(destination.x,
+			game->gameMap->getScaledHeightAt(destination.x, destination.z),
 			destination.z));
 		return true;
-	} else {		
+	} else {
 		unit->setPath(NULL);
 		unit->setFinalDestination(unit->getPosition());
 		unit->setWaypoint(unit->getPosition());
 		return false;
-	} 
+	}
 }
 
 
@@ -409,7 +409,7 @@ void ArmorUnitActor::act(Unit *unit)
 	float oldYRotation = unit->getRotation().y;
 
 	UnitActAnimationRequests animRequests;
-	
+
 	bool normalState = true;
 
 	// breathing outdoor steam animation thing
@@ -492,14 +492,14 @@ if (unit->isPhysicsObjectLock()
 				if (unit->getDirectControlType() == Unit::UNIT_DIRECT_CONTROL_TYPE_LOCAL_PLAYER)
 				{
 					// the unit is directly controlled by the player...
-					decideBasedOnLocalPlayerDirectControl(unit, &doMove, &doRotation, 
-						&doForwardMove, &doBackMove, &doLeftMove, &doRightMove, 
+					decideBasedOnLocalPlayerDirectControl(unit, &doMove, &doRotation,
+						&doForwardMove, &doBackMove, &doLeftMove, &doRightMove,
 						&doLeftRotation, &doRightRotation, &doFire, &rotationAngle);
 				}
 				else if (unit->getDirectControlType() == Unit::UNIT_DIRECT_CONTROL_TYPE_AI)
 				{
-					decideBasedOnAIDirectControl(unit, &doMove, &doRotation, 
-						&doForwardMove, &doBackMove, &doLeftMove, &doRightMove, 
+					decideBasedOnAIDirectControl(unit, &doMove, &doRotation,
+						&doForwardMove, &doBackMove, &doLeftMove, &doRightMove,
 						&doLeftRotation, &doRightRotation, &doFire, &rotationAngle);
 				} else {
 					// nop?
@@ -526,9 +526,9 @@ if (unit->isPhysicsObjectLock()
 					// WARNING: actNoisy feature disabled! (performance optimization)
 					// NOTE: actNoisy feature disabled! (performance optimization)
 					/*
-					if (accelerated) 
+					if (accelerated)
 					{
-						if (unit->getSpeed() != Unit::UNIT_SPEED_SLOW 
+						if (unit->getSpeed() != Unit::UNIT_SPEED_SLOW
 							&& unit->getSpeed() != Unit::UNIT_SPEED_CRAWL
 							&& unit->getReconValue() <= 0)
 						{
@@ -644,7 +644,7 @@ if (unit->isPhysicsObjectLock()
 					if ((unitType->isSticky() && unit->isOnGround())
 						|| position.y <= mapY + 0.001f)
 					{
-	
+
 						onground = true;
 					}
 				}
@@ -671,7 +671,7 @@ if (unit->isPhysicsObjectLock()
 	if (unitType->isSquashable())
 		actSquashable(unit);
 
-	if (unit->getOnFireCounter() > 0) 
+	if (unit->getOnFireCounter() > 0)
 	{
 		unit->setOnFireCounter(unit->getOnFireCounter() - 1);
 	}
@@ -709,7 +709,7 @@ if (unit->isPhysicsObjectLock()
 
 	float newYRotation = unit->getRotation().y;
 
-	if (newYRotation > oldYRotation + 1.0f 
+	if (newYRotation > oldYRotation + 1.0f
 		|| newYRotation < oldYRotation - 180.0f)
 	{
 		animRequests.turnRight = true;
@@ -749,7 +749,7 @@ if(    unit->isPhysicsObjectLock()
 	MAT m;
 	m.CreateCameraMatrix( VC3(), VC3(-vel.x, 0, vel.z) , VC3(0, 1, 0));
 	QUAT rotat = m.GetRotation();
-	
+
 	unit->getVisualObject()->setRotationQuaternion( rotat );
 	unit->getGamePhysicsObject()->setRotation( rotat );
 	// Animation when thrown.
@@ -834,19 +834,19 @@ void ArmorUnitActor::actSideGravity(Unit *unit)
 		if (velocity.x > sideVelMax)
 		{
 			velocity.x = sideVelMax;
-		} 
+		}
 		else if (velocity.x < -sideVelMax)
 		{
 			velocity.x = -sideVelMax;
-		} 
+		}
 		if (velocity.z > sideVelMax)
 		{
 			velocity.z = sideVelMax;
-		} 
+		}
 		else if (velocity.z < -sideVelMax)
 		{
 			velocity.z = -sideVelMax;
-		} 
+		}
 		//if (velocity.GetSquareLength() > sideVelMax * sideVelMax)
 		//{
 		//	velocity = velocity.GetNormalized() * sideVelMax;

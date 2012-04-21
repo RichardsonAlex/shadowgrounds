@@ -94,7 +94,7 @@ class Storm3D_Bone: public IStorm3D_Bone
 	mutable Matrix vertex_tm; // transform vertices with this
 
 	mutable bool global_tm_ok; // For lazy evaluation
-	mutable bool vertex_tm_ok; 
+	mutable bool vertex_tm_ok;
 	bool has_childs;
 
 	// Animated properties (relative to parent bone)
@@ -119,10 +119,10 @@ public:
 	QUAT GetOriginalGlobalRotation();
 
 	// Get transforms
-	const Matrix &GetVertexTransform() const 
-	{ 
+	const Matrix &GetVertexTransform() const
+	{
 		if(vertex_tm_ok)
-			return vertex_tm; 
+			return vertex_tm;
 		else
 		{
 			vertex_tm = original_inverse_tm;

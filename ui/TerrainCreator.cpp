@@ -62,9 +62,9 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, ui::LightManager 
 	if (memRes < 0) memRes = 0;
 	int preCache = game::SimpleOptions::getInt(DH_OPT_I_TERRAIN_MEMORY_PRECACHE);
 
-	if (preCache < 0) 
+	if (preCache < 0)
 		preCache = 0;
-	if (preCache > memRes) 
+	if (preCache > memRes)
 		preCache = memRes;
 
 //	terrain->GetTerrain()->SetMemoryReserve(memRes);
@@ -75,11 +75,11 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, ui::LightManager 
 
 	// These maps should really come from bin file
 
-	gameMap->setData(terrain->GetHeightMap(), terrain->GetDoubleHeightMap(), terrain->getHeightMapSize(), 
+	gameMap->setData(terrain->GetHeightMap(), terrain->GetDoubleHeightMap(), terrain->getHeightMapSize(),
 	  terrain->getTerrainSize(), terrain->getTerrainHeight(), binFileString.c_str());
 	gameMap->setTerrain(terrain->GetTerrain());
 	
-	// set proper maps and stuff to light amount manager 
+	// set proper maps and stuff to light amount manager
 	util::LightAmountManager::getInstance()->setMaps(gameMap, terrain->GetTerrain());
 	terrain->GetTerrain()->setObstacleHeightmap(gameMap->getObstacleHeightMap(), gameMap->getAreaMap());
 
@@ -133,9 +133,9 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, const char *confi
 	if (memRes < 0) memRes = 0;
 	int preCache = game::SimpleOptions::getInt(DH_OPT_I_TERRAIN_MEMORY_PRECACHE);
 	
-	if (preCache < 0) 
+	if (preCache < 0)
 		preCache = 0;
-	if (preCache > memRes) 
+	if (preCache > memRes)
 		preCache = memRes;
 
 	terrain->GetTerrain()->SetMemoryReserve(memRes);
@@ -145,8 +145,8 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, const char *confi
 	if (fog_start > 0 || fog_end > 0)
 	{
 		hasFog = true;
-	} 
-	else 
+	}
+	else
 	{
 		hasFog = false;
 	}
@@ -164,7 +164,7 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, const char *confi
 
 	// and visibility...
 	float visRange = cameraRange;
-	if (visRange > max_camera_range && max_camera_range > 0) 
+	if (visRange > max_camera_range && max_camera_range > 0)
 		visRange = max_camera_range;
 	scene->GetCamera()->SetVisibilityRange((float)visRange);
 
@@ -185,13 +185,13 @@ Terrain *TerrainCreator::createTerrain(game::GameMap *gameMap, const char *confi
 	//ChangeToUncompressed(storm3d, sky_model);
 	scene->SetBackGround(sky_model);
 
-	gameMap->setData(terrain->GetHeightMap(), terrain->GetTerrain()->GetHeightmap(), terrain->getHeightMapSize(), 
+	gameMap->setData(terrain->GetHeightMap(), terrain->GetTerrain()->GetHeightmap(), terrain->getHeightMapSize(),
 	  terrain->getTerrainSize(), terrain->getTerrainHeight(), model_map_string.c_str());
 	gameMap->setTerrain(terrain->GetTerrain());
 
 	terrain->GetTerrain()->SetObstacleHeightmap(gameMap->getObstacleHeightMap());
 	return terrain;
-}  
+}
 */
 
 } // ui

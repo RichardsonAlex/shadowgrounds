@@ -57,12 +57,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainLightMap &map)
-{ 
+{
 	return map.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainLightMap &map)
-{ 
+{
 	return map.readStream(stream);
 }
 

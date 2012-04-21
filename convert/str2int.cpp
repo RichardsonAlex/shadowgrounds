@@ -24,7 +24,7 @@ char *int2str(int value)
   int expv;
   int strpos = 0;
 
-  if (value < 0) 
+  if (value < 0)
   {
     convert_strbuf[0] = '-';
     strpos++;
@@ -58,7 +58,7 @@ int str2int(const char *string)
   int value = 0;
   int exp = 1;
 
-  if (len > 11) 
+  if (len > 11)
 	{
     _last_str2int_errno = 1;
 		return 0;
@@ -95,7 +95,7 @@ int str2int_errno()
 
 const char *time2str(int secs)
 {
-  if (secs < 0) 
+  if (secs < 0)
   {
 		return "00:00:00";
   }

@@ -24,7 +24,7 @@ namespace game
   }
 
 
-	const char *WeaponObject::getStatusInfo() const 
+	const char *WeaponObject::getStatusInfo() const
 	{
 		static std::string weapon_status_info_buf;
 		weapon_status_info_buf = std::string("WeaponObject");
@@ -43,7 +43,7 @@ namespace game
       AmmoPack *ap = w->getAmmoType();
       if (ap != NULL)
         return (((maxAmmoAmount - ammoAmount) * ap->getPrice()) / ap->getAmount());
-    }    
+    }
     return 0;
   }
 

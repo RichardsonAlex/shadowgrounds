@@ -20,7 +20,7 @@ namespace game
 
   void UnitVariables::init()
   {
-    if (inited)    
+    if (inited)
     {
       Logger::getInstance()->warning("UnitVariables::init - Already initialized.");
     }
@@ -72,7 +72,7 @@ namespace game
     {
       Logger::getInstance()->warning("UnitVariables::uninit - Not initialized.");
       return;
-    }    
+    }
     for (int i = 0; i < MAX_UNIT_VARIABLES; i++)
     {
       if (unitVariableNames[i] != NULL)
@@ -119,7 +119,7 @@ namespace game
 		// (or optimize the script code using this)
 		// (so that it will use the id numbers directly instead)
     for (int i = 0; i < MAX_UNIT_VARIABLES; i++)
-    { 
+    {
 			// psd
 			if(!unitVariableNames[i])
 				continue;
@@ -136,7 +136,7 @@ namespace game
 
 
   void UnitVariables::setVariable(int varNumber, int value)
-  { 
+  {
     if (varNumber < 0 || varNumber >= allocedVariables)
     {
       Logger::getInstance()->warning("Unit::setVariable - Variable number out of range.");
@@ -147,7 +147,7 @@ namespace game
 
 
   void UnitVariables::setVariable(const char *varName, int value)
-  { 
+  {
     int num = getVariableNumberByName(varName);
 		if (num == -1)
 		{

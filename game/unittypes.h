@@ -66,25 +66,25 @@ namespace game
   /**
    * Creates the unit actors.
    * Call at program init before creating the unit types.
-   */ 
+   */
   void createUnitActors(Game *game);
 
   /**
    * To clean up unit actors.
    * Call when program is terminating.
-   */ 
+   */
   void deleteUnitActors();
 
   /**
    * Creates the unit types.
    * Call at program init after creating the unit actors.
-   */ 
+   */
   void createUnitTypes();
 
   /**
    * To clean up unit types.
    * Call when program is terminating.
-   */ 
+   */
   void deleteUnitTypes();
 
 	/**

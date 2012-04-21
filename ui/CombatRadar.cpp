@@ -72,7 +72,7 @@ namespace ui
 
 		int i;
     for (i = 0; i < COMBAT_RADAR_MAX_UNITS; i++)
-    { 
+    {
       radarUnitButs[i] = NULL;
 			radarUnits[i] = NULL;
     }
@@ -92,7 +92,7 @@ namespace ui
 #endif
 
     OguiButton *b;
-    b = ogui->CreateSimpleImageButton(win, 1024-RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE, 
+    b = ogui->CreateSimpleImageButton(win, 1024-RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE,
       NULL, NULL, NULL, COMBATW_RADAR);
 		b->SetDisabledImage(radarBackground);
     b->SetListener(this);
@@ -102,10 +102,10 @@ namespace ui
     radarBut = b;
 
 #ifdef LEGACY_FILES
-    b = ogui->CreateSimpleImageButton(win, 1024-RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE, 
+    b = ogui->CreateSimpleImageButton(win, 1024-RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE,
       NULL, NULL, NULL, "Data/GUI/Ingame/radar_scan.tga", COMBATW_RADAR);
 #else
-    b = ogui->CreateSimpleImageButton(win, 1024-RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE, 
+    b = ogui->CreateSimpleImageButton(win, 1024-RADAR_SIZE, 0, RADAR_SIZE, RADAR_SIZE,
       NULL, NULL, NULL, "data/gui/hud/radar/scan.tga", COMBATW_RADAR);
 #endif
     b->SetListener(this);
@@ -115,7 +115,7 @@ namespace ui
     radarScanBut = b;
 
     for (i = 0; i < COMBAT_RADAR_DIRECTION_IMAGES; i++)
-    { 
+    {
 			char buf[128];
 #ifdef LEGACY_FILES
 			strcpy(buf, "Data/GUI/Ingame/radarDir/dir_");
@@ -158,7 +158,7 @@ namespace ui
     }
     if (radarBackground != NULL) delete radarBackground;
     for (int i = 0; i < COMBAT_RADAR_MAX_UNITS; i++)
-    { 
+    {
       if (radarUnitButs[i] != NULL)
         delete radarUnitButs[i];
     }
@@ -226,8 +226,8 @@ namespace ui
           OguiButton *b;
           if (radarUnitButs[radarUnitsAmount] == NULL)
           {
-            b = ogui->CreateSimpleImageButton(win, 
-              RADAR_SIZE/2-5, RADAR_SIZE/2-5, 9, 9, 
+            b = ogui->CreateSimpleImageButton(win,
+              RADAR_SIZE/2-5, RADAR_SIZE/2-5, 9, 9,
               NULL, NULL, NULL, COMBATW_RADARUNIT_START + radarUnitsAmount);
 #ifdef PROJECT_SURVIVOR
 						OguiAligner::align(b, OguiAligner::WIDESCREEN_FIX_RIGHT, ogui);
@@ -348,7 +348,7 @@ namespace ui
 #endif
 
     for (int i = 0; i < radarUnitsAmount; i++)
-    { 
+    {
       float a = -(radarUnitAngle[i] - angle);
       int x = (int)(radarUnitDist[i] * sin(a));
       int y = -(int)(radarUnitDist[i] * cos(a));

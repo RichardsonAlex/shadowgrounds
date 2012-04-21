@@ -30,7 +30,7 @@ namespace game
       void updateBoundaries();
 
     private:
-      // boundaries (rectangle)      
+      // boundaries (rectangle)
       float minY;
       float maxY;
       float minX;

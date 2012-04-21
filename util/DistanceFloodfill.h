@@ -63,7 +63,7 @@ namespace util
 		virtual ~DistanceFloodfillByteArrayMapper() {}
 		
 		virtual unsigned char getByte(int x, int y);
-		virtual void setByte(int x, int y, unsigned char value); 
+		virtual void setByte(int x, int y, unsigned char value);
 	private:
 		unsigned char *buf;
 		int sizeX;
@@ -80,7 +80,7 @@ namespace util
 	 * blocks that are the targets. The targets should be set to 0.
 	 * Then the floodfiller will fill the 255 blocks with proper
 	 * values that are between 1-255.
-	 * 
+	 *
 	 * The resulting range map can be easily used for pathfinding to
 	 * the target(s).
 	 *
@@ -93,13 +93,13 @@ namespace util
 	class DistanceFloodfill
 	{
 	public:
-		static void fillRanges(unsigned char areaByte, 
-			int mapSizeX, int mapSizeY, unsigned char *map, 
-			unsigned char *rangeMap, 
+		static void fillRanges(unsigned char areaByte,
+			int mapSizeX, int mapSizeY, unsigned char *map,
+			unsigned char *rangeMap,
 			bool areaIsBlocking = false, bool corners = false,
 			IDistanceFloodfillMonitor *monitor = 0);
 
-		static void fillRanges(unsigned char areaByte, 
+		static void fillRanges(unsigned char areaByte,
 			int mapSizeX, int mapSizeY, IDistanceFloodfillByteMapper *mapper,
 			IDistanceFloodfillByteMapper *rangeMapper,
 			bool areaIsBlocking = false, bool corners = false,

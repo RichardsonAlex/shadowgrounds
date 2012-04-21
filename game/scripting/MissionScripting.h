@@ -17,11 +17,11 @@ namespace game
 	class MissionScripting
 	{
 		public:			
-			/** 
+			/**
 			 * Just processes one command...
 			 */
-			static void process(util::ScriptProcess *sp, 
-				int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue, 
+			static void process(util::ScriptProcess *sp,
+				int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 				GameScriptData *gsd, Game *game);
 
 			static int calculateAliveUnits(Game *game, int player);

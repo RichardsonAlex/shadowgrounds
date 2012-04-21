@@ -133,8 +133,8 @@ struct TacticalUnitWindowData
 		// TODO: client number
 		game::SceneSelection *sel = game.gameUI->getSceneSelection(0);
 
-		clickPosition = VC3(sel->scaledMapX, 
-			game.gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY), 
+		clickPosition = VC3(sel->scaledMapX,
+			game.gameMap->getScaledHeightAt(sel->scaledMapX, sel->scaledMapY),
 			sel->scaledMapY);
 
 		if (game::SimpleOptions::getBool(DH_OPT_B_MENU_TWO_CLICK))
@@ -178,7 +178,7 @@ struct TacticalUnitWindowData
 				std::string firetext = "    Fire ";
 				if (w1->isDropWeapon())
 				{
-					firetext = "    Lay "; 
+					firetext = "    Lay ";
 					primaryDropWeap = true;
 				}
 				// TODO: should be "Setup " for timebomb.
@@ -198,7 +198,7 @@ struct TacticalUnitWindowData
 				std::string firetext = "    Fire ";
 				if (w2->isDropWeapon())
 				{
-					firetext = "    Lay "; 
+					firetext = "    Lay ";
 					secondaryDropWeap = true;
 				}
 				// TODO: should be "Setup " for timebomb.

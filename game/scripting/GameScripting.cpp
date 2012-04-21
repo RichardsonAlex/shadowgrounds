@@ -131,7 +131,7 @@ namespace game
 	};
 
 	#define GS_EXPAND_GAMESCRIPTING_LIST
-	
+
 	#include "scriptcommands.h"
 
 	#undef GS_EXPAND_GAMESCRIPTING_LIST
@@ -141,8 +141,8 @@ namespace game
 		char *stringData, ScriptLastValueType *lastValue)
 	{
 		// WARNING: unsafe cast!
-		GameScriptData *gsd = (GameScriptData *)sp->getData(); 
-		
+		GameScriptData *gsd = (GameScriptData *)sp->getData();
+
 		bool pause = false;
 		//bool pause = true;
 
@@ -174,129 +174,129 @@ namespace game
 
 		// all of these commands sent to SoundScripting...
 		#include "sound_script_commands.h"
-			SoundScripting::process(sp, command, intFloat, stringData, 
+			SoundScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to DecorScripting...
 		#include "decor_script_commands.h"
-			DecorScripting::process(sp, command, intFloat, stringData, 
+			DecorScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to WaterScripting...
 		#include "water_script_commands.h"
-			WaterScripting::process(sp, command, intFloat, stringData, 
+			WaterScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to CinematicScripting...
 		#include "cinematic_script_commands.h"
-			CinematicScripting::process(sp, command, intFloat, stringData, 
+			CinematicScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to MissionScripting...
 		#include "mission_script_commands.h"
-			MissionScripting::process(sp, command, intFloat, stringData, 
+			MissionScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to MathScripting...
 		#include "math_script_commands.h"
-			MathScripting::process(sp, command, intFloat, stringData, 
+			MathScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to PositionScripting...
 		#include "position_script_commands.h"
-			PositionScripting::process(sp, command, intFloat, stringData, 
+			PositionScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to MiscScripting...
 		#include "misc_script_commands.h"
-			MiscScripting::process(sp, command, intFloat, stringData, 
+			MiscScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to OptionScripting...
 		#include "option_script_commands.h"
-			OptionScripting::process(sp, command, intFloat, stringData, 
+			OptionScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to DevScripting...
 		#include "dev_script_commands.h"
-			DevScripting::process(sp, command, intFloat, stringData, 
+			DevScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to UnitScripting...
 		#include "unit_script_commands.h"
-			UnitScripting::process(sp, command, intFloat, stringData, 
+			UnitScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to StringScripting...
 		#include "string_script_commands.h"
-			StringScripting::process(sp, command, intFloat, stringData, 
+			StringScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to LightScripting...
 		#include "light_script_commands.h"
-			LightScripting::process(sp, command, intFloat, stringData, 
+			LightScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to AnimationScripting...
 		#include "animation_script_commands.h"
-			AnimationScripting::process(sp, command, intFloat, stringData, 
+			AnimationScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to EnvironmentScripting...
 		#include "environment_script_commands.h"
-			EnvironmentScripting::process(sp, command, intFloat, stringData, 
+			EnvironmentScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to HitChainScripting...
 		#include "hitchain_script_commands.h"
-			HitChainScripting::process(sp, command, intFloat, stringData, 
+			HitChainScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to MapScripting...
 		#include "map_script_commands.h"
-			MapScripting::process(sp, command, intFloat, stringData, 
+			MapScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game);
 			break;
 
 		// all these are sent forward to ItemScripting...
 		#include "item_script_commands.h"
-			ItemScripting::process(sp, command, intFloat, stringData, 
+			ItemScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to TrackingScripting...
 		#include "tracking_script_commands.h"
-			TrackingScripting::process(sp, command, intFloat, stringData, 
+			TrackingScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
 		// all these are sent forward to SyncScripting...
 #ifndef PROJECT_SURVIVOR
 		#include "sync_script_commands.h"
-			SyncScripting::process(sp, command, intFloat, stringData, 
+			SyncScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 #endif
 
 		// all these are sent forward to DirectControlScripting...
 		#include "directcontrol_script_commands.h"
-			DirectControlScripting::process(sp, command, intFloat, stringData, 
+			DirectControlScripting::process(sp, command, intFloat, stringData,
 				lastValue, gsd, game, &pause);
 			break;
 
@@ -319,7 +319,7 @@ namespace game
 	void GameScripting::runScriptProcess(util::ScriptProcess *sp, bool pausable)
 	{
 		// WARNING: unsafe cast!
-		GameScriptData *gsd = (GameScriptData *)sp->getData(); 
+		GameScriptData *gsd = (GameScriptData *)sp->getData();
 		if (gsd->waitCounter > 0)
 		{
 			gsd->waitCounter--;
@@ -370,7 +370,7 @@ namespace game
 
 
 	// TODO: change scriptprocess parameter to script name, please.
-	char *GameScripting::matchSuitableCommands(util::ScriptProcess *sp, 
+	char *GameScripting::matchSuitableCommands(util::ScriptProcess *sp,
 		int *matches, const char *command, int *smallestMatchLength)
 	{
 		Script *s = sp->getScript();
@@ -406,7 +406,7 @@ namespace game
 				Logger::getInstance()->error("GameScripting::makeAlert - Fatal internal error. Unit list contains null unit pointer.");
 				fb_assert(!"GameScripting::makeAlert - Fatal internal error. Unit list contains null unit pointer.");
 			}
-			if (u->isActive() && !u->isDestroyed() 
+			if (u->isActive() && !u->isDestroyed()
 				&& u->getOwner() == unit->getOwner()
 				&& u != unit)
 			{
@@ -417,7 +417,7 @@ namespace game
 				if ((u->getUnitType() == unit->getUnitType()
 					&& distsq < distance * distance)
 					|| distsq < distanceForOthers * distanceForOthers)
-				{ 				
+				{
 					if (u->getScript() != NULL)
 					{
 						// WARNING: unsafe cast!
@@ -425,7 +425,7 @@ namespace game
 						if (ai != NULL && ai->isThisAndAllEnabled())
 						{
 							ScriptProcess *sp = startUnitScript(u, u->getScript(), "alerted");
-							
+
 							// no such sub in script?
 							if (sp == NULL) return;
 
@@ -433,7 +433,7 @@ namespace game
 							GameScriptData *gsd = (GameScriptData *)sp->getData();
 							assert(gsd != NULL);
 							gsd->alertUnit = unit;
-							
+
 							int failCount = 0;
 							while (!sp->isFinished())
 							{
@@ -464,7 +464,7 @@ namespace game
 		if (scriptname != NULL)
 		{
 			ScriptProcess *sp = startNonUnitScript(scriptname, subname, params);
-			
+
 			// no such sub in script?
 			if (sp == NULL) return 0;
 
@@ -481,7 +481,7 @@ namespace game
 
 			gsd->position = st->getTrackerPosition();
 			gsd->unifiedHandle = trackerUnifiedHandle;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -512,7 +512,7 @@ namespace game
 		if (scriptname != NULL)
 		{
 			ScriptProcess *sp = startNonUnitScript(scriptname, subname);
-			
+
 			// no such sub in script?
 			if (sp == NULL) return 0;
 
@@ -522,7 +522,7 @@ namespace game
 
 			gsd->unit = unit;
 			gsd->position = position;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -559,7 +559,7 @@ namespace game
 		if (scriptname != NULL)
 		{
 			ScriptProcess *sp = startNonUnitScript(scriptname, subname);
-			
+
 			// no such sub in script?
 			if (sp == NULL) return 0;
 
@@ -569,7 +569,7 @@ namespace game
 
 			gsd->unifiedHandle = uh;
 			gsd->position = position;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -599,14 +599,14 @@ namespace game
 		if (scriptname != NULL)
 		{
 			ScriptProcess *sp = startNonUnitScript(scriptname, subname);
-			
+
 			// no such sub in script?
 			if (sp == NULL) return;
 
 			// WARNING: unsafe cast!
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -634,7 +634,7 @@ namespace game
 	{
 		bool didRun = false;
 
-		// HACK: doors - run the hit script for all nearby (counterpart) 
+		// HACK: doors - run the hit script for all nearby (counterpart)
 		// door units too...
 		if (!gs_dont_propagate_hitscript
 			&& unit->getUnitType()->hasDoorExecute())
@@ -643,15 +643,15 @@ namespace game
 			LinkedList<Unit*> *ulist = game->units->getOwnedUnits(unit->getOwner());
 			LinkedListIterator<Unit*> iter(ulist);
 			while (iter.iterateAvailable())
-			{ 		
+			{
 				Unit *other = iter.iterateNext();
 				// TODO: some treshold to the position...?
-				if (other != unit 
+				if (other != unit
 					&& other->getSpawnCoordinates().x == unit->getSpawnCoordinates().x
 					&& other->getSpawnCoordinates().z == unit->getSpawnCoordinates().z)
 				{
 					bool success = runExecuteScript(other, shooter);
-					if (success) 
+					if (success)
 						didRun = true;
 				}
 			}
@@ -671,7 +671,7 @@ namespace game
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
 			gsd->shooter = shooter;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -693,10 +693,10 @@ namespace game
 	}
 
 
-	
+
 	void GameScripting::runHitScript(Unit *unit, Unit *shooter, Bullet *hitBulletType)
 	{
-		// HACK: doors - run the hit script for all nearby (counterpart) 
+		// HACK: doors - run the hit script for all nearby (counterpart)
 		// door units too...
 		if (!gs_dont_propagate_hitscript
 			&& unit->getUnitType()->getName() != NULL
@@ -706,10 +706,10 @@ namespace game
 			LinkedList<Unit*> *ulist = game->units->getOwnedUnits(unit->getOwner());
 			LinkedListIterator<Unit*> iter(ulist);
 			while (iter.iterateAvailable())
-			{ 		
+			{
 				Unit *other = iter.iterateNext();
 				// TODO: some treshold to the position...?
-				if (other != unit 
+				if (other != unit
 					&& other->getSpawnCoordinates().x == unit->getSpawnCoordinates().x
 					&& other->getSpawnCoordinates().z == unit->getSpawnCoordinates().z)
 				{
@@ -732,7 +732,7 @@ namespace game
 			gsd->shooter = shooter;
 
 			gs_hitscript_hit_bullet_type = hitBulletType;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -767,7 +767,7 @@ namespace game
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
 			gsd->shooter = shooter;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -800,7 +800,7 @@ namespace game
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
 			gsd->shooter = shooter;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -827,7 +827,7 @@ namespace game
 			ScriptProcess *sp = startUnitScript(unit, unit->getScript(), eventName);
 
 			// no such sub in script?
-			if (sp == NULL) 
+			if (sp == NULL)
 			{
 				Logger::getInstance()->warning("GameScripting::runEventScript - Could not start event script process (requested script/sub does not exist?).");
 				Logger::getInstance()->debug(eventName);
@@ -837,7 +837,7 @@ namespace game
 			// WARNING: unsafe cast!
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -937,7 +937,7 @@ namespace game
 			assert(gsd != NULL);
 
 			didRun = true;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -988,7 +988,7 @@ namespace game
 			// WARNING: unsafe cast!
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -1024,7 +1024,7 @@ namespace game
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
 			gsd->noisy = noisy;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -1057,7 +1057,7 @@ namespace game
 			GameScriptData *gsd = (GameScriptData *)sp->getData();
 			assert(gsd != NULL);
 			gsd->spottedUnit = spotted;
-			
+
 			int failCount = 0;
 			while (!sp->isFinished())
 			{
@@ -1077,7 +1077,7 @@ namespace game
 	}
 
 
-	//struct GSCommandSorter: 
+	//struct GSCommandSorter:
 	//public std::binary_function<gs_commands_listtype, gs_commands_listtype, bool>
 	//{
 	//	bool operator() (const gs_commands_listtype &a, const gs_commands_listtype &b) const
@@ -1150,7 +1150,7 @@ namespace game
 #endif
 
 		ScriptManager::getInstance()->setProcessor(this);
-		ScriptManager::getInstance()->setKeywords(GS_CMD_AMOUNT, 
+		ScriptManager::getInstance()->setKeywords(GS_CMD_AMOUNT,
 			gs_keywords, gs_datatypes);
 
 		this->itemMarkedForRemove = false;
@@ -1191,7 +1191,7 @@ namespace game
 
 
 	// NOTE: ScriptManager may modify the buffer (inserts some null terminators!)
-	void GameScripting::loadMemoryScripts(const char *memoryFilename, 
+	void GameScripting::loadMemoryScripts(const char *memoryFilename,
 		char *buf, int buflen)
 	{
 		ScriptManager::getInstance()->loadMemoryScripts(memoryFilename,
@@ -1417,7 +1417,7 @@ namespace game
 		ai->skipMainScriptWait();
 	}
 
-  void GameScripting::runHitChainScript(const char *scriptname, Projectile *origin, 
+  void GameScripting::runHitChainScript(const char *scriptname, Projectile *origin,
 		Unit *hitUnit, Unit *shooter, Bullet *chainBullet,
 		const VC3 &position, int hitchain, const VC3 &direction, const VC3 &hitPlaneNormal)
 	{
@@ -1460,7 +1460,7 @@ namespace game
 		ScriptProcess *sp = this->startNonUnitScript(scriptname, "hitchain");
 
 		// no such sub in script?
-		if (sp == NULL) 
+		if (sp == NULL)
 		{
 			// already logged by startNonUnitScript
 			//Logger::getInstance()->error("GameScripting::runHitChainScript - Sub \"hitchain\" not defined in script.");
@@ -1470,7 +1470,7 @@ namespace game
 		// WARNING: unsafe cast!
 		GameScriptData *gsd = (GameScriptData *)sp->getData();
 		assert(gsd != NULL);
-		
+
 		int failCount = 0;
 		while (!sp->isFinished())
 		{
@@ -1627,7 +1627,7 @@ namespace game
 			}
 			floatint tmp;
 			tmp.f = tmpfloat;
-			runSingleSimpleCommand(cmdid, tmp, param, lastValue, secondaryValue);			
+			runSingleSimpleCommand(cmdid, tmp, param, lastValue, secondaryValue);
 		} else {
 			Logger::getInstance()->error("GameScripting::runSingleSimpleStringCommand - Unsupported command parameter type.");
 			return false;
@@ -1711,7 +1711,7 @@ namespace game
 				}
 				floatint tmp;
 				tmp.f = tmpfloat;
-				runSingleSimpleCommand(cmdid, tmp, param[i], lastValue, secondaryValue);			
+				runSingleSimpleCommand(cmdid, tmp, param[i], lastValue, secondaryValue);
 			} else {
 				Logger::getInstance()->error("GameScripting::runMultipleSimpleStringCommands - Unsupported command parameter type.");
 				return false;
@@ -1728,7 +1728,7 @@ namespace game
 		if (ret != 0)
 			return true;
 		else
-			return false;		
+			return false;
 	}
 
 	void *GameScripting::getGamePhysicsScriptRunnerImplementation()

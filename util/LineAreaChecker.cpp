@@ -5,7 +5,7 @@
 
 namespace util
 {
-	bool LineAreaChecker::isPointInsideLineArea(const VC3 &point, 
+	bool LineAreaChecker::isPointInsideLineArea(const VC3 &point,
 		const VC3 &lineStart, const VC3 &lineEnd, float lineWidth)
 	{
 		VC3 projPos = lineEnd - lineStart;

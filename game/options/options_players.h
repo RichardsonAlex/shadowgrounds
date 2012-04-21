@@ -2,7 +2,7 @@
 #ifndef OPTIONS_PLAYERS_H
 #define OPTIONS_PLAYERS_H
 
-// NOTE: all of these player options must be in increments of one for each player 
+// NOTE: all of these player options must be in increments of one for each player
 // (1st - 4th)
 
 #define DH_OPT_B_1ST_PLAYER_ENABLED 30

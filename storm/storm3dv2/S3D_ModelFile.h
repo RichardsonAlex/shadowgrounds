@@ -320,11 +320,11 @@ struct S3D_HELPER
 };
 
 
-/* 
-  Bone data 
+/*
+  Bone data
 */
 
-struct S3D_BONE 
+struct S3D_BONE
 {
 	std::string name;
 

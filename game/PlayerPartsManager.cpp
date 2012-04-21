@@ -45,15 +45,15 @@ namespace game
 			return false;
     } else {
       PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(partIdString));
-      if (pt == NULL) 
-      { 
+      if (pt == NULL)
+      {
         Logger::getInstance()->error("PlayerPartsManager::allowPartType - Reference to unloaded part type.");
 				return false;
       } else {
         if (game->partTypesAvailable->isPartTypeAvailable(player, pt))
         {
 					// already have that part type available
-					// possibly not an error.(?) 
+					// possibly not an error.(?)
 					// but better give some debug info...
           Logger::getInstance()->debug("PlayerPartsManager::allowPartType - Part type is already available to player.");
         } else {
@@ -76,8 +76,8 @@ namespace game
         Logger::getInstance()->error("PlayerPartsManager::addStoragePart - Illegal part type id.");
     } else {
       PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(partIdString));
-      if (pt == NULL) 
-      { 
+      if (pt == NULL)
+      {
         Logger::getInstance()->error("PlayerPartsManager::addStoragePart - Reference to unloaded part type.");
       } else {
         part = pt->getNewPartInstance();

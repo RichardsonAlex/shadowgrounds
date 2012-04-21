@@ -59,14 +59,14 @@ namespace {
 		OPENFILENAME fileStruct = { 0 };
 		fileStruct.lStructSize = sizeof(OPENFILENAME);
 
-		if(!useFilter) 
+		if(!useFilter)
 		{
 			memset(filter2, 0, sizeof(filter2));
 			for(unsigned int i = 0; i < extension.size(); ++i)
 				filter2[i] = extension[i];
 
 			fileStruct.lpstrFilter = filter2;
-		} 
+		}
 		else
 			fileStruct.lpstrFilter = createFilter(extension);
 		

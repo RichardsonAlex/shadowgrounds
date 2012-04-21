@@ -38,8 +38,8 @@ void assertImp(const char *predicateString, const char *file, int line)
 	Logger::getInstance()->error(error.c_str());
 	removeMessages();
 
-	// can't use the actual assert clause here, because it 
-	// has been lost in the function call (a macro assert would be 
+	// can't use the actual assert clause here, because it
+	// has been lost in the function call (a macro assert would be
 	// the only possible solution, but that would cause problems
 	// with the #undef NDEBUG in the header...)
 #ifdef FB_TESTBUILD

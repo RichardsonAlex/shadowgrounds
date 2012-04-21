@@ -175,10 +175,10 @@ struct ParserGroupData
 
 	int flags;
 
-	void removeSubGroup(const std::string& name) 
+	void removeSubGroup(const std::string& name)
 	{
 		GroupMap::iterator it = groups.find(name);
-		if(it != groups.end()) 
+		if(it != groups.end())
 			groups.erase(it);
 	}
 
@@ -503,7 +503,7 @@ void ParserGroup::addSubGroup(const std::string &name, ParserGroup &group)
 	data->groups[name] = g;
 }
 
-void ParserGroup::removeSubGroup(const std::string& name) 
+void ParserGroup::removeSubGroup(const std::string& name)
 {
 	data->removeSubGroup(name);
 }

@@ -18,13 +18,13 @@ namespace game
 		LinkedList<Unit*> *ulist = game->units->getAllUnits();
 		LinkedListIterator<Unit*> iter(ulist);
 
-		while (iter.iterateAvailable())		
+		while (iter.iterateAvailable())
 		{
 			Unit *u = iter.iterateNext();
-			
+
 			// unit is friendly towards player?
 			// (but player does not need to be friendly towards the unit ;)
-			if (u->isActive() && !u->isDestroyed()				
+			if (u->isActive() && !u->isDestroyed()
 				&& !game->isHostile(u->getOwner(), player)
 				&& u->getReconValue() > 0
 				&& u->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
@@ -61,7 +61,7 @@ namespace game
 				game->getGameScene()->rayTrace(rayStartPosition, dir, (float)dirLen, cinfo, false, true);
 
 				// collision check back
-				u->getVisualObject()->setCollidable(true);				
+				u->getVisualObject()->setCollidable(true);
 
 				// TEMP!
 				// restore them all...

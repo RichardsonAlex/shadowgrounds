@@ -172,7 +172,7 @@ public:
 
 	void SetTextString( const std::string& key, const std::string& value )
 	{
-		workingCopyText = util::StringReplace( key, value, workingCopyText ); 
+		workingCopyText = util::StringReplace( key, value, workingCopyText );
 	}
 
 	void RenderText()
@@ -218,7 +218,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	
 #ifdef PROJECT_SURVIVOR
 	bool survivor = true;
-#else 
+#else
 	bool survivor = false;
 #endif
 
@@ -257,7 +257,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	buttonH	= getLocaleGuiInt( "gui_loadgamemenu_button_h", getLocaleGuiInt( "gui_menu_common_button_h", 0 ) );
 
 	buttonXStart = buttonX;
-	buttonXLimit= getLocaleGuiInt( "gui_loadgame_menu_buttons_max_width", 0 ); 
+	buttonXLimit= getLocaleGuiInt( "gui_loadgame_menu_buttons_max_width", 0 );
 
 	buttonAddX = getLocaleGuiInt( "gui_loadgamemenu_button_add_x", getLocaleGuiInt( "gui_menu_common_button_add_x", 0 ) );
 	buttonAddY = getLocaleGuiInt( "gui_loadgamemenu_button_add_y", getLocaleGuiInt( "gui_menu_common_button_add_y", 28 ) );
@@ -378,7 +378,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 				// selectionButtonDescs.push_back( descs );
 
 			
-			} 
+			}
 
 			if(i == 5)
 			{
@@ -497,7 +497,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	/*
 	if ( selectedSelection == -1 && newst != -1 )
 		selectButton( newst );
-	else 
+	else
 		selectButton( selectedSelection );
 	*/
 
@@ -520,7 +520,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 		{
 			if( (*i)->GetId() == COMMANDS_LOAD )
 			{
-				// (*i)->SetTransparency( 50 ); 
+				// (*i)->SetTransparency( 50 );
 				(*i)->SetDisabled( true );
 
 			}
@@ -747,7 +747,7 @@ void LoadGameMenu::selectButton( int command )
 
 void LoadGameMenu::menuClose()
 {
-	closeMenu(); 
+	closeMenu();
 }
 
 void LoadGameMenu::menuLoad()
@@ -849,8 +849,8 @@ void LoadGameMenu::addImageSelectionButton( const std::string& image_norm, const
 
 	OguiButton* b;
 	b = ogui->CreateSimpleImageButton( win, buttonX, buttonY, buttonW, buttonH, image_norm.c_str(), image_down.c_str(), image_high.c_str(), image_disabled.c_str(), command, param, true );
-	/*b = ogui->CreateSimpleTextButton( win, buttonX, buttonY, buttonW, buttonH, 
-		buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(), 
+	/*b = ogui->CreateSimpleTextButton( win, buttonX, buttonY, buttonW, buttonH,
+		buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(),
 		( buttonPaddingString + text ).c_str(), command, param );
 		*/
 	b->SetListener( this );
@@ -919,7 +919,7 @@ void LoadGameMenu::scrollMissionsUp()
 			i->second->MoveBy( 0, buttonAddY );
 			if( i->second->GetY() < buttonYMaxLimit + 900 && i->second->GetY() > buttonYMaxLimit )
 			{
-				i->second->MoveBy( 0, +1000 ); 
+				i->second->MoveBy( 0, +1000 );
 			}
 
 			if( i->second->GetY() < buttonYMinLimit && i->second->GetY() >= buttonYMinLimit - 1000 )

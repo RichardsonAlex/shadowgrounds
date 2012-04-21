@@ -124,7 +124,7 @@ namespace ui
 				
 				weaponNames[ i ] = getLocaleGuiString( ( std::string( "gui_weapon_select_text_" ) + boost::lexical_cast< std::string >( i ) ).c_str() );
 #else
-				std::string buf = prefix + "image_" + boost::lexical_cast< std::string >( i ); 
+				std::string buf = prefix + "image_" + boost::lexical_cast< std::string >( i );
 				std::string tmp = getLocaleGuiString(buf.c_str());
 				this->weaponImages[i] = ogui->LoadOguiImage(tmp.c_str());
 				
@@ -197,7 +197,7 @@ namespace ui
 			weaponSelectionText->SetFont( weaponSelectionFont? weaponSelectionFont : playerNameFont );
 			if( coop )
 				weaponSelectionText->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
-			else 
+			else
 				weaponSelectionText->SetTextHAlign( OguiButton::TEXT_H_ALIGN_RIGHT );
 		}
 
@@ -440,7 +440,7 @@ namespace ui
 		}
 
 
-		if( weaponSelectionText && hideWeaponSelection && 
+		if( weaponSelectionText && hideWeaponSelection &&
 			( ( Timer::getTime() - lastUpdateWeaponText ) > hideWeaponSelection ) )
 		{
 			int time = ( Timer::getTime() - ( lastUpdateWeaponText + hideWeaponSelection ) );

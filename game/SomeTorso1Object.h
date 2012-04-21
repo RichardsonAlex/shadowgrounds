@@ -14,7 +14,7 @@ namespace game
     //~SomeTorso1Object();
 
     virtual SaveData *getSaveData();
-    
+
     virtual PartType *getType();
   };
 

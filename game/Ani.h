@@ -9,7 +9,7 @@
 //  - recording
 //  - playing
 //
-// all other methods than record/play require either record or play 
+// all other methods than record/play require either record or play
 // state!
 // like:
 // startPlay()

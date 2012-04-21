@@ -12,7 +12,7 @@
 
 namespace game
 {
-	TerrainPhysicsObject::TerrainPhysicsObject(GamePhysics *gamePhysics, const unsigned short *buffer_, int samplesX_, int samplesY_, const VC3 &size_) 
+	TerrainPhysicsObject::TerrainPhysicsObject(GamePhysics *gamePhysics, const unsigned short *buffer_, int samplesX_, int samplesY_, const VC3 &size_)
 	:	AbstractPhysicsObject(gamePhysics)
 	{
 		buffer = buffer_;
@@ -22,7 +22,7 @@ namespace game
 		dynamicActor = false;
 	}
 
-	TerrainPhysicsObject::~TerrainPhysicsObject() 
+	TerrainPhysicsObject::~TerrainPhysicsObject()
 	{
 		// nop, ~AbstractPhysicsObject handles everything of any interest...
 	}

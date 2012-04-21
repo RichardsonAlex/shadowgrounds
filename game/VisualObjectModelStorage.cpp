@@ -42,9 +42,9 @@ namespace game
 			VisualObjectModel *vom = iter.iterateNext();
 			if (filename == NULL && vom->getFilename() == NULL)
 				return vom;
-			if (vom->getFilename() != NULL && filename != NULL 
+			if (vom->getFilename() != NULL && filename != NULL
 				&& strcmp(vom->getFilename(), filename) == 0)
-				return vom;				
+				return vom;
 		}
 		VisualObjectModel *newvom = new VisualObjectModel(filename);
 		models->append(newvom);

@@ -262,7 +262,7 @@ public:
 	// Set application name (window title)
 	void SetApplicationName(const char *shortName, const char *applicationName);
 
-	Storm3D_SurfaceInfo GetCurrentDisplayMode(); 
+	Storm3D_SurfaceInfo GetCurrentDisplayMode();
 	Storm3D_SurfaceInfo GetScreenSize();	// backbuffer dimension (normally same as displaymode, but not in windowed mode)
 
 	// Screenshot

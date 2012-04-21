@@ -49,8 +49,8 @@ struct Storm3D_BoneChunk
 		*this = other;
 	}
 */
-	~Storm3D_BoneChunk() 
-	{ 
+	~Storm3D_BoneChunk()
+	{
 		if(index_buffer != 0 && glIsBuffer(index_buffer)) {
 			glDeleteBuffers(1, &index_buffer);
 			index_buffer = 0;
@@ -182,7 +182,7 @@ public:
 	void UseMaterial(IStorm3D_Material *_material);
 	IStorm3D_Material *GetMaterial();	// Returns NULL if no material used
 
-	// Clear (face/vertex) 
+	// Clear (face/vertex)
 	void DeleteAllFaces();
 	void DeleteAllVertexes();
 

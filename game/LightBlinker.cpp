@@ -91,7 +91,7 @@ namespace game
 	{
 		COL result = impl->lightColorDefault;
 
-		// update our local timer which is at correct (possibly varying) interval... 
+		// update our local timer which is at correct (possibly varying) interval...
 		fb_assert(impl->game->gameTimer >= impl->lastGameTimer);
 		impl->blinkerTimer += impl->game->gameTimer - impl->lastGameTimer;
 		if (impl->blinkerTimer >= (impl->cycleTime + impl->pauseTime + impl->thisFrameRandomPauseTime) / GAME_TICK_MSEC)

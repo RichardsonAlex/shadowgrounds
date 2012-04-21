@@ -28,7 +28,7 @@ namespace game
 		return true;
 	}
 
-	
+
 	bool CheckpointChecker::isAnyUnitNearCheckpoint(Game *game, float range,
 		int player)
 	{

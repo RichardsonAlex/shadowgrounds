@@ -77,12 +77,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const TerrainTextures &textures)
-{ 
+{
 	return textures.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, TerrainTextures &textures)
-{ 
+{
 	return textures.readStream(stream);
 }
 

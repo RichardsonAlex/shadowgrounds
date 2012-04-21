@@ -9,7 +9,7 @@
 #include "OguiButton.h"
 
 //
-// Select list 
+// Select list
 //
 // v1.0.0 - 10.4.2002 - jpkokkon
 //
@@ -57,13 +57,13 @@ class OguiSelectList : public IOguiButtonListener
 
     // add an item to the list
 		// position -1 can be used to add after last item (0 adds before first item)
-		// WARNING: calling this inside a select event may invalidate value pointers 
+		// WARNING: calling this inside a select event may invalidate value pointers
 		// given to event listener
-    void addItem(const char *value, const char *desc, bool selected = false, 
+    void addItem(const char *value, const char *desc, bool selected = false,
       int position = -1);
 
 	// added by Pete
-	// 
+	//
 	void highlightItem( int position, bool highlight );
 
     // add an item to the list
@@ -86,7 +86,7 @@ class OguiSelectList : public IOguiButtonListener
     void uninit(); // called by destructor
 
   protected:
- 
+
     OguiSelectListStyle *style;
 
     OguiWindow *parent;

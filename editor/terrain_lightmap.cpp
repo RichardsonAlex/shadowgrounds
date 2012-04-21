@@ -994,7 +994,7 @@ struct TerrainLightMap::Data
 		{
 			// new, slightly compacted version, specifically for cases where lightmap is not used (all single color)
 
-			// TODO: could optimize, if assumed that vector really contains an array 
+			// TODO: could optimize, if assumed that vector really contains an array
 			// then using &values[0] instead of the temporary unpackedBuffer
 
 			int isPacked;
@@ -1043,8 +1043,8 @@ struct TerrainLightMap::Data
 			}
 			delete [] unpackedBuf;
 			delete [] packedBuf;
-		} 
-		else 
+		}
+		else
 		{
 			if(version >= 2)
 			{

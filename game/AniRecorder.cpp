@@ -220,7 +220,7 @@ namespace game
 					delete tfm;
 				}
 			}
-			
+
 			delh = (delh + 1) % ANIRECORDER_MAX_UNDOS;
 		}
 
@@ -427,7 +427,7 @@ namespace game
 			if (sp.next())
 			{
 				char *line = sp.getLine();
-				if (line != NULL 
+				if (line != NULL
 					&& line[0] != '\0'
 					&& strlen(line) < 32)
 				{
@@ -512,7 +512,7 @@ namespace game
 			{
 				sprintf(seekbuf, "<--- END-ANI-ID-%d --->", j);
 				tfm.setEndSelectionNearMarker(seekbuf);
-				
+
 				char *aniStuffBuf = tfm.getSelectionAsNewBuffer();
 				util::SimpleParser sp;
 				sp.loadMemoryBuffer(aniStuffBuf, strlen(aniStuffBuf));
@@ -539,7 +539,7 @@ namespace game
 						key[0] = '\0';
 						value[0] = '\0';
 					}
-					
+
 					if (key != NULL)
 					{
 						if (strcmp(key, "setUnitByIdString") == 0)
@@ -783,7 +783,7 @@ namespace game
 
 				tfm.setStartSelectionNearMarker("<--- ANIBATCH_ADD_MARKER --->");
 				tfm.setEndSelectionNearMarker("<--- ANIBATCH_ADD_MARKER --->");
-				
+
 				char addbuf[512];
 				sprintf(addbuf, "\r\n// <--- START-ANI-ID-%d --->\r\n", i);
 				tfm.addBeforeSelection(addbuf);
@@ -792,7 +792,7 @@ namespace game
 					sprintf(addbuf, "setUnitByIdString %s\r\n", unit->getIdString());
 				} else {
 					sprintf(addbuf, "setUnitByIdString %d\r\n", impl->game->units->getIdForUnit(unit));
-					Logger::getInstance()->warning("AniRecorder::addAniRecord - Added unit has no id-string.");					
+					Logger::getInstance()->warning("AniRecorder::addAniRecord - Added unit has no id-string.");
 					Logger::getInstance()->warning("Attempting to use automatically generated unit id-number instead.");
 					Logger::getInstance()->warning("This is not recommended and may not work properly.");
 				}
@@ -949,7 +949,7 @@ namespace game
 		stop();
 
 		// TODO
-		// umm... how to really do this, what about marks at different 
+		// umm... how to really do this, what about marks at different
 		// positions for different anis?
 		/*
 		for (int i = 0; i < ANIRECORDER_MAX_ANIS; i++)
@@ -1044,28 +1044,28 @@ namespace game
 
 		camdumpbuf[0] = '\0';
 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraMode camera_centric\r\n");  
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraMode camera_centric\r\n");
 		//int intAngle = (int)cam->getAngleY();
 		float floatAngle = cam->getAngleY();
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraAngleFloat %f\r\n", floatAngle); 
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraAngleFloat %f\r\n", floatAngle);
 		//int intBetaAngle = (int)cam->getBetaAngle();
 		float floatBetaAngle = cam->getBetaAngle();
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraBetaAngleFloat %f\r\n", floatBetaAngle); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraFloatZoom %f\r\n", cam->getZoom()); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setPosition s,%f,%f\r\n", pos.x, pos.z); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setPositionHeight %f\r\n", pos.y); 
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraBetaAngleFloat %f\r\n", floatBetaAngle);
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraFloatZoom %f\r\n", cam->getZoom());
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setPosition s,%f,%f\r\n", pos.x, pos.z);
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setPositionHeight %f\r\n", pos.y);
 		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setCameraPosition\r\n");
 #ifdef PROJECT_SHADOWGROUNDS
 		// nothing.. for backward compatibility don't save offsets...
 #else
 		VC3 posOffset = cam->getPositionOffset();
 		VC3 targOffset = cam->getTargetOffset();
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraPositionOffsetXToFloatValue\r\n", posOffset.x); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraPositionOffsetYToFloatValue\r\n", posOffset.y); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraPositionOffsetZToFloatValue\r\n", posOffset.z); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraTargetOffsetXToFloatValue\r\n", targOffset.x); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraTargetOffsetYToFloatValue\r\n", targOffset.y); 
-		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraTargetOffsetZToFloatValue\r\n", targOffset.z); 
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraPositionOffsetXToFloatValue\r\n", posOffset.x);
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraPositionOffsetYToFloatValue\r\n", posOffset.y);
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraPositionOffsetZToFloatValue\r\n", posOffset.z);
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraTargetOffsetXToFloatValue\r\n", targOffset.x);
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraTargetOffsetYToFloatValue\r\n", targOffset.y);
+		sprintf(&camdumpbuf[strlen(camdumpbuf)], "setFloatValue %f;setCameraTargetOffsetZToFloatValue\r\n", targOffset.z);
 #endif
 
 		// just to be sure, hopefully we don't have buffer overflows...
@@ -1123,7 +1123,7 @@ namespace game
 	}
 
 	LinkedList<const char*> *AniRecorder::getCameraDumpList()
-	{	
+	{
 		Logger::getInstance()->debug("AniRecorder::getCameraDumpList - About to parse camera dump file for list.");
 
 		LinkedList<const char*> *ret = new LinkedList<const char*>();
@@ -1186,7 +1186,7 @@ namespace game
 				{
 					impl->anis[i]->stopPlay();
 				}
-					
+
 				Unit *u = impl->anis[i]->getUnit();
 				u->setPath(NULL);
 				u->setFinalDestination(u->getPosition());
@@ -1215,7 +1215,7 @@ namespace game
 			}
 		}
 		*/
-		
+
 		AniManager::getInstance()->run();
 
 		stop();
@@ -1412,7 +1412,7 @@ namespace game
 		return impl->undoHistoryDesc[impl->atHistory].c_str();
 	}
 
-	
+
 	std::string AniRecorder::getSliderPosOrRangeText()
 	{
 		std::string tmp = "";

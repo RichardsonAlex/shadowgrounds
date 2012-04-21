@@ -28,7 +28,7 @@
 /*
 
 C'ish mess. Can`t really help it since using new/delete inside
-allocation routines would be, well .. no fun. This excludes 
+allocation routines would be, well .. no fun. This excludes
 STL containers too, damn.
 
 Some placement new tricks might have worked but ..
@@ -147,7 +147,7 @@ namespace {
 		free(unit);
 	}
 	
-	/* 
+	/*
 	  Here are our allocation infos. Finally implemented with hashing.
 	*/
 
@@ -316,7 +316,7 @@ namespace {
 		}
 		~InitializationTracker()
 		{	
-			programExiting = true; 
+			programExiting = true;
 			dumpLeakReport();
 		}
 	};
@@ -449,7 +449,7 @@ void debugSetAllocationInfo(const char *allocationInfo)
 // operator new implementation as suggested by Meyers on Effective C++ (item 8)
 void *operator new(size_t originalSize, const char *fileName, int lineNumber, bool arrayAllocated)
 {
-	// Handle 0-byte request. The Holy Standard says we must 
+	// Handle 0-byte request. The Holy Standard says we must
 	// return unique pointer (or unique value actually)
 	if(originalSize == 0)
 		originalSize = 1;
@@ -528,7 +528,7 @@ void *operator new(size_t originalSize, const char *fileName, int lineNumber, bo
 		std::new_handler global_handler = std::set_new_handler(0);
 		std::set_new_handler(global_handler);
 
-		// If has one, try it. Otherwise throw bad_alloc 
+		// If has one, try it. Otherwise throw bad_alloc
 		// (and hope for someone to catch <g>)
 		if(global_handler)
 			(*global_handler) ();

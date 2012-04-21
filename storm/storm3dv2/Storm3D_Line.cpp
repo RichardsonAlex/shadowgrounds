@@ -152,8 +152,8 @@ void Storm3D_Line::Render()
 			Vector direction = points[i];
 			direction -= points[i + 1];
 
-			if (fabs(direction.x) < 0.0001f 
-				&& fabs(direction.y) < 0.0001f 
+			if (fabs(direction.x) < 0.0001f
+				&& fabs(direction.y) < 0.0001f
 				&& fabs(direction.z) < 0.0001f)
 			{
 				// to avoid division by zero

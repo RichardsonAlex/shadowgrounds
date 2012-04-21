@@ -65,13 +65,13 @@ namespace net
       return DUMMYBIND_MAX_BACKLOG;
     }
 
- 
+
     void DummyBind::unbind()
       throw (NetDriverException*)
     {
       // TODO: should delete the connections in accept queue and disconnect
       // their peer connections.
-      DummyDriver::portBindList->remove(this); 
+      DummyDriver::portBindList->remove(this);
       acceptAmount = -1;
     }
 
@@ -80,7 +80,7 @@ namespace net
     {
       if (acceptAmount != -1)
       {
-        acceptedConnections->append(connection); 
+        acceptedConnections->append(connection);
         acceptAmount--;
       }
       // else assert(0)
@@ -89,9 +89,9 @@ namespace net
 
     bool DummyBind::isAcceptingConnections()
     {
-      if (acceptAmount > 0) 
+      if (acceptAmount > 0)
         return true;
-      else 
+      else
         return false;
     }
 

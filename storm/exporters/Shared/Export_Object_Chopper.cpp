@@ -158,7 +158,7 @@ namespace {
 		FBVector2 uv2 = v1.getUv2() + v2.getUv2();
 		uv2 *= .5f;
 
-		// ToDo -- loses proper bone weights (just uses v1). 
+		// ToDo -- loses proper bone weights (just uses v1).
 		// Should choose largest weight and store that.
 
 		result.setPosition(position);

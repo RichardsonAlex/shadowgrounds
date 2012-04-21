@@ -52,7 +52,7 @@ public:
 		if(message == WM_COMMAND)
 		{
 			int command = LOWORD(wParam);
-			if(command == WM_DESTROY) 
+			if(command == WM_DESTROY)
 			{
 				EndDialog(windowHandle, 0);
 				data->windowHandle = NULL;
@@ -65,13 +65,13 @@ public:
 		{
 			data->updateSize();
 		}
-		else if(message == WM_HSCROLL) 
+		else if(message == WM_HSCROLL)
 		{
 			HWND hwndScrollBar = (HWND) lParam;
 			int id = GetDlgCtrlID(hwndScrollBar);
 
 			// data->commands[message].execute(id);
-		} 
+		}
 		else if(message == WM_NOTIFY)
 		{
 			// data->commands[message].execute(message);

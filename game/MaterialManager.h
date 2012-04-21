@@ -16,7 +16,7 @@ namespace game
 			static bool isMaterialUnderPosition(GameMap *gameMap,
 				const VC3 &position, int material);
 
-			// return material under given position 
+			// return material under given position
 			static int getMaterialUnderPosition(GameMap *gameMap,
 				const VC3 &position);
 	};

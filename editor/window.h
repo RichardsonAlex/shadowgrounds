@@ -30,7 +30,7 @@ public:
 	~Window();
 
 	void setMouse(Mouse &mouse);
-	void resize( int width, int height ); 
+	void resize( int width, int height );
 
 	CommandList &getCommandList();
 	HWND getWindowHandle() const;

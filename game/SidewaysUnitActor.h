@@ -15,7 +15,7 @@ namespace game
   {
   public:
     SidewaysUnitActor(Game *game);
-    
+
     //virtual ~SidewaysUnitActor() { };
 
 		void actDirectSidewaysControls(Unit *unit);

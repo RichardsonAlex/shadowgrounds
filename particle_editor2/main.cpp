@@ -106,7 +106,7 @@ void calcFacingMatrix(Matrix& m, const Vector& velocity) {
 	zAxis = dir.GetCrossWith(xAxis);
 	zAxis.Normalize();
 	
-	xAxis = 
+	xAxis =
 
 	m.CreateBaseChangeMatrix(xAxis, dir, zAxis);
 }
@@ -565,7 +565,7 @@ class ParticleViewer {
 		ParticleViewer* viewer = (ParticleViewer*)GetWindowLong(hwnd, GWL_USERDATA);
 
 		switch(msg) {
-		case WM_ACTIVATE: 
+		case WM_ACTIVATE:
 			{
 			
 				if(viewer != NULL) {
@@ -581,7 +581,7 @@ class ParticleViewer {
 						viewer->activate(false);
 				}
 					
-			} break; 
+			} break;
 		case WM_DESTROY:
 			PostQuitMessage(0);
 			return 0;
@@ -731,7 +731,7 @@ public:
 */
 
 
-int WINAPI WinMain(HINSTANCE hInstance, 
+int WINAPI WinMain(HINSTANCE hInstance,
   HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	ParticleViewer viewer;
@@ -741,7 +741,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 
 /*
-int WINAPI WinMain(HINSTANCE hInstance, 
+int WINAPI WinMain(HINSTANCE hInstance,
   HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
 	WNDCLASS wc;
@@ -775,7 +775,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 	IStorm3D_Scene *scene = s3d->CreateNewScene();
 	scene->SetBackgroundColor(bgCol);
- 
+
 	IStorm3D_Font* font = s3d->CreateNewFont();
 	
 	std::string buff;

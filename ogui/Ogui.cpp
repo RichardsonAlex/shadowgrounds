@@ -5,7 +5,7 @@
 #include "Ogui.h"
 #include "orvgui2.h"
 
-// if implemented properly, gotta get rid of this dependecy 
+// if implemented properly, gotta get rid of this dependecy
 // (gotta redo this whole quick hack implementation actually)
 #include "OguiStormDriver.h"
 
@@ -55,7 +55,7 @@ Ogui::Ogui()
 }
 
 /* --------------------------------------------------------- */
-	
+
 Ogui::~Ogui()
 {
 	while (!buttons.empty())
@@ -81,7 +81,7 @@ Ogui::~Ogui()
 	{
 		for (int j = 0; j < OGUI_CURSOR_STATES; j++)
 		{
-			if (cursorImages[i][j] != NULL) 
+			if (cursorImages[i][j] != NULL)
 				delete cursorImages[i][j];
 			cursorImages[i][j] = NULL;
 		}
@@ -299,7 +299,7 @@ void Ogui::LoadCursorImage(int cursornum, const char *filename, int forstate)
 	{
 		if (cursorImages[cursornum][forstate] != NULL)
 		{
-			IStorm3D_Material *mat = 
+			IStorm3D_Material *mat =
 				((OguiStormImage *)cursorImages[cursornum][forstate])->mat;
 			og_set_cursor_pic(cursornum, mat);
 		} else {
@@ -312,7 +312,7 @@ void Ogui::LoadCursorImage(int cursornum, const char *filename, int forstate)
 
 /* --------------------------------------------------------- */
 
-// NOTICE: maximum state is limited in current implementation, 
+// NOTICE: maximum state is limited in current implementation,
 // although it should not be.
 void Ogui::SetCursorImageState(int cursornum, int state) throw (OguiException *)
 {
@@ -327,7 +327,7 @@ void Ogui::SetCursorImageState(int cursornum, int state) throw (OguiException *)
 
 	if (cursorImages[cursornum][state] != NULL)
 	{
-		IStorm3D_Material *mat = 
+		IStorm3D_Material *mat =
 			((OguiStormImage *)cursorImages[cursornum][state])->mat;
 		og_set_cursor_pic(cursornum, mat);
 	} else {
@@ -370,7 +370,7 @@ void Ogui::ResetSwappedCursorImages()
 
 /* --------------------------------------------------------- */
 
-void Ogui::SetCursorImageOffset(int cursornum, int offsetX, int offsetY, 
+void Ogui::SetCursorImageOffset(int cursornum, int offsetX, int offsetY,
 	int forstate) throw (OguiException *)
 {
 	if (cursornum < 0 || cursornum >= GetMaxCursors())
@@ -395,35 +395,35 @@ void Ogui::SetCursorImageOffset(int cursornum, int offsetX, int offsetY,
 
 /* --------------------------------------------------------- */
 
-OguiWindow *Ogui::CreateSimpleWindow(int x, int y, int sizex, int sizey, 
+OguiWindow *Ogui::CreateSimpleWindow(int x, int y, int sizex, int sizey,
 	const char *imagefilename, int id)
 	throw (OguiException *)
 {
 	// NOTICE: image created here, but deleted by the window destructor
 	IOguiImage *img = NULL;
-	if (imagefilename != NULL) 
+	if (imagefilename != NULL)
 		img = drv->LoadOguiImage(imagefilename);
 
 	OguiWindow *tmp = new OguiWindow(this, x, y, sizex, sizey, img, id);
 
-	windows.push_back(tmp);  
+	windows.push_back(tmp);
 
-	return tmp; 
+	return tmp;
 }
 
 /* --------------------------------------------------------- */
 
-OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y, 
-	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename, 
+OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
+	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename,
 	const char *imageHighlightFilename, const char *imageDisabledFilename, int id, void *argument, bool clipToWindow )
 	throw (OguiException *)
 {
-	// these images loaded here get deleted by the button destructor 
+	// these images loaded here get deleted by the button destructor
 	// they are marked as autodel
-	IOguiImage *img = NULL; 
-	IOguiImage *img2 = NULL; 
-	IOguiImage *img3 = NULL; 
-	IOguiImage *img4 = NULL; 
+	IOguiImage *img = NULL;
+	IOguiImage *img2 = NULL;
+	IOguiImage *img3 = NULL;
+	IOguiImage *img4 = NULL;
 	if (imageFilename != NULL) img = drv->LoadOguiImage(imageFilename);
 	if (imageDownFilename != NULL) img2 = drv->LoadOguiImage(imageDownFilename);
 	if (imageHighlightFilename != NULL) img3 = drv->LoadOguiImage(imageHighlightFilename);
@@ -437,14 +437,14 @@ OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
 	tmp->imageDisabledAutodel = true;
 
 	buttons.push_back(tmp);
-	
+
 	return tmp;
 }
 
 /* --------------------------------------------------------- */
 
-OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y, 
-	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename, 
+OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
+	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename,
 	const char *imageHighlightFilename, int id, void *argument)
 	throw (OguiException *)
 {
@@ -454,16 +454,16 @@ OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
 
 /* --------------------------------------------------------- */
 
-OguiButton *Ogui::CreateSimpleTextButton(OguiWindow *win, int x, int y, 
-	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename, 
+OguiButton *Ogui::CreateSimpleTextButton(OguiWindow *win, int x, int y,
+	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename,
 	const char *imageHighlightFilename, const char *text, int id, const void *argument, bool clipToWindow )
 	throw (OguiException *)
 {
-	// these images loaded here get deleted by the button destructor 
+	// these images loaded here get deleted by the button destructor
 	// they are marked as autodel
-	IOguiImage *img = NULL; 
-	IOguiImage *img2 = NULL; 
-	IOguiImage *img3 = NULL; 
+	IOguiImage *img = NULL;
+	IOguiImage *img2 = NULL;
+	IOguiImage *img3 = NULL;
 	if (imageFilename != NULL) img = drv->LoadOguiImage(imageFilename);
 	if (imageDownFilename != NULL) img2 = drv->LoadOguiImage(imageDownFilename);
 	if (imageHighlightFilename != NULL) img3 = drv->LoadOguiImage(imageHighlightFilename);
@@ -481,13 +481,13 @@ OguiButton *Ogui::CreateSimpleTextButton(OguiWindow *win, int x, int y,
 	tmp->imageHighlightedAutodel = true;
 
 	buttons.push_back(tmp);
-	
+
 	return tmp;
 }
 
 /* --------------------------------------------------------- */
 
-OguiTextLabel *Ogui::CreateTextLabel(OguiWindow *win, int x, int y, 
+OguiTextLabel *Ogui::CreateTextLabel(OguiWindow *win, int x, int y,
 	int sizex, int sizey, const char *text)
 	throw (OguiException *)
 {
@@ -509,7 +509,7 @@ OguiTextLabel *Ogui::CreateTextLabel(OguiWindow *win, int x, int y,
 
 /* --------------------------------------------------------- */
 
-OguiTextLabel *Ogui::CreateTextArea(OguiWindow *win, int x, int y, 
+OguiTextLabel *Ogui::CreateTextArea(OguiWindow *win, int x, int y,
 	int sizex, int sizey, const char *text)
 	throw (OguiException *)
 {
@@ -520,7 +520,7 @@ OguiTextLabel *Ogui::CreateTextArea(OguiWindow *win, int x, int y,
 	}
 
 	OguiButton *tmp = win->CreateNewButton(x, y, sizex, sizey, NULL, NULL, NULL, NULL, true, "", 0, NULL, defaultFont);
-	
+
 	tmp->SetLineBreaks(true);
 	tmp->SetDisabled(true);
 	tmp->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -532,13 +532,13 @@ OguiTextLabel *Ogui::CreateTextArea(OguiWindow *win, int x, int y,
 
 	ret->SetText(text);
 
-	return ret; 
+	return ret;
 }
 
 /* --------------------------------------------------------- */
 
-OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y, 
-	OguiSelectListStyle *style, int valueAmount, const char **values, const char **descs, 
+OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y,
+	OguiSelectListStyle *style, int valueAmount, const char **values, const char **descs,
 	bool multiSelectable, int defaultSelection, int id, void *argument)
 	throw (OguiException *)
 {
@@ -549,11 +549,11 @@ OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y,
 	int butSizeX = style->unselectedItem->sizeX;
 	int butSizeY = style->unselectedItem->sizeY;
 	FB_ASSERT( butSizeY != 0 );
-	
+
 	int needButs = 0;
 	if( butSizeY != 0 )
 		needButs = style->sizeY / butSizeY;
-	
+
 
 	// NOTICE: buttons created here will be deleted in selectlist's destructor
 	// create item list buttons
@@ -573,7 +573,7 @@ OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y,
 	buttons.push_back(upsb);
 	buttons.push_back(downsb);
 
-	OguiSelectList *ret = new OguiSelectList(x, y, defaultSelection, multiSelectable, 
+	OguiSelectList *ret = new OguiSelectList(x, y, defaultSelection, multiSelectable,
 		valueAmount, values, descs, listb, upsb, downsb, style, id, argument);
 
 	upsb->SetListener(ret);
@@ -585,7 +585,7 @@ OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y,
 
 	delete [] listb;
 
-	return ret; 
+	return ret;
 }
 
 /* --------------------------------------------------------- */
@@ -594,7 +594,7 @@ bool Ogui::isEscape()
 {
 	if (og_escape)
 		return true;
-	else 
+	else
 		return false;
 }
 
@@ -661,14 +661,14 @@ void Ogui::UpdateEffects(int timeDelta)
 		// Crashes sometimes because win points to a window which is deleted.
 
 		// text type effect ( added by Pete )
-		if( win->effectTextTypeTimeLeft > 0 ) 
+		if( win->effectTextTypeTimeLeft > 0 )
 		{
 			win->effectTextTypeTimeLeft -= timeDelta;
 			if( win->effectTextTypeTimeLeft <= 0 )
 			{
 				win->effectTextTypeTimeLeft = 0;
 			}
-			
+
 			float value = 1.0f - ( (float)win->effectTextTypeTimeLeft / (float)win->effectTextTypeTimeTotal );
 
 			// bool winStillExists = win->buttonList->isEmpty();
@@ -677,14 +677,14 @@ void Ogui::UpdateEffects(int timeDelta)
 			SafeLinkedListIterator<OguiButton*> i( win->buttonList );
 			while( i.iterateAvailable() )
 			{
-				
+
 				OguiButton* button = i.iterateNext();
-				
+
 				if( button->SetText( button->text.substr( 0, (unsigned int)( value * button->text.size() ) ).c_str() ) )
 				{
 					sendEvent = true;
 				}
-			
+
 			}
 			if ( sendEvent )
 			{
@@ -717,14 +717,14 @@ void Ogui::UpdateEffects(int timeDelta)
 		}
 
 		// Text Line appear
-		if( win->effectTextLineTimeLeft > 0 ) 
+		if( win->effectTextLineTimeLeft > 0 )
 		{
 			win->effectTextLineTimeLeft -= timeDelta;
 			if( win->effectTextLineTimeLeft <= 0 )
 			{
 				win->effectTextLineTimeLeft = 0;
 			}
-			
+
 			float value = 1.0f - ( (float)win->effectTextLineTimeLeft / (float)win->effectTextLineTimeTotal );
 
 			int number_of_buttons = 0;
@@ -783,7 +783,7 @@ void Ogui::UpdateEffects(int timeDelta)
 					break;
 				}
 			}
-			
+
 		}
 
 		// fade-in/out?

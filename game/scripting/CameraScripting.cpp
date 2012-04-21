@@ -46,7 +46,7 @@ namespace game
 {
 	CameraAreaParameters CameraScripting::cameraAreaParameters = CameraAreaParameters();	
 
-	void CameraScripting::process(util::ScriptProcess *sp, 
+	void CameraScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -487,8 +487,8 @@ namespace game
 				else if (strcmp(stringData, "linear") == 0)
 				{
 					game->gameUI->getGameCamera()->setSmoothCameraInterpolation(false);
-				} 
-				else 
+				}
+				else
 				{
 					sp->error("GameScripting::process - setCameraInterpolationType parameter bad.");
 				}

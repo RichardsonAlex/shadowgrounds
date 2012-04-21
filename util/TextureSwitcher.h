@@ -9,7 +9,7 @@ namespace frozenbyte {
 
 namespace util {
 
-class TextureSwitcher 
+class TextureSwitcher
 {
 	struct Data;
 	boost::scoped_ptr<Data> data;
@@ -19,7 +19,7 @@ public:
 	~TextureSwitcher();
 
 	void switchTexture(const char *from, const char *to);
-}; 
+};
 
 } // util
 

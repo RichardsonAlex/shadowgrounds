@@ -47,7 +47,7 @@ namespace game
 			ItemManager(Game *game);
 
 			~ItemManager();
-			
+
 			// added by Pete
 			void setListener( IItemListener* listener );
 
@@ -108,7 +108,7 @@ namespace game
 			//Unit *executeUnit;
 
 
-			
+
 			std::vector<ItemSpawnerGroup *> spawnerGroups;
 
 	};

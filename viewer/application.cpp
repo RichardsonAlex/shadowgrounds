@@ -141,7 +141,7 @@ namespace {
 			/*
 			{
 				IStorm3D_Texture *texture = storm.storm->CreateNewTexture("Data/Fonts/font2.dds");
-				font = 0; 
+				font = 0;
 
 				if(texture)
 				{
@@ -970,7 +970,7 @@ struct ApplicationData
 			handleMessage();
 
 		MSG windowsMessage = { 0 };
-		if(PeekMessage(&windowsMessage, 0, 0, 0, PM_NOREMOVE)) 
+		if(PeekMessage(&windowsMessage, 0, 0, 0, PM_NOREMOVE))
 			handleMessage();
 
 		Sleep(0);

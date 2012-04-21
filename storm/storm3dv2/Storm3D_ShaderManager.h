@@ -26,7 +26,7 @@ class Singleton
 	static T *instance;
 
 public:
-	Singleton() 
+	Singleton()
 	{
 		assert(instance == 0);
 
@@ -61,7 +61,7 @@ template<class T> T* Singleton<T>::instance = 0;
 // Storm3D_ShaderManager
 //	-> Keeps track of related properties (lightning, ...)
 //	-> Manages shaders with requested properties
-//	-> 
+//	->
 //------------------------------------------------------------------
 class Storm3D_ShaderManager: public Singleton<Storm3D_ShaderManager>
 {

@@ -47,7 +47,7 @@ public:
 				
 		bool tick(const Matrix& tm, const Vector& velocity, IStorm3D_Scene* scene);
 						
-		int render(IStorm3D_Scene* scene, Storm3D_PointParticle* pointParticles, 
+		int render(IStorm3D_Scene* scene, Storm3D_PointParticle* pointParticles,
 			Storm3D_LineParticle* lineParticles);			
 		
 	
@@ -96,7 +96,7 @@ public:
 	const Matrix& getTM();
 	void setMaxParticles(int n);
 	int getMaxParticles();
-	void addEmitter(SharedPtr<EmitterDesc> emitter, 
+	void addEmitter(SharedPtr<EmitterDesc> emitter,
 		SharedPtr<ParticleDesc> particle);
 	int getNumEmitters();
 	SharedPtr<ParticleDesc> getParticleDesc(int i);
@@ -108,13 +108,13 @@ public:
 	void kill();
 };
 
-inline std::ostream &operator << (std::ostream &stream, const ParticleSystem &ps) 
-{ 
+inline std::ostream &operator << (std::ostream &stream, const ParticleSystem &ps)
+{
 	return ps.writeStream(stream);
 }
 
-inline std::istream &operator >> (std::istream &stream, ParticleSystem &ps) 
-{ 
+inline std::istream &operator >> (std::istream &stream, ParticleSystem &ps)
+{
 	return ps.readStream(stream);
 }
 

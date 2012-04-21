@@ -29,13 +29,13 @@ public:
   int cursorButtonMask;
   int cursorOldButtonMask;
 
-  // selection number values start from 0  
-  // only valid if event type != EVENT_TYPE_SCROLL, 
+  // selection number values start from 0
+  // only valid if event type != EVENT_TYPE_SCROLL,
   // undefined in case of scroll event (actually -1, but don't rely on it)
   int selectionNumber;
- 
-  // NULL values may be used for selection values, if all you need is the 
-  // selection number. 
+
+  // NULL values may be used for selection values, if all you need is the
+  // selection number.
   // both selection value and desc are null in case of scroll event
   char *selectionValue;
   char *selectionDesc;
@@ -46,7 +46,7 @@ public:
   OguiWindow *triggerWindow;
   void *extraArgument;
 
-  OguiSelectListEvent(EVENT_TYPE evt, int curnum, int scrx, int scry, 
+  OguiSelectListEvent(EVENT_TYPE evt, int curnum, int scrx, int scry,
     int but, int obut, int selectionnum, char *selval, char *seldesc,
     int scrolly,
     OguiSelectList *trig, OguiWindow *trigwin, void *arg);

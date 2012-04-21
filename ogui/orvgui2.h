@@ -11,7 +11,7 @@
 
 //
 // v2.0.0 - 19.4.2002 - jpkokkon
-// 
+//
 
 
 // #define OG_HIDE_OWN_CURSORS
@@ -316,7 +316,7 @@ void og_unpress_button(orvgui_but *but);
 void og_highlight_button(orvgui_but *but);
 void og_unhighlight_button(orvgui_but *but);
 void og_set_react_button(orvgui_but *but, unsigned int mask);
-void og_set_pic_button(orvgui_but *but, IStorm3D_Material *pic, 
+void og_set_pic_button(orvgui_but *but, IStorm3D_Material *pic,
 	IStorm3D_Material *picdown, IStorm3D_Material *picdisabled, IStorm3D_Material *pichighlighted);
 void og_set_text_button(orvgui_but *but, IStorm3D_Font *fnt, const COL &fnt_color, unsigned char h_align, unsigned char v_align, const char *text, int pixwidth, int pixheight, int fontwidth, int fontheight);
 void og_set_text_button(orvgui_but *but, const char *text, int pixwidth, int pixheight, int fontwidth, int fontheight);

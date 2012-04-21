@@ -98,8 +98,8 @@ private:
 	void createDifficultyButtons();
 	void setDifficulty( int difficulty );
 	void selectDifficultButton( int i );
-	void addDifficultButton( int x, int y, int w, int h, 
-		const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+	void addDifficultButton( int x, int y, int w, int h,
+		const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 		IOguiFont* font, IOguiFont* font_high, IOguiFont* font_down, IOguiFont* font_disa, const std::string& text, int command );
 	void showDifficultyToolTip( int difficulty );
 	void hideDifficultyToolTip( void );
@@ -124,7 +124,7 @@ private:
 	void createGameModeButtons();
 	void setGameMode( int gamemode );
 	void selectGameModeButton( int i );
-	void addGameModeButton( int x, int y, int w, int h, const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+	void addGameModeButton( int x, int y, int w, int h, const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 		IOguiFont* font, IOguiFont* font_high, IOguiFont* font_down, IOguiFont* font_disa, const std::string& text, int command );
 
 	// game mode

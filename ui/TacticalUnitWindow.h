@@ -33,7 +33,7 @@ public:
 
 	bool isVisible();
 
-	// this tells us if the window close has been acknowledged. 
+	// this tells us if the window close has been acknowledged.
 	// need this so we can skip the next button click
 	// ack automatically set by the tacticalunitwindow itself, if some
 	// of the options are chosen (not closed by the "autoclose popup code").

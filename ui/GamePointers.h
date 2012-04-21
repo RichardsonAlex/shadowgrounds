@@ -51,7 +51,7 @@ namespace ui
     GamePointers(game::GameScene *gameScene);
     ~GamePointers();
 
-    void addPointer(const VC3 &position, int pointerType, 
+    void addPointer(const VC3 &position, int pointerType,
       const IPointableObject *lockedTo, const IPointableObject *lineFrom,
 			float maxDistance = -1.0f);
 

@@ -42,19 +42,19 @@ namespace util
   }
 
 
-  void Floodfill::fillWithByte(unsigned char fillByte, unsigned char areaByte, 
+  void Floodfill::fillWithByte(unsigned char fillByte, unsigned char areaByte,
     int mapSizeX, int mapSizeY, unsigned char *map,
     bool areaIsBlocking, bool corners)
   {
-    FloodfillByteArrayMapper mapper = 
+    FloodfillByteArrayMapper mapper =
       FloodfillByteArrayMapper(mapSizeX, mapSizeY, map);
 
-    fillWithByte(fillByte, areaByte, mapSizeX, mapSizeY, &mapper, 
+    fillWithByte(fillByte, areaByte, mapSizeX, mapSizeY, &mapper,
       areaIsBlocking, corners);
   }
 
 
-  void Floodfill::fillWithByte(unsigned char fillByte, unsigned char areaByte, 
+  void Floodfill::fillWithByte(unsigned char fillByte, unsigned char areaByte,
     int mapSizeX, int mapSizeY, IFloodfillByteMapper *mapper,
     bool areaIsBlocking, bool corners)
   {
@@ -127,15 +127,15 @@ namespace util
             {
               mapper->setByte(x + 1, y, fillByte);
             }
-            if (moveUp) 
+            if (moveUp)
             {
               y--;
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
               else
                 x--;
             } else {
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
             }
           }
@@ -202,15 +202,15 @@ namespace util
             {
               mapper->setByte(x + 1, y, fillByte);
             }
-            if (moveUp) 
+            if (moveUp)
             {
               y--;
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
               else
                 x--;
             } else {
-              if (moveLeft) 
+              if (moveLeft)
                 x -= 2;
             }
           }

@@ -8,7 +8,7 @@ namespace ui
 {
 	/**
 	 * A dummy boundary for camera (treats all positions to be inside
-	 * boundaries). Probably want to use this boundary for 
+	 * boundaries). Probably want to use this boundary for
 	 * cinematic cameras that should not be limited by player's
 	 * units' positions.
 	 *

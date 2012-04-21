@@ -34,7 +34,7 @@ namespace frozenbyte
   }
 }
 
-namespace util 
+namespace util
 {
 	class ColorMap;
 	class LightMap;
@@ -47,14 +47,14 @@ namespace game
 //	class HideMap;
 
 
-  class GameMapLoadException  // public std::exception 
+  class GameMapLoadException  // public std::exception
   {
   private:
     char *msg;
 
   public:
-    GameMapLoadException(char *errmsg) 
-    { 
+    GameMapLoadException(char *errmsg)
+    {
       if (errmsg != NULL)
       {
         msg = new char[strlen(errmsg) + 1];
@@ -64,7 +64,7 @@ namespace game
       }
     }
 
-    ~GameMapLoadException() 
+    ~GameMapLoadException()
     {
       if (msg != NULL)
         delete [] msg;
@@ -95,14 +95,14 @@ namespace game
     //void loadMap(char *filename) throw (GameMapLoadException *);
 
     int getHeightmapHeightAt(int x, int y);
-    
+
 		// not a very nice method... does not affect rendered heightmap,
 		// only the collision heightmap. =/
 		void setHeightmapHeightAt(int x, int y, int value);
 
     float getScaledHeightAt(float scaledX, float scaledY);
-    
-    // get a fixed point int height 
+
+    // get a fixed point int height
     // (real values shifted left by 8 = 24bits.8bits fixed point value)
     // works like getScaledHeightAt, but given extra accuracy
     // returns a fixed point value also (shift right by 8 to get int value)
@@ -124,7 +124,7 @@ namespace game
 
     // returns scale height
     float getScaleHeight();
-    
+
     uint16_t *getObstacleHeightMap();
 
     void applyObstacleHeightChanges();
@@ -149,11 +149,11 @@ namespace game
     int pathfindSizeY;
     float scaleX;
     float scaleY;
-    float scaleHeight; 
+    float scaleHeight;
     float scaledSizeX;
     float scaledSizeY;
     float scaledSizeHeight;
-    
+
     float scaledSizeHalvedX;
     float scaledSizeHalvedY;
     int sizeHalvedX;
@@ -216,19 +216,19 @@ public:
 		bool saveObstacleAndAreaImpl(const char *filename, frozenbyte::ai::PathFind *pathfinder);
 
   public:
-		inline CoverMap *getCoverMap() 
+		inline CoverMap *getCoverMap()
 		{
 			return coverMap;
 		}
 
 		/*
-		inline HideMap *getHideMap() 
+		inline HideMap *getHideMap()
 		{
 			return hideMap;
 		}
 		*/
 
-		inline util::AreaMap *getAreaMap() 
+		inline util::AreaMap *getAreaMap()
 		{
 			return areaMap;
 		}
@@ -389,7 +389,7 @@ public:
       if (scaledX > scaledMinX && scaledX < scaledMaxX
         && scaledY > scaledMinY && scaledY < scaledMaxY)
         return true;
-      else 
+      else
         return false;
     }
 
@@ -399,7 +399,7 @@ public:
       if (scaledX > scaledWellMinX && scaledX < scaledWellMaxX
         && scaledY > scaledWellMinY && scaledY < scaledWellMaxY)
         return true;
-      else 
+      else
         return false;
     }
 
@@ -408,8 +408,8 @@ public:
       if (x >= 0 && x < sizeX
         && y >= 0 && y < sizeY)
         return true;
-      else 
-        return false; 
+      else
+        return false;
     }
 
     inline bool inPathfindBoundaries(int x, int y) const
@@ -417,8 +417,8 @@ public:
       if (x >= 0 && x < pathfindSizeX
         && y >= 0 && y < pathfindSizeY)
         return true;
-      else 
-        return false; 
+      else
+        return false;
     }
 
     inline void keepWellInScaledBoundaries(float *scaledX, float *scaledY) const
@@ -435,7 +435,7 @@ public:
     void addMovingObstacleHeight(int x, int y, int height);
     void removeMovingObstacleHeight(int x, int y, int height);
     */
-  
+
     inline void addObstacleHeight(int x, int y, int height, AREAMAP_DATATYPE obstacleMask)
     {
 			assert((obstacleMask & AREAMASK_OBSTACLE_MOVABLE) == 0);
@@ -446,7 +446,7 @@ public:
 
 			// TODO: clear other flags??? (seethrough, unhittable, etc.)
     }
-  
+
     inline void removeObstacleHeight(int x, int y, int height, AREAMAP_DATATYPE obstacleMask)
     {
 			assert((obstacleMask & AREAMASK_OBSTACLE_MOVABLE) == 0);
@@ -459,13 +459,13 @@ public:
 		  else
 			  obstacleHeightMap[x + y * pathfindSizeX] = 0;
 		}
-    } 
-  
+    }
+
     inline bool isMovingObstacle(int x, int y) const
     {
 			return areaMap->isAreaAnyValue(x, y, AREAMASK_OBSTACLE_MOVABLE);
 			/*
-      if ((obstacleHeightMap[x + y * pathfindSizeX] & (OBSTACLE_MAP_MASK_SEETHROUGH | OBSTACLE_MAP_MASK_UNHITTABLE)) 
+      if ((obstacleHeightMap[x + y * pathfindSizeX] & (OBSTACLE_MAP_MASK_SEETHROUGH | OBSTACLE_MAP_MASK_UNHITTABLE))
 				== (OBSTACLE_MAP_MASK_SEETHROUGH | OBSTACLE_MAP_MASK_UNHITTABLE))
       {
 				return true;
@@ -491,16 +491,16 @@ public:
     {
       // mark as moving only if no other obstacles here.
       //if ((obstacleHeightMap[x + y * pathfindSizeX] & OBSTACLE_MAP_MASK_HEIGHT) == 0)
-			// New behaviour: 
+			// New behaviour:
 			// mark as moving only if no other obstacles here or marked
 			// as moving earlier.
 			/*
       if ((obstacleHeightMap[x + y * pathfindSizeX] & OBSTACLE_MAP_MASK_HEIGHT) == 0
         || (obstacleHeightMap[x + y * pathfindSizeX] & (OBSTACLE_MAP_MASK_UNHITTABLE | OBSTACLE_MAP_MASK_SEETHROUGH)) == (OBSTACLE_MAP_MASK_UNHITTABLE | OBSTACLE_MAP_MASK_SEETHROUGH))
       {
-        obstacleHeightMap[x + y * pathfindSizeX] |= 
+        obstacleHeightMap[x + y * pathfindSizeX] |=
 					(OBSTACLE_MAP_MASK_UNHITTABLE | OBSTACLE_MAP_MASK_SEETHROUGH);
-				// New behaviour: 
+				// New behaviour:
 				// and add height only if moving obstacles here
         obstacleHeightMap[x + y * pathfindSizeX] += height;
       }
@@ -516,7 +516,7 @@ public:
 	      obstacleHeightMap[x + y * pathfindSizeX] += height;
 			}
     }
-  
+
     inline void removeMovingObstacleHeight(int x, int y, int height, AREAMAP_DATATYPE obstacleMask)
     {
       // only if a moving obstacle (no other obstacles..)
@@ -545,7 +545,7 @@ public:
       //obstacleHeightMap[x + y * pathfindSizeX] |= OBSTACLE_MAP_MASK_UNHITTABLE;
     }
 		*/
-  
+
     inline int getObstacleHeight(int x, int y) const
     {
 			//assert(x >= 0 && y >= 0 && x < pathfindSizeX && y < pathfindSizeY);

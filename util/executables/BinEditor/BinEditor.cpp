@@ -87,7 +87,7 @@ LRESULT WINAPI customMessageProc(HWND hWnd,UINT msg,WPARAM wParam,LPARAM lParam)
 
 		if(active == WA_INACTIVE || minimized)
 			lostFocusPause = true;
-		else 
+		else
 			lostFocusPause = false;
 	}
 
@@ -132,12 +132,12 @@ void parse_commandline(const char *cmdline)
 	if (binFilename != NULL)
 	{
 		if (strlen(binFilename) > 4
-			&& strcmp(&binFilename[strlen(binFilename) - 4], ".bin") == 0) 
+			&& strcmp(&binFilename[strlen(binFilename) - 4], ".bin") == 0)
 		{
 			int cutpos = strlen(binFilename) - 4;
 			for (int i = strlen(binFilename) - 3; i >= 0; i--)
 			{
-				if (binFilename[i] == '_' && binFilename[i + 1] == 'R' 
+				if (binFilename[i] == '_' && binFilename[i + 1] == 'R'
 					&& binFilename[i + 2] == '_')
 				{
 					cutpos = i;
@@ -197,7 +197,7 @@ void parse_commandline(const char *cmdline)
 
 /* --------------------------------------------------------- */
 
-int WINAPI WinMain(HINSTANCE hInstance, 
+int WINAPI WinMain(HINSTANCE hInstance,
   HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow)
 {
   // initialize...
@@ -277,11 +277,11 @@ int WINAPI WinMain(HINSTANCE hInstance,
   Keyb3_SetActive(1);
 
 	float mouse_sensitivity = 1.0f;
-  
+
   Storm3D_SurfaceInfo screenInfo = s3d->GetScreenSize();
-  Keyb3_SetMouseBorders((int)(screenInfo.width / mouse_sensitivity), 
+  Keyb3_SetMouseBorders((int)(screenInfo.width / mouse_sensitivity),
     (int)(screenInfo.height / mouse_sensitivity));
-  Keyb3_SetMousePos((int)(screenInfo.width / mouse_sensitivity) / 2, 
+  Keyb3_SetMousePos((int)(screenInfo.width / mouse_sensitivity) / 2,
     (int)(screenInfo.height / mouse_sensitivity) / 2);
 
 	Keyb3_UpdateDevices();
@@ -298,8 +298,8 @@ int WINAPI WinMain(HINSTANCE hInstance,
   Ogui *ogui = new Ogui();
   OguiStormDriver *ogdrv = new OguiStormDriver(s3d, disposable_scene);
   ogui->SetDriver(ogdrv);
-  ogui->SetScale(OGUI_SCALE_MULTIPLIER * scr_width / 1024, 
-    OGUI_SCALE_MULTIPLIER * scr_height / 768); 
+  ogui->SetScale(OGUI_SCALE_MULTIPLIER * scr_width / 1024,
+    OGUI_SCALE_MULTIPLIER * scr_height / 768);
   ogui->SetMouseSensitivity(mouse_sensitivity, mouse_sensitivity);
   ogui->Init();
 
@@ -319,14 +319,14 @@ int WINAPI WinMain(HINSTANCE hInstance,
   ogui->SetCursorController(0, OGUI_CURSOR_CTRL_MOUSE);
 
   // cursors images for controller 0,1,2,3
-  loadDHCursors(ogui, 0); 
+  loadDHCursors(ogui, 0);
 
   ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
 
   // do the loop...
 
   Timer::update();
-  uint32_t startTime = Timer::getTime(); 
+  uint32_t startTime = Timer::getTime();
   uint32_t curTime = startTime;
   uint32_t movementTime = startTime;
   uint32_t frameCountTime = startTime;
@@ -353,8 +353,8 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
 		/*
     QUAT rot = QUAT(
-      UNIT_ANGLE_TO_RAD(modelAngleX), 
-      UNIT_ANGLE_TO_RAD(modelAngle), 
+      UNIT_ANGLE_TO_RAD(modelAngleX),
+      UNIT_ANGLE_TO_RAD(modelAngle),
       UNIT_ANGLE_TO_RAD(modelAngleZ));
 		*/
 		QUAT qx;
@@ -471,7 +471,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
   while (!quitRequested)
   {
     // read input
-    
+
     Keyb3_UpdateDevices();
 
 		if (Keyb3_IsKeyPressed(KEYCODE_ESC))
@@ -486,7 +486,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
     if (curTime - movementTime > 0)
     {
-      // VEEERY jerky... 
+      // VEEERY jerky...
       // attempt to fix that...
       float delta;
       delta = 100.0f;
@@ -710,7 +710,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
     // frame/poly counting
     frames++;
     {
-      if (curTime - frameCountTime >= 200) 
+      if (curTime - frameCountTime >= 200)
       {
        float seconds = (curTime - frameCountTime) / 1000.0f;
        fps = (int)(frames / seconds);
@@ -807,7 +807,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
   // clean up
 
-  unloadDHCursors(ogui, 0); 
+  unloadDHCursors(ogui, 0);
 
   deleteUIDefaults();
 
@@ -816,7 +816,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
   delete ogdrv;
 
   Keyb3_Free();
-  
+
   delete s3d;
 
 	SystemRandom::cleanInstance();
@@ -829,4 +829,4 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
   return 0;
 }
- 
+

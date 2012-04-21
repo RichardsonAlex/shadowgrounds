@@ -25,7 +25,7 @@ LogManager::~LogManager()
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void LogManager::addNewLogEntry( const std::string& variable_name ) 
+void LogManager::addNewLogEntry( const std::string& variable_name )
 {
 	LogEntry entry( variable_name );
 
@@ -41,7 +41,7 @@ void LogManager::update( Game* game )
 
 
 	std::map< std::string, LogEntry >::iterator i;
-	
+
 	for( i = logEntries.begin(); i != logEntries.end(); ++i )
 	{
 		i->second.update( game );
@@ -55,7 +55,7 @@ std::list< LogEntry > LogManager::getCollectedLogs() const
 	std::list< LogEntry > result;
 
 	std::map< std::string, LogEntry >::const_iterator i;
-	
+
 	for( i = logEntries.begin(); i != logEntries.end(); ++i )
 	{
 		if( i->second.isCollected() )
@@ -78,12 +78,12 @@ void LogManager::loadNewLogEntries()
 	while( i.iterateAvailable() )
 	{
 		std::string name = i.iterateNext();
- 
+
 		if( name.substr( 0, 10 ) == "log_entry_" )
 		{
 		//	assert( false );
 			std::string var_name = "";
-			
+
 			if( name.substr( 0, 16 ) == "log_entry_state_" )
 			{
 				var_name = name.substr( 16 );

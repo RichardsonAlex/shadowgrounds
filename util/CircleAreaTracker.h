@@ -21,7 +21,7 @@
 // getUnitVariable scriptclip
 // setAreaClipToValue
 // setPlayer 0
-// 
+//
 // loop
 //   if
 //     hasAreaTriggered

@@ -24,7 +24,7 @@
 #define COMBATUNITWINDOW_SIZE_Y 86
 
 // button id's...
-#define COMBATUW_UNIT 1 
+#define COMBATUW_UNIT 1
 #define COMBATUW_UNITMODE 2
 #define COMBATUW_FACE 3
 
@@ -33,7 +33,7 @@
 #define COMBATUW_WEAP_END (COMBATUW_WEAP_START + COMBATUNITWINDOW_MAX_WEAPONS)
 
 // part hp locations...
-// NOTICE: unit's left/right arm and leg sides are mirrored! 
+// NOTICE: unit's left/right arm and leg sides are mirrored!
 #define COMBATUW_PART_TORSO 0
 #define COMBATUW_PART_TORSO_X (44+13)
 #define COMBATUW_PART_TORSO_Y (2+17)
@@ -215,14 +215,14 @@ namespace ui
         strcat(buf, "/hp_");
         strcat(buf, int2str(i));
         strcat(buf, ".tga");
-        partHPImages[i + (j * COMBATUNITWINDOW_PART_HP_IMAGES)] 
+        partHPImages[i + (j * COMBATUNITWINDOW_PART_HP_IMAGES)]
           = ogui->LoadOguiImage(buf);
       }
     }
 
     // then create window...
 
-    win = ogui->CreateSimpleWindow(0, 0, 
+    win = ogui->CreateSimpleWindow(0, 0,
       COMBATUNITWINDOW_SIZE_X, COMBATUNITWINDOW_SIZE_Y, NULL);
 		win->SetUnmovable();
     win->Hide();
@@ -232,7 +232,7 @@ namespace ui
     OguiButton *b;
 
     // first the unit "window" background
-    b = ogui->CreateSimpleImageButton(win, 0, 0, 
+    b = ogui->CreateSimpleImageButton(win, 0, 0,
       COMBATUNITWINDOW_SIZE_X, COMBATUNITWINDOW_SIZE_Y, NULL, NULL, NULL,
       COMBATUW_UNIT);
     int group = unit->getGroupNumber();
@@ -246,7 +246,7 @@ namespace ui
 
 		// character's face
 		/*
-    b = ogui->CreateSimpleImageButton(win, COMBATUW_FACE_X, COMBATUW_FACE_Y, 
+    b = ogui->CreateSimpleImageButton(win, COMBATUW_FACE_X, COMBATUW_FACE_Y,
       38, 44, NULL, NULL, NULL, COMBATUW_FACE);
     b->SetReactMask(0);
     b->SetListener(this);
@@ -281,7 +281,7 @@ namespace ui
 		*/
 
     // the mode button
-    b = ogui->CreateSimpleTextButton(win, 4, COMBATUNITWINDOW_SIZE_Y - 20, 
+    b = ogui->CreateSimpleTextButton(win, 4, COMBATUNITWINDOW_SIZE_Y - 20,
       COMBATUNITWINDOW_SIZE_X-8, 16, NULL, NULL, NULL, NULL,
       COMBATUW_UNITMODE);
     //b->SetImage(modeDefensiveImage);
@@ -297,8 +297,8 @@ namespace ui
 
     /*
     // the heat meter
-    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 16, 
-      posY * UNITSTAT_SIZE_Y + 31 + 59, 
+    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 16,
+      posY * UNITSTAT_SIZE_Y + 31 + 59,
       9, 0, NULL, NULL, NULL, 0);
     b->SetDisabledImage(heatImages[0]);
     b->SetDisabled(true);
@@ -306,8 +306,8 @@ namespace ui
     unitHeatButs[posY] = b;
 
     // the maxenergy meter
-    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 77, 
-      posY * UNITSTAT_SIZE_Y + 31, 
+    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 77,
+      posY * UNITSTAT_SIZE_Y + 31,
       9, 59, NULL, NULL, NULL, 0);
     b->SetDisabledImage(maxEnergyImage);
     b->SetDisabled(true);
@@ -315,8 +315,8 @@ namespace ui
     unitMaxEnergyButs[posY] = b;
 
     // the energy meter
-    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 77, 
-      posY * UNITSTAT_SIZE_Y + 31, 
+    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 77,
+      posY * UNITSTAT_SIZE_Y + 31,
       9, 59, NULL, NULL, NULL, 0);
     b->SetDisabledImage(energyImage);
     b->SetDisabled(true);
@@ -324,8 +324,8 @@ namespace ui
     unitEnergyButs[posY] = b;
 
     // heat overlay (scale dots)
-    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 16, 
-      posY * UNITSTAT_SIZE_Y + 31, 
+    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 16,
+      posY * UNITSTAT_SIZE_Y + 31,
       9, 59, NULL, NULL, NULL, 0);
     b->SetDisabledImage(heatOverlayImage);
     b->SetDisabled(true);
@@ -333,8 +333,8 @@ namespace ui
     unitHeatOverlayButs[posY] = b;
 
     // energy overlay (scale dots)
-    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 77, 
-      posY * UNITSTAT_SIZE_Y + 31, 
+    b = ogui->CreateSimpleImageButton(win, 1024-UNITSTAT_SIZE_X + 77,
+      posY * UNITSTAT_SIZE_Y + 31,
       9, 59, NULL, NULL, NULL, 0);
     b->SetDisabledImage(energyOverlayImage);
     b->SetDisabled(true);
@@ -345,8 +345,8 @@ namespace ui
     // unit HP...
     for (i = 0; i < COMBATUNITWINDOW_MAX_HPBLOCKS; i++)
     {
-      b = ogui->CreateSimpleImageButton(win, 
-        COMBATUW_HP_BAR_X + i * 9, COMBATUW_HP_BAR_Y, 9, 9, 
+      b = ogui->CreateSimpleImageButton(win,
+        COMBATUW_HP_BAR_X + i * 9, COMBATUW_HP_BAR_Y, 9, 9,
         NULL, NULL, NULL, 0);
       b->SetDisabled(true);
       b->SetReactMask(0);
@@ -356,8 +356,8 @@ namespace ui
     // unit energy...
     for (i = 0; i < COMBATUNITWINDOW_MAX_ENERGYBLOCKS; i++)
     {
-      b = ogui->CreateSimpleImageButton(win, 
-        COMBATUW_ENERGY_BAR_X + i * 4, COMBATUW_ENERGY_BAR_Y, 4, 5, 
+      b = ogui->CreateSimpleImageButton(win,
+        COMBATUW_ENERGY_BAR_X + i * 4, COMBATUW_ENERGY_BAR_Y, 4, 5,
         NULL, NULL, NULL, 0);
       b->SetDisabled(true);
       b->SetReactMask(0);
@@ -368,73 +368,73 @@ namespace ui
 
 		/*
     // the body hp meter
-    b = ogui->CreateSimpleImageButton(win, 
-      COMBATUW_PART_TORSO_X, COMBATUW_PART_TORSO_Y, 
-      COMBATUW_PART_TORSO_SIZE_X, COMBATUW_PART_TORSO_SIZE_Y, 
+    b = ogui->CreateSimpleImageButton(win,
+      COMBATUW_PART_TORSO_X, COMBATUW_PART_TORSO_Y,
+      COMBATUW_PART_TORSO_SIZE_X, COMBATUW_PART_TORSO_SIZE_Y,
       NULL, NULL, NULL, 0);
-    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES 
+    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES
       * COMBATUW_PART_TORSO]);
     b->SetDisabled(true);
     b->SetReactMask(0);
     unitPartHPButs[COMBATUW_PART_TORSO] = b;
 
     // the head hp meter
-    b = ogui->CreateSimpleImageButton(win, 
-      COMBATUW_PART_HEAD_X, COMBATUW_PART_HEAD_Y, 
-      COMBATUW_PART_HEAD_SIZE_X, COMBATUW_PART_HEAD_SIZE_Y, 
+    b = ogui->CreateSimpleImageButton(win,
+      COMBATUW_PART_HEAD_X, COMBATUW_PART_HEAD_Y,
+      COMBATUW_PART_HEAD_SIZE_X, COMBATUW_PART_HEAD_SIZE_Y,
       NULL, NULL, NULL, 0);
-    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES 
+    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES
       * COMBATUW_PART_HEAD]);
     b->SetDisabled(true);
     b->SetReactMask(0);
     unitPartHPButs[COMBATUW_PART_HEAD] = b;
 
     // the right arm hp meter
-    b = ogui->CreateSimpleImageButton(win, 
-      COMBATUW_PART_ARM_R_X, COMBATUW_PART_ARM_R_Y, 
-      COMBATUW_PART_ARM_R_SIZE_X, COMBATUW_PART_ARM_R_SIZE_Y, 
+    b = ogui->CreateSimpleImageButton(win,
+      COMBATUW_PART_ARM_R_X, COMBATUW_PART_ARM_R_Y,
+      COMBATUW_PART_ARM_R_SIZE_X, COMBATUW_PART_ARM_R_SIZE_Y,
       NULL, NULL, NULL, 0);
-    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES 
+    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES
       * COMBATUW_PART_ARM_R]);
     b->SetDisabled(true);
     b->SetReactMask(0);
     unitPartHPButs[COMBATUW_PART_ARM_R] = b;
 
     // the left arm hp meter
-    b = ogui->CreateSimpleImageButton(win, 
-      COMBATUW_PART_ARM_L_X, COMBATUW_PART_ARM_L_Y, 
-      COMBATUW_PART_ARM_L_SIZE_X, COMBATUW_PART_ARM_L_SIZE_Y, 
+    b = ogui->CreateSimpleImageButton(win,
+      COMBATUW_PART_ARM_L_X, COMBATUW_PART_ARM_L_Y,
+      COMBATUW_PART_ARM_L_SIZE_X, COMBATUW_PART_ARM_L_SIZE_Y,
       NULL, NULL, NULL, 0);
-    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES 
+    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES
       * COMBATUW_PART_ARM_L]);
     b->SetDisabled(true);
     b->SetReactMask(0);
     unitPartHPButs[COMBATUW_PART_ARM_L] = b;
 
     // the right leg hp meter
-    b = ogui->CreateSimpleImageButton(win, 
-      COMBATUW_PART_LEG_R_X, COMBATUW_PART_LEG_R_Y, 
-      COMBATUW_PART_LEG_R_SIZE_X, COMBATUW_PART_LEG_R_SIZE_Y, 
+    b = ogui->CreateSimpleImageButton(win,
+      COMBATUW_PART_LEG_R_X, COMBATUW_PART_LEG_R_Y,
+      COMBATUW_PART_LEG_R_SIZE_X, COMBATUW_PART_LEG_R_SIZE_Y,
       NULL, NULL, NULL, 0);
-    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES 
+    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES
       * COMBATUW_PART_LEG_R]);
     b->SetDisabled(true);
     b->SetReactMask(0);
     unitPartHPButs[COMBATUW_PART_LEG_R] = b;
 
     // the left leg hp meter
-    b = ogui->CreateSimpleImageButton(win, 
-      COMBATUW_PART_LEG_L_X, COMBATUW_PART_LEG_L_Y, 
-      COMBATUW_PART_LEG_L_SIZE_X, COMBATUW_PART_LEG_L_SIZE_Y, 
+    b = ogui->CreateSimpleImageButton(win,
+      COMBATUW_PART_LEG_L_X, COMBATUW_PART_LEG_L_Y,
+      COMBATUW_PART_LEG_L_SIZE_X, COMBATUW_PART_LEG_L_SIZE_Y,
       NULL, NULL, NULL, 0);
-    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES 
+    b->SetDisabledImage(partHPImages[COMBATUNITWINDOW_PART_HP_IMAGES
       * COMBATUW_PART_LEG_L]);
     b->SetDisabled(true);
     b->SetReactMask(0);
     unitPartHPButs[COMBATUW_PART_LEG_L] = b;
 
     // heat image
-    b = ogui->CreateSimpleImageButton(win, 7, 19, 
+    b = ogui->CreateSimpleImageButton(win, 7, 19,
       39, 39, NULL, NULL, NULL, 0);
     b->SetDisabledImage(NULL);
     b->SetReactMask(0);
@@ -474,7 +474,7 @@ namespace ui
       }
       */
       b = ogui->CreateSimpleTextButton(win, COMBATUW_WEAP_X,
-        COMBATUW_WEAP_Y + (j * 10), COMBATUNITWINDOW_SIZE_X-COMBATUW_WEAP_X, 10, NULL, NULL, NULL, 
+        COMBATUW_WEAP_Y + (j * 10), COMBATUNITWINDOW_SIZE_X-COMBATUW_WEAP_X, 10, NULL, NULL, NULL,
         "", COMBATUW_WEAP_START + j);
       /*
       if (u->isWeaponActive(j))
@@ -842,7 +842,7 @@ namespace ui
 
 					// TODO: maybe should say "UNLIMITED" or something
           strcat(winfobuf, " ");
-					if (ammoAmount < 9999) 
+					if (ammoAmount < 9999)
 					{
 	          strcat(winfobuf, int2str(ammoAmount));
 					}
@@ -864,7 +864,7 @@ namespace ui
   }
 
 
-  
+
   void CombatUnitWindow::updateSelectionInfo()
   {
     int group = unit->getGroupNumber();
@@ -897,7 +897,7 @@ namespace ui
 
 		// if using clipped weapon, show that, and not the energy
 		Weapon *clipWeapon = NULL;
-		int clipWNum = -1; 
+		int clipWNum = -1;
 		
 		for (int w = 0; w < UNIT_MAX_WEAPONS; w++)
 		{
@@ -1001,13 +1001,13 @@ namespace ui
 				highestAllowedLevel = 1;
 
       // THE ÜBERCODE!
-      // GET RID OF THIS WHOLE CRAP IF YOU WANT TO DO ANY CHANGES 
+      // GET RID OF THIS WHOLE CRAP IF YOU WANT TO DO ANY CHANGES
       // TO HP BARS!!!
       // update hp meters
       for (int j = 0; j < COMBATUNITWINDOW_MAX_PARTS; j++)
       {
         Part *p = NULL;
-        if (j == 0) 
+        if (j == 0)
         {
           p = u->getRootPart();
 				}
@@ -1028,7 +1028,7 @@ namespace ui
             // CORRECT (SLOWER) CLAUSE:
             // rootp->getSubPart(k)->getType()->isInherited(getPartTypeById(parttypeid))
             // NOW, WE JUST SKIP THE CHECK AND RELY ON POSITION
-            //  && rootp->getSubPart(k)->getType()->getPartTypeId() 
+            //  && rootp->getSubPart(k)->getType()->getPartTypeId()
             //  == parttypeid)
             if (rootp->getSubPart(k) != NULL)
             {
@@ -1040,9 +1040,9 @@ namespace ui
 							{
 				        int maxhp = subp->getType()->getMaxDamage();
 								if (maxhp == 0) maxhp = 1;
-								int hp = (COMBATUNITWINDOW_PART_HP_IMAGES * 
-									(maxhp - subp->getDamage() 
-									+ (maxhp / COMBATUNITWINDOW_PART_HP_IMAGES - 1))) 
+								int hp = (COMBATUNITWINDOW_PART_HP_IMAGES *
+									(maxhp - subp->getDamage()
+									+ (maxhp / COMBATUNITWINDOW_PART_HP_IMAGES - 1)))
 									/ maxhp;
 								if (hp < 0) hp = 0;
 								if (hp + 2 < highestAllowedLevel)
@@ -1050,7 +1050,7 @@ namespace ui
 							}
 
 							// is this the part we want to show?
-              if ((j == 1 && rootp->getType()->getSlotPosition(k) == SLOT_POSITION_HEAD) 
+              if ((j == 1 && rootp->getType()->getSlotPosition(k) == SLOT_POSITION_HEAD)
                 || (j == 2 && rootp->getType()->getSlotPosition(k) == SLOT_POSITION_RIGHT_ARM)
                 || (j == 3 && rootp->getType()->getSlotPosition(k) == SLOT_POSITION_LEFT_ARM)
                 || (j == 4 && rootp->getType()->getSlotPosition(k) == SLOT_POSITION_RIGHT_LEG)
@@ -1093,9 +1093,9 @@ namespace ui
         if (maxhp == 0) maxhp = 1;
         int hp = 0;
         if (p != NULL)
-          hp = (COMBATUNITWINDOW_PART_HP_IMAGES * 
-          (maxhp - p->getDamage() 
-          + (maxhp / COMBATUNITWINDOW_PART_HP_IMAGES - 1))) 
+          hp = (COMBATUNITWINDOW_PART_HP_IMAGES *
+          (maxhp - p->getDamage()
+          + (maxhp / COMBATUNITWINDOW_PART_HP_IMAGES - 1)))
           / maxhp;
         else
           hp = COMBATUNITWINDOW_PART_HP_IMAGES;
@@ -1105,7 +1105,7 @@ namespace ui
         ///if (hp > 24) hp = 24;
 				if (hp > highestAllowedLevel)
 					hp = highestAllowedLevel;
-        if (hp >= COMBATUNITWINDOW_PART_HP_IMAGES) 
+        if (hp >= COMBATUNITWINDOW_PART_HP_IMAGES)
           hp = COMBATUNITWINDOW_PART_HP_IMAGES - 1;
         //int hpimg = hp; //hp * COMBATUW_HP_IMAGES / 24;
         //if (hpimg < 0) hpimg = 0;
@@ -1295,7 +1295,7 @@ namespace ui
       if (unit->isDestroyed()) h = 0;
       int himg = h;
       if (himg < 0) himg = 0;
-      if (himg >= COMBATUNITWINDOW_HEAT_IMAGES) 
+      if (himg >= COMBATUNITWINDOW_HEAT_IMAGES)
         himg = COMBATUNITWINDOW_HEAT_IMAGES - 1;
       unitHeatBut->SetDisabledImage(heatImages[himg]);
 			*/
@@ -1364,7 +1364,7 @@ namespace ui
         }
 
         // changed mode for unit part of multiple unit selection
-        if (u->isSelected() 
+        if (u->isSelected()
           && game->unitSelections[unit->getOwner()]->getUnitsSelected() > 1)
         {
           // change multiple unit modes
@@ -1410,7 +1410,7 @@ namespace ui
           if (changeMultiple)
           {
             unitNum++;
-            if (unitNum >= COMBATW_UNITS) 
+            if (unitNum >= COMBATW_UNITS)
               moreUnits = false;
           } else {
             moreUnits = false;
@@ -1460,27 +1460,27 @@ namespace ui
   game::Unit *CombatUnitWindow::getUnit()
   {
     return unit;
-  } 
+  }
 
 
   void CombatUnitWindow::moveTo(int x, int y)
   {
     win->MoveTo(x, y);
-  } 
+  }
 
 
   void CombatUnitWindow::doUnitSelection()
   {
     int player = unit->getOwner();
 
-    if (player == NO_UNIT_OWNER) 
+    if (player == NO_UNIT_OWNER)
     {
       assert(0);
       return;
     }
 
 //        game->unitSelections[unit->getOwner()]->selectUnit(unit, true);
- 
+
     bool centeredTo = false;
     int now = Timer::getTime();
     if (unitSelectTime != 0
@@ -1499,9 +1499,9 @@ namespace ui
       // unselect only if this was not doubleclick
       if (!centeredTo)
       {
-        // if no shift pressed and multiple selected, 
+        // if no shift pressed and multiple selected,
         // unselect all but this.
-        if (game->unitSelections[player]->getUnitsSelected() > 1 
+        if (game->unitSelections[player]->getUnitsSelected() > 1
           && !game->gameUI->getController(player)->
           isKeyDown(DH_CTRL_MULTIPLE_UNIT_SELECT))
         {
@@ -1524,7 +1524,7 @@ namespace ui
 				&& unit->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
       {
         // if no shift pressed, unselect previously selected
-        if (game->unitSelections[player]->getUnitsSelected() > 0 
+        if (game->unitSelections[player]->getUnitsSelected() > 0
           && !game->gameUI->getController(player)->
           isKeyDown(DH_CTRL_MULTIPLE_UNIT_SELECT))
         {

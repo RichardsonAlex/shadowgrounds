@@ -47,7 +47,7 @@ namespace ui {
 
 	struct UpgradeButtonThingie
 	{
-		UpgradeButtonThingie() : 
+		UpgradeButtonThingie() :
 			button( NULL ),
 			selected_button( NULL ),
 			text( NULL ),
@@ -101,7 +101,7 @@ namespace ui {
 
 		void hideCostText(void)
 		{
-			if(text) 
+			if(text)
 			{
 				text->SetText("");
 				
@@ -118,7 +118,7 @@ namespace ui {
 				std::string costText = boost::lexical_cast< std::string >(cost);
 				if( game->upgradeManager->canUpgrade( unit, upgradeId, &upgradesPendingCost ) && !game->upgradeManager->isLocked(unit, upgradeId) )
 					text->SetDisabledFont(textFontNormal);
-				else 
+				else
 					text->SetDisabledFont(textFontDisabled);
 
 				text->SetText(costText.c_str());
@@ -159,7 +159,7 @@ namespace ui {
 			createCountText( showCount ),
 			button( NULL ),
 			count_text( NULL )
-		{ 
+		{
 		}
 
 
@@ -935,7 +935,7 @@ public:
 					{
 						Logger::getInstance()->error( "SurvivorUpgradeWindow - Weapon has too many upgrades." );
 						Logger::getInstance()->debug( weapName.c_str() );
-					} 
+					}
 
 					for( int j = 0; j < (int)upgIds.size(); j++ )
 					{

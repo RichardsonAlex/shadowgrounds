@@ -38,7 +38,7 @@ using namespace ui;
 
 namespace game
 {
-	void AnimationScripting::process(util::ScriptProcess *sp, 
+	void AnimationScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{
@@ -621,12 +621,12 @@ ua->resetToNormalState(gsd->unit);
 			if (stringData != NULL)
 			{
 				PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-				if (pt == NULL) 
-				{ 
+				if (pt == NULL)
+				{
 					sp->error("AnimationScripting::process - aniFireProjectile, reference to unloaded part type.");
 				} else {
 					if (pt->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap"))))
-					{ 
+					{
 						// WARNING: unsafe cast!
 						Weapon *weap = (Weapon *)pt;
 

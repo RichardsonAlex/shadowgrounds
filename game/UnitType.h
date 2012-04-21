@@ -316,7 +316,7 @@ namespace game
 
 		// added by Pete to allow gui to display health as
 		PDATA_DEF( float, healthTextMultiplier, getHealthTextMultiplier );
-			
+
 		// added by Pete to allow the walk on material effects
 		WalkOnMaterialData* getWalkOnMaterial( int material ) const;
 		bool				getWalkOnMaterialEnabled() const;
@@ -389,7 +389,7 @@ namespace game
 		int getGoreAmount(int goreType) const { return goreAmount[goreType]; }
 
 	public:
-		virtual ~UnitType() 
+		virtual ~UnitType()
 		{
 			if (unitTypeId != 0)
 			{

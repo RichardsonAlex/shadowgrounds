@@ -36,16 +36,16 @@ namespace net
       }
 
       /*
-      NetDriverException(char *msg) 
+      NetDriverException(char *msg)
       {
         int slen = strlen(msg);
         this->msg = new char[slen + 1];
         strcpy(this->msg, msg);
         this->exType = EXCEPTION_TYPE_UNDEFINED;
-      } 
-      */ 
+      }
+      */
 
-      NetDriverException(EXCEPTION_TYPE exType, char *msg) 
+      NetDriverException(EXCEPTION_TYPE exType, char *msg)
       {
         if (msg == NULL)
         {
@@ -56,14 +56,14 @@ namespace net
           strcpy(this->msg, msg);
         }
         this->exType = exType;
-      }  
+      }
 
-      NetDriverException(EXCEPTION_TYPE exType) 
+      NetDriverException(EXCEPTION_TYPE exType)
       {
         this->msg = NULL;
         this->exType = exType;
-      }  
-    
+      }
+
       ~NetDriverException()
       {
         if (msg != NULL)
@@ -72,7 +72,7 @@ namespace net
           msg = NULL;
         }
       }
-    
+
       char *getMessage()
       {
         return msg;

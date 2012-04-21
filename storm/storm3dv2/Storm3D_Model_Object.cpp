@@ -328,11 +328,11 @@ MAT &Storm3D_Model_Object::GetMXG()
 		mp.CreateTranslationMatrix(position);
 		mx=ms*mr*mp;
 
-		if (parent) 
+		if (parent)
 			mxg=mx*parent->GetMXG();
 		else if (parent_bone)
 			mxg = mx*parent_bone->GetTM();
-		else 
+		else
 			mxg=mx*parent_model->GetMX();	// model is parent for top level
 	}
 	else
@@ -341,11 +341,11 @@ MAT &Storm3D_Model_Object::GetMXG()
 	{
 		mxg_update=false;
 		
-		if (parent) 
+		if (parent)
 			mxg=mx*parent->GetMXG();
 		else if(parent_bone)
 			mxg = mx*parent_bone->GetTM();
-		else 
+		else
 			mxg=mx*parent_model->GetMX();	// model is parent for top level
 	}
 
@@ -466,7 +466,7 @@ void Storm3D_Model_Object::InformChangeToChilds()
 		md->gpos_update_needed=true; //v3
 
 		// (Recursively) inform child's childs etc... (if they havent been informed)
-		if (!md->mx_update) 
+		if (!md->mx_update)
 			md->InformChangeToChilds();
 	}
 
@@ -601,11 +601,11 @@ VC3 Storm3D_Model_Object::GetGlobalPosition()
 	// v3 optimization
 	if (gpos_update_needed)
 	{
-		if (parent) 
+		if (parent)
 			gpos=parent->GetMXG().GetTransformedVector(position);
 		else if(parent_bone)
 			gpos=parent_bone->GetTM().GetTransformedVector(position);
-		else 
+		else
 			gpos=parent_model->GetMX().GetTransformedVector(position);
 		gpos_update_needed=false;
 	}
@@ -676,7 +676,7 @@ void Storm3D_Model_Object::CopyFrom(IStorm3D_Model_Object *iother, bool only_ren
 */
 void Storm3D_Model_Object::RayTrace(const VC3 &position,const VC3 &direction_normalized,float ray_length,Storm3D_CollisionInfo &rti, bool accurate)
 {
-	if(!mesh) 
+	if(!mesh)
 		return;
 	if(parent_model->no_collision)
 		return;
@@ -692,7 +692,7 @@ void Storm3D_Model_Object::RayTrace(const VC3 &position,const VC3 &direction_nor
 
 	if (dist2> mesh->GetSquareRadius()) return;
 
-	// psd: 
+	// psd:
 	// Added these two checks. insane to start doing per-polygon before these
 
 	// Sphere behind ray?
@@ -721,14 +721,14 @@ void Storm3D_Model_Object::RayTrace(const VC3 &position,const VC3 &direction_nor
 		// but that's close enough for us.
 		float sphereRange = pos.GetLength();
 		if ((sphereRange < rti.range) && (sphereRange < ray_length) && (sphereRange > 0))
-		{      
+		{
 			rti.hit = true;
 			rti.range = sphereRange;
 			rti.position = position + direction_normalized * sphereRange;
 			rti.object = this;
 			rti.model = parent_model;
 
-			// well, really don't know what to put here, just stuff 
+			// well, really don't know what to put here, just stuff
 			// something there, we are not interested about it anyway... ;)
 			rti.plane_normal=VC3();
 		}
@@ -773,7 +773,7 @@ void Storm3D_Model_Object::RayTrace(const VC3 &position,const VC3 &direction_nor
 void Storm3D_Model_Object::SphereCollision(const VC3 &position,float radius,Storm3D_CollisionInfo &cinf, bool accurate)
 {
 	// Needs a mesh to collide!!
-	if(!mesh) 
+	if(!mesh)
 		return;
 
 	// If object has no_collision skip it

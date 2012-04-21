@@ -82,13 +82,13 @@ public:
 	filesystem::InputStream &readStream(filesystem::InputStream &stream);
 };
 
-inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const EditorState &state) 
-{ 
+inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const EditorState &state)
+{
 	return state.writeStream(stream);
 }
 
-inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, EditorState &state) 
-{ 
+inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, EditorState &state)
+{
 	return state.readStream(stream);
 }
 

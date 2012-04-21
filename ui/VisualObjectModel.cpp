@@ -119,7 +119,7 @@ namespace ui
 					{
 						hasObjectName = true;
 						objNamePart = i;
-						break;	
+						break;
 					}
 				}
 
@@ -210,7 +210,7 @@ namespace ui
 		{
 			//Logger::getInstance()->error("Loading model.");
 			// do some magic :)
-			if (strlen(filename) > 4 
+			if (strlen(filename) > 4
 				&& strcmp(&filename[strlen(filename) - 4], ".b3d") == 0)
 			{
 				/*
@@ -220,7 +220,7 @@ namespace ui
 					Logger::getInstance()->error("VisualObjectModel::getNewObjectInstance - Failed to load bones.");
 					Logger::getInstance()->debug(filename);
 				}
-				*/			
+				*/
 				model = sharedModel->GetClone(true, true, true);
 			} else {
 				//assert(0);
@@ -277,7 +277,7 @@ namespace ui
 			objCopy->SetRotation(object->GetRotation());
 			if(object->IsLightObject())
 				objCopy->SetAsLightObject();
-		} 		 
+		}
 		delete del_object_iterator;
 		*/
 

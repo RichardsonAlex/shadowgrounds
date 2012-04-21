@@ -364,7 +364,7 @@ namespace ui
 					}
 				}
 			}
-			
+
 			if (curTime >= impl->lastUpdateTime + game::SimpleOptions::getInt(DH_OPT_I_DEBUG_DATA_VIEW_RATE))
 			{
 				impl->lastUpdateTime = curTime;
@@ -605,7 +605,7 @@ namespace ui
 #endif
 								}
 								if (show_covermap)
-								{									
+								{
 									int col = 255 - impl->game->gameMap->getCoverMap()->getDistanceToNearestCover(mapx, mapy);
 									if (impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 0] < col)
 										impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 0] = col;
@@ -695,7 +695,7 @@ namespace ui
 										}
 									}
 								}
-								impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 3] = (unsigned char)((int)(255 * viewAlpha) / 100);	
+								impl->debugData[(x + y * DEBUG_DATA_VIEW_SIZE_X) * 4 + 3] = (unsigned char)((int)(255 * viewAlpha) / 100);
 							}
 						}
 					}
@@ -931,7 +931,7 @@ namespace ui
 				}
 
 				//if (px >= 0 && py >= 0 && px < DEBUG_DATA_VIEW_SIZE_X && py < DEBUG_DATA_VIEW_SIZE_Y)
-				//{				
+				//{
 				impl->debugData[(DEBUG_DATA_VIEW_SIZE_X / 2 + (DEBUG_DATA_VIEW_SIZE_Y / 2) * DEBUG_DATA_VIEW_SIZE_X) * 4 + 0] = 32;
 				impl->debugData[(DEBUG_DATA_VIEW_SIZE_X / 2 + (DEBUG_DATA_VIEW_SIZE_Y / 2) * DEBUG_DATA_VIEW_SIZE_X) * 4 + 1] = 32;
 				impl->debugData[(DEBUG_DATA_VIEW_SIZE_X / 2 + (DEBUG_DATA_VIEW_SIZE_Y / 2) * DEBUG_DATA_VIEW_SIZE_X) * 4 + 2] = 255;

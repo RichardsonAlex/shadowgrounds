@@ -29,7 +29,7 @@ namespace ui
 #endif
 
 		// NOTICE: actually setting vo1 effect also sets it for vo2,
-		// as no vo->disableSharedObjects() is called. 
+		// as no vo->disableSharedObjects() is called.
 		// (they have shared meshes)
 
 		visualObject = visualObjectModel->getNewObjectInstance();

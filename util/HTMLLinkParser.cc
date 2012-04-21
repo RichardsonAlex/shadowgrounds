@@ -33,8 +33,8 @@ namespace util
 					inA = false;
 					inATag = false;
 
-					if (lastHrefPos != -1 && lastHrefEnd != -1 
-						&& lastNamePos != -1 && lastNameEnd != -1 
+					if (lastHrefPos != -1 && lastHrefEnd != -1
+						&& lastNamePos != -1 && lastNameEnd != -1
 						&& lastClassPos != -1 && lastClassEnd != -1)
 					{
 						HTMLLinkParserData lData;

@@ -26,7 +26,7 @@ namespace game
 	{
 		class ITrackableObjectIterator;
 	}
-  
+
   class GameScripting : private util::IScriptProcessor, private util::ITriggerListener,
 		public IGamePhysicsScriptRunner
   {
@@ -71,7 +71,7 @@ namespace game
 
     int runTrackerScript(const char *scriptname, const char *subname, UnifiedHandle trackerUnifiedHandle, const std::vector<int> *params = NULL);
 
-		void runHitChainScript(const char *scriptname, Projectile *origin, 
+		void runHitChainScript(const char *scriptname, Projectile *origin,
 			Unit *hitUnit, Unit *shooter, Bullet *chainBullet,
 			const VC3 &position, int hitchain, const VC3 &direction, const VC3 &hitPlaneNormal);
 

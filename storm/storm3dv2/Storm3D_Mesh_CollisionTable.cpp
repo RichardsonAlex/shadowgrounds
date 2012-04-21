@@ -128,7 +128,7 @@ void CollisionFace::RayTrace(const VC3 &position, const VC3 &direction, float ra
 
 	// If determinant is near zero, ray lies in plane of triangle
 	float det = e01.x * pvec.x + e01.y*pvec.y + e01.z * pvec.z;
-	if(det < 0.0001f) 
+	if(det < 0.0001f)
 		return;
 
 	// Calculate distance from vert0 to ray origin
@@ -136,7 +136,7 @@ void CollisionFace::RayTrace(const VC3 &position, const VC3 &direction, float ra
 
 	// Calculate U parameter and test bounds
 	float u = tvec.x * pvec.x + tvec.y * pvec.y + tvec.z * pvec.z;
-	if((u < 0) || (u > det)) 
+	if((u < 0) || (u > det))
 		return;
 
 	// Prepare to test V parameter

@@ -11,7 +11,7 @@ namespace ui
   {
   public:
 	  virtual ~IMessageBoxListener() {}
-    virtual void messageBoxClosed(MessageBoxWindow *msgbox, int id, 
+    virtual void messageBoxClosed(MessageBoxWindow *msgbox, int id,
       int choice) = 0;
   };
 

@@ -185,7 +185,7 @@ namespace game
 		IStorm3D_Scene* getStormScene() const { return scene; }
 
 		float getVideoVolume() const;
-		void detachVisualEffects();	
+		void detachVisualEffects();
 
 		void createCameras();
 		void deleteCameras();
@@ -202,7 +202,7 @@ namespace game
 		// added by Pete to open main menu from game, when pressed esc
 		void openMainmenuFromGame( int menu = 0 );
 
-		// added by Pete to close main menu and resuma game 
+		// added by Pete to close main menu and resuma game
 		void resumeGame();
 
 
@@ -217,7 +217,7 @@ namespace game
 
 		// scoreWindow methods by Pete to allow score window haxoring
 		// tells us if a score window should open at the end of a level
-		bool isScoreWindowInUse() const;	
+		bool isScoreWindowInUse() const;
 		// tells us if a score window is visible
 		bool isScoreWindowOpen() const;
 		bool scoreWindowAllowsLoading() const;
@@ -344,14 +344,14 @@ namespace game
 		bool isAnyIngameWindowVisible();
 
 		int playGUISound(const char *filename, int relativeVolume = 100);
-		
+
 		// added by Pete, for the use of OptionsMenu
-		int playGUISpeech( const char* filename, int relativeVolume = 100 ); 
+		int playGUISpeech( const char* filename, int relativeVolume = 100 );
 
 		int playSoundEffect(const char *filename, float x, float y, float z, bool loop, int volume, float range, int priority, bool ambient = false);
 
-		int parseSoundFromDefinitionString(const char *sounddef, 
-			float x, float y, float z, bool *looped, int *handle, 
+		int parseSoundFromDefinitionString(const char *sounddef,
+			float x, float y, float z, bool *looped, int *handle,
 			int *key, bool continueOldSound, float range, int priority, bool muteVolume = false, bool ambient = false);
 
 		int playSpeech(const char *filename, float x, float y, float z, bool loop, int volume, bool volume_adjust = true);
@@ -367,8 +367,8 @@ namespace game
 		void clearGameMessage(MESSAGE_TYPE messageType);
 		void clearGameMessageDuration(MESSAGE_TYPE messageType);
 
-		void gameMessage(const char *message, ui::Visual2D *imagefile = NULL, 
-			int priority = 1, int duration = 4000, 
+		void gameMessage(const char *message, ui::Visual2D *imagefile = NULL,
+			int priority = 1, int duration = 4000,
 			MESSAGE_TYPE messageType = MESSAGE_TYPE_NORMAL);
 
 		bool isLocalPlayerDirectControlOn(int control, Unit *unit);
@@ -430,7 +430,7 @@ namespace game
 		void setErrorWindow(ui::ErrorWindow *errorWin);
 		ErrorWindow *getErrorWindow() { return this->errorWindow; }
 
-		virtual void readKey(char ascii, int keycode, 
+		virtual void readKey(char ascii, int keycode,
 			const char *keycodeName);
 
 		void hideConsole();
@@ -450,7 +450,7 @@ namespace game
 		void nextInterfaceGeneration();
 		void setOguiStormDriver(OguiStormDriver *driver);
 		OguiStormDriver *getOguiStormDriver();
-		
+
 		void setUnitsChangedFlag(int player);
 
 		void setScrollyEnabled(bool enabled);
@@ -533,7 +533,7 @@ namespace game
 		IStorm3D_Scene *scene;
 		GameMap *renderMap;
 		//IStorm3D_Terrain *renderTerrain;
-		
+
 		GameCamera *gameCamera; // the camera in use
 		GameCamera *cameras[GAMEUI_CAMERA_AMOUNT];
 
@@ -559,7 +559,7 @@ namespace game
 		float aimOffset; // Rotating flashlight/camera with the mouse
 		float oldAimOffset; // Rotating flashlight/camera with the mouse
 		VC3 positionOffset;
-		
+
 		TerrainCreator *terrainCreator;
 
 		SceneSelection *sceneSelection[MAX_PLAYERS_PER_CLIENT];

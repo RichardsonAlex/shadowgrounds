@@ -37,7 +37,7 @@ namespace game
     ret->setAmount(0);
     ret->setMaxAmount(this->getAmount());
     return ret;
-  } 
+  }
 
 }
 

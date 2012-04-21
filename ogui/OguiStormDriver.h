@@ -15,12 +15,12 @@
 
 //
 // Does not actually implement a driver, but just gives ogui user a dummy
-// class to hide the real hard coded implmentation. Making the ogui api 
+// class to hide the real hard coded implmentation. Making the ogui api
 // less underlaying implementation specific (allowing implentation changes
 // without changes in api or program using ogui).
 //
-// Notice: this may seem like a proper oo-style implementation, but the 
-// underlaying code is procedural C using global variables. Because of that, 
+// Notice: this may seem like a proper oo-style implementation, but the
+// underlaying code is procedural C using global variables. Because of that,
 // ONLY ONE INSTANCE OF THIS DRIVER IS ALLOWED!
 //
 
@@ -45,7 +45,7 @@ public:
   OguiStormDriver *parent;
   const ListNode<OguiStormImage*> *listNode;
 	int renderTargetIndex;
-	
+
 	bool deleteVideoOnDestruction;
 	bool deletedVideo;
 	IStorm3D_StreamBuilder *streamBuilder;
@@ -82,7 +82,7 @@ public:
   int amount;
   char *chrdef;
   uint8_t *chrsize;  // x/64 part of chrwidth
-  
+
   int chrwidth;
   int chrheight;
 

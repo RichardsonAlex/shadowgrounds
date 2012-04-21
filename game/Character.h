@@ -32,7 +32,7 @@ namespace game
    * An instance of this class defines a game person that can be hired by
    * the player. Each of human player's units (armors) must be controlled
    * by a character.
-   * 
+   *
    * @version 1.1, 7.7.2002
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
    * @see Unit
@@ -54,7 +54,7 @@ namespace game
      * The returned pointer points to objects internal data, do not
      * delete it.
      */
-    char *getName(); 
+    char *getName();
 
     /**
      * return the full name of the character ("Firstname Lastname").

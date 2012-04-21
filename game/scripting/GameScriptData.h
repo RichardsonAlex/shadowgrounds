@@ -24,7 +24,7 @@ namespace game
   class GameScriptData
   {
   public:
-    GameScriptData() 
+    GameScriptData()
     {
       unit = NULL;
       originalUnit = NULL;

@@ -71,7 +71,7 @@ private:
 
 	OguiButton*	logoButton;
 	OguiButton* videoButton;
-	OguiButton* backgroundButton; // the changeable background image 
+	OguiButton* backgroundButton; // the changeable background image
 	IOguiImage* backgroundButtonData;
 
 	IMenuBase*			activeMenu;
@@ -145,7 +145,7 @@ private:
 			break;
 
 		case MenuCollection::MENU_TYPE_NEWGAMEMENU:
-			return new NewGameMenu( self, &fonts, ogui, game ); 
+			return new NewGameMenu( self, &fonts, ogui, game );
 			break;
 
 		default:
@@ -178,10 +178,10 @@ public:
 	  backgroundAlternativeFader( NULL ),
 	  backgroundAlternativeButton( NULL )
 	{
-		background = ogui->CreateSimpleWindow(	getLocaleGuiInt( "gui_menu_background_x", 0 ), 
-												getLocaleGuiInt( "gui_menu_background_y", 0 ), 
-												getLocaleGuiInt( "gui_menu_background_w", 1 ), 
-												getLocaleGuiInt( "gui_menu_background_h", 1 ), 
+		background = ogui->CreateSimpleWindow(	getLocaleGuiInt( "gui_menu_background_x", 0 ),
+												getLocaleGuiInt( "gui_menu_background_y", 0 ),
+												getLocaleGuiInt( "gui_menu_background_w", 1 ),
+												getLocaleGuiInt( "gui_menu_background_h", 1 ),
 												getLocaleGuiString( "gui_menu_background_img" ) );
 
 		const char *alternatives_str = NULL;
@@ -218,17 +218,17 @@ public:
 			}
 		}
 	
-		foreground = ogui->CreateSimpleWindow(	getLocaleGuiInt( "gui_menu_foreground_x", 0 ), 
-												getLocaleGuiInt( "gui_menu_foreground_y", 0 ), 
-												getLocaleGuiInt( "gui_menu_foreground_w", 1 ), 
-												getLocaleGuiInt( "gui_menu_foreground_h", 1 ), 
+		foreground = ogui->CreateSimpleWindow(	getLocaleGuiInt( "gui_menu_foreground_x", 0 ),
+												getLocaleGuiInt( "gui_menu_foreground_y", 0 ),
+												getLocaleGuiInt( "gui_menu_foreground_w", 1 ),
+												getLocaleGuiInt( "gui_menu_foreground_h", 1 ),
 												getLocaleGuiString( "gui_menu_foreground_img" ) );
 		foreground->SetReactMask( 0 );
 		
 		
 
 
-		videoButton = ogui->CreateSimpleImageButton( background, 
+		videoButton = ogui->CreateSimpleImageButton( background,
 							getLocaleGuiInt( "gui_menu_video_x", 0 ), getLocaleGuiInt( "gui_menu_video_y", 0 ),
 							getLocaleGuiInt( "gui_menu_video_w", 1024 ), getLocaleGuiInt( "gui_menu_video_h", 768 ), NULL, NULL, NULL );
 		videoButton->SetDisabled( true );
@@ -345,17 +345,17 @@ public:
 		{
 			bool playLogoVideo = GameOptionManager::getInstance()->getOptionByName( "menu_logo_video_enabled" )? GameOptionManager::getInstance()->getOptionByName( "menu_logo_video_enabled" )->getBooleanValue() : true;
 			OguiButton* button;
-			button = ogui->CreateSimpleImageButton( foreground, 
-													getLocaleGuiInt( "gui_menu_logo_x", 0 ), 
+			button = ogui->CreateSimpleImageButton( foreground,
+													getLocaleGuiInt( "gui_menu_logo_x", 0 ),
 													getLocaleGuiInt( "gui_menu_logo_y", 0 ),
 													getLocaleGuiInt( "gui_menu_logo_w", 1 ),
-													getLocaleGuiInt( "gui_menu_logo_h", 1 ), 
+													getLocaleGuiInt( "gui_menu_logo_h", 1 ),
 													NULL, NULL, NULL, 0 );
 
 			if( ( video_enabled || playLogoVideoAlways ) && playLogoVideo )
 				logoVideo = ogui->LoadOguiVideo( getLocaleGuiString( "gui_menu_logo_video" ), builder );
 			
-			if( logoVideo == NULL ) 
+			if( logoVideo == NULL )
 				logoVideo = ogui->LoadOguiImage( getLocaleGuiString( "gui_menu_logo_img" ) );
 
 #ifdef PROJECT_SHADOWGROUNDS
@@ -512,7 +512,7 @@ public:
 	{
 		ogui->SetCursorImageState( 0, DH_CURSOR_ARROW );
 
-		if( activeMenu && hidePreviouslyOpenedMenus ) 
+		if( activeMenu && hidePreviouslyOpenedMenus )
 		{
 			activeMenu->hide();
 			delete activeMenu;
@@ -566,7 +566,7 @@ public:
 			activeMenu = openedMenusData.empty()?NULL:openedMenusData.top();
 			openedMenusData.pop();
 
-			if( activeMenu ) 
+			if( activeMenu )
 				activeMenu->show();
 			assert( foreground );
 			foreground->Raise();
@@ -603,7 +603,7 @@ public:
 
 	void escPressed()
 	{
-		if( activeMenu ) 
+		if( activeMenu )
 			activeMenu->escPressed();
 	}
 

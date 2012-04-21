@@ -10,7 +10,7 @@ namespace game {
 
 namespace ui {
 
-class SurvivorUpgradeWindow 
+class SurvivorUpgradeWindow
 {
 public:
 	SurvivorUpgradeWindow( Ogui *ogui, game::Game *game, game::Unit *unit );
@@ -37,7 +37,7 @@ public:
 private:
 	class SurvivorUpgradeWindowImpl;
 	SurvivorUpgradeWindowImpl* impl;
-}; 
+};
 
 } // end of namespace ui
 

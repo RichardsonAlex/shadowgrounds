@@ -4,7 +4,7 @@
 #include "direct_controls.h"
 
 
-static const char *directControlNames[DIRECT_CTRL_AMOUNT + 1] = 
+static const char *directControlNames[DIRECT_CTRL_AMOUNT + 1] =
 {
 	"_invalid",
 

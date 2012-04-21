@@ -192,7 +192,7 @@ void Exporter::saveBonesToFile(const std::string &fileName)
 
 	// Bone helpers (here for compatibility)
 	int helperAmount = static_cast<int> (boneHelpers.size());
-	fwrite(&helperAmount, 1, sizeof(int), fp); 
+	fwrite(&helperAmount, 1, sizeof(int), fp);
 
 	for(unsigned int i = 0; i < boneHelpers.size(); ++i)
 		boneHelpers[i].writeToFile(fp);
@@ -391,7 +391,7 @@ void Exporter::buildBoneHierarchy()
 			boneLevels[i] = level;
 			if(parent == newBones[i].getParentName())
 				break;
-		} 
+		}
 	}
 
 	// Sort levels

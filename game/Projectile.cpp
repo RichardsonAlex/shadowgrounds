@@ -94,7 +94,7 @@ namespace game
 		this->forceGoreExplosionUnit = NULL;
 
 		this->criticalHitDamageMax = 10000;
-		this->criticalHitDamageMultiplier = 100.0f; 
+		this->criticalHitDamageMultiplier = 100.0f;
 		this->criticalHitProbabilityMultiplier = 1.0f;
 	}
 
@@ -188,14 +188,14 @@ namespace game
 		VC3 actualOrigin = origin;
 		if (bulletType != NULL)
 		{
-			//if (bulletType->getFlyPath() == Bullet::FLYPATH_DIRECT) 
-			if (bulletType->getStartSkipAmount() != 0.0f) 
+			//if (bulletType->getFlyPath() == Bullet::FLYPATH_DIRECT)
+			if (bulletType->getStartSkipAmount() != 0.0f)
 			{
 				VC3 disttmp = destination - origin;
 				float distLenSq = disttmp.GetSquareLength();
 				//if (distLenSq > 4 * 4) // at least 4 meters distance?
 				// umm.... maybe 2 meters?
-				if (distLenSq > 2 * 2) 
+				if (distLenSq > 2 * 2)
 				{
 					// "skip" first X meters
 					actualOrigin += disttmp.GetNormalized() * bulletType->getStartSkipAmount();
@@ -209,7 +209,7 @@ namespace game
 
 		VC3 dist;
 		float distLen;
-		if (destination.x != actualOrigin.x 
+		if (destination.x != actualOrigin.x
 			|| destination.y != actualOrigin.y
 			|| destination.z != actualOrigin.z)
 		{
@@ -232,7 +232,7 @@ namespace game
 			distLen = dist.GetLength();
 			if (bulletType != NULL)
 			{
-				if (bulletType->getFlyPath() == Bullet::FLYPATH_DIRECT) 
+				if (bulletType->getFlyPath() == Bullet::FLYPATH_DIRECT)
 				{
 					if (velocity < 0.01f) velocity = 0.01f;
 				}
@@ -246,7 +246,7 @@ namespace game
 			{
 				// TODO: if (!hitToUnit || this->lifeTime > 0)
 				// {
-				if (this->lifeTime > 1) 
+				if (this->lifeTime > 1)
 				{
 					float unPaddedDist = lifeTime * velocity;
 					if (unPaddedDist > 0)
@@ -274,9 +274,9 @@ namespace game
 
 		if (bulletType != NULL)
 		{
-			// rays will be set halfway to position and stretched so that 
+			// rays will be set halfway to position and stretched so that
 			// it is between them.
-			if (bulletType->getFlyPath() == Bullet::FLYPATH_RAY) 
+			if (bulletType->getFlyPath() == Bullet::FLYPATH_RAY)
 			{
 				VC3 halfWayPosition = origin + (dist / 2);
 				//setScale(VC3(1,1,distLen));
@@ -286,12 +286,12 @@ namespace game
 				this->afterLifeTime = bulletType->getAfterLifeTime();
 			}
 			if (bulletType->getFlyPath() == Bullet::FLYPATH_STATIC
-				|| bulletType->getFlyPath() == Bullet::FLYPATH_GRAVITY) 
+				|| bulletType->getFlyPath() == Bullet::FLYPATH_GRAVITY)
 			{
 				this->lifeTime = bulletType->getLifeTime();
 				this->afterLifeTime = bulletType->getAfterLifeTime();
 			}
-			if (bulletType->getFlyPath() == Bullet::FLYPATH_GRAVITY) 
+			if (bulletType->getFlyPath() == Bullet::FLYPATH_GRAVITY)
 			{
 				if (SimpleOptions::getBool(DH_OPT_B_GAME_SIDEWAYS))
 				{
@@ -556,7 +556,7 @@ namespace game
 	Projectile *Projectile::getCopy() const
 	{
 		// could just use the clone operator instead of this, but don't
-		// like that idea, cos it might get mixer with the usual pointer 
+		// like that idea, cos it might get mixer with the usual pointer
 		// setting operators and really would not give any extra usefulness.
 
 		Projectile *c = new Projectile(shooter, bulletType);
@@ -604,7 +604,7 @@ namespace game
 		// could that possibly crash something (as only one parent/child allowed for each projectile)
 	
 		c->criticalHitDamageMax = criticalHitDamageMax;
-		c->criticalHitDamageMultiplier = criticalHitDamageMultiplier; 
+		c->criticalHitDamageMultiplier = criticalHitDamageMultiplier;
 		c->criticalHitProbabilityMultiplier = criticalHitProbabilityMultiplier;
 
 		return c;

@@ -21,7 +21,7 @@
 
 // NOTE: apparently, this was previously 1.0f
 // now that it is 0.3f, has shadowmap quality possibly decreased? (assuming that shadows use
-// the default clip planes - has anyone checked this)? 
+// the default clip planes - has anyone checked this)?
 
 const float DEFAULT_ZNEAR = 0.3f;
 
@@ -32,7 +32,7 @@ const float DEFAULT_ZNEAR = 0.3f;
 /*void SetFrustumMatrix(D3DMATRIX& mat,FLOAT fLeft,FLOAT fRight,FLOAT fTop,
 	FLOAT fBottom,FLOAT fNearPlane,FLOAT fFarPlane);
 void SetAdjustedProjectionMatrix(D3DMATRIX& mat,FLOAT fFOV,FLOAT fAspect,
-	FLOAT fNearPlane,FLOAT fFarPlane,FLOAT fPixDx,FLOAT fPixDy,FLOAT fVPWidth, 
+	FLOAT fNearPlane,FLOAT fFarPlane,FLOAT fPixDx,FLOAT fPixDy,FLOAT fVPWidth,
 	FLOAT fVPHeight);*/
 
 
@@ -146,7 +146,7 @@ Frustum Storm3D_Camera::getFrustum() const
 {
 	if(!forcedOrthogonalProjection)
 	{
-		if(visplane_update_needed) 
+		if(visplane_update_needed)
 			UpdateVisPlanes();
 
 		Frustum result(pnormals, position, vis_range);
@@ -450,7 +450,7 @@ bool Storm3D_Camera::TestBoxVisibility(const VC3 &min, const VC3 &max)
 		return true;
 
 	VC3 size = max - min;
-	VC3 vertices[8] = 
+	VC3 vertices[8] =
 	{
 		VC3(min.x, min.y, min.z),
 		VC3(min.x + size.x, min.y, min.z),
@@ -639,7 +639,7 @@ void Storm3D_Camera::UseCameraHelperValues(IStorm3D_Helper_Camera *helper)
 */
 bool Storm3D_Camera::GetTransformedToScreen(const VC3 &source,VC3 &result,float &rhw,float &real_z)
 {
-	if(visplane_update_needed) 
+	if(visplane_update_needed)
 	{
 		UpdateVisPlanes();
 		Apply();

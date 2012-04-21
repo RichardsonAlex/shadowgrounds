@@ -113,7 +113,7 @@ void UnitVisibilityChecker::restart()
 void UnitVisibilityChecker::runCheck()
 {
 	// NOTICE: amount of checks done per seconds depends
-	// on rate of game ticks. 
+	// on rate of game ticks.
 
 	//int chkA = 0;
 
@@ -132,7 +132,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 
 	bool didRaytrace = false;
 
-	// no units at all, or all inactive/destroyed may cause null unit... 
+	// no units at all, or all inactive/destroyed may cause null unit...
 	// just skip the checks in that case
 	if (currentUnit == NULL)
 	{
@@ -151,14 +151,14 @@ bool UnitVisibilityChecker::runCheckImpl()
 	  {
 	    Unit *other = otherUnitIterator->iterateNext();
 
-      // skip the the current unit, friendly units 
+      // skip the the current unit, friendly units
 			// and already seen dead units
       if (other->isSpottable()
 				&& other != u && game->isHostile(player, other->getOwner())
         && other->isActive()
 				&& (!other->isDestroyed()
 				|| !other->visibility.isSeenByPlayer(player)))
-	    { 
+	    {
         VC3 otherPos = other->getPosition();
 				if (other->getSpeed() == Unit::UNIT_SPEED_CRAWL)
 					otherPos += VC3(0,1.0f,0);
@@ -171,7 +171,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 					ownPos += VC3(0,u->getUnitType()->getEyeHeight(),0);
         VC3 distVector = otherPos - ownPos;
 
-        float maxSeeDist = u->getUnitType()->getVisionRange() 
+        float maxSeeDist = u->getUnitType()->getVisionRange()
           * other->getUnitType()->getVisibilityRatio();
 
 				// possible sight bonus (+30%)
@@ -195,7 +195,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 				{
 					hiddenessFactor = 0.4f + 0.6f * hidRes;
 					// HACK: player 0 (human) gets stand still/sneak/stealth bonus...
-					// however, not if you have a target (that means 
+					// however, not if you have a target (that means
 					// you are probably shooting). (should check for actual shots though)
 					// TODO: stealthing!
 					VC3 vel = other->getVelocity();
@@ -214,8 +214,8 @@ bool UnitVisibilityChecker::runCheckImpl()
 					hiddenessFactor = 0.6f + 0.4f * hidRes;
 					// others get crawling bonus
 					if (other->getSpeed() == Unit::UNIT_SPEED_CRAWL)
-						hiddenessFactor -= 0.2f;				
-				}	
+						hiddenessFactor -= 0.2f;
+				}
 
 				// stealthing effect. (see distance to one third)
 				if (other->isStealthing())
@@ -280,7 +280,7 @@ bool UnitVisibilityChecker::runCheckImpl()
           int fovAngle = u->getUnitType()->getVisionFOV() / 2;
           int fovRotate = 0;
           if (fovAngle < 180)
-          { 
+          {
 					  // sight bonus?
 						if (u->hasSightBonus())
 						{
@@ -329,7 +329,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 							while (iter.iterateAvailable())
 							{
 								Unit *ou = iter.iterateNext();
-								if (ou != u && ou->isActive() 
+								if (ou != u && ou->isActive()
 									&& ou->getUnitType()->getSize() <= 1.5f)
 									ou->getVisualObject()->setCollidable(false);
 							}
@@ -368,7 +368,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 								// 2 seconds prediction.
 								VC3 vel = other->getVelocity();
 								// max 3 m/s.
-								if (vel.GetSquareLength() > 3.0f * 3.0f) 
+								if (vel.GetSquareLength() > 3.0f * 3.0f)
 									vel = (vel * 3.0f) / vel.GetLength();
 								VC3 otherPosPredict = otherPos;
 								otherPosPredict += vel * GAME_TICKS_PER_SECOND * 2;
@@ -406,7 +406,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 						while (iter.iterateAvailable())
 						{
 							Unit *ou = iter.iterateNext();
-							if (ou != other 
+							if (ou != other
 								&& ou->isActive()
 								&& ou->getUnitType()->getSize() <= 1.5f)
 								ou->getVisualObject()->setCollidable(true);
@@ -419,7 +419,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 							while (iter.iterateAvailable())
 							{
 								Unit *ou = iter.iterateNext();
-								if (ou != u 
+								if (ou != u
 									&& ou->isActive()
 									&& ou->getUnitType()->getSize() <= 1.5f)
 									ou->getVisualObject()->setCollidable(true);
@@ -442,7 +442,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 						{
 							int px = game->gameMap->scaledToPathfindX(ownPos.x);
 							int py = game->gameMap->scaledToPathfindY(ownPos.z);
-							if (dist < 10 
+							if (dist < 10
 								|| game->getGameScene()->getBuildingModelAtPathfind(px, py) != NULL)
 							{
 								unitSeesUnit(other, u, dist);
@@ -461,7 +461,7 @@ bool UnitVisibilityChecker::runCheckImpl()
       // break when we've checked enough units for one pass.
       // except for last pass, in which all remaining units are checked.
       unitCount++;
-      if (unitCount >= unitsInPass 
+      if (unitCount >= unitsInPass
         && passCount != VISIBILITY_CHECK_IN_PASSES - 1) break;
     }
 
@@ -469,10 +469,10 @@ bool UnitVisibilityChecker::runCheckImpl()
 
   } else {
     // when done, next unit or reset to first unit...
-    
+
     if (!unitIterator->iterateAvailable())
     {
-			// no more units, thus must have passed thru all units, now need 
+			// no more units, thus must have passed thru all units, now need
 			// to take the new visibilities into use...
 
       // first person visibility...
@@ -507,7 +507,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 				if (fpCheck)
         {
           VC3 posDiff = unit->getPosition() - fpPosition;
-          if (posDiff.GetSquareLength() < 
+          if (posDiff.GetSquareLength() <
             FIRST_PERSON_VISION_RANGE * FIRST_PERSON_VISION_RANGE)
           {
             unit->visibility.setSeenByFirstPerson(true);
@@ -520,7 +520,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 					{
 						// pointers changed (add/remove torus for this unit)
 						game->gameUI->setPointersChangedFlag(game->singlePlayerNumber);
-						// and if it was hostile, put it to list of possible 
+						// and if it was hostile, put it to list of possible
 						// offscreen units...
 						if (game->isHostile(game->singlePlayerNumber, unit->getOwner()))
 						{
@@ -598,7 +598,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 				{
 					// hostiles vs player+allies
 					if (temp_player_and_allies_list == NULL
-						|| temp_player_and_allies_list_amount != game->units->getOwnedUnitAmount(0) + game->units->getOwnedUnitAmount(3)) 
+						|| temp_player_and_allies_list_amount != game->units->getOwnedUnitAmount(0) + game->units->getOwnedUnitAmount(3))
 					{
 						if (temp_player_and_allies_list != NULL)
 							delete temp_player_and_allies_list;
@@ -623,7 +623,7 @@ bool UnitVisibilityChecker::runCheckImpl()
 				else if (currentUnit->getOwner() == 2)
 				{
 					// neutrals vs none
-					if (temp_empty_list == NULL) 
+					if (temp_empty_list == NULL)
 					{
 						temp_empty_list = new LinkedList<Unit*>();
 					}

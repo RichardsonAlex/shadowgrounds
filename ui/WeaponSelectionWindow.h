@@ -22,7 +22,7 @@ namespace ui
 	{
 		public:
 
-			WeaponSelectionWindow(game::Game *game, Ogui *ogui, 
+			WeaponSelectionWindow(game::Game *game, Ogui *ogui,
 				int cornerNumber, int weaponsMask);
 				
 			~WeaponSelectionWindow();

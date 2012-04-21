@@ -2,7 +2,7 @@
 #ifndef GAMECAMERA_H
 #define GAMECAMERA_H
 
-// half a second interpolation 
+// half a second interpolation
 #define CAM_DEFAULT_TIME_TO_INTERPOLATE 0.5f
 
 #include "../game/gamedefs.h"
@@ -62,7 +62,7 @@ namespace ui
     static CAMERA_MOVE getCameraMoveByName(char *name);
 
     static CAMERA_MODE getCameraModeByName(char *name);
-    
+
     GameCamera(IStorm3D_Scene *scene, game::GameMap *gameMap,
       GameController **gameControllers);
     ~GameCamera();
@@ -267,7 +267,7 @@ namespace ui
 
     float minZoom;
     float maxZoom;
-    float middleZoom; 
+    float middleZoom;
     float targDist;
 
     bool firstPersonMode;

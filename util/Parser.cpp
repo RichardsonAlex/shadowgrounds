@@ -12,7 +12,7 @@
 
 // this is for the messagebox .. maybe not such a good decision, just a hack..
 
-#include <windows.h> 
+#include <windows.h>
 
 #include <vector>
 #include "../filesystem/input_stream_wrapper.h"
@@ -23,14 +23,14 @@ using namespace frozenbyte;
 
 void WriteMessage(char *string, ...)
 {
-	va_list arg; 
+	va_list arg;
 	va_start(arg, string);
 
 	FILE *fhandle = fopen("ParserDebug.txt", "at");
-	if(!fhandle) 
-	{ 
-		//MessageBox(0,"Could not open ParserDebug.txt","Error",MB_OK); 
-		exit(-1); 
+	if(!fhandle)
+	{
+		//MessageBox(0,"Could not open ParserDebug.txt","Error",MB_OK);
+		exit(-1);
 	}
 
 	char *foo = new char[666];
@@ -297,10 +297,10 @@ void Parser::Parse(const char *file_name)
 	std::string group_start;
 
 	filesystem::FB_FILE *fp = filesystem::fb_fopen(file_name, "rb");
-	if(!fp) 
-	{ 
-		//MessageBox(0,"Could not load parserfile","Error",MB_OK); 
-		//exit(-1); 
+	if(!fp)
+	{
+		//MessageBox(0,"Could not load parserfile","Error",MB_OK);
+		//exit(-1);
 		Logger::getInstance()->error("Could not load parserfile.");
 		Logger::getInstance()->debug(file_name);
 		return;

@@ -20,7 +20,7 @@ namespace game
 
 		void reset();
 
-		// returns positive fold id number 
+		// returns positive fold id number
 		int addFold(const VC3 &position, float angle);
 
 		// returns positive fold id number at given position, or 0 if no fold at given position

@@ -214,12 +214,12 @@ struct EnvironmentalEffectManagerImpl
 
 				if(fade && eff)
 					eff->fadeIn(fadeTime);
-					
-			} 
-			else 
+
+			}
+			else
 				Logger::getInstance()->error("EnvironmentalEffectManager::addParticleEffect - Effect with given name not found.");
-		} 
-		else 
+		}
+		else
 			Logger::getInstance()->error("EnvironmentalEffectManager::addParticleEffect - Null particle filename given.");
 	}
 
@@ -266,14 +266,14 @@ void EnvironmentalEffectManager::addParticleEffect(const char *particleFilename,
 
 			if(fade && eff)
 				eff->fadeIn(impl->fadeTime);
-				
-		} 
-		else 
+
+		}
+		else
 		{
 			Logger::getInstance()->error("EnvironmentalEffectManager::addParticleEffect - Effect with given name not found.");
 		}
-	} 
-	else 
+	}
+	else
 	{
 		Logger::getInstance()->error("EnvironmentalEffectManager::addParticleEffect - Null particle filename given.");
 	}
@@ -313,7 +313,7 @@ void EnvironmentalEffectManager::removeAllParticleEffects()
 
 void EnvironmentalEffectManager::fadeOutAllParticleEffects(int time)
 {
-	if(time < 0) time = impl->fadeTime; 
+	if(time < 0) time = impl->fadeTime;
 	LinkedListIterator<EnvironmentalEffect*> iter(impl->effects.get());
 	while (iter.iterateAvailable())
 	{
@@ -394,9 +394,9 @@ void EnvironmentalEffectManager::enableSunlight()
 	{
 #if !defined(PROJECT_CLAW_PROTO) && !defined(PROJECT_SURVIVOR)
 //#if !defined(PROJECT_CLAW_PROTO)
-		impl->sunlightSpot = new ui::Spotlight(*impl->game->gameUI->getStorm3D(), 
-			*impl->game->gameUI->getTerrain()->GetTerrain(), 
-			*impl->game->getGameScene()->getStormScene(), 0, 
+		impl->sunlightSpot = new ui::Spotlight(*impl->game->gameUI->getStorm3D(),
+			*impl->game->gameUI->getTerrain()->GetTerrain(),
+			*impl->game->getGameScene()->getStormScene(), 0,
 			"sunlight");
 		impl->sunlightSpot->setRange ( 500.0f );
 #else
@@ -421,7 +421,7 @@ void EnvironmentalEffectManager::updateSunlightFocus()
 #if !defined(PROJECT_CLAW_PROTO) && !defined(PROJECT_SURVIVOR)
 //#if !defined(PROJECT_CLAW_PROTO)
 	if (impl->sunlightSpot != NULL)
-	{      
+	{
 		GameCamera *gcam = impl->game->gameUI->getGameCamera();
 		VC3 pos = gcam->getPosition();
 		impl->game->gameMap->keepWellInScaledBoundaries(&pos.x, &pos.z);

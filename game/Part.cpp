@@ -36,7 +36,7 @@ namespace game
     return NULL;
   }
 
-	const char *Part::getStatusInfo() const 
+	const char *Part::getStatusInfo() const
 	{
 		static std::string weapon_status_info_buf;
 		weapon_status_info_buf = std::string("WeaponObject");
@@ -83,7 +83,7 @@ namespace game
     // returns a child part in given slot number or NULL if does not exist
   Part *Part::getSubPart(int slotNumber)
   {
-    if (slotNumber < 0 || slotNumber >= MAX_PART_CHILDREN) 
+    if (slotNumber < 0 || slotNumber >= MAX_PART_CHILDREN)
 		{
 			Logger::getInstance()->error("Part::getSubPart - Slot number out of range.");
 			assert(!"Part::getSubPart - Slot number out of range.");
@@ -95,7 +95,7 @@ namespace game
 
   void Part::setSubPart(int slotNumber, Part *part)
   {
-    if (slotNumber < 0 || slotNumber >= MAX_PART_CHILDREN) 
+    if (slotNumber < 0 || slotNumber >= MAX_PART_CHILDREN)
 		{
 			Logger::getInstance()->error("Part::setSubPart - Slot number out of range.");
 			assert(!"Part::setSubPart - Slot number out of range.");

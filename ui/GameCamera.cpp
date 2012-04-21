@@ -126,7 +126,7 @@ namespace ui
 				shakeAmount = 0;
 				totalShakeTime = DEFAULT_CAMERA_SHAKE_TIME;
 
-				// reset static lastfov variable (to make sure fov get's 
+				// reset static lastfov variable (to make sure fov get's
 				// set after game restarts and stuff?)
 				lastFOV = -1;
 			}
@@ -423,7 +423,7 @@ namespace ui
 
   VC3 GameCamera::getActualInterpolatedPosition()
   {
-#ifdef PROJECT_SHADOWGROUNDS   
+#ifdef PROJECT_SHADOWGROUNDS
 		return interpolatedPosition;
 #else
 		return interpolatedPosition + interpolatedPositionOffset;
@@ -825,23 +825,23 @@ namespace ui
 				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_RIGHT))
 					key_move_right = true; else key_move_right = false;
 
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_LEFT)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_LEFT))
 					key_move_rotleft = true; else key_move_rotleft = false;
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_RIGHT)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_RIGHT))
 					key_move_rotright = true; else key_move_rotright = false;
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_UP)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_UP))
 					key_move_rotup = true; else key_move_rotup = false;
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_DOWN)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ROTATE_DOWN))
 					key_move_rotdown = true; else key_move_rotdown = false;
 
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ORBIT_LEFT)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ORBIT_LEFT))
 					key_move_orbitleft = true; else key_move_orbitleft = false;
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ORBIT_RIGHT)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ORBIT_RIGHT))
 					key_move_orbitright = true; else key_move_orbitright = false;
 
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_UP)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_UP))
 					key_move_goup = true; else key_move_goup = false;
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_DOWN)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_DOWN))
 					key_move_godown = true; else key_move_godown = false;
 			}
 		}
@@ -850,18 +850,18 @@ namespace ui
 		{
 			GameController *gameController = gameControllers[c];
 
-			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_FOV_IN)) 
+			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_FOV_IN))
 				key_move_fov_in = true; else key_move_fov_in = false;
-			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_FOV_OUT)) 
+			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_FOV_OUT))
 				key_move_fov_out = true; else key_move_fov_out = false;
 
-			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ZOOM_IN)) 
+			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ZOOM_IN))
 				key_move_zoom_in = true; else key_move_zoom_in = false;
-			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ZOOM_OUT)) 
+			if (gameController->isKeyDown(DH_CTRL_CAMERA_MOVE_ZOOM_OUT))
 				key_move_zoom_out = true; else key_move_zoom_out = false;
 
 			// next zoom of 3 choices...
-			if (gameController->wasKeyClicked(DH_CTRL_CAMERA_MOVE_ZOOM_NEXT)) 
+			if (gameController->wasKeyClicked(DH_CTRL_CAMERA_MOVE_ZOOM_NEXT))
 			{
 				float fromzoom;
 				if (zooming_to < 0)
@@ -888,7 +888,7 @@ namespace ui
 		/*
     if (zooming_to >= 0)
     {
-      if (zoom < zooming_to) 
+      if (zoom < zooming_to)
       {
         zoom += (2.0f * delta) / 20.0f;
         if (zoom > zooming_to)
@@ -909,7 +909,7 @@ namespace ui
 		// used for inside/outside building zooming...
     if (zooming_to >= 0)
     {
-      if (zoom < zooming_to) 
+      if (zoom < zooming_to)
       {
         zoom += (2.0f * delta) / 2000.0f;
         if (zoom > zooming_to)
@@ -977,10 +977,10 @@ namespace ui
       float factor = 1;
       if (maxZoom != minZoom)
         factor += 2 * (zoom - minZoom) / (maxZoom - minZoom);
-      if (zoom < maxZoom) 
+      if (zoom < maxZoom)
 			{
 				zoom += (1.0f * factor * delta) / 20.0f;
-				if (zoom > maxZoom) 
+				if (zoom > maxZoom)
 				{
 					zoom = maxZoom;
 				}
@@ -991,10 +991,10 @@ namespace ui
       float factor = 1;
       if (maxZoom != minZoom)
         factor += 2 * (zoom - minZoom) / (maxZoom - minZoom);
-      if (zoom > minZoom) 
+      if (zoom > minZoom)
 			{
 				zoom -= (1.0f * factor * delta) / 20.0f;
-				if (zoom < minZoom) 
+				if (zoom < minZoom)
 				{
 					zoom = minZoom;
 				}
@@ -1014,7 +1014,7 @@ namespace ui
     // slow down camera velocity
     if (!move_fwd && !move_back && !key_move_fwd && !key_move_back)
     {
-      if (cameraVelocity > 0) 
+      if (cameraVelocity > 0)
       {
         cameraVelocity -= (0.04f * delta) / 20.0f;
         if (cameraVelocity < 0) cameraVelocity = 0;
@@ -1026,7 +1026,7 @@ namespace ui
 		{
 			GameController *gameController = gameControllers[c];
 
-			if (gameController->wasKeyClicked(DH_CTRL_NEXT_CAMERA_ANGLE_BOUNDARY)) 
+			if (gameController->wasKeyClicked(DH_CTRL_NEXT_CAMERA_ANGLE_BOUNDARY))
 			{
 				if (minBetaAngle == -85 && maxBetaAngle == 85)
 				{
@@ -1055,7 +1055,7 @@ namespace ui
 		{
 			GameController *gameController = gameControllers[c];
 
-			if (gameController->wasKeyClicked(DH_CTRL_NEXT_CAMERA_MODE)) 
+			if (gameController->wasKeyClicked(DH_CTRL_NEXT_CAMERA_MODE))
 			{
 				if (cameraMode == CAMERA_MODE_FLYING)
 				{
@@ -1115,7 +1115,7 @@ namespace ui
 					// TODO: clamp to limits?
 				}
 
-				if (gameController->isKeyDown(DH_CTRL_CAMERA_LOOK_MODE)) 
+				if (gameController->isKeyDown(DH_CTRL_CAMERA_LOOK_MODE))
 				{
 					if (!SimpleOptions::getBool(DH_OPT_B_CAMERA_ALPHA_ANGLE_LOCKED))
 					{
@@ -1154,7 +1154,7 @@ namespace ui
     if (!disabledUserMovement)
     {
       float terrHeight = 0;
-      if (cameraX > -gameMap->getScaledSizeX() / 2 
+      if (cameraX > -gameMap->getScaledSizeX() / 2
         && cameraY > -gameMap->getScaledSizeY() / 2
         && cameraX < gameMap->getScaledSizeX() / 2
         && cameraY < gameMap->getScaledSizeY() / 2)
@@ -1233,7 +1233,7 @@ namespace ui
     {
     case CAMERA_MODE_ZOOM_CENTRIC:
       minHeight = 0;
-      if (cameraX > -gameMap->getScaledSizeX() / 2 
+      if (cameraX > -gameMap->getScaledSizeX() / 2
         && cameraY > -gameMap->getScaledSizeY() / 2
         && cameraX < gameMap->getScaledSizeX() / 2
         && cameraY < gameMap->getScaledSizeY() / 2)
@@ -1270,7 +1270,7 @@ namespace ui
     case CAMERA_MODE_CAMERA_CENTRIC:
     case CAMERA_MODE_FLYING:
       minHeight = 0;
-      if (cameraX > -gameMap->getScaledSizeX() / 2 
+      if (cameraX > -gameMap->getScaledSizeX() / 2
         && cameraY > -gameMap->getScaledSizeY() / 2
         && cameraX < gameMap->getScaledSizeX() / 2
         && cameraY < gameMap->getScaledSizeY() / 2)
@@ -1324,7 +1324,7 @@ namespace ui
 					if (waterDepth > 0) minTargHeight += waterDepth;
 				}
       }
-      //if (targetHeight < minTargHeight) 
+      //if (targetHeight < minTargHeight)
       targetHeight = minTargHeight;
 
 
@@ -1351,7 +1351,7 @@ namespace ui
 					if (waterDepth > 0) minHeight += waterDepth;
 				}
       }
-      if (cameraHeight < minHeight) 
+      if (cameraHeight < minHeight)
       {
         cameraHeight = minHeight;
         pos.y = cameraHeight;
@@ -1412,7 +1412,7 @@ namespace ui
       targ2.y = cameraHeight - zoom;
 
       targetX = targ2.x;
-      targetY = targ2.z;    
+      targetY = targ2.z;
       targetHeight = targ2.y;
     }
 
@@ -1465,13 +1465,13 @@ namespace ui
         interpolateTime = interpolateDuration;
         stopInterpolate = true;
       }
-      VC3 otherPos = VC3(interpolateCamera->cameraX, 
-        interpolateCamera->cameraHeight, 
+      VC3 otherPos = VC3(interpolateCamera->cameraX,
+        interpolateCamera->cameraHeight,
         interpolateCamera->cameraY);
-      VC3 otherTarg = VC3(interpolateCamera->targetX, 
-        interpolateCamera->targetHeight, 
+      VC3 otherTarg = VC3(interpolateCamera->targetX,
+        interpolateCamera->targetHeight,
         interpolateCamera->targetY);
-      VC3 otherPosOffset = interpolateCamera->positionOffset; 
+      VC3 otherPosOffset = interpolateCamera->positionOffset;
 			VC3 otherTargOffset = interpolateCamera->targetOffset;
 
 			VC3 interPos;
@@ -1493,13 +1493,13 @@ namespace ui
 			}
 			if (smooth)
 			{
-        interPos = otherPos + (pos - otherPos) * 
+        interPos = otherPos + (pos - otherPos) *
 					((float)sinf(3.1415926f * (interpolateTime / interpolateDuration - 0.5f)) * 0.5f + 0.5f);
-        interTarg = otherTarg + (targ - otherTarg) * 
+        interTarg = otherTarg + (targ - otherTarg) *
 					((float)sinf(3.1415926f * (interpolateTime / interpolateDuration - 0.5f)) * 0.5f + 0.5f);
-        interPosOffset = otherPosOffset + (positionOffset - otherPosOffset) * 
+        interPosOffset = otherPosOffset + (positionOffset - otherPosOffset) *
 					((float)sinf(3.1415926f * (interpolateTime / interpolateDuration - 0.5f)) * 0.5f + 0.5f);
-        interTargOffset = otherTargOffset + (targetOffset - otherTargOffset) * 
+        interTargOffset = otherTargOffset + (targetOffset - otherTargOffset) *
 	        ((float)sinf(3.1415926f * (interpolateTime / interpolateDuration - 0.5f)) * 0.5f + 0.5f);
 			} else {
         interPos = otherPos + (pos - otherPos) * (interpolateTime / interpolateDuration);
@@ -1675,7 +1675,7 @@ namespace ui
 
 			scene->GetCamera()->SetPosition(finalPos);
 			scene->GetCamera()->SetTarget(finalTarg);
-		} else 
+		} else
 		{
 			// warning: lots of scary hacks ahead...
 
@@ -1686,7 +1686,7 @@ namespace ui
 				game->gameScripting->runSingleSimpleStringCommand( "hideAllUnits", "", &dummy1, &dummy2 );*/
 			}
 
-			gameMap->getTerrain()->getRenderer ().setFloatValue( IStorm3D_TerrainRenderer::ForceAmbient, 
+			gameMap->getTerrain()->getRenderer ().setFloatValue( IStorm3D_TerrainRenderer::ForceAmbient,
 				game::SimpleOptions::getFloat( DH_OPT_F_MAPVIEW_AMBIENT_LIGHTING )
 				);
 
@@ -1706,7 +1706,7 @@ namespace ui
 
 			float mapwidth  = gameMap->getScaledSizeX();
 			float mapheight = gameMap->getScaledSizeY();
-			int scrwidth = 0, scrheight = 0; 
+			int scrwidth = 0, scrheight = 0;
 			
 			float scrAspect = this->screenAspect;
 			if(scene->getStorm()->getRenderTarget(0))
@@ -1723,7 +1723,7 @@ namespace ui
 			scrAspect = (float)scrwidth / scrheight;
 
 			float orthoOffsetX = 0.0f, orthoOffsetY = 0.0f, orthoWidth = mapwidth, orthoHeight = mapheight;
-			if( mapviewAreaX >= 0 )  
+			if( mapviewAreaX >= 0 )
 			{
 				orthoOffsetX = 512.f / mapviewWidth  * mapwidth * mapviewAreaX;
 				orthoOffsetY = 512.f / mapviewHeight * mapheight * mapviewAreaY;
@@ -1736,17 +1736,17 @@ namespace ui
 			if( SimpleOptions::getBool( DH_OPT_B_MAPRENDER_USE_USER_RESOLUTION ) || !scene->getStorm()->getRenderTarget(0) )
 			{
 				if(mapwidth <= mapheight)
-					scene->GetCamera()->ForceOrthogonalProjection (true, 
+					scene->GetCamera()->ForceOrthogonalProjection (true,
 					-mapheight/2, mapheight/2,
 					-mapheight/(2 * scrAspect), mapheight/(2 * scrAspect) );
 				else
-					scene->GetCamera()->ForceOrthogonalProjection (true, 
+					scene->GetCamera()->ForceOrthogonalProjection (true,
 					-mapwidth/2 * scrAspect, mapwidth/2 * scrAspect,
 					-mapwidth/2, mapwidth/2 );
 			}
 			else
 			{
-				scene->GetCamera()->ForceOrthogonalProjection (true, 
+				scene->GetCamera()->ForceOrthogonalProjection (true,
 					-mapheight/2 + orthoOffsetY, -mapheight/2 + orthoOffsetY + orthoHeight,
 					-mapwidth/2 + orthoOffsetX, -mapwidth/2 + orthoOffsetX + orthoWidth );
 			}
@@ -1831,7 +1831,7 @@ namespace ui
 
 	bool GameCamera::getGameCameraYAxisLock()
 	{
-		if (game::SimpleOptions::getInt(DH_OPT_I_CAMERA_MIN_BETA_ANGLE) == 
+		if (game::SimpleOptions::getInt(DH_OPT_I_CAMERA_MIN_BETA_ANGLE) ==
 			game::SimpleOptions::getInt(DH_OPT_I_CAMERA_MAX_BETA_ANGLE))
 		{
 			return true;

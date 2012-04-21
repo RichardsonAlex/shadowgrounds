@@ -21,18 +21,18 @@ namespace particle
 	
 	template<class T>
 		randValueMinMax(T min, T max) {
-			return min + static_cast<T>(g_randomNumberGen()) / 
+			return min + static_cast<T>(g_randomNumberGen()) /
 				static_cast<T>(g_randomNumberGen.max()) * (max - min);
 		}
 	
 	template<class T>
 		randValueMinVar(T min, T var) {
-			return min + static_cast<T>(g_randomNumberGen()) / 
+			return min + static_cast<T>(g_randomNumberGen()) /
 				static_cast<T>(g_randomNumberGen.max()) * var;
 		}	
 	
 	template<class T> randUnitValue() {
-		return (-1.0 + 2.0 * (static_cast<T>(g_randomNumberGen()) / 
+		return (-1.0 + 2.0 * (static_cast<T>(g_randomNumberGen()) /
 				static_cast<T>(g_randomNumberGen.max())));
 	}
 

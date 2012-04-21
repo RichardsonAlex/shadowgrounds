@@ -129,24 +129,24 @@ namespace sfx {
 	};
 
 
-SoundSample::SoundSample(const char *filename, Sound *data, bool temporaryCache) 
-{ 
+SoundSample::SoundSample(const char *filename, Sound *data, bool temporaryCache)
+{
 	if(filename != NULL)
 	{
 		this->filename = new char[strlen(filename) + 1];
 		strcpy(this->filename, filename);
-	} 
+	}
 	else
 		this->filename = NULL;
-  
-	this->data = data; 
+
+	this->data = data;
 	this->temporaryCache = temporaryCache;
-	playCount = 0; 
+	playCount = 0;
 }
 
-SoundSample::~SoundSample() 
-{ 
-	if(playCount > 0) 
+SoundSample::~SoundSample()
+{
+	if(playCount > 0)
 	{
 		Logger::getInstance()->warning("~SoundSample - Sample still playing while destroyed.");
 		Logger::getInstance()->debug(filename);
@@ -154,7 +154,7 @@ SoundSample::~SoundSample()
 	}
 
 	delete [] filename;
-	delete data; 
+	delete data;
 }
 
 int SoundSample::getLength()
@@ -586,7 +586,7 @@ struct SoundMixer::Data : public IStorm3D_StreamBuilder
 
 	void updateSounds(int delta)
 	{
-		// ToDo: 
+		// ToDo:
 		//  - Disable sounds if volume drops below 0
 		//  - Enable sounds if they get dropped 'cause too many sounds are playing
 
@@ -640,7 +640,7 @@ struct SoundMixer::Data : public IStorm3D_StreamBuilder
 					}
 
 					soundLib->setSoundVolume(handle, volume);
-				} else 
+				} else
 				{
 					SoundInstance &instance = it->second;
 					instance.position = listenerPosition;
@@ -933,21 +933,21 @@ void SoundMixer::setVolume(int masterVolume, int fxVolume, int speechVolume, int
 }
 void SoundMixer::setVolume(int masterVolume, int fxVolume, int speechVolume, int musicVolume, int ambientVolume)
 {
-	if (masterVolume < 0) 
+	if (masterVolume < 0)
 		masterVolume = 0;
-	if (masterVolume > 100) 
+	if (masterVolume > 100)
 		masterVolume = 100;
-	if (fxVolume < 0) 
+	if (fxVolume < 0)
 		fxVolume = 0;
-	if (fxVolume > 100) 
+	if (fxVolume > 100)
 		fxVolume = 100;
-	if (speechVolume < 0) 
+	if (speechVolume < 0)
 		speechVolume = 0;
-	if (speechVolume > 100) 
+	if (speechVolume > 100)
 		speechVolume = 100;
-	if (musicVolume < 0) 
+	if (musicVolume < 0)
 		musicVolume = 0;
-	if (musicVolume > 100) 
+	if (musicVolume > 100)
 		musicVolume = 100;
 	if (ambientVolume > 100)
 		ambientVolume = 100;
@@ -955,12 +955,12 @@ void SoundMixer::setVolume(int masterVolume, int fxVolume, int speechVolume, int
 	data->masterVolume = masterVolume / 100.f;
 	data->fxVolume = (fxVolume / 100.f) * data->masterVolume;
 	data->speechVolume = (speechVolume / 100.f) * data->masterVolume;
-	data->musicVolume = (musicVolume / 100.f) * data->masterVolume;  
+	data->musicVolume = (musicVolume / 100.f) * data->masterVolume;
 	data->ambientVolume = (ambientVolume / 100.0f) * data->masterVolume;
 
 	data->fxVolumeDefault = data->fxVolume;
 	data->speechVolumeDefault = data->speechVolume;
-	data->musicVolumeDefault = data->musicVolume;  
+	data->musicVolumeDefault = data->musicVolume;
 	data->ambientVolumeDefault = data->ambientVolume;
 
 	data->applyVolumes();
@@ -1221,9 +1221,9 @@ void SoundMixer::setSoundVolume(int soundHandle, int volume)
 	if(!data->soundLib || soundHandle < 0)
 		return;
 
-	if (volume < 0) 
+	if (volume < 0)
 		volume = 0;
-	if (volume > 100) 
+	if (volume > 100)
 		volume = 100;
 
 	SoundList::iterator it = data->sounds.find(soundHandle);
@@ -1392,8 +1392,8 @@ SoundMixer::~SoundMixer()
 }
 
 
-// WARNING: if someone is relying on some sound being played 
-// (looping sounds), this may result into an error when the sound 
+// WARNING: if someone is relying on some sound being played
+// (looping sounds), this may result into an error when the sound
 // is being stopped again.
 
 void SoundMixer::stopAllSounds()
@@ -1441,7 +1441,7 @@ void SoundMixer::setVolume(int masterVolume, int fxVolume, int speechVolume, int
   this->masterVolume = masterVolume;
   this->fxVolume = (fxVolume * masterVolume) / 100;
   this->speechVolume = (speechVolume * masterVolume) / 100;
-  this->musicVolume = (musicVolume * masterVolume) / 100;  
+  this->musicVolume = (musicVolume * masterVolume) / 100;
 }
 
 void SoundMixer::setMute(bool fxMute, bool speechMute, bool musicMute)
@@ -1458,9 +1458,9 @@ void SoundMixer::runMixer(int currentTime)
 {
   this->currentTime = currentTime;
   // fade in/out music if music is changing
-  if (musicFadingOut) 
+  if (musicFadingOut)
   {
-    if (musicFadeStartTime == -1) 
+    if (musicFadeStartTime == -1)
       musicFadeStartTime = currentTime;
     //Logger::getInstance()->debug(int2str(currentTime - musicFadeStartTime));
     if (currentTime - musicFadeStartTime > MUSIC_FADE_OUT_TIME)
@@ -1485,9 +1485,9 @@ void SoundMixer::runMixer(int currentTime)
       music->setVolume(vol);
     }
   } else {
-    if (musicFadingIn) 
+    if (musicFadingIn)
     {
-      if (musicFadeStartTime == -1) 
+      if (musicFadeStartTime == -1)
         musicFadeStartTime = currentTime;
       if (nextMusicFilename != NULL)
       {
@@ -1508,7 +1508,7 @@ void SoundMixer::runMixer(int currentTime)
       }
       if (music != NULL)
       {
-        if (currentTime - musicFadeStartTime > MUSIC_FADE_IN_TIME) 
+        if (currentTime - musicFadeStartTime > MUSIC_FADE_IN_TIME)
         {
           // done fading in, just keep on playing...
           music->setVolume(-2500 + musicVolume * 25);
@@ -1607,9 +1607,9 @@ void SoundMixer::setMusic(const char *filename)
 
 bool SoundMixer::isMusicFading() const
 {
-  if (musicFadingIn || musicFadingOut) 
+  if (musicFadingIn || musicFadingOut)
     return true;
-  else 
+  else
     return false;
 }
 
@@ -1645,7 +1645,7 @@ SoundSample *SoundMixer::loadSample(const char *filename, bool temporaryCache)
   SoundHashType::iterator iter = soundFileHash->find(hashCode);
   if (iter != soundFileHash->end())
   {
-    SoundSample *loaded = (*iter).second; 
+    SoundSample *loaded = (*iter).second;
     return loaded;
   }
 
@@ -1714,7 +1714,7 @@ int SoundMixer::playSound(SoundSample *sample, bool loop, int volume)
 
 void SoundMixer::stopSound(int soundHandle)
 {
-  if (soundHandle < 0) 
+  if (soundHandle < 0)
   {
     Logger::getInstance()->debug("SoundMixer::stopSound - Negative sound handle parameter given.");
     return;
@@ -1750,7 +1750,7 @@ void SoundMixer::stopSound(int soundHandle)
 void SoundMixer::setSoundPosition(int soundHandle,
   float x,float y,float z,float vx,float vy,float vz, int volume, unsigned short position)
 {
-  if (soundHandle < 0) 
+  if (soundHandle < 0)
   {
     Logger::getInstance()->debug("SoundMixer::setSoundPosition - Negative sound handle parameter given.");
     return;
@@ -1773,7 +1773,7 @@ void SoundMixer::setSoundPosition(int soundHandle,
 
 void SoundMixer::setSoundVolume(int soundHandle, int volume)
 {
-  if (soundHandle < 0) 
+  if (soundHandle < 0)
   {
     Logger::getInstance()->debug("SoundMixer::setSoundVolume - Negative sound handle parameter given.");
     return;

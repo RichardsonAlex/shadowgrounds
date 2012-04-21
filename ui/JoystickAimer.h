@@ -17,7 +17,7 @@ namespace ui
   class JoystickAimer
 	{
 		public:
-			JoystickAimer(game::Unit *unit, Ogui *ogui, 
+			JoystickAimer(game::Unit *unit, Ogui *ogui,
 				game::Game *game, GameController *gameController,
 				int clientNumber);
 

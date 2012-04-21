@@ -10,14 +10,14 @@ namespace ui
 {
 
   /**
-   * Storage window class. 
+   * Storage window class.
    * Presents the storage inventory of the player.
    *
    * @version 0.5, 25.6.2002
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
    */
 
-  class StorageWindow : public IOguiButtonListener, 
+  class StorageWindow : public IOguiButtonListener,
     public IOguiSelectListListener
   {
   public:

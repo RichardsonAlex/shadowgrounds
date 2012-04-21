@@ -326,7 +326,7 @@ using namespace boost;
 
 struct Storm3D_FakeSpotlight::Data
 {
-	Storm3D &storm; 
+	Storm3D &storm;
 
 	shared_ptr<RenderTarget> renderTarget;
 	Storm3D_SpotlightShared properties;
@@ -662,7 +662,7 @@ void Storm3D_FakeSpotlight::applyTextures(const D3DXMATRIX &cameraView)
 
 	/*
 	COL c;
-	c.r = 
+	c.r =
 	float colorData[4] = { c.r, c.g, c.b, 0 };
 	data->device.SetPixelShaderConstantF(2, colorData, 1);
 	*/
@@ -707,7 +707,7 @@ void Storm3D_FakeSpotlight::renderProjection()
 
 	ad = bd = cd = dd = 1.f;
 
-	float buffer[] = 
+	float buffer[] =
 	{
 		a.x, a.y, a.z,  ad, ad,  ad, 1.0f,
 		b.x, b.y, b.z,  bd, bd,  bd, 1.0f,
@@ -783,7 +783,7 @@ void Storm3D_FakeSpotlight::debugRender()
 	if(BUFFER_WIDTH <= 0 || BUFFER_HEIGHT <= 0)
 		return;
 
-	float buffer[] = 
+	float buffer[] =
 	{
 		0.f, 300.f, 0.f, 1.f, 0.f, 1.f,
 		0.f, 0.f, 0.f, 1.f, 0.f, 0.f,

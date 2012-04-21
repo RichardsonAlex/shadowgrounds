@@ -425,14 +425,14 @@ namespace game
 		if (strcmp(key, "firewaittime") == 0)
 		{
 			fireWaitTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && fireWaitTime == 0) 
+			if (str2int(value) > 0 && fireWaitTime == 0)
 				fireWaitTime = 1;
 			return true;
 		}
 		if (strcmp(key, "firereloadtime") == 0)
 		{
 			fireReloadTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && fireReloadTime == 0) 
+			if (str2int(value) > 0 && fireReloadTime == 0)
 				fireReloadTime = 1;
 			return true;
 		}
@@ -449,7 +449,7 @@ namespace game
 		if (strcmp(key, "walkstoptime") == 0)
 		{
 			walkStopTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && walkStopTime == 0) 
+			if (str2int(value) > 0 && walkStopTime == 0)
 				walkStopTime = 1;
 			return true;
 		}
@@ -486,7 +486,7 @@ namespace game
 		}
 		if (strcmp(key, "weaponrayheightfrombarrel") == 0)
 		{
-			if (str2int(value) != 0) 
+			if (str2int(value) != 0)
 				weaponRayHeightFromBarrel = true;
 			else
 				weaponRayHeightFromBarrel = false;
@@ -526,7 +526,7 @@ namespace game
 		if (strcmp(key, "repeatdelay") == 0)
 		{
 			repeatDelay = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && repeatDelay == 0) 
+			if (str2int(value) > 0 && repeatDelay == 0)
 				repeatDelay = 1;
 			return true;
 		}
@@ -548,21 +548,21 @@ namespace game
 		if (strcmp(key, "rechargemintime") == 0)
 		{
 			rechargeMinTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && rechargeMinTime == 0) 
+			if (str2int(value) > 0 && rechargeMinTime == 0)
 				rechargeMinTime = 1;
 			return true;
 		}
 		if (strcmp(key, "rechargemaxtime") == 0)
 		{
 			rechargeMaxTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && rechargeMaxTime == 0) 
+			if (str2int(value) > 0 && rechargeMaxTime == 0)
 				rechargeMaxTime = 1;
 			return true;
 		}
 		if (strcmp(key, "rechargepeaktime") == 0)
 		{
 			rechargePeakTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && rechargePeakTime == 0) 
+			if (str2int(value) > 0 && rechargePeakTime == 0)
 				rechargePeakTime = 1;
 			return true;
 		}
@@ -679,7 +679,7 @@ namespace game
 		if (strcmp(key, "kickback") == 0)
 		{
 			kickback = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && kickback == 0) 
+			if (str2int(value) > 0 && kickback == 0)
 				kickback = 1;
 			return true;
 		}
@@ -691,14 +691,14 @@ namespace game
 		if (strcmp(key, "clipreloadtime") == 0)
 		{
 			clipReloadTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && clipReloadTime == 0) 
+			if (str2int(value) > 0 && clipReloadTime == 0)
 				clipReloadTime = 1;
 			return true;
 		}
 		if (strcmp(key, "clipfirstreloadtime") == 0)
 		{
 			clipFirstReloadTime = str2int(value) / GAME_TICK_MSEC;
-			if (str2int(value) > 0 && clipFirstReloadTime == 0) 
+			if (str2int(value) > 0 && clipFirstReloadTime == 0)
 				clipFirstReloadTime = 1;
 			return true;
 		}
@@ -1150,7 +1150,7 @@ namespace game
 	}
 
 
-	Bullet *Weapon::getBulletType() const 
+	Bullet *Weapon::getBulletType() const
 	{
 		return bulletType;
 	}
@@ -1265,7 +1265,7 @@ namespace game
 		ret->setAmmoAmount(initialAmmo);
 		ret->setMaxAmmoAmount(initialAmmo);
 		return ret;
-	} 
+	}
 
 
 	int Weapon::getRaytraceAmount() const
@@ -1374,10 +1374,10 @@ namespace game
 		if (muzzleflashEffect == NULL)
 			return NULL;
 
-		if (muzzleflashEffect3 != NULL 
+		if (muzzleflashEffect3 != NULL
 			&& muzzleflashEffect2 != NULL)
 		{
-			lastMuzzleflashNumber = (lastMuzzleflashNumber 
+			lastMuzzleflashNumber = (lastMuzzleflashNumber
 				+ 1 + (SystemRandom::getInstance()->nextInt() % 2)) % 3;
 
 			if (lastMuzzleflashNumber == 0)

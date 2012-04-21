@@ -80,7 +80,7 @@ struct ExporterUnitsData
 				stream << "   if" << std::endl;
 				if(layout >= 1 && layout <= 2)
 					stream << "    getVariable random_layout_a" << std::endl;
-				else 
+				else
 					stream << "    getVariable random_layout_b" << std::endl;
 				
 				if(layout == 1 || layout == 3)

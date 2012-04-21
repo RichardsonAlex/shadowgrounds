@@ -62,9 +62,9 @@ namespace game
 			float swayFactor;
 			float shakeFactor;
 			int swayCurrentTime;
-			int shakeCurrentTime; 
+			int shakeCurrentTime;
 			int swayTotalTime;
-			int shakeTotalTime; 
+			int shakeTotalTime;
 			float impactFactor;
 			float impactDirection;
 
@@ -89,7 +89,7 @@ namespace game
 				this->swayFactor = 0.0f;
 				this->shakeFactor = 0.0f;
 				this->swayCurrentTime = 0;
-				this->shakeCurrentTime = 0; 
+				this->shakeCurrentTime = 0;
 				this->swayTotalTime = 100;
 				this->shakeTotalTime = 10;
 				this->impactFactor = 0.0f;
@@ -549,9 +549,9 @@ dir.z = -dir.z;
 		impl->impactFactor = 0;
 		impl->impactDirection = 0;
 
-		// return if energy very very low and attempting to set 
+		// return if energy very very low and attempting to set
 		// flashlight on.
-		// actually, if energy was totally depleted, cannot set 
+		// actually, if energy was totally depleted, cannot set
 		// flashlight on before recharge.
 		//if (flashlightOn && impl->energy < FLASHLIGHT_LOW_ENERGY)
 		if (flashlightOn && impl->needRecharge)
@@ -565,11 +565,11 @@ dir.z = -dir.z;
 		{
 			// set it on
 			IStorm3D_Model *stormModel = NULL;
-			if (impl->origin != NULL) 
+			if (impl->origin != NULL)
 					stormModel = impl->origin->getStormModel();
 			ui::Spotlight *sp = new ui::Spotlight(
 				*impl->game->getGameScene()->getStorm3D(), *impl->game->gameUI->getTerrain()->GetTerrain(),
-				*impl->game->getGameScene()->getStormScene(), stormModel, 
+				*impl->game->getGameScene()->getStormScene(), stormModel,
 				std::string("flashlight"));
 			impl->spotlight = sp;
 			this->setRotation(impl->angle);

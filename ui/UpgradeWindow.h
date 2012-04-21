@@ -37,7 +37,7 @@ namespace ui
 		public:
 
 			UpgradeWindow(Ogui *ogui, game::Game *game, game::Unit *unit);
-				
+
 			~UpgradeWindow();
 
 			void update();

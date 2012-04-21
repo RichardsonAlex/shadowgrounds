@@ -41,8 +41,8 @@ public:
 		TEXT_ALIGN_RIGHT = 1
 	};
 
-	OguiCheckBox( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h, 
-		const std::string& checkbox_false_norm, std::string checkbox_false_down, std::string checkbox_false_high, 
+	OguiCheckBox( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
+		const std::string& checkbox_false_norm, std::string checkbox_false_down, std::string checkbox_false_high,
 		const std::string& checkbox_true_norm, const std::string& checkbox_true_down = "", const std::string& checkbox_true_high = "", int sid = 0, bool value = true, bool changeOnClick = true );
 	~OguiCheckBox();
 

@@ -31,13 +31,13 @@ namespace game
       void setName(const char *name);
 
       void setPosition(const VC3 &position);
-      
+
       void setDirection(const VC3 &direction);
 
       void setSpawnerWeapon(const Weapon *weapon);
 
       void disable();
-     
+
       void enable();
 
       void run();
@@ -68,7 +68,7 @@ namespace game
 			float distanceToListenerSq;
 
 			int projectileHandle;
-   
+
       friend class ParticleSpawnerManager;
   };
 }

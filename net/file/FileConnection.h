@@ -19,20 +19,20 @@ namespace net
     class FileConnection : public INetConnection
     {
     public:
-      FileConnection(const char *filename); 
+      FileConnection(const char *filename);
 
       virtual ~FileConnection();
- 
-      virtual void flush() 
+
+      virtual void flush()
         throw (NetDriverException*);
 
-      virtual int send(const void *buf, int maxlen) 
+      virtual int send(const void *buf, int maxlen)
         throw (NetDriverException*);
 
-      virtual int receive(void *buf, int maxlen) 
+      virtual int receive(void *buf, int maxlen)
         throw (NetDriverException*);
 
-      virtual void close() 
+      virtual void close()
         throw (NetDriverException*);
 
 			// special id'ed package management...

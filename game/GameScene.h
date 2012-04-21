@@ -39,15 +39,15 @@ namespace game
     IStorm3D_Scene *getStormScene() { return stormScene; }
 
     // raytrace... (direction must be normalized)
-    void rayTrace(const VC3 &origin, const VC3 &direction, float rayLength, 
+    void rayTrace(const VC3 &origin, const VC3 &direction, float rayLength,
       GameCollisionInfo &cinfo, bool accurate, bool loscheck, bool terrainOnly = false, bool terrainOnlyForReal = false);
 
     // pathfinding
-    bool findPath(frozenbyte::ai::Path *path, float startX, float startY, 
+    bool findPath(frozenbyte::ai::Path *path, float startX, float startY,
       float endX, float endY, float maxHeightDifference, float climbPenalty,
 			int coverAvoidDistance, int coverBlockDistance, int depth, int lightAvoidAmount);
 
-    // adding and removing MOVING obstacles 
+    // adding and removing MOVING obstacles
     void moveObstacle(int fromX, int fromY, int toX, int toY, int height);
     void addMovingObstacle(int x, int y, int height);
     void removeMovingObstacle(int x, int y, int height);
@@ -61,10 +61,10 @@ namespace game
     bool isBlocked(int x, int y, float height);
 
 		// WARNING: does not return the actual block amount over the
-		// given height - instead returns amount of all blocks, if 
+		// given height - instead returns amount of all blocks, if
 		// the given height is above all of them, else zero.
 		// Remember this when you are calling this somewhere!
-		// Don't think that this gives you blocks above the height. 
+		// Don't think that this gives you blocks above the height.
 		// that would be a total screw up. ;)
     int getBlockingCount(int x, int y, float height);
 

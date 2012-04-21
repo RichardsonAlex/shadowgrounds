@@ -813,7 +813,7 @@ void Storm3D_Spotlight::applyTextures(const D3DXMATRIX &cameraView, Storm3D &sto
 
 	if(data->smoothing)
 	{
-		float c[8][4] = 
+		float c[8][4] =
 		{
 			{ -2.5f,   3.f, 0, 0 },
 			{  -1.f,   1.f, 0, 0 },

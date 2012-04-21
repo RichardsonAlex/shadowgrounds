@@ -32,7 +32,7 @@ public:
 
 	// Creates ID-matrix
 	TMatrix()
-	{ 
+	{
 		// Leaving data uninitialized and not cheking those on GetTranslation() etc ..
 		// That's BAD!
 		//	-- psd
@@ -133,7 +133,7 @@ public:
 		A wx2=rotation.w*x2;
 		A wy2=rotation.w*y2;
 		A wz2=rotation.w*z2;
-    
+
 		mat[0]=(A)1-yy2-zz2;
 		mat[1]=xy2-wz2;
 		mat[2]=xz2+wy2;
@@ -201,7 +201,7 @@ public:
 	
 		mat[8]=base_x.z;
 		mat[9]=base_y.z;
-		mat[10]=base_z.z; 
+		mat[10]=base_z.z;
 
 		mat[3]=mat[7]=mat[11]=0;
 		mat[12]=mat[13]=mat[14]=0;
@@ -327,17 +327,17 @@ public:
 		tmat[1] = mat[0] * other.mat[1] + mat[1] * other.mat[5] + mat[2] * other.mat[9];
 		tmat[2] = mat[0] * other.mat[2] + mat[1] * other.mat[6] + mat[2] * other.mat[10];
 		tmat[3] = 0;
-                                                                      
+
 		tmat[4] = mat[4] * other.mat[0] + mat[5] * other.mat[4] + mat[6] * other.mat[8];
 		tmat[5] = mat[4] * other.mat[1] + mat[5] * other.mat[5] + mat[6] * other.mat[9];
 		tmat[6] = mat[4] * other.mat[2] + mat[5] * other.mat[6] + mat[6] * other.mat[10];
 		tmat[7] = 0;
-                                                     
+
 		tmat[8] = mat[8] * other.mat[0] + mat[9] * other.mat[4] + mat[10] * other.mat[8];
 		tmat[9] = mat[8] * other.mat[1] + mat[9] * other.mat[5] + mat[10] * other.mat[9];
 		tmat[10] = mat[8] * other.mat[2] + mat[9] * other.mat[6] + mat[10] * other.mat[10];
 		tmat[11] = 0;
-                                                     
+
 		tmat[12] = mat[12] * other.mat[0] + mat[13] * other.mat[4] + mat[14] * other.mat[8] + other.mat[12];
 		tmat[13] = mat[12] * other.mat[1] + mat[13] * other.mat[5] + mat[14] * other.mat[9] + other.mat[13];
 		tmat[14] = mat[12] * other.mat[2] + mat[13] * other.mat[6] + mat[14] * other.mat[10] + other.mat[14];
@@ -358,17 +358,17 @@ public:
 		tmat[1] = mat[0] * other.mat[1] + mat[1] * other.mat[5] + mat[2] * other.mat[9];
 		tmat[2] = mat[0] * other.mat[2] + mat[1] * other.mat[6] + mat[2] * other.mat[10];
 		tmat[3] = 0;
-	                                                                      
+	
 		tmat[4] = mat[4] * other.mat[0] + mat[5] * other.mat[4] + mat[6] * other.mat[8];
 		tmat[5] = mat[4] * other.mat[1] + mat[5] * other.mat[5] + mat[6] * other.mat[9];
 		tmat[6] = mat[4] * other.mat[2] + mat[5] * other.mat[6] + mat[6] * other.mat[10];
 		tmat[7] = 0;
-                                                     
+
 		tmat[8] = mat[8] * other.mat[0] + mat[9] * other.mat[4] + mat[10] * other.mat[8];
 		tmat[9] = mat[8] * other.mat[1] + mat[9] * other.mat[5] + mat[10] * other.mat[9];
 		tmat[10] = mat[8] * other.mat[2] + mat[9] * other.mat[6] + mat[10] * other.mat[10];
 		tmat[11] = 0;
-                                                     
+
 		tmat[12] = mat[12] * other.mat[0] + mat[13] * other.mat[4] + mat[14] * other.mat[8] + other.mat[12];
 		tmat[13] = mat[12] * other.mat[1] + mat[13] * other.mat[5] + mat[14] * other.mat[9] + other.mat[13];
 		tmat[14] = mat[12] * other.mat[2] + mat[13] * other.mat[6] + mat[14] * other.mat[10] + other.mat[14];
@@ -436,7 +436,7 @@ public:
 
 		// check the diagonal
 		A tr = mat[0] + mat[5] + mat[10];
-		if (tr > 0.0) 
+		if (tr > 0.0)
 		{
 			A s = A(sqrt(tr + 1.0f));
 			result.w = s / 2.0f;
@@ -445,8 +445,8 @@ public:
 			result.x = (mat[9] - mat[6]) * s;
 			result.y = (mat[2] - mat[8]) * s;
 			result.z = (mat[4] - mat[1]) * s;
-		} 
-		else 
+		}
+		else
 		{
 			// diagonal is negative
 			A q[4] = { 0 };
@@ -463,8 +463,8 @@ public:
 
 			A s = A(sqrt((mat[i*4+i] - (mat[j*4+j] + mat[k*4+k])) + A(1.0)));
 			q[i] = s * 0.5f;
-            
-			if (s != 0) 
+
+			if (s != 0)
 				s = 0.5f / s;
 
 			q[3] = (mat[k*4+j] - mat[j*4+k]) * s;

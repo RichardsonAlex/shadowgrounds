@@ -235,7 +235,7 @@ namespace filesystem {
 				std::string::size_type fileStart = file.find_last_of("/");
 				std::string::size_type index = findTokenIndex(file, tokens[0], fileStart);
 
-				// FIXME!! 
+				// FIXME!!
 				// This only detects search tokens which begin with "*"
 
 				if(index == file.size() - tokens[0].size())

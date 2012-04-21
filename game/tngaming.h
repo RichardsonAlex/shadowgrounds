@@ -24,10 +24,10 @@ const char *GetErrorText (void );
 #define E_PUNCH_BACK 0
 #define E_STAB_FRONT 0
 #define E_STAB_BACK 0
-#define E_SHOTGUN_FRONT 0 
+#define E_SHOTGUN_FRONT 0
 #define E_SHOTGUN_BACK 0
 #define E_RIFLE_FRONT 0
 #define E_RIFLE_BACK 0
-#define E_LEFT_SIDE_HIT 0 
+#define E_LEFT_SIDE_HIT 0
 #define E_RIGHT_SIDE_HIT 0
 

@@ -336,7 +336,7 @@ namespace ui
       //bool calibrate = game::SimpleOptions::getBool(DH_OPT_B_CALIBRATE_GAMMA);
       bool calibrate = false;
 
-	    storm3d->SetGammaRamp(opt_gamma, opt_brightness + brightness, opt_contrast + contrast, 
+	    storm3d->SetGammaRamp(opt_gamma, opt_brightness + brightness, opt_contrast + contrast,
 		    opt_red_correction + redCorrection, opt_green_correction + greenCorrection, opt_blue_correction + blueCorrection, calibrate);
 		}
 	}
@@ -403,7 +403,7 @@ namespace ui
     {
       // TODO: move this to another method.
       // Timer::update();
-  
+
       bool effectOver = true;
       int ctime = Timer::getTime() - flashStartTime;
 
@@ -478,7 +478,7 @@ namespace ui
             contrast += 2.0f * timeFactor;
             red_correction += 0.5f * timeFactor;
             green_correction += 0.2f * timeFactor;
-        
+
 						this->setGammaEffect(brightness, contrast, red_correction, green_correction,
 							blue_correction, terrainRenderer);
 
@@ -631,9 +631,9 @@ namespace ui
           break;
       }
 
-      if (effectOver) 
+      if (effectOver)
       {
-        // FIXME: this won't do, if support for multiple simultaneous 
+        // FIXME: this won't do, if support for multiple simultaneous
         // flash effects is added.
         endAllFlashEffects(terrainRenderer);
 
@@ -655,32 +655,32 @@ namespace ui
 		// check if weather effects are on, if this is lightning.
 		if (!game::SimpleOptions::getBool(DH_OPT_B_WEATHER_EFFECTS)
 			&& flashEffectType == FLASH_EFFECT_TYPE_ENVIRONMENT_LIGHTNING)
-		{ 
+		{
 			return;
 		}
 
 		if (game::SimpleOptions::getBool(DH_OPT_B_EXTRA_GAMMA_EFFECTS))
 		{
-			bool wasHitEffect = 
+			bool wasHitEffect =
 				this->flashEffectType == FLASH_EFFECT_TYPE_PLAYER_HIT_SMALL
 				|| this->flashEffectType == FLASH_EFFECT_TYPE_PLAYER_HIT_MEDIUM
 				|| this->flashEffectType == FLASH_EFFECT_TYPE_PLAYER_HIT_BIG;
 			if (!flashEffectRunning)
 				wasHitEffect = false;
 
-			bool wasPoisonEffect = 
+			bool wasPoisonEffect =
 				this->flashEffectType == FLASH_EFFECT_TYPE_PLAYER_POISON_SMALL
 				|| this->flashEffectType == FLASH_EFFECT_TYPE_PLAYER_POISON_MEDIUM
 				|| this->flashEffectType == FLASH_EFFECT_TYPE_PLAYER_POISON_BIG;
 			if (!flashEffectRunning)
 				wasPoisonEffect = false;
 
-			bool isHitEffect = 
+			bool isHitEffect =
 				flashEffectType == FLASH_EFFECT_TYPE_PLAYER_HIT_SMALL
 				|| flashEffectType == FLASH_EFFECT_TYPE_PLAYER_HIT_MEDIUM
 				|| flashEffectType == FLASH_EFFECT_TYPE_PLAYER_HIT_BIG;
 
-			bool isPoisonEffect = 
+			bool isPoisonEffect =
 				flashEffectType == FLASH_EFFECT_TYPE_PLAYER_POISON_SMALL
 				|| flashEffectType == FLASH_EFFECT_TYPE_PLAYER_POISON_MEDIUM
 				|| flashEffectType == FLASH_EFFECT_TYPE_PLAYER_POISON_BIG;
@@ -692,7 +692,7 @@ namespace ui
 				|| !flashEffectRunning
 				|| (this->flashEffectType == FLASH_EFFECT_TYPE_LIGHTNING_GUN
 				&& flashEffectType == FLASH_EFFECT_TYPE_LIGHTNING_GUN)
-				|| isHitEffect || 
+				|| isHitEffect ||
 				(isPoisonEffect && (!wasPoisonEffect || (Timer::getTime() - flashStartTime) > PLAYER_POISON_FLASH_EFFECT_DURATION * 6 / 8)))
 				//|| (wasHitEffect && isHitEffect)
 				//|| (!wasHitEffect) && isHitEffect)
@@ -732,7 +732,7 @@ namespace ui
 			{
 				if (game::SimpleOptions::getBool(DH_OPT_B_HIT_EFFECT_IMAGE))
 				{
-					if (this->fadeWindow == NULL 
+					if (this->fadeWindow == NULL
 						|| (this->fadeImageFilename != NULL
 						&& strcmp(this->fadeImageFilename, PLAYERHIT_WINDOWED_FILE) == 0))
 					{
@@ -790,7 +790,7 @@ namespace ui
 				bool calibrate = game::SimpleOptions::getBool(DH_OPT_B_CALIBRATE_GAMMA);
 
 				//storm3d->SetGammaPeak(false, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f, 0.0f);
-				storm3d->SetGammaRamp(gamma, brightness, contrast, 
+				storm3d->SetGammaRamp(gamma, brightness, contrast,
 					red_correction, green_correction, blue_correction, calibrate);
 			}
 		}
@@ -826,7 +826,7 @@ namespace ui
 
 	void UIEffects::startFadeIn(int msecDuration)
 	{
-		// TODO: if already fading in/out, smooth transition, not just 
+		// TODO: if already fading in/out, smooth transition, not just
 		// immediate change
 		if (msecDuration <= GAME_TICK_MSEC)
 		{
@@ -853,7 +853,7 @@ namespace ui
 
 	void UIEffects::startFadeOut(int msecDuration)
 	{
-		// TODO: if already fading in/out, smooth transition, not just 
+		// TODO: if already fading in/out, smooth transition, not just
 		// immediate change
 		if (msecDuration <= GAME_TICK_MSEC)
 		{
@@ -1149,7 +1149,7 @@ namespace ui
 		if (maskText[activeMaskLayer] != NULL)
 		{
 			maskTextButton[activeMaskLayer]->Move(
-				maskTextPositionX[activeMaskLayer], 
+				maskTextPositionX[activeMaskLayer],
 				maskTextPositionY[activeMaskLayer]);
 		}
 	}
@@ -1161,7 +1161,7 @@ namespace ui
 		if (maskText[activeMaskLayer] != NULL)
 		{
 			maskTextButton[activeMaskLayer]->Move(
-				maskTextPositionX[activeMaskLayer], 
+				maskTextPositionX[activeMaskLayer],
 				maskTextPositionY[activeMaskLayer]);
 		}
 	}
@@ -1175,7 +1175,7 @@ namespace ui
 			// TODO
 			/*
 			maskText[activeMaskLayer]->Resize(
-				maskTextAreaSizeX[activeMaskLayer], 
+				maskTextAreaSizeX[activeMaskLayer],
 				maskTextAreaSizeY[activeMaskLayer]);
 			*/
 		}
@@ -1190,7 +1190,7 @@ namespace ui
 			// TODO
 			/*
 			maskText[activeMaskLayer]->Resize(
-				maskTextAreaSizeX[activeMaskLayer], 
+				maskTextAreaSizeX[activeMaskLayer],
 				maskTextAreaSizeY[activeMaskLayer]);
 			*/
 		}

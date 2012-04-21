@@ -41,10 +41,10 @@ namespace game
 	{
 	public:
 
-		/** 
+		/**
 		 * Creates a new game projectile object.
 		 * If projectile has a bullet type, the behaviour and fly path will be
-		 * based on the bullet type. If it does not have a bullet type, 
+		 * based on the bullet type. If it does not have a bullet type,
 		 * the projectiles behaviour will depend on methods called.
 		 * @param shooter  Unit*, the unit that this projectile originated from.
 		 * NULL if it has not oginated from a unit.
@@ -55,7 +55,7 @@ namespace game
 
 		virtual ~Projectile();
 
-		/** 
+		/**
 		 * TODO!
 		 * To implement GameObject "interface" class.
 		 * @return SaveData, data to be saved. TODO, currently NULL.
@@ -65,7 +65,7 @@ namespace game
 		virtual const char *getStatusInfo() const;
 
 		/**
-		 * Trackable by visual effects. Implements the 
+		 * Trackable by visual effects. Implements the
 		 * IPointableObject interface.
 		 */
 		virtual const VC3 &getPointerPosition() const;
@@ -74,18 +74,18 @@ namespace game
 		/**
 		 * Sets a direct path for the projectile.
 		 * Makes the projectile move from origin to destination with given velocity.
-		 * The lifetime and direction of the projectile are calculated based on 
+		 * The lifetime and direction of the projectile are calculated based on
 		 * given values.
 		 * @param origin	VC3&, the world starting position for the projectile.
 		 * @param destination  VC3&, the world ending position for the projectile.
-		 * @param velocity	float, the velocity of the projectile 
+		 * @param velocity	float, the velocity of the projectile
 		 * (in meters per game ticks, which are 10ms at the moment).
 		 */
 		void setDirectPath(const VC3 &origin, const VC3 &destination, float velocity);
 
 		void setPathByDirection(const VC3 &origin, const VC3 &direction, float velocity, int lifeTime);
 
-		// sets some spread to the projectile 
+		// sets some spread to the projectile
 		// (does not go exactly to destination)
 		void makeSpread(VC3 &spreadVector);
 

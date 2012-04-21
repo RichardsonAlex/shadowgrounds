@@ -9,8 +9,8 @@
 
 ///////////////////////////////////////////////////////////////////////////////
 
-OguiCheckBox::OguiCheckBox(  OguiWindow* win, Ogui* ogui, int x, int y, int w, int h, 
-		const std::string& checkbox_false_norm, std::string checkbox_false_down, std::string checkbox_false_high, 
+OguiCheckBox::OguiCheckBox(  OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
+		const std::string& checkbox_false_norm, std::string checkbox_false_down, std::string checkbox_false_high,
 		const std::string& checkbox_true_norm, const std::string& checkbox_true_down, const std::string& checkbox_true_high, int id , bool value, bool changeOnClick ) :
 	buttonId( 0 ),
 	textId( -1 ),
@@ -49,15 +49,15 @@ OguiCheckBox::OguiCheckBox(  OguiWindow* win, Ogui* ogui, int x, int y, int w, i
 	
 	/////////////////////////////////////////////////////////////////////////////
 
-	if( !checkbox_false_norm.empty() ) 
+	if( !checkbox_false_norm.empty() )
 		button_false_norm = ogui->LoadOguiImage( checkbox_false_norm.c_str() );
 
-	if( checkbox_false_down.empty() ) 
+	if( checkbox_false_down.empty() )
 		checkbox_false_down = checkbox_false_norm;
 
 	button_false_down = ogui->LoadOguiImage( checkbox_false_down.c_str() );
 
-	if( checkbox_false_high.empty() ) 
+	if( checkbox_false_high.empty() )
 		checkbox_false_high = checkbox_false_down;
 
 	button_false_high = ogui->LoadOguiImage( checkbox_false_high.c_str() );
@@ -67,12 +67,12 @@ OguiCheckBox::OguiCheckBox(  OguiWindow* win, Ogui* ogui, int x, int y, int w, i
 
 	if( !checkbox_true_down.empty() )
 		button_true_down = ogui->LoadOguiImage( checkbox_true_down.c_str() );
-	else 
+	else
 		button_true_down = ogui->LoadOguiImage( checkbox_true_norm.c_str() );
 
 	if( !checkbox_true_high.empty() )
 		button_true_high = ogui->LoadOguiImage( checkbox_true_high.c_str() );
-	else 
+	else
 		button_true_high = ogui->LoadOguiImage( checkbox_true_norm.c_str() );
 
 	/////////////////////////////////////////////////////////////////////////////
@@ -213,7 +213,7 @@ void OguiCheckBox::setText( const std::string& text, TEXT_ALIGN align, int w, IO
 		textButton->SetListener( this );
 		textButton->SetEventMask( OguiButtonEvent::EVENT_TYPE_PRESS );
 
-		if( font ) 
+		if( font )
 			textButton->SetFont( font );
 		textButton->SetText( foo_text.c_str() );
 
@@ -249,7 +249,7 @@ std::string OguiCheckBox::breakText( const std::string& text, IOguiFont* font )
 					lastbr = lastspace + 1;
 					lastspace = i;
 				} else {
-					if (tmpchar == ' ') 
+					if (tmpchar == ' ')
 					{
 						tmpchar = '\n';
 						linecnt++;

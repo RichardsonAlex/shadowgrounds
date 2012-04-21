@@ -6,7 +6,7 @@
 // This is the armor part class.
 //
 
-// An instance of this class represents an instance of an armor part in 
+// An instance of this class represents an instance of an armor part in
 // the game. PartType class represents the type (class) of an armor part.
 // Try not to mix the concepts! Understanding this difference is crucial.
 
@@ -39,7 +39,7 @@ namespace game
     virtual SaveData *getSaveData() const;
 
 		virtual const char *getStatusInfo() const;
-    
+
     // returns type of this part (the "class" of this part)
     virtual PartType *getType();
 
@@ -51,7 +51,7 @@ namespace game
     Part *getParent();
 
     // TODO: there should be no need for this, calling setSubPart for the
-    // new parent must set the objects parent 
+    // new parent must set the objects parent
     // void setParent(Part *part);
 
     // get the player number owning this part
@@ -96,7 +96,7 @@ namespace game
     int owner;
 
     // not yet paid for, deleted upon exit from armor construction
-    bool purchasePending; 
+    bool purchasePending;
 
   };
 

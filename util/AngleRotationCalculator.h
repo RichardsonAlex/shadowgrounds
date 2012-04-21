@@ -7,7 +7,7 @@ namespace util
 	class AngleRotationCalculator
 	{
 		public:
-			inline static float getFactoredRotationForAngles(float fromAngle, 
+			inline static float getFactoredRotationForAngles(float fromAngle,
 				float toAngle, float accuracy)
 			{
 				float rotSpeed = 0;
@@ -31,7 +31,7 @@ namespace util
 			}
 
 
-			inline static float getRotationForAngles(float fromAngle, 
+			inline static float getRotationForAngles(float fromAngle,
 				float toAngle, float accuracy)
 			{
 				float rotSpeed = getFactoredRotationForAngles(fromAngle, toAngle, accuracy);

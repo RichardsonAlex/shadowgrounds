@@ -22,7 +22,7 @@ public:
 	bool			operator <( const LogEntry& other ) const;
 	const LogEntry& operator=( const LogEntry& other );
 
-	// checks the script value. 
+	// checks the script value.
 	void		update( game::Game* game );
 
 	int			getType() const;
@@ -43,7 +43,7 @@ private:
 	// the small description of the log entry
 	std::string description;
 
-	// the script value, 
+	// the script value,
 	// tells us if the Log is picked up or not, or is it read or not	
 	int			variableState;
 

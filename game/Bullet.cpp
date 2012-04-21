@@ -142,7 +142,7 @@ namespace game
 			//chainScript[i] = NULL;
 			hitSoundProbability[i] = 100;
 		}
-#if defined(PROJECT_SHADOWGROUNDS) || defined(PROJECT_SURVIVOR) 
+#if defined(PROJECT_SHADOWGROUNDS) || defined(PROJECT_SURVIVOR)
 		// default start skip 1.5 meters
 		startSkipAmount = 1.5f;
 #else
@@ -391,7 +391,7 @@ namespace game
 		BulletObject *ret = new BulletObject();
 		ret->setType(this);
 		return ret;
-	} 
+	}
 	*/
 
 	bool Bullet::setSub(const char *key)
@@ -420,12 +420,12 @@ namespace game
 		if (atSub == PARTTYPE_SUB_HIT)
 		{
 			if (strcmp(key, "damagerange") == 0)
-			{ 			 
+			{ 			
 				damageRange = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "playerdamagerange") == 0)
-			{ 			 
+			{ 			
 				playerDamageRange = str2int(value);
 				return true;
 			}
@@ -495,7 +495,7 @@ namespace game
 				if (b == this) return false; // doh?
 
 				// make sure it's a bullet
-				if (!b->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull")))) 
+				if (!b->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
 					return false;
 
 				// WARNING: unsafe cast (based on check above)
@@ -533,39 +533,39 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "terrainblendmax") == 0)
-			{ 			 
+			{ 			
 				terrainBlendMax = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrainblendamount") == 0)
-			{ 			 
+			{ 			
 				terrainBlendAmount = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrainblendradius") == 0)
-			{ 			 
+			{ 			
 				terrainBlendRadius = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "terrain_object_radius_damage_amount") == 0)
-			{ 			 
+			{ 			
 				terrainObjectRadiusDamageAmount = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrain_object_direct_damage_amount") == 0)
-			{ 			 
+			{ 			
 				terrainObjectDirectDamageAmount = str2int(value);
 				return true;
 			}
 			if (strcmp(key, "terrain_object_damage_probability") == 0)
-			{ 			 
+			{ 			
 				terrainObjectDamageProbability = str2int(value);
 				return true;
 			}
 
 			for (int gor = 0; gor < GORETYPE_AMOUNT; gor++)
 			{
-				char foobuf[128]; 
+				char foobuf[128];
 				assert(strlen(goreTypeName[gor]) < 100);
 				strcpy(foobuf, "goreprobability_");
 				strcat(foobuf, goreTypeName[gor]);
@@ -577,7 +577,7 @@ namespace game
 			}
 
 			if (strcmp(key, "terrainholeedges") == 0)
-			{ 			 
+			{ 			
 				if (str2int(value) == 1)
 					terrainHoleEdges = true;
 				else
@@ -585,17 +585,17 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "terrainholedepth") == 0)
-			{ 			 
+			{ 			
 				terrainHoleDepth = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "terrainholeradius") == 0)
-			{ 			 
+			{ 			
 				terrainHoleRadius = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "terrainholetype") == 0)
-			{ 			 
+			{ 			
 				if (strcmp(value, "circle") == 0)
 				{
 					terrainHoleType = TERRAIN_HOLE_TYPE_CIRCLE;
@@ -736,7 +736,7 @@ namespace game
 //				if (cbullet == this) return false; // doh?
 
 				// make sure it's a bullet
-				if (!cbullet->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull")))) 
+				if (!cbullet->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
 					return false;
 
 				chainBullet[atChain] = (Bullet *)cbullet;
@@ -913,7 +913,7 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "endpadtohit") == 0)
-			{ 			 
+			{ 			
 				if (str2int(value) == 1)
 					endPadToHit = true;
 				else
@@ -921,17 +921,17 @@ namespace game
 				return true;
 			}
 			if (strcmp(key, "startskipamount") == 0)
-			{ 			 
+			{ 			
 				startSkipAmount = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "proximityrange") == 0)
-			{ 			 
+			{ 			
 				proximityRange = (float)atof(value);
 				return true;
 			}
 			if (strcmp(key, "proximitycheckrate") == 0)
-			{ 			 
+			{ 			
 				proximityCheckRate = str2int(value);
 				// requires a 2^n value.
 				if ((proximityCheckRate & (proximityCheckRate-1)) != 0)
@@ -1010,7 +1010,7 @@ namespace game
 				if (cbullet == this) return false;
 
 				// make sure it's a bullet
-				if (!cbullet->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull")))) 
+				if (!cbullet->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
 					return false;
 
 				hitByProjectileBullet = (Bullet *)cbullet;
@@ -1069,7 +1069,7 @@ namespace game
 	{
 		return flyPath;
 	}
- 
+
 	float Bullet::getVelocity()
 	{
 		return velocity;
@@ -1108,7 +1108,7 @@ namespace game
 		part->addDamage((int)((float)finalDamage * factor));
 
 		// pass damage on to sub-parts with doPass values...
-		int slotAmount = part->getType()->getSlotAmount(); 
+		int slotAmount = part->getType()->getSlotAmount();
 		for (i = 0; i < slotAmount; i++)
 		{
 			if (part->getSubPart(i) != NULL)
@@ -1225,7 +1225,7 @@ namespace game
 
 		for (int i = 0; i < HITCHAIN_SOUNDS; i++)
 		{
-			if (chainSound[hitChainType][i] == NULL) 
+			if (chainSound[hitChainType][i] == NULL)
 				return i;
 		}
 		return HITCHAIN_SOUNDS;

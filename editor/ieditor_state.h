@@ -52,7 +52,7 @@ public:
 	virtual void updateIncompleteVisibility(bool force=false) = 0;
 	virtual void updateNoCollisionVisibility(bool force=false) = 0;
 
-	// this "wrapping everything" method does not scale, so just getting direct access to 
+	// this "wrapping everything" method does not scale, so just getting direct access to
 	// this... (although that is absolutely horrible too)
 	virtual LightMode &getLightMode() = 0;
 

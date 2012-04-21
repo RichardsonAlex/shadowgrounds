@@ -63,7 +63,7 @@ namespace ui
 		void setPosition(const VC3 &position);
 		void setRotation(const VC3 &rotation);
 		//void setRotation(const QUAT &rotation);
-		void setParticleEffect(boost::shared_ptr<frozenbyte::particle::IParticleEffect> effect, 
+		void setParticleEffect(boost::shared_ptr<frozenbyte::particle::IParticleEffect> effect,
 			const VC3& velocity, const VC3 &rotation);
 		void setParticleEffectEmitRate(float rate);
 		void setParticleExplosion(const VC3 &position, bool useExplosion);

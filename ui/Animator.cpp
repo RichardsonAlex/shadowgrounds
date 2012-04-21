@@ -21,7 +21,7 @@ namespace ui
 {
 
 char *animfiles[MAX_ANIMATIONS];
-  
+
 IStorm3D_BoneAnimation **Animator::animations = NULL;
 IStorm3D *Animator::storm3d = NULL;
 
@@ -175,11 +175,11 @@ void Animator::setAnimation(IAnimatable *animatable, int transitionNumber, int a
         Logger::getInstance()->error("Animator::setAnimation - Null visual object given.");
       } else {
         // load animation if it has not been loaded yet...
-        if (animations[animNumber] == NULL 
+        if (animations[animNumber] == NULL
           && animfiles[animNumber] != NULL)
         {
-          animations[animNumber] = 
-            storm3d->CreateNewBoneAnimation(animfiles[animNumber]); 
+          animations[animNumber] =
+            storm3d->CreateNewBoneAnimation(animfiles[animNumber]);
 					if (animations[animNumber] == NULL)
 					{
 						Logger::getInstance()->warning("Animator::setAnimation - Failed to create new bone animation.");
@@ -193,15 +193,15 @@ void Animator::setAnimation(IAnimatable *animatable, int transitionNumber, int a
 				{
 					if(transitionNumber < -1 || transitionNumber >= MAX_ANIMATIONS)
 						Logger::getInstance()->error("Animator::setAnimation - Animation number out of bounds.");
-				} 
-				else 
+				}
+				else
 				{
 					// load animation if it has not been loaded yet...
-					if (animations[transitionNumber] == NULL 
+					if (animations[transitionNumber] == NULL
 					&& animfiles[transitionNumber] != NULL)
 					{
-						animations[transitionNumber] = 
-							storm3d->CreateNewBoneAnimation(animfiles[transitionNumber]); 
+						animations[transitionNumber] =
+							storm3d->CreateNewBoneAnimation(animfiles[transitionNumber]);
 						if (animations[transitionNumber] == NULL)
 						{
 							Logger::getInstance()->warning("Animator::setAnimation - Failed to create new bone animation.");
@@ -339,11 +339,11 @@ void Animator::setBlendAnimation(IAnimatable *animatable, int blendNumber, int t
         Logger::getInstance()->error("Animator::setBlendAnimation - Null visual object given.");
       } else {
         // load animation if it has not been loaded yet...
-        if (animations[animNumber] == NULL 
+        if (animations[animNumber] == NULL
           && animfiles[animNumber] != NULL)
         {
-          animations[animNumber] = 
-            storm3d->CreateNewBoneAnimation(animfiles[animNumber]); 
+          animations[animNumber] =
+            storm3d->CreateNewBoneAnimation(animfiles[animNumber]);
         }
 
 
@@ -352,13 +352,13 @@ void Animator::setBlendAnimation(IAnimatable *animatable, int blendNumber, int t
 				{
 					if(transitionNumber < -1 || transitionNumber >= MAX_ANIMATIONS)
 						Logger::getInstance()->error("Animator::setAnimation - Animation number out of bounds.");
-				} 
-				else 
+				}
+				else
 				{
 					// load animation if it has not been loaded yet...
 					if (animations[transitionNumber] == NULL && animfiles[transitionNumber] != NULL)
 					{
-						animations[transitionNumber] = storm3d->CreateNewBoneAnimation(animfiles[transitionNumber]); 
+						animations[transitionNumber] = storm3d->CreateNewBoneAnimation(animfiles[transitionNumber]);
 						if (animations[transitionNumber] == NULL)
 						{
 							Logger::getInstance()->warning("Animator::setAnimation - Failed to create new bone animation.");
@@ -371,7 +371,7 @@ void Animator::setBlendAnimation(IAnimatable *animatable, int blendNumber, int t
 
 
         int blendTime;
-        if (blend) 
+        if (blend)
 				{
           blendTime = blendTime_;
 				} else {
@@ -427,7 +427,7 @@ void Animator::endBlendAnimation(IAnimatable *animatable, int blendNumber, bool 
 				}
 
         int blendTime;
-        if (blend) 
+        if (blend)
           blendTime = 200;
         else
           blendTime = 1;

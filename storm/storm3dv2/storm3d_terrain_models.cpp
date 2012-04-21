@@ -197,7 +197,7 @@ namespace {
 
 		bool operator() (Storm3D_Model_Object *a, Storm3D_Model_Object *b) const
 		{
-			// Just prevent flashing, distance sort crashes on VC6 for some unknown reason 
+			// Just prevent flashing, distance sort crashes on VC6 for some unknown reason
 			// (only in release mode, when optimizations are enabled
 			//  -> STLport/compiler bug?
 
@@ -825,7 +825,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 								}
 
 
-								// this ok? - to get the CAReflection things rendered before alphablended stuff 
+								// this ok? - to get the CAReflection things rendered before alphablended stuff
 								// (as the reflection should really be "behind" water surface/glass stains, etc.)
 								// and also, because of the multipass reflected hack...
 								//hasAlpha = false;
@@ -834,7 +834,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 								// also, additional alpha test passes do the same...
 								if (o->renderPassMask & (1<<RENDER_PASS_BIT_ADDITIONAL_ALPHA_TEST_PASS))
 								{
-									if (additionalAlphaTestPassAllowed 
+									if (additionalAlphaTestPassAllowed
 										|| !o->alphaTestPassConditional)
 									{
 										if (hasAlpha)
@@ -1345,7 +1345,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 		shaderManager->SetTextureOffset(material.getScrollOffset1());
 
 		// Special
-		{ 
+		{
 			bool doubleSided = false;
 			bool wireFrame = false;
 			material.GetSpecial(doubleSided, wireFrame);
@@ -1838,7 +1838,7 @@ Storm3D_TerrainModels::~Storm3D_TerrainModels()
 */
 void Storm3D_TerrainModels::addModel(IStorm3D_Model &model_)
 {
-	Storm3D_Model *model = static_cast<Storm3D_Model *> (&model_); 
+	Storm3D_Model *model = static_cast<Storm3D_Model *> (&model_);
 
 	if(data->models.find(model) == data->models.end())
 	{
@@ -1853,7 +1853,7 @@ void Storm3D_TerrainModels::addModel(IStorm3D_Model &model_)
 */
 void Storm3D_TerrainModels::removeModel(IStorm3D_Model &model_)
 {
-	Storm3D_Model *model = static_cast<Storm3D_Model *> (&model_); 
+	Storm3D_Model *model = static_cast<Storm3D_Model *> (&model_);
 	if(model->observer)
 		model->observer->remove(model);
 

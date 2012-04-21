@@ -114,7 +114,7 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 	none = getLocaleGuiString( "gui_newgame_text_none" );
 
 	ogui = o_gui;
-	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_coopmenu_window_x", 0 ), getLocaleGuiInt( "gui_coopmenu_window_y", 0 ), 
+	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_coopmenu_window_x", 0 ), getLocaleGuiInt( "gui_coopmenu_window_y", 0 ),
 									getLocaleGuiInt( "gui_coopmenu_window_w", 1024 ), getLocaleGuiInt( "gui_coopmenu_window_h", 768 ), NULL );
 	win->Hide();
 	win->SetUnmovable();
@@ -137,7 +137,7 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 		for( i = 0; i < 4; i++ )
 		{
 			std::string name = gameProfiles->getCurrentProfile( i );
-			if( name.empty() ) 
+			if( name.empty() )
 				name = none;
 			
 			if( coopPlayerNames.find( convertToPlayerNum( i ) ) == coopPlayerNames.end() )
@@ -151,8 +151,8 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 
 	///////////////////////////////////////////////////////////////////////////
 	{
-		startGame = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_coopmenu_startgame_x", 0 ), getLocaleGuiInt( "gui_coopmenu_startgame_y", 0 ), 
-														getLocaleGuiInt( "gui_coopmenu_startgame_w", 0 ), getLocaleGuiInt( "gui_coopmenu_startgame_h", 0 ), 
+		startGame = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_coopmenu_startgame_x", 0 ), getLocaleGuiInt( "gui_coopmenu_startgame_y", 0 ),
+														getLocaleGuiInt( "gui_coopmenu_startgame_w", 0 ), getLocaleGuiInt( "gui_coopmenu_startgame_h", 0 ),
 														getLocaleGuiString( "gui_coopmenu_startgame_norm" ), getLocaleGuiString( "gui_coopmenu_startgame_high" ), getLocaleGuiString( "gui_coopmenu_startgame_high" ), NULL, COMMANDS_STARTGAME );
 
 		startGame->SetListener( this );
@@ -166,8 +166,8 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 		startGame->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 	}
 	{
-		loadGame = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_coopmenu_loadgame_x", 0 ), getLocaleGuiInt( "gui_coopmenu_loadgame_y", 0 ), 
-														getLocaleGuiInt( "gui_coopmenu_loadgame_w", 0 ), getLocaleGuiInt( "gui_coopmenu_loadgame_h", 0 ), 
+		loadGame = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_coopmenu_loadgame_x", 0 ), getLocaleGuiInt( "gui_coopmenu_loadgame_y", 0 ),
+														getLocaleGuiInt( "gui_coopmenu_loadgame_w", 0 ), getLocaleGuiInt( "gui_coopmenu_loadgame_h", 0 ),
 														getLocaleGuiString( "gui_coopmenu_loadgame_norm" ), getLocaleGuiString( "gui_coopmenu_loadgame_high" ), getLocaleGuiString( "gui_coopmenu_loadgame_high" ), NULL, COMMANDS_LOADGAME );
 
 		loadGame->SetListener( this );
@@ -181,8 +181,8 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 		loadGame->SetTextHAlign( OguiButton::TEXT_H_ALIGN_LEFT );
 	}
 	{
-		startSurvival = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_coopmenu_startsurvival_x", 0 ), getLocaleGuiInt( "gui_coopmenu_startsurvival_y", 0 ), 
-														getLocaleGuiInt( "gui_coopmenu_startsurvival_w", 0 ), getLocaleGuiInt( "gui_coopmenu_startsurvival_h", 0 ), 
+		startSurvival = ogui->CreateSimpleTextButton( win,	getLocaleGuiInt( "gui_coopmenu_startsurvival_x", 0 ), getLocaleGuiInt( "gui_coopmenu_startsurvival_y", 0 ),
+														getLocaleGuiInt( "gui_coopmenu_startsurvival_w", 0 ), getLocaleGuiInt( "gui_coopmenu_startsurvival_h", 0 ),
 														getLocaleGuiString( "gui_coopmenu_startsurvival_norm" ), getLocaleGuiString( "gui_coopmenu_startsurvival_high" ), getLocaleGuiString( "gui_coopmenu_startsurvival_high" ), NULL, COMMANDS_STARTSURVIVAL );
 
 		startSurvival->SetListener( this );
@@ -198,13 +198,13 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 	///////////////////////////////////////////////////////////////////////////
 
 	assert( game  );
-	assert( game->gameUI ); 
+	assert( game->gameUI );
 	assert( game->gameUI->getController(0) );
 
 	if( game->inCombat )
 	{
 		closeMenuByEsc = false;
-	} 
+	}
 	else
 	{
 		
@@ -226,8 +226,8 @@ CoopMenu::CoopMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Ogui* o_
 		std::string img_fill = getLocaleGuiString( "gui_coopmenu_friendlyfireoption_img_fill" );
 		std::string	text = getLocaleGuiString( "gui_coop_friendlyfire_text" );
 
-		options[i] = new OguiCheckBox( win, ogui, x, y, w, h, 
-																		img_norm.c_str(), "", "", 
+		options[i] = new OguiCheckBox( win, ogui, x, y, w, h,
+																		img_norm.c_str(), "", "",
 																		img_fill.c_str(),	"", "", i );
 
 		options[i]->setText( text.c_str(), OguiCheckBox::TEXT_ALIGN_RIGHT, 300, fonts->medium.highlighted, OguiButton::TEXT_V_ALIGN_TOP  );
@@ -355,7 +355,7 @@ void CoopMenu::applyChanges()
 		for( i = 0; i < 4; i++ )
 		{
 			std::string profile = coopPlayerNames[ convertToPlayerNum( i ) ];
-			if( profile == none ) 
+			if( profile == none )
 				profile = "";
 
 			gameProfiles->setCurrentProfile( profile.c_str(), i );
@@ -508,7 +508,7 @@ bool CoopMenu::enableCoopGameSettings(Game *game, bool test_only)
 		for( i = 0; i < 4; i++ )
 		{
 			std::string profile = coopPlayerNames[ convertToPlayerNum( i ) ];
-			if( profile == none ) 
+			if( profile == none )
 				profile = "";
 
 			game->getGameProfiles()->setCurrentProfile( profile.c_str(), i );

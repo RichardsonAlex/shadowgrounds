@@ -29,7 +29,7 @@
 #define GAME_UNIT_ACT_CHECK_COUNTER_INTERVAL 20
 
 
-namespace frozenbyte 
+namespace frozenbyte
 {
   namespace ai
   {
@@ -47,7 +47,7 @@ namespace util
 namespace ui
 {
 	class Map;
-} 
+}
 
 namespace game
 {
@@ -136,26 +136,26 @@ namespace game
 		bool save(const char *filename);
 		bool load(const char *filename);
 
-    
-    // advance one game tick 
+
+    // advance one game tick
     void run();
 
     // or...?
-    // (msec time elapsed is taken as param, but should not 
+    // (msec time elapsed is taken as param, but should not
     // affect the gameplay - ui may be affected by it though)
     //void run(int deltaTime);
 
-    // game request handling 
+    // game request handling
     void sendRequest(GameRequest *request);
     void receiveRequest(GameRequest *request);
     void sendOrder(GameRequest *request);
     void receiveOrder(GameRequest *request);
 
     // returns true if this is the server (master)
-    bool isServer(); 
+    bool isServer();
 
     // returns true if this is a multiplayer game
-    bool isMultiplayer(); 
+    bool isMultiplayer();
 
     // exit menus and start the actual combat
     void startCombat();
@@ -304,7 +304,7 @@ namespace game
     // money and stuff for each player
     //ResourceList *resources;
     int money[ABS_MAX_PLAYERS];
-    
+
     // spawns
     int spawnX[ABS_MAX_PLAYERS];
     int spawnY[ABS_MAX_PLAYERS];
@@ -387,12 +387,12 @@ namespace game
 
     util::ScriptProcess *cinematicScriptProcess;
 		bool skippingCinematic;
-    
+
     bool endingCombat;
 		bool shouldResetAimUpwardMode;
 
     bool paused;
-    
+
     bool tacticalMode;
 
 		DifficultyManager *difficultyManager;
@@ -413,7 +413,7 @@ namespace game
     bool inCombat;
 
     int gameTimer;
-    int syncToTimer; 
+    int syncToTimer;
     int syncInterval; // defines sync send interval (causes artificial lag)
 
     // current map filename read from mission data

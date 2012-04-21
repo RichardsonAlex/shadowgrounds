@@ -26,7 +26,7 @@ namespace util
 			/**
 			 * Attempts to deform the given path (modify a bit) to
 			 * make the path avoid light.
-			 * 
+			 *
 			 */
 			static bool deformForDarkness(
 				frozenbyte::ai::PathFind *pathfinder, frozenbyte::ai::Path *path,

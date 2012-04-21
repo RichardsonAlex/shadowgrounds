@@ -41,7 +41,7 @@
 // autocomplete button
 #define ACW_AUTOCOMPLETE 10
 
-// empty part slot (ids start from this, 
+// empty part slot (ids start from this,
 // the id is 100 + slot number)
 #define ACW_SLOT_START 100
 #define ACW_SLOT_END 199
@@ -53,7 +53,7 @@
 #define ACW_PAGE_ARMOR 1
 #define ACW_PAGE_CHAR 2
 
-// how many units are visible in the construction window 
+// how many units are visible in the construction window
 #define UNITS_PER_ACW 6
 
 // where to draw the armor slots in the window
@@ -70,7 +70,7 @@ using namespace game;
 
 namespace ui
 {
-  ArmorConstructWindow::ArmorConstructWindow(Ogui *ogui, Game *game, 
+  ArmorConstructWindow::ArmorConstructWindow(Ogui *ogui, Game *game,
     int player)
   {
     this->player = player;
@@ -90,22 +90,22 @@ namespace ui
     //closeBut->SetStyle(defaultCloseButton);
     //closeBut->SetListener(this);
 
-    closeBut = ogui->CreateSimpleTextButton(win, 922, 722, 96, 27, 
-      "Data/GUI/Buttons/armorexit.tga", "Data/GUI/Buttons/armorexit_down.tga", 
+    closeBut = ogui->CreateSimpleTextButton(win, 922, 722, 96, 27,
+      "Data/GUI/Buttons/armorexit.tga", "Data/GUI/Buttons/armorexit_down.tga",
       "Data/GUI/Buttons/armorexit_highlight.tga", "");
     closeBut->SetListener(this);
 
     // empty armor slots
     slot1Image = ogui->LoadOguiImage("Data/Pictures/Parts/slot1.tga");
-    slot1Style = new OguiButtonStyle(slot1Image, slot1Image, slot1Image, slot1Image, NULL, 
+    slot1Style = new OguiButtonStyle(slot1Image, slot1Image, slot1Image, slot1Image, NULL,
       176, 156);
 
     slot2Image = ogui->LoadOguiImage("Data/Pictures/Parts/slot2.tga");
-    slot2Style = new OguiButtonStyle(slot2Image, slot2Image, slot2Image, slot2Image, NULL, 
+    slot2Style = new OguiButtonStyle(slot2Image, slot2Image, slot2Image, slot2Image, NULL,
       75, 156);
 
     slot3Image = ogui->LoadOguiImage("Data/Pictures/Parts/slot3.tga");
-    slot3Style = new OguiButtonStyle(slot3Image, slot3Image, slot3Image, slot3Image, NULL, 
+    slot3Style = new OguiButtonStyle(slot3Image, slot3Image, slot3Image, slot3Image, NULL,
       75, 92);
 
     moneyValText = NULL;
@@ -124,14 +124,14 @@ namespace ui
     //purchaseButtonDownImage = NULL;
     //purchaseButtonHighlightedImage = NULL;
     //purchaseButtonDisabledImage = NULL;
-    purchaseButtonStyle = new OguiButtonStyle(purchaseButtonImage, 
-      purchaseButtonDownImage, purchaseButtonDisabledImage, purchaseButtonHighlightedImage, 
+    purchaseButtonStyle = new OguiButtonStyle(purchaseButtonImage,
+      purchaseButtonDownImage, purchaseButtonDisabledImage, purchaseButtonHighlightedImage,
       defaultFont, 170, 20);
 
     // armor/character page selection buttons
     armorPageActiveImage = ogui->LoadOguiImage("Data/GUI/Buttons/armorpage_active.tga");
-    armorPageStyle = new OguiButtonStyle(NULL, armorPageActiveImage, 
-      armorPageActiveImage, NULL, NULL, 
+    armorPageStyle = new OguiButtonStyle(NULL, armorPageActiveImage,
+      armorPageActiveImage, NULL, NULL,
       69, 20);
     armorPageButton = ogui->CreateSimpleImageButton(win, 80, 248, 69, 20, NULL, NULL, NULL, ACW_SEL_ARMORPAGE);
     armorPageButton->SetStyle(armorPageStyle);
@@ -139,8 +139,8 @@ namespace ui
     armorPageButton->SetDisabled(true);
 
     charPageActiveImage = ogui->LoadOguiImage("Data/GUI/Buttons/charpage_active.tga");
-    charPageStyle = new OguiButtonStyle(NULL, 
-      charPageActiveImage, charPageActiveImage, NULL, NULL, 
+    charPageStyle = new OguiButtonStyle(NULL,
+      charPageActiveImage, charPageActiveImage, NULL, NULL,
       69, 20);
     charPageButton = ogui->CreateSimpleImageButton(win, 80, 248, 69, 20, NULL, NULL, NULL, ACW_SEL_CHARPAGE);
     charPageButton->SetStyle(charPageStyle);
@@ -155,7 +155,7 @@ namespace ui
     unitSelectActiveStyle = new OguiButtonStyle(unitSelectActiveImage, unitSelectActiveImage, unitSelectDisabledImage, unitSelectActiveImage,
       defaultThinWhiteFont, 94, 29);
     //unitSelectFont = ogui->LoadFont("Data/GUI/Fonts/armor_construct1.ogf");
-    //unitSelectStyle = new OguiButtonStyle(unitSelectImage, unitSelectImage, unitSelectImage, 
+    //unitSelectStyle = new OguiButtonStyle(unitSelectImage, unitSelectImage, unitSelectImage,
     //  unitSelectFont, 120, 80);
 
     // title
@@ -403,7 +403,7 @@ namespace ui
         Part *p = NULL;  // part
         Part *pp = NULL; // parent part
         int slotNum = 0;
-        PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Tors")); 
+        PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Tors"));
         // ...should make a check based on p/pt to be sure this is torso slot
 
         // solve proper part type for the slot...
@@ -412,7 +412,7 @@ namespace ui
         {
           p = (Part *)eve->extraArgument;
           pp = p->getParent();
-          if (pp != NULL) 
+          if (pp != NULL)
           {
             pt = NULL;
             int amount = pp->getType()->getSlotAmount();
@@ -456,7 +456,7 @@ namespace ui
           selectWindow->setParentUnit(unit);
 
           selectWindow->show();
-        } 
+        }
         // repair mode
         if (cursorMode == ACW_CURSOR_MODE_REPAIR)
         {
@@ -478,10 +478,10 @@ namespace ui
               reloadPrice = wo->getReloadPrice();
             }
           }
-          
+
           if (p != NULL)
           {
-            if (game->money[player] >= 
+            if (game->money[player] >=
               p->getRepairPrice() + reloadPrice)
             {
               // repair
@@ -570,7 +570,7 @@ namespace ui
       {
         if (unit->getRootPart() != NULL)
         {
-          if (game->money[player] > 
+          if (game->money[player] >
             game->calculateRepairPrice(unit->getRootPart())
             + game->calculateReloadPrice(unit->getRootPart()))
           {
@@ -592,7 +592,7 @@ namespace ui
       {
         if (unit->getRootPart() != NULL)
         {
-          if (game->money[player] > 
+          if (game->money[player] >
             game->calculatePurchasePrice(unit->getRootPart()))
           {
             game->purchaseParts(unit->getRootPart());
@@ -608,7 +608,7 @@ namespace ui
     }
     if (eve->triggerButton->GetId() == ACW_PURCHASE)
     {
-      if (cursorMode == ACW_CURSOR_MODE_PURCHASE) 
+      if (cursorMode == ACW_CURSOR_MODE_PURCHASE)
       {
         // TODO: if split screen, solve player cursor number first
 #ifdef PROJECT_SHADOWGROUNDS
@@ -625,7 +625,7 @@ namespace ui
     }
     if (eve->triggerButton->GetId() == ACW_REPAIR)
     {
-      if (cursorMode == ACW_CURSOR_MODE_REPAIR) 
+      if (cursorMode == ACW_CURSOR_MODE_REPAIR)
       {
         // TODO: if split screen, solve player cursor number first
 #ifdef PROJECT_SHADOWGROUNDS
@@ -672,7 +672,7 @@ namespace ui
   {
     this->unit = unit;
     //refresh();
-    // can't refresh here, might invalidate the eve->triggerButtor in 
+    // can't refresh here, might invalidate the eve->triggerButtor in
     // the cursorevent handler
   }
 
@@ -695,19 +695,19 @@ namespace ui
       b3->SetDisabled(true);
       buttons->append(b3);
     } else {
-      if (pp->getType()->getSlotType(slotNumber) == 
+      if (pp->getType()->getSlotType(slotNumber) ==
         getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm"))
-        || pp->getType()->getSlotType(slotNumber) == 
+        || pp->getType()->getSlotType(slotNumber) ==
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg"))
-        || pp->getType()->getSlotType(slotNumber) == 
+        || pp->getType()->getSlotType(slotNumber) ==
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap")))
       {
-        b = ogui->CreateSimpleImageButton(win, x-38, y-78, 75, 156, 
+        b = ogui->CreateSimpleImageButton(win, x-38, y-78, 75, 156,
           NULL, NULL, NULL, ACW_SLOT_START + slotNumber, pp);
         b->SetStyle(slot2Style);
-        slotSize = 2; 
+        slotSize = 2;
 
-        if (pp->getType()->getSlotType(slotNumber) == 
+        if (pp->getType()->getSlotType(slotNumber) ==
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg"))
           && pp->getType()->getSlotPosition(slotNumber) == SLOT_POSITION_LEFT_LEG)
         {
@@ -718,7 +718,7 @@ namespace ui
           b3->SetDisabled(true);
           buttons->append(b3);
         }
-        if (pp->getType()->getSlotType(slotNumber) == 
+        if (pp->getType()->getSlotType(slotNumber) ==
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Leg"))
           && pp->getType()->getSlotPosition(slotNumber) == SLOT_POSITION_RIGHT_LEG)
         {
@@ -729,7 +729,7 @@ namespace ui
           b3->SetDisabled(true);
           buttons->append(b3);
         }
-        if (pp->getType()->getSlotType(slotNumber) == 
+        if (pp->getType()->getSlotType(slotNumber) ==
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm"))
           && pp->getType()->getSlotPosition(slotNumber) == SLOT_POSITION_LEFT_ARM)
         {
@@ -740,7 +740,7 @@ namespace ui
           b3->SetDisabled(true);
           buttons->append(b3);
         }
-        if (pp->getType()->getSlotType(slotNumber) == 
+        if (pp->getType()->getSlotType(slotNumber) ==
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Arm"))
           && pp->getType()->getSlotPosition(slotNumber) == SLOT_POSITION_RIGHT_ARM)
         {
@@ -752,12 +752,12 @@ namespace ui
           buttons->append(b3);
         }
       } else {
-        b = ogui->CreateSimpleImageButton(win, x-38, y-46, 75, 92, 
+        b = ogui->CreateSimpleImageButton(win, x-38, y-46, 75, 92,
           NULL, NULL, NULL, ACW_SLOT_START + slotNumber, pp);
         b->SetStyle(slot3Style);
-        slotSize = 3; 
+        slotSize = 3;
 
-        if (pp->getType()->getSlotType(slotNumber) == 
+        if (pp->getType()->getSlotType(slotNumber) ==
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Head"))
           && pp->getType()->getSlotPosition(slotNumber) == SLOT_POSITION_HEAD)
         {
@@ -818,15 +818,15 @@ namespace ui
       OguiButton *b2;
       if (slotSize == 1)
       {
-        b2 = ogui->CreateSimpleTextButton(win, x-80, y-80, 
+        b2 = ogui->CreateSimpleTextButton(win, x-80, y-80,
           160, 160, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, p);
       } else {
         if (slotSize == 2)
         {
-          b2 = ogui->CreateSimpleTextButton(win, x-40, y-80, 
+          b2 = ogui->CreateSimpleTextButton(win, x-40, y-80,
             80, 160, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, p);
         } else {
-          b2 = ogui->CreateSimpleTextButton(win, x-40, y-40-10, 
+          b2 = ogui->CreateSimpleTextButton(win, x-40, y-40-10,
             80, 100, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, p);
         }
       }
@@ -836,7 +836,7 @@ namespace ui
         vis = p->getType()->getMirrorVisual2D();
       else
         vis = p->getType()->getVisual2D();
-      if (vis != NULL) 
+      if (vis != NULL)
       {
         b2->SetImage(vis->getImage());
         b2->SetDownImage(vis->getImage());
@@ -939,10 +939,10 @@ namespace ui
             return;
           }
         }
-        addPartButton(p->getSubPart(i), p, i, 
+        addPartButton(p->getSubPart(i), p, i,
           newx, newy);
       }
-    } 
+    }
   }
 
   void ArmorConstructWindow::refresh()
@@ -1019,7 +1019,7 @@ namespace ui
         strcpy(cnamebuf, cname);
         for (int i = strlen(cname) - 1; i >= 0; i--)
         {
-          if (cnamebuf[i] == ' ') 
+          if (cnamebuf[i] == ' ')
           {
             cnamebuf[i] = '\n';
             break;
@@ -1031,7 +1031,7 @@ namespace ui
         cname = "(NONE)";
       }
 
-      OguiButton *b = ogui->CreateSimpleTextButton(win, 62 + count * 100, 142, 
+      OguiButton *b = ogui->CreateSimpleTextButton(win, 62 + count * 100, 142,
         94, 29, NULL, NULL, NULL, cname, ACW_UNIT, u);
       if (u == unit)
         b->SetStyle(unitSelectActiveStyle);
@@ -1051,7 +1051,7 @@ namespace ui
     // pad with empty unit selection buttons
     for (; count < UNITS_PER_ACW; count++)
     {
-      OguiButton *b = ogui->CreateSimpleTextButton(win, 62 + count * 100, 142, 
+      OguiButton *b = ogui->CreateSimpleTextButton(win, 62 + count * 100, 142,
         94, 29, NULL, NULL, NULL, "(EMPTY)", ACW_UNIT, NULL);
       b->SetStyle(unitSelectStyle);
       b->SetListener(this);
@@ -1071,28 +1071,28 @@ namespace ui
         purchaseval = game->calculatePurchasePrice(unit->getRootPart());
         reloadval = game->calculateReloadPrice(unit->getRootPart());
       }
-      moneyText = ogui->CreateTextLabel(win, 850, 220, 170, 20, 
+      moneyText = ogui->CreateTextLabel(win, 850, 220, 170, 20,
         "Money:");
       moneyText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
-      moneyValText = ogui->CreateTextLabel(win, 850, 240, 170, 20, 
+      moneyValText = ogui->CreateTextLabel(win, 850, 240, 170, 20,
         int2str(game->money[player]));
       //moneyValText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_RIGHT);
       moneyValText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       moneyValText->SetFont(defaultSmallRedFont);
 
-      repairText = ogui->CreateTextLabel(win, 850, 260, 170, 20, 
+      repairText = ogui->CreateTextLabel(win, 850, 260, 170, 20,
         "Total repairs:");
       repairText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
-      repairValText = ogui->CreateTextLabel(win, 850, 280, 170, 20, 
+      repairValText = ogui->CreateTextLabel(win, 850, 280, 170, 20,
         int2str(repairval + reloadval));
       //repairValText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_RIGHT);
       repairValText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       repairValText->SetFont(defaultSmallRedFont);
 
-      purchaseText = ogui->CreateTextLabel(win, 850, 300, 170, 20, 
+      purchaseText = ogui->CreateTextLabel(win, 850, 300, 170, 20,
         "Purchases:");
       purchaseText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
-      purchaseValText = ogui->CreateTextLabel(win, 850, 320, 170, 20, 
+      purchaseValText = ogui->CreateTextLabel(win, 850, 320, 170, 20,
         int2str(purchaseval));
       //purchaseValText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_RIGHT);
       purchaseValText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -1100,23 +1100,23 @@ namespace ui
 
       bool hasPurchases = true;
       bool hasRepairs = true;
-      if (unit == NULL || unit->getRootPart() == NULL 
+      if (unit == NULL || unit->getRootPart() == NULL
         || game->calculatePurchasePrice(unit->getRootPart()) == 0)
       {
         hasPurchases = false;
-        if (cursorMode == ACW_CURSOR_MODE_PURCHASE) 
+        if (cursorMode == ACW_CURSOR_MODE_PURCHASE)
         {
           // TODO: if split screen, solve player cursor number first
           ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
           cursorMode = ACW_CURSOR_MODE_NORMAL;
         }
       }
-      if (unit == NULL || unit->getRootPart() == NULL 
+      if (unit == NULL || unit->getRootPart() == NULL
         || (game->calculateRepairPrice(unit->getRootPart()) == 0
         && game->calculateReloadPrice(unit->getRootPart()) == 0))
       {
-        hasRepairs = false; 
-        if (cursorMode == ACW_CURSOR_MODE_REPAIR) 
+        hasRepairs = false;
+        if (cursorMode == ACW_CURSOR_MODE_REPAIR)
         {
           // TODO: if split screen, solve player cursor number first
           ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
@@ -1125,7 +1125,7 @@ namespace ui
       }
 
       // add purchase, repair and autocomplete buttons
-      OguiButton *b = ogui->CreateSimpleTextButton(win, 850, 408, 
+      OguiButton *b = ogui->CreateSimpleTextButton(win, 850, 408,
         170, 20, NULL, NULL, NULL, "PURCHASE", ACW_PURCHASE, NULL);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -1137,7 +1137,7 @@ namespace ui
       }
       buttons->append(b);
 
-      b = ogui->CreateSimpleTextButton(win, 850, 433, 
+      b = ogui->CreateSimpleTextButton(win, 850, 433,
         170, 20, NULL, NULL, NULL, "PURCHASE ALL", ACW_PURCHASE_ALL, NULL);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -1149,7 +1149,7 @@ namespace ui
       }
       buttons->append(b);
 
-      b = ogui->CreateSimpleTextButton(win, 850, 458, 
+      b = ogui->CreateSimpleTextButton(win, 850, 458,
         170, 20, NULL, NULL, NULL, "REPAIR", ACW_REPAIR, NULL);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -1161,7 +1161,7 @@ namespace ui
       }
       buttons->append(b);
 
-      b = ogui->CreateSimpleTextButton(win, 850, 483, 
+      b = ogui->CreateSimpleTextButton(win, 850, 483,
         170, 20, NULL, NULL, NULL, "REPAIR ALL", ACW_REPAIR_ALL, NULL);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -1173,7 +1173,7 @@ namespace ui
       }
       buttons->append(b);
 
-      b = ogui->CreateSimpleTextButton(win, 850, 508, 
+      b = ogui->CreateSimpleTextButton(win, 850, 508,
         170, 20, NULL, NULL, NULL, "AUTOCOMPLETE", ACW_AUTOCOMPLETE, NULL);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -1181,7 +1181,7 @@ namespace ui
 
       b->SetFont(defaultDisabledFont);
       b->SetDisabled(true);
-      
+
       buttons->append(b);
 
       // start part recursion from torso
@@ -1208,14 +1208,14 @@ namespace ui
         charname = "No mercenary for this armor";
         charbio = "";
       }
-      charNameLabel = ogui->CreateTextLabel(win, 80, 220, 
+      charNameLabel = ogui->CreateTextLabel(win, 80, 220,
         160, 16, charname);
       charNameLabel->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       if (page == ACW_PAGE_CHAR)
       {
-        charBioArea = ogui->CreateTextArea(win, 300, 300, 
+        charBioArea = ogui->CreateTextArea(win, 300, 300,
           450, 200, charbio);
-        charBioImageButton = ogui->CreateSimpleImageButton(win, 80, 300, 
+        charBioImageButton = ogui->CreateSimpleImageButton(win, 80, 300,
           160, 160, NULL, NULL, NULL, NULL, 0, NULL);
         charBioImageButton->SetDisabled(true);
         if (c != NULL)
@@ -1240,8 +1240,8 @@ namespace ui
     {
       if (partType->getDescription() != NULL)
       {
-        descriptionArea = 
-          ogui->CreateTextArea(win, 74+105, 657, 700, 100, 
+        descriptionArea =
+          ogui->CreateTextArea(win, 74+105, 657, 700, 100,
           partType->getDescription());
         descriptionArea->SetFont(defaultRedInfoFont);
       }
@@ -1277,12 +1277,12 @@ namespace ui
   }
 
   bool ArmorConstructWindow::isPartSelectionVisible()
-  { 
+  {
     return selectWindow->isVisible();
   }
 
   void ArmorConstructWindow::cancelPartSelection()
-  { 
+  {
     if (selectWindow->isVisible())
       selectWindow->hide();
   }

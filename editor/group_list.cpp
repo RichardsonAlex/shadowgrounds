@@ -197,7 +197,7 @@ struct GroupList::Data
 
 	const string &get(int groupIndex, int subgroupIndex) const
 	{
-		if(groupIndex < 0 || subgroupIndex < 0 || 
+		if(groupIndex < 0 || subgroupIndex < 0 ||
 			groupIndex >= int(groups.size()) || subgroupIndex >= int(groups[groupIndex].subgroups.size()))
 		{
 			assert(!"Whoops");

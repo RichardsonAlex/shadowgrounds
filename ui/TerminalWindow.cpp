@@ -179,7 +179,7 @@ void TerminalWindow::CursorEvent( OguiButtonEvent* eve )
 	if( eve->triggerButton == next )
 	{
 		nextPage();
-	} 
+	}
 	else if ( eve->triggerButton == prev )
 	{
 		prevPage();
@@ -215,7 +215,7 @@ void TerminalWindow::setText( const std::string& txt )
 
 void TerminalWindow::setPage( int page )
 {
-	if( pageNum == page ) 
+	if( pageNum == page )
 		return;
 
 	if( page < 0 )
@@ -254,7 +254,7 @@ void TerminalWindow::setPage( int page )
 	}
 
 	std::stringstream ss;
-	ss << ( pageNum + 1 ) << " / " << pageMax; 
+	ss << ( pageNum + 1 ) << " / " << pageMax;
 	pageNumButton->SetText( ss.str().c_str() );
 }
 
@@ -304,7 +304,7 @@ OguiButton* TerminalWindow::loadButton( const std::string& name, int id )
 	int y = getLocaleGuiInt( ( name + "_y" ).c_str(), 0 );
 	int w = getLocaleGuiInt( ( name + "_w" ).c_str(), 0 );
 	int h = getLocaleGuiInt( ( name + "_h" ).c_str(), 0 );
- 
+
 	std::string norm = getLocaleGuiString( ( name + "_norm" ).c_str() );
 	std::string disp = getLocaleGuiString( ( name + "_disp" ).c_str() );
 	std::string high = getLocaleGuiString( ( name + "_high" ).c_str() );
@@ -324,7 +324,7 @@ OguiTextLabel* TerminalWindow::loadText( const std::string& name )
 	int y = getLocaleGuiInt( ( name + "_text_y" ).c_str(), 0 );
 	int w = getLocaleGuiInt( ( name + "_text_w" ).c_str(), 0 );
 	int h = getLocaleGuiInt( ( name + "_text_h" ).c_str(), 0 );
- 
+
 	std::string text = getLocaleGuiString( ( name + "_text" ).c_str() );
 	std::string fontname = getLocaleGuiString( ( name + "_text_font" ).c_str() );
 

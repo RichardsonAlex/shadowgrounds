@@ -4,7 +4,7 @@
 
 //
 // Definitions for cursor states (images)
-// 
+//
 
 #include "../ogui/Ogui.h"
 

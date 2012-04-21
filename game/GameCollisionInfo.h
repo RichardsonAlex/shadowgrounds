@@ -13,16 +13,16 @@ namespace game
   class GameCollisionInfo
   {
   public:
-    GameCollisionInfo() 
-    { 
-      hit = false; 
-      hitUnit = false; 
-      hitGround = false; 
-      hitBuilding = false; 
-      hitTerrainObject = false; 
-      position = VC3(0,0,0); 
-      hitPlaneNormal = VC3(0,0,0); 
-      unit = NULL; 
+    GameCollisionInfo()
+    {
+      hit = false;
+      hitUnit = false;
+      hitGround = false;
+      hitBuilding = false;
+      hitTerrainObject = false;
+      position = VC3(0,0,0);
+      hitPlaneNormal = VC3(0,0,0);
+      unit = NULL;
       part = NULL;
       range = 0;
 			terrainInstanceId = -1;

@@ -50,8 +50,8 @@ game::Unit *hackhack_trackerunit = NULL;
 
 
 // WARNING: unsafe tracker scripting feature...
-// if this is defined, then the tracker script commands will not have proper 
-// error checking, causing possible crashes if tracker scripting errors 
+// if this is defined, then the tracker script commands will not have proper
+// error checking, causing possible crashes if tracker scripting errors
 // occur. (this should however give a small performance increase thanks to being unsafe)
 #define UNSAFE_TRACKER_SCRIPTING
 
@@ -68,7 +68,7 @@ namespace game
 	UnifiedHandle gs_currentlyIteratedTrackableUnifiedHandle = UNIFIED_HANDLE_NONE;
 
 
-	void TrackingScripting::process(util::ScriptProcess *sp, 
+	void TrackingScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{
@@ -557,8 +557,8 @@ namespace game
 					if (PARTTYPE_ID_STRING_VALID(s))
 					{
 						PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(s));
-						if (pt != NULL) 
-						{ 
+						if (pt != NULL)
+						{
 							PartType *bulletpt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"));
 
 							if (bulletpt != NULL && pt->isInherited(bulletpt))
@@ -799,7 +799,7 @@ namespace game
 						{
 							TrackerTypeNumber trackerTypeNumber = *lastValue;
 							UnifiedHandle attachedTracker = tuho->getTrackedByForType(trackerTypeNumber);
-							if (attachedTracker != UNIFIED_HANDLE_NONE) 
+							if (attachedTracker != UNIFIED_HANDLE_NONE)
 								*lastValue = 1;
 							else
 								*lastValue = 0;
@@ -839,7 +839,7 @@ namespace game
 								TRACKABLE_TYPEID_DATATYPE trackableTypeMask = intData;
 
 								UnifiedHandle attachedTracker = tuho->getTrackedByForTrackableTypes(trackableTypeMask);
-								if (attachedTracker != UNIFIED_HANDLE_NONE) 
+								if (attachedTracker != UNIFIED_HANDLE_NONE)
 									*lastValue = 1;
 								else
 									*lastValue = 0;
@@ -931,7 +931,7 @@ namespace game
 								{
 									TrackerTypeNumber trackerTypeNumber = game->objectTracker->getTrackerTypeNumberByName(s);
 									UnifiedHandle attachedTracker = tuho->getTrackedByForType(trackerTypeNumber);
-									if (attachedTracker != UNIFIED_HANDLE_NONE) 
+									if (attachedTracker != UNIFIED_HANDLE_NONE)
 										*lastValue = 1;
 									else
 										*lastValue = 0;

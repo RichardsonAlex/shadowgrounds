@@ -14,7 +14,7 @@ struct TrackableTypes
 TrackableTypes trackableTypes[TRACKABLE_TYPEID_MAX_TYPES] = {
 
 { "burnable", TRACKABLE_TYPE_BURNABLE },
-{ "leakable", TRACKABLE_TYPE_LEAKABLE }, 
+{ "leakable", TRACKABLE_TYPE_LEAKABLE },
 { "target_for_hostile_ai", TRACKABLE_TYPE_TARGET_FOR_HOSTILE_AI },
 { "target_for_friendly_ai", TRACKABLE_TYPE_TARGET_FOR_FRIENDLY_AI },
 { "net_self", TRACKABLE_TYPE_NET_SELF },

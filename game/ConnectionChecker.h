@@ -9,7 +9,7 @@ namespace game
 	/**
 	 * A simple connection checker utility to check whether some coordinate
 	 * is connected to given center coordinate of the area.
-	 * (Connected means that there is a path between the two points 
+	 * (Connected means that there is a path between the two points
 	 * within the given sized area)
 	 * Basically, this can be used to get rough estimate of whether some
 	 * two points are in the same room, or at the same side of some wall.

@@ -337,7 +337,7 @@ namespace game
 #endif
 		logManager = new LogManager();
 
-		
+
 #ifdef PROJECT_SURVIVOR
 		useScoreWindow = true;
 #else
@@ -359,10 +359,10 @@ namespace game
 			for (int c = 0; c < MAX_PLAYERS_PER_CLIENT; c++)
 			{
 				gameController[c] = new GameController(ogui);
-				
+
 				bool load_options = false;
 
-				if( c == 0 ) 
+				if( c == 0 )
 					load_options = SimpleOptions::getBool( DH_OPT_B_1ST_PLAYER_ENABLED );
 				else if ( c == 1 )
 					load_options = SimpleOptions::getBool( DH_OPT_B_2ND_PLAYER_ENABLED );
@@ -370,7 +370,7 @@ namespace game
 					load_options = SimpleOptions::getBool( DH_OPT_B_3RD_PLAYER_ENABLED );
 				else if ( c == 3 )
 					load_options = SimpleOptions::getBool( DH_OPT_B_4TH_PLAYER_ENABLED );
-				
+
 
 				/*
 				if (c == 0)
@@ -619,12 +619,12 @@ namespace game
 		delete game->getEnvironmentalEffectManager();
 		game->setEnvironmentalEffectManager(NULL);
 
-		visualEffectManager->freeParticleEffects(); 
+		visualEffectManager->freeParticleEffects();
 		visualEffectManager->freeDecalEffects();
 		delete visualEffectManager;
 
 		delete ambientSoundManager;
-		
+
 		delete soundLooper;
 
 		delete musicPlaylist;
@@ -894,7 +894,7 @@ namespace game
 			int cnum = 0;
 			if (game::SimpleOptions::getBool(DH_OPT_B_1ST_PLAYER_HAS_CURSOR))
 			{
-				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);	
+				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);
 			} else {
 				// EXTRA HACK! :)
 				if (!game::SimpleOptions::getBool(DH_OPT_B_2ND_PLAYER_ENABLED)
@@ -909,7 +909,7 @@ namespace game
 						ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_JOYSTICK2);
 				}
 			}
-			
+
 		}
 
 		if (game::SimpleOptions::getBool(DH_OPT_B_2ND_PLAYER_ENABLED))
@@ -917,7 +917,7 @@ namespace game
 			int cnum = 1;
 			if (game::SimpleOptions::getBool(DH_OPT_B_2ND_PLAYER_HAS_CURSOR))
 			{
-				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);	
+				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);
 			} else {
 				int joy = game::SimpleOptions::getInt(DH_OPT_I_2ND_PLAYER_CONTROL_SCHEME) / 3;
 				if (joy == 0)
@@ -934,7 +934,7 @@ namespace game
 			int cnum = 2;
 			if (game::SimpleOptions::getBool(DH_OPT_B_3RD_PLAYER_HAS_CURSOR))
 			{
-				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);	
+				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);
 			} else {
 				int joy = game::SimpleOptions::getInt(DH_OPT_I_3RD_PLAYER_CONTROL_SCHEME) / 3;
 				if (joy == 0)
@@ -951,7 +951,7 @@ namespace game
 			int cnum = 3;
 			if (game::SimpleOptions::getBool(DH_OPT_B_4TH_PLAYER_HAS_CURSOR))
 			{
-				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);	
+				ogui->SetCursorController(cnum, OGUI_CURSOR_CTRL_MOUSE);
 			} else {
 				int joy = game::SimpleOptions::getInt(DH_OPT_I_4TH_PLAYER_CONTROL_SCHEME) / 3;
 				if (joy == 0)
@@ -1090,7 +1090,7 @@ namespace game
 			u->setPointerVisualEffect(NULL);
 			u->setPointerHitVisualEffect(NULL);
 		}
-		// and the other way dependencies too... 
+		// and the other way dependencies too...
 		visualEffectManager->detachVisualEffectsFromUnits();
 
 	}
@@ -1145,7 +1145,7 @@ namespace game
 		cameras[GAMEUI_CAMERA_CINEMATIC2]->setZoom(4);
 		cameras[GAMEUI_CAMERA_CINEMATIC2]->setFollowingUnit(false);
 		gameCamera = cameras[GAMEUI_CAMERA_NORMAL];
-	
+
 		if (thirdPersonView)
 			cameras[GAMEUI_CAMERA_NORMAL]->setThirdPersonView(true);
 
@@ -1178,7 +1178,7 @@ namespace game
 	{
 		if (armorConstructWindows[player] == NULL)
 		{
-			armorConstructWindows[player] = 
+			armorConstructWindows[player] =
 				new ArmorConstructWindow(ogui, game, player);
 			armorConstructWindows[player]->show();
 		} else {
@@ -1230,7 +1230,7 @@ namespace game
 		// then open command window...
 		if (commandWindows[player] == NULL)
 		{
-			commandWindows[player] = 
+			commandWindows[player] =
 				new MenuCollection(ogui, game, player, false);
 
 			commandWindows[player]->show();
@@ -1254,10 +1254,10 @@ namespace game
 		} else {
 			delete commandWindows[player];
 			commandWindows[player] = NULL;
-			
+
 			if( renderTerrain )
 				this->renderTerrain->GetTerrain()->getRenderer().enableFeature(IStorm3D_TerrainRenderer::RenderTargets, true );
-			
+
 		}
 	}
 
@@ -1278,19 +1278,19 @@ namespace game
 			game->setPaused( true );
 			ambientAreaManager->fadeOut(500);
 
-			commandWindows[player] = 
+			commandWindows[player] =
 				new MenuCollection( ogui, game, player, true, menu );
 
 			if( renderTerrain )
 				this->renderTerrain->GetTerrain()->getRenderer().enableFeature(IStorm3D_TerrainRenderer::RenderTargets, false);
-			
+
 			commandWindows[player]->show();
 		} else {
 			commandWindows[player]->show();
 		}
 	}
 
-	// added by Pete to close main menu and resuma game 
+	// added by Pete to close main menu and resuma game
 	void GameUI::resumeGame()
 	{
 		int player = 0;
@@ -1299,7 +1299,7 @@ namespace game
 		{
 			delete commandWindows[player];
 			commandWindows[player] = NULL;
-			
+
 			if( renderTerrain )
 				this->renderTerrain->GetTerrain()->getRenderer().enableFeature(IStorm3D_TerrainRenderer::RenderTargets, true );
 
@@ -1313,7 +1313,7 @@ namespace game
 	{
 		if (storageWindows[player] == NULL)
 		{
-			storageWindows[player] = 
+			storageWindows[player] =
 				new StorageWindow(ogui, game, player);
 			storageWindows[player]->show();
 		} else {
@@ -1465,7 +1465,7 @@ namespace game
 				effects->startFadeOutIfNotFaded(300);
 				scoreWindow->setPlayer(player);
 				return;
-			}			
+			}
 		}
 #endif
 
@@ -1506,7 +1506,7 @@ namespace game
 		{
 			return true;
 		}
-		else 
+		else
 		{
 #ifdef PROJECT_SHADOWGROUNDS
 			return true;
@@ -1593,7 +1593,7 @@ namespace game
 		} else {
 			delete aniRecorderWindow;
 			aniRecorderWindow = NULL;
-		} 	 
+		}
 	}
 
 	void GameUI::openWindow( WINDOW_TYPE type, int player )
@@ -1702,7 +1702,7 @@ namespace game
 			{
 				if ( game->inCombat && firstPerson[player] != NULL && commandWindows[ player ] == NULL )
 				{
-					if (this->upgradeWindow != NULL 
+					if (this->upgradeWindow != NULL
 						&& this->upgradeWindow->isVisible() != 2) // is not already fading out
 					{
 						game->setPaused(false);
@@ -1787,16 +1787,16 @@ namespace game
 
 		// player is meaningless as long as it on in this client...
 		// TODO, NETGAME: check that
-		if ( ( upgradeWindow == NULL ) && 
+		if ( ( upgradeWindow == NULL ) &&
 #ifdef GUI_BUILD_MAP_WINDOW
-			 ( mapWindow == NULL || mapWindow->isVisible() == false ) && 
+			 ( mapWindow == NULL || mapWindow->isVisible() == false ) &&
 #else
-			 ( true ) && 
+			 ( true ) &&
 #endif
 #ifdef GUI_BUILD_LOG_WINDOW
 			 ( logWindow == NULL || logWindow->isVisible() == false ) &&
 #else
-			 ( true ) && 
+			 ( true ) &&
 #endif
 			 ( terminalManager == NULL || terminalManager->isWindowOpen() == false ) )
 		{
@@ -1840,14 +1840,14 @@ namespace game
 				if (combatWindows[game->singlePlayerNumber] != NULL)
 				{
 					combatWindows[game->singlePlayerNumber]->endGUIModeTempInvisible(upgradeWindow->getFadeOutTime());
-				}	
+				}
 				if (this->renderTerrain != NULL)
 				{
 					this->renderTerrain->GetTerrain()->getRenderer().enableFeature(IStorm3D_TerrainRenderer::RenderTargets, true);
 				}
 			}
 
-		} 	 
+		}
 #ifdef GUI_BUILD_INGAME_GUI_TABS
 		updateIngameTabs();
 #endif
@@ -1871,7 +1871,7 @@ namespace game
 			}
 			delete upgradeWindow;
 			upgradeWindow = NULL;
-		} 	 
+		}
 #ifdef GUI_BUILD_INGAME_GUI_TABS
 		updateIngameTabs();
 #endif
@@ -1890,7 +1890,7 @@ namespace game
 			}
 
 			// open upgrade window for next player
-			if(player >= 0 && player + 1 < MAX_PLAYERS_PER_CLIENT 
+			if(player >= 0 && player + 1 < MAX_PLAYERS_PER_CLIENT
 				&& SimpleOptions::getBool(DH_OPT_B_1ST_PLAYER_ENABLED + player + 1))
 			{
 				openWindow( WINDOW_TYPE_UPGRADE, player + 1 );
@@ -1954,11 +1954,11 @@ namespace game
 	bool GameUI::openLogWindow()
 	{
 		if ( logWindow == NULL &&
-			( upgradeWindow == NULL || upgradeWindow->isVisible() != 1 ) && 
+			( upgradeWindow == NULL || upgradeWindow->isVisible() != 1 ) &&
 #ifdef GUI_BUILD_MAP_WINDOW
-			( mapWindow == NULL || mapWindow->isVisible() == false ) && 
+			( mapWindow == NULL || mapWindow->isVisible() == false ) &&
 #else
-			( true ) && 
+			( true ) &&
 #endif
 			( terminalManager == NULL || terminalManager->isWindowOpen() == false ) )
 		{
@@ -1974,7 +1974,7 @@ namespace game
 			return false;
 		}
 	}
-	
+
 	void GameUI::prepareCloseLogWindow()
 	{
 		if ( logWindow == NULL )
@@ -2005,21 +2005,21 @@ namespace game
 			}
 			delete logWindow;
 			logWindow = NULL;
-		} 
+		}
 	}
 #endif
 
 	void GameUI::openTerminalWindow( const std::string& name )
 	{
-		
+
 		// combatWindows[game->singlePlayerNumber]->startGUIModeTempInvisible(mapWindow->getFadeInTime());
-		
+
 		terminalManager->openTerminalWindow( name );
 
 		if( terminalManager->isWindowOpen() )
 		{
 			game->setPaused(true);
-			
+
 			if( this->game->inCombat )
 				renderTerrain->GetTerrain()->getRenderer().enableFeature(IStorm3D_TerrainRenderer::RenderTargets, false);
 
@@ -2032,7 +2032,7 @@ namespace game
 		// combatWindows[game->singlePlayerNumber]->endGUIModeTempInvisible(mapWindow->getFadeOutTime());
 
 		game->setPaused(false);
-		
+
 		if( this->game->inCombat )
 			renderTerrain->GetTerrain()->getRenderer().enableFeature(IStorm3D_TerrainRenderer::RenderTargets, true);
 
@@ -2093,7 +2093,7 @@ namespace game
 
 		if (combatWindows[player] == NULL)
 		{
-			combatWindows[player] = 
+			combatWindows[player] =
 				new CombatWindow(ogui, game, player);
 			combatWindows[player]->show();
 #ifndef PROJECT_SHADOWGROUNDS
@@ -2145,18 +2145,18 @@ namespace game
 	{
 		if (armorIncompleteConfirmWindows[player] != NULL)
 		{
-			Logger::getInstance()->debug("GameUI::openArmorIncompleteConfirm - Already open."); 
+			Logger::getInstance()->debug("GameUI::openArmorIncompleteConfirm - Already open.");
 		} else {
 			if (notAnyArmor)
 			{
-				const char *choices[1] = 
-				{ 
-					getLocaleGuiString("gui_back") 
+				const char *choices[1] =
+				{
+					getLocaleGuiString("gui_back")
 				};
 				const char *imgs0[3] = { "Data/GUI/Buttons/incomplete_back.tga", "Data/GUI/Buttons/incomplete_back_down.tga", "Data/GUI/Buttons/incomplete_back_highlight.tga" };
 				const char **images[1];
 				images[0] = imgs0;
-				armorIncompleteConfirmWindows[player] = new MessageBoxWindow(ogui, 
+				armorIncompleteConfirmWindows[player] = new MessageBoxWindow(ogui,
 					"All of your armors are incomplete or have unpurchased parts. You need to have at least one complete armor to continue.",
 					1, choices, images, 512, 256, 150, 50, "Data/GUI/Windows/incomplete_confirm.dds",
 					MSGBOX_NOARMORS, this);
@@ -2164,8 +2164,8 @@ namespace game
 				ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
 			} else {
 				//char *choices[2] = { "Back", "Continue" };
-				const char *choices[2] = 
-				{ 
+				const char *choices[2] =
+				{
 					getLocaleGuiString("gui_back"),
 					getLocaleGuiString("gui_continue")
 				};
@@ -2187,7 +2187,7 @@ namespace game
 						text = "Some of the armors have parts that have not been paid for. Unpaid parts will be removed. Any armors that will become incomplete will not take part in combat.";
 					}
 				}
-				armorIncompleteConfirmWindows[player] = new MessageBoxWindow(ogui, 
+				armorIncompleteConfirmWindows[player] = new MessageBoxWindow(ogui,
 					text,
 					2, choices, images, 512, 256, 150, 50, "Data/GUI/Windows/incomplete_confirm.dds",
 					MSGBOX_INCOMPLETEARMORS, this);
@@ -2231,8 +2231,8 @@ namespace game
 					if (id == MSGBOX_INCOMPLETEARMORS && choice == 1)
 					{
 						if (commandWindows[i] != NULL)
-						{ 
-							openLoadingWindow(game->singlePlayerNumber); 
+						{
+							openLoadingWindow(game->singlePlayerNumber);
 							commandWindows[i]->hide();
 						}
 					}
@@ -2258,7 +2258,7 @@ namespace game
 			&& (commandWindows[game->singlePlayerNumber] == NULL || !commandWindows[game->singlePlayerNumber]->isVisible())
 			&& (storageWindows[game->singlePlayerNumber] == NULL || !storageWindows[game->singlePlayerNumber]->isVisible()))
 			return true;
-		else 
+		else
 			return false;
 	}
 	*/
@@ -2303,7 +2303,7 @@ namespace game
 		if (gameMap != NULL)
 		{
 			terrainCreator->setCameraRange(cameraRange);
-			renderTerrain = terrainCreator->createTerrain(gameMap, lightManager, ambientSoundManager, configFile); 
+			renderTerrain = terrainCreator->createTerrain(gameMap, lightManager, ambientSoundManager, configFile);
 			game_anyBurnableTrackableObjectFactory->addImplementation(renderTerrain);
 			scene->AddTerrain(renderTerrain->GetTerrain());
 			visualEffectManager->setTerrain(renderTerrain->GetTerrain());
@@ -2327,7 +2327,7 @@ namespace game
 		}
 		if (renderTerrain != NULL)
 		{
-			cursorRayTracer = new CursorRayTracer(storm3d, scene, 
+			cursorRayTracer = new CursorRayTracer(storm3d, scene,
 				renderTerrain->GetTerrain(), 1024, 768);
 		}
 		if (gameMap != NULL)
@@ -2342,11 +2342,11 @@ namespace game
 		{
 			if (commandWindows[game->singlePlayerNumber] != NULL)
 			{
-				openLoadingWindow(game->singlePlayerNumber); 
+				openLoadingWindow(game->singlePlayerNumber);
 				closeCommandWindow(game->singlePlayerNumber);
 			}
 		}
-		
+
 		if( loadingWindow != NULL )
 		{
 			// for scrolling text and video
@@ -2469,7 +2469,7 @@ namespace game
 
 #ifdef PROJECT_CLAW_PROTO
 			pos = gameCamera->getPosition();
-			
+
 			float angle = gameCamera->getAngleY();
 			float dirX = cosf(angle / 180*3.1415f);
 			float dirZ = sinf(angle / 180*3.1415f);
@@ -2522,7 +2522,7 @@ namespace game
 			float angle = gameCamera->getAngleY();
 			float dirX = cosf(angle / 180*3.1415f);
 			float dirZ = sinf(angle / 180*3.1415f);
-			
+
 			// FIXME: _real_ beta angle rotation!
 			VC3 dir = VC3(dirX, -2.0f, dirZ);
 			dir.Normalize();
@@ -2606,7 +2606,7 @@ namespace game
 							{
 								openWindow( WINDOW_TYPE_UPGRADE, player );
 							}
-							else if( this->upgradeWindow->isVisible() ) 
+							else if( this->upgradeWindow->isVisible() )
 							{
 								closeWindow( WINDOW_TYPE_UPGRADE, true, player );
 							}
@@ -2629,7 +2629,7 @@ namespace game
 								// open upgrade window instead of map
 								if (this->upgradeWindow == NULL)
 									openWindow( WINDOW_TYPE_UPGRADE, player );
-								else if( this->upgradeWindow->isVisible() ) 
+								else if( this->upgradeWindow->isVisible() )
 									closeWindow( WINDOW_TYPE_UPGRADE, true, player );
 							}
 							else
@@ -2874,7 +2874,7 @@ namespace game
 				// Quit pressed, not at cinematic
 				if ((( ( wasKeyClicked(DH_CTRL_QUIT) || customMenuKeyPressed )
 					&& (!game->isCinematicScriptRunning() || loadingWindow != NULL || characterSelectionWindow != NULL))
-					|| (commandWindows[game->singlePlayerNumber] != NULL 
+					|| (commandWindows[game->singlePlayerNumber] != NULL
 					&& commandWindows[game->singlePlayerNumber]->wasQuitPressed())))
 				{
 					// not already at some message box
@@ -2929,16 +2929,16 @@ namespace game
 
 								// added the esc quits the upgrade and map windows
 								// by Pete
-								
-								if( upgradeWindow ) 
+
+								if( upgradeWindow )
 								{
 									closeWindow( WINDOW_TYPE_UPGRADE );
 									/*closeUpgradeWindow( firstPerson[0] );*/
 									/*game->setPaused(false);
 									this->upgradeWindow->applyUpgrades();
-								
+
 									this->upgradeWindow->fadeOut();*/
-								} 
+								}
 #ifdef GUI_BUILD_MAP_WINDOW
 								else if( mapWindow && mapWindow->isVisible() )
 								{
@@ -2975,7 +2975,7 @@ namespace game
 										{
 											loadingWindow->closeWindow();
 										}
-									}									
+									}
 								}
 								else if( missionSelectionWindow != NULL )
 								{
@@ -2991,15 +2991,15 @@ namespace game
 								{
 									int player = 0;
 
-									if( commandWindows[player] == NULL ) 
+									if( commandWindows[player] == NULL )
 										openMainmenuFromGame();
-									else commandWindows[player]->escPressed(); 
-								} 
+									else commandWindows[player]->escPressed();
+								}
 
 
-								
+
 								// upgradeWindow == NULL && !mapWindow->isVisible()
-								
+
 							} else {
 
 								/*
@@ -3063,7 +3063,7 @@ namespace game
 
 		// stuff to do while in combat (in mission, not menus)
 		if (game->inCombat)
-		{ 		
+		{
 
 // TEST HACK
 /*
@@ -3100,7 +3100,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 
 					if (gameController[c]->isKeyDown(DH_CTRL_CAMERA_LOOK_MODE)
 						|| gameController[c]->isKeyDown(DH_CTRL_CAMERA_POSITION_OFFSET_MODE)
-						|| gameController[c]->isKeyDown(DH_CTRL_CAMERA_TARGET_OFFSET_MODE)) 
+						|| gameController[c]->isKeyDown(DH_CTRL_CAMERA_TARGET_OFFSET_MODE))
 					{
 						ogui->skipCursorMovement();
 					}
@@ -3191,7 +3191,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 									downMovementEnabled[c] = false;
 								else
 									downMovementEnabled[c] = true;
-							} 						
+							}
 						} else {
 							leftMovementEnabled[c] = true;
 							rightMovementEnabled[c] = true;
@@ -3217,7 +3217,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 								{
 									delete joystickAimer[c];
 									joystickAimer[c] = NULL;
-								}							
+								}
 							}
 							else if(!SimpleOptions::getBool(DH_OPT_B_1ST_PLAYER_HAS_CURSOR + c))
 							{
@@ -3268,7 +3268,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 
 					// TODO: update selection box only if mouse button down...
 					SelectionBox *sbox = combatWindows[game->singlePlayerNumber]->getSelectionBox();
-					sbox->selectionPositionUpdate(ogui->getCursorScreenX(0), 
+					sbox->selectionPositionUpdate(ogui->getCursorScreenX(0),
 						ogui->getCursorScreenY(0));
 
 					if (currentTime > meterUpdateTime + 50)
@@ -3282,7 +3282,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 
 					}
 
-					
+
 					// update radar
 					{
 						VC3 pos;
@@ -3444,7 +3444,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 					{
 						VC3 position;
 						position = unit->getPosition();
-					
+
 						// should write my own boundry check
 						if( game->gameMap->isWellInScaledBoundaries( position.x, position.z ) )
 						{
@@ -3459,7 +3459,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 							const float v3 = (float)((getMaterialByPalette( game->gameMap->getAreaMap()->getAreaValue( x - 1, y + 1, AREAMASK_MATERIAL ) >> AREASHIFT_MATERIAL ) == MATERIAL_SAND)?1:0);
 							const float v4 = (float)((getMaterialByPalette( game->gameMap->getAreaMap()->getAreaValue( x + 1, y + 1, AREAMASK_MATERIAL ) >> AREASHIFT_MATERIAL ) == MATERIAL_SAND)?1:0);
 							// </new implementation>
-			
+
 							// <old implementation>
 							/*
 							const float v1 = (float)(game->gameMap->getAreaMap()->isAreaAnyValue( x - 1, y - 1, AREAMASK_INBUILDING )?0:1);
@@ -3478,7 +3478,7 @@ if (SimpleOptions::getInt(DH_OPT_I_CAMERA_CULLING_RATE) > 1)
 
 							const float s1 = v1 * ( 1.0f - fx ) + (fx) * v2;
 							const float s2 = v3 * ( 1.0f - fx ) + (fx) * v4;
-							
+
 							const float value = s1 * (1.0f - fy ) + fy * s2;
 							unit->setVisualizationOffsetInterpolation( value );
 						}
@@ -3530,7 +3530,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 								COL color = gameMap->colorMap->getColor(position.x, position.z);
 								// HACK: players get a minimum illum.
-								if (playerSelfIllumEnabled 
+								if (playerSelfIllumEnabled
 									&& (unit == firstPerson[0]
 									|| unit == firstPerson[1]
 									|| unit == firstPerson[2]
@@ -3703,7 +3703,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 									fl->setBetaRotation(betaAngle + 0.3f * (float)sinf(jumpNormTime * 3.1415927f * 2.0f));
 								}
 								fl->setRotation(angle - 0.3f * (float)sinf(jumpNormTime * 3.1415927f * 2.0f));
-							} 
+							}
 							else if (right)
 							{
 								if (backward)
@@ -3838,11 +3838,11 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 			if ((wasKeyClicked(DH_CTRL_PAUSE)
 				|| wasKeyClicked(DH_CTRL_TACTICAL_MODE))
 				&& !game->isMissionAboutToEnd()
-				&& !this->isAnyIngameWindowVisible()) 
+				&& !this->isAnyIngameWindowVisible())
 			{
 				if (wasKeyClicked(DH_CTRL_PAUSE))
 				{
-					if (game->isPaused()) 
+					if (game->isPaused())
 					{
 						this->setScrollyTemporarilyDisabled(false);
 						game->setPaused(false);
@@ -3854,9 +3854,9 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 						gameMessage(paused_text.c_str(), NULL, 2, 10000, MESSAGE_TYPE_HINT);
 					}
 				}
-				if (wasKeyClicked(DH_CTRL_TACTICAL_MODE)) 
+				if (wasKeyClicked(DH_CTRL_TACTICAL_MODE))
 				{
-					if (game->isTacticalMode()) 
+					if (game->isTacticalMode())
 					{
 						//selectCamera(GAMEUI_CAMERA_NORMAL);
 						//gameCamera->interpolateFrom(cameras[GAMEUI_CAMERA_TACTICAL]);
@@ -3894,7 +3894,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 				}
 			}
 
-			if (wasKeyClicked(DH_CTRL_CONTROL_MODE_SWITCH)) 
+			if (wasKeyClicked(DH_CTRL_CONTROL_MODE_SWITCH))
 			{
 				if (controlModeDirect)
 					controlModeDirect = false;
@@ -3904,7 +3904,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 			// first person
 			if (wasKeyClicked(DH_CTRL_UNIT_MODE_TOGGLE))
-//				&& !game->isPaused()) 
+//				&& !game->isPaused())
 			{
 				if (firstPerson[0] != NULL)
 				{
@@ -3963,7 +3963,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 				}
 				VC3 pos = firstPerson[0]->getPosition();
 				VC3 rot = firstPerson[0]->getRotation();
-				
+
 				float lookAngle = firstPerson[0]->getLookBetaAngle();
 				int mdx = 0;
 				int mdy = 0;
@@ -4007,7 +4007,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 								// TEMP
 								if (gameController[c]->isKeyDown(DH_CTRL_CAMERA_LOOK_MODE)
 									|| gameController[c]->isKeyDown(DH_CTRL_CAMERA_POSITION_OFFSET_MODE)
-									|| gameController[c]->isKeyDown(DH_CTRL_CAMERA_TARGET_OFFSET_MODE)) 
+									|| gameController[c]->isKeyDown(DH_CTRL_CAMERA_TARGET_OFFSET_MODE))
 								{
 									ogui->SetCursorImageState(0, DH_CURSOR_INVISIBLE);
 									ogui->SetCursorImageState(1, DH_CURSOR_INVISIBLE);
@@ -4071,7 +4071,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 						if (lookrotx > 85) lookrotx = 85;
 					}
 					while (lookrotx >= 360) lookrotx -= 360;
-					while (lookrotx < 0) lookrotx += 360; 
+					while (lookrotx < 0) lookrotx += 360;
 
 					// Aiming offset moves flashlight and camera along the vertical mouse motion
 					oldAimOffset = aimOffset;
@@ -4143,7 +4143,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 				float default_zoom = CameraAutozoomer::getZoom(gameCamera);
 
 				float default_angle = (float)game::SimpleOptions::getInt(DH_OPT_I_CAMERA_DEFAULT_BETA_ANGLE);
-			
+
 				static int last_started_custom = 0;
 				static int last_used_custom = 0;
 				bool using_custom = false;
@@ -4175,7 +4175,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 						float current_angle = gameCamera->getBetaAngle();
 						float current_zoom = gameCamera->getZoom();
-						
+
 						float new_angle = default_angle + w->getCustomCameraAngle();
 						float new_zoom = default_zoom + w->getCustomCameraZoom();
 
@@ -4219,7 +4219,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 					float a = gameCamera->getAngleY();
 					float b = float(ogui->getCursorScreenX(0) - AIM_UP_CURSOR_X);
 					float my = float(ogui->getCursorScreenY(0));
-					
+
 					float safe = game::SimpleOptions::getFloat(DH_OPT_F_CAMERA_ROTATION_SAFE);
 					float strength = game::SimpleOptions::getFloat(DH_OPT_F_CAMERA_ROTATION_STRENGTH)*0.001f;
 					float spring = game::SimpleOptions::getFloat(DH_OPT_F_CAMERA_ROTATION_SPRING);
@@ -4251,7 +4251,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 							ogui->setCursorScreenOffsetX(0, int(-(b+safe*0.8f)*0.04f*spring+1));
 						}
 					}
-					
+
 //					ogui->setCursorScreenOffsetX(0, -b*0.1f);
 //					ogui->setCursorScreenX(0, AIM_UP_CURSOR_X+b*0.9);
 					//if (b<1) ogui->setCursorScreenX(0, ogui->getCursorScreenX(0)-2);
@@ -4313,7 +4313,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 				float heightOffset = 1.7f;
 				VC3 vel = firstPerson[0]->getVelocity();
 				if (firstPerson[0]->getUnitType()->isSticky())
-				{ 					
+				{
 					if (vel.x != 0 || vel.z != 0)
 					{
 						if (!thirdPersonView)
@@ -4546,7 +4546,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 
 			// camera unit locking/releasing...
-			if (wasKeyClicked(DH_CTRL_CAMERA_UNIT_LOCK_TOGGLE)) 
+			if (wasKeyClicked(DH_CTRL_CAMERA_UNIT_LOCK_TOGGLE))
 			{
 				if (gameCamera->isFollowingUnit())
 				{
@@ -4598,7 +4598,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 						y2 /= amount2;
 						gameCamera->setFollowPosition(x2, y2);
 						gameCamera->setDisableUserMovement(true);
-					} 
+					}
 					// else all dead?
 				}
 			}
@@ -4667,7 +4667,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		ogui->SetMenuIndexMode(0, false);
 #else
 		// menu button warping with joystick?
-		if (game->inCombat && !msgBoxIsOpen 
+		if (game->inCombat && !msgBoxIsOpen
 			&& loadingWindow == NULL)
 		{
 			// TODO: cursor number...
@@ -4679,7 +4679,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 #endif
 
 		// standard screenshot
-		if (wasKeyClicked(DH_CTRL_SCREENSHOT) && !game::SimpleOptions::getBool(DH_OPT_B_MAGIC_SCREENSHOT)) 
+		if (wasKeyClicked(DH_CTRL_SCREENSHOT) && !game::SimpleOptions::getBool(DH_OPT_B_MAGIC_SCREENSHOT))
 		{
 			util::ScreenCapturer::captureScreen(storm3d);
 		}
@@ -4731,7 +4731,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 				if(!magic_screenshot_gui_was_visible)
 					setGUIVisibility(game->singlePlayerNumber, false);
-				
+
 				if(!magic_screenshot_game_was_paused)
 					game->setPaused(false);
 
@@ -4768,7 +4768,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 						{
 							combatWindows[game->singlePlayerNumber]->clearExecuteTipMessage();
 						}
-					} 			 
+					}
 				}
 			}
 		}
@@ -4776,13 +4776,13 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		// psd. show/hide building tops
 		if(game->inCombat)
 		{
-			// now done only 10 times a second. (100ms update interval) 
+			// now done only 10 times a second. (100ms update interval)
 			if (currentTime > buildingHandlerUpdateTime + 100)
 			{
 				buildingHandlerUpdateTime = currentTime;
 
 				buildingHandler.beginUpdate();
-			
+
 				LinkedList<Unit*> *unitList = game->units->getOwnedUnits(game->singlePlayerNumber);
 				// hostiles seen inside buildings no longer remove roof
 				//LinkedList *unitList = game->units->getAllUnits();
@@ -4799,10 +4799,10 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 					//	&& !unit->isDestroyed()))
 					{
 						const VC3 &unitPosition = unit->getPosition();
-				
+
 						int x = game->gameMap->scaledToPathfindX(unitPosition.x);
 						int y = game->gameMap->scaledToPathfindY(unitPosition.z);
-				
+
 						IStorm3D_Model *model = game->getGameScene()->getBuildingModelAtPathfind(x, y);
 						if(model)
 						{
@@ -4812,7 +4812,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 						}
 					}
 				}
-			
+
 				if(removeRoofs)
 					buildingHandler.removeAllTops();
 
@@ -4843,7 +4843,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 				}
 			}
 		}
-		
+
 		if (lightningVisualEffect != NULL)
 		{
 			if (lightningTime > 0)
@@ -4868,17 +4868,17 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		}
 		ambientAreaManager->update(currentTime - lastRunUITime);
 
-		if (combatWindows[game->singlePlayerNumber] != NULL && 
+		if (combatWindows[game->singlePlayerNumber] != NULL &&
 			// all the rest if cases added by Pete to prevent the talking heads
 			// from raising above the opened window
 #ifdef GUI_BUILD_MAP_WINDOW
-			( mapWindow == NULL || mapWindow->isVisible() == false ) && 
+			( mapWindow == NULL || mapWindow->isVisible() == false ) &&
 #else
-			( true ) && 
+			( true ) &&
 #endif
-			upgradeWindow == NULL && 
+			upgradeWindow == NULL &&
 #ifdef GUI_BUILD_LOG_WINDOW
-			logWindow == NULL && 
+			logWindow == NULL &&
 #else
 			true &&
 #endif
@@ -4898,7 +4898,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 			}
 		}
 #endif
-		
+
 		if (upgradeWindow != NULL)
 		{
 			upgradeWindow->effectUpdate(currentTime - lastRunUITime);
@@ -5596,12 +5596,12 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		return ret;
 	}
 
-	VisualEffectManager *GameUI::getVisualEffectManager() 
+	VisualEffectManager *GameUI::getVisualEffectManager()
 	{
 		return visualEffectManager;
 	}
 
-	int GameUI::parseSoundFromDefinitionString(const char *sounddef, 
+	int GameUI::parseSoundFromDefinitionString(const char *sounddef,
 		float x, float y, float z, bool *looped, int *handle, int *key,
 		bool continueOldSound, float range, int priority, bool muteVolume, bool ambient)
 	{
@@ -5612,7 +5612,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 			if (sounddef[0] == '!')
 			{
-				*looped = true; 
+				*looped = true;
 				char foo[256];
 				int slen = strlen(sounddef);
 				if (slen < 256)
@@ -5678,11 +5678,11 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 						SoundSample *startSample = NULL;
 						SoundSample *endSample = NULL;
 
-						if (foo[splitpos[0] + 1] != '\0') 
+						if (foo[splitpos[0] + 1] != '\0')
 							loopSample = soundMixer->loadSample(&foo[splitpos[0] + 1], false);
-						if (foo[splitpos[1] + 1] != '\0') 
+						if (foo[splitpos[1] + 1] != '\0')
 							startSample = soundMixer->loadSample(&foo[splitpos[1] + 1], false);
-						if (foo[splitpos[2] + 1] != '\0') 
+						if (foo[splitpos[2] + 1] != '\0')
 							endSample = soundMixer->loadSample(&foo[splitpos[2] + 1], false);
 
 						if (loopSample != NULL)
@@ -5693,8 +5693,8 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 							VC3 distVector = spos - campos;
 							if (distVector.GetSquareLength() <= GAMEUI_MAX_SOUND_DISTANCE_SQ)
 							{
-								int h = soundLooper->playLoopedSound(startSample, 
-									loopSample, endSample, startDuration, loopDuration, 
+								int h = soundLooper->playLoopedSound(startSample,
+									loopSample, endSample, startDuration, loopDuration,
 									endDuration, x, y, z, key, muteVolume, range, priority, ambient);
 								*handle = h;
 								return h;
@@ -5766,7 +5766,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		if (soundMixer != NULL)
 		{
 			SoundSample *s = soundMixer->loadSample(filename, false);
-			
+
 			Timer::update();
 			lipsync_start_time = Timer::getTime() - 200;
 
@@ -5854,7 +5854,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 								se.x = x;
 								se.y = y;
 								se.z = z;
-								
+
 
 								// start click1
 								se.sample = s_click1;
@@ -5956,7 +5956,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 			lastGameMessageCounter[messageType] = 1;
 	}
 
-	void GameUI::gameMessage(const char *message, ui::Visual2D *image, 
+	void GameUI::gameMessage(const char *message, ui::Visual2D *image,
 		int priority, int duration, MESSAGE_TYPE messageType)
 	{
 		bool showIt = false;
@@ -6002,7 +6002,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 			lastGameMessagePriority[messageType] = priority;
 			lastGameMessageDuration[messageType] = duration;
 			lastGameMessageCounter[messageType] = duration;
-			if (combatWindows[game->singlePlayerNumber] != NULL) 
+			if (combatWindows[game->singlePlayerNumber] != NULL)
 			{
 				if (messageType == MESSAGE_TYPE_HINT)
 				{
@@ -6285,7 +6285,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 					return true;
 				break;
 			default:
-				Logger::getInstance()->warning("GameUI::isDirectControl - Unknown control."); 
+				Logger::getInstance()->warning("GameUI::isDirectControl - Unknown control.");
 				break;
 			}
 			return false;
@@ -6428,7 +6428,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 	void GameUI::setControlsEnabled(int player, bool enabled)
 	{
 		// FIXME: if gui disabled too, may conflict with control disabling
-		// both change controls enabled/disabled without considering the 
+		// both change controls enabled/disabled without considering the
 		// other...
 		// disable controls too if gui not visible.
 		for (int i = 0; i < MAX_PLAYERS_PER_CLIENT; i++)
@@ -6585,7 +6585,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 	void GameUI::setUnitHighlight(int player, Unit *unit)
 	{
 		if (combatWindows[player] != NULL)
-			combatWindows[player]->setUnitHighlight(unit);		
+			combatWindows[player]->setUnitHighlight(unit);
 	}
 
 	void GameUI::setTerrainHighlight(int player, VC3 &position)
@@ -6597,19 +6597,19 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 	void GameUI::clearHighlight(int player)
 	{
 		if (combatWindows[player] != NULL)
-			combatWindows[player]->clearHighlight();		
+			combatWindows[player]->clearHighlight();
 	}
 
 	void GameUI::lockHighlight(int player)
 	{
 		if (combatWindows[player] != NULL)
-			combatWindows[player]->lockHighlight(); 	
+			combatWindows[player]->lockHighlight();
 	}
 
 	void GameUI::unlockHighlight(int player)
 	{
 		if (combatWindows[player] != NULL)
-			combatWindows[player]->unlockHighlight(); 	
+			combatWindows[player]->unlockHighlight();
 	}
 
 	void GameUI::setErrorWindow(ErrorWindow *errorWin)
@@ -6625,7 +6625,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		return this->console;
 	}
 
-	void GameUI::readKey(char ascii, int keycode, 
+	void GameUI::readKey(char ascii, int keycode,
 		const char *keycodeName)
 	{
 		assert(keyreaderId != -1);
@@ -6720,7 +6720,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 	}
 
 
-	ui::AmbientSoundManager* GameUI::getAmbientSoundManager() 
+	ui::AmbientSoundManager* GameUI::getAmbientSoundManager()
 	{
 		return ambientSoundManager;
 	}
@@ -6849,7 +6849,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 		SHOW_LOADING_BAR(99);
 
 		ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
-		
+
 		this->terrainCreator = new TerrainCreator(storm3d, scene);
 
 		visualEffectManager = new VisualEffectManager(storm3d, scene);
@@ -6919,7 +6919,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 					if (posDiffLenSq < 24 * 24 || posDiffLenSq > 30 * 30)
 					{
 						posDiff.Normalize();
-						posDiff *= 25.0f; 
+						posDiff *= 25.0f;
 						position = playerPosition + posDiff;
 						posDiffLenSq = posDiff.GetSquareLength();
 					}
@@ -6968,7 +6968,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 					int px = game->gameMap->scaledToPathfindX(position.x);
 					int py = game->gameMap->scaledToPathfindY(position.z);
-			
+
 					model = game->getGameScene()->getBuildingModelAtPathfind(px, py);
 
 					if (model == NULL)
@@ -7021,7 +7021,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 					lightningVisualEffect =
 						visualEffectManager->createNewVisualEffect(
-						visualEffectManager->getVisualEffectIdByName("envlightning"), 
+						visualEffectManager->getVisualEffectIdByName("envlightning"),
 						NULL, NULL, position, position, rotation, VC3(0,0,0), game);
 
 					if (lightningVisualEffect != NULL)
@@ -7134,10 +7134,10 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 
 		if (this->upgradeWindow != NULL)
 			return true;
-		
-		if( commandWindows[ 0 ] != NULL ) 
+
+		if( commandWindows[ 0 ] != NULL )
 			return true;
-		
+
 #ifdef GUI_BUILD_LOG_WINDOW
 		if( logWindow != NULL )
 			return true;
@@ -7221,7 +7221,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 			relativeVolume = 100;
 		if (relativeVolume < 0)
 			relativeVolume = 0;
-		
+
 		return this->playSpeech( filename, campos.x, campos.y, campos.z, false, DEFAULT_SOUND_EFFECT_VOLUME * relativeVolume / 100 );
 	}
 
@@ -7377,7 +7377,7 @@ if (unit->isPhysicsObjectLock() && !unit->isDestroyed()
 					ogui->setCursorScreenY(i, 0);
 				}
 			}
-			
+
 		}
 #endif
 	}

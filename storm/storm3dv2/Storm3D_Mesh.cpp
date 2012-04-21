@@ -143,7 +143,7 @@ Storm3D_Mesh::~Storm3D_Mesh()
 	Storm3D2->Remove(this, 0);
 
 	// Delete arrays
-	if (vertexes) 
+	if (vertexes)
 		delete[] vertexes;
 
 	delete[] bone_weights;
@@ -297,9 +297,9 @@ void Storm3D_Mesh::PrepareMaterialForRender(Storm3D_Scene *scene,Storm3D_Model_O
 void Storm3D_Mesh::RenderBuffers(Storm3D_Model_Object *object)
 {
 	// Test
-	if (!glIsBuffer(vbuf)) 
+	if (!glIsBuffer(vbuf))
 		return;
-	if (!glIsBuffer(ibuf[0])) 
+	if (!glIsBuffer(ibuf[0]))
 		return;
 
 	int lod = object->parent_model->lodLevel;
@@ -336,9 +336,9 @@ void Storm3D_Mesh::RenderBuffers(Storm3D_Model_Object *object)
 void Storm3D_Mesh::RenderBuffersWithoutTransformation()
 {
 	// Test
-	if (!glIsBuffer(vbuf)) 
+	if (!glIsBuffer(vbuf))
 		return;
-	if (!glIsBuffer(ibuf[0])) 
+	if (!glIsBuffer(ibuf[0]))
 		return;
 
 	// Mesh buffer change optimization (v2.6)
@@ -368,9 +368,9 @@ void Storm3D_Mesh::Render(Storm3D_Scene *scene,bool mirrored,Storm3D_Model_Objec
 	PrepareForRender(scene,object);
 
 	// Test
-	if (!glIsBuffer(vbuf)) 
+	if (!glIsBuffer(vbuf))
 		return;
-	if (!glIsBuffer(ibuf[0])) 
+	if (!glIsBuffer(ibuf[0]))
 		return;
 
 	// Prepare material for rendering (v3)
@@ -407,9 +407,9 @@ void Storm3D_Mesh::RenderWithoutMaterial(Storm3D_Scene *scene,bool mirrored,Stor
 	PrepareForRender(scene,object);
 
 	// Test
-	if (!glIsBuffer(vbuf)) 
+	if (!glIsBuffer(vbuf))
 		return;
-	if (!glIsBuffer(ibuf[0])) 
+	if (!glIsBuffer(ibuf[0]))
 		return;
 
 	// Reverse culling if mirrored
@@ -438,9 +438,9 @@ void Storm3D_Mesh::RenderToBackground(Storm3D_Scene *scene,Storm3D_Model_Object 
 	PrepareForRender(scene,object);
 
 	// Test
-	if (!glIsBuffer(vbuf)) 
+	if (!glIsBuffer(vbuf))
 		return;
-	if (!glIsBuffer(ibuf[0])) 
+	if (!glIsBuffer(ibuf[0]))
 		return;
 
 	// Prepare material for rendering (v3)
@@ -508,7 +508,7 @@ void Storm3D_Mesh::ReBuild()
 	{
 		for(int lod = 0; lod < lodLevels; ++lod)
 		{
-			bone_chunks[lod].clear();		 
+			bone_chunks[lod].clear();		
 
 			// Find used bones indices
 			vector<int> bone_indices;
@@ -979,7 +979,7 @@ void Storm3D_Mesh::ChangeFaceCount(int new_face_count)
 
 	// Set faceamount
 	face_amount[0]=new_face_count;
-	if (face_amount[0] < 1) 
+	if (face_amount[0] < 1)
 		return;
 
 	// Allocate memory for new ones
@@ -1019,7 +1019,7 @@ void Storm3D_Mesh::ChangeVertexCount(int new_vertex_count)
 //! Update mesh collision table
 void Storm3D_Mesh::UpdateCollisionTable()
 {
-	if (col_rebuild_needed) 
+	if (col_rebuild_needed)
 		collision.ReBuild(this);
 	col_rebuild_needed=false;
 }
@@ -1047,7 +1047,7 @@ void Storm3D_Mesh::CalculateRadiusAndBox()
 		// Update sq_radius
 		const VC3 &pos = vertexes[vx].position;
 		float r = pos.GetSquareLength();
-		if (r > sq_radius) 
+		if (r > sq_radius)
 			sq_radius = r;
 
 		float r2 = (pos.x * pos.x) + (pos.z * pos.z);
@@ -1107,7 +1107,7 @@ bool Storm3D_Mesh::RayTrace(const VC3 &position,const VC3 &direction_normalized,
 	\param radius radius of sphere
 	\param cinf collision info
 	\param accurate
-	\return 
+	\return
 */
 bool Storm3D_Mesh::SphereCollision(const VC3 &position,float radius,Storm3D_CollisionInfo &cinf, bool accurate)
 {

@@ -58,8 +58,8 @@ SoundLooper::~SoundLooper()
 }
 
 
-int SoundLooper::playLoopedSound(SoundSample *start, 
-	SoundSample *looped, SoundSample *end, 
+int SoundLooper::playLoopedSound(SoundSample *start,
+	SoundSample *looped, SoundSample *end,
 	int startDuration, int loopDuration, int endDuration,
 	float positionX, float positionY, float positionZ,
 	int *key, bool muteVolume, float range_, int priority_, bool ambient_)
@@ -129,7 +129,7 @@ bool SoundLooper::isSoundStillPlaying(int loopedSoundHandle, int key)
 	return soundMixer->isSoundPlaying(loopedSoundHandle);
 }
 
-bool SoundLooper::continueLoopedSound(int loopedSoundHandle, 
+bool SoundLooper::continueLoopedSound(int loopedSoundHandle,
 	int key, int loopDuration)
 {
 	int i = loopedSoundHandle;
@@ -160,7 +160,7 @@ bool SoundLooper::continueLoopedSound(int loopedSoundHandle,
 }
 
 
-void SoundLooper::stopLoopedSound(int loopedSoundHandle, 
+void SoundLooper::stopLoopedSound(int loopedSoundHandle,
 	int key, bool immediately)
 {
 	int i = loopedSoundHandle;
@@ -320,7 +320,7 @@ void SoundLooper::run()
 				else if (loopSound[i] != NULL && loopEndTime[i] > curTime)
 				{
 					playPhase[i] = PLAYPHASE_LOOP;
-				} 
+				}
 				else if (endSound[i] != NULL && endEndTime[i] > curTime)
 				{
 					playPhase[i] = PLAYPHASE_END;
@@ -335,7 +335,7 @@ void SoundLooper::run()
 					if (loopSound[i] != NULL && loopEndTime[i] > curTime)
 					{
 						playPhase[i] = PLAYPHASE_LOOP;
-					} 
+					}
 					else if (endSound[i] != NULL && endEndTime[i] > curTime)
 					{
 						playPhase[i] = PLAYPHASE_END;

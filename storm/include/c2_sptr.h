@@ -28,7 +28,7 @@ public:
 	inline void AddRef() {reference_count++;}
 	inline bool Delete()
 	{
-		if ((--reference_count)==0) 
+		if ((--reference_count)==0)
 		{
 			delete this;
 			return true;

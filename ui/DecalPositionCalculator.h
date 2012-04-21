@@ -29,7 +29,7 @@ namespace ui
 			//        false, if position NOT ok and decal should NOT be added
 			static bool calculateDecalPosition(
 				game::GameScene *gameScene,
-				const VC3 &origin, const VC3 &velocity, 
+				const VC3 &origin, const VC3 &velocity,
 				DECAL_POSITIONING positioning, int positionRandom,
 				VC3 *resultPosition, QUAT *resultRotation);
 	};

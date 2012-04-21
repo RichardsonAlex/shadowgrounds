@@ -60,12 +60,12 @@ public:
 };
 
 inline filesystem::OutputStream &operator << (filesystem::OutputStream &stream, const HmapLoader &loader)
-{ 
+{
 	return loader.writeStream(stream);
 }
 
 inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, HmapLoader &loader)
-{ 
+{
 	return loader.readStream(stream);
 }
 

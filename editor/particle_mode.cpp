@@ -73,7 +73,7 @@ void setGraphFromTrack(Graph& graph, FloatTrack& track) {
 void setTrackFromGraph(VectorTrack& track, Graph& graph) {
 	track.setNumKeys(graph.getNumKeys(0));
 	for(int i = 0; i < graph.getNumKeys(0); i++) {
-		track.setKey(i, graph.getX(0, i), 
+		track.setKey(i, graph.getX(0, i),
 			Vector(graph.getY(0, i), graph.getY(1, i), graph.getY(2, i)));
 	}
 }
@@ -623,8 +623,8 @@ public:
 		data.setParticleDesc(pd);
 	}
 
-	ParticleDialog(Dialog& parent, Storm& storm) : dlg(IDD_PARTICLE, parent.getWindowHandle()), 
-		data(dlg, storm), 
+	ParticleDialog(Dialog& parent, Storm& storm) : dlg(IDD_PARTICLE, parent.getWindowHandle()),
+		data(dlg, storm),
 		updateCommand(data), colorCommand(data), hideCommand(dlg, data), textureCommand(data),
 		renCommand(data), sizeCommand(data), alphaCommand(data), updateGraphs(data) {
 	
@@ -776,7 +776,7 @@ public:
 			ed->minSpeed = getDialogItemFloat(dlg, IDC_CE_MIN_SPEED);
 			ed->maxSpeed = getDialogItemFloat(dlg, IDC_CE_MAX_SPEED);
 
-			ed->randomDirection = 
+			ed->randomDirection =
 				(Button_GetCheck(GetDlgItem(dlg.getWindowHandle(), IDC_CE_RANDOM_DIRECTION)) == BST_CHECKED) ?
 				true : false;
 
@@ -918,7 +918,7 @@ public:
 	HideCommand hideCommand;
 	ShapeCommand shapeCommand;
 
-	CloudEmitterDialog(Dialog& parent, Storm& storm) : dlg(IDD_CLOUD_EMITTER, parent.getWindowHandle()), 
+	CloudEmitterDialog(Dialog& parent, Storm& storm) : dlg(IDD_CLOUD_EMITTER, parent.getWindowHandle()),
 		data(dlg, storm), updateCommand(data), hideCommand(dlg), shapeCommand(data) {
 		
 		HWND hShape = GetDlgItem(dlg.getWindowHandle(), IDC_CE_SHAPE);
@@ -1072,7 +1072,7 @@ public:
 	HideCommand hideCommand;
 	LoadCommand loadCommand;
 
-	PointArrayEmitterDialog(Dialog& parent, Storm& storm) : dlg(IDD_POINT_ARRAY, parent.getWindowHandle()), 
+	PointArrayEmitterDialog(Dialog& parent, Storm& storm) : dlg(IDD_POINT_ARRAY, parent.getWindowHandle()),
 		data(dlg, storm), updateCommand(data), hideCommand(dlg), loadCommand(data) {
 
 		dlg.getCommandList().addCommand(IDC_PA_MIN_SPEED, &updateCommand);
@@ -1190,7 +1190,7 @@ public:
 	Dialog dlg;
 	HideCommand hideCommand;
 
-	SprayEmitterDialog(Dialog& parent) : dlg(IDD_SPRAY_EMITTER, parent.getWindowHandle()), 
+	SprayEmitterDialog(Dialog& parent) : dlg(IDD_SPRAY_EMITTER, parent.getWindowHandle()),
 		data(dlg), updateCommand(data), hideCommand(dlg) {
 
 		dlg.getCommandList().addCommand(IDC_SE_MIN_SPEED, &updateCommand);
@@ -1233,7 +1233,7 @@ public:
 		SharedPtr<EmitterDesc> ed;
 	public:
 		
-		ExtendedData(Dialog& parent, Storm& s3d) 
+		ExtendedData(Dialog& parent, Storm& s3d)
 			: seDlg(parent) , paDlg(parent, s3d), ceDlg(parent, s3d) {
 			seDlg.hide();
 			paDlg.hide();
@@ -1326,7 +1326,7 @@ public:
 		void updateValues() {
 
 				
-			ed->dieAfterEmission = 
+			ed->dieAfterEmission =
 				(Button_GetCheck(GetDlgItem(dlg.getWindowHandle(), IDC_E_DIE_AFTER_EMISSION)) == BST_CHECKED) ?
 				true : false;
 			
@@ -1404,9 +1404,9 @@ public:
 	GraphCommand graphCommand;
 	HideCommand hideCommand;
 
-	EmitterDialog(Dialog& parent, Storm& storm) : 
+	EmitterDialog(Dialog& parent, Storm& storm) :
 		dlg(IDD_EMITTER, parent.getWindowHandle()), data(dlg), updateCommand(data),
-		eData(dlg, storm), eCommand(eData), renameCommand(data), graphCommand(data), 
+		eData(dlg, storm), eCommand(eData), renameCommand(data), graphCommand(data),
 		hideCommand(dlg, data) {
 
 		dlg.getCommandList().addCommand(IDC_E_MIN_EMIT_TIME, &updateCommand);
@@ -1568,7 +1568,7 @@ public:
 
 HTREEITEM tvAddChildItem(HWND hTree, HTREEITEM parent, const std::string& name) {
 
-	TV_INSERTSTRUCT tvinsert;   
+	TV_INSERTSTRUCT tvinsert;
 	
 	tvinsert.hParent=parent;		
 	tvinsert.hInsertAfter=TVI_LAST;
@@ -1582,7 +1582,7 @@ HTREEITEM tvAddChildItem(HWND hTree, HTREEITEM parent, const std::string& name) 
 
 HTREEITEM tvAddRootItem(HWND hTree, const std::string& name) {
 	
-	TV_INSERTSTRUCT tvinsert;   
+	TV_INSERTSTRUCT tvinsert;
 	
 	tvinsert.hParent=NULL;		
 	tvinsert.hInsertAfter=TVI_ROOT;
@@ -1625,7 +1625,7 @@ public:
 		PSysDialog psysDialog;
 		int selectedTemplate;
 		
-		SharedData(Dialog& dlg, ParticleSystemManager& _mgr, Storm& s) : 
+		SharedData(Dialog& dlg, ParticleSystemManager& _mgr, Storm& s) :
 			storm(s), mgr(_mgr), particleDialog(dlg, storm), emitterDialog(dlg, storm),
 			selectedTemplate(-1), psysDialog(dlg) {
 			
@@ -1874,7 +1874,7 @@ public:
 				int sel2 = dlg.getPD();
 				ps->addEmitter(sd.emitters[sel1], sd.particles[sel2]);
 
-				TV_INSERTSTRUCT tvinsert;   
+				TV_INSERTSTRUCT tvinsert;
 				
 				std::string str = sd.emitters[sel1]->getName();
 				str += "/";
@@ -1980,7 +1980,7 @@ public:
 				ps->setTM(tm);
 				ps->setVelocity(vel);
 											
-				HTREEITEM id = tvAddChildItem(GetDlgItem(dlg.getWindowHandle(), IDC_TREE1), 
+				HTREEITEM id = tvAddChildItem(GetDlgItem(dlg.getWindowHandle(), IDC_TREE1),
 					hPSList, ps->getTemplateName());
 				
 				//TreeView_SelectItem(GetDialogItem(dlg.getWindowHandle(), IDC_TREE1), id);
@@ -2016,8 +2016,8 @@ public:
 		mgr(_mgr),
 		data(_dlg, _mgr, storm),
 		curItem(NULL), hCurItem(NULL),
-		tempList(data, _dlg.getWindowHandle()), 
-		emitterList(data, _dlg.getWindowHandle()), 
+		tempList(data, _dlg.getWindowHandle()),
+		emitterList(data, _dlg.getWindowHandle()),
 		particleList(data, _dlg.getWindowHandle()) {
 		
 			
@@ -2169,7 +2169,7 @@ public:
 			{
 			case IDC_TREE1:
 				
-				if(((LPNMHDR)lParam)->code == NM_DBLCLK) 
+				if(((LPNMHDR)lParam)->code == NM_DBLCLK)
 				{				
 					hCurItem = TreeView_GetSelection(hTree);
 					if(hCurItem != NULL) {
@@ -2184,7 +2184,7 @@ public:
 					}
 				}
 								
-				if(((LPNMHDR)lParam)->code == NM_RCLICK) 
+				if(((LPNMHDR)lParam)->code == NM_RCLICK)
 				{
 
 					hCurItem = TreeView_GetSelection(hTree);
@@ -2198,7 +2198,7 @@ public:
 								
 								POINT p;
 								GetCursorPos(&p);
-								TrackPopupMenuEx( GetSubMenu( LoadMenu( 0, MAKEINTRESOURCE(IDR_POPUP) ), 0 ),   
+								TrackPopupMenuEx( GetSubMenu( LoadMenu( 0, MAKEINTRESOURCE(IDR_POPUP) ), 0 ),
 									TPM_VERTICAL, p.x, p.y, hwnd, NULL );
 							
 							
@@ -2278,7 +2278,7 @@ struct ParticleModeData
 	Vector mLaunchVel;
 
 
-	ParticleModeData(Dialog& dialog, Gui& _gui, Storm& storm) : mStorm(storm), gui(_gui), 
+	ParticleModeData(Dialog& dialog, Gui& _gui, Storm& storm) : mStorm(storm), gui(_gui),
 		mManager(storm.storm, storm.scene), sysDlg(dialog, mManager, storm) {
 		
 		dialog.getCommandList().addCommand(IDC_ADD_PS, &addPSCommand);

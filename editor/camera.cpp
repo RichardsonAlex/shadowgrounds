@@ -368,7 +368,7 @@ void Camera::update(const Mouse &mouse, bool hasFocus)
 	if(data->isKeyDown('A'))
 		data->targetPosition +=  strafeDirection * timeDelta * SPEED * multiplier;
 
-	// and had enough of reversed zoom too :) -jpk 
+	// and had enough of reversed zoom too :) -jpk
 	if(data->isKeyDown(VK_SUBTRACT) || data->isKeyDown(VK_MULTIPLY))
 		data->height +=  1.f * timeDelta * SPEED * .5f * multiplier;
 	if(data->isKeyDown(VK_ADD))
@@ -506,7 +506,7 @@ float Camera::getVertical()
 	return 0;
 }
 
-void Camera::setToSky() 
+void Camera::setToSky()
 {
 	//data->yAngle = 0.0f;
 	//data->height = 80.0f;

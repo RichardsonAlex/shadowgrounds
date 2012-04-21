@@ -7,7 +7,7 @@
 #include "NetDriverException.h"
 
 #ifdef _MSC_VER
-#pragma warning ( disable : 4290 ) 
+#pragma warning ( disable : 4290 )
 #endif
 
 namespace net
@@ -19,16 +19,16 @@ namespace net
   class INetConnection
   {
   public:
-    virtual void flush() 
+    virtual void flush()
       throw (NetDriverException*) = 0;
 
-    virtual int send(const void *buf, int maxlen) 
+    virtual int send(const void *buf, int maxlen)
       throw (NetDriverException*) = 0;
 
-    virtual int receive(void *buf, int maxlen) 
+    virtual int receive(void *buf, int maxlen)
       throw (NetDriverException*) = 0;
 
-    virtual void close() 
+    virtual void close()
       throw (NetDriverException*) = 0;
 
     virtual ~INetConnection() { };

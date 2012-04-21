@@ -52,7 +52,7 @@ TargetDisplayWindowUpdatorRegisterer* __attribute__((used)) temp_static_haxoring
 
 namespace {
 
-	struct Point 
+	struct Point
 	{
 		int x;
 		int y;
@@ -84,7 +84,7 @@ Point convertVC3toScreen( VC3 pos, Game* game  )
 	IStorm3D_Camera *cam = scene->GetCamera();
 
 	Point p;
-	p.x = -1024; 
+	p.x = -1024;
 	p.y = -768;
 
 	VC3 result = VC3(0,0,0);
@@ -261,7 +261,7 @@ void TargetDisplayWindowUpdator::update()
 	// TargetDisplayButtonManager *manager = window->getManager();
 	// rect tmp = getTargetScreenRect( game );
 	// window->setRect( 0, tmp.x, tmp.y, tmp.w, tmp.h );
-	
+
 	{
 		float updateDistance = itemDistance * itemDistance;
 
@@ -294,7 +294,7 @@ void TargetDisplayWindowUpdator::update()
 				if( window->setRect( (*it), tmp.x - 12, tmp.y - 8, 35, 35, (int)( ( distance / updateDistance ) * 100.0f ), (*it)->getStyle() ) )
 				{
 					if( (*it)->hasStyleText() )
-						window->setText( (*it), (*it)->getStyleText() );	
+						window->setText( (*it), (*it)->getStyleText() );
 				}
 				*/
 			}
@@ -313,7 +313,7 @@ void TargetDisplayWindowUpdator::update()
 			{
 				Unit *unit = *it;
 				if(unit && unit->getVisualObject() && unit->getVisualObject()->getStormModel())
-				{				
+				{
 					UnitType *ut = unit->getUnitType();
 
 					IStorm3D_Model *m = unit->getVisualObject()->getStormModel();
@@ -326,7 +326,7 @@ void TargetDisplayWindowUpdator::update()
 						int style = unit->getHighlightStyle();
 						float rect_scale = 1.0f;
 						const char *text = NULL;
-						
+
 						// target lock rect
 						if(i == 1)
 						{
@@ -369,12 +369,12 @@ void TargetDisplayWindowUpdator::update()
 							VC3 pos_screen2 = VC3(0,0,0);
 							float rhw = 0;
 							float real_z = 0;
-							bool visible = cam->GetTransformedToScreen(pos, pos_screen, rhw, real_z); 
+							bool visible = cam->GetTransformedToScreen(pos, pos_screen, rhw, real_z);
 							if(!visible)
 								continue;
 
 							pos += cam->GetUpVecReal() * ut->getSize() * 0.5f;
-							visible = cam->GetTransformedToScreen(pos, pos_screen2, rhw, real_z); 
+							visible = cam->GetTransformedToScreen(pos, pos_screen2, rhw, real_z);
 							if(!visible)
 								continue;
 
@@ -393,9 +393,9 @@ void TargetDisplayWindowUpdator::update()
 						if(window->setRect(p, rect.x, rect.y, rect.w, rect.h, ( distance / updateDistance ), style ))
 						{
 							if(unit->hasHighlightText() )
-								window->setText(p, unit->getHighlightText() );	
+								window->setText(p, unit->getHighlightText() );
 							if(text)
-								window->setText(p, text );	
+								window->setText(p, text );
 
 						}
 
@@ -406,7 +406,7 @@ void TargetDisplayWindowUpdator::update()
 			}
 		}
 	}
-	
+
 	{
 		float updateDistance = itemDistance * itemDistance;
 
@@ -426,7 +426,7 @@ void TargetDisplayWindowUpdator::update()
 				if(window->setRect(p, rect.x, rect.y, rect.w, rect.h, ( distance / updateDistance ), risingMessageStyle ))
 				{
 					/*if(unit->hasHighlightText() )
-						window->setText(p, unit->getHighlightText() );	
+						window->setText(p, unit->getHighlightText() );
 						*/
 				}
 			}
@@ -451,10 +451,10 @@ void TargetDisplayWindowUpdator::update()
 				risingMessages.erase( remove );
 			}
 		}
-		
+
 	}
 
-	
+
 	currentFrame++;
 
 	if( currentFrame >= removeUnnessary )
@@ -492,7 +492,7 @@ void TargetDisplayWindowUpdator::risingMessage( game::Unit* unit, const std::str
 		{
 			if(unit && unit->getVisualObject() && unit->getVisualObject()->getStormModel())
 			{
-				
+
 				IStorm3D_Model *m = unit->getVisualObject()->getStormModel();
 				Rect rect = getScreenArea(m->GetBoundingBox(), game);
 
@@ -500,7 +500,7 @@ void TargetDisplayWindowUpdator::risingMessage( game::Unit* unit, const std::str
 				void *p = ((char *)unit) + 1;
 				if(window->setRisingText( p, rect.x, rect.y, rect.w, rect.h, ( distance / updateDistance ), style ) )
 				{
-					window->setText(p, text );	
+					window->setText(p, text );
 				}
 
 				risingMessages.push_back( unit );
@@ -532,7 +532,7 @@ void TargetDisplayWindowUpdator::updateUpdatables()
 {
 	{
 		LinkedList<Item*>* list = game->items->getAllItems();
-		
+
 		itemsToBeUpdated.clear();
 
 		float updateDistance = updateItemsInsideDistance * updateItemsInsideDistance;
@@ -543,7 +543,7 @@ void TargetDisplayWindowUpdator::updateUpdatables()
 		{
 			Item* item = i.iterateNext();
 			VC3 pos = item->getPosition();
-		
+
 
 			if( item->getHighlightStyle() >= 0 && calculateDistance( pos, game ) < updateDistance )
 			{

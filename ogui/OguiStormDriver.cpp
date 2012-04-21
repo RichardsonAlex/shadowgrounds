@@ -99,7 +99,7 @@ int OguiStormFont::getStringWidth(const char *text)
 	{
 		std::wstring uniText;
 		util::convertToWide(text, uniText);
-		
+
 		if( uniText.empty() == false )
 			return getStringWidth(uniText.c_str());
 		else return 0;
@@ -128,7 +128,7 @@ int OguiStormFont::getStringWidth(const char *text)
 //				assert(!"invalid font character");
 			#endif
 			// blaah... this looks like a nice number (missing font)
-			width += chrwidth / 2.0f; 
+			width += chrwidth / 2.0f;
 		} else {
 			// the magic number 64 and the static font size.
 			width += (chrsize[j] * chrwidth / 64.0f );
@@ -216,14 +216,14 @@ void ogui_storm_driver_error(const char *msg, const char *filename)
 }
 
 
-OguiStormDriver::OguiStormDriver(IStorm3D *storm3d, IStorm3D_Scene *stormScene) 
+OguiStormDriver::OguiStormDriver(IStorm3D *storm3d, IStorm3D_Scene *stormScene)
 	throw (OguiException *)
 {
 	if (got_orvgui) throw new OguiException("OguiStormDriver - Multiple instances not allowed.");
 	og_setStorm3D(storm3d);
 	og_setRendererScene(stormScene);
 	init_orvgui();
- 
+
 	fonts = new LinkedList<OguiStormFont*>();
 	images = new LinkedList<OguiStormImage*>();
 
@@ -233,9 +233,9 @@ OguiStormDriver::OguiStormDriver(IStorm3D *storm3d, IStorm3D_Scene *stormScene)
 	textureCache->setLoadFlags(TEXLOADFLAGS_NOWRAP);
 }
 
-OguiStormDriver::~OguiStormDriver() 
+OguiStormDriver::~OguiStormDriver()
 {
-	// should we delete all loaded images or just set their contents 
+	// should we delete all loaded images or just set their contents
 	// to null pointers... now we'll just modify the contents so
 	// any pointers to them won't become invalid
 	delete textureCache;
@@ -280,14 +280,14 @@ IOguiImage *OguiStormDriver::LoadOguiImage(const char *filename)
 		return NULL;
 	}
 
-	OguiStormImage *tmp = new OguiStormImage(); 
+	OguiStormImage *tmp = new OguiStormImage();
 	tmp->filename = new char[strlen(filename) + 1];
 	strcpy(tmp->filename, filename);
 
 /*
-	IStorm3D_Texture *tex = 
-		og_storm3d->CreateNewTexture(tmp->filename, 
-			TEXLOADFLAGS_NOCOMPRESS | TEXLOADFLAGS_NOLOD);	
+	IStorm3D_Texture *tex =
+		og_storm3d->CreateNewTexture(tmp->filename,
+			TEXLOADFLAGS_NOCOMPRESS | TEXLOADFLAGS_NOLOD);
 */
 	//this->textureCache->loadTexture(tmp->filename, false);
 	IStorm3D_Texture *tex = this->textureCache->getTexture(tmp->filename, false);
@@ -296,7 +296,7 @@ IOguiImage *OguiStormDriver::LoadOguiImage(const char *filename)
 	{
 		// just to pass the (deleted) filename to exception data pointer
 		// helps debugging in case of exception, must not be used otherwise though
-		//const char *invalidptr = filename; 
+		//const char *invalidptr = filename;
 		delete tmp;
 		ogui_storm_driver_error("OguiStormDriver::LoadOguiImage - Could not load image.", filename);
 		//throw new OguiException(emsg, invalidptr);
@@ -329,11 +329,11 @@ IOguiImage *OguiStormDriver::LoadOguiImage(const char *filename)
 IOguiImage *OguiStormDriver::LoadOguiImage(int width, int height)
 	throw (OguiException *)
 {
-	OguiStormImage *tmp = new OguiStormImage(); 
+	OguiStormImage *tmp = new OguiStormImage();
 
-	IStorm3D_Texture *tex = 
-		og_storm3d->CreateNewTexture(width, height, 
-		IStorm3D_Texture::TEXTYPE_BASIC);  
+	IStorm3D_Texture *tex =
+		og_storm3d->CreateNewTexture(width, height,
+		IStorm3D_Texture::TEXTYPE_BASIC);
 
 	if (tex == NULL)
 	{
@@ -362,7 +362,7 @@ IOguiImage *OguiStormDriver::LoadOguiImage(int width, int height)
 
 IOguiImage *OguiStormDriver::GetOguiRenderTarget(int index)
 {
-	OguiStormImage *tmp = new OguiStormImage(); 
+	OguiStormImage *tmp = new OguiStormImage();
 	IStorm3D_Texture *tex = og_storm3d->getRenderTarget(index);
 
 	if (tex == NULL)
@@ -465,7 +465,7 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 					continue;
 
 				IStorm3D_Font *font = oguiFont->fnt;
-				if(fontFace == font->GetFace() && width == font->GetWidth() && height == font->GetHeight() && 
+				if(fontFace == font->GetFace() && width == font->GetWidth() && height == font->GetHeight() &&
 					bold == font->IsBold() && italic == font->IsItalic())
 				{
 					fnt = font->Clone();
@@ -480,7 +480,7 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 				//fnt->SetColor(color);
 			}
 
-			tmp = new OguiStormFont(); 
+			tmp = new OguiStormFont();
 			tmp->fontFace = new char[fontFace.size() + 1];
 			strcpy(tmp->fontFace, fontFace.c_str());
 			tmp->chrheight = lineHeight;
@@ -521,9 +521,9 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 			//throw new OguiException("OguiStormDriver::LoadFont - File size too small.", filename);
 		}
 
-		char *buf = new char[flen]; 
+		char *buf = new char[flen];
 
-		if ((int)filesystem::fb_fread(buf, sizeof(char), flen, f) != flen) 
+		if ((int)filesystem::fb_fread(buf, sizeof(char), flen, f) != flen)
 		{
 			ogui_storm_driver_error("OguiStormDriver::LoadFont - Error while reading file.", filename);
 			return NULL;
@@ -534,7 +534,7 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 
 		// the quick hack parser
 		// OGF;XX;YY;xx;yy;AAA;CCC;1...;SSSS...;texturename;ignored...
-		// or 
+		// or
 		// OG2;XX;YY;xx;yy;AAA;CCC;1...;SS,SS...,;texturename;ignored...
 		//
 		// XX,YY = 0-99 (columns, rows)
@@ -543,8 +543,8 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 		// CCC = 0-8,0-8,0-8 (colors rgb)
 		// 1... = (letters)
 		// SS = 0-99 (size of letter)
-		
-		if ((strncmp(buf, "OGF;", 4) != 0 && strncmp(buf, "OG2;", 4) != 0) || buf[6] != ';' || buf[9] != ';' 
+
+		if ((strncmp(buf, "OGF;", 4) != 0 && strncmp(buf, "OG2;", 4) != 0) || buf[6] != ';' || buf[9] != ';'
 			|| buf[12] != ';' || buf[15] != ';'
 			|| buf[19] != ';' || buf[23] != ';')
 		{
@@ -552,9 +552,9 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 			return NULL;
 			//throw new OguiException("OguiStormDriver::LoadFont - Bad file format.", filename);
 		}
-		
+
 		bool ver2 = false;
-		if (strncmp(buf, "OG2;", 4) == 0) 
+		if (strncmp(buf, "OG2;", 4) == 0)
 			ver2 = true;
 
 		int cols = 0;
@@ -645,8 +645,8 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 
 		delete [] buf;
 
-		IStorm3D_Texture *tex = 
-			og_storm3d->CreateNewTexture(fname, 
+		IStorm3D_Texture *tex =
+			og_storm3d->CreateNewTexture(fname,
 				TEXLOADFLAGS_NOCOMPRESS | TEXLOADFLAGS_NOLOD);
 
 		if (tex == NULL)
@@ -663,8 +663,8 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 		fnt->SetColor(COL(1.f, 1.f, 1.f));
 
 		fnt->SetCharacters(chrdef, chrsize);
-	
-		tmp = new OguiStormFont(); 
+
+		tmp = new OguiStormFont();
 		tmp->texfname = fname;
 		tmp->cols = cols;
 		tmp->rows = rows;
@@ -692,7 +692,7 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 IOguiImage* OguiStormDriver::LoadOguiVideo( const char* filename, IStorm3D_StreamBuilder *streamBuilder)
 {
 	IStorm3D_VideoStreamer* video_str = og_storm3d->CreateVideoStreamer( filename, streamBuilder, true );
-	OguiStormImage *tmp = new OguiStormImage(); 
+	OguiStormImage *tmp = new OguiStormImage();
 	tmp->filename = new char[strlen(filename) + 1];
 	strcpy(tmp->filename, filename);
 
@@ -700,7 +700,7 @@ IOguiImage* OguiStormDriver::LoadOguiVideo( const char* filename, IStorm3D_Strea
 	{
 		// just to pass the (deleted) filename to exception data pointer
 		// helps debugging in case of exception, must not be used otherwise though
-		// const char *invalidptr = filename; 
+		// const char *invalidptr = filename;
 		delete tmp;
 		ogui_storm_driver_error("OguiStormDriver::ConvertVideoToImage - Could not load video.", "" );
 		//throw new OguiException(emsg, invalidptr);
@@ -722,7 +722,7 @@ IOguiImage* OguiStormDriver::LoadOguiVideo( const char* filename, IStorm3D_Strea
 
 IOguiImage* OguiStormDriver::ConvertVideoToImage( IStorm3D_VideoStreamer* video_str, IStorm3D_StreamBuilder *streamBuilder )
 {
-	OguiStormImage *tmp = new OguiStormImage(); 
+	OguiStormImage *tmp = new OguiStormImage();
 	tmp->filename = NULL; // new char[strlen(filename) + 1];
 	// strcpy(tmp->filename, filename);
 
@@ -730,7 +730,7 @@ IOguiImage* OguiStormDriver::ConvertVideoToImage( IStorm3D_VideoStreamer* video_
 	{
 		// just to pass the (deleted) filename to exception data pointer
 		// helps debugging in case of exception, must not be used otherwise though
-		// const char *invalidptr = filename; 
+		// const char *invalidptr = filename;
 		delete tmp;
 		ogui_storm_driver_error("OguiStormDriver::ConvertVideoToImage - Could not load video.", "" );
 		//throw new OguiException(emsg, invalidptr);
@@ -751,7 +751,7 @@ IOguiImage* OguiStormDriver::ConvertVideoToImage( IStorm3D_VideoStreamer* video_
 }
 
 
-// TODO: leaks memory in case of exception, but who cares because 
+// TODO: leaks memory in case of exception, but who cares because
 // exception here is very likely to be fatal anyway.
 
 void OguiStormDriver::prepareForNextStormGeneration(IStorm3D_Scene *stormScene)
@@ -774,7 +774,7 @@ void OguiStormDriver::prepareForNextStormGeneration(IStorm3D_Scene *stormScene)
 void OguiStormDriver::nextStormGeneration(IStorm3D_Scene *stormScene)
 	throw (OguiException *)
 {
-	// reload all storm textures, fonts and materials in all 
+	// reload all storm textures, fonts and materials in all
 	// ogui images and fonts because they are invalid now
 
 	// Clear font pointers
@@ -806,7 +806,7 @@ void OguiStormDriver::nextStormGeneration(IStorm3D_Scene *stormScene)
 				if(!fnt2 || !fnt2->isUnicode || !fnt2->fnt)
 					continue;
 
-				if(fnt->fontWidth == fnt2->fontWidth && fnt->fontHeight == fnt2->fontHeight 
+				if(fnt->fontWidth == fnt2->fontWidth && fnt->fontHeight == fnt2->fontHeight
 					&& fnt->isBold == fnt2->isBold && fnt->isItalic == fnt2->isItalic &&
 					strcmp(fnt->fontFace, fnt2->fontFace) == 1)
 				{
@@ -826,8 +826,8 @@ void OguiStormDriver::nextStormGeneration(IStorm3D_Scene *stormScene)
 		}
 		else
 		{
-			fnt->tex = 
-				og_storm3d->CreateNewTexture(fnt->texfname, 
+			fnt->tex =
+				og_storm3d->CreateNewTexture(fnt->texfname,
 					TEXLOADFLAGS_NOCOMPRESS | TEXLOADFLAGS_NOLOD | TEXLOADFLAGS_NOWRAP);
 
 			if (fnt->tex == NULL)
@@ -858,9 +858,9 @@ void OguiStormDriver::nextStormGeneration(IStorm3D_Scene *stormScene)
 		OguiStormImage *img = (OguiStormImage *)images->iterateNext();
 
 /*
-		img->tex = 
-			og_storm3d->CreateNewTexture(img->filename, 
-				TEXLOADFLAGS_NOCOMPRESS | TEXLOADFLAGS_NOLOD);	
+		img->tex =
+			og_storm3d->CreateNewTexture(img->filename,
+				TEXLOADFLAGS_NOCOMPRESS | TEXLOADFLAGS_NOLOD);
 */
 		if (img->filename != NULL)
 		{
@@ -888,8 +888,8 @@ void OguiStormDriver::nextStormGeneration(IStorm3D_Scene *stormScene)
 				//this->textureCache->loadTexture(img->filename, false);
 				img->tex = this->textureCache->getTexture(img->filename, false);
 			}
-		} 
-		else 
+		}
+		else
 		{
 			if (img->renderTargetIndex >= 0)
 			{

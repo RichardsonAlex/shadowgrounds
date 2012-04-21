@@ -3,7 +3,7 @@
 
 struct VectorTrackData;
 class VectorTrack {
-	ScopedPtr<VectorTrackData> m; 
+	ScopedPtr<VectorTrackData> m;
 public:
 	VectorTrack();
 	~VectorTrack();

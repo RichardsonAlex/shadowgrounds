@@ -49,14 +49,14 @@ void ParticleManager::stepForwards(int tick) {
 		}
 	}
 */
-	// Uhh. Increment iterator IFF it wasn't removed. Erase returns next valid 
-	// element anyway. Also, end is not fixed if container is modified 
+	// Uhh. Increment iterator IFF it wasn't removed. Erase returns next valid
+	// element anyway. Also, end is not fixed if container is modified
 	// (invalidates iterators, makes them undefined actually)
 	//	-- psd
-	for(std::list<ParticleSystem*>::iterator i=particleSystems.begin() ; i != particleSystems.end(); ) 
+	for(std::list<ParticleSystem*>::iterator i=particleSystems.begin() ; i != particleSystems.end(); )
 	{
 		bool isDone=(*i)->stepForwards(tick);
-		if(isDone) 
+		if(isDone)
 		{
 			delete *i;
 			i=particleSystems.erase(i);

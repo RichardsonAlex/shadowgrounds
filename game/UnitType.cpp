@@ -23,7 +23,7 @@
 #include <boost/lexical_cast.hpp>
 
 // this should result into about 8 seconds (slightly less).
-// (note: this value is not seconds though!!!) 
+// (note: this value is not seconds though!!!)
 #define UNITTYPE_DEFAULT_TARGET_LOSE_TIME 8
 
 #define UNIT_HASHCODE_CALC(name, result) \
@@ -954,7 +954,7 @@ int getMaterialFromString( const std::string& string )
 					char firstChar = splitTemp[3][0];
 					if( firstChar < '0' || firstChar > '9' )
 					{
-						
+
 						material_name += "_" + splitTemp[2];
 						for(unsigned int i = 2; i < splitTemp.size() - 1; i++)
 						{
@@ -970,7 +970,7 @@ int getMaterialFromString( const std::string& string )
 			bool default_material = material_name == "default";
 			bool valid_material = material_num >= 0 && (unsigned)material_num < walkOnMaterialArray.size();
 
-			if( splitTemp.size() > 2 && material_name.empty() == false && 
+			if( splitTemp.size() > 2 && material_name.empty() == false &&
 				effect_file.empty() == false &&	(valid_material || default_material))
 			{
 				WalkOnMaterialData **target;
@@ -1111,16 +1111,16 @@ int getMaterialFromString( const std::string& string )
 			}
 			return true;
 		}
-    
+
 		PDATA_READ_INT( "lineoffirelosetime", lineOfFireLoseTime );
-		
+
 
 		// PDATA_READ_FLOAT("poisonresistance", poisonResistance);
-		if (strcmp(key, "poisonresistance") == 0) 
-		{ 
-			poisonResistance = (float)atof(value); 
-			return true; 
-		} 
+		if (strcmp(key, "poisonresistance") == 0)
+		{
+			poisonResistance = (float)atof(value);
+			return true;
+		}
 
 		PDATA_READ_FLOAT( "criticalhitpercent", criticalHitPercent );
 
@@ -1177,7 +1177,7 @@ int getMaterialFromString( const std::string& string )
 		PDATA_READ_BOOLINT( "runhitscriptwithoutshooter", runHitScriptWithoutShooter);
 		PDATA_READ_BOOLINT( "allowtargetlock", allowTargetLock);
 
-		return false; 	 
+		return false;
 	}
 
 	bool UnitType::isPointedWithAny(int pointedWithMask)
@@ -1210,7 +1210,7 @@ int getMaterialFromString( const std::string& string )
 		else
 			return mat;
 	}
-	
+
 	bool UnitType::getWalkOnMaterialEnabled() const
 	{
 		return walkOnMaterialEnabled;
@@ -1242,7 +1242,7 @@ int getMaterialFromString( const std::string& string )
 		}
 		return NULL;
 	}
-	
+
 
 	WalkOnMaterialData::SoundEffect::SoundEffect()
 	{

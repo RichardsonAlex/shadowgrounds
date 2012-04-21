@@ -15,7 +15,7 @@ namespace game
 	 * A Generic interface for game's scriptable variables.
 	 * An object implementing this interface may be used within
 	 * the game scripts (the object's value may be changed or read).
-	 * 
+	 *
    * @version 1.0, 13.3.2003
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
 	 * @see GameStateVariable

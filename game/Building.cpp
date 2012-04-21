@@ -60,8 +60,8 @@ namespace game
   }
 
   void *Building::getVisualObjectDataId() const
-  { 
-    return (void *)&buildingDataId; 
+  {
+    return (void *)&buildingDataId;
   }
 
 	/*

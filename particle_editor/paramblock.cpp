@@ -47,7 +47,7 @@ void ParamBlock::addParams(ParamDesc* desc, int nParams) {
 			{
 				m_vectors.push_back(Vector(0.0f, 0.0f, 0.0f));
 				param->offset = m_vectors.size()-1;
-				if(param->animatable) { 
+				if(param->animatable) {
 					boost::shared_ptr<Track> vt(new VectorTrack());
 					param->c.swap(vt);
 				}

@@ -63,7 +63,7 @@ namespace game
 				return false;
 			}
 		}
-		else 
+		else
 		{
 			// TODO: other types.
 			assert(!"UnifiedHandleManager::doesObjectExist - TODO, other types.");
@@ -95,7 +95,7 @@ namespace game
 			assert(t != NULL);
 			return t->getTrackerPosition();
 		}
-		else 
+		else
 		{
 			// TODO: other types.
 			assert(!"UnifiedHandleManager::getObjectPosition - TODO, other types.");
@@ -111,7 +111,7 @@ namespace game
 			assert(t != NULL);
 			t->setTrackerPosition(position);
 		}
-		else 
+		else
 		{
 			// TODO: other types.
 			assert(!"UnifiedHandleManager::setObjectPosition - TODO, other types.");

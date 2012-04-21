@@ -49,7 +49,7 @@ namespace ui
 			void loadModel(const char *filename);
 
       void setName(const char *name);
-   
+
       void setPosition(const VC3 &position);
 
       const VC3 &getPosition();
@@ -59,7 +59,7 @@ namespace ui
       void setHeight(float height);
 
 	  void setSpeed(float speed);
-      
+
 	  void setEndPosition(const VC3 &position);
 
       void setEndHeight(float height);
@@ -91,7 +91,7 @@ namespace ui
 
       VC3 startRotation;
       VC3 rotation;
-      
+
       VisualObject *visualObject;
       VisualObjectModel *visualObjectModel;
 
@@ -101,9 +101,9 @@ namespace ui
 			int tickCount;
 
       //float effectDuration;
-	  
+	
       void parseBoundingQuadSize(const char* modelFileName);
-	  
+	
       float boundingQuadSizeX;
       float boundingQuadSizeY;
 

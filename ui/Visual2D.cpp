@@ -9,7 +9,7 @@
 
 namespace ui
 {
-  
+
   Ogui *Visual2D::visualOgui = NULL;
 
   void Visual2D::setVisualOgui(Ogui *ogui)
@@ -53,7 +53,7 @@ namespace ui
     }
   }
 
-  IOguiImage *Visual2D::getImage() 
+  IOguiImage *Visual2D::getImage()
   {
     return image;
   }

@@ -18,7 +18,7 @@ namespace game
 	class AnimationScripting
 	{
 		public:			
-			/** 
+			/**
 			 * Just processes one command...
 			 */
 			static void process(util::ScriptProcess *sp,

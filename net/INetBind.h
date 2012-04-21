@@ -19,14 +19,14 @@ namespace net
     virtual INetConnection *acceptConnection()
       throw (NetDriverException*) = 0;
 
-    virtual void listen(int backlog) 
+    virtual void listen(int backlog)
       throw (NetDriverException*) = 0;
 
     virtual int getMaxBacklog() = 0;
 
     virtual void unbind()
       throw (NetDriverException*) = 0;
-     
+
     virtual ~INetBind() { };
   };
 }

@@ -42,14 +42,14 @@ namespace editor {
 			{
 				if(data.attrib & _A_SUBDIR)
 					return true;
-				else 
+				else
 					return false;
 			}
 			else if(type == File)
 			{
 				if(data.attrib & _A_SUBDIR)
 					return false;
-				else 
+				else
 					return true;
 			}
 

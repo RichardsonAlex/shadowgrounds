@@ -33,10 +33,10 @@ namespace game
 {
 
 bool UnitLevelAI::allEnabled = true;
-bool UnitLevelAI::playerAIEnabled[ABS_MAX_PLAYERS] = 
-{ 
+bool UnitLevelAI::playerAIEnabled[ABS_MAX_PLAYERS] =
+{
 	true, true, true, true
-//	true, true, true, true, true, true, true, true, 
+//	true, true, true, true, true, true, true, true,
 //	true, true, true, true, true, true, true, true
 };
 
@@ -72,7 +72,7 @@ void UnitLevelAI::setAllEnabled(bool allEnabled)
 
 void UnitLevelAI::setPlayerAIEnabled(int player, bool enabled)
 {
-	// TODO: should possibly loop thru all units and set their 
+	// TODO: should possibly loop thru all units and set their
 	// individual ai enabled/disabled (but that might screw up some
 	// specifically disabled unit AIs?)
 	UnitLevelAI::playerAIEnabled[player] = enabled;
@@ -84,13 +84,13 @@ void UnitLevelAI::reScriptMain()
 
   if (unit->getScript() != NULL)
   {
-    mainScriptProcess = 
+    mainScriptProcess =
       game->gameScripting->startUnitScript(unit, unit->getScript(), "main");
 		if (mainScriptProcess != NULL)
 		{
 	    assert(mainScriptProcess->getData() != NULL);
 		}
-  }  
+  }
 }
 
 
@@ -135,7 +135,7 @@ void UnitLevelAI::terminateMainScript()
   if (mainScriptProcess != NULL)
   {
     GameScriptData *gsd = (GameScriptData *)mainScriptProcess->getData();
-    if (gsd != NULL) 
+    if (gsd != NULL)
     {
       delete gsd;
     }
@@ -364,7 +364,7 @@ void UnitLevelAI::runUnitAI()
 						&& unit->getSeeUnit() != unit->targeting.getTargetUnit()
 						&& unit->targeting.isAutoTarget())
 					{
-						VC3 distVector = unit->targeting.getTargetUnit()->getPosition() 
+						VC3 distVector = unit->targeting.getTargetUnit()->getPosition()
 							- unit->getPosition();
 						// (2*see_unit_dist)^2 < (target_dist)^2
 						if (unit->getSeeUnitDistance() * unit->getSeeUnitDistance() * 4
@@ -388,11 +388,11 @@ void UnitLevelAI::runUnitAI()
 					if (unit->getMode() == Unit::UNIT_MODE_AGGRESSIVE)
 						maxAttackRange = unit->getMaxWeaponRange();
 
-					// TODO: should rather react to actual shot than 
+					// TODO: should rather react to actual shot than
 					// the targeting...
 					if ((unit->getSeeUnitDistance() < maxAttackRange
 						|| unit->getSeeUnit()->targeting.hasTarget())
-						&& (unit->getSeeUnit()->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS 
+						&& (unit->getSeeUnit()->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS
 						|| unit->getSeeUnitDistance() < 5))
 					{
 						if (isThisAndAllEnabled())
@@ -451,7 +451,7 @@ void UnitLevelAI::copyStateFrom(UnitLevelAI *otherAI)
 		if (mainScriptProcess != NULL)
 		{
 			GameScriptData *gsd = (GameScriptData *)mainScriptProcess->getData();
-			if (gsd != NULL) 
+			if (gsd != NULL)
 			{
 				delete gsd;
 			}

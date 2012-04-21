@@ -65,7 +65,7 @@ namespace net
       return FILEBIND_MAX_BACKLOG;
     }
 
- 
+
     void FileBind::unbind()
       throw (NetDriverException*)
     {
@@ -79,7 +79,7 @@ namespace net
     {
       if (acceptAmount != -1)
       {
-        acceptedConnections->append(connection); 
+        acceptedConnections->append(connection);
         acceptAmount--;
       }
       // else assert(0)
@@ -88,9 +88,9 @@ namespace net
 
     bool FileBind::isAcceptingConnections()
     {
-      if (acceptAmount > 0) 
+      if (acceptAmount > 0)
         return true;
-      else 
+      else
         return false;
     }
 

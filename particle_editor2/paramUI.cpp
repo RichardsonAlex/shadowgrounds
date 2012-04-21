@@ -26,7 +26,7 @@ namespace particle {
 using namespace editor;
 
 ParamDesc::ParamDesc(const std::string _name, int _id, PARAM_TYPE _type) :
-name(_name), type(_type), id1(_id) 
+name(_name), type(_type), id1(_id)
 {	
 }
 
@@ -35,57 +35,57 @@ name(_name), type(_type), id1(_id), defaultValue(default_)
 {	
 }
 
-ParamDesc::ParamDesc(const std::string _name, int _id1, int _id2, int _id3, PARAM_TYPE _type) 
-:	name(_name), 
-	type(_type), 
-	id1(_id1), 
-	id2(_id2), 
+ParamDesc::ParamDesc(const std::string _name, int _id1, int _id2, int _id3, PARAM_TYPE _type)
+:	name(_name),
+	type(_type),
+	id1(_id1),
+	id2(_id2),
 	id3(_id3)
 {
 }
 
-ParamDesc::ParamDesc(const std::string name_, int id1_, int id2_, const std::string& ext_, const std::string& path_,PARAM_TYPE type_) 
-:	name(name_), 
-	id1(id1_), 
-	id2(id2_), 
-	ext(ext_), 
-	path(path_), 
-	type(type_) 
+ParamDesc::ParamDesc(const std::string name_, int id1_, int id2_, const std::string& ext_, const std::string& path_,PARAM_TYPE type_)
+:	name(name_),
+	id1(id1_),
+	id2(id2_),
+	ext(ext_),
+	path(path_),
+	type(type_)
 {
 }
 
-ParamDesc::ParamDesc(const std::string name_, int id1_, const std::string& selections_, PARAM_TYPE type_) 
-:	name(name_), 
-	id1(id1_), 
-	type(type_) 
+ParamDesc::ParamDesc(const std::string name_, int id1_, const std::string& selections_, PARAM_TYPE type_)
+:	name(name_),
+	id1(id1_),
+	type(type_)
 {	
-	if(type == PARAM_SELECTION) 
+	if(type == PARAM_SELECTION)
 	{
 		std::string str;	
-		for(unsigned int i = 0; i < selections_.size(); i++) 
+		for(unsigned int i = 0; i < selections_.size(); i++)
 		{
-			if(selections_[i] == ',') 
+			if(selections_[i] == ',')
 			{
 				selections.push_back(str);
 				str.clear();
-			} 
+			}
 			else
 				str += selections_[i];
 		}
 
 		selections.push_back(str);
-	} 
-	else if(type == PARAM_STRING) 
+	}
+	else if(type == PARAM_STRING)
 	{		
 	}
 }
 
-ParamDesc::ParamDesc(const ParamDesc &rhs) 
+ParamDesc::ParamDesc(const ParamDesc &rhs)
 {
 	*this = rhs;
 }
 		
-ParamDesc& ParamDesc::operator=(const ParamDesc& rhs) 
+ParamDesc& ParamDesc::operator=(const ParamDesc& rhs)
 {
 	ext = rhs.ext;
 	id1 = rhs.id1;
@@ -168,24 +168,24 @@ struct SharedData {
 	
 	void update() {
 		
-		for(unsigned int i = 0; i < pd.size(); ++i) 
+		for(unsigned int i = 0; i < pd.size(); ++i)
 		{
-			if(pd[i].type == PARAM_INT) 
+			if(pd[i].type == PARAM_INT)
 			{
 				int value = getDialogItemInt(dlg, pd[i].id1);
 				parser.setValue(pd[i].name, convertToString<int>(value));
 			}
-			else if(pd[i].type == PARAM_BOOL) 
+			else if(pd[i].type == PARAM_BOOL)
 			{
 				bool value = isCheckEnabled(dlg, pd[i].id1);
 				parser.setValue(pd[i].name, convertToString<int>(value));
 			}
-			else if(pd[i].type == PARAM_FLOAT) 
+			else if(pd[i].type == PARAM_FLOAT)
 			{
 				float value = getDialogItemFloat(dlg, pd[i].id1);
 				parser.setValue(pd[i].name, convertToString<float>(value));
 			}
-			else if(pd[i].type == PARAM_VECTOR) 
+			else if(pd[i].type == PARAM_VECTOR)
 			{
 				
 				float value1 = getDialogItemFloat(dlg, pd[i].id1);
@@ -194,21 +194,21 @@ struct SharedData {
 				
 				parser.setValue(pd[i].name, convertVectorToString(Vector(value1, value2, value3)));
 			}
-			else if(pd[i].type == PARAM_ANIMATED_FLOAT) 
+			else if(pd[i].type == PARAM_ANIMATED_FLOAT)
 			{
 				
 				//ParserGroup& pg = parser.getSubGroup(pd[i].name);
 				//pg = reinterpret_cast<AnimatedFloatCommand*>(cmds[pd[i].name].get())->getParserGroup();
 				
 			}
-			else if(pd[i].type == PARAM_ANIMATED_VECTOR) 
+			else if(pd[i].type == PARAM_ANIMATED_VECTOR)
 			{
 				
 				//ParserGroup& pg = parser.getSubGroup(pd[i].name);
 				//pg = reinterpret_cast<AnimatedVectorCommand*>(cmds[pd[i].name].get())->getParserGroup();
 				
 			}
-			else if(pd[i].type == PARAM_STRING) 
+			else if(pd[i].type == PARAM_STRING)
 			{
 				std::string str = getDialogItemText(dlg, pd[i].id1);	
 				parser.setValue(pd[i].name, str);
@@ -220,7 +220,7 @@ struct SharedData {
 					reinterpret_cast<FileCommand*>(cmds[pd[i].name].get())->getFileName());
 				
 			}
-			else if(pd[i].type == PARAM_SELECTION) 
+			else if(pd[i].type == PARAM_SELECTION)
 			{	
 				int sel = ComboBox_GetCurSel(dlg.getItem(pd[i].id1));
 
@@ -232,7 +232,7 @@ struct SharedData {
 				parser.setValue(pd[i].name, pd[i].selections[sel]);
 
 			}
-			else 
+			else
 			{
 				assert(0);
 			}
@@ -244,12 +244,12 @@ struct SharedData {
 class UpdateCommand : public ICommand {
 	SharedData& data;
 public:
-	UpdateCommand(SharedData& _data) 
-	:	 data(_data) 
+	UpdateCommand(SharedData& _data)
+	:	 data(_data)
 	{
 	}
 	
-	void execute(int id) 
+	void execute(int id)
 	{
 		data.update();
 	}
@@ -266,12 +266,12 @@ struct ParamUIData
 	UpdateCommand updateCommand;
 	std::map< std::string, boost::shared_ptr<ICommand> > cmds;
 
-	ParamUIData(Dialog& parent, int id, ParserGroup& parser, const std::vector<ParamDesc>& pd) 
-	:	dlg(id, parent.getWindowHandle()), 
-		data(parser, dlg, pd, cmds), 
-		updateCommand(data)   
+	ParamUIData(Dialog& parent, int id, ParserGroup& parser, const std::vector<ParamDesc>& pd)
+	:	dlg(id, parent.getWindowHandle()),
+		data(parser, dlg, pd, cmds),
+		updateCommand(data)
 	{
-		for(unsigned int i = 0; i < pd.size(); i++) 
+		for(unsigned int i = 0; i < pd.size(); i++)
 		{		
 			if(pd[i].type == PARAM_INT) {
 				int value = convertFromString<int>(parser.getValue(pd[i].name, ""), convertFromString<int>(pd[i].defaultValue, 0));
@@ -303,7 +303,7 @@ struct ParamUIData
 			}
 			if(pd[i].type == PARAM_STRING) {
 				std::string str = parser.getValue(pd[i].name, pd[i].defaultValue);
-				setDialogItemText(dlg, pd[i].id1, str); 
+				setDialogItemText(dlg, pd[i].id1, str);
 			}
 			if(pd[i].type == PARAM_FILE) {
 				std::string str = parser.getValue(pd[i].name, "");				
@@ -311,13 +311,13 @@ struct ParamUIData
 				cmds[pd[i].name] = c;
 				dlg.getCommandList().addCommand(pd[i].id1, c.get());
 			}
-			if(pd[i].type == PARAM_SELECTION) 
+			if(pd[i].type == PARAM_SELECTION)
 			{
 				ComboBox_ResetContent(dlg.getItem(pd[i].id1));
 				std::string sel = parser.getValue(pd[i].name, "");
 
 				bool found = false;
-				for(unsigned int j = 0; j < pd[i].selections.size(); j++) 
+				for(unsigned int j = 0; j < pd[i].selections.size(); j++)
 				{
 					ComboBox_AddString(dlg.getItem(pd[i].id1), pd[i].selections[j].c_str());
 					if(pd[i].selections[j] == sel)
@@ -338,7 +338,7 @@ struct ParamUIData
 	}
 };
 
-ParamUI::ParamUI(Dialog& parent, int id, ParserGroup& parser, const std::vector<ParamDesc>& pd) 
+ParamUI::ParamUI(Dialog& parent, int id, ParserGroup& parser, const std::vector<ParamDesc>& pd)
 {
 	boost::scoped_ptr<ParamUIData> p(new ParamUIData(parent, id, parser, pd));
 	data.swap(p);

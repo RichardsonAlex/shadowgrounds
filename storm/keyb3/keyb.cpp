@@ -355,7 +355,7 @@ struct nappis1
 {
 	unsigned char keysdown[MAX_KBS];	// mitk‰ napit pohjassa
 	unsigned char exkd[MAX_KBS];		// entiset napit, viime
-										// UpdateInputDevices:n k‰yttˆ‰ 
+										// UpdateInputDevices:n k‰yttˆ‰
 										// ennen, t‰t‰ voit k‰ytt‰‰
 										// painallusten/irrotusten seuraamiseen
 	unsigned char getpress[MAX_KBS];	// mink‰ nappien painallukset on jo "k‰sitelty" (GetKeypress)
@@ -384,7 +384,7 @@ struct joy1
 	int rot_x,rot_y;
 	int throttle,rudder;		
 
-	unsigned char nappi[MAX_JOYBUTTONS];	//napit 
+	unsigned char nappi[MAX_JOYBUTTONS];	//napit
 };
 
 // Globaalit devicet
@@ -684,7 +684,7 @@ void Keyb3_UpdateDevices_Optimized(int time) {	// time in 1/1000 secs (1000=1 se
 	}
 }
 
-// Waits for a keypress, and returns keycode 
+// Waits for a keypress, and returns keycode
 int Keyb3_WaitKeypress(bool returnIndividualMouse) {
 	int OK = -1;
 	Keyb3_UpdateDevices();
@@ -763,7 +763,7 @@ void Keyb3_SetMousePos(int x, int y, int mouseID) {
 void Keyb3_ReleaseMouseBorders() {
 }
 
-// Direct mouse read (give a NULL-pointer if you don't want some information) 
+// Direct mouse read (give a NULL-pointer if you don't want some information)
 void Keyb3_ReadMouse(int *x, int *y, int *dx, int *dy, int mouseID) {
 	if (x != NULL) *x = hiiri.x;
 	if (y != NULL) *y = hiiri.y;
@@ -773,7 +773,7 @@ void Keyb3_ReadMouse(int *x, int *y, int *dx, int *dy, int mouseID) {
 
 // Direct joystick read. (Axis: [-1000,1000], 0=center)
 // (joynum: 0=first joystick, 1=second joystick)
-// (give a NULL-pointer if you don't want some information) 
+// (give a NULL-pointer if you don't want some information)
 void Keyb3_ReadJoystick(int joynum, int *x, int *y, int *rx, int *ry, int *throttle, int *rudder) {
 	if (joynum >= 0 && joynum < joyCount) {
 		if (x != NULL) (*x) = joys[joynum].x;
@@ -822,8 +822,8 @@ int RawInputDeviceHandler::getNumOfKeyboards() {
 // KEYB for Windows v3.6 (C) Sebastian Aaltonen 2000
 // -------------------------------------------------
 
-// Hoitelee kaikki ohjainlaitteet k‰ytt‰m‰ll‰ 
-// DX8:n DirectInput-rajapintaa. 
+// Hoitelee kaikki ohjainlaitteet k‰ytt‰m‰ll‰
+// DX8:n DirectInput-rajapintaa.
 
 
 
@@ -896,8 +896,8 @@ bool multkeyb[MAX_KEYBOARDS][MAX_KEYS];
 struct nappis1
 {
 	unsigned char keysdown[MAX_KBS];	// mitk‰ napit pohjassa
-	unsigned char exkd[MAX_KBS];		// entiset napit, viime 
-										// UpdateInputDevices:n k‰yttˆ‰ 
+	unsigned char exkd[MAX_KBS];		// entiset napit, viime
+										// UpdateInputDevices:n k‰yttˆ‰
 										// ennen, t‰t‰ voit k‰ytt‰‰
 										// painallusten/irrotusten seuraamiseen
 	unsigned char getpress[MAX_KBS];	// mink‰ nappejen painallukset on jo "k‰sitelty" (GetKeypress)
@@ -924,7 +924,7 @@ struct joy1
 	int rot_x,rot_y;
 	int throttle,rudder;		
 
-	unsigned char nappi[MAX_JOYBUTTONS];	//napit 
+	unsigned char nappi[MAX_JOYBUTTONS];	//napit
 };
 
 // Globaalit devicet
@@ -956,10 +956,10 @@ void DisplayError( CHAR* strMessage )
 
 //-----------------------------------------------------------------------------
 // EnumJoysticksCallback()
-// Jokaiselle joystikille k‰ytet‰‰n t‰t‰. Jos joystikki on olemassa, niin 
+// Jokaiselle joystikille k‰ytet‰‰n t‰t‰. Jos joystikki on olemassa, niin
 // saadaan device, jota k‰ytet‰‰n sitten myˆhemmin
 //-----------------------------------------------------------------------------
-BOOL CALLBACK EnumJoysticksCallback( LPCDIDEVICEINSTANCE pInst, 
+BOOL CALLBACK EnumJoysticksCallback( LPCDIDEVICEINSTANCE pInst,
                                      VOID* pvContext )
 {
 	if (JoyNum==0) memcpy( pvContext, &pInst->guidInstance, sizeof(GUID) );
@@ -984,7 +984,7 @@ HRESULT CreateDInput(HWND hWnd)
     // Create the main DirectInput object
 	if (FAILED(DirectInput8Create((HINSTANCE)GetWindowLong(hWnd,GWL_HINSTANCE),
 		DIRECTINPUT_VERSION,IID_IDirectInput8,(void**)&DI,NULL)))
-	{ 
+	{
         DisplayError( "Failed to create DirectInput" );
         return E_FAIL;
 	}
@@ -994,7 +994,7 @@ HRESULT CreateDInput(HWND hWnd)
     ZeroMemory( &GUID_Joystick2, sizeof(GUID) );
     ZeroMemory( &GUID_Joystick3, sizeof(GUID) );
     ZeroMemory( &GUID_Joystick4, sizeof(GUID) );
-    
+
 	JoyNum=0;	// Joystikkejen m‰‰r‰
 	DI->EnumDevices(DI8DEVCLASS_GAMECTRL,EnumJoysticksCallback,
 		&GUID_Joystick1,DIEDFL_ATTACHEDONLY);
@@ -1125,12 +1125,12 @@ HRESULT CreateJoystick(HWND hWnd,GUID *JoyGUID,LPDIRECTINPUTDEVICE8 *JoyDevice)
 
 
     // Set the range of the joystick axes tp [-1000,+1000]
-    DIPROPRANGE diprg; 
-    diprg.diph.dwSize       = sizeof(DIPROPRANGE); 
-    diprg.diph.dwHeaderSize = sizeof(DIPROPHEADER); 
-    diprg.diph.dwHow        = DIPH_BYOFFSET; 
-    diprg.lMin              = -10; 
-    diprg.lMax              = +10; 
+    DIPROPRANGE diprg;
+    diprg.diph.dwSize       = sizeof(DIPROPRANGE);
+    diprg.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+    diprg.diph.dwHow        = DIPH_BYOFFSET;
+    diprg.lMin              = -10;
+    diprg.lMax              = +10;
 
 	// Asetetaan kaikkien akselejen liikealue
     diprg.diph.dwObj = DIJOFS_X;
@@ -1153,10 +1153,10 @@ HRESULT CreateJoystick(HWND hWnd,GUID *JoyGUID,LPDIRECTINPUTDEVICE8 *JoyDevice)
 
     // Set the dead zone for the joystick axes (because many joysticks
     // aren't perfectly calibrated to be zero when centered).
-    DIPROPDWORD dipdw; 
-	dipdw.diph.dwSize       = sizeof(DIPROPDWORD); 
-	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER); 
-	dipdw.diph.dwHow        = DIPH_DEVICE; 
+    DIPROPDWORD dipdw;
+	dipdw.diph.dwSize       = sizeof(DIPROPDWORD);
+	dipdw.diph.dwHeaderSize = sizeof(DIPROPHEADER);
+	dipdw.diph.dwHow        = DIPH_DEVICE;
 	dipdw.dwData            = 1000; // Here, 1000 = 10%
 
 	/*
@@ -1194,14 +1194,14 @@ HRESULT CreateJoystick(HWND hWnd,GUID *JoyGUID,LPDIRECTINPUTDEVICE8 *JoyDevice)
 void DestroyInputDevices()
 {
 	// vapautetaan n‰ppis, joystick ja hiiri
-    
+
 	if( Device_Keyboard )
     {
         Device_Keyboard->Unacquire();
         Device_Keyboard->Release();
         Device_Keyboard = NULL;
     }
-        
+
 	if( Device_Mouse )
     {
         Device_Mouse->Unacquire();
@@ -1349,12 +1349,12 @@ void Keyb3_UpdateDevices()
 	// ------
 
 	// umm.. apparently, the returns below have been removed, and thus,
-	// if keyboard is not properly acquired or something, things are going to suck ass big time. 
+	// if keyboard is not properly acquired or something, things are going to suck ass big time.
 	// (so added this new bool to fix that) --jpk
 	bool keyboardFailure = false;
 
 	// DirectInput -implementaatio
-	if(!RawInputDeviceHandler::keyboardInitialized && Device_Keyboard) 
+	if(!RawInputDeviceHandler::keyboardInitialized && Device_Keyboard)
 	if(UseKeyboard)
     {
 
@@ -1371,7 +1371,7 @@ void Keyb3_UpdateDevices()
 		if (FAILED(hr))
 		{
 			hr=Device_Keyboard->Acquire();
-			if(FAILED(hr)) 
+			if(FAILED(hr))
 			{
 				assert(!"Keyb3 - Failed to re-acquire keyboard.");
 				keyboardFailure = true;
@@ -1396,7 +1396,7 @@ void Keyb3_UpdateDevices()
 	}
 
 	// Rawinput.
-	if(RawInputDeviceHandler::keyboardInitialized) 
+	if(RawInputDeviceHandler::keyboardInitialized)
 	{
 		for(int i = 0; i < 256; i++)
 		{
@@ -1410,12 +1410,12 @@ void Keyb3_UpdateDevices()
 					nappis.keysdown[j] = 1;
 			}
 	}
- 
+
 
 
 	// hiiri
 	// -----
-    
+
 	// RawInput -implementaatio
 	if(UseRawInput && UseMouse && RawInputDeviceHandler::mouseInitialized)
 	{
@@ -1465,12 +1465,12 @@ void Keyb3_UpdateDevices()
 			if (RawInputDeviceHandler::getMouseInfo (l)->X > hiiri[l].max_x) RawInputDeviceHandler::getMouseInfo (l)->X=hiiri[l].max_x;
 			if (RawInputDeviceHandler::getMouseInfo (l)->Y > hiiri[l].max_y) RawInputDeviceHandler::getMouseInfo (l)->Y=hiiri[l].max_y;
 			if (RawInputDeviceHandler::getMouseInfo (l)->X < 0) RawInputDeviceHandler::getMouseInfo (l)->X=0;
-			if (RawInputDeviceHandler::getMouseInfo (l)->Y < 0) RawInputDeviceHandler::getMouseInfo (l)->Y=0; 
+			if (RawInputDeviceHandler::getMouseInfo (l)->Y < 0) RawInputDeviceHandler::getMouseInfo (l)->Y=0;
 
 			if (hiiri[l].x>hiiri[l].max_x) hiiri[l].x=hiiri[l].max_x;
 			if (hiiri[l].y>hiiri[l].max_y) hiiri[l].y=hiiri[l].max_y;
 			if (hiiri[l].x<0) hiiri[l].x=0;
-			if (hiiri[l].y<0) hiiri[l].y=0; 
+			if (hiiri[l].y<0) hiiri[l].y=0;
 		}
 
 		// p‰ivit‰ "extra"-nappis
@@ -1523,7 +1523,7 @@ void Keyb3_UpdateDevices()
 	}
 
 	// DirectInput -implementaatio
-	if(Device_Mouse) 
+	if(Device_Mouse)
 	if(UseMouse)
     {
 
@@ -1539,7 +1539,7 @@ void Keyb3_UpdateDevices()
 		if (FAILED(hr))
 		{
 			hr=Device_Mouse->Acquire();
-			if(FAILED(hr)) 
+			if(FAILED(hr))
 			{
 				assert(!"Keyb3 - Failed to re-acquire mouse.");
 				return;
@@ -1575,7 +1575,7 @@ void Keyb3_UpdateDevices()
 			hiiri[0].dy = 0;
 			hiiri[0].rulla = 0;
 
-			for(i=0;i<MAX_MOUSEBUTTONS;i++) 
+			for(i=0;i<MAX_MOUSEBUTTONS;i++)
 				hiiri[0].nappi[i] = 0;
 		}
 
@@ -1583,7 +1583,7 @@ void Keyb3_UpdateDevices()
 		if (hiiri[0].x>hiiri[0].max_x) hiiri[0].x=hiiri[0].max_x;
 		if (hiiri[0].y>hiiri[0].max_y) hiiri[0].y=hiiri[0].max_y;
 		if (hiiri[0].x<0) hiiri[0].x=0;
-		if (hiiri[0].y<0) hiiri[0].y=0; 
+		if (hiiri[0].y<0) hiiri[0].y=0;
 		
 		// p‰ivit‰ "extra"-nappis
 		nappis.keysdown[KEYCODE_MOUSE_UP]=(dims.lY<0);
@@ -1629,22 +1629,22 @@ void Keyb3_UpdateDevices()
 
 		if (jn==0)	// Eka joystikki
 		{
-			if (!Device_Joystick1) ok=0; 
+			if (!Device_Joystick1) ok=0;
 			if (!UseJoystick1) ok=0;
 		}
 		else if (jn==1)	// Toka joystikki
 		{
-			if (!Device_Joystick2) ok=0; 
+			if (!Device_Joystick2) ok=0;
 			if (!UseJoystick2) ok=0;
 		}
 		else if (jn==2)	// Toka joystikki
 		{
-			if (!Device_Joystick3) ok=0; 
+			if (!Device_Joystick3) ok=0;
 			if (!UseJoystick3) ok=0;
 		}
 		else if (jn==3)	// Toka joystikki
 		{
-			if (!Device_Joystick4) ok=0; 
+			if (!Device_Joystick4) ok=0;
 			if (!UseJoystick4) ok=0;
 		}
 
@@ -1665,14 +1665,14 @@ void Keyb3_UpdateDevices()
 				if (FAILED(hr))
 				{
 					hr=Device_Joystick1->Acquire();
-					if(FAILED(hr)) 
+					if(FAILED(hr))
 						continue;
 					else
 					{
 						hr = Device_Joystick1->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
 					}
 				}
-				if(FAILED(hr)) 
+				if(FAILED(hr))
 					continue;
 			}
 			else if (jn==1)	// Toka joystikki
@@ -1689,14 +1689,14 @@ void Keyb3_UpdateDevices()
 				if (FAILED(hr))
 				{
 					hr=Device_Joystick2->Acquire();
-					if(FAILED(hr)) 
+					if(FAILED(hr))
 						continue;
 					else
 					{
 						hr = Device_Joystick2->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
 					}
 				}
-				if(FAILED(hr)) 
+				if(FAILED(hr))
 					continue;
 			}
 			else if (jn==2)
@@ -1713,14 +1713,14 @@ void Keyb3_UpdateDevices()
 				if (FAILED(hr))
 				{
 					hr=Device_Joystick3->Acquire();
-					if(FAILED(hr)) 
+					if(FAILED(hr))
 						continue;
 					else
 					{
 						hr = Device_Joystick3->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
 					}
 				}
-				if(FAILED(hr)) 
+				if(FAILED(hr))
 					continue;
 			}
 			else if (jn==3)	// Toka joystikki
@@ -1737,14 +1737,14 @@ void Keyb3_UpdateDevices()
 				if (FAILED(hr))
 				{
 					hr=Device_Joystick4->Acquire();
-					if(FAILED(hr)) 
+					if(FAILED(hr))
 						continue;
 					else
 					{
 						hr = Device_Joystick4->GetDeviceState( sizeof(DIJOYSTATE), &dijs );
 					}
 				}
-				if(FAILED(hr)) 
+				if(FAILED(hr))
 					continue;
 			}
 
@@ -1993,19 +1993,19 @@ int Keyb3_Init(HWND hw, uint32_t caps)
 	 // tee n‰ppis
 
 	// tee joystick1
-    if (UseJoystick1) if (JoyNum>0) 
+    if (UseJoystick1) if (JoyNum>0)
 	if(FAILED(CreateJoystick(MGHwnd,&GUID_Joystick1,&Device_Joystick1))) UseJoystick1=FALSE;
 
 	// tee joystick2
-    if (UseJoystick2) if (JoyNum>1) 
+    if (UseJoystick2) if (JoyNum>1)
 	if(FAILED(CreateJoystick(MGHwnd,&GUID_Joystick2,&Device_Joystick2))) UseJoystick2=FALSE;
 
 	// tee joystick3
-    if (UseJoystick3) if (JoyNum>2) 
+    if (UseJoystick3) if (JoyNum>2)
 	if(FAILED(CreateJoystick(MGHwnd,&GUID_Joystick3,&Device_Joystick3))) UseJoystick3=FALSE;
 
 	// tee joystick4
-    if (UseJoystick4) if (JoyNum>3) 
+    if (UseJoystick4) if (JoyNum>3)
 	if(FAILED(CreateJoystick(MGHwnd,&GUID_Joystick4,&Device_Joystick4))) UseJoystick4=FALSE;
 
 	 // p‰‰lle syncci

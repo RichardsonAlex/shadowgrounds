@@ -11,7 +11,7 @@ namespace ui
 {
 
 	BlackEdgeWindow::BlackEdgeWindow(Ogui *ogui)
-	{ 
+	{
 		this->ogui = ogui;
 #ifdef LEGACY_FILES
 		win = ogui->CreateSimpleWindow(0, 0, 1024, 128, "Data/GUI/Windows/black_edge.dds");

@@ -73,7 +73,7 @@ ParticleEffectManager& ParticleEffectManager::getSingleton() {
 }
 
 ParticleEffectManager::ParticleEffectManager(IStorm3D* s3d, IStorm3D_Scene* scene,
-										ParticleSystemManager* particleSystemManager) : 
+										ParticleSystemManager* particleSystemManager) :
 m_s3d(s3d), m_scene(scene), m_systemManager(particleSystemManager) {
 	assert(m_singleton == NULL);
 	m_singleton = this;

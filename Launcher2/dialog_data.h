@@ -24,7 +24,7 @@ public:
 	};	
 
 	DialogData(int resourceId, const HWND parentHandle, ResizeType type = ATTACH_NONE, IDlgHandler* handler = 0 );
-	explicit DialogData(int resourceId); 
+	explicit DialogData(int resourceId);
 	~DialogData();
 
 	void getSize(int &x, int &y) const;

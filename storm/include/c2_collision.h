@@ -127,10 +127,10 @@ inline bool collision(const Ray &ray, const AABB &box)
 	// Find actual intersection
 	// Div by zero if ray is degenerate
 
-	if(outcode1 & (RightClip | LeftClip)) 
+	if(outcode1 & (RightClip | LeftClip))
 	{
 		float x = 0;
-		if(outcode1 & RightClip) 
+		if(outcode1 & RightClip)
 			x = max.x;
 		else
 			x = min.x;
@@ -144,7 +144,7 @@ inline bool collision(const Ray &ray, const AABB &box)
 			return true;
 	}
 
-	if(outcode1 & (TopClip | BottomClip)) 
+	if(outcode1 & (TopClip | BottomClip))
 	{
 		float y = 0;
 		if(outcode1 & TopClip)
@@ -161,7 +161,7 @@ inline bool collision(const Ray &ray, const AABB &box)
 			return true;
 	}
 
-	if(outcode1 & (FrontClip | BackClip)) 
+	if(outcode1 & (FrontClip | BackClip))
 	{
 		float z = 0;
 		if(outcode1 & BackClip)

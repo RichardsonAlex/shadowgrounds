@@ -5,7 +5,7 @@
 #define ScopedPtr boost::scoped_ptr
 
 #define PARTICLE_TIMESTEP 10
-#define PARTICLE_TIMESCALE 0.01 
+#define PARTICLE_TIMESCALE 0.01
 
 #include "../parser.h"
 

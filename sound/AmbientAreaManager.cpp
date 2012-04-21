@@ -655,7 +655,7 @@ struct AmbientAreaManager::Data
 			area.time += ms;
 			if(area.time > area.randomTime)
 			{
-				// Create random ambient 
+				// Create random ambient
 				const std::string &file = area.getRandomSound();
 				float volume = area.getRandomVolume();
 				float panning = area.getRandomPanning();

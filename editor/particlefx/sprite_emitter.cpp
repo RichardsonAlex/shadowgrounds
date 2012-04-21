@@ -90,7 +90,7 @@ struct SpriteEmitterData {
 		Particle** pp = &mParticles;
 		while(*pp) {
 			Particle* p = *pp;
-			float t = (self->maxLife - p->life) / self->maxLife; 
+			float t = (self->maxLife - p->life) / self->maxLife;
 			p->position += p->velocity;	
 			p->velocity.y -= (self->gravity * 0.01f);
 			p->size = self->sizeTrack.eval(t);
@@ -272,7 +272,7 @@ void SpriteEmitter::loadTexture(const std::string& name, const std::string& path
 	m->loadTexture(name, path, s3d);
 }
 	
-bool SpriteEmitter::tick(IStorm3D_Scene* scene, const Matrix& tm, 
+bool SpriteEmitter::tick(IStorm3D_Scene* scene, const Matrix& tm,
 						 const Vector& velocity, int timeDif) {
 	
 	return m->tick(scene, tm, velocity, timeDif);

@@ -25,7 +25,7 @@ namespace util
 			static float calculateDirection(const VC3 &from, const VC3 &to)
 			{
 				// not too efficient, but very simple. :)
-				// TODO: optimize 
+				// TODO: optimize
 				// (copy necessary parts of the implementation here)
 				float scale;
 				VC3 rotation;

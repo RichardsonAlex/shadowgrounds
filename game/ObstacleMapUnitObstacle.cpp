@@ -23,11 +23,11 @@ namespace game
 		float line_dx_zero, line_dy_zero;
 		if (fabs(line_dx) < 0.1f)
 			line_dx_zero = 0;
-		else 
+		else
 			line_dx_zero = line_dx;
 		if (fabs(line_dy) < 0.1f)
 			line_dy_zero = 0;
-		else 
+		else
 			line_dy_zero = line_dy;
 		if ((leftside && (line_dx_zero * x) >= 0 && (line_dy_zero * y) >= 0) ||
 			(rightside && (line_dx_zero * x) <= 0 && (line_dy_zero * y) <= 0))
@@ -80,7 +80,7 @@ namespace game
 	}
 
 
-	void ObstacleMapUnitObstacle::addObstacle(Game *game, Unit *unit, 
+	void ObstacleMapUnitObstacle::addObstacle(Game *game, Unit *unit,
 		int radius, int height, bool lineblock, bool leftside, bool rightside, int lineWidth)
 	{
 		if (unit->isGhostOfFuture())
@@ -143,7 +143,7 @@ namespace game
 			// TEMP!
 			//char buf[16 * 16];
 			//for (int c = 0; c < 16*16; c++) { buf[c] = ' '; }
-			 
+			
 			for (int i = minY; i <= maxY; i++)
 			{
 				for (int j = minX; j <= maxX; j++)
@@ -189,7 +189,7 @@ namespace game
 
 
 
-	void ObstacleMapUnitObstacle::removeObstacle(Game *game, Unit *unit, 
+	void ObstacleMapUnitObstacle::removeObstacle(Game *game, Unit *unit,
 		int radius, int height, bool lineblock, bool leftside, bool rightside, int lineWidth)
 	{
 		if (unit->isGhostOfFuture())

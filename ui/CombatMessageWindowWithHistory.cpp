@@ -103,7 +103,7 @@ void CombatMessageWindowWithHistory::update()
 
 void CombatMessageWindowWithHistory::pushMessage( const std::string& message )
 {
-	if( messageBuffer[ 0 ] != NULL ) 
+	if( messageBuffer[ 0 ] != NULL )
 		popMessage();
 
 	messageBuffer[ 0 ] = new TextMessage;
@@ -117,7 +117,7 @@ void CombatMessageWindowWithHistory::pushMessage( const std::string& message )
 
 //=============================================================================
 
-void CombatMessageWindowWithHistory::popMessage() 
+void CombatMessageWindowWithHistory::popMessage()
 {
 	int i = 0;
 	TextMessage* msg = messageBuffer[ messageBuffer.size() - 1 ];

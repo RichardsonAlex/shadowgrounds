@@ -26,19 +26,19 @@ namespace net
 
       virtual INetConnection *connectTo(const char *to)
         throw (NetDriverException*);
-   
+
       virtual INetBind *bind(const char *port)
         throw (NetDriverException*);
-   
+
       virtual void setNetModeFlags(int netModeFlags)
         throw (NetDriverException*);
 
       virtual int getNetModeFlags();
-      
+
       virtual int getSupportedModeFlags();
-   
+
       virtual ~FileDriver();
-  
+
     private:
       int modeFlags;
 

@@ -72,7 +72,7 @@ namespace game
 	typedef std::vector<Portal> PortalList;
 	PortalList portalCache;
 
-	void MapScripting::process(util::ScriptProcess *sp, 
+	void MapScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -160,7 +160,7 @@ namespace game
 						sp->error("MapScripting::process - addActive/Primary/SecondaryMissionObjective, objective range out of bounds.");
 						break;
 					}
-#endif 
+#endif
 
 #ifdef GUI_BUILD_MAP_WINDOW
 					std::string idstr = stringData;
@@ -472,7 +472,7 @@ namespace game
 						// Store width (little-endian)
 						fout->putByte(  width & 0xFF );
 						fout->putByte( (width >> 8) & 0xFF );
-						// Store height 
+						// Store height
 						fout->putByte(  height & 0xFF );
 						fout->putByte( (height >> 8) & 0xFF );
 						*/
@@ -482,7 +482,7 @@ namespace game
 						int l1 = 0;
 						for(int y = 0; y < height; y++)
 						{
-							int blockY =  y / 512; 
+							int blockY =  y / 512;
 							int pixelY = (y % 512) < 510 ? (y % 512) : 510; // Clamp (y % 512) to 510. Seems to render one pixel wide black border otherwise.
 							for(int x = 0; x < width; x++)
 							{

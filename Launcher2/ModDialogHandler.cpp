@@ -25,9 +25,9 @@ ModDialogHandler::~ModDialogHandler( )
 	delete dialogData;
 }
 
-void ModDialogHandler::setActivateButton( bool activate ) 
+void ModDialogHandler::setActivateButton( bool activate )
 {
-	// active == false => text = "Deactivate" 
+	// active == false => text = "Deactivate"
 	// otherwise text = "Activate"
 
 	HWND hwnd = dialogData->getHwnd();

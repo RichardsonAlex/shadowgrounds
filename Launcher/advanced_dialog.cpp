@@ -42,7 +42,7 @@ public:
 		addComboItems( GetDlgItem( hwnd, IDC_COMBOTEXTUREDETAILLEVEL ),			manager.getOptionNames( "Texture Detail Level" ),			manager.getTheOneInUse( "Texture Detail Level" ) );
 		addComboItems( GetDlgItem( hwnd, IDC_COMBOANISOTROPIC ),				manager.getOptionNames( "Anisotropic Filtering" ),			manager.getTheOneInUse( "Anisotropic Filtering" ) );
 		addComboItems( GetDlgItem( hwnd, IDC_COMBOANTIALIAS ),					manager.getOptionNames( "Antialiasing" ),					manager.getTheOneInUse( "Antialiasing" ) );
-		addComboItems( GetDlgItem( hwnd, IDC_COMBOMISC ),						manager.getOptionNames( "Misc" ),							manager.getTheOneInUse( "Misc" ) ); 
+		addComboItems( GetDlgItem( hwnd, IDC_COMBOMISC ),						manager.getOptionNames( "Misc" ),							manager.getTheOneInUse( "Misc" ) );
 
 		setCheckBox( hwnd, IDC_CHECKFULLSCREEN,				manager.getTheOneInUse( "Fullscreen" ) );
 		setCheckBox( hwnd, IDC_CHECKEXTRAGAMMAEFFECTS,		manager.getTheOneInUse( "Extra Gamma Effects" ) );
@@ -69,7 +69,7 @@ public:
 		setDescriptionText( GetDlgItem( hwnd, IDC_STATICPARTICLEEFFECTAS ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_STATICSHADOWLEVELS ) );
 		setDescriptionText( GetDlgItem( hwnd, IDC_STATICSHADOWSTEXTUREQUALITY ) );
-		setDescriptionText( GetDlgItem( hwnd, IDC_STATICMISC ) ); 
+		setDescriptionText( GetDlgItem( hwnd, IDC_STATICMISC ) );
 		
 		// check boxes
 		setDescriptionText( GetDlgItem( hwnd, IDC_CHECKFULLSCREEN ) );
@@ -118,7 +118,7 @@ public:
 		{
 		case WM_INITDIALOG:
 			// initDialog( hwnd );			
-			break; 
+			break;
 
 		case WM_COMMAND:
 		{

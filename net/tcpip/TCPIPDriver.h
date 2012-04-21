@@ -27,21 +27,21 @@ namespace net
 
       virtual INetConnection *connectTo(const char *to)
         throw (NetDriverException*);
-   
+
       virtual INetBind *bind(const char *port)
         throw (NetDriverException*);
-   
+
       virtual void setNetModeFlags(int netModeFlags)
         throw (NetDriverException*);
 
       virtual int getNetModeFlags();
-      
+
       virtual int getSupportedModeFlags();
-   
+
 			void setArtificialLag(int minPing, int maxPing, int variationSpeed);
 			
       virtual ~TCPIPDriver();
-  
+
     private:
       int modeFlags;
 

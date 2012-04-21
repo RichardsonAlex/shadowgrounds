@@ -45,7 +45,7 @@ public:
 	void CursorEvent( OguiButtonEvent *eve )
 	{
 		const int exActive = currentActive;
-		if( exActive >= 0 && exActive < (int)buttons.size() && 
+		if( exActive >= 0 && exActive < (int)buttons.size() &&
 			eve->triggerButton->GetId() >= 0 && eve->triggerButton->GetId() < (int)buttons.size() )
 		{
 			
@@ -270,7 +270,7 @@ public:
 
 namespace ui {
 
-IngameGuiTabs::IngameGuiTabs( Ogui* ogui, Game* game ) 
+IngameGuiTabs::IngameGuiTabs( Ogui* ogui, Game* game )
 {
 	impl = new IngameGuiTabsImpl( ogui, game );
 }

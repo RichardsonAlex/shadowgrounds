@@ -33,7 +33,7 @@ public:
 
 	const COL &getMultiplier(Area area) const;
 
-	// Normalized coordinates. 
+	// Normalized coordinates.
 	// Result should be filtered(?)
 	COL getColor(float x, float y) const;
 	COL getColorAtScaled(float scaledX, float scaledY) const;

@@ -24,7 +24,7 @@
 
 #include "igios.h"
 
-// sample every 15 seconds 
+// sample every 15 seconds
 #define GAMESTATS_RATE 15
 
 // max 480 entries (480 x 15 secs = max 2 hours stats per mission)
@@ -308,7 +308,7 @@ namespace game
 							totalDeaths += this->deaths[e];
 
 							// idle sample?
-							if (this->deaths[e] == 0 
+							if (this->deaths[e] == 0
 								&& !didKills
 								&& this->pickup[e] == ""
 								&& (e > 0 && this->health[e-1] == this->health[e])
@@ -426,7 +426,7 @@ namespace game
 										&& u->getWeaponType(u->getWeaponByWeaponType(PlayerWeaponry::getWeaponIdByUINumber(u, i))) != NULL)
 									{
 										int maxammo = u->getWeaponMaxAmmoAmount(u->getWeaponByWeaponType(PlayerWeaponry::getWeaponIdByUINumber(u, i)));
-										if (maxammo <= 0) 
+										if (maxammo <= 0)
 											maxammo = 1;
 										int ammoPercent = (100 * this->ammo[i][e]) / maxammo;
 										if (ammoPercent > 100)
@@ -572,7 +572,7 @@ namespace game
 	{
 		std::list< IGameStatsListener* >::iterator i;
 		i = std::find( listeners.begin(), listeners.end(), listener );
-		if( i != listeners.end() ) 
+		if( i != listeners.end() )
 			listeners.erase( i );
 
 	}

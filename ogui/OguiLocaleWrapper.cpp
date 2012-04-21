@@ -41,7 +41,7 @@ public:
 
 	//=========================================================================
 
-	OguiLocaleWrapperImpl( Ogui* ogui ) : 
+	OguiLocaleWrapperImpl( Ogui* ogui ) :
 		ogui( ogui ),
 		windowName(),
 		logErrorMessages( false ),
@@ -50,11 +50,11 @@ public:
 		oguiStyles(),
 		oguiSelectListStyles(),
 		oguiImages()
-	{ 
+	{
 	}
 
-	~OguiLocaleWrapperImpl() 
-	{ 
+	~OguiLocaleWrapperImpl()
+	{
 		{
 			std::list< OguiButtonStyle* >::iterator i;
 			for( i = oguiStyles.begin(); i != oguiStyles.end(); ++i )
@@ -169,10 +169,10 @@ public:
 		// text
 		std::string text = getLocaleString( std::string( "gui_" ) + window_name + "_" + button_name + "_text" );
 
-		OguiButton* return_value = ogui->CreateSimpleTextButton( window, rect.x, rect.y, rect.w, rect.h, 
-			img_normal.empty()?NULL:img_normal.c_str(), 
+		OguiButton* return_value = ogui->CreateSimpleTextButton( window, rect.x, rect.y, rect.w, rect.h,
+			img_normal.empty()?NULL:img_normal.c_str(),
 			img_down.empty()?NULL:img_down.c_str(),
-			img_high.empty()?NULL:img_high.c_str(), 
+			img_high.empty()?NULL:img_high.c_str(),
 			"",
 			id, NULL, true );
 
@@ -337,7 +337,7 @@ public:
 		std::string fore_high = getLocaleString( std::string( "gui_" ) + window_name + "_" + button_name + "_fore_high" );
 		std::string fore_disa = getLocaleString( std::string( "gui_" ) + window_name + "_" + button_name + "_fore_disabled" );
 
-		return_value = new OguiSlider( window, ogui, rect.x, rect.y, rect.w, rect.h, 
+		return_value = new OguiSlider( window, ogui, rect.x, rect.y, rect.w, rect.h,
 			back_normal, back_down, back_high,
 			fore_normal, fore_down, fore_high, id, 1.0f );
 		
@@ -409,7 +409,7 @@ private:
 		IOguiImage* result = NULL;
 
 		result = ogui->LoadOguiImage( file_name.c_str() );
-		if( result ) 
+		if( result )
 			oguiImages.push_back( result );
 
 		return result;
@@ -455,7 +455,7 @@ private:
 		if( reportMissingLocales )
 		{
 			std::string temp = "ERROR: Couldn't find locale key: " + name;
-			Logger::getInstance()->error( temp.c_str() ); 
+			Logger::getInstance()->error( temp.c_str() );
 		}
 	}
 

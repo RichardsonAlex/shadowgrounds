@@ -22,7 +22,7 @@ namespace ui
 {
 	class CharacterSelectionWindow;
 
-	class LoadingWindow 
+	class LoadingWindow
 		: private IOguiButtonListener, private IOguiEffectListener
 	{
 	public:

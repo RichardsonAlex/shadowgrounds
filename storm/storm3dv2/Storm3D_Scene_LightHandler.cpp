@@ -255,14 +255,14 @@ void Storm3D_Scene_LightHandler::RenderLensFlares(Storm3D_Scene *scene)
 					if (pl->GetLightType()==IStorm3D_Light::LTYPE_SPOT)
 					{
 						((Storm3D_Light_Spot*)pl)->flarevis+=scene->time_dif/100.0f;
-						if (((Storm3D_Light_Spot*)pl)->flarevis>1) 
+						if (((Storm3D_Light_Spot*)pl)->flarevis>1)
 							((Storm3D_Light_Spot*)pl)->flarevis=1;
 						sizemul=((Storm3D_Light_Spot*)pl)->flarevis;
 					}
 					else
 					{
 						((Storm3D_Light_Point*)pl)->flarevis+=scene->time_dif/100.0f;
-						if (((Storm3D_Light_Point*)pl)->flarevis>1) 
+						if (((Storm3D_Light_Point*)pl)->flarevis>1)
 							((Storm3D_Light_Point*)pl)->flarevis=1;
 						sizemul=((Storm3D_Light_Point*)pl)->flarevis;
 					}
@@ -300,7 +300,7 @@ void Storm3D_Scene_LightHandler::RenderLensFlares(Storm3D_Scene *scene)
 					vx[3]=VXFORMAT_2D(pos+VC3(hsizex,-hsizey,0),1,col,VC2(1,0));
 
 					// Clip
-					if (Clip2DRectangle(Storm3D2,vx[1],vx[2])) 
+					if (Clip2DRectangle(Storm3D2,vx[1],vx[2]))
 					{
 						// Copy clipping
 						vx[0].position.x=vx[1].position.x;
@@ -345,7 +345,7 @@ void Storm3D_Scene_LightHandler::RenderLensFlares(Storm3D_Scene *scene)
 					vx[3]=VXFORMAT_2D(pos+VC3(hsizex,-hsizey,0),1,col,VC2(1,0));
 
 					// Clip
-					if (Clip2DRectangle(Storm3D2,vx[1],vx[2])) 
+					if (Clip2DRectangle(Storm3D2,vx[1],vx[2]))
 					{
 						// Copy clipping
 						vx[0].position.x=vx[1].position.x;

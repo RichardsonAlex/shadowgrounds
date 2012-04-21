@@ -11,15 +11,15 @@
 
 namespace game
 {
-	CarPhysicsObject::CarPhysicsObject(GamePhysics *gamePhysics, float mass, int collisionGroup, const VC3 &position) 
+	CarPhysicsObject::CarPhysicsObject(GamePhysics *gamePhysics, float mass, int collisionGroup, const VC3 &position)
 	:	AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->position = position;
 		this->mass = mass;
 		this->collisionGroup = collisionGroup;
 	}
 
-	CarPhysicsObject::~CarPhysicsObject() 
+	CarPhysicsObject::~CarPhysicsObject()
 	{
 		// nop, ~AbstractPhysicsObject handles everything of any interest...
 	}

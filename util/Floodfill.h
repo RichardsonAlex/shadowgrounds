@@ -42,7 +42,7 @@ namespace util
 		virtual ~FloodfillByteArrayMapper() {}
 		
 		virtual unsigned char getByte(int x, int y);
-		virtual void setByte(int x, int y, unsigned char value); 
+		virtual void setByte(int x, int y, unsigned char value);
 	private:
 		unsigned char *buf;
 		int sizeX;
@@ -62,11 +62,11 @@ namespace util
 	class Floodfill
 	{
 	public:
-		static void fillWithByte(unsigned char fillByte, unsigned char areaByte, 
+		static void fillWithByte(unsigned char fillByte, unsigned char areaByte,
 			int mapSizeX, int mapSizeY, unsigned char *map,
 			bool areaIsBlocking = false, bool corners = false);
 
-		static void fillWithByte(unsigned char fillByte, unsigned char areaByte, 
+		static void fillWithByte(unsigned char fillByte, unsigned char areaByte,
 			int mapSizeX, int mapSizeY, IFloodfillByteMapper *mapper,
 			bool areaIsBlocking = false, bool corners = false);
 	};

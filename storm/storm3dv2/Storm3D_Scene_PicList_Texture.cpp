@@ -23,7 +23,7 @@
 #include "../../util/Debug_MemoryManager.h"
 
 //! Constructor
-Storm3D_Scene_PicList_Picture::Storm3D_Scene_PicList_Picture(Storm3D *s2, Storm3D_Scene *scene,Storm3D_Material *_mat,VC2 _position,VC2 _size,float alpha_, float rotation_, float x1_,float y1_,float x2_,float y2_, bool wrap_) 
+Storm3D_Scene_PicList_Picture::Storm3D_Scene_PicList_Picture(Storm3D *s2, Storm3D_Scene *scene,Storm3D_Material *_mat,VC2 _position,VC2 _size,float alpha_, float rotation_, float x1_,float y1_,float x2_,float y2_, bool wrap_)
 :	Storm3D_Scene_PicList(s2,scene,_position,_size),material(_mat),alpha(alpha_),rotation(rotation_),x1(x1_),y1(y1_),x2(x2_),y2(y2_),wrap(wrap_),customShape(NULL)
 {
 }
@@ -272,7 +272,7 @@ void Storm3D_Scene_PicList_Picture3D::Render()
 		vx[2]=VXFORMAT_2D(pos+VC3(hsx,hsy,0),1,col,VC2(1,1));
 		vx[3]=VXFORMAT_2D(pos+VC3(hsx,-hsy,0),1,col,VC2(1,0));
 
-		if (Clip2DRectangle(Storm3D2,vx[1],vx[2])) 
+		if (Clip2DRectangle(Storm3D2,vx[1],vx[2]))
 		{
 			// Copy clipping
 			vx[0].position.x=vx[1].position.x;

@@ -4,7 +4,7 @@
 
 #include "animdefs.h"
 
-// NOTE: currently only claw utilizes transitions extensively, thus no use point in using 
+// NOTE: currently only claw utilizes transitions extensively, thus no use point in using
 // much memory for these on other projects...
 #ifdef PROJECT_CLAW_PROTO
 #define MAX_TRANSITIONS 16
@@ -79,7 +79,7 @@ namespace ui
 
     void parseValue(char * value, int * fileNumber, bool * looping, bool * immediate, int * blend,
 	                  bool * speedFactor, bool * staticFactor, float * staticFactorValue, int * blendTime, bool * noInterpolate, util::SimpleParser *parser);
-    
+
 		int getAnimationFileNumber(int anim);
     bool isAnimationInSet(int anim);
 

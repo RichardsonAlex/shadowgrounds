@@ -4,7 +4,7 @@
 
 #define GAMECONFIGS_NO_ID -1
 
-// max amount of IDable game config entries 
+// max amount of IDable game config entries
 // (also defines the limit for the max id value)
 #define GAMECONFIGS_MAX_IDS 1024
 
@@ -19,7 +19,7 @@ namespace game
 	 * Note, you most probably want to see GameOptionManager instead.
 	 * This is an old deprecated implementation! Still used by
 	 * GameOptionManager, but may be removed in the future.
-	 * 
+	 *
    * @version 1.0, 13.3.2003
    * @author Jukka Kokkonen <jukka@frozenbyte.com>
 	 * @see GameOptionManager
@@ -47,16 +47,16 @@ namespace game
 
 			const char *getNameForId(int id);
 
-			void addBoolean(const char *confname, bool value, 
+			void addBoolean(const char *confname, bool value,
 				int id = GAMECONFIGS_NO_ID);
 
-			void addInt(const char *confname, int value, 
+			void addInt(const char *confname, int value,
 				int id = GAMECONFIGS_NO_ID);
 
-			void addFloat(const char *confname, float value, 
+			void addFloat(const char *confname, float value,
 				int id = GAMECONFIGS_NO_ID);
 
-			void addString(const char *confname, const char *value, 
+			void addString(const char *confname, const char *value,
 				int id = GAMECONFIGS_NO_ID);
 
 			void setBoolean(const char *confname, bool value);

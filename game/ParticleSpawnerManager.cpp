@@ -28,7 +28,7 @@ namespace game
 		this->game = game;
 		this->spawnerList = new LinkedList<ParticleSpawner*>();
 		this->playerPosition = VC3(0,0,0);
-	}	
+	}
 
 
   ParticleSpawnerManager::~ParticleSpawnerManager()
@@ -104,7 +104,7 @@ namespace game
 		return NULL;
 	}
 
-  
+
 	void ParticleSpawnerManager::run()
 	{
 		IStorm3D_Scene *scene = game->getGameScene()->getStormScene();

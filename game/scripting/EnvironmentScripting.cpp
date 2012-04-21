@@ -25,7 +25,7 @@ using namespace ui;
 
 namespace game
 {
-	void EnvironmentScripting::process(util::ScriptProcess *sp, 
+	void EnvironmentScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -76,11 +76,11 @@ namespace game
 							dir.Normalize();
 							game->getEnvironmentalEffectManager()->setSunlightDirection(dir);
 						} else {
-							sp->error("EnvironmentScripting::process - setSunlightDirection parameter bad."); 
+							sp->error("EnvironmentScripting::process - setSunlightDirection parameter bad.");
 						}
 					}
 				} else {
-					sp->error("EnvironmentScripting::process - setSunlightDirection parameter missing (expected vector)."); 
+					sp->error("EnvironmentScripting::process - setSunlightDirection parameter missing (expected vector).");
 				}
 				break;
 
@@ -97,11 +97,11 @@ namespace game
 							COL col = COL(result.x, result.y, result.z);
 							game->getEnvironmentalEffectManager()->setSunlightColor(col);
 						} else {
-							sp->error("EnvironmentScripting::process - setSunlightColor parameter bad."); 
+							sp->error("EnvironmentScripting::process - setSunlightColor parameter bad.");
 						}
 					}
 				} else {
-					sp->error("EnvironmentScripting::process - setSunlightColor parameter missing (expected color)."); 
+					sp->error("EnvironmentScripting::process - setSunlightColor parameter missing (expected color).");
 				}
 				break;
 

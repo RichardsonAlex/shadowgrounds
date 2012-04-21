@@ -13,7 +13,7 @@
 //#define UNIFIED_HANDLE_FIRST_RESERVED_LOW (0)
 //#define UNIFIED_HANDLE_LAST_RESERVED_LOW ((1<<7)-1)
 // last bit reserved because of signedness (value range 0x80000000 - 0xffffffff)
-//#define UNIFIED_HANDLE_FIRST_RESERVED_HIGH (1<<31) 
+//#define UNIFIED_HANDLE_FIRST_RESERVED_HIGH (1<<31)
 //#define UNIFIED_HANDLE_LAST_RESERVED_HIGH (0xffffffff)
 
 #define UNIFIED_HANDLE_VALUE_RANGE ((1<<24)-1)

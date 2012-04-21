@@ -9,7 +9,7 @@ namespace game {
 
 class Ogui;
 
-namespace ui { 
+namespace ui {
 
 class ComboWindow : public ICombatSubWindow
 {

@@ -29,7 +29,7 @@
 #include "igios.h"
 
 #define KEYCODE_NAME_AMOUNT (534 + ADDITIONAL_KEYBOARD_KEYS_AMOUNT)
-//#define KEYCODE_NAME_AMOUNT 534 
+//#define KEYCODE_NAME_AMOUNT 534
 #define KEYREPEAT_FIRST_DELAY 800
 #define KEYREPEAT_DELAY 80
 
@@ -193,7 +193,7 @@ const char *ctrlName[DH_CTRL_AMOUNT + 1] =
 // this is because keyb3 seems to give them inverted, so we fix that here.
 const char *keycodeName[KEYCODE_NAME_AMOUNT] =
 {
-	"none", "esc", "1", "2", "3", "4", "5", "6", "7", "8", 
+	"none", "esc", "1", "2", "3", "4", "5", "6", "7", "8",
 	"9", "0", "+", "", "backspace", "tab", "q", "w", "e", "r",
 	"t", "y", "u", "i", "o", "p", "å", "", "enter", "ctrl-l",
 	"a", "s", "d", "f", "g", "h", "j", "k", "l", "ä",
@@ -476,7 +476,7 @@ int GameController::getControlNumberForName(const char *forCtrlName)
 		{
 			return i;
 		}
-	} 
+	}
 
 	return -1;
 }
@@ -493,7 +493,7 @@ int GameController::getKeycodeNumberForName(const char *forKeycodeName)
 		{
 			return i;
 		}
-	} 
+	}
 
 	return -1;
 }
@@ -605,7 +605,7 @@ void GameController::loadConfiguration( const char *filename)
 					}
 					if (keycode != 0)
 					{
-						// just to check that we have not bound too many keycodes to 
+						// just to check that we have not bound too many keycodes to
 						// the control
 						bool isok = false;
 						for (int j = 0; j < DH_CTRL_BINDS_PER_CONTROL; j++)
@@ -700,7 +700,7 @@ const char *GameController::getControlName(int controlNum)
 	{
 		Logger::getInstance()->error("GameController::getControlName - Control number out of bounds.");
 		return NULL;
-	} 
+	}
 
 
 	return ctrlName[controlNum];
@@ -724,7 +724,7 @@ void GameController::setForcedEnable(int controlNum, bool ctrlEnabled)
 	{
 		Logger::getInstance()->error("GameController::setForcedEnable - Control number out of bounds.");
 		return;
-	} 
+	}
 
 	ctrlForceEnabled[controlNum] = ctrlEnabled;
 }
@@ -737,7 +737,7 @@ bool GameController::isKeyDown(int controlNum)
 	{
 		Logger::getInstance()->error("GameController::isKeyDown - Control number out of bounds.");
 		return false;
-	} 
+	}
 #endif
 
 	if (!controlsEnabled)
@@ -813,7 +813,7 @@ bool GameController::wasKeyClicked(int controlNum)
 	{
 		Logger::getInstance()->error("GameController::isKeyDown - Control number out of bounds.");
 		return false;
-	} 
+	}
 #endif
 
 	if (!controlsEnabled)
@@ -878,7 +878,7 @@ bool GameController::isAnyKeyBound(int controlNum)
 	{
 		Logger::getInstance()->error("GameController::isAnyKeyBound - Control number out of bounds.");
 		return false;
-	} 
+	}
 	for (int j = 0; j < DH_CTRL_BINDS_PER_CONTROL; j++)
 	{
 		if (binds[controlNum][j] != 0)
@@ -893,30 +893,30 @@ int GameController::getBoundKey(int controlNum, int alternativeNum)
 	{
 		Logger::getInstance()->error("GameController::getBoundKey - Control number out of bounds.");
 		return 0;
-	} 
+	}
 	if (alternativeNum < 0 || alternativeNum >= DH_CTRL_BINDS_PER_CONTROL)
 	{
 		Logger::getInstance()->error("GameController::getBoundKey - Alternative number out of bounds.");
 		return 0;
-	} 
+	}
 	return binds[controlNum][alternativeNum];
 }
 
-void GameController::bindKey(int controlNum, int keycode, int alternativeNum, 
+void GameController::bindKey(int controlNum, int keycode, int alternativeNum,
 	bool clearFromOthers)
 {
 	if (controlNum < 0 || controlNum >= DH_CTRL_AMOUNT)
 	{
 		Logger::getInstance()->error("GameController::bindKey - Control number out of bounds.");
 		return;
-	} 
+	}
 	if (alternativeNum != -1)
 	{
 		if (alternativeNum < 0 || alternativeNum >= DH_CTRL_BINDS_PER_CONTROL)
 		{
 			Logger::getInstance()->error("GameController::bindKey - Alternative number out of bounds.");
 			return;
-		} 
+		}
 	} else {
 		// do magic!
 		// already one of alternatives?
@@ -935,7 +935,7 @@ void GameController::bindKey(int controlNum, int keycode, int alternativeNum,
 				break;
 			}
 		}
-		if (alternativeNum == -1) 
+		if (alternativeNum == -1)
 		{
 			// still no luck? clear them all and use the first!
 			for (j = 0; j < DH_CTRL_BINDS_PER_CONTROL; j++)
@@ -966,14 +966,14 @@ void GameController::unbindKey(int controlNum, int alternativeNum)
 	{
 		Logger::getInstance()->error("GameController::unbindKey - Control number out of bounds.");
 		return;
-	} 
+	}
 	if (alternativeNum != -1)
 	{
 		if (alternativeNum < 0 || alternativeNum >= DH_CTRL_BINDS_PER_CONTROL)
 		{
 			Logger::getInstance()->error("GameController::unbindKey - Alternative number out of bounds.");
 			return;
-		} 
+		}
 		binds[controlNum][alternativeNum] = 0;
 	} else {
 		for (int j = 0; j < DH_CTRL_BINDS_PER_CONTROL; j++)
@@ -1054,7 +1054,7 @@ void GameController::getMouseDelta( int *deltaX, int *deltaY, int mouseID )
 void GameController::updateEnabledStatus()
 {
 	if (userControlsEnabled && keyreader == NULL) 	
-		controlsEnabled = true; 
+		controlsEnabled = true;
 	else
 		controlsEnabled = false;	
 
@@ -1186,7 +1186,7 @@ char GameController::convertKeycodeToAscii(int keycode, bool shiftDown, bool alt
 					ascchar = (keycodeName[keycode][0] - 'a') + 'A';
 				else
 					ascchar = keycodeName[keycode][0];
-			} 
+			}
 			else if (keycodeName[keycode][0] >= '0'
 				&& keycodeName[keycode][0] <= '9')
 			{
@@ -1221,7 +1221,7 @@ char GameController::convertKeycodeToAscii(int keycode, bool shiftDown, bool alt
 						ascchar = keycodeName[keycode][0];
 					}
 				}
-			} 
+			}
 		} else {
 			if (strcmp(keycodeName[keycode], "space") == 0)
 			{
@@ -1304,12 +1304,12 @@ void GameController::run()
 		bool noKeysDown = true;
 		bool shiftDown = false;
 		bool altDown = false;
-		if (Keyb3_IsKeyDown(KEYCODE_SHIFT_LEFT) 
+		if (Keyb3_IsKeyDown(KEYCODE_SHIFT_LEFT)
 			|| Keyb3_IsKeyDown(KEYCODE_SHIFT_RIGHT))
 		{
 			shiftDown = true;
 		}
-		if (Keyb3_IsKeyDown(KEYCODE_ALT) 
+		if (Keyb3_IsKeyDown(KEYCODE_ALT)
 			|| 'IsKeyDown(KEYCODE_ALT_GR))
 		{
 			altDown = true;
@@ -1327,13 +1327,13 @@ void GameController::run()
 				ascchar = convertKeycodeToAscii(i, shiftDown, altDown);
 			}
 
-			if (isDown 
-				&& (ascchar != 0 || i == KEYCODE_BACKSPACE || i == KEYCODE_DELETE 
+			if (isDown
+				&& (ascchar != 0 || i == KEYCODE_BACKSPACE || i == KEYCODE_DELETE
 				|| i == KEYCODE_UP_ARROW || i == KEYCODE_DOWN_ARROW || i == KEYCODE_LEFT_ARROW || i == KEYCODE_RIGHT_ARROW))
 			{
 				noKeysDown = false;
 			}
-			if (Keyb3_IsKeyPressed(i) 
+			if (Keyb3_IsKeyPressed(i)
 				|| (isDown && repeatNow))
 			{
 				lastKeyReadTime = now;
@@ -1427,42 +1427,42 @@ GameController::JOYSTICK_AXIS	GameController::getDetectedAxis()
 			}
 
 			if( imax == 0 )					
-			{ 
+			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-x         " )  + boost::lexical_cast< std::string >( max->x ) + " != " + boost::lexical_cast< std::string >( temp.x ) ).c_str() );
 				max->x = temp.x;					
 				result = GameController::JOYSTICK_AXIS_X;			
 			}
 			
 			if( imax == 1 )					
-			{ 
+			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-y         " )  + boost::lexical_cast< std::string >( max->y ) + " != " + boost::lexical_cast< std::string >( temp.y ) ).c_str() );
 				max->y = temp.y;					
 				result = GameController::JOYSTICK_AXIS_Y;			
-			} 
+			}
 
 			if( imax == 2 )				
-			{ 
+			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-rx        " )  + boost::lexical_cast< std::string >( max->rx ) + " != " + boost::lexical_cast< std::string >( temp.rx ) ).c_str() );
 				max->rx = temp.rx;				
 				result = GameController::JOYSTICK_AXIS_RX;			
 			}
 			
 			if( imax == 3 )				
-			{ 
+			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-ry        " )  + boost::lexical_cast< std::string >( max->ry ) + " != " + boost::lexical_cast< std::string >( temp.ry ) ).c_str() );
 				max->ry = temp.ry;				
 				result = GameController::JOYSTICK_AXIS_RY;			
 			}
 			
 			if( imax == 4 )	
-			{ 
+			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-throttle  " )  + boost::lexical_cast< std::string >( max->throttle ) + " != " + boost::lexical_cast< std::string >( temp.throttle ) ).c_str() );
 				max->throttle = temp.throttle;	
 				result = GameController::JOYSTICK_AXIS_THROTTLE;	
 			}
 			
 			if( imax == 5 )		
-			{ 
+			{
 				// Logger::getInstance()->warning( ( std::string( "joy-axis-rudder    " )  + boost::lexical_cast< std::string >( max->rudder ) + " != " + boost::lexical_cast< std::string >( temp.rudder ) ).c_str() );
 				max->rudder = temp.rudder;		
 				result = GameController::JOYSTICK_AXIS_RUDDER;		
@@ -1877,7 +1877,7 @@ void GameController::setControlOn(int controlNum)
 	{
 		Logger::getInstance()->error("GameController::setControlOn - Control number out of bounds.");
 		return;
-	} 
+	}
 	ctrlOn[controlNum] = true;
 }
 
@@ -1887,7 +1887,7 @@ void GameController::setControlOff(int controlNum)
 	{
 		Logger::getInstance()->error("GameController::setControlOff - Control number out of bounds.");
 		return;
-	} 
+	}
 	ctrlOn[controlNum] = false;
 }
 
@@ -1901,12 +1901,12 @@ void GameController::addReadKey(char ascii, int keycode)
 
 			bool shiftDown = false;
 			bool altDown = false;
-			if (Keyb3_IsKeyDown(KEYCODE_SHIFT_LEFT) 
+			if (Keyb3_IsKeyDown(KEYCODE_SHIFT_LEFT)
 				|| Keyb3_IsKeyDown(KEYCODE_SHIFT_RIGHT))
 			{
 				shiftDown = true;
 			}
-			if (Keyb3_IsKeyDown(KEYCODE_ALT) 
+			if (Keyb3_IsKeyDown(KEYCODE_ALT)
 				|| Keyb3_IsKeyDown(KEYCODE_ALT_GR))
 			{
 				altDown = true;

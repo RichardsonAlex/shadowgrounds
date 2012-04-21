@@ -8,7 +8,7 @@ namespace frozenbyte
 namespace particle
 {
 
-struct CloudParticleSystemEditables : public GenParticleSystemEditables 
+struct CloudParticleSystemEditables : public GenParticleSystemEditables
 {
 	bool randomDirection;
 	std::string shape;
@@ -31,7 +31,7 @@ struct CloudParticleSystemEditables : public GenParticleSystemEditables
 
 class CloudParticleSystemShape;
 
-class CloudParticleSystem : public GenParticleSystem 
+class CloudParticleSystem : public GenParticleSystem
 {
 	boost::shared_ptr<CloudParticleSystemShape> m_shape;		
 	boost::shared_ptr<CloudParticleSystemEditables> m_eds;	

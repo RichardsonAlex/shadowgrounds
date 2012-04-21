@@ -27,9 +27,9 @@ public:
 	void open(HWND parent);
 	bool isOpen();
 	void close();
-	void setWindow(float _xmin, float _ymin, float _xmax, float _ymax, 
+	void setWindow(float _xmin, float _ymin, float _xmax, float _ymax,
 		float _xscl, float _yscl);
-	bool msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam); 
+	bool msgProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 };
 

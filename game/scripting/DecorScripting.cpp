@@ -24,7 +24,7 @@ using namespace ui;
 
 namespace game
 {
-	void DecorScripting::process(util::ScriptProcess *sp, 
+	void DecorScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{

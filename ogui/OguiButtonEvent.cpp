@@ -5,7 +5,7 @@
 #include "../util/Debug_MemoryManager.h"
 
 
-OguiButtonEvent::OguiButtonEvent(EVENT_TYPE evt, int curnum, int scrx, int scry, int relx, int rely, 
+OguiButtonEvent::OguiButtonEvent(EVENT_TYPE evt, int curnum, int scrx, int scry, int relx, int rely,
   int but, int obut, OguiButton *trig, OguiWindow *trigwin, const void *arg)
 {
   eventType = evt;

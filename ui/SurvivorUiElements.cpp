@@ -251,7 +251,7 @@ public:
 				if( result < 0.0f )
 					result = 0.0f;
 				
-				if( result > 1.0f ) 
+				if( result > 1.0f )
 					result = 1.0f;
 			}
 		}
@@ -280,7 +280,7 @@ public:
 		weaponId( -1 )
 	{
 		CombatSubWindowFactory::GetSingleton()->RegisterSubWindow( window_name, this );
-		const char* temp = weapon_id.c_str(); 
+		const char* temp = weapon_id.c_str();
 		weaponId = PARTTYPE_ID_STRING_TO_INT( temp );
 	}
 

@@ -32,7 +32,7 @@ RackActor::RackActor(NxScene &scene, const VC3 &position)
 	boxDesc3.dimensions = NxVec3(xsize, SHELF_THICKNESS * 0.5f, zsize);
 	boxDesc3.localPose.t.set(NxVec3(0, height3 - SHELF_THICKNESS, 0));
 
-	// 
+	//
 	NxBoxShapeDesc boxDesc4;
 	boxDesc4.dimensions = NxVec3(SHELF_THICKNESS, height3 * 0.5f, zsize);
 	boxDesc4.localPose.t.set(NxVec3(-xsize - SHELF_THICKNESS, height3 * 0.5f, 0));

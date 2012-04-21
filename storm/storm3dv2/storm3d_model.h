@@ -269,8 +269,8 @@ public:
 	void SetScale(const VC3 &_scale);
 	void SetSelfIllumination(const COL &color) { self_illumination = color; }
 	
-	void SetLighting(int index, signed short light_index_) 
-	{ 
+	void SetLighting(int index, signed short light_index_)
+	{
 		if(index >= 0 && index < LIGHT_MAX_AMOUNT)
 			light_index[index] = light_index_;
 	}

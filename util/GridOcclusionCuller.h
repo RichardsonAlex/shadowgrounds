@@ -46,13 +46,13 @@ public:
     if (scaledX > scaledWellMinX && scaledX < scaledWellMaxX
       && scaledY > scaledWellMinY && scaledY < scaledWellMaxY)
       return true;
-    else 
+    else
       return false;
   }
 
 
 	// translates camera order number to actual area number (which is a bit mask)
-	// order numbers are from 0 to GRIDOCCLUSIONCULLER_MAX_AREAS 
+	// order numbers are from 0 to GRIDOCCLUSIONCULLER_MAX_AREAS
 	// all other functions take in the actual area number, the single (or multi) bit mask.
 	GRIDOCCLUSIONCULLER_DATATYPE getAreaForOrderNumber(int areaOrderNumber) const
 	{

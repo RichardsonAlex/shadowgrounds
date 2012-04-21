@@ -55,7 +55,7 @@ if (unit->isActive())
 		// retire will delete them... hacked a fix... but might want
 		// a more elegant solution for this. :(
 		spawner_dont_delete_unit = true;
-		
+
 	  // first make sure the unit has been retired so we can respawn.
 		if (unit->isActive())
 			retireUnit(game, unit);
@@ -90,7 +90,7 @@ if (unit->isActive())
     // hp based on character or unittype...
     if (u->getCharacter() != NULL)
     {
-      u->setMaxHP(u->getUnitType()->getHP() 
+      u->setMaxHP(u->getUnitType()->getHP()
 				* u->getCharacter()->getSkillAmount(CHAR_SKILL_STAMINA) / 100);
 
       // choose character script if one.
@@ -216,7 +216,7 @@ if (unit->isActive())
 
 
 		u->setImmortal(unit->getUnitType()->isImmortalByDefault());
-		
+
 		// HACK!!!
 		if (u->getSelectedWeapon() == -1)
 		{
@@ -293,7 +293,7 @@ if (unit->isActive())
       /*
       if (!u->getUnitType()->isFlying())
       {
-        ADD_UNIT_OBSTACLE(this, gameMap->scaledToObstacleX(sx), 
+        ADD_UNIT_OBSTACLE(this, gameMap->scaledToObstacleX(sx),
           gameMap->scaledToObstacleX(sy));
       }
       */
@@ -327,7 +327,7 @@ if (unit->isActive())
 				// do not have specific spawn coordinates set!
 				VC3 pos = u->getPosition();
 				u->setSpawnCoordinates(pos);
-        
+
         UnitActor *ua = getUnitActorForUnit(u);
 				assert(ua != NULL);
         ua->addUnitObstacle(u);
@@ -464,7 +464,7 @@ if (unit->isActive())
 				{
 					if (game->gameUI->getFirstPerson(c) == u)
 					{
-						game->gameUI->setFirstPerson(game->singlePlayerNumber, NULL, c);							
+						game->gameUI->setFirstPerson(game->singlePlayerNumber, NULL, c);
 					}
 				}
 			}
@@ -589,10 +589,10 @@ if (unit->isActive())
 		while (uiter.iterateAvailable())
 		{
 			Unit *u = uiter.iterateNext();
-			
+
 			// NOTE: relying on the silly getCurrentVisibilityFadeValue to tell us when the unit has actually
 			// disappeared...
-			if(   u->isDestroyed() 
+			if(   u->isDestroyed()
 				&& u->getCurrentVisibilityFadeValue() == 0.0f
 				&& u->getUnitType() == unitType)
 			{

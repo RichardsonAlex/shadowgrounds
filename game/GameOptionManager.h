@@ -28,7 +28,7 @@ namespace game
 		GameOptionManager(GameConfigs *gameConfigs);
 
 		~GameOptionManager();
-		
+
 		void load();
 
 		void save();

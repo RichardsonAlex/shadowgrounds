@@ -42,7 +42,7 @@ namespace util
 		bool doInternalPreprocess(const char *filename, char **bufOut, int *bufLenOut, const char *sourceBuf, int sourceBufLen);
 
 		void setKeywords(int amount, const char **keywords, int *datatypes);
-		
+
 		void setProcessor(IScriptProcessor *processor);
 
 		Script *getScript(const char *scriptName);

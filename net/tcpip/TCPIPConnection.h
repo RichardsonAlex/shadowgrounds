@@ -19,20 +19,20 @@ namespace net
     class TCPIPConnection : public INetConnection
     {
     public:
-      TCPIPConnection(Connection *c); 
+      TCPIPConnection(Connection *c);
 
       virtual ~TCPIPConnection();
- 
-      virtual void flush() 
+
+      virtual void flush()
         throw (NetDriverException*);
 
-      virtual int send(const void *buf, int maxlen) 
+      virtual int send(const void *buf, int maxlen)
         throw (NetDriverException*);
 
-      virtual int receive(void *buf, int maxlen) 
+      virtual int receive(void *buf, int maxlen)
         throw (NetDriverException*);
 
-      virtual void close() 
+      virtual void close()
         throw (NetDriverException*);
 
     private:

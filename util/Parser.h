@@ -71,7 +71,7 @@ private:
 	string_map properties;
 };
 
-/* 
+/*
   Helper functions
 */
 

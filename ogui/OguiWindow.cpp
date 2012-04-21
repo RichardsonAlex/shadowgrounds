@@ -16,7 +16,7 @@
 #include "../util/Debug_MemoryManager.h"
 
 #ifdef _MSC_VER
-#pragma warning(disable : 4244) 
+#pragma warning(disable : 4244)
 #endif
 
 // orvgui callback handling and conversion to ogui button listener events
@@ -26,7 +26,7 @@ void ogui_button_event_handler(OguiButtonEvent::EVENT_TYPE et)
 	OguiButton *b = (OguiButton *)og_arg;
 
 	// HACK: If wheel rolled, interpret it as CLICK instead of PRESS or HOLD. (Otherwise we have to move mouse until the message goes through.)
-/*	if( (et == OguiButtonEvent::EVENT_TYPE_PRESS || et == OguiButtonEvent ::EVENT_TYPE_HOLD) && 
+/*	if( (et == OguiButtonEvent::EVENT_TYPE_PRESS || et == OguiButtonEvent ::EVENT_TYPE_HOLD) &&
 		 ( og_cursor_obut & ( OG_BUT_WHEEL_UP_MASK | OG_BUT_WHEEL_DOWN_MASK ) ) )
 	{
 		et = OguiButtonEvent::EVENT_TYPE_CLICK;
@@ -36,7 +36,7 @@ void ogui_button_event_handler(OguiButtonEvent::EVENT_TYPE et)
 	{
 		OguiButtonEvent *eve = new OguiButtonEvent(et, og_cursor_num,
 			og_cursor_scrx, og_cursor_scry, og_cursor_x, og_cursor_y,
-			og_cursor_but, og_cursor_obut, 
+			og_cursor_but, og_cursor_obut,
 			b, b->parent, b->argument);
 
 
@@ -89,7 +89,7 @@ OguiWindow::OguiWindow(Ogui *ogui, int x, int y, int sizex, int sizey, IOguiImag
 	this->is_visible = true;
 	this->id = id;
 	this->image = img;
-	
+
 	IStorm3D_Material *mat = NULL;
 	if (img != NULL)
 		mat = ((OguiStormImage *)img)->mat;
@@ -136,8 +136,8 @@ OguiWindow::~OguiWindow()
 		og_set_only_active(NULL);
 		is_only_active = false;
 	}
-	og_delete_window((orvgui_win *)win); 
-	if ( release_bg_image ) 
+	og_delete_window((orvgui_win *)win);
+	if ( release_bg_image )
 		delete image;
 	image = NULL;
 
@@ -183,12 +183,12 @@ bool OguiWindow::IsVisible() const
 
 void OguiWindow::SetPopup()
 {
-	og_set_popup_window((orvgui_win *)win, OG_WIN_POPUP);  
+	og_set_popup_window((orvgui_win *)win, OG_WIN_POPUP);
 }
 
 void OguiWindow::SetPopupNoClose()
 {
-	og_set_popup_window((orvgui_win *)win, OG_WIN_POPUPNOCLOSE);	
+	og_set_popup_window((orvgui_win *)win, OG_WIN_POPUPNOCLOSE);
 }
 
 void OguiWindow::SetPopupNoCloseOnButton()
@@ -261,13 +261,13 @@ void OguiWindow::SetUnmovable()
 	og_set_movable_window((orvgui_win *)win, OG_WIN_UNMOVABLE);
 }
 
-OguiButton *OguiWindow::CreateNewButton(int x, int y, int sizex, int sizey, 
-	IOguiImage *img, IOguiImage *imgdown, IOguiImage *imghigh, IOguiImage *imgdisabled, bool withText, 
+OguiButton *OguiWindow::CreateNewButton(int x, int y, int sizex, int sizey,
+	IOguiImage *img, IOguiImage *imgdown, IOguiImage *imghigh, IOguiImage *imgdisabled, bool withText,
 	const char *text, int id, const void *argument, IOguiFont *font, bool clipToWindow )
 {
 	orvgui_but *but;
 
-	// NOTICE: the orvgui button is created here, but deleted in 
+	// NOTICE: the orvgui button is created here, but deleted in
 	// the OguiButton class destructor
 
 	if (withText)
@@ -333,8 +333,8 @@ OguiButton *OguiWindow::CreateNewButton(int x, int y, int sizex, int sizey,
 	return ob;
 }
 
-void OguiWindow::StartEffect(int windowEffect, int effectDuration) 
-{ 
+void OguiWindow::StartEffect(int windowEffect, int effectDuration)
+{
 	if (windowEffect == OGUI_WINDOW_EFFECT_FADEOUT
 		|| windowEffect == OGUI_WINDOW_EFFECT_FADEIN)
 	{
@@ -380,7 +380,7 @@ void OguiWindow::StartEffect(int windowEffect, int effectDuration)
 	}
 }
 
-void OguiWindow::EndAllEffects() 
+void OguiWindow::EndAllEffects()
 {
 	this->effectFadeTimeLeft = 0;
 	this->effectFadeTimeTotal = 0;
@@ -397,13 +397,13 @@ void OguiWindow::EndAllEffects()
 }
 
 
-int OguiWindow::GetId() 
-{ 
-	return id; 
+int OguiWindow::GetId()
+{
+	return id;
 }
 
-void OguiWindow::ResetData() 
-{ 
+void OguiWindow::ResetData()
+{
 	if (image != NULL)
 	{
 		IStorm3D_Material *mat = ((OguiStormImage *)image)->mat;

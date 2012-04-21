@@ -12,7 +12,7 @@
 
 namespace util
 {
-	typedef struct 
+	typedef struct
 	{
 		bool insideArea;
 		float distanceFactor;
@@ -22,11 +22,11 @@ namespace util
   class ClippedCircle
 	{
 		public:
-			static ClippedCircleValues getValuesFor(const VC3 &position, 
-				const VC3 &circlePosition, float circleRadius, int quarterBitMask, 
+			static ClippedCircleValues getValuesFor(const VC3 &position,
+				const VC3 &circlePosition, float circleRadius, int quarterBitMask,
 				float clipSmoothRange = 0.0f);
 
-			static bool isInsideArea(const VC3 &position, 
+			static bool isInsideArea(const VC3 &position,
 				const VC3 &circlePosition, float circleRadius, int quarterBitMask);
 
 

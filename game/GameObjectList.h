@@ -16,14 +16,14 @@ namespace game
   public:
     GameObjectList();
     ~GameObjectList();
-    
+
     const ListNode<GameObject*>* add(GameObject *obj);
-    void remove(GameObject *obj);
+    void remove(GameObject* obj);
     void removeByNode(const ListNode<GameObject*>* node, GameObject* obj);
 
     void resetIterate();
     bool iterateAvailable();
-    GameObject *iterateNext();
+    GameObject* iterateNext();
 
   private:
     LinkedList<GameObject*> *objects;

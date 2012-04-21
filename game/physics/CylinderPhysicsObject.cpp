@@ -12,9 +12,9 @@
 
 namespace game
 {
-	CylinderPhysicsObject::CylinderPhysicsObject(GamePhysics *gamePhysics, float height, float radius, float mass, int collisionGroup, const VC3 &position) 
+	CylinderPhysicsObject::CylinderPhysicsObject(GamePhysics *gamePhysics, float height, float radius, float mass, int collisionGroup, const VC3 &position)
 		: AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->position = position;
 		this->radius = radius;
 		this->height = height;
@@ -22,8 +22,8 @@ namespace game
 		this->collisionGroup = collisionGroup;
 	}
 
-	CylinderPhysicsObject::~CylinderPhysicsObject() 
-	{ 
+	CylinderPhysicsObject::~CylinderPhysicsObject()
+	{
 		// nop, ~AbstractPhysicsObject handles everything of any interest...
 	}
 

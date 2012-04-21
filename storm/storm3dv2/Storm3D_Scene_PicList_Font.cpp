@@ -155,21 +155,21 @@ void Storm3D_Scene_PicList_Font::Render()
 		{
 			// Search for letter
 			int let=-1;
-			for (int i=0;i<letter_amt;i++) 
+			for (int i=0;i<letter_amt;i++)
 			{
-				if (font->letter_characters[i]==text[l]) 
+				if (font->letter_characters[i]==text[l])
 				{
 					let=i;
 					// doh, why not break now when we found it and save time!
-					break; 
-				} 
-				else 
+					break;
+				}
+				else
 				{
 					// if we find the null terminator, just stop there, because
 					// otherwise we'll go past the character array size if it
 					// does not contain character definitions for total of letter_amt
 					// characters. In my opininion requiring such a thing is not nice.
-					if (font->letter_characters[i] == '\0') 
+					if (font->letter_characters[i] == '\0')
 						break;
 				}
 			}
@@ -204,7 +204,7 @@ void Storm3D_Scene_PicList_Font::Render()
 				vx[3]=VXFORMAT_2D(pos+VC3(size.x,0,0),1,col,p[3]);
 
 				// Clip
-				if (Clip2DRectangle(Storm3D2,vx[1],vx[2])) 
+				if (Clip2DRectangle(Storm3D2,vx[1],vx[2]))
 				{
 					// Copy clipping
 					vx[0].position.x=vx[1].position.x;

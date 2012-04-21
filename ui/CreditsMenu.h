@@ -22,7 +22,7 @@ class CreditsMenu : public MenuBaseImpl
 public:
 	//.........................................................................
 
-	enum COMMANDS 
+	enum COMMANDS
 	{
 		COMMANDS_CLOSEME
 	};

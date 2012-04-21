@@ -48,7 +48,7 @@ namespace util
 		Script *script;
 		bool finished;
 		int misbehaveCounter;
-		
+
 		intptr_t ifDepth;
 		bool thenBranch;
 		void *data;
@@ -71,7 +71,7 @@ namespace util
 
 		ScriptProcess();
 		~ScriptProcess();
-		
+
 		inline bool isFinished() { return finished; }
 
 		inline Script *getScript() { return script; }

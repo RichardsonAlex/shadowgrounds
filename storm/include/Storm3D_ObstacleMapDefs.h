@@ -4,7 +4,7 @@
 #ifndef STORM3D_OBSTACLEMAPDEFS_H
 #define STORM3D_OBSTACLEMAPDEFS_H
 
-// collision heightmap multiplier 
+// collision heightmap multiplier
 // (compared to initial loaded/rendered heightmap)
 // DEPRECATED: now given to storm as a parameter
 //#define COLLISION_HEIGHTMAP_SHIFT 2

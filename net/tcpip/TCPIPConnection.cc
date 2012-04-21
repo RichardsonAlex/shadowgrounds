@@ -56,7 +56,7 @@ namespace net
 
 static char footmp[1024+1];
 
-    void TCPIPConnection::flush() 
+    void TCPIPConnection::flush()
       throw (NetDriverException*)
     {
       // nop (TODO?)
@@ -68,9 +68,9 @@ static char footmp[1024+1];
 
       return;
     }
- 
 
-    int TCPIPConnection::send(const void *buf, int maxlen) 
+
+    int TCPIPConnection::send(const void *buf, int maxlen)
       throw (NetDriverException*)
     {
 			int got = 0;
@@ -108,13 +108,13 @@ foo += (Timer::getTime() - lastFoo);
       }
       return got;
     }
-    
 
-    int TCPIPConnection::receive(void *buf, int maxlen) 
+
+    int TCPIPConnection::receive(void *buf, int maxlen)
       throw (NetDriverException*)
     {
       int got = c->recv((char *)buf, maxlen);
-      if (got < 0) 
+      if (got < 0)
       {
         if (got == NONBLOCKING_EAGAIN)
           return 0;
@@ -125,7 +125,7 @@ foo += (Timer::getTime() - lastFoo);
     }
 
 
-    void TCPIPConnection::close() 
+    void TCPIPConnection::close()
       throw (NetDriverException*)
     {
       c->close();

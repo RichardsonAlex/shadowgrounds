@@ -44,12 +44,12 @@ namespace {
 	int PAPSid = 0;
 }
 
-PointArrayParticleSystem::PointArrayParticleSystem() 
+PointArrayParticleSystem::PointArrayParticleSystem()
 {
 	m_index = 0;	
 }
 	
-boost::shared_ptr<IParticleSystem> PointArrayParticleSystem::createNew() 
+boost::shared_ptr<IParticleSystem> PointArrayParticleSystem::createNew()
 {
 	PointArrayParticleSystem* ps = new PointArrayParticleSystem();
 	boost::shared_ptr<IParticleSystem> ptr(ps);
@@ -58,7 +58,7 @@ boost::shared_ptr<IParticleSystem> PointArrayParticleSystem::createNew()
 	return ptr;
 }
 
-boost::shared_ptr<IParticleSystem> PointArrayParticleSystem::clone() 
+boost::shared_ptr<IParticleSystem> PointArrayParticleSystem::clone()
 {
 	PointArrayParticleSystem* ps = new PointArrayParticleSystem();
 	copyTo(*ps);
@@ -95,7 +95,7 @@ void PointArrayParticleSystem::setRotation(const MAT &tm)
 	rotation = tm;
 }
 */
-void PointArrayParticleSystem::setParticlePosition(Vector& pos) 
+void PointArrayParticleSystem::setParticlePosition(Vector& pos)
 {	
 	if(m_parray.get()==NULL)
 		return;
@@ -140,8 +140,8 @@ if (gameRand == NULL)
 			float tertInvFactor = 1.0f - tertiaryFactor;
   			pos = (pos * tertiaryFactor) + (m_parray->verts[tertiaryIndex] * tertInvFactor);
 		}
-	} 
-	else 
+	}
+	else
 	{
 		m_index = m_eds->firstVertex + rand() % (m_eds->lastVertex - m_eds->firstVertex);	
 		pos = m_parray->verts[m_index];
@@ -150,7 +150,7 @@ if (gameRand == NULL)
 	//m_rotation.RotateVector(pos);
 }
 	
-void PointArrayParticleSystem::setParticleVelocity(Vector& vel, const Vector& dir, float speed, const GenParticleSystemEditables& eds) 
+void PointArrayParticleSystem::setParticleVelocity(Vector& vel, const Vector& dir, float speed, const GenParticleSystemEditables& eds)
 {
 	
 	if(m_parray.get()==NULL)
@@ -177,7 +177,7 @@ void *PointArrayParticleSystem::getType()
 	return &PAPSid;
 }
 
-void PointArrayParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene) 
+void PointArrayParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene)
 {	
 	defaultInit(s3d, scene, *m_eds);
 
@@ -195,7 +195,7 @@ void PointArrayParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene)
 	IStorm3D_Model* model = s3d->CreateNewModel();
 	assert(model != NULL);
 
-	if(model->LoadS3D(fileName.c_str())) 
+	if(model->LoadS3D(fileName.c_str()))
 	{
 		Iterator<IStorm3D_Model_Object*>* obj = model->ITObject->Begin();
 		assert(obj != NULL);
@@ -206,14 +206,14 @@ void PointArrayParticleSystem::init(IStorm3D* s3d, IStorm3D_Scene* scene)
 			IStorm3D_Mesh* mesh = obj->GetCurrent()->GetMesh();
 			VC3 opos = obj->GetCurrent()->GetPosition();
 
-			if(mesh) 
+			if(mesh)
 			{
 				int base = pm->verts.size();
 				pm->verts.resize(base + mesh->GetVertexCount());
 				pm->normals.resize(base + mesh->GetVertexCount());
 				
 				Storm3D_Vertex *v = mesh->GetVertexBuffer();
-				for(int i = 0; i < mesh->GetVertexCount(); i++) 
+				for(int i = 0; i < mesh->GetVertexCount(); i++)
 				{
 					Vector pos = v[i].position + opos;
 					Vector nor = v[i].normal;

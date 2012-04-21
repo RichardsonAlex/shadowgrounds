@@ -88,7 +88,7 @@ namespace ui
     void setScale(const VC3 &scale);
     void setRotation(float xAngle, float yAngle, float zAngle);
 	
-		// hacked to allow straight quaternion rotations 
+		// hacked to allow straight quaternion rotations
 		// overrided the setRotation euler angles
 		void setRotationQuaternion( const QUAT& quat );
 
@@ -259,7 +259,7 @@ namespace ui
 
     friend class VisualObjectModel;
     friend class Animator;
-    
+
     friend class game::GameUI;
     // this is just a quick hack to access storm models, because we need to
     // seek the right unit (visual object) based on storm's collision info

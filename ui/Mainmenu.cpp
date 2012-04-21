@@ -240,7 +240,7 @@ void MainMenu::CursorEvent( OguiButtonEvent* eve )
 			}
 		}
 	}
-	else 
+	else
 	{
 		MenuBaseImpl::CursorEvent( eve );
 		
@@ -373,8 +373,8 @@ void MainMenu::menuContinue()
 				newest_mission = i;
 			}
 
-		} 
-		else 
+		}
+		else
 		{
 		}
 		
@@ -383,7 +383,7 @@ void MainMenu::menuContinue()
 
 	if( newest_mission )
 		menuCollection->loadMission( newest_mission );
-	else 
+	else
 		menuCollection->newMission();
 }
 
@@ -395,7 +395,7 @@ void MainMenu::menuNewGame()
 #endif
 
 	openMenu( MenuCollection::MENU_TYPE_NEWGAMEMENU );
-	/*if( fromGame ) 
+	/*if( fromGame )
 	{
 		// abortCurrentGame();
 	}
@@ -406,7 +406,7 @@ void MainMenu::menuNewGame()
 		menuCollection->newMission();
 	}*/
 	//menuCollection->loadMission( 1 );
-	// game->gameUI->openLoadingWindow( game->singlePlayerNumber ); 
+	// game->gameUI->openLoadingWindow( game->singlePlayerNumber );
 	// hide();
 }
 
@@ -461,7 +461,7 @@ void MainMenu::abortCurrentGame()
 {
 	closeAbortMenu();
 
-	captureAllEvents = ogui->CreateSimpleWindow( 0, 0, 1024, 768, NULL ); 
+	captureAllEvents = ogui->CreateSimpleWindow( 0, 0, 1024, 768, NULL );
 	captureAllEvents->SetUnmovable();
 	captureAllEvents->Show();
 
@@ -482,8 +482,8 @@ void MainMenu::abortCurrentGame()
 		int w = getLocaleGuiInt( "gui_mainmenu_abort_yes_w", 0 );
 		int h = getLocaleGuiInt( "gui_mainmenu_abort_yes_h", 0 );
 
-		abortGameYes = ogui->CreateSimpleTextButton( captureAllEvents, x, y, w, h, 
-			getLocaleGuiString( "gui_mainmenu_abort_yes_norm" ), getLocaleGuiString( "gui_mainmenu_abort_yes_down" ), getLocaleGuiString( "gui_mainmenu_abort_yes_high" ), 
+		abortGameYes = ogui->CreateSimpleTextButton( captureAllEvents, x, y, w, h,
+			getLocaleGuiString( "gui_mainmenu_abort_yes_norm" ), getLocaleGuiString( "gui_mainmenu_abort_yes_down" ), getLocaleGuiString( "gui_mainmenu_abort_yes_high" ),
 			getLocaleGuiString( "gui_mainmenu_abort_yes_text" ), COMMANDS_YES );
 
 		abortGameYes->SetFont( fonts->medium.normal );
@@ -496,8 +496,8 @@ void MainMenu::abortCurrentGame()
 		int w = getLocaleGuiInt( "gui_mainmenu_abort_no_w", 0 );
 		int h = getLocaleGuiInt( "gui_mainmenu_abort_no_h", 0 );
 
-		abortGameNo = ogui->CreateSimpleTextButton( captureAllEvents, x, y, w, h, 
-			getLocaleGuiString( "gui_mainmenu_abort_no_norm" ), getLocaleGuiString( "gui_mainmenu_abort_no_down" ), getLocaleGuiString( "gui_mainmenu_abort_no_high" ), 
+		abortGameNo = ogui->CreateSimpleTextButton( captureAllEvents, x, y, w, h,
+			getLocaleGuiString( "gui_mainmenu_abort_no_norm" ), getLocaleGuiString( "gui_mainmenu_abort_no_down" ), getLocaleGuiString( "gui_mainmenu_abort_no_high" ),
 			getLocaleGuiString( "gui_mainmenu_abort_no_text" ), COMMANDS_NO );
 
 		abortGameNo->SetFont( fonts->medium.normal );
@@ -536,21 +536,21 @@ void MainMenu::createDifficultyButtons()
 	difficultImageSelectDown = ogui->LoadOguiImage( optionsDifficultButtonHigh.c_str() );
 	difficultImageSelectNorm = ogui->LoadOguiImage( optionsDifficultButtonNormal.c_str() );
 
-	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->little.normal, optionsEasyText, COMMANDS_EASY );
 
 	difficultButtonX += difficultButtonAddX;
 	difficultButtonY += difficultButtonAddY;
 
-	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->little.normal, optionsNormalText, COMMANDS_NORMAL );
 	
 	difficultButtonX += difficultButtonAddX;
 	difficultButtonY += difficultButtonAddY;
 
-	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH, 
+	addDifficultButton( difficultButtonX, difficultButtonY, difficultButtonW, difficultButtonH,
 		optionsDifficultButtonNormal, optionsDifficultButtonDown, optionsDifficultButtonHigh,
 		fonts->little.normal, optionsHardText, COMMANDS_HARD );
 
@@ -624,8 +624,8 @@ void MainMenu::selectDifficultButton( int i )
 
 //.............................................................................
 
-void MainMenu::addDifficultButton( int x, int y, int w, int h, 
-		const std::string& button_norm, const std::string& button_down, const std::string& button_high, 
+void MainMenu::addDifficultButton( int x, int y, int w, int h,
+		const std::string& button_norm, const std::string& button_down, const std::string& button_high,
 		IOguiFont* font, const std::string& text, int command )
 {
 	assert( ogui );
@@ -633,10 +633,10 @@ void MainMenu::addDifficultButton( int x, int y, int w, int h,
 	assert( command >= 0 );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( win, x, y, w, h, 
-		button_norm.empty()?NULL:button_norm.c_str(), 
-		button_down.empty()?NULL:button_down.c_str(), 
-		button_high.empty()?NULL:button_high.c_str(), 
+	b = ogui->CreateSimpleTextButton( win, x, y, w, h,
+		button_norm.empty()?NULL:button_norm.c_str(),
+		button_down.empty()?NULL:button_down.c_str(),
+		button_high.empty()?NULL:button_high.c_str(),
 		text.c_str(), command );
 	
 	b->SetListener( this );
@@ -670,8 +670,8 @@ OguiButton* MainMenu::addButton( const std::string& text, int command, IOguiFont
 		{
 			parent_win = win2;
 		}
-		b = ogui->CreateSimpleTextButton( parent_win, x, y, w, h, 
-			buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(), 
+		b = ogui->CreateSimpleTextButton( parent_win, x, y, w, h,
+			buttonNormal.c_str(), buttonDown.c_str(), buttonHigh.c_str(),
 			( buttonPaddingString + text ).c_str(), command );
 		b->SetListener( this );
 		if ( font ) b->SetFont( font );

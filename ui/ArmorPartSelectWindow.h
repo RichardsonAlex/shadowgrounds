@@ -20,7 +20,7 @@
 namespace ui
 {
 
-  class ArmorPartSelectWindow : public IOguiButtonListener, 
+  class ArmorPartSelectWindow : public IOguiButtonListener,
     public IOguiSelectListListener
   {
   public:

@@ -344,7 +344,7 @@ namespace ui
 				int offy = getLocaleGuiInt("gui_upgrades_info_textarea_offset_y", 0);
 				int sizex = getLocaleGuiInt("gui_upgrades_info_textarea_size_x", 0);
 				int sizey = getLocaleGuiInt("gui_upgrades_info_textarea_size_y", 0);
-				
+
 				infoText = new OguiFormattedText( win, ogui, x + offx, y + offy, sizex, sizey );
 				// infoText = ogui->CreateTextArea(win, x + offx, y + offy, sizex, sizey, "");
 				// infoText->SetFont(ui::defaultIngameFont);
@@ -440,7 +440,7 @@ namespace ui
 		{
 			delete selection;
 			selection = NULL;
-		}	
+		}
 		delete selectionImage;
 		*/
 
@@ -497,7 +497,7 @@ namespace ui
 			{
 				delete selection;
 				selection = NULL;
-			}	
+			}
 		} else {
 			if (weaponButtons[selectionNumber] != NULL)
 			{
@@ -605,7 +605,7 @@ namespace ui
 				int y = wy;
 				int firstpadx = getLocaleGuiInt("gui_upgrades_slot_upgrade_start_offset_x", 0);
 				int padx = getLocaleGuiInt("gui_upgrades_slot_upgrade_offset_x", 0);
-				
+
 				x += firstpadx + highlightedUpgradeSlot * padx;
 
 				upgradeHighlight->Move(x,y);
@@ -642,7 +642,7 @@ namespace ui
 			}
 		}
 
-		{			
+		{
 			int tmp = game->upgradeManager->getUpgradePartsAmount(this->unit) - this->upgradesPendingCost;
 			upgradePartsText->SetText(int2str(tmp));
 		}
@@ -673,7 +673,7 @@ namespace ui
 				&& id <= UPGRADEW_WEAPONBUT_LAST)
 			{
 				highlightOn = false;
-			}			
+			}
 			if (id >= UPGRADEW_UPGRADEBUT_FIRST
 				&& id <= UPGRADEW_UPGRADEBUT_LAST)
 			{
@@ -689,7 +689,7 @@ namespace ui
 				highlightedUpgradeSlot = -1;
 				highlightedUpgradeId = -1;
 				highlightOn = true;
-			}			
+			}
 			if (id >= UPGRADEW_UPGRADEBUT_FIRST
 				&& id <= UPGRADEW_UPGRADEBUT_LAST)
 			{
@@ -779,7 +779,7 @@ namespace ui
 					}
 
 				}
-				
+
 				if (playDoneSound)
 				{
 					game->gameUI->playGUISound(getLocaleGuiString("gui_upgrades_sound_upgrade_done"));
@@ -833,7 +833,7 @@ namespace ui
 			}
 		}
 		this->upgradesPendingCost = 0;
-		
+
 	}
 
 	void UpgradeWindow::effectUpdate(int msecTimeDelta)

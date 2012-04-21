@@ -19,7 +19,7 @@
 #include <sstream>
 #include <boost/lexical_cast.hpp>
 
-namespace ui { 
+namespace ui {
 ///////////////////////////////////////////////////////////////////////////////
 
 class ComboWindow::ComboWindowImpl : public game::IGameStatsListener
@@ -76,8 +76,8 @@ public:
 
 	///////////////////////////////////////////////////////////////////////////
 
-	void onKill( const std::string& /*enemy*/ ) 
-	{ 
+	void onKill( const std::string& /*enemy*/ )
+	{
 		onCombo();
 	}
 	void onMapChange( const std::string& /*maplayer*/ ) { }
@@ -112,7 +112,7 @@ public:
 				// ss << combo << " " << comboCount << std::endl;
 			}
 
-			if( textbut ) 
+			if( textbut )
 				textbut->SetText( combo.c_str() );
 
 			showMessage = 1;
@@ -132,7 +132,7 @@ public:
 			showMessage = 0;
 			// bool result = false;
 			
-			if( textbut ) 
+			if( textbut )
 				/* result = */
 					textbut->SetText( "" );
 

@@ -19,7 +19,7 @@ namespace {
 /*
   Exporter function. LW calls this to activate us
 */
-extern "C" XCALL_(int) 
+extern "C" XCALL_(int)
 Export(long, GlobalFunc *global, LWLayoutGeneric *layoutGeneric, void *)
 {
 	assert(moduleHandle);
@@ -30,7 +30,7 @@ Export(long, GlobalFunc *global, LWLayoutGeneric *layoutGeneric, void *)
 	// Get all relevant data (pushes it to managers exporter)
 	LWScene().collectData();
 
-	// Export 
+	// Export
 	createExportDialog(manager->getExporter(), moduleHandle);	
 
 	// That's all folks!
@@ -44,7 +44,7 @@ Export(long, GlobalFunc *global, LWLayoutGeneric *layoutGeneric, void *)
 
 // Server tags
 extern "C"
-ServerTagInfo server_tags[] = 
+ServerTagInfo server_tags[] =
 {
 #ifdef _DEBUG
 	{
@@ -78,16 +78,16 @@ ServerTagInfo server_tags[] =
 	}
 };
 
-// Plugin information  
+// Plugin information
 extern "C"
-ServerRecord ServerDesc[] = 
+ServerRecord ServerDesc[] =
 {
 	// Our exporter
-	{ 
-		LWLAYOUTGENERIC_CLASS, 
+	{
+		LWLAYOUTGENERIC_CLASS,
 
 #ifdef _DEBUG
-		"Frozenbyte DEBUG! Exporter", 
+		"Frozenbyte DEBUG! Exporter",
 #elif FB_FAST_BUILD
 		"Frozenbyte Fast! Exporter",
 #else
@@ -99,13 +99,13 @@ ServerRecord ServerDesc[] =
 	},
 	
 	// Indicates that we don´t have any more plugins
-	{ 
-		(const char *) NULL 
+	{
+		(const char *) NULL
 	}
 };
 
 
-extern "C" 
+extern "C"
 BOOL WINAPI DllMain(HINSTANCE handle, DWORD, LPVOID)
 {
 	// Grab instance (for resource usage)

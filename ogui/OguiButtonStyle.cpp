@@ -7,7 +7,7 @@
 
 OguiButtonStyle::OguiButtonStyle(
   IOguiImage *image, IOguiImage *imageDown,
-  IOguiImage *imageDisabled, IOguiImage *imageHighlighted, 
+  IOguiImage *imageDisabled, IOguiImage *imageHighlighted,
   IOguiFont *textFont, int sizeX, int sizeY)
 {
   this->image = image;

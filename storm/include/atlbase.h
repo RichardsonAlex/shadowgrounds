@@ -20,10 +20,10 @@ inline IUnknown* AtlComPtrAssign(IUnknown** pp, IUnknown* lp)
 {
         if(pp == NULL)
                 return NULL;
-                
+
         if (lp != NULL)
                 lp->AddRef();
-        
+
         if (*pp)
                 (*pp)->Release();
         *pp = lp;

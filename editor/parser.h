@@ -50,7 +50,7 @@ public:
 	const ParserGroup &getSubGroup(const std::string &name) const;
 	ParserGroup &getSubGroup(const std::string &name);
 
-	// Hax 
+	// Hax
 	bool hasSubGroup(const std::string &name) const;
 	int getSubGroupAmount() const;
 	const std::string &getSubGroupName(int index) const;
@@ -71,8 +71,8 @@ public:
 	void setFlags(int flags);
 };
 
-inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, ParserGroup &parserGroup) 
-{ 
+inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, ParserGroup &parserGroup)
+{
 	return parserGroup.readStream(stream);
 }
 
@@ -92,13 +92,13 @@ public:
 	filesystem::InputStream &readStream(filesystem::InputStream &stream);
 };
 
-inline std::ostream &operator << (std::ostream &stream, const EditorParser &parser) 
-{ 
+inline std::ostream &operator << (std::ostream &stream, const EditorParser &parser)
+{
 	return parser.writeStream(stream);
 }
 
-inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, EditorParser &parser) 
-{ 
+inline filesystem::InputStream &operator >> (filesystem::InputStream &stream, EditorParser &parser)
+{
 	return parser.readStream(stream);
 }
 

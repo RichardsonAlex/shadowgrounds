@@ -17,20 +17,20 @@ namespace net
     class DummyConnection : public INetConnection
     {
     public:
-      DummyConnection(DummyConnection *peer); 
+      DummyConnection(DummyConnection *peer);
 
       virtual ~DummyConnection();
- 
-      virtual void flush() 
+
+      virtual void flush()
         throw (NetDriverException*);
 
-      virtual int send(const void *buf, int maxlen) 
+      virtual int send(const void *buf, int maxlen)
         throw (NetDriverException*);
 
-      virtual int receive(void *buf, int maxlen) 
+      virtual int receive(void *buf, int maxlen)
         throw (NetDriverException*);
 
-      virtual void close() 
+      virtual void close()
         throw (NetDriverException*);
 
     private:

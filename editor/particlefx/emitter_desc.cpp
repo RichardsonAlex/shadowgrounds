@@ -329,8 +329,8 @@ void CloudEmitterDesc::genPosition(Vector& pos) {
 		pos.y = fRand(-1.0f, 1.0f) * cHeight * 0.5f;
 		float len = r2;
 		while((float)sqrt(len) > r2) {
-			pos.x = fRand(-0.5f, 0.5f) * cRadius; 
-			pos.z = fRand(-0.5f, 0.5f) * cRadius; 
+			pos.x = fRand(-0.5f, 0.5f) * cRadius;
+			pos.z = fRand(-0.5f, 0.5f) * cRadius;
 			len = pos.x * pos.x + pos.z * pos.z;
 		}
 	}

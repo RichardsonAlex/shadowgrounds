@@ -1,7 +1,7 @@
 /*
 
   Storm3D v2.0 T&L Graphics Engine
-  (C) Sebastian Aaltonen 2000-2001 
+  (C) Sebastian Aaltonen 2000-2001
 
   Datatypes
 	

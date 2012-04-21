@@ -6,29 +6,29 @@
 namespace frozenbyte {
 namespace particle {
 
-class OrbitCamera 
+class OrbitCamera
 {
 	Vector m_position;
 	Vector m_target;
 	float m_fov;
 
 public:
-	void setPosition(const Vector& v) 
+	void setPosition(const Vector& v)
 	{
 		m_position = v;
 	}
-	void setTarget(const Vector& v) 
+	void setTarget(const Vector& v)
 	{
 		m_target = v;
 	}
 
-	void pan(const Vector& v) 
+	void pan(const Vector& v)
 	{
 		m_position += v;
 		m_target += v;
 	}
 
-	void truck(float amount) 
+	void truck(float amount)
 	{
 		if(amount == 0.0f)
 			return;
@@ -40,7 +40,7 @@ public:
 		m_position += dir * amount;
 	}
 
-	void orbit(float dx, float dy) 
+	void orbit(float dx, float dy)
 	{
 		Vector up(0.0f, 1.0f, 0.0f);
 		Vector dir = m_target - m_position;
@@ -58,12 +58,12 @@ public:
 		m_position = m_target + temp;
 	}
 
-	void setFov(float fov) 
+	void setFov(float fov)
 	{
 		m_fov = fov; // fov in degrees!!!!
 	}
 
-	void apply(IStorm3D_Camera* camera) 
+	void apply(IStorm3D_Camera* camera)
 	{
 		camera->SetPosition(m_position);
 		camera->SetTarget(m_target);

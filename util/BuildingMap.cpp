@@ -42,7 +42,7 @@ const float mapResolution = 0.25f;
 // Now 2 spheres -jpk
 const float sphereHeight = 0.5f;
 const float sphere2Height = 1.3f;
-const float sphereRadius = 0.40f; 
+const float sphereRadius = 0.40f;
 //const float sphereSafeArea = 0.2f;
 const float sphereSafeArea = 0.2f;
 
@@ -379,12 +379,12 @@ collisionInfo.hit = false;
 
 					if (negativeHeights)
 					{
-						if (obstH > 124.0f) 
+						if (obstH > 124.0f)
 							obstH = 124.0f;
-						if (obstH < -124.0f) 
+						if (obstH < -124.0f)
 							obstH = -124.0f;
 					} else {
-						if (obstH > 250.0f) 
+						if (obstH > 250.0f)
 							obstH = 250.0f;
 					}
 
@@ -457,7 +457,7 @@ collisionInfo.hit = false;
 						if (floorMapExists)
 						{
 							// floormap itself should not have floorMapExists set
-							assert(!negativeHeights); 
+							assert(!negativeHeights);
 
 							if (floorHeightMap[i][j] != BUILDINGMAP_NO_FLOOR_BLOCK)
 							{
@@ -467,16 +467,16 @@ collisionInfo.hit = false;
 
 						if (negativeHeights)
 						{
-							if (obstH > 124.0f) 
+							if (obstH > 124.0f)
 								obstH = 124.0f;
-							if (obstH < -124.0f) 
+							if (obstH < -124.0f)
 								obstH = -124.0f;
 							if(obstH > char(heightMap[i][j])
 								|| char(heightMap[i][j]) == BUILDINGMAP_NO_FLOOR_BLOCK)
 								heightMap[i][j] = (unsigned char) (obstH + 0.5f);
 							//Logger::getInstance()->error(int2str(k));
 						} else {
-							if (obstH > 250.0f) 
+							if (obstH > 250.0f)
 								obstH = 250.0f;
 							if(obstH > heightMap[i][j])
 								heightMap[i][j] = (unsigned char) (obstH + 0.5f);
@@ -569,7 +569,7 @@ collisionInfo.hit = false;
 		{
 			// the mapper object for floodfill.
 			BuildingMapFillMapper mapper = BuildingMapFillMapper(this);
-    
+
 			// start filling from the corners of the map with byte 2
 			if (collisionMap[0][0] == 0)
 				collisionMap[0][0] = BMAP_FLOODFILL_REACHABLE_uint8_t;
@@ -620,7 +620,7 @@ collisionInfo.hit = false;
 
 			// the mapper object for floodfill.
 			BuildingMapHeightFillMapper mapper2 = BuildingMapHeightFillMapper(this);
-    
+
 			// start filling from the corners of the map with byte 255
 			if (heightMap[0][0] == 0)
 				heightMap[0][0] = 255;
@@ -751,8 +751,8 @@ collisionInfo.hit = false;
 			for(int y = 0; y < yResolution; ++y)
 			for(int x = 0; x < xResolution; ++x)
 				filesystem::fb_fread(&floorHeightMap[x][y], sizeof(unsigned char), 1, fp);
-		} 
-		else 
+		}
+		else
 		{
 			for(int y = 0; y < yResolution; ++y)
 			for(int x = 0; x < xResolution; ++x)
@@ -1112,7 +1112,7 @@ collisionInfo.hit = false;
 						{
 							collisionMap[x][y] = windowCollisionMap[x][y - 1];
 							heightMap[x][y] = windowHeightMap[x][y - 1];
-						} 
+						}
 						else if (windowCollisionMap[x][y + 1] != 0
 							&& origHeightMap[x][y] > windowHeightMap[x][y + 1])
 						{
@@ -1124,7 +1124,7 @@ collisionInfo.hit = false;
 						{
 							collisionMap[x][y] = windowCollisionMap[x - 1][y];
 							heightMap[x][y] = windowHeightMap[x - 1][y];
-						} 
+						}
 						else if (windowCollisionMap[x + 1][y] != 0
 							&& origHeightMap[x][y] > windowHeightMap[x + 1][y])
 						{
@@ -1238,8 +1238,8 @@ BuildingMap::BuildingMap(const char *fileNameRaw, IStorm3D_Model *model, int rot
 
 		binFileName += "_R_";
 		binFileName += &fileName[fileNameLen - cutpos + 1];
-	} 
-	else 
+	}
+	else
 	{
 		while (rotationX < 0) rotationX += 360;
 			rotationX += 360;
@@ -1306,7 +1306,7 @@ BuildingMap::BuildingMap(const char *fileNameRaw, IStorm3D_Model *model, int rot
 	delete [] filenameStripped;
 
 #ifdef BUILDINGMAP_USE_OPTIONS
-	if (!upToDate 
+	if (!upToDate
 		&& !game::SimpleOptions::getBool(DH_OPT_B_AUTO_MODEL_BIN_RECREATE))
 	{
 		Logger::getInstance()->warning("BuildingMap - Buildingmap is not up to date, but it will not be recreated (auto recreate off).");

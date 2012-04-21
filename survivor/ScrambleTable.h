@@ -2,7 +2,7 @@
 #define INCLUDED_SCRAMBLETABLE
 
 static const unsigned int scramble_table_entries = 64;
-static const unsigned int scramble_table[scramble_table_entries] = 
+static const unsigned int scramble_table[scramble_table_entries] =
 {
 0x393c20da,0x33005afd,0x5b63760e,0x03ad6e5d,0x2e527e58,
 0x6ec20b7d,0x7d135bf1,0x43ac61e7,0x1f9b1342,0x10393703,

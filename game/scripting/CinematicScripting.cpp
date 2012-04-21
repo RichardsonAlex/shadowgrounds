@@ -36,7 +36,7 @@ using namespace ui;
 
 namespace game
 {
-	void CinematicScripting::process(util::ScriptProcess *sp, 
+	void CinematicScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{

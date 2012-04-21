@@ -215,7 +215,7 @@
 		| AREAVALUE_OBSTACLE_BUILDINGWALL_YES \
 	)
 
-// terrainobjects 
+// terrainobjects
 // (solid by default, | (or) with see/firethrough if necessary)
 #define AREAVALUE_OBSTACLE_TERRAINOBJECT ( \
 		AREAVALUE_OBSTACLE_SEETHROUGH_NO \

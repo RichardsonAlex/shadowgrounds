@@ -40,8 +40,8 @@ using namespace std;
 
 
 #if defined BONE_MODEL_SPHERE_TRANSFORM && defined _MSC_VER
-#pragma message("--- NOTICE!!! Bounding sphere transform enabled for models with bones! ---") 
-#pragma message("---           This may cause inaccuracies to raytraces. (optimization) ---") 
+#pragma message("--- NOTICE!!! Bounding sphere transform enabled for models with bones! ---")
+#pragma message("---           This may cause inaccuracies to raytraces. (optimization) ---")
 #endif
 // -- jpk
 
@@ -305,7 +305,7 @@ bool Model_BoneAnimation::operator < (const Model_BoneAnimation &animation) cons
 	int t1 = blend_time - elapsed_time;
 	int t2 = animation.blend_time - animation.elapsed_time;
 
-	// oh man... this is a problem, speed factor may change this result 
+	// oh man... this is a problem, speed factor may change this result
 	t1 = (t1 * MODEL_BONEANIMATION_SPEED_FACTOR_SHIFT) / speed_factor;
 	t2 = (t2 * MODEL_BONEANIMATION_SPEED_FACTOR_SHIFT) / animation.speed_factor;
 
@@ -562,7 +562,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 	// Load new data...
 
 	// the haxored load time modifications to model...
-	// foobar.s3d@90 - "hard vertex rotation" 
+	// foobar.s3d@90 - "hard vertex rotation"
 	// foobar.s3d@F0.01 - "fatboy" (a.k.a. LW smooth scale / move verteices on vertex normals)
 	// foobar.s3d@B0.01 - "blackedge" (duplicate vertices, move on vertex normals, set UV to 0,0 - assuming that is black)
 	// foobar.s3d@RM - "reflection mask" (masks the cheap-ass-reflection in depth buffer)
@@ -580,7 +580,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 	char actual_filename[256];
 	int filename_len = strlen(filename);
 	int hard_rotation = 0;
-	if (filename_len < 256) 
+	if (filename_len < 256)
 	{
 		strcpy(actual_filename, filename);
 		for (int i = 0; i < filename_len; i++)
@@ -630,7 +630,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 						mirrored = true;
 						mirroredV = true;
 					}
-				} 
+				}
 				else if (actual_filename[i+1] == 'S')
 				{
 					if (actual_filename[i+2] == 'A')
@@ -658,28 +658,28 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 					if (actual_filename[i+2] == 'I')
 					{
 						sideways = true;
-					} 
-				} 
+					}
+				}
 				else if (actual_filename[i+1] == 'F')
 				{
 					fatboy = true;
 					fatboySize = (float)atof(&actual_filename[i + 2]);
-				} 
+				}
 				else if (actual_filename[i+1] == 'R'
 					&& actual_filename[i+2] == 'M')
 				{
 					reflectionMask = true;
-				} 
+				}
 				else if (actual_filename[i+1] == 'D'
 					&& actual_filename[i+2] == 'A')
 				{
 					delayedAlpha = true;
-				} 
+				}
 				else if (actual_filename[i+1] == 'E'
 					&& actual_filename[i+2] == 'A')
 				{
 					earlyAlpha = true;
-				} 
+				}
 				else if (actual_filename[i+1] == 'A'
 					&& actual_filename[i+2] == 'T'
 					&& actual_filename[i+3] == 'P')
@@ -687,7 +687,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 					alphaTestPass = true;
 					if (actual_filename[i+4] >= '0' && actual_filename[i+4] <= '9')
 						alphaTestValue = atoi(&actual_filename[i + 4]);
-				} 
+				}
 				else if (actual_filename[i+1] == 'C'
 					&& actual_filename[i+2] == 'A'
 					&& actual_filename[i+3] == 'T'
@@ -696,7 +696,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 					conditionalAlphaTestPass = true;
 					if (actual_filename[i+5] >= '0' && actual_filename[i+5] <= '9')
 						alphaTestValue = atoi(&actual_filename[i + 5]);
-				} 
+				}
 				else if (actual_filename[i+1] >= '0' && actual_filename[i+1] <= '9')
 				{
 					hard_rotation = atoi(&actual_filename[i + 1]);
@@ -740,7 +740,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			filesystem::fb_fclose(f);
 			return false;
 		}
-		else 
+		else
 		{
 			s3d_version = header.id[3] - '0';
 
@@ -881,15 +881,15 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		tmat->EnableScroll(scrollAutoStart);
 
 		// Set material's textures
-		if (mat.texture_base>=0) 
+		if (mat.texture_base>=0)
 			tmat->SetBaseTexture(texhandles[mat.texture_base]);
-		if (mat.texture_base2>=0) 
+		if (mat.texture_base2>=0)
 			tmat->SetBaseTexture2(texhandles[mat.texture_base2]);
-		if (mat.texture_bump>=0) 
+		if (mat.texture_bump>=0)
 			tmat->SetBumpTexture(texhandles[mat.texture_bump]);
-		if (mat.texture_reflection>=0) 
+		if (mat.texture_reflection>=0)
 			tmat->SetReflectionTexture(texhandles[mat.texture_reflection]);
-		if (texture_distortion>=0) 
+		if (texture_distortion>=0)
 			tmat->SetDistortionTexture(texhandles[texture_distortion]);
 		
 		// Texturelayer special properties (for base2 and reflection only)
@@ -1097,7 +1097,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		if (strlen(obj.parent.c_str())>0)
 		{
 			IStorm3D_Model_Object *opar = SearchObject(obj.parent.c_str());
-			if (opar) 
+			if (opar)
 				opar->AddChild(tobj);
 			else
 			{
@@ -1125,7 +1125,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 			tobj->light_object = false;
 
 		// Set mesh's material
-		if (obj.material_index>=0) 
+		if (obj.material_index>=0)
 			tmesh->UseMaterial(mathandles[obj.material_index]);
 		
 		// Allocate memory for vertex data
@@ -1712,7 +1712,7 @@ bool Storm3D_Model::LoadS3D(const char *filename)
 		if (strlen(help.parent.c_str())>0)
 		{
 			IStorm3D_Model_Object *opar = SearchObject(help.parent.c_str());
-			if (opar) 
+			if (opar)
 				opar->AddChild(thelp);
 			else
 			{
@@ -2424,8 +2424,8 @@ void Storm3D_Model::SetScale(const VC3 &_scale)
 	max_scale = max(max_scale, scale.z);
 }
 
-void Storm3D_Model::ResetObjectLights() 
-{ 
+void Storm3D_Model::ResetObjectLights()
+{
 	for(set<IStorm3D_Model_Object*>::iterator io=objects.begin();io!=objects.end();++io)
 	{
 		Storm3D_Model_Object *o = ((Storm3D_Model_Object*)(*io));
@@ -2517,7 +2517,7 @@ MAT &Storm3D_Model::GetMX()
 #ifdef WORLD_FOLDING_ENABLED
 		mfold = WorldFold::getWorldFoldForPosition(position);
 		mfold_key = WorldFold::getWorldFoldKeyForPosition(position);
-		// by setting the mx_fold_key != mfold_key, forcing below rebuild of mx_folded 
+		// by setting the mx_fold_key != mfold_key, forcing below rebuild of mx_folded
 		last_mfold_key_value = *mfold_key + 1;
 #endif
 	}
@@ -2526,7 +2526,7 @@ MAT &Storm3D_Model::GetMX()
 	if (*mfold_key != last_mfold_key_value)
 	{
 		// if not here because of xm_update, then probably mfold_key has changed - should inform children as well...
-		if (!mx_update) 
+		if (!mx_update)
 		{
 			InformChangeToChilds();
 		}
@@ -2566,10 +2566,10 @@ unsigned int Storm3D_Model::GetTypeFlag() const
 
 void Storm3D_Model::updateRadiusToContain(const VC3 &pos, float radius)
 {
-	// update model's bounding sphere 
+	// update model's bounding sphere
 	// (grow it if necessary, it is never shrunk!)
 	// --jpk
-	float need_radius = pos.GetLength() + radius; 
+	float need_radius = pos.GetLength() + radius;
 	if (bounding_radius < need_radius)
 	{
 		bounding_radius = need_radius;
@@ -2630,7 +2630,7 @@ void Storm3D_Model::RayTrace(const VC3 &position,const VC3 &direction_normalized
 		float kantalen=direction_normalized.GetDotWith(distanceVector);
 		float dist2=vectoraylen2-kantalen*kantalen;
 
-		if (dist2 > boundingSphere * boundingSphere) 
+		if (dist2 > boundingSphere * boundingSphere)
 			return;
 
 		// Sphere behind ray?
@@ -2963,7 +2963,7 @@ bool Storm3D_Model::BlendToAnimation(IStorm3D_BoneAnimation *transition_, IStorm
 		return false;
 
 	int animation_time = 0;
-  
+
 	Model_BoneAnimation foo(transition, animation, loop, blend_time, animation_time);
 	foo.SetState(Model_BoneAnimation::BlendIn, blend_time);
 
@@ -3118,7 +3118,7 @@ void Storm3D_Model::AdvanceAnimation(int time_delta)
 		bones[i]->ResetAnimations();
 	
 	// Way too much looping over same containers
-	// Should really optimize this stuff, >10% storms cpu usage 
+	// Should really optimize this stuff, >10% storms cpu usage
 	//	-- psd
 
 	if(!normal_animations.empty())

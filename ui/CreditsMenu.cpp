@@ -27,7 +27,7 @@ namespace ui
         " \n"
 		"Project management\n"
 		"<b>Lauri Hyvärinen</b>\n"
-		" \n" 
+		" \n"
 		" \n"
 		"Game design\n"
 		"<b>Frozenbyte team</b>\n"
@@ -246,7 +246,7 @@ std::string G_UiCredits =
 #else
 
 
-std::string G_UiCredits = 
+std::string G_UiCredits =
 
 
 "\n\n\n\n\n\n\n\nGame Design\n\n<b>Frozenbyte team</b>\n"
@@ -420,7 +420,7 @@ CreditsMenu::CreditsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 	ogui = o_gui;
 
-	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_creditsmenu_window_x", 0 ), getLocaleGuiInt( "gui_creditsmenu_window_y", 0 ), 
+	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_creditsmenu_window_x", 0 ), getLocaleGuiInt( "gui_creditsmenu_window_y", 0 ),
 									getLocaleGuiInt( "gui_creditsmenu_window_w", 1024 ), getLocaleGuiInt( "gui_creditsmenu_window_h", 768 ), NULL );
 	
 	// win = ogui->CreateSimpleWindow( 0, 0, 1024, 768, NULL );
@@ -479,13 +479,13 @@ CreditsMenu::CreditsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 	///////////////////////////////////////////////////////////////////////////
 	assert( game  );
-	assert( game->gameUI ); 
+	assert( game->gameUI );
 	assert( game->gameUI->getController(0) );
 
 	if( game->inCombat )
 	{
 		closeMenuByEsc = false;
-	} 
+	}
 	else
 	{
 		

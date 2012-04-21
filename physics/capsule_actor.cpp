@@ -38,7 +38,7 @@ CapsuleActor::CapsuleActor(NxScene &scene, float height, float radius, const VC3
 //actorDesc.managedHwSceneIndex = 1;
 
 
-	actor = scene.createActor(actorDesc); 
+	actor = scene.createActor(actorDesc);
 	
 
 

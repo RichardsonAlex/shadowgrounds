@@ -25,7 +25,7 @@ namespace game
 
     delete objects;
   }
-    
+
   const ListNode<GameObject*> *GameObjectList::add(GameObject *obj)
   {
     objects->append(obj);
@@ -57,7 +57,7 @@ namespace game
     return objects->iterateAvailable();
   }
 
-  GameObject *GameObjectList::iterateNext()
+  GameObject* GameObjectList::iterateNext()
   {
     return objects->iterateNext();
   }

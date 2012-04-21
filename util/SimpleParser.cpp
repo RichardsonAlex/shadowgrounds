@@ -158,8 +158,8 @@ namespace util
     cutBuf[bufLen] = '\0';
     return true;
   }
-  
-  
+
+
   bool SimpleParser::next(bool list_comments)
   {
     currentPos = -1;
@@ -313,7 +313,7 @@ namespace util
       return (float)atof(tmp);
     } else {
       return 0;
-    }  
+    }
   }
 
 
@@ -342,7 +342,7 @@ namespace util
 #endif
     } else {
       return NULL;
-    }    
+    }
   }
 
 

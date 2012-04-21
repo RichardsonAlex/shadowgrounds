@@ -50,7 +50,7 @@ public:
 	virtual void hide();
 	virtual void show();
 	virtual void raise();
-	virtual bool isVisible() const; 
+	virtual bool isVisible() const;
 	virtual bool wasQuitPressed() const;
 
 	virtual void update();

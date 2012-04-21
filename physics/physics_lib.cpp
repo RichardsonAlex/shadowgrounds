@@ -51,13 +51,13 @@ NxPhysicsSDK *physxSDK = NULL;
 		{
 			print(message);
 		}
-	 
+	
 		NxAssertResponse reportAssertViolation(const char *message, const char *file, int line)
 		{
 			print(message);
 			return NX_AR_CONTINUE;
 		}
-	 
+	
 		void print(const char *message)
 		{
 			//MessageBox(0, message, "Shit happens", MB_OK);
@@ -112,7 +112,7 @@ NxPhysicsSDK *physxSDK = NULL;
 
 						assert(i.getShapeFlags() & NX_SF_POINT_CONTACT_FORCE);
 
-						//NxVec3 contactForce = contactNormal * i.getPointNormalForce(); 
+						//NxVec3 contactForce = contactNormal * i.getPointNormalForce();
 						NxReal forceLen = i.getPointNormalForce();
 
 						if (forceLen > maxForceLen)
@@ -134,7 +134,7 @@ NxPhysicsSDK *physxSDK = NULL;
 				VC3 contactPosition = VC3(maxContactPosition.x, maxContactPosition.y, maxContactPosition.z);
 
 				// WARNING: unsafe void * to ActorBase * cast!
-				ActorBase *contactActor1 = (ActorBase *)(pair.actors[0]->userData); 
+				ActorBase *contactActor1 = (ActorBase *)(pair.actors[0]->userData);
 				ActorBase *contactActor2 = (ActorBase *)(pair.actors[1]->userData);
 				
 				ContactListEntry entry(contactActor1, contactActor2, contactNormal, contactPosition, contactForceLen);
@@ -382,7 +382,7 @@ struct PhysicsLib::Data
 #ifdef PROJECT_CLAW_PROTO
 				// Create material for cops (larger friction, no restitution)
 				NxMaterialDesc materialDesc;
-				materialDesc.restitution = 0.0f;   
+				materialDesc.restitution = 0.0f;
 				materialDesc.restitutionCombineMode = NX_CM_MIN;
 				materialDesc.staticFriction = 10.0f;
 				materialDesc.dynamicFriction = 10.0f;

@@ -16,7 +16,7 @@ namespace game
 			 * the startpoint.
 			 * @return a factor for hiddeness, between 0.0f - 1.0f.
 			 */
-			static float solveHiddenessFactorBetween(GameMap *gameMap, 
+			static float solveHiddenessFactorBetween(GameMap *gameMap,
 				const VC3 &startPos, const VC3 &endPos);
 	};
 }

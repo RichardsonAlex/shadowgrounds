@@ -9,7 +9,7 @@ namespace game {
 
 namespace ui {
 
-class VehicleWindow 
+class VehicleWindow
 {
 public:
 	VehicleWindow( Ogui *ogui, game::Game *game, game::Unit *unit, const char *params );
@@ -24,7 +24,7 @@ public:
 private:
 	class VehicleWindowImpl;
 	VehicleWindowImpl* impl;
-}; 
+};
 
 } // end of namespace ui
 

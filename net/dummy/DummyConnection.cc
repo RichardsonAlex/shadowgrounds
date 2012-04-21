@@ -21,7 +21,7 @@ namespace net
   {
 
 		int DummyConnection::lagRand[DUMMYCONNECTION_LAG_RAND_AMOUNT] =
-		{ 0, 30, 60, 100, 100, -20, -20, 100, 0, 40, 
+		{ 0, 30, 60, 100, 100, -20, -20, 100, 0, 40,
 			0, -30, -60, -100, -100, 20, 20, -100, 0, -40, };
 
     DummyConnection::DummyConnection(DummyConnection *peer)
@@ -51,7 +51,7 @@ namespace net
     }
 
 
-    void DummyConnection::flush() 
+    void DummyConnection::flush()
       throw (NetDriverException*)
     {
       // this is problematic... cannot flush really.
@@ -59,9 +59,9 @@ namespace net
       // thus, flush would have to wait forever for the data being received.
       return;
     }
- 
 
-    int DummyConnection::send(const void *buf, int maxlen) 
+
+    int DummyConnection::send(const void *buf, int maxlen)
       throw (NetDriverException*)
     {
       if (connectedTo == NULL)
@@ -87,17 +87,17 @@ namespace net
       memcpy(&connectedTo->recvBuf[connectedTo->recvBufUsed], buf, used);
 			// create timing info (for artificial lag)...
 			Timer::update();
-			short currentTime = (short)(Timer::getTime() % 10000); 
+			short currentTime = (short)(Timer::getTime() % 10000);
 			for (int i = 0; i < used; i++)
 			{
 				connectedTo->recvBufTiming[connectedTo->recvBufUsed + i] = currentTime;
 			}
       connectedTo->recvBufUsed += used;
-      return used;      
+      return used;
     }
-    
 
-    int DummyConnection::receive(void *buf, int maxlen) 
+
+    int DummyConnection::receive(void *buf, int maxlen)
       throw (NetDriverException*)
     {
 			assert(maxlen != 0);
@@ -142,12 +142,12 @@ namespace net
     }
 
 
-    void DummyConnection::close() 
+    void DummyConnection::close()
       throw (NetDriverException*)
     {
 			if (connectedTo != NULL)
         connectedTo->connectedTo = NULL;
-      connectedTo = NULL;      
+      connectedTo = NULL;
     }
 
 
@@ -160,7 +160,7 @@ namespace net
 
 			// artificial lag
 			
-			// FIXME: may possibly break 
+			// FIXME: may possibly break
 			// (and loop almost forever) if timer overflows
 
 			Timer::update();
@@ -183,7 +183,7 @@ namespace net
 			// FIXME: may not be able to handle negative timer values.
 
 			Timer::update();
-			short currentLaggedTime = (short)((Timer::getTime() - currentLag) % 10000); 
+			short currentLaggedTime = (short)((Timer::getTime() - currentLag) % 10000);
 
 			int timedReceive = receiveBytes;
       for (int i = 0; i < receiveBytes; i++)

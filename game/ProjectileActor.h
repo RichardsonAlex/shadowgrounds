@@ -17,7 +17,7 @@ namespace game
 
 /**
  *
- * A class that moves projectiles. 
+ * A class that moves projectiles.
  *
  * @version 0.5, 25.6.2002
  * @author Jukka Kokkonen <jukka@frozenbyte.com>
@@ -31,7 +31,7 @@ public:
 
   ProjectileActor(Game *game);
 
-  /** 
+  /**
    * Move the projectile and check for collisions with units and stuff.
    * @param projectile  Projectile to move.
    */
@@ -39,12 +39,12 @@ public:
 
   void createVisualForProjectile(Projectile *projectile, bool originToSpecialUnit = false, Unit *specialUnit = NULL);
 
-  Projectile *createChainedProjectile(Projectile *projectile, const VC3 &position, 
+  Projectile *createChainedProjectile(Projectile *projectile, const VC3 &position,
     int hitchain, const VC3 &direction, Unit *indirectHitUnit = 0);
 
 	// targetUnit can't be const
 	void doProjectileRaytrace(Unit *shooter, Unit *noCollisionUnit, Projectile *projectile,
-		Bullet *bulletType, const VC3 &weaponPosition, const VC3 &weaponRayPosition, 
+		Bullet *bulletType, const VC3 &weaponPosition, const VC3 &weaponRayPosition,
 		const VC3 &targetPosition, const VC3 &direction, float maxRange, Unit *targetUnit, float velocityFactor = 1.0f);
 
 	static void handleTerrainBreaking(Game *game, std::vector<TerrainObstacle> &removedObjects, std::vector<ExplosionEvent> &events);
@@ -59,7 +59,7 @@ private:
   void doHitMisses(Projectile *projectile, const Unit *hitUnit);
 
   bool doGore(Projectile *projectile, Unit *hitUnit, bool onlyPartial, float probabilityFactor, int additionalProbability);
-	
+
   void getCollisionDisableList(Unit *shooter, LinkedList<Unit*> &noCollUnits, const VC3 &weaponPosition);
 
 };

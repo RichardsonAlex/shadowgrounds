@@ -77,7 +77,7 @@ namespace {
 	{
 		/*
 		IStorm3D_Texture *texture = storm.CreateNewTexture("Data/Fonts/font2.dds");
-		font = 0; 
+		font = 0;
 
 		if(texture)
 		{
@@ -866,7 +866,7 @@ struct ApplicationData
 
 	bool mustQuit;
 
-	UpdateCommand updateCommand; 
+	UpdateCommand updateCommand;
 	NewCommand newCommand;
 	OpenCommand openCommand;
 	SaveCommand saveAsCommand;
@@ -1008,7 +1008,7 @@ struct ApplicationData
 			handleMessage();
 
 		MSG windowsMessage = { 0 };
-		while(PeekMessage(&windowsMessage, 0, 0, 0, PM_NOREMOVE)) 
+		while(PeekMessage(&windowsMessage, 0, 0, 0, PM_NOREMOVE))
 			handleMessage();
 
 //if(!mustQuit)

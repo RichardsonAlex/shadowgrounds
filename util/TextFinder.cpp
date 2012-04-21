@@ -34,7 +34,7 @@ namespace util
 
 	TextFinder::TextFinder(const char *textBuffer, bool skipComments)
 	{
-		impl = new TextFinderImpl(textBuffer, skipComments); 
+		impl = new TextFinderImpl(textBuffer, skipComments);
 	}
 
 	TextFinder::~TextFinder()

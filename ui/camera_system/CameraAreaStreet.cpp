@@ -90,7 +90,7 @@ VC3 CameraAreaStreet::getTransformedCoord(VC3 v)
 }
 
 VC3 CameraAreaStreet::getGlobalCoord(VC3 v)
-{   
+{
 	VC3 pos = p1+streetX*v.x+streetZ*v.z;
 	pos.y = v.y;
 	return pos;

@@ -74,7 +74,7 @@
   )
 #endif
 
-// id int -> 3-8 (new: 3-12) char string 
+// id int -> 3-8 (new: 3-12) char string
 // warning: the result string is not the same as the one the id int
 // was generated from. the operation is not reversable.
 // (id's are nolonger unique, cannnot go back from 32 bit to 64 bit)
@@ -109,7 +109,7 @@ namespace game
   class PartTypeParser;
   class PartType;
 
-  
+
   // list of data file based part types
   // these are not objects with actual C++ classes, but objects with PartType
   // class. they however have an id number to identify
@@ -121,10 +121,10 @@ namespace game
   {
   public:
     PartType();
-    
+
     // (destructor after private variables, because it uses them)
 
-    // should return a new instance of this part 
+    // should return a new instance of this part
     // (the corresponding class extending part)
     virtual Part *getNewPartInstance();
 
@@ -226,7 +226,7 @@ namespace game
     ui::VisualObjectModel *mirrorVisualObjectModel;
     char *modelFilename;
     char *mirrorModelFilename;
-    
+
     int atSub; // used at parsing state...
     int atSlot; // ...
 
@@ -263,7 +263,7 @@ namespace game
     int maxHeat;   // added to unit's max heat
     int destroyHeat; // max unit's heat _percentage_ before part destroyed
 
-    // resistance - how much of the inflicted damage is "reflected" off 
+    // resistance - how much of the inflicted damage is "reflected" off
     // by the part. (absolute values, not percentages?)
     int resistance[DAMAGE_TYPES_AMOUNT];
 
@@ -280,7 +280,7 @@ namespace game
 
 		PartType *originals;
 
-    // root level methods, pass setSub and setData to these in extending 
+    // root level methods, pass setSub and setData to these in extending
     // classes if the data is not recognized by the extending class.
     bool setRootSub(const char *key);
     bool setRootData(const char *key, char *value);
@@ -291,8 +291,8 @@ namespace game
     // takes some possibly inherited object and sets it accordingly
     virtual void prepareNewForInherit(PartType *partType);
 
-    virtual ~PartType() 
-    { 
+    virtual ~PartType()
+    {
 			if (originals != NULL)
 			{
 				PartType *orig = originals;

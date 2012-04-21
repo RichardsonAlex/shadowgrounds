@@ -7,14 +7,14 @@ if (strcmp(key, stringname) == 0) \
 { \
   varname = (float)atof(value); \
   return true; \
-} 
+}
 
 #define PDATA_READ_INT(stringname, varname) \
 if (strcmp(key, stringname) == 0) \
 { \
   varname = str2int(value); \
   return true; \
-} 
+}
 
 #define PDATA_READ_STRING(stringname, varname) \
 if (strcmp(key, stringname) == 0) \
@@ -64,7 +64,7 @@ if (strcmp(key, stringname) == 0) \
   else \
     varname = false; \
   return true; \
-} 
+}
 
 #define PDATA_GETFUNC(type, varname, funcname) \
 type funcname() const \

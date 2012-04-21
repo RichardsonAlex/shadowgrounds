@@ -26,7 +26,7 @@ namespace game
   GameRandom::GameRandom()
   {
     gamerandom_instance_count++;
-    if (gamerandom_static_data == NULL) 
+    if (gamerandom_static_data == NULL)
     {
       gamerandom_static_data = new int[GRAND_COUNTER_LOOP + 1];
 
@@ -35,8 +35,8 @@ namespace game
 #else
       filesystem::FB_FILE *f = filesystem::fb_fopen("data/misc/grand.dat", "rb");
 #endif
-      if (f == NULL) 
-      {  
+      if (f == NULL)
+      {
         // if we cannot load the game random data, we're f*cked and
         // there really is no point to continue...
         fb_assert(!"GameRandom - Failed to read random data file.");
@@ -91,7 +91,7 @@ namespace game
 
   void GameRandom::uninit()
   {
-    if (gamerandom_instance_count > 0) 
+    if (gamerandom_instance_count > 0)
     {
       //abort();
     }

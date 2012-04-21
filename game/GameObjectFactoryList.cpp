@@ -22,7 +22,7 @@ namespace game
       this->factory = factory;
     }
   };
- 
+
 
   GameObjectFactoryList::GameObjectFactoryList()
   {
@@ -32,10 +32,10 @@ namespace game
   GameObjectFactoryList::~GameObjectFactoryList()
   {
     // NOTICE: does not delete the objects listed by this one, but only the
-    // list of them. 
+    // list of them.
     delete factories;
   }
-    
+
   void GameObjectFactoryList::addFactory(int id, IGameObjectFactory *factory)
   {
     factories->append(new GameObjectFactoryNode(id, factory));
@@ -54,7 +54,7 @@ namespace game
     factories->resetIterate();
     while (factories->iterateAvailable())
     {
-      GameObjectFactoryNode *tmp = 
+      GameObjectFactoryNode *tmp =
         factories->iterateNext();
       if (tmp->id == id)
       {

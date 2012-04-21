@@ -63,7 +63,7 @@ using namespace frozenbyte::editor;
 
 	struct GenParticleSystemParamDesc {
 		std::vector<ParamDesc> params;
-		GenParticleSystemParamDesc() 
+		GenParticleSystemParamDesc()
 		{
 			params.push_back(ParamDesc("emit_rate", IDC_EMIT_RATE, PARAM_FLOAT));
 			params.push_back(ParamDesc("emit_start", IDC_EMIT_START, PARAM_FLOAT));
@@ -71,11 +71,11 @@ using namespace frozenbyte::editor;
 			params.push_back(ParamDesc("max_particles", IDC_MAX_PARTICLES, PARAM_INT));
 			params.push_back(ParamDesc("die_after_emission", IDC_DIE_AFTER_EMISSION, PARAM_INT));
 			params.push_back(ParamDesc("velocity_inheritance_factor", IDC_VELOCITY_INHERITANCE_FACTOR, PARAM_FLOAT));
-			params.push_back(ParamDesc("emitter_position", IDC_EMITTER_POSITION_X, IDC_EMITTER_POSITION_Y, 
+			params.push_back(ParamDesc("emitter_position", IDC_EMITTER_POSITION_X, IDC_EMITTER_POSITION_Y,
 				IDC_EMITTER_POSITION_Z));
-			params.push_back(ParamDesc("emitter_variation", IDC_EMITTER_VARIATION_X, IDC_EMITTER_VARIATION_Y, 
+			params.push_back(ParamDesc("emitter_variation", IDC_EMITTER_VARIATION_X, IDC_EMITTER_VARIATION_Y,
 				IDC_EMITTER_VARIATION_Z));
-			params.push_back(ParamDesc("default_direction", IDC_DEFAULT_DIRECTION_X, IDC_DEFAULT_DIRECTION_Y, 
+			params.push_back(ParamDesc("default_direction", IDC_DEFAULT_DIRECTION_X, IDC_DEFAULT_DIRECTION_Y,
 				IDC_DEFAULT_DIRECTION_Z));
 			params.push_back(ParamDesc("launch_speed", IDC_LAUNCH_SPEED, PARAM_FLOAT));
 			params.push_back(ParamDesc("launch_speed_var", IDC_LAUNCH_SPEED_VAR, PARAM_FLOAT));
@@ -116,7 +116,7 @@ using namespace frozenbyte::editor;
 
 	struct SprayParticleSystemParamDesc {
 		std::vector<ParamDesc> params;
-		SprayParticleSystemParamDesc() 
+		SprayParticleSystemParamDesc()
 		{
 			GenParticleSystemParamDesc gen;
 			params = gen.params;
@@ -145,7 +145,7 @@ using namespace frozenbyte::editor;
 
 	struct PointArrayParticleSystemParamDesc {
 		std::vector<ParamDesc> params;
-		PointArrayParticleSystemParamDesc() 
+		PointArrayParticleSystemParamDesc()
 		{
 			GenParticleSystemParamDesc gen;
 			params = gen.params;
@@ -184,7 +184,7 @@ using namespace frozenbyte::editor;
 
 	struct ModelParticleSystemParamDesc {
 		std::vector<ParamDesc> params;
-		ModelParticleSystemParamDesc() 
+		ModelParticleSystemParamDesc()
 		{
 			GenParticleSystemParamDesc gen;
 			params = gen.params;
@@ -257,7 +257,7 @@ using namespace frozenbyte::editor;
 /*
 	struct CloudParticleSystemParamDesc {
 		std::vector<ParamDesc> params;
-		CloudParticleSystemParamDesc() 
+		CloudParticleSystemParamDesc()
 		{
 			GenParticleSystemParamDesc gen;
 			params = gen.params;
@@ -417,7 +417,7 @@ using namespace frozenbyte::editor;
 		}
 	};
 
-	struct SharedData 
+	struct SharedData
 	{
 		ParticleEffectManager& effectManager;
 
@@ -449,8 +449,8 @@ using namespace frozenbyte::editor;
 		std::string currentFilename;
 		frozenbyte::viewer::Model model;
 
-		SharedData(editor::Storm &storm_, 
-			editor::Dialog &dialog_, editor::Dialog &renderDialog_, 
+		SharedData(editor::Storm &storm_,
+			editor::Dialog &dialog_, editor::Dialog &renderDialog_,
 			editor::Camera &camera_, editor::ColorComponent &colorComponent_,
 			ParticleEffectManager& mgr) : storm(storm_),
 			dialog(dialog_), renderDialog(renderDialog_), colorComponent(colorComponent_),
@@ -467,7 +467,7 @@ using namespace frozenbyte::editor;
 			currentFilename = std::string("");
 		}
 
-		~SharedData() 
+		~SharedData()
 		{	
 		}
 
@@ -518,7 +518,7 @@ using namespace frozenbyte::editor;
 		}
 
 		/*
-		void save() 
+		void save()
 		{
 			if(parser.get()==NULL)
 				return;
@@ -537,7 +537,7 @@ using namespace frozenbyte::editor;
 		}
 		*/
 
-		bool saveImpl(std::string fileName = "") 
+		bool saveImpl(std::string fileName = "")
 		{
 			if(parser.get()==NULL)
 				return false;
@@ -562,7 +562,7 @@ using namespace frozenbyte::editor;
 			return true;	
 		}
 
-		void save() 
+		void save()
 		{
 			if (currentFilename.empty())
 			{
@@ -576,7 +576,7 @@ using namespace frozenbyte::editor;
 			}
 		}
 
-		void saveAs() 
+		void saveAs()
 		{
 			std::string fileName = currentFilename;
 #ifdef LEGACY_FILES
@@ -598,7 +598,7 @@ using namespace frozenbyte::editor;
 			}
 
 			int selection = 0;
-			if(IDOK == DialogBoxParam(NULL, MAKEINTRESOURCE(IDD_FORCE_SELECT), NULL, forceDlgProc, (LONG)&selection)) 
+			if(IDOK == DialogBoxParam(NULL, MAKEINTRESOURCE(IDD_FORCE_SELECT), NULL, forceDlgProc, (LONG)&selection))
 			{
 				std::string fileName;
 #ifdef LEGACY_FILES
@@ -807,7 +807,7 @@ using namespace frozenbyte::editor;
 					className = pg.getValue("@class", "");
 				}
 
-				effect.setValue("num_systems", 
+				effect.setValue("num_systems",
 					convertToString<int>(numSystems+1));
 			}
 
@@ -868,7 +868,7 @@ using namespace frozenbyte::editor;
 				className = pg.getValue("@class");
 			}
 			if(className == "spray") {
-				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_SPRAY_PARTICLE_SYSTEM, 
+				boost::shared_ptr<ParamUI> p(new ParamUI(dialog, IDD_SPRAY_PARTICLE_SYSTEM,
 					pg, theSprayParticleSystemParamDesc.params));				
 				paramUI.swap(p);
 			}
@@ -997,7 +997,7 @@ using namespace frozenbyte::editor;
 
 	
 
-		void play() 
+		void play()
 		{
 			stop(true);
 
@@ -1011,14 +1011,14 @@ using namespace frozenbyte::editor;
 			int numSystems = convertFromString<int>(effectGroup.getValue("num_systems", ""), 0);
 			
 			int i;
-			for(i = 0; i < numSystems; i++) 
+			for(i = 0; i < numSystems; i++)
 			{
 				oldSystems.push_back(effectGroup.getSubGroup("system" + convertToString<int>(i)));		
 				effectGroup.removeSubGroup("system" + convertToString<int>(i));
 			}
 
 			int n = 0;
-			for(i = 0; i < numSystems; i++) 
+			for(i = 0; i < numSystems; i++)
 			{
 				if(systemDisabled[i])
 					continue;
@@ -1030,7 +1030,7 @@ using namespace frozenbyte::editor;
 
 			effectGroup.setValue("num_systems", convertToString<int>(n));
 
-			if(n > 0) 
+			if(n > 0)
 			{
 				effectManager.reset(false);	
 				effectID = effectManager.loadParticleEffect(parser2);
@@ -1070,7 +1070,7 @@ using namespace frozenbyte::editor;
 		
 		}
 
-		void stop(bool reset = false) 
+		void stop(bool reset = false)
 		{
 			if(effect)
 			{
@@ -1186,7 +1186,7 @@ using namespace frozenbyte::editor;
 	};
 
 	
-	class NewEffectCommand : public editor::ICommand 
+	class NewEffectCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1202,7 +1202,7 @@ using namespace frozenbyte::editor;
 		}
 	};
 
-	class LoadEffectCommand : public editor::ICommand 
+	class LoadEffectCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1215,7 +1215,7 @@ using namespace frozenbyte::editor;
 		}
 	};
 
-	class SaveEffectCommand : public editor::ICommand 
+	class SaveEffectCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1226,7 +1226,7 @@ using namespace frozenbyte::editor;
 		}	
 	};
 
-	class SaveEffectAsCommand : public editor::ICommand 
+	class SaveEffectAsCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1237,7 +1237,7 @@ using namespace frozenbyte::editor;
 		}	
 	};
 
-	class AddParticleSystemCommand : public editor::ICommand 
+	class AddParticleSystemCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1253,7 +1253,7 @@ using namespace frozenbyte::editor;
 		}
 	};
 
-	class RemoveParticleSystemCommand : public editor::ICommand 
+	class RemoveParticleSystemCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1273,7 +1273,7 @@ using namespace frozenbyte::editor;
 	class SelectParticleSystemCommand : public ICommand {
 		SharedData& m_data;
 	public:
-		SelectParticleSystemCommand(SharedData& data) : m_data(data) 
+		SelectParticleSystemCommand(SharedData& data) : m_data(data)
 		{
 		}
 		void execute(int id) {
@@ -1284,7 +1284,7 @@ using namespace frozenbyte::editor;
 	class InsertForceCommand : public ICommand {
 		SharedData& m_data;
 	public:
-		InsertForceCommand(SharedData& data) : m_data(data) 
+		InsertForceCommand(SharedData& data) : m_data(data)
 		{
 		}
 		void execute(int id) {
@@ -1299,7 +1299,7 @@ using namespace frozenbyte::editor;
 		RemoveForceCommand(SharedData& data) : m_data(data)
 		{
 		}
-		void execute(int id) 
+		void execute(int id)
 		{
 			m_data.removeForce();
 			m_data.updateDialog();
@@ -1312,7 +1312,7 @@ using namespace frozenbyte::editor;
 		EditForceCommand(SharedData& data) : m_data(data)
 		{
 		}
-		void execute(int id) 
+		void execute(int id)
 		{
 			m_data.editForce();
 			m_data.updateDialog();
@@ -1320,7 +1320,7 @@ using namespace frozenbyte::editor;
 	};
 
 
-	class EditParticleSystemCommand : public ICommand 
+	class EditParticleSystemCommand : public ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1331,7 +1331,7 @@ using namespace frozenbyte::editor;
 		}
 	};
 
-	class EnableParticleSystemCommand : public editor::ICommand 
+	class EnableParticleSystemCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1342,7 +1342,7 @@ using namespace frozenbyte::editor;
 		}	
 	};
 
-	class DisableParticleSystemCommand : public editor::ICommand 
+	class DisableParticleSystemCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1353,7 +1353,7 @@ using namespace frozenbyte::editor;
 		}	
 	};
 
-	class PlayCommand : public editor::ICommand 
+	class PlayCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1364,7 +1364,7 @@ using namespace frozenbyte::editor;
 		}	
 	};
 
-	class StopCommand : public editor::ICommand 
+	class StopCommand : public editor::ICommand
 	{
 		SharedData& m_data;
 	public:
@@ -1397,7 +1397,7 @@ using namespace frozenbyte::editor;
 		}
 	};
 
-	class LoadModelCommand : public editor::ICommand 
+	class LoadModelCommand : public editor::ICommand
 	{
 		Storm &storm;
 
@@ -1406,16 +1406,16 @@ using namespace frozenbyte::editor;
 
 	public:
 		LoadModelCommand(Storm& storm_)
-		: storm(storm_) 
+		: storm(storm_)
 		{
 		}
 		
-		void execute(int id) 
+		void execute(int id)
 		{
 			loadModel();
 		}
 		
-		void loadModel() 
+		void loadModel()
 		{
 #ifdef LEGACY_FILES
 			std::vector<std::string> files = getMultipleOpenFileName("s3d", "Data\\Models");
@@ -1598,10 +1598,10 @@ using namespace frozenbyte::editor;
 		ShowEmittersCommand &showCommand;
 
 	public:
-		ReloadCommand(Storm& storm_, Dialog& dlg_, ParticleEffectManager& mgr_, CrappyFont& font_, SharedData &data_, LoadModelCommand &loadCommand_, ShowEmittersCommand &showCommand_) 
-		:	storm(storm_), 
+		ReloadCommand(Storm& storm_, Dialog& dlg_, ParticleEffectManager& mgr_, CrappyFont& font_, SharedData &data_, LoadModelCommand &loadCommand_, ShowEmittersCommand &showCommand_)
+		:	storm(storm_),
 			dlg(dlg_),
-			mgr(mgr_), 
+			mgr(mgr_),
 			font(font_),
 			data(data_),
 			loadCommand(loadCommand_),
@@ -1609,7 +1609,7 @@ using namespace frozenbyte::editor;
 		{
 		}
 
-		void execute(int id) 
+		void execute(int id)
 		{
 			bool success = data.saveImpl("particle.tmp");
 			//if (!success)
@@ -1846,7 +1846,7 @@ struct ApplicationData
 		disableParticleSystemCommand(sharedData),
 		colorCommand(sharedData),
 		playCommand(sharedData),
-		stopCommand(sharedData), 
+		stopCommand(sharedData),
 		loadModelCommand(storm),
 		clearModelsCommand(loadModelCommand),
 		showEmittersCommand(effectManager, storm, sharedData),
@@ -1972,7 +1972,7 @@ if(hideCursor)
 			handleMessage();
 
 		MSG windowsMessage = { 0 };
-		while(PeekMessage(&windowsMessage, 0, 0, 0, PM_NOREMOVE)) 
+		while(PeekMessage(&windowsMessage, 0, 0, 0, PM_NOREMOVE))
 			handleMessage();
 
 		Sleep(0);
@@ -2024,10 +2024,10 @@ if(hideCursor)
 		*/
 	}
 
-	void tickEffects(float factor) 
+	void tickEffects(float factor)
 	{
 		sharedData.tick();
-    
+
 		// 10 msec advance in wind too (jpk)
 		frozenbyte::particle::WindParticleForce::advanceWind(factor * (float)10 / 1000.0f);
 	}
@@ -2747,7 +2747,7 @@ if(data->storm.scene)
 
 		timeCount += deltaTime;
 		lastTime = time;
-		while(timeCount > 20) 
+		while(timeCount > 20)
 		{
 			timeCount -= 20;
 			data->tickEffects(timeFactor);

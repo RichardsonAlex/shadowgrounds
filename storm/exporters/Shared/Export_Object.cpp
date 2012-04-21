@@ -350,7 +350,7 @@ void Object::remapIndices()
 	for(unsigned int j = 0; j < 3; ++j)
 		oldPrimitives.indices[i*3 + j] = static_cast<unsigned short> (faces[0][i].getVertexIndex(j));
 
-	// Nvidia remap 
+	// Nvidia remap
 	PrimitiveGroup *newPrimitives = 0;
 	RemapIndices(&oldPrimitives, 1, static_cast<unsigned short> (vertices.size()), &newPrimitives);
 

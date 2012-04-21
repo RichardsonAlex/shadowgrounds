@@ -256,7 +256,7 @@ namespace ui
 		{
 			delete this->boxImage;
 			this->boxImage = NULL;
-		} 
+		}
 		if (this->boxImage == NULL && textBoxed)
 		{
 #ifdef LEGACY_FILES
@@ -264,20 +264,20 @@ namespace ui
 #else
 			this->boxImage = ogui->LoadOguiImage("data/gui/hud/message/textbox.tga");
 #endif
-		} 
+		}
 	}
 
 
 	void CombatMessageWindow::showMessage(const char *message, Visual2D *image)
 	{
 		// TODO: OPTIMIZE IMAGE HANDLING!!!
-		// i think it's already ok, as the image is given as Visual2D, not 
+		// i think it's already ok, as the image is given as Visual2D, not
 		// as the image filename... (?)
 
 		if (messageText != NULL)
 			clearMessage();
 
-		if (message == NULL) 
+		if (message == NULL)
 		{
 			assert(0);
 			return;
@@ -301,7 +301,7 @@ namespace ui
 
 		if (image != NULL)
 		{
-			messageImageBGButton = ogui->CreateSimpleImageButton(win, 
+			messageImageBGButton = ogui->CreateSimpleImageButton(win,
 				iconBoxXPosition, iconBoxYPosition, iconBoxXSize, iconBoxYSize, NULL, NULL, NULL);
 			messageImageBGButton->SetDisabled(true);
 			messageImageBGButton->SetDisabledImage(iconBGImage);
@@ -309,7 +309,7 @@ namespace ui
 			//messageImage = ogui->LoadOguiImage(image);
 			IOguiImage *messageImage = image->getImage();
 
-			messageImageButton = ogui->CreateSimpleImageButton(win, 
+			messageImageButton = ogui->CreateSimpleImageButton(win,
 				iconXPosition, iconYPosition, iconXSize, iconYSize, NULL, NULL, NULL);
 			messageImageButton->SetDisabled(true);
 			messageImageButton->SetDisabledImage(messageImage);
@@ -324,7 +324,7 @@ namespace ui
 
 		if (textBoxed)
 		{
-			messageBoxButton = ogui->CreateSimpleImageButton(win, 
+			messageBoxButton = ogui->CreateSimpleImageButton(win,
 				boxXPosition, boxYPosition, boxXSize, boxYSize, NULL, NULL, NULL);
 			messageBoxButton->SetDisabled(true);
 			messageBoxButton->SetDisabledImage(boxImage);
@@ -334,7 +334,7 @@ namespace ui
 
 		if (!textCentered)
 		{
-			messageText->SetLinebreaks(true); 
+			messageText->SetLinebreaks(true);
 		}
 		if (textCentered)
 			messageText->SetTextHAlign(OguiButton::TEXT_H_ALIGN_CENTER);

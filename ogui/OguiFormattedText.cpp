@@ -40,7 +40,7 @@ OguiFormattedText::OguiFormattedText( OguiWindow* win, Ogui* ogui, int x, int y,
   currentFont( NULL ),
   hAlign( OguiButton::TEXT_H_ALIGN_LEFT ),
   vAlign( OguiButton::TEXT_V_ALIGN_TOP ),
-  
+
   window( win ),
   ogui( ogui ),
   font( NULL ),
@@ -62,7 +62,7 @@ OguiFormattedText::OguiFormattedText( OguiWindow* win, Ogui* ogui, int x, int y,
 {
 	releaseMe = new OguiFormattedCommandImg;
 	registerCommand( "img", releaseMe );
-	  
+	
 }
 
 //.............................................................................
@@ -200,7 +200,7 @@ void OguiFormattedText::setLineHeight( float f )
 
 void OguiFormattedText::parseTextToButtons()
 {
-	if( font == NULL ) 
+	if( font == NULL )
 		return;
 
 	ParseData data( position->x, position->y, position->w, position->h );
@@ -225,7 +225,7 @@ void OguiFormattedText::parseTextToButtons()
 		if( hAlign == OguiButton::TEXT_H_ALIGN_CENTER )
 		{
 			data.mx = data.x + ( ( data.w - lw ) / 2);
-		} 
+		}
 		else if ( hAlign == OguiButton::TEXT_H_ALIGN_RIGHT )
 		{
 			data.mx = data.x + ( ( data.w - lw ) );
@@ -240,7 +240,7 @@ void OguiFormattedText::parseTextToButtons()
 			data.next_tag = text.find_first_of( "<", data.cur_pos );
 			data.next_hardbreak = text.find_first_of( "\n\r", data.cur_pos );
 
-			if( data.next_hardbreak == text.npos ) 
+			if( data.next_hardbreak == text.npos )
 				data.next_hardbreak = text.size();
 		}
 
@@ -256,8 +256,8 @@ void OguiFormattedText::parseTextToButtons()
 		
 		// create buttons as desired
 		// we check which is the first to come, linebrk, next_tag or next_hardbreak
-		if( ( data.next_linebrk < data.next_tag || 
-			  data.next_hardbreak < data.next_tag ) || 
+		if( ( data.next_linebrk < data.next_tag ||
+			  data.next_hardbreak < data.next_tag ) ||
 			  ( data.next_tag == text.npos ) )
 		{
 			if( data.next_linebrk == text.npos ) data.next_linebrk = data.next_hardbreak;
@@ -269,7 +269,7 @@ void OguiFormattedText::parseTextToButtons()
 			if( data.next_linebrk == data.next_hardbreak )
 			{
 				// int i = int i = data.currentFont->getStringWidth( text.substr( cur_pos, next_hardbreak - cur_pos ).c_str() );
-			} 
+			}
 			
 			int i =  data.currentFont ? data.currentFont->getStringWidth( text.substr( data.cur_pos, break_here - data.cur_pos ).c_str() ) : 0;
 
@@ -293,13 +293,13 @@ void OguiFormattedText::parseTextToButtons()
 				if( hAlign == OguiButton::TEXT_H_ALIGN_CENTER )
 				{
 					data.mx = data.x + ( ( data.w - lw ) / 2);
-				} 
+				}
 				else if ( hAlign == OguiButton::TEXT_H_ALIGN_RIGHT )
 				{
 					data.mx = data.x + ( ( data.w - lw ) );
 				}
-			} 
-			else 
+			}
+			else
 			{
 				data.mx = data.x;
 			}
@@ -315,8 +315,8 @@ void OguiFormattedText::parseTextToButtons()
 				data.x = data.after_y_x_value;
 				data.w = data.after_y_w_value;
 			}
-		} 
-		else 
+		}
+		else
 		{
 			// draw the smaller button
 			data.cur_w = data.currentFont->getStringWidth(  text.substr( data.cur_pos, data.next_tag - data.cur_pos ).c_str() );
@@ -357,7 +357,7 @@ void OguiFormattedText::parseFormattedCommand( const std::string& tag_name, Pars
 	if( !tag_name.empty() && tag_name[ 0 ] == '/' )
 	{
 		// FB_ASSERT( tag_name.empty()?true:tagstack.top() == tag_name.substr( 1 ) );
-		if( !tagstack.empty() ) 
+		if( !tagstack.empty() )
 			tagstack.pop();
 		
 		if( tagstack.empty() )
@@ -375,7 +375,7 @@ void OguiFormattedText::parseFormattedCommand( const std::string& tag_name, Pars
 	} else {
 
 		// check if a font by that name exists
-		{ 
+		{
 			std::map< std::string, IOguiFont* >::iterator i;
 
 			i = fonts.find( tag_name );
@@ -451,7 +451,7 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 			next_tag = text.find_first_of( "<",cur_pos );
 			next_hardbreak = text.find_first_of( "\n\r", cur_pos );
 
-			if( next_hardbreak == text.npos ) 
+			if( next_hardbreak == text.npos )
 				next_hardbreak = text.size();
 		}
 
@@ -475,7 +475,7 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 			std::string::size_type break_here = next_linebrk<next_hardbreak?next_linebrk:next_hardbreak;
 			// this happens when the line is complite without a font change
 
-			if ( break_here == next_hardbreak  && next_linebrk != next_hardbreak ) 
+			if ( break_here == next_hardbreak  && next_linebrk != next_hardbreak )
 			{
 				int i = cur_font->getStringWidth( text.substr( cur_pos, next_hardbreak - cur_pos ).c_str() );
 
@@ -506,7 +506,7 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 			// find out the new font
 			{
 				std::string::size_type cnt = text.find_first_of( ">", cur_pos );
-				if( cnt != text.npos ) 
+				if( cnt != text.npos )
 				{
 					std::string tag_name = text.substr( cur_pos, cnt - cur_pos );
 					cur_pos = cnt + 1;
@@ -514,7 +514,7 @@ int OguiFormattedText::getLineWidth( int curpos, const std::stack< std::string >
 					if( !tag_name.empty() && tag_name[ 0 ] == '/' )
 					{
 						// FB_ASSERT( tempstack.top() == tag_name.substr( 1 ) );
-						if( !tempstack.empty() ) 
+						if( !tempstack.empty() )
 							tempstack.pop();
 						
 						if( tempstack.empty() )
@@ -556,7 +556,7 @@ std::pair< int, int > OguiFormattedText::findLineWidthBreak( std::string::size_t
 #ifndef PROJECT_SHADOWGROUNDS
 	const int start_pos = pos;
 #endif
-	int next_linebrk = pos; 
+	int next_linebrk = pos;
 	int cur_pos = pos;
 	int mw = 0;
 	while( true )
@@ -722,7 +722,7 @@ void OguiFormattedText::createTextButton( int button_x, int button_y, int button
 	
 
 	OguiButton* b;
-	b = ogui->CreateSimpleTextButton( window, button_x, button_y, button_w, button_h, 
+	b = ogui->CreateSimpleTextButton( window, button_x, button_y, button_w, button_h,
 		NULL, NULL, NULL, button_text.c_str(), 0, NULL, false );
 	if ( button_font ) b->SetFont( button_font );
 	
@@ -752,7 +752,7 @@ void OguiFormattedText::createImageButton( int button_x, int button_y, int butto
 	FB_ASSERT( window );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleImageButton( window, button_x, button_y, button_w, button_h, 
+	b = ogui->CreateSimpleImageButton( window, button_x, button_y, button_w, button_h,
 		image.c_str(), image.c_str(), image.c_str(), image.c_str(), 0, NULL, false );
 
 	if( b )
@@ -775,7 +775,7 @@ void OguiFormattedText::createImageButton( int button_x, int button_y, int butto
 	OguiButton* b;
 	b = ogui->CreateSimpleImageButton( window, button_x, button_y, button_w, button_h, NULL, NULL, NULL, NULL, 0, NULL, false );
 	
-	if( b ) 
+	if( b )
 	{
 		b->SetDisabled( true );
 		b->SetDisabledImage( image );

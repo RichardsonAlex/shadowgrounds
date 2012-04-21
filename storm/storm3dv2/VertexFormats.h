@@ -312,7 +312,7 @@ struct VXFORMAT_BLEND
 	VC2 texcoords2;
 
 	// Bone 1 index, bone 1 weight, bone 2 index, bone 2 weight
-	float blend[4]; 
+	float blend[4];
 
 	// Constructor
 	VXFORMAT_BLEND(VC3 _position,VC3 _normal,VC2 _texcoords, VC2 _texcoords2, float *blend_) :

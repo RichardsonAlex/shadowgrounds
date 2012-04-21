@@ -13,7 +13,7 @@ namespace util
 			 * Check if given point is inside "pipe" with given width,
 			 * defined by line start and end position.
 			 */
-			static bool isPointInsideLineArea(const VC3 &point, 
+			static bool isPointInsideLineArea(const VC3 &point,
 				const VC3 &lineStart, const VC3 &lineEnd, float lineWidth);
 	};
 }

@@ -184,7 +184,7 @@ namespace game
 									Logger::getInstance()->warning("GameProfilesImpl::loadCurrentProfile - Current profile data does not exist (falling back to Default).");
 								}
 							}
-						} 
+						}
 						else if (key != NULL && strcmp(key, "player2_profile") == 0)
 						{
 							if (sp.getValue() != NULL)
@@ -275,7 +275,7 @@ namespace game
 				_mkdir( igios_mapUserDataPrefix("Profiles/"+profile + "/Save" ).c_str() );
 				_mkdir( igios_mapUserDataPrefix("Profiles/"+profile + "/Config" ).c_str() );
 				
-				// should copy the default keybinds to the 
+				// should copy the default keybinds to the
 				// Profiles/"profile"/Config/
 #ifdef LEGACY_FILES
 				copyFile( "Data/Misc/keybinds.txt", igios_mapUserDataPrefix("Profiles/"+profile+"/Config/keybinds.txt") );
@@ -319,7 +319,7 @@ namespace game
 
 			bool doesProfileExist(const char *temp) const
 			{
-				if( temp == NULL || strcmp(temp,"") == 0) 
+				if( temp == NULL || strcmp(temp,"") == 0)
 					return false;
 
         std::string profile( temp );
@@ -333,7 +333,7 @@ namespace game
 				std::vector<std::string> tmplist = fwbase.getAllDirs();
 				for (int j = 0; j < (int)tmplist.size(); j++)
 				{
-					if( tmplist[j] == profile ) 
+					if( tmplist[j] == profile )
 						return true;
 				}
 
@@ -346,13 +346,13 @@ namespace game
 
 				std::string profile( igios_unmapUserDataPrefix(temp) );
 				
-				// if( doesProfileExist( temp ) ) 
+				// if( doesProfileExist( temp ) )
 				//	return false;
 
 				if( profile.empty() )
 					return false;
 
-				if( profile.find_first_of( "/\\:*|?<>" ) != profile.npos ) 
+				if( profile.find_first_of( "/\\:*|?<>" ) != profile.npos )
 					return false;
 
 				if( profile[0] == '.' || profile[ profile.size() - 1 ] == '.' )
@@ -363,7 +363,7 @@ namespace game
 
 			void removeDirectory( const std::string& directory )
 			{
-				// Removes a directory and its files 
+				// Removes a directory and its files
 				// ( currently does not delete its subfolders )
 				{
 					frozenbyte::editor::FileWrapper fwbase( directory , "*.*", true );
@@ -385,7 +385,7 @@ namespace game
 						}
 					}
 				}
-				//if( _rmdir( directory.c_str() ) != 0 ) 
+				//if( _rmdir( directory.c_str() ) != 0 )
 				if(RemoveDirectory(directory.c_str()) == false)
 				{
 					Logger::getInstance()->error( "GameProfilesImpl::removeDirectory() Could not remove directory" );

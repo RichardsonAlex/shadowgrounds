@@ -57,7 +57,7 @@
 // how often is line of fire to target checked (value must be 2^n)
 #define LINE_OF_FIRE_CHECK_INTERVAL 32
 
-// range within which we ignore frienly units that would block 
+// range within which we ignore frienly units that would block
 // the line of fire
 #define UNITACTOR_LOF_IGNORE_FRIENDLY_RANGE 100
 
@@ -97,12 +97,12 @@
 // 0.4 meter squash radius
 #define SQUASHABLE_MAX_RANGE 0.4f
 
-// TODO: this should be in some conf... 
+// TODO: this should be in some conf...
 #define DIRECTCTRL_JUMP_TIME 1000
 
 // TODO: should be in some conf
 // first 100msec of roll jump can be "cancelled" (if hits a wall)
-// after that, the roll must be fully completed 
+// after that, the roll must be fully completed
 // (or else the animations would look improperly blended)
 #ifdef PROJECT_AOV
 #define ROLL_JUMP_ALLOW_STOP_TIME 0
@@ -127,7 +127,7 @@ namespace game
   extern bool foofoo_diag2;
 	*/
 
-namespace 
+namespace
 {
 	bool IsCloseEnough2D( const VC3& pos1, const VC3 pos2, float range )
 	{
@@ -138,7 +138,7 @@ namespace
 
 	void UnitActor::act(Unit *unit)
 	{
-		// nop  
+		// nop
 		assert(!"UnitActor::act - Base class method called.");
 	}
 
@@ -229,7 +229,7 @@ namespace
 		if (rx < 0) rx += 360.0f;
 		if (rz < 0) rz += 360.0f;
 
-		if (rx > 180) 
+		if (rx > 180)
 		{
 			rx += (360-rx) * factor;
 			if (rx > 360) rx = 0;
@@ -275,7 +275,7 @@ namespace
 		// muzzleflash
 		VC3 position = unit->getPosition();
 		VC3 rotation = unit->getRotation();
-		
+
 		const char *muzzleflashEffect = w->getMuzzleflashEffect();
 		if (muzzleflashEffect != NULL)
 		{
@@ -340,7 +340,7 @@ namespace
 					visId = last_muzzleflash_ve_id;
 				}
 
-				//float angle = unit->getLastBoneAimDirection(); 
+				//float angle = unit->getLastBoneAimDirection();
 				//float angle = unit->getFlashlightDirection() - 45;
 				float angle = unit->getFlashlightDirection();
 				// ??? ..above.. ??????????
@@ -476,7 +476,7 @@ namespace
 
 				int visId = VisualEffectManager::getVisualEffectIdByName(ejectEffect);
 
-				//float angle = unit->getLastBoneAimDirection(); 
+				//float angle = unit->getLastBoneAimDirection();
 				//float angle = unit->getFlashlightDirection() - 45;
 				float angle = unit->getFlashlightDirection();
 				// ??? ..above.. ??????????
@@ -660,9 +660,9 @@ namespace
 				{
 					// if very near, double autoaim angle...
 					float aaAngle = AUTOAIM_MAX_ANGLE;
-					//if (distSq < 3 * 3)	
+					//if (distSq < 3 * 3)
 					//	aaAngle *= 2;
-					
+
 					float aaAngleHoriz = aaAngle * 0.5f;
 
 					// no horizontal autoaim? (just vertical)
@@ -689,14 +689,14 @@ namespace
 
 					if (angleRotVert == 0)
 					{
-						// we have a horizontal (sideways) autoaim hit, which means we are 
+						// we have a horizontal (sideways) autoaim hit, which means we are
 						// going to do full autoaim.
 						nearestDistSq = distSq;
 						nearest = other;
 						nearestAimVert = true;
 						nearestAimHoriz = true;
 					} else {
-						if (angleRot == 0) 
+						if (angleRot == 0)
 						{
 							// did not have horiz autoaim hit? then maybe should
 							// just do a vertical autoaim...
@@ -766,7 +766,7 @@ namespace
 
 		unit->setJumpNotAllowedTime(JUMP_NOT_ALLOWED_TIME / GAME_TICK_MSEC);
 
-		// NEW: jump is no-longer relative to camera, need to rotate based on 
+		// NEW: jump is no-longer relative to camera, need to rotate based on
 		// unit rotation...
 		{
 			//VC3 zeroVec = VC3(0,0,0);
@@ -810,7 +810,7 @@ namespace
 			{
 				// fwd
 				unit->setUnitRelativeJumpDirections(true, false, false, false);
-			} 
+			}
 			else if ((float)fabs(rotDirFactored) < 90-22.5f)
 			{
 				// fwd+left/right
@@ -818,7 +818,7 @@ namespace
 					unit->setUnitRelativeJumpDirections(true, false, true, false);
 				else
 					unit->setUnitRelativeJumpDirections(true, false, false, true);
-			} 
+			}
 			else if ((float)fabs(rotDirFactored) < 135-22.5f)
 			{
 				// left/right
@@ -826,7 +826,7 @@ namespace
 					unit->setUnitRelativeJumpDirections(false, false, true, false);
 				else
 					unit->setUnitRelativeJumpDirections(false, false, false, true);
-			} 
+			}
 			else if ((float)fabs(rotDirFactored) < 180-22.5f)
 			{
 				// back+left/right
@@ -870,7 +870,7 @@ namespace
 		unit->setPosition(position);
 	}
 
-	
+
 
 	void UnitActor::actDestroyed(Unit *unit, UnitActAnimationRequests *animRequests)
 	{
@@ -881,7 +881,7 @@ namespace
 		if (!unitType->isBlockIfDestroyed())
 		{
 			// FIXME: this should be called only once, maybe when the
-			// projectile sets the unit destroyed. However, the 
+			// projectile sets the unit destroyed. However, the
 			// removeUnitObstacle does check that the obstacle exists,
 			// thus, calling the actual removal only once.
 			removeUnitObstacle(unit);
@@ -927,7 +927,7 @@ namespace
 					bleedpos.x += dir.x;
 					bleedpos.z += dir.z;
 
-					bleedproj->setDirectPath(bleedpos, bleedpos, 
+					bleedproj->setDirectPath(bleedpos, bleedpos,
 						unitDeathBleedBullet->getVelocity());
 
 					ProjectileActor pa = ProjectileActor(game);
@@ -940,7 +940,7 @@ namespace
 		if (unitType->doesRemoveDestroyed())
 		{
 			int disappearTicks = (SimpleOptions::getInt(DH_OPT_I_CORPSE_DISAPPEAR_TIME) * 1000) / GAME_TICK_MSEC;
-			if (disappearTicks > 0 
+			if (disappearTicks > 0
 				|| unitType->doesRemoveImmediately())
 			{
 				if (unit->getDisappearCounter() < disappearTicks
@@ -1031,7 +1031,7 @@ namespace
 	{
 		VC3 position = unit->getPosition();
     // idle...?
-    if (unit->getAnimationSet() != NULL 
+    if (unit->getAnimationSet() != NULL
       && unit->getAnimationSet()->isAnimationInSet(ANIM_IDLE1))
     {
 			// unit may be idle if...
@@ -1079,9 +1079,9 @@ namespace
 							if (unit->getAnimationSet() != NULL
 								&& unit->getAnimationSet()->isAnimationInSet(anim))
 							{
-								animRequests->setIdleAnim = ianum + 1; 
+								animRequests->setIdleAnim = ianum + 1;
 								unit->setMoveState(Unit::UNIT_MOVE_STATE_IDLE);
-								unit->setMoveStateCounter(400); // 4 secs								
+								unit->setMoveStateCounter(400); // 4 secs
 							}
             }
           } else {
@@ -1124,7 +1124,7 @@ namespace
 
 	void UnitActor::handleRechargeableWeapons(Unit *unit, bool &primaryPressed, bool &secondaryPressed)
 	{
-		// HACK: rechargeable weapons 
+		// HACK: rechargeable weapons
 
 		bool rechargeablePrimaryWeapon = false;
 		bool rechargeableSecondaryWeapon = false;
@@ -1190,7 +1190,7 @@ namespace
 				{
 					// did not have the attached weapon after all???
 					rechargeableSecondaryWeapon = false;
-					
+
 					// this should never happen for primary weaps, but just in case...
 					rechargeablePrimaryWeapon = false;
 				}
@@ -1420,15 +1420,15 @@ namespace
 
 
 	void UnitActor::decideBasedOnAIDirectControl(Unit *unit,
-		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove, 
-		bool *doLeftMove, bool *doRightMove, 
-		bool *doLeftRotation, bool *doRightRotation, 
+		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove,
+		bool *doLeftMove, bool *doRightMove,
+		bool *doLeftRotation, bool *doRightRotation,
 		bool *doFire, float *rotationAngle)
 	{
 
 
 		// ---------------------------------------------------------------------------------------------
-		// TODO: refactor the decideBasedOnLocalPlayerDirectControl so that decideBasedOnAIDirectControl 
+		// TODO: refactor the decideBasedOnLocalPlayerDirectControl so that decideBasedOnAIDirectControl
 		// can easily do the same stuff
 		// ---------------------------------------------------------------------------------------------
 
@@ -1469,7 +1469,7 @@ namespace
 				// TODO: ... (refactor from local player...)
 			}
 
-			// firing 
+			// firing
 			if (actions.directControlOn[DIRECT_CTRL_FIRE])
 			{
 				*doFire = true;
@@ -1491,15 +1491,15 @@ namespace
 
 
 	void UnitActor::decideBasedOnLocalPlayerDirectControl(Unit *unit,
-		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove, 
-		bool *doLeftMove, bool *doRightMove, 
-		bool *doLeftRotation, bool *doRightRotation, 
+		bool *doMove, bool *doRotation, bool *doForwardMove, bool *doBackMove,
+		bool *doLeftMove, bool *doRightMove,
+		bool *doLeftRotation, bool *doRightRotation,
 		bool *doFire, float *rotationAngle)
 	{
 
 
 		// ---------------------------------------------------------------------------------------------
-		// TODO: refactor the decideBasedOnLocalPlayerDirectControl so that decideBasedOnAIDirectControl 
+		// TODO: refactor the decideBasedOnLocalPlayerDirectControl so that decideBasedOnAIDirectControl
 		// can easily do the same stuff
 		// ---------------------------------------------------------------------------------------------
 
@@ -1586,7 +1586,7 @@ namespace
 						slowWeap = true;
 					}
 				}
-				if (!slowWeap && !pendingWeapChange 
+				if (!slowWeap && !pendingWeapChange
 					&& unit->getJumpNotAllowedTime() == 0)
 				{
 					this->doSpecialMove(unit, *doForwardMove, *doBackMove,
@@ -1637,7 +1637,7 @@ namespace
 			}
 
 			// handle clip empty sounds...
-			if ((primaryPressed || secondaryPressed) 
+			if ((primaryPressed || secondaryPressed)
 				&& ((unit->getWeaponAmmoInClip(unit->getSelectedWeapon()) == 0
 				&& unit->getWeaponType(unit->getSelectedWeapon())->getClipSize() > 0)
 				|| (unit->getWeaponAmmoAmount(unit->getSelectedWeapon()) == 0) || !unit->isWeaponOperable(unit->getSelectedWeapon())))
@@ -1706,7 +1706,7 @@ namespace
 
 				if (SimpleOptions::getBool(DH_OPT_B_GAME_MODE_TOPDOWN_SHOOTER))
 				{
-					// FIXME: some weird third person view requirement here too...? 
+					// FIXME: some weird third person view requirement here too...?
 					// to keep it backward compatible, not removed, but rather just accepting sideways flag too --jpk
 					if (game->gameUI->isThirdPersonView(unit->getOwner())
 						|| unit->isSideways())
@@ -1751,7 +1751,7 @@ namespace
 			{
 				if (secondaryPressed)
 				{
-					// FIXME: some weird third person view requirement here too...? 
+					// FIXME: some weird third person view requirement here too...?
 					// to keep it backward compatible, not removed, but rather just accepting sideways flag too --jpk
 					if (game->gameUI->isThirdPersonView(unit->getOwner())
 						|| unit->isSideways())
@@ -1857,7 +1857,7 @@ namespace
 			{
 				if (game->gameUI->isLocalPlayerDirectControlOn(DIRECT_CTRL_FIRE_GRENADE, unit))
 				{
-					// FIXME: some weird third person view requirement here too...? 
+					// FIXME: some weird third person view requirement here too...?
 					// to keep it backward compatible, not removed, but rather just accepting sideways flag too --jpk
 					if (game->gameUI->isThirdPersonView(unit->getOwner())
 						|| unit->isSideways())
@@ -1891,7 +1891,7 @@ namespace
 
 
 
-	void UnitActor::decideTurnAndWalk(Unit *unit, 
+	void UnitActor::decideTurnAndWalk(Unit *unit,
 		bool *doMove, bool *doRotation, float *rotationAngle)
 	{
 		VC3 waypoint = unit->getWaypoint();
@@ -1949,7 +1949,7 @@ namespace
 					//unit->stopTurning();
 				}
 			}
-			// HACK: 
+			// HACK:
 			// special case, rushers
 			if (((unit->isRushing() && unit->targeting.hasTarget()) || unit->isFollowPlayer())
 				&& (unit->getSpeed() == Unit::UNIT_SPEED_FAST
@@ -1990,7 +1990,7 @@ namespace
 	}
 
 
-	void UnitActor::actJump(Unit *unit, bool *doMove, bool *doRotation, 
+	void UnitActor::actJump(Unit *unit, bool *doMove, bool *doRotation,
 		bool *doForwardMove, bool *doBackMove, bool *doLeftMove, bool *doRightMove)
 	{
 		// special case, jump
@@ -2012,8 +2012,8 @@ namespace
 
 			// HACK: clear any not-yet-allowed to walk time...
 			unit->setWalkDelay(0);
-		}   
-		
+		}
+
 		int jnotall = unit->getJumpNotAllowedTime();
 		if (jnotall > 0)
 		{
@@ -2064,7 +2064,7 @@ namespace
 			// make jump sound
 			if (unit->getJumpTotalTime() - jc == ROLL_JUMP_ALLOW_STOP_TIME / GAME_TICK_MSEC)
 			{
-				// the sound cannot be made earlier, as the roll jump 
+				// the sound cannot be made earlier, as the roll jump
 				// may still be cancelled
 				// TODO: non-roll jumps could still make the sound earlier!
 
@@ -2161,7 +2161,7 @@ namespace
 			if (unitType->isVehicle() && !unitType->isFlying())
 			{
 				// vehicles rotationspeed depends on how much they need to rotate
-				// in total. bigger turn, faster rotation speed, smaller turn, 
+				// in total. bigger turn, faster rotation speed, smaller turn,
 				// less rotation speed
 				float factSpeed = util::AngleRotationCalculator::getFactoredRotationForAngles(rotation.y, rotationAngle, rotacc);
 				if (factSpeed != 0)
@@ -2199,7 +2199,7 @@ namespace
 				rotation.y += rotSpeed / 3;
 			else
 				rotation.y += rotSpeed;
-			
+
 			if (rotation.y < 0) rotation.y += 360;
 			if (rotation.y >= 360) rotation.y -= 360;
 
@@ -2252,7 +2252,7 @@ if (!unit->isDirectControl())
 
 
 	void UnitActor::actWalk(Unit *unit, UnitActAnimationRequests *animRequests,
-		bool doMove, bool doForwardMove, bool doBackMove, 
+		bool doMove, bool doForwardMove, bool doBackMove,
 		bool doLeftMove, bool doRightMove, bool rotated, bool *accelerated)
 	{
 		VC3 position = unit->getPosition();
@@ -2303,7 +2303,7 @@ if (!unit->isDirectControl())
 									angle += 90;
 							}
 						}
-						
+
 						// mech always walks where the legs point
 						if(unit->getUnitType()->hasMechControls())
 						{
@@ -2319,7 +2319,7 @@ if (!unit->isDirectControl())
 
 						if (!unit->isSideways())
 						{
-							// TODO: non-sideways unit might really use the jumpAcceleration as well, 
+							// TODO: non-sideways unit might really use the jumpAcceleration as well,
 							// but that would require some sensible default value to be backward compatible...
 							velocity.x += -accel * sinf(UNIT_ANGLE_TO_RAD(angle));
 							velocity.z += -accel * cosf(UNIT_ANGLE_TO_RAD(angle));
@@ -2373,7 +2373,7 @@ if (!unit->isDirectControl())
 							if (doForwardMove)
 							{
 								// TODO: this would need a better specific onsideground flag!
-								if (((unit->isGroundFriction() 
+								if (((unit->isGroundFriction()
 									&& unit->getSpeed() != Unit::UNIT_SPEED_JUMP)
 									|| unitType->isSidewaysJumpAllowedInAir())
 									&& unit->getJumpNotAllowedTime() == 0
@@ -2502,7 +2502,7 @@ if (!unit->isDirectControl())
 						}
 					}
 
-					// HACK: if turned for a long time, scale 
+					// HACK: if turned for a long time, scale
 					// speed/accel down... (max -50%)
 					int turnedtime = unit->getTurnedTime();
 					if (turnedtime > 50)
@@ -2560,7 +2560,7 @@ if (!unit->isDirectControl())
 							if (coverDist < 1) coverDist = 1;
 							accel *= ((float)coverDist / 10.0f);
 
-							// HACK: if turned for a long time, scale 
+							// HACK: if turned for a long time, scale
 							// speed/accel down... (max -50%)
 							if (unit->getTurnedTime() > 100)
 							{
@@ -2580,7 +2580,7 @@ if (!unit->isDirectControl())
 						if (unit->getUnitType()->getBackwardMovementFactor() == 0.0f)
 						{
 							if (doLeftMove)
-							{								
+							{
 								if ((unit->getPosition() - getAimTargetPosition(unit)).x < 0.0f)
 								{
 									accel = 0.0f;
@@ -2696,7 +2696,7 @@ if (!unit->isDirectControl())
 				{
 					if (unit->targeting.getTargetUnit() != NULL)
 					{
-						VC3 posdiff = 
+						VC3 posdiff =
 							unit->targeting.getTargetUnit()->getPosition()
 								-	unit->getPosition();
 						if (posdiff.GetSquareLength() < UNITACTOR_RUSH_DISTANCE*UNITACTOR_RUSH_DISTANCE)
@@ -2736,7 +2736,7 @@ if (!unit->isDirectControl())
 				{
 					//Logger::getInstance()->error(int2str(unit->getRushDistance()));
 					float accel = unitType->getAcceleration() / GAME_TICKS_PER_SECOND;
-					float maxspeed = unitType->getMaxSpeed() / GAME_TICKS_PER_SECOND;					
+					float maxspeed = unitType->getMaxSpeed() / GAME_TICKS_PER_SECOND;
 					if (unit->getSpeed() == Unit::UNIT_SPEED_SPRINT)
 					{
 						accel *= 2;
@@ -2851,7 +2851,7 @@ if (!unit->isDirectControl())
 					int material = game->gameMap->getAreaMap()->getAreaValue( x, y, AREAMASK_MATERIAL );
 
 					material = getMaterialByPalette( material >> AREASHIFT_MATERIAL );
-					
+
 					material_data = unit->getUnitType()->getWalkOnMaterial( material );
 				}
 
@@ -2866,7 +2866,7 @@ if (!unit->isDirectControl())
 				if( material_data != NULL && material_data->particleEffectName.empty() == false )
 				{
 					ui::VisualEffectManager *vman = game->gameUI->getVisualEffectManager();
-					
+
 					VC3 pos = position;
 
 					// get position from foot helper
@@ -2904,7 +2904,7 @@ if (!unit->isDirectControl())
 						}
 					}
 				}
-				
+
 				/**/
 			}
 			// </particle effect>
@@ -2927,11 +2927,11 @@ if (!unit->isDirectControl())
 				}
 			}
 			// </sound effect hack>
-		
+
 		}
 		// </walkonmaterial-effect>
 
-		if( doMove ) 
+		if( doMove )
 		{
 			breathingParticleEffectCreationTime = game->gameTimer;
 		}
@@ -2940,13 +2940,13 @@ if (!unit->isDirectControl())
 
 	void UnitActor::actOutdoorBreathingSteam( Unit* unit )
 	{
-		
+
 		// h�yry�v� hengitys hack
 		UnitType* ut = unit->getUnitType();
 		const float walkOnMaterialRange = 30.0f;
 		if( ut->getBreathingParticleEffect().empty() == false &&
 			game->gameUI->getFirstPerson( game->singlePlayerNumber ) &&
-			IsCloseEnough2D( game->gameUI->getFirstPerson( game->singlePlayerNumber )->getPosition(), unit->getPosition(), walkOnMaterialRange ) && 
+			IsCloseEnough2D( game->gameUI->getFirstPerson( game->singlePlayerNumber )->getPosition(), unit->getPosition(), walkOnMaterialRange ) &&
 			( game->gameTimer - breathingParticleEffectCreationTime ) * GAME_TICK_MSEC > ut->getBreathingParticleEffectTimeOut() )
 		{
 			const int x = game->gameMap->scaledToObstacleX( unit->getPosition().x );
@@ -3051,7 +3051,7 @@ if (!unit->isDirectControl())
 							Unit *u = iter.iterateNext();
 							if (u->isActive() && !u->isDestroyed()
 								&& u->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
-							{								
+							{
 								if (u->getOwner() == unit->getOwner())
 								{
 									VC3 posdiff = u->getPosition() - unit->getPosition();
@@ -3083,7 +3083,7 @@ if (!unit->isDirectControl())
 						{
 							if (friendsNear && !hostilesNear)
 							{
-								// NEW behaviour: even units with no actual HP-gain, receive 
+								// NEW behaviour: even units with no actual HP-gain, receive
 								// some hpgain (at least +1*4) when unconscious...
 								unit->setHP(hp + (unit->getUnitType()->getHPGain() + 1) * 5);
 							} else {
@@ -3188,12 +3188,12 @@ if (!unit->isDirectControl())
 
 		if (position.y > mapY + 0.001f)
 		{
-			if ((!unitType->isFlying() && unitType->getHover() == 0) 
+			if ((!unitType->isFlying() && unitType->getHover() == 0)
 				|| unit->isDestroyed())
 			{
 
 				// max speed down is 100m/s (1m/tick)
-				if (velocity.y > -1.0f) 
+				if (velocity.y > -1.0f)
 					velocity.y -= 0.01f * unitType->getGravityRatio();
 					//velocity.y -= 0.098f * unitType->getGravityRatio();
 			}
@@ -3217,7 +3217,7 @@ if (!unit->isDirectControl())
 
 		if (unitType->getHover() > 0 && !unit->isDestroyed())
 		{
-			float curHoverAlt = mapY + unitType->getHover() 
+			float curHoverAlt = mapY + unitType->getHover()
 				+ unitType->getHoverVary() * (float)sin((game->gameTimer % 360) * (3.1415f/180.0f));
 
 			if (unit->getSpeed() == Unit::UNIT_SPEED_CRAWL)
@@ -3295,7 +3295,7 @@ if (!unit->isDirectControl())
 		if (velocity.x != 0 || velocity.y != 0 || velocity.z != 0)
 		{
 			position += velocity;
-		
+
 			// keep within the map area
 			if (!game->gameMap->isWellInScaledBoundaries(position.x, position.z))
 				position = oldPosition;
@@ -3345,13 +3345,13 @@ if (!unit->isDirectControl())
 		{
 			float tmpx = sinf(UNIT_ANGLE_TO_RAD(rotation.y));
 			float tmpz = cosf(UNIT_ANGLE_TO_RAD(rotation.y));
-			float noseDiff = 
+			float noseDiff =
 				game->gameMap->getScaledHeightAt(position.x + tmpx, position.z + tmpz)
 				- game->gameMap->getScaledHeightAt(position.x - tmpx, position.z - tmpz);
 
 			tmpx = sinf(UNIT_ANGLE_TO_RAD(90+rotation.y));
 			tmpz = cosf(UNIT_ANGLE_TO_RAD(90+rotation.y));
-			float sideDiff = 
+			float sideDiff =
 				game->gameMap->getScaledHeightAt(position.x + tmpx, position.z + tmpz)
 				- game->gameMap->getScaledHeightAt(position.x - tmpx, position.z - tmpz);
 
@@ -3389,18 +3389,18 @@ if (!unit->isDirectControl())
 				prefer.z = RAD_TO_UNIT_ANGLE(atanf(-sideDiff/4));
 				if (prefer.z < 0) prefer.z += 360;
 			}
-			
+
 			VC3 oldRot = rotation;
 			rotateTo(prefer, &rotation, 0.07f);
 			unit->lastXRotation = rotation.x - oldRot.x;
-			if (unit->lastXRotation > 180) 
+			if (unit->lastXRotation > 180)
 				unit->lastXRotation -= 360;
-			if (unit->lastXRotation < -180) 
+			if (unit->lastXRotation < -180)
 				unit->lastXRotation += 360;
 			unit->lastZRotation = rotation.z - oldRot.z;
-			if (unit->lastZRotation > 180) 
+			if (unit->lastZRotation > 180)
 				unit->lastZRotation -= 360;
-			if (unit->lastZRotation < -180) 
+			if (unit->lastZRotation < -180)
 				unit->lastZRotation += 360;
 		} else {
 			if (fabs(rotation.x) > 0.01f || fabs(rotation.z) > 0.01f)
@@ -3466,8 +3466,8 @@ if (!unit->isDirectControl())
 	int unitactor_acttargeting_counter = 0;
 
 	void UnitActor::actTargeting(Unit *unit, UnitActAnimationRequests *animRequests,
-		bool doFire, bool rotated, 
-		bool doMove, bool doForwardMove, bool doBackMove, 
+		bool doFire, bool rotated,
+		bool doMove, bool doForwardMove, bool doBackMove,
 		bool doLeftMove, bool doRightMove)
 	{
 		UnitType *unitType = unit->getUnitType();
@@ -3479,7 +3479,7 @@ if (!unit->isDirectControl())
 		float turnspeed = unitType->getTurning() / GAME_TICKS_PER_SECOND;
 		float rotacc = turnspeed * unitType->getTurningAccuracy();
 
-		if (((unit->targeting.hasTarget() && !unit->isDirectControl()) 
+		if (((unit->targeting.hasTarget() && !unit->isDirectControl())
 			|| doFire)
 			//&& unit->hasAnyWeaponReady()
 			&& ((unit->getSpeed() != Unit::UNIT_SPEED_SPRINT
@@ -3491,10 +3491,10 @@ if (!unit->isDirectControl())
 			// this would make raytrace spikes to every 16th frame.
 			//if ((game->gameTimer & LINE_OF_FIRE_CHECK_INTERVAL) == 0)
 			// now, using the random instead of 0, we get equal distribution...
-			//if ((game->gameTimer & (LINE_OF_FIRE_CHECK_INTERVAL - 1)) 
+			//if ((game->gameTimer & (LINE_OF_FIRE_CHECK_INTERVAL - 1))
 			//	== (game->gameRandom->nextInt() & (LINE_OF_FIRE_CHECK_INTERVAL - 1)))
 			// even better distribution... (HACK)
-			if ((game->gameTimer & (LINE_OF_FIRE_CHECK_INTERVAL - 1)) 
+			if ((game->gameTimer & (LINE_OF_FIRE_CHECK_INTERVAL - 1))
 				== (unitactor_acttargeting_counter & (LINE_OF_FIRE_CHECK_INTERVAL - 1)))
 			{
 
@@ -3553,7 +3553,7 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 				}
 				dir = target - weaponPosition;
 				VC3 posDiff = target - weaponPosition;
-				
+
 				float posDiffSqLen = posDiff.GetSquareLength();
 
 				// closer than 10 meters - and we see/saw that enemy? shoot!
@@ -3595,7 +3595,7 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 								ownUnitsNear.append(ownu);
 								ownu->getVisualObject()->setCollidable(false);
 							}
-						} 					 
+						}
 					}
 
 					// don't hit self...
@@ -3680,7 +3680,7 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 					float wBetaAngle = rotation.x + unit->getLookBetaAngle();
 					if (wBetaAngle >= 360) wBetaAngle -= 360;
 					target = unit->getPosition() + VC3(0,1.7f,0);
-					
+
 					// TODO!!!
 					// FIX ME: this calculation is not correct!
 					// will not give correct vector when looking up or down.
@@ -3714,7 +3714,7 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 						target = unit->targeting.getTargetPosition();
 					}
 
-					/*		
+					/*
 					VC2 destFloat = VC2(
 						(float)(target.x-position.x), (float)(target.z-position.z));
 					float destAngleFloat = destFloat.CalculateAngle();
@@ -3808,7 +3808,7 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 				}
 			}
 		} else {
-			if (!unit->targeting.hasTarget())			
+			if (!unit->targeting.hasTarget())
 			{
 #ifdef PROJECT_CLAW_PROTO
 // HACK: claw proto
@@ -3828,7 +3828,7 @@ unit->targeting.setLineOfFireToTarget(false, foo_prone * unitType->getLineOfFire
 
 		if ((unit->targeting.hasTarget()
 			|| unit->isDirectControl()))
-// HACK: 
+// HACK:
 // now units can fire again while sprinting
 //			&& (unit->getSpeed() != Unit::UNIT_SPEED_SPRINT
 //			|| (velocity.x == 0 && velocity.z == 0)))
@@ -3985,7 +3985,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 						unit->targeting.clearSweepTargetPosition();
 					}
 
-					// HACK: restore fast (run) speed after firing a walk 
+					// HACK: restore fast (run) speed after firing a walk
 					// requiring weapon (should not have set walk speed in
 					// the first place (cos that loses the previous speed)
 					// (thus FIXME)
@@ -4158,7 +4158,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 			target = unit->targeting.getAimingPosition();
 		} else {
 			// TODO: && unit->isSweepFiring()
-//			if (unit->isFiringInProgress() 
+//			if (unit->isFiringInProgress()
 //				&& unit->targeting.hasSweepTargetPosition())
 //			{
 //				unit->targeting.getSweepTargetPosition();
@@ -4366,12 +4366,12 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					float newAngle = betaAngle;
 					float lastAngle = unit->getHitAnimationBoneAngle();
 					betaAngle = (lastAngle * 3 + betaAngle * 1) / 4;
-					if (betaAngle < newAngle) 
+					if (betaAngle < newAngle)
 					{
 						betaAngle += 1.0f;
 						if (betaAngle > newAngle) betaAngle = newAngle;
 					}
-					if (betaAngle > newAngle) 
+					if (betaAngle > newAngle)
 					{
 						betaAngle -= 1.0f;
 						if (betaAngle < newAngle) betaAngle = newAngle;
@@ -4406,7 +4406,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 	}
 
 
-	void UnitActor::actDirectControlStrafing(Unit *unit, VC3 &rotation, float destAngle, 
+	void UnitActor::actDirectControlStrafing(Unit *unit, VC3 &rotation, float destAngle,
 		bool doLeftMove, bool doRightMove, bool doForwardMove, bool doBackMove)
 	{
 
@@ -4420,7 +4420,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 		int nearest45InCameraSystem = 0;
 		bool nearest90IsNext = false;
 		for (int ang = 1; ang <= 8; ang++)
-		{			
+		{
 			float borderAngle = (float)(ang * 45);
 			if (unit->isSideways())
 			{
@@ -4466,7 +4466,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 		} else {
 			unit->setLastMoveStrafed(false);
 		}
-		
+
 		// TODO:
 		// diagonal movement? (n*90+45 or n*90 angles)
 		bool diagonalMovement = false;
@@ -4570,7 +4570,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 		float preferredRotate = 0;
 		preferredRotate = util::AngleRotationCalculator::getRotationForAngles(rotation.y, preferredRotation, (unit->getUnitType()->getTurning() / GAME_TICKS_PER_SECOND) / 1.8f);
-		if (preferredRotate != 0)				
+		if (preferredRotate != 0)
 		{
 			// TODO: should use the unit conf's turningspeed?
 			// (note, must then also scale the rotation accuracy above,
@@ -4753,7 +4753,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 						}
 					}
 				}
-			} else {				
+			} else {
 				int firet = unit->getWeaponFireTime(weap);
 				if (firet > 0)
 				{
@@ -4761,7 +4761,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					unit->setWeaponFireTime(weap, firet);
 				}
 
-				// 0 is no-longer accepted for fire time ('cos shotty with 
+				// 0 is no-longer accepted for fire time ('cos shotty with
 				// fire time of 2 would shoot 3 shots, for times 2,1,0)
 				// and all others would shoot at zero time too. +1 shot.
 				if (firet > 0)
@@ -4833,7 +4833,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					if (rdelay == 0)
 					{
 						Projectile *proj = unit->getWeaponCopyProjectile(weap);
-						if (proj != NULL) 
+						if (proj != NULL)
 						{
 							delete proj;
 							unit->setWeaponCopyProjectile(weap, NULL);
@@ -4920,7 +4920,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 			if (doRealShot)
 			{
 				if (unit->getWeaponType(weap) == NULL
-					|| bulletType == NULL) 
+					|| bulletType == NULL)
 				{
 					Logger::getInstance()->error("ArmorUnitActor::act - Weapon or bullet type null.");
 					//assert(0);
@@ -4932,11 +4932,11 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 				proj->criticalHitDamageMax = unit->getWeaponType(weap)->getCriticalHitDamageMax();
 				proj->criticalHitDamageMultiplier = unit->getWeaponType(weap)->getCriticalHitDamageMultiplier();
 				proj->criticalHitProbabilityMultiplier = unit->getWeaponType(weap)->getCriticalHitProbabilityMultiplier();
-			
+
 				VC3 dir;
 				VC3 target;
 				Unit *targUnit = NULL; // can't be const
-				// we have a weapon position (visualization, that's where the 
+				// we have a weapon position (visualization, that's where the
 				// bullet comes from) and the weapon ray position (gameplay,
 				// that's where we check the hits from).
 				VC3 weaponPosition = unit->getPosition();
@@ -5012,7 +5012,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					}
 
 					// NEW BEHAVIOUR: enemies shoot the ray from barrel...
-#if defined(PROJECT_SHADOWGROUNDS) || defined(PROJECT_SURVIVOR) 
+#if defined(PROJECT_SHADOWGROUNDS) || defined(PROJECT_SURVIVOR)
 					if (!unit->isDirectControl())
 					{
 						weaponRayPosition = weaponPosition;
@@ -5053,7 +5053,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 				if (SimpleOptions::getBool(DH_OPT_B_GAME_MODE_TOPDOWN_SHOOTER))
 				{
-					// FIXME: some weird third person view requirement here too...? 
+					// FIXME: some weird third person view requirement here too...?
 					// to keep it backward compatible, not removed, but rather just accepting sideways flag too --jpk
 					if (unit->isDirectControl()
 						&& (game->gameUI->isThirdPersonView(unit->getOwner()) || unit->isSideways()))
@@ -5064,12 +5064,12 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 						{
 							VC3 tpos;
 							if (sceneSel->unit != NULL)
-							{						
+							{
 								unit->targeting.setTarget(sceneSel->unit);
 								tpos = sceneSel->unit->getPosition();
 							} else {
-								//tpos = VC3(sceneSel->scaledMapX, 
-								//	1.2f + game->gameMap->getScaledHeightAt(sceneSel->scaledMapX, sceneSel->scaledMapY), 
+								//tpos = VC3(sceneSel->scaledMapX,
+								//	1.2f + game->gameMap->getScaledHeightAt(sceneSel->scaledMapX, sceneSel->scaledMapY),
 								//	sceneSel->scaledMapY);
 
 								// NOTE: is this REALLY ok???
@@ -5094,7 +5094,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 									unit->targeting.setTarget(autoAimed);
 									tpos = autoAimed->getPosition();
 								} else {
-									// if partially (horiz/vert) autoaimed, just 
+									// if partially (horiz/vert) autoaimed, just
 									// adjust the aim height or 2d position
 									if (aimedVertical)
 									{
@@ -5385,7 +5385,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 				if (w->doesNeedRecon())
 				{
 					if (unit->getReconValue() > 0
-						|| unit->targeting.hasLineOfFireToTarget() 
+						|| unit->targeting.hasLineOfFireToTarget()
 						|| ReconChecker::isReconAvailableAtPosition(game, unit->getOwner(), target))
 					{
 						unit->setReconAvailableFlag(true);
@@ -5409,7 +5409,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					int accMod = acc * 2 + 1;
 					target.x += (float)((game->gameRandom->nextInt() % accMod) - acc) / 4.0f;
 					target.z += (float)((game->gameRandom->nextInt() % accMod) - acc) / 4.0f;
-					 
+
 					if (game->gameMap->isWellInScaledBoundaries(target.x, target.z))
 					{
 						//parabolicHitHeight = game->gameMap->getScaledHeightAt(target.x, target.z);
@@ -5500,7 +5500,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 						assert(fabs(dir.GetLength() - 1.0f) < 0.01f);
 					}
 
-					// HACK: "lag" behind player 
+					// HACK: "lag" behind player
 					if (targUnit != NULL)
 					{
 						VC3 tvel = targUnit->getVelocity();
@@ -5641,7 +5641,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					if (unit->getWeaponType(weap)->getRepeatAmount() > 1)
 					{
 						Projectile *oldProj = unit->getWeaponCopyProjectile(weap);
-						if (oldProj != NULL) 
+						if (oldProj != NULL)
 						{
 							//assert(0);
 							delete oldProj;
@@ -5658,13 +5658,13 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					ProjectileActor pa = ProjectileActor(game);
 					pa.createVisualForProjectile(copyProj);
 
-					// HACK: 
+					// HACK:
 					if (!firstShot)
 					{
 						if (unit->getWeaponType(weap)->getRepeatDelay() == 0)
 						{
 							copyProj->setHitSound(false);
-						}					
+						}
 					}
 				}
 			}
@@ -5704,11 +5704,11 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					ProjectileActor pa = ProjectileActor(game);
 					pa.createVisualForProjectile(copyProj);
 
-					// HACK: 
+					// HACK:
 					if (unit->getWeaponType(weap)->getRepeatDelay() == 0)
 					{
 						copyProj->setHitSound(false);
-					}					
+					}
 				}
 			}
 		}
@@ -5732,7 +5732,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 		//if (!unit->isGhostOfFuture())
 		{
-			if (collRadius > 0 && 
+			if (collRadius > 0 &&
 				(!unit->isDestroyed() || unitType->isBlockIfDestroyed())
 				&& unit->doesCollisionCheck())
 			{
@@ -5743,8 +5743,8 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 				//LinkedList *fulist = game->units->getOwnedUnits(unit->getOwner());
 				//LinkedListIterator iter(fulist);
-				
-				// HACK: 10m radius				
+
+				// HACK: 10m radius
 				IUnitListIterator *iter = game->units->getNearbyOwnedUnits(unit->getOwner(), ownPos, 10.0f);
 
 				assert(scaleX == scaleY);
@@ -5780,7 +5780,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					}
 				}
 
-				delete iter; 
+				delete iter;
 
 				unit->setPosition(ownPos);
 			}
@@ -5877,7 +5877,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 								if (ty > 0)
 									moveSum.z -= scaleY * 0.20f;
 							}
-							
+
 							/*
 							VC3 pos = realPosition;
 							pos.x += tx * scaleX;
@@ -5945,7 +5945,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 				unit->setPath(NULL);
 				unit->setFinalDestination(position);
 				unit->setWaypoint(position);
-				game->gameUI->setPointersChangedFlag(unit->getOwner());				
+				game->gameUI->setPointersChangedFlag(unit->getOwner());
 
 				stopJumpBecauseCollided(unit);
 			}
@@ -5954,7 +5954,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 	}
 
-// how much colliding with wall affects velocity. 
+// how much colliding with wall affects velocity.
 // (new velocity factor, 1.0f = no effect, 0 = immediate stop)
 #ifdef GAME_SIDEWAYS
 #define UA_WALL_VEL_FACTOR 1.00f
@@ -5994,7 +5994,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 			unit_obst_amount = 0;
 			unit_obst_height = 0;
 		}
-		
+
 		// adjacent blocks have unit's obstacle?
 		if (unitType->getBlockRadius() > 1)
 		{
@@ -6005,7 +6005,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 			unit_obst_height_near = 0;
 		}
 
-		float extraheight = 0.02f;  
+		float extraheight = 0.02f;
 		// 2 cm extra to check height (because of possible rounding inaccur.)
 
 		int oldObstX = game->gameMap->scaledToObstacleX(oldPosition.x);
@@ -6023,7 +6023,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 		if (!unitType->isFlying()
 			&& unit->doesCollisionCheck()
-			&& (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, position.y 
+			&& (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, position.y
 			+ unit_obst_height + extraheight) > unit_obst_amount
 			|| tooSlope))
 		{
@@ -6033,8 +6033,8 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 			// Only destroyed units can be on top of obstacles!
 
 			if (unit->isDestroyed()
-				&& oldPosition.y > position.y 
-				&& game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, oldPosition.y 
+				&& oldPosition.y > position.y
+				&& game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, oldPosition.y
 				+ unit_obst_height + extraheight) <= unit_obst_amount
 				&& !tooSlope)
 			{
@@ -6047,7 +6047,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					&& !unit->isDestroyed()
 					&& unit->getMoveState() != Unit::UNIT_MOVE_STATE_UNCONSCIOUS)
 				{
-					if (velocity.y > 0) 
+					if (velocity.y > 0)
 					{
 						velocity.y = 0;
 					}
@@ -6071,7 +6071,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					obstX = game->gameMap->scaledToObstacleX(position.x);
 					obstY = game->gameMap->scaledToObstacleY(position.z);
 					// recheck for collision with a higher obstacle.
-					if (game->getGameScene()->getBlockingCount(obstX, obstY, position.y 
+					if (game->getGameScene()->getBlockingCount(obstX, obstY, position.y
 						+ 0 + extraheight) > 0)
 					{
 						position.x = oldPosition.x;
@@ -6103,21 +6103,21 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 
 				//int oldObstX = game->gameMap->scaledToObstacleX(oldPosition.x);
 				//int oldObstY = game->gameMap->scaledToObstacleY(oldPosition.z);
-				if (oldObstX == obstX - 1 && oldObstY == obstY) 
+				if (oldObstX == obstX - 1 && oldObstY == obstY)
 					intersectWestWall = true;
-				if (oldObstX == obstX + 1 && oldObstY == obstY) 
+				if (oldObstX == obstX + 1 && oldObstY == obstY)
 					intersectEastWall = true;
 				// NOTE: south and north may be wrong (may need to swap).
-				if (oldObstY == obstY - 1 && oldObstX == obstX) 
+				if (oldObstY == obstY - 1 && oldObstX == obstX)
 					intersectNorthWall = true;
-				if (oldObstY == obstY + 1 && oldObstX == obstX) 
+				if (oldObstY == obstY + 1 && oldObstX == obstX)
 					intersectSouthWall = true;
 
 				// from south west?
-				if (oldObstY == obstY + 1 && oldObstX == obstX - 1) 
+				if (oldObstY == obstY + 1 && oldObstX == obstX - 1)
 				{
 					// blocked at south?
-					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y 
+					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y
 						+ unit_obst_height_near + extraheight) > unit_obst_amount_near)
 					{
 						intersectSouthWall = true;
@@ -6126,10 +6126,10 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					}
 				}
 				// from south east?
-				if (oldObstY == obstY + 1 && oldObstX == obstX + 1) 
+				if (oldObstY == obstY + 1 && oldObstX == obstX + 1)
 				{
 					// blocked at south?
-					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y 
+					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y
 						+ unit_obst_height_near + extraheight) > unit_obst_amount_near)
 					{
 						intersectSouthWall = true;
@@ -6138,9 +6138,9 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					}
 				}
 				// from north west?
-				if (oldObstY == obstY - 1 && oldObstX == obstX - 1) 
+				if (oldObstY == obstY - 1 && oldObstX == obstX - 1)
 				{
-					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y 
+					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y
 						+ unit_obst_height_near + extraheight) > unit_obst_amount_near)
 					{
 						intersectNorthWall = true;
@@ -6149,9 +6149,9 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					}
 				}
 				// from north east?
-				if (oldObstY == obstY - 1 && oldObstX == obstX + 1) 
+				if (oldObstY == obstY - 1 && oldObstX == obstX + 1)
 				{
-					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y 
+					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, obstY, position.y
 						+ unit_obst_height_near + extraheight) > unit_obst_amount_near)
 					{
 						intersectNorthWall = true;
@@ -6171,14 +6171,14 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					// HACK: HAX HAX!!!
 					// 45 degree blocking...
 					bool curIsBlocked = false;
-					if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, position.y 
+					if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, position.y
 						+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 						&& game->gameMap->isRoundedObstacle(obstX, obstY))
 						curIsBlocked = true;
 
 					if (curIsBlocked)
 					{
-						if (obstX > 1 && obstY > 1 
+						if (obstX > 1 && obstY > 1
 							&& obstX < game->gameMap->getObstacleSizeX() - 1
 							&& obstY < game->gameMap->getObstacleSizeY() - 1)
 						{
@@ -6187,19 +6187,19 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 							bool be = false; // east
 							bool bw = false; // west
 							/*
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY - 1, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY - 1, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(obstX, obstY - 1))
 								bn = true;
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY + 1, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY + 1, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(obstX, obstY + 1))
 								bs = true;
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX - 1, obstY, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX - 1, obstY, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(obstX - 1, obstY))
 								bw = true;
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX + 1, obstY, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(obstX + 1, obstY, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(obstX + 1, obstY))
 								be = true;
@@ -6313,7 +6313,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 									velocity.y *= UA_WALL_VEL_FACTOR;
 									unit->setVelocity(velocity);
 									diagMoved = true;
-								} 
+								}
 							}
 							if (diagNEtoSW2)
 							{
@@ -6371,12 +6371,12 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 									velocity.y *= UA_WALL_VEL_FACTOR;
 									unit->setVelocity(velocity);
 									diagMoved = true;
-								} 
+								}
 							}
 							if (diagNWtoSE2)
 							{
 								bool intersectNWtoSE2 = false;
-								if (blockPosX > blockPosY 
+								if (blockPosX > blockPosY
 									&& oldBlockPosX <= oldBlockPosY)
 									intersectNWtoSE2 = true;
 
@@ -6409,7 +6409,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					// 45 degree blocking... FOR OLD BLOCK POSITION
 
 					bool oldIsBlocked = false;
-					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, oldObstY, position.y 
+					if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, oldObstY, position.y
 						+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 						&& game->gameMap->isRoundedObstacle(oldObstX, oldObstY))
 						oldIsBlocked = true;
@@ -6417,7 +6417,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					if (oldIsBlocked && (oldObstX != obstX || oldObstY != obstY)
 						&& !(oldObstX != obstX && oldObstY != obstY))
 					{
-						if (oldObstX > 1 && oldObstY > 1 
+						if (oldObstX > 1 && oldObstY > 1
 							&& oldObstX < game->gameMap->getObstacleSizeX() - 1
 							&& oldObstY < game->gameMap->getObstacleSizeY() - 1)
 						{
@@ -6426,19 +6426,19 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 							bool be = false; // east
 							bool bw = false; // west
 							/*
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, oldObstY - 1, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, oldObstY - 1, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(oldObstX, oldObstY - 1))
 								bn = true;
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, oldObstY + 1, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX, oldObstY + 1, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(oldObstX, oldObstY + 1))
 								bs = true;
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX - 1, oldObstY, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX - 1, oldObstY, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(oldObstX - 1, oldObstY))
 								bw = true;
-							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX + 1, oldObstY, position.y 
+							if (game->getGameScene()->getConditionalBlockingCountForUnit(oldObstX + 1, oldObstY, position.y
 								+ unit_obst_height_near + extraheight) > unit_obst_amount_near
 								&& game->gameMap->isRoundedObstacle(oldObstX + 1, oldObstY))
 								be = true;
@@ -6547,7 +6547,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 									unit->setVelocity(velocity);
 									diagBlock = true;
 									diagMoved = true;
-								} 
+								}
 							}
 							if (diagNEtoSW2)
 							{
@@ -6610,12 +6610,12 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 									unit->setVelocity(velocity);
 									diagBlock = true;
 									diagMoved = true;
-								} 
+								}
 							}
 							if (diagNWtoSE2)
 							{
 								bool intersectNWtoSE2 = false;
-								if (blockPosX > blockPosY 
+								if (blockPosX > blockPosY
 									&& oldBlockPosX <= oldBlockPosY)
 									intersectNWtoSE2 = true;
 
@@ -6659,7 +6659,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 					if (intersectWestWall || intersectEastWall)
 					{
 						// we intersected with the west or east wall...
-						position.x = oldPosition.x;	
+						position.x = oldPosition.x;
 
 						// NEW BEHAVIOUR: y restore to original!!!
 						// HACK: to prevent units that are sliding near a ramp
@@ -6678,7 +6678,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 						//	position.x = gameMap->obstacleToScaledX(obstX + 1) + 0.01f;
 						//else
 						//	position.x = gameMap->obstacleToScaledX(obstX) - 0.01f;
-					} 
+					}
 					if (intersectNorthWall || intersectSouthWall)
 					{
 						// we did not intersect with the west or east wall,
@@ -6729,7 +6729,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 				// by a diagonal block...)
 				if (((!diagBlock
 					|| !game->gameMap->isRoundedObstacle(obstX, obstY))
-					&& game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, position.y 
+					&& game->getGameScene()->getConditionalBlockingCountForUnit(obstX, obstY, position.y
 					+ obsth + extraheight) > obstam)
 					|| tooSlopeAgain)
 				{
@@ -6825,7 +6825,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 	{
 		if (unit->getWalkDelay() > 0)
 		{
-			// did this unit have a non-blend weapon shoot animation? 
+			// did this unit have a non-blend weapon shoot animation?
 			// if so don't apply any other animations until walk delay zero...
 			if (unit->getAnimationSet() != NULL)
 			{
@@ -6844,7 +6844,7 @@ if (unit->getVelocity().GetSquareLength() > 0.01f * 0.01f
 						{
 							return;
 						}
-					}					
+					}
 				} else {
 					if (unit->getAnimationSet()->isAnimationInSet(ANIM_SHOOT))
 					{
@@ -6914,7 +6914,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						{
 							// NOTE: these anims must be incremental in numbers
 							if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 							{
 								anim = ANIM_STAND_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 							} else {
@@ -6922,7 +6922,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							}
 						} else {
 							assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-						}							
+						}
 					}
 
 					// HACK: ...
@@ -6941,7 +6941,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 									{
 										// NOTE: these anims must be incremental in numbers
 										if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-											&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+											&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 										{
 											anim = ANIM_TURN_LEFT_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 										} else {
@@ -6949,7 +6949,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 										}
 									} else {
 										assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-									}							
+									}
 								}
 							}
 						}
@@ -6966,7 +6966,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 									{
 										// NOTE: these anims must be incremental in numbers
 										if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-											&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+											&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 										{
 											anim = ANIM_TURN_RIGHT_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 										} else {
@@ -6974,7 +6974,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 										}
 									} else {
 										assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-									}							
+									}
 								}
 							}
 						}
@@ -7010,15 +7010,15 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						anim = ANIM_SPRINT;
 					else if (sp == Unit::UNIT_SPEED_JUMP)
 						anim = ANIM_JUMP;
-					else if (sp == Unit::UNIT_SPEED_SLOW 
+					else if (sp == Unit::UNIT_SPEED_SLOW
 						|| (sp == Unit::UNIT_SPEED_FAST && vel.x == 0 && vel.z == 0))
 						anim = ANIM_WALK;
-					else 
+					else
 						anim = ANIM_RUN;
 				}
 
 				// actually strafing?
-				if (anim == ANIM_RUN || anim == ANIM_WALK || 
+				if (anim == ANIM_RUN || anim == ANIM_WALK ||
 					anim == ANIM_SPRINT || anim == ANIM_JUMP)
 				{
 					if (unit->isSideways())
@@ -7029,7 +7029,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 					VC3 zeroVec = VC3(0,0,0);
 					float velDir = util::PositionDirectionCalculator::calculateDirection(zeroVec, vel);
 					VC3 rotation = unit->getRotation();
-					
+
 					float strafeAnimBias = -5.0f;
 
 					// HACK: jumps prefer sideways animations, whereas
@@ -7270,7 +7270,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 						{
 							if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 							{
 								anim = ANIM_RUN_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 							} else {
@@ -7291,7 +7291,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 						{
 							if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 							{
 								anim = ANIM_WALK_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 							} else {
@@ -7299,7 +7299,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							}
 						} else {
 							assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-						}							
+						}
 					}
 				}
 				// fix animation for specific weapon (sprint)
@@ -7312,7 +7312,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 						{
 							if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 							{
 								anim = ANIM_SPRINT_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 							} else {
@@ -7320,7 +7320,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							}
 						} else {
 							assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-						}							
+						}
 					}
 				}
 				// fix animation for specific weapon (run backward)
@@ -7333,7 +7333,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 						{
 							if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 							{
 								anim = ANIM_RUN_BACKWARD_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 							} else {
@@ -7341,7 +7341,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							}
 						} else {
 							assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-						}							
+						}
 					}
 				}
 				// fix animation for specific weapon (strafe left)
@@ -7354,7 +7354,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 						{
 							if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 							{
 								anim = ANIM_STRAFE_LEFT_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 							} else {
@@ -7362,7 +7362,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							}
 						} else {
 							assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-						}							
+						}
 					}
 				}
 				// fix animation for specific weapon (strafe right)
@@ -7375,7 +7375,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 						{
 							if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+								&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 							{
 								anim = ANIM_STRAFE_RIGHT_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType();
 							} else {
@@ -7383,7 +7383,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							}
 						} else {
 							assert(!"UnitActor::applyAnimations - Selected weapon does not exist.");
-						}							
+						}
 					}
 				}
 
@@ -7419,7 +7419,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (avel.GetSquareLength() > vel.GetSquareLength())
 							avel = vel;
 						fact *= avel.GetLength() * 100.0f;
-						unit->setAnimationLastPosition(unit->getPosition());						
+						unit->setAnimationLastPosition(unit->getPosition());
 					}
 					fact *= slowdownFact;
 					fact *= unit->getCustomTimeFactor();
@@ -7438,7 +7438,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						if (avel.GetSquareLength() > vel.GetSquareLength())
 							avel = vel;
 						Animator::setAnimationSpeedFactor(unit, avel.GetLength() * 100.0f * fact);
-						unit->setAnimationLastPosition(unit->getPosition());						
+						unit->setAnimationLastPosition(unit->getPosition());
 					} else {
 						if (unit->getSlowdown() != 0.0f)
 						{
@@ -7518,15 +7518,15 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 							{
 								if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-									&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+									&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 								{
 									unit->getAnimationSet()->animate(unit, ANIM_AIM_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType());
 								} else {
 									assert(0);
 								}
 							} else {
-								assert(0);	
-							}							
+								assert(0);
+							}
 						} else {
 							unit->getAnimationSet()->animate(unit, ANIM_AIM);
 						}
@@ -7710,7 +7710,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						}
 					}
 				}
-			}	
+			}
 		}
 	}
 
@@ -7720,7 +7720,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 
 	VC3 unit_sorting_distance_to = VC3(0,0,0);
 
-	struct UnitDistanceSorter: 
+	struct UnitDistanceSorter:
 	public std::binary_function<Unit *, Unit *, bool>
 	{
 		bool operator() (const Unit *a, const Unit *b) const
@@ -7901,7 +7901,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 				if (unit->isWeaponActive(i)
 					&& (wRange * wRange >= distanceSq
 					|| wRange == 0)
-					&& unit->getFireReloadDelay(i) == 0 
+					&& unit->getFireReloadDelay(i) == 0
 					&& unit->getFireWaitDelay(i) == 0
 					&& unit->getEnergy() >= w->getPowerUsage()
 					&& unit->getHeat() < (unit->getMaxHeat() * 9) / 10)
@@ -7911,7 +7911,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						//unit->setWeaponType(i, w);	old stuff?
 
 						int firewait = 1;
-						if (!unit->isFiringInProgress() || w->isSingleShot()) 
+						if (!unit->isFiringInProgress() || w->isSingleShot())
 						{
 							firewait = (w->getFireWaitTime() * ((100 - w->getFireWaitVary()) + game->gameRandom->nextInt() % (w->getFireWaitVary() + 1)) / 100);
 
@@ -7953,7 +7953,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 						unit->setFireReloadDelay(i, firereload);
 
 						// if this is an attachment weapon, make the parent
-						// wait at least the time that it takes for this 
+						// wait at least the time that it takes for this
 						// weapon to fire and reload...
 						int attachedTo = -1;
 						if (!w->hasIndependentFireDelay())
@@ -8069,7 +8069,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 								firingSpread = w->getMinSpread();
 							unit->setFiringSpreadFactor(firingSpread);
 						}
-						
+
 						if (w->getRepeatDelay() == 0)
 						{
 							// shotty (and standard one shot weapons)?
@@ -8077,7 +8077,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 							if (am == 0) am = 1;
 							unit->setWeaponFireTime(i, am);
 						} else {
-							unit->setWeaponFireTime(i, 
+							unit->setWeaponFireTime(i,
 								w->getRepeatAmount() * w->getRepeatDelay());
 						}
 
@@ -8153,7 +8153,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 													unit->getAnimationSet()->animate(unit, ANIM_STAND);
 												}
 												if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-													&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+													&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 												{
 													VC3 animvel = unit->getVelocity();
 													if (((fabs(animvel.x) < 0.01f
@@ -8184,7 +8184,7 @@ if (unit->variables.getVariable(proningvarnamenum) == 0
 														}
 
 // HACK: �BERHACK!!!
-// make sure aim animation is set before shoot anim, so the aim won't override the shoot 
+// make sure aim animation is set before shoot anim, so the aim won't override the shoot
 if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 	&& unit->getSelectedWeapon() != -1
 	&& unit->isWeaponVisible(unit->getSelectedWeapon()))
@@ -8192,15 +8192,15 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 	if (unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
 	{
 		if (unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() >= 0
-			&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT) 
+			&& unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType() < ANIM_TYPES_AMOUNT)
 		{
 			unit->getAnimationSet()->animate(unit, ANIM_AIM_TYPE0 + unit->getWeaponType(unit->getSelectedWeapon())->getWeaponAnimationType());
 		} else {
 			assert(0);
 		}
 	} else {
-		assert(0);	
-	}							
+		assert(0);
+	}
 } else {
 	unit->getAnimationSet()->animate(unit, ANIM_AIM);
 }
@@ -8214,8 +8214,8 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 													assert(0);
 												}
 											} else {
-												assert(0);	
-											}							
+												assert(0);
+											}
 										} else {
 											//if (!unit->getAnimationSet()->isAnimationLooping(ANIM_SHOOT))
 											//{
@@ -8284,7 +8284,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 		return shot;
 	}
 
-	
+
 
 	void UnitActor::actPossiblyUnconscious(Unit *unit, UnitActAnimationRequests *animRequests)
 	{
@@ -8325,7 +8325,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 			}
 			if (unit->targeting.hasTarget())
 			{
-				unit->targeting.clearTarget();	
+				unit->targeting.clearTarget();
 			}
 
 			//if (unit->getHP() >= unit->getMaxHP() / 2)
@@ -8344,7 +8344,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 				if (obstY >= game->gameMap->getObstacleSizeY() - 1) obstY = game->gameMap->getObstacleSizeY() - 2;
 
 
-				if (game->getGameScene()->getBlockingCount(obstX, obstY, position.y 
+				if (game->getGameScene()->getBlockingCount(obstX, obstY, position.y
 					+ 0.01f) == 0
 					|| !game->gameMap->isMovingObstacle(obstX, obstY)
 					|| !unit->doesCollisionCheck())
@@ -8376,7 +8376,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 					}
 				}
 			}
-		} 
+		}
 	}
 
 
@@ -8433,7 +8433,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 			int counter = unit->getMoveStateCounter() - 1;
 			if (unit->getAnimationSet() != NULL
 				&& !unit->getAnimationSet()->isAnimationInSet(ANIM_PRONE))
-			{	
+			{
 				counter = 0;
 			}
 			unit->setMoveStateCounter(counter);
@@ -8570,7 +8570,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 		if (unit->getMoveState() == Unit::UNIT_MOVE_STATE_IDLE)
 		{
 			int counter = unit->getMoveStateCounter() - 1;
-			// if we have an enemy contact or some destination, 
+			// if we have an enemy contact or some destination,
 			// quit idling immediately
 			VC3 position = unit->getPosition();
 			VC3 dest = unit->getFinalDestination();
@@ -8604,7 +8604,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 				&& u != unit)
 			{
 				VC3 posDiff = u->getPosition() - unit->getPosition();
-				
+
 				if (posDiff.GetSquareLength() < UNITACTOR_NOISY_RANGE * UNITACTOR_NOISY_RANGE)
 				{
 					u->setHearNoiseByUnit(unit);
@@ -8620,7 +8620,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 		if (unit->getUnitType()->isPointedWithAny(UNITTYPE_POINTED_WITH_LIGHT))
 		{
 			util::LightAmountManager *lightman = util::LightAmountManager::getInstance();
-			
+
 			VC3 pos = unit->getPosition();
 
 			// HACK: units that have aimheight less than 0.5m, check
@@ -8679,7 +8679,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 
 						VC3 squashpos = unit->getPosition();
 
-						squashproj->setDirectPath(squashpos, squashpos, 
+						squashproj->setDirectPath(squashpos, squashpos,
 							squashBull->getVelocity());
 
 						squashproj->setHitTarget(unit, NULL);
@@ -8759,7 +8759,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 
 			if (duration == 0)
 			{
-				// HACK: change cloak hit effect to cloak effect... 
+				// HACK: change cloak hit effect to cloak effect...
 				// only if totally invisible (still in cloak mode)
 				// FIXME: does not work properly? sometimes cloak still goes on after a hit?
 //					&& !unit->isDestroyed()
@@ -8900,7 +8900,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 			}
 		}
 
-		return false;		
+		return false;
 	}
 
 	void UnitActor::actDelayedProjectiles(Unit *unit)
@@ -8915,7 +8915,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 			{
 				// HACK: no delayed damage to npcs
 				if ((unit->getOwner() != 2 && unit->getOwner() != 3)
-					|| unit->getUnitType()->isType2() 
+					|| unit->getUnitType()->isType2()
 					|| unit->getUnitType()->isMetallic())
 				{
 					Bullet *b = unit->getDelayedHitProjectileBullet();
@@ -8959,7 +8959,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 		{
 			return;
 		}
-		
+
 		Weapon *w = unit->getWeaponType(wnum);
 
 		// weapon doesn't have pointer
@@ -9108,7 +9108,7 @@ if (unit->getAnimationSet()->isAnimationInSet(ANIM_AIM_TYPE0)
 			unit->setLastTargetLockUnit(NULL);
 			return;
 		}
-		
+
 		Weapon *w = unit->getWeaponType(wnum);
 
 		// weapon doesn't have target locker

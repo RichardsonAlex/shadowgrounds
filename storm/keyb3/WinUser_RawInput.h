@@ -448,7 +448,7 @@ typedef WINUSERAPI UINT (WINAPI * GetRawInputDeviceInfoA_ptr)(
 							  __inout PUINT pcbSize);
 
 typedef WINUSERAPI UINT (WINAPI * SendInput_ptr)(
-	__in UINT cInputs,                     
-	__in_ecount(cInputs) LPINPUT pInputs,  
-	__in int cbSize);                      
+	__in UINT cInputs,
+	__in_ecount(cInputs) LPINPUT pInputs,
+	__in int cbSize);
 

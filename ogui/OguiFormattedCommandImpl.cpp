@@ -17,7 +17,7 @@ void OguiFormattedCommandImpl::parseParameters( const std::string& params )
 		std::string value_part  = util::StringRemoveWhitespace( tmp.substr( i + 1 ) );
 		
 		i = key_part.find_last_of(" \t");
-		if ( i != key_part.npos ) 
+		if ( i != key_part.npos )
 		{
 			tmp = "";
 			key_part = key_part.substr( i + 1 );
@@ -28,7 +28,7 @@ void OguiFormattedCommandImpl::parseParameters( const std::string& params )
 		{
 			tmp = value_part.substr( i );
 			value_part = value_part.substr( 0, i );
-		} 
+		}
 		else
 		{
 			tmp = "";

@@ -29,11 +29,11 @@ const static std::string position_hack = "_POSITION";
 class OptionsValueManagerImpl
 {
 public:
-	OptionsValueManagerImpl() 
+	OptionsValueManagerImpl()
 	{
 	}
 
-	~OptionsValueManagerImpl() 
+	~OptionsValueManagerImpl()
 	{
 	}
 

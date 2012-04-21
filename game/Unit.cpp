@@ -72,8 +72,8 @@ namespace game
 	}
 
 	void *Unit::getVisualObjectDataId() const
-	{ 
-		return (void *)&unitDataId; 
+	{
+		return (void *)&unitDataId;
 	}
 
 	//	Unit::Unit(int owner)
@@ -510,7 +510,7 @@ namespace game
 				delete weaponCopyProjectile[j];
 			}
 		}
-		if (path != NULL) 
+		if (path != NULL)
 		{
 			if (!pathIsStored)
 				delete path;
@@ -683,7 +683,7 @@ namespace game
 		int muzzleflashDuration)
 	{
 		//assert(visualEffect != NULL);
-			
+
 		if (this->muzzleflashVisualEffect != NULL)
 		{
 			this->muzzleflashVisualEffect->setDeleteFlag();
@@ -752,7 +752,7 @@ namespace game
 		int ejectDuration)
 	{
 		//assert(visualEffect != NULL);
-			
+
 		if (this->ejectVisualEffect != NULL)
 		{
 			this->ejectVisualEffect->setDeleteFlag();
@@ -832,7 +832,7 @@ namespace game
 			this->speed = Unit::UNIT_SPEED_CRAWL;
 		else if (unitType->getDefaultSpeed() == UnitType::DEFAULT_SPEED_SPRINT)
 			this->speed = Unit::UNIT_SPEED_SPRINT;
-		else 
+		else
 		{
 			assert(!"Unit::restoreDefaultSpeed - unknown default speed type, this should never happen.");
 		}
@@ -883,7 +883,7 @@ namespace game
 	{
 		return this->turningToAngle;
 	}
-	
+
 	float Unit::getAngleTo(const VC3 &toPosition) const
 	{
 		VC2 destFloat = VC2(
@@ -1027,7 +1027,7 @@ namespace game
 	{
 		return moveState;
 	}
-	
+
 	void Unit::setMoveStateCounter(int moveStateCounter)
 	{
 		this->moveStateCounter = moveStateCounter;
@@ -1084,9 +1084,9 @@ namespace game
 		this->position = position;
 		if (visualObject != NULL)
 		{
-			// for the survivors snow levels 
+			// for the survivors snow levels
 			if( visualOffsetInUse )
-			{			
+			{
 				VC3 pos( this->position );
 				pos.y += ( visualizationOffset * visualizationOffsetInterpolation );
 				visualObject->setPosition( pos );
@@ -1176,8 +1176,8 @@ namespace game
 		this->zAngle = zAngle;
 		/*
 		QUAT rotation = QUAT(
-			(float)xAngle * 3.1415f/180, 
-			(float)yAngle * 3.1415f/180, 
+			(float)xAngle * 3.1415f/180,
+			(float)yAngle * 3.1415f/180,
 			(float)zAngle * 3.1415f/180);
 		*/
 		if (visualObject != NULL)
@@ -1285,7 +1285,7 @@ namespace game
 				visualObject->clearEffects();
 			}
 			stealthVisualInUse = useStealth;
-		} 
+		}
 	}
 
 	int Unit::getHeat() const
@@ -1683,7 +1683,7 @@ namespace game
 
 	int Unit::getAnimation() const
 	{
-		return currentAnimation;		
+		return currentAnimation;
 	}
 
 	void Unit::setBlendAnimation(unsigned int num, int animation)
@@ -1726,7 +1726,7 @@ namespace game
 	/*
 	int Unit::getWalkDelay()
 	{
-		return walkDelay; 
+		return walkDelay;
 	}
 	*/
 
@@ -1741,7 +1741,7 @@ namespace game
 	/*
 	int Unit::getFireReloadDelay(int weapon)
 	{
-		return fireReloadDelay[weapon]; 
+		return fireReloadDelay[weapon];
 	}
 	*/
 
@@ -1754,7 +1754,7 @@ namespace game
 	/*
 	int Unit::getFireWaitDelay(int weapon)
 	{
-		return fireWaitDelay[weapon]; 
+		return fireWaitDelay[weapon];
 	}
 	*/
 
@@ -1801,7 +1801,7 @@ namespace game
 				ammoAmount[weaponAmmoNumber[weapon]] -= weaponType[usageWeapon]->getAmmoUsage();
 				if (ammoAmount[weaponAmmoNumber[weapon]] < 0)
 				{
-					ammoAmount[weaponAmmoNumber[weapon]] = 0; 				 
+					ammoAmount[weaponAmmoNumber[weapon]] = 0;
 				}
 
 				// HACK: for gaso trap, keep at least 5 fuel in any case...
@@ -1809,7 +1809,7 @@ namespace game
 				{
 					if (weaponType[usageWeapon]->getPartTypeId() == PARTTYPE_ID_STRING_TO_INT("W_GasoTr"))
 					{
-						ammoAmount[weaponAmmoNumber[weapon]] = 3; 				 
+						ammoAmount[weaponAmmoNumber[weapon]] = 3;
 					}
 				}
 
@@ -1885,7 +1885,7 @@ namespace game
 		if (!weaponOperable[weapon])
 			return false;
 
-		// check if this weapon has a shared clip 
+		// check if this weapon has a shared clip
 		// (some attachment weapons share clip with "parent" weapon)
 		if (weaponType[weapon]->isSharedClipAttachment())
 		{
@@ -2005,7 +2005,7 @@ namespace game
 	{
 		for (int i = 0; i < UNIT_MAX_WEAPONS; i++)
 		{
-			if (weaponType[i] != NULL && fireWaitDelay[i] == 0 
+			if (weaponType[i] != NULL && fireWaitDelay[i] == 0
 				&& fireReloadDelay[i] == 0 && weaponActive[i])
 				return true;
 		}
@@ -2053,7 +2053,7 @@ namespace game
 		}
 
 		// first create an ammo array...
-		AmmoPackObject *ammoArr[UNIT_MAX_AMMOS]; 
+		AmmoPackObject *ammoArr[UNIT_MAX_AMMOS];
 		int num = 0;
 		if (rootPart != NULL)
 			num = getAmmoArray(ammoArr, UNIT_MAX_AMMOS, rootPart, 0);
@@ -2068,7 +2068,7 @@ namespace game
 					|| ammoType[j] == NULL)
 				{
 					// WARNING: unsafe cast!
-					// if ammo array contained some other shit, we're fucked. 		 
+					// if ammo array contained some other shit, we're fucked.
 					ammoType[j] = (AmmoPack *)ammoArr[i]->getType();
 					ammoAmount[j] += ammoArr[i]->getAmount();
 					maxAmmoAmount[j] += ammoArr[i]->getMaxAmount();
@@ -2079,7 +2079,7 @@ namespace game
 		}
 
 		// then create a weapon array...
-		WeaponObject *weapArr[UNIT_MAX_WEAPONS]; 
+		WeaponObject *weapArr[UNIT_MAX_WEAPONS];
 		num = 0;
 		if (rootPart != NULL)
 			num = getWeaponArray(weapArr, UNIT_MAX_WEAPONS, rootPart, 0);
@@ -2090,7 +2090,7 @@ namespace game
 			// WARNING: unsafe cast!
 			// if weapon array contained some other shit, we're fucked.
 			setWeaponType(i, (Weapon *)weapArr[i]->getType());
-			
+
 			// find out weapon position, kinda hack here...
 			if (weapArr[i]->getParent() != NULL
 				&& weapArr[i]->getParent()->getParent() != NULL)
@@ -2128,13 +2128,13 @@ namespace game
 
 			if (weaponType[i]->getRange() > maxWeaponRange)
 				maxWeaponRange = weaponType[i]->getRange();
-			
+
 			weaponAmmoNumber[i] = -1;
 			if (weaponType[i]->getAmmoType() != NULL)
 			{
 				for (int j = 0; j < UNIT_MAX_AMMOS; j++)
 				{
-					if (ammoType[j] == NULL 
+					if (ammoType[j] == NULL
 						|| ammoType[j] == weaponType[i]->getAmmoType())
 					{
 						if (ammoType[j] == NULL)
@@ -2301,7 +2301,7 @@ namespace game
 
 
 	void Unit::setWeaponsActiveByFiretype(FireType fireType)
-	{ 	
+	{
 		for (int i = 0; i < UNIT_MAX_WEAPONS; i++)
 		{
 			bool act = false;
@@ -2315,28 +2315,28 @@ namespace game
 			// shooting a basic weapon? (not heavy, drop or manual)
 			if (fireType == FireTypeBasic
 				&& !weaponType[i]->isHeavyWeapon()
-				&& !weaponType[i]->isDropWeapon() 
-				&& !weaponType[i]->isManualWeapon()) 
+				&& !weaponType[i]->isDropWeapon()
+				&& !weaponType[i]->isManualWeapon())
 				act = true;
 			// shooting a heavy weapon? (but not drop or manual)
 			if (fireType == FireTypeHeavy
 				&& weaponType[i]->isHeavyWeapon()
-				&& !weaponType[i]->isDropWeapon() 
-				&& !weaponType[i]->isManualWeapon()) 
-				act = true; 		
+				&& !weaponType[i]->isDropWeapon()
+				&& !weaponType[i]->isManualWeapon())
+				act = true;
 			// shooting all? (not drop or manual)
 			if (fireType == FireTypeAll
-				&& !weaponType[i]->isDropWeapon() 
-				&& !weaponType[i]->isManualWeapon()) 
-				act = true; 		
+				&& !weaponType[i]->isDropWeapon()
+				&& !weaponType[i]->isManualWeapon())
+				act = true;
 
 			setWeaponActive(i, act);
 		}
 	}
 
-	
+
 	bool Unit::hasWeaponsForFiretype(FireType fireType) const
-	{ 	
+	{
 		bool act = false;
 
 		for (int i = 0; i < UNIT_MAX_WEAPONS; i++)
@@ -2350,26 +2350,26 @@ namespace game
 			// shooting a basic weapon? (not heavy, drop or manual)
 			if (fireType == FireTypeBasic
 				&& !weaponType[i]->isHeavyWeapon()
-				&& !weaponType[i]->isDropWeapon() 
-				&& !weaponType[i]->isManualWeapon()) 
+				&& !weaponType[i]->isDropWeapon()
+				&& !weaponType[i]->isManualWeapon())
 				act = true;
 			// shooting a heavy weapon? (but not drop or manual)
 			if (fireType == FireTypeHeavy
 				&& weaponType[i]->isHeavyWeapon()
-				&& !weaponType[i]->isDropWeapon() 
-				&& !weaponType[i]->isManualWeapon()) 
-				act = true; 		
+				&& !weaponType[i]->isDropWeapon()
+				&& !weaponType[i]->isManualWeapon())
+				act = true;
 			// shooting all? (not drop or manual)
 			if (fireType == FireTypeAll
-				&& !weaponType[i]->isDropWeapon() 
-				&& !weaponType[i]->isManualWeapon()) 
-				act = true; 		
+				&& !weaponType[i]->isDropWeapon()
+				&& !weaponType[i]->isManualWeapon())
+				act = true;
 		}
 
 		return act;
 	}
 
-	
+
 	bool Unit::isWeaponActive(int weapon) const
 	{
 		return weaponActive[weapon];
@@ -2447,7 +2447,7 @@ namespace game
 		return weaponPosition[weapon];
 	}
 
-	
+
 	int Unit::getWeaponArray(WeaponObject **weaponArray, int arraySize, Part *startPart, int startNumber) const
 	{
 		if (weaponArray == NULL)
@@ -2459,7 +2459,7 @@ namespace game
 		int weapsAdded = 0;
 		if (startPart != NULL)
 		{
-			// TODO: should actually be a call to isInherited(...), 
+			// TODO: should actually be a call to isInherited(...),
 			// but it would be slow
 			// TODO: optimize...
 			if (startNumber < arraySize)
@@ -2506,7 +2506,7 @@ namespace game
 		int ammosAdded = 0;
 		if (startPart != NULL)
 		{
-			// TODO: should actually be a call to isInherited(...), 
+			// TODO: should actually be a call to isInherited(...),
 			// but it would be slow
 			// TODO: optimize...
 			if (startNumber < arraySize)
@@ -2540,7 +2540,7 @@ namespace game
 		return ammosAdded;
 	}
 
-	
+
 	void Unit::setToBeSeenUnit(Unit *seeUnit)
 	{
 		toBeSeeingUnit = seeUnit;
@@ -2631,14 +2631,14 @@ namespace game
 		if (p != NULL)
 		{
 			setPath(p);
-			pathIsStored = true; 
+			pathIsStored = true;
 		}
 	}
 
 	void Unit::setStoredPath(int pathNumber, frozenbyte::ai::Path *path,
 		const VC3 &startPosition, const VC3 &endPosition)
 	{
-		scriptPaths.setStoredPath(pathNumber, path, 
+		scriptPaths.setStoredPath(pathNumber, path,
 			startPosition, endPosition, this);
 	}
 
@@ -2885,7 +2885,7 @@ namespace game
 			// first add root part's AR
 			// part's damage affects AR...
 			// damage affects by halving the part's AR if totally damaged
-			ret += rootPart->getType()->getArmorRating() 
+			ret += rootPart->getType()->getArmorRating()
 				* (100 - (50 * rootPart->getDamage() / rootPart->getType()->getMaxDamage())) / 100;
 			int slotAmount = rootPart->getType()->getSlotAmount();
 			// then add its subpart's ARs
@@ -2985,7 +2985,7 @@ namespace game
 	{
 		lastBoneAimBetaAngle = angle;
 	}
-	
+
 	float Unit::getLastBoneAimBetaAngle() const
 	{
 		return lastBoneAimBetaAngle;
@@ -3117,7 +3117,7 @@ namespace game
 			}
 			return true;
 		} else {
-			return false; 	
+			return false;
 		}
 	}
 
@@ -3134,23 +3134,23 @@ namespace game
 	}
 
 
-	void Unit::setMovingForward() 
-	{ 
-		movingForward = true; 
-		movingSideways = false; 
-		movingBackward = false; 
+	void Unit::setMovingForward()
+	{
+		movingForward = true;
+		movingSideways = false;
+		movingBackward = false;
 	}
 	void Unit::setMovingBackward()
-	{ 
-		movingForward = false; 
-		movingSideways = false; 
-		movingBackward = true; 
+	{
+		movingForward = false;
+		movingSideways = false;
+		movingBackward = true;
 	}
 	void Unit::setMovingSideways()
-	{ 
-		movingForward = false; 
-		movingSideways = true; 
-		movingBackward = false; 
+	{
+		movingForward = false;
+		movingSideways = true;
+		movingBackward = false;
 	}
 
 	bool Unit::wasMovingForward() const { return movingForward; }
@@ -3381,7 +3381,7 @@ namespace game
 			{
 				return i;
 			}
-		} 	
+		}
 		return -1;
 	}
 
@@ -3637,9 +3637,9 @@ namespace game
 	void Unit::addSlowdown(float slowdownFactor)
 	{
 		this->slowdown += slowdownFactor * unitType->getSlowdownAddFactor();
-		if (this->slowdown < -50.0f) 
+		if (this->slowdown < -50.0f)
 			this->slowdown = -50.0f;
-		if (this->slowdown > unitType->getMaxSlowdown()) 
+		if (this->slowdown > unitType->getMaxSlowdown())
 			this->slowdown = unitType->getMaxSlowdown();
 	}
 
@@ -3681,7 +3681,7 @@ namespace game
 		if (this->effectLayerType == UNIT_EFFECT_LAYER_CLOAKHIT
 			&& this->effectLayerDuration > 1)
 		{
-			return;		
+			return;
 		}
 
 		this->effectLayerType = layerType;
@@ -3727,12 +3727,12 @@ namespace game
 	{
 		return this->keepReloading;
 	}
-	
+
 	int Unit::getKeepFiringCount() const
 	{
 		return this->keepFiring;
 	}
-	
+
 	void Unit::setKeepReloading(bool keepReloading)
 	{
 		this->keepReloading = keepReloading;
@@ -4178,7 +4178,7 @@ namespace game
 		this->aniRecordFireSourcePosition = VC3(0,0,0);
 		this->aniRecordFireDestinationPosition = VC3(0,0,0);
 	}
-	
+
 	int Unit::getHighlightStyle() const
 	{
 		return highlightStyle;
@@ -4193,7 +4193,7 @@ namespace game
 	{
 		return !highlightText.empty();
 	}
-	
+
 	std::string Unit::getHighlightText() const
 	{
 		return highlightText;
@@ -4264,11 +4264,11 @@ namespace game
 	}
 
 	void Unit::setVisualizationOffset( float offset )
-	{ 
-		if( offset != 0 ) 
+	{
+		if( offset != 0 )
 		{
-			visualOffsetInUse = true; 
-			visualizationOffset = offset; 
+			visualOffsetInUse = true;
+			visualizationOffset = offset;
 		}
 		else
 		{
@@ -4414,7 +4414,7 @@ namespace game
 				}
 			}
 		}
-		
+
 		if(targetLockCounter < targetLockCounterMax)
 		{
 			targetLockSoundPlayed = false;

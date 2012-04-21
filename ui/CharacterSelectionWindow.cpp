@@ -517,7 +517,7 @@ namespace ui
 		if(chosenCharacter[player] == -1)
 		{
 			// choose the middle one
-			if(dir == 0) 
+			if(dir == 0)
 				chosenCharacter[player] = 1;
 			// choose the right one
 			else if(dir == 1)

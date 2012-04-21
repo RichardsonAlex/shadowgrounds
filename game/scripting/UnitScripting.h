@@ -18,10 +18,10 @@ namespace game
 	class UnitScripting
 	{
 		public:			
-			/** 
+			/**
 			 * Just processes one command...
 			 */
-			static void process(util::ScriptProcess *sp, 
+			static void process(util::ScriptProcess *sp,
 				int command, floatint intFloat, const char *stringData, ScriptLastValueType *lastValue,
 				GameScriptData *gsd, Game *game, bool *pause);
 
@@ -40,7 +40,7 @@ namespace game
 	
 			static bool findGroup(Game *game, Unit *unit);
 
-			static void moveUnitToDirection(Unit *unit, int direction, 
+			static void moveUnitToDirection(Unit *unit, int direction,
 				float amount);
 	};
 }

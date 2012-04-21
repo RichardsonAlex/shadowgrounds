@@ -290,7 +290,7 @@ void Storm3D_ParticleList::Render(Storm3D_Scene *scene,bool ismain,int time_dif)
 				mopt[3].texcoords.y=0;*/
 
 				// Clip
-				/*if (Clip2DRectangle(Storm3D2,mopt[2],mopt[0])) 
+				/*if (Clip2DRectangle(Storm3D2,mopt[2],mopt[0]))
 				{
 					// Copy clipping
 					mopt[3].position.x=mopt[0].position.x;
@@ -360,7 +360,7 @@ void Storm3D_ParticleList::Render(Storm3D_Scene *scene,bool ismain,int time_dif)
 					particlelist[pt].has_last_position=true;
 				}
 			}
-		} 
+		}
 		else
 		{
 			if (ismain)

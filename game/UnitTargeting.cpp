@@ -9,7 +9,7 @@
 #include "../convert/str2int.h"
 
 // this should result into about 8 seconds (slightly less).
-// (note: this value is not seconds though!!!) 
+// (note: this value is not seconds though!!!)
 // NOTE: default value for this found in unittype now...
 //#define DEFAULT_UNITTARGETING_TARGET_LOSE_MAX_COUNT 8
 
@@ -20,7 +20,7 @@ namespace game
   UnitTargeting::UnitTargeting()
   {
     targetSet = false;
-    targetPosition = VC3(0, 0, 0); 
+    targetPosition = VC3(0, 0, 0);
     targetUnit = NULL;
     autoTarget = false;
     groundTarget = false;
@@ -54,7 +54,7 @@ namespace game
     return autoTarget;
   }
 
-  
+
   void UnitTargeting::setAutoTarget(Unit *targetUnit)
   {
     setTarget(targetUnit);
@@ -118,7 +118,7 @@ namespace game
 
 
   void UnitTargeting::clearLastTargetPosition()
-  { 
+  {
     lastTargetPositionExists = false;
   }
 
@@ -155,7 +155,7 @@ namespace game
 
   VC3 UnitTargeting::getTargetPosition()
   {
-		// NEW: returns the unit position always correctly, not just the original 
+		// NEW: returns the unit position always correctly, not just the original
 		// position where the target was set
 		if (targetUnit != NULL)
 			return targetUnit->getPosition();

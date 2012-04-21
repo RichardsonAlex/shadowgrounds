@@ -52,9 +52,9 @@ ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	gameProfiles = game->getGameProfiles();
 	
 	ogui = o_gui;
-	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_profilesmenu_window_x", 0 ), 
-									getLocaleGuiInt( "gui_profilesmenu_window_y", 0 ) , 
-									getLocaleGuiInt( "gui_profilesmenu_window_w", 1024 ), 
+	win = ogui->CreateSimpleWindow( getLocaleGuiInt( "gui_profilesmenu_window_x", 0 ),
+									getLocaleGuiInt( "gui_profilesmenu_window_y", 0 ) ,
+									getLocaleGuiInt( "gui_profilesmenu_window_w", 1024 ),
 									getLocaleGuiInt( "gui_profilesmenu_window_h", 768 ), NULL );
 	win->Hide();
 	win->SetUnmovable();
@@ -93,9 +93,9 @@ ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	while( enum1->isNextProfileAvailable() )
 	{
 		std::string temp = enum1->getNextProfile();
-		if( temp == std::string( gameProfiles->getCurrentProfile( 0 ) ) ) 
+		if( temp == std::string( gameProfiles->getCurrentProfile( 0 ) ) )
 			profilesCurrent = i;
-                                                                             
+
 		i++;
 
 		profileData.push_back( temp );
@@ -116,7 +116,7 @@ ProfilesMenu::ProfilesMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 	fontDescNorm	= ogui->LoadFont( buttonFontDescNormal.c_str() );
 	fontDescDown	= ogui->LoadFont( buttonFontDescDown.c_str() );
 
-	// textEditButton = o_gui->CreateSimpleTextButton( win, 
+	// textEditButton = o_gui->CreateSimpleTextButton( win,
 
 	createProfileButtons();
 
@@ -198,7 +198,7 @@ void ProfilesMenu::createProfileButtons()
 	buttonX	= getLocaleGuiInt( "gui_profilesmenu_button_x", 0 );
 	buttonY	= getLocaleGuiInt( "gui_profilesmenu_button_y", 0 );
 
- 
+
 	int i;
 	for( i = 0; i < profilesMax; i++ )
 	{
@@ -459,7 +459,7 @@ void ProfilesMenu::CursorEvent( OguiButtonEvent* eve )
 
 void ProfilesMenu::readKey( char ascii, int keycode, const char *keycodeName )
 {
-	if( fromGame ) 
+	if( fromGame )
 	{
 		if( editButtonP )
 		{
@@ -482,12 +482,12 @@ void ProfilesMenu::readKey( char ascii, int keycode, const char *keycodeName )
 
 			if( editButtonP )
 				editButtonP->SetText( ( editBufferBefore + editBuffer + editBufferAfter ).c_str() );
-		} 
+		}
 		else if( closeMenuByEsc )
 		{
 		}
-	} 
-	else 
+	}
+	else
 	{
 		//FOOFOOHAXHAXBETA
 		if(editBuffer.size() > 18)
@@ -534,7 +534,7 @@ void ProfilesMenu::menuSelect()
 
 void ProfilesMenu::menuNew()
 {
-	// TODO to work in that way that dispables all 
+	// TODO to work in that way that dispables all
 	//      the other buttons until enter is given
 	if ( profilesCnt < profilesMax )
 	{
@@ -571,7 +571,7 @@ void ProfilesMenu::menuDelete( bool delete_from_profiles )
 		profilesCnt--;
 		// if( profilesCnt < 0 ) profilesCnt = 0;
 		
-		if( delete_from_profiles ) 
+		if( delete_from_profiles )
 			gameProfiles->deleteProfile( profileData[ activeSelection ].c_str() );
 		
 		int i;
@@ -615,17 +615,17 @@ bool ProfilesMenu::editButtonEnterCheck( const std::string& string )
 
 		if( add_to_profiles )
 		{
-			profileData[ profilesCurrent ] = string; 
+			profileData[ profilesCurrent ] = string;
 			assert( gameProfiles );
 			gameProfiles->createNewProfile( string.c_str() );
 			gameProfiles->setCurrentProfile( string.c_str(), 0 );
 		}
 	}
 
-	// if( add_to_profiles ) 
+	// if( add_to_profiles )
 	MenuBaseImpl::editButtonEnter( profileData[ profilesCurrent ] );
 
-	if( string.empty() || add_to_profiles == false ) 
+	if( string.empty() || add_to_profiles == false )
 	{
 		menuDelete( false );
 	}

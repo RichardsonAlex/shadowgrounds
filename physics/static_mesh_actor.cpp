@@ -33,7 +33,7 @@ StaticMesh::StaticMesh(NxPhysicsSDK &sdk_, const char *filename)
 StaticMesh::~StaticMesh()
 {
 	// FIXED: crash due to physics being deleted already at Game::endCombat()
-	// 
+	//
 	if(mesh)
 		sdk.releaseTriangleMesh(*mesh);
 }

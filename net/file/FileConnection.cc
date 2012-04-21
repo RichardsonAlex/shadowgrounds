@@ -112,7 +112,7 @@ namespace net
     }
 
 
-    void FileConnection::flush() 
+    void FileConnection::flush()
       throw (NetDriverException*)
     {
       // this is problematic... cannot flush really.
@@ -120,9 +120,9 @@ namespace net
       // thus, flush would have to wait forever for the data being received.
       return;
     }
- 
 
-    int FileConnection::send(const void *buf, int maxlen) 
+
+    int FileConnection::send(const void *buf, int maxlen)
       throw (NetDriverException*)
     {
       if (impl->connected)
@@ -134,9 +134,9 @@ namespace net
 			int wrote = 0; //fwrite(...);
       return wrote;
     }
-    
 
-    int FileConnection::receive(void *buf, int maxlen) 
+
+    int FileConnection::receive(void *buf, int maxlen)
       throw (NetDriverException*)
     {
 			assert(maxlen != 0);
@@ -153,7 +153,7 @@ namespace net
     }
 
 
-    void FileConnection::close() 
+    void FileConnection::close()
       throw (NetDriverException*)
     {
 			if (impl->connected)

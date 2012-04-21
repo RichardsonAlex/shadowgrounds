@@ -24,7 +24,7 @@ class Storm3D_ParticleSystem;
 
 struct Storm3D_TerrainRendererData;
 
-class Storm3D_TerrainRenderer: 
+class Storm3D_TerrainRenderer:
 	public IStorm3D_TerrainRenderer,
 	public IStorm3D_TerrainRendererBase
 {

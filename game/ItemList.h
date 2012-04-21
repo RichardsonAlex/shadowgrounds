@@ -13,7 +13,7 @@ namespace game
 	/**
 	 * A class holding game items.
 	 * (Those collectable items that are currently in the map)
-	 * 
+	 *
 	 * @version 1.0, 18.8.2003
 	 * @author Jukka Kokkonen <jukka@frozenbyte.com>
 	 * @see Item

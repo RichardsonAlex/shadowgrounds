@@ -66,7 +66,7 @@ namespace game
 	class NearbyOwnedUnitIterator : public IUnitListIterator
 	{
 		public:
-			virtual ~NearbyOwnedUnitIterator() 
+			virtual ~NearbyOwnedUnitIterator()
 			{
 				// nop?
 			}
@@ -75,7 +75,7 @@ namespace game
 			{
 				this->player = player;
 				atUnit = 0;
-			}		
+			}
 
 			virtual Unit *iterateNext()
 			{
@@ -85,7 +85,7 @@ namespace game
 					fb_assert(!"NearbyOwnedUnitIterator::iterateNext - No more units to iterate.");
 					return false;
 				}
-				
+
 				atUnit++;
 				return foundUnits[atUnit-1];
 			}
@@ -130,7 +130,7 @@ namespace game
 	class NearbyAllUnitIterator : public IUnitListIterator
 	{
 		public:
-			virtual ~NearbyAllUnitIterator() 
+			virtual ~NearbyAllUnitIterator()
 			{
 				// nop?
 			}
@@ -138,7 +138,7 @@ namespace game
 			NearbyAllUnitIterator()
 			{
 				atUnit = 0;
-			}		
+			}
 
 			virtual Unit *iterateNext()
 			{
@@ -147,7 +147,7 @@ namespace game
 					fb_assert(!"NearbyAllUnitIterator::iterateNext - No more units to iterate.");
 					return false;
 				}
-				
+
 				atUnit++;
 				return foundUnits[atUnit-1];
 			}
@@ -368,7 +368,7 @@ namespace game
 			if (own < 0 || own >= ABS_MAX_PLAYERS) abort();
 			ownedUnits[own]->remove(unit);
 			ownedUnitAmount[own]--;
-		} 	 
+		}
 		allUnitAmount--;
 	}
 
@@ -443,7 +443,7 @@ namespace game
 
 		// TODO: check getAllUnitAmount first before looping.
 		// (could save some time, if there was a proper counter for the amount)
-		
+
 		LinkedListIterator iter(allUnits);
 		while (iter.iterateAvailable())
 		{
@@ -489,7 +489,7 @@ namespace game
 				{
 					VC3 pos = u->getPosition();
 					VC3 posdiff = pos - ent->lastUpdatePosition;
-					if (fabsf(posdiff.x) > UNIT_QTREE_UPDATE_TRESHOLD 
+					if (fabsf(posdiff.x) > UNIT_QTREE_UPDATE_TRESHOLD
 						|| fabsf(posdiff.z) > UNIT_QTREE_UPDATE_TRESHOLD)
 					{
 						ent->entity->setPosition(pos);

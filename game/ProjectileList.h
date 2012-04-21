@@ -13,7 +13,7 @@ namespace game
 	/**
 	 * A class holding game projectiles.
 	 * Projectiles are usually bullets of some kind.
-	 * 
+	 *
 	 * @version 1.0, 25.6.2002
 	 * @author Jukka Kokkonen <jukka@frozenbyte.com>
 	 * @see Projectile

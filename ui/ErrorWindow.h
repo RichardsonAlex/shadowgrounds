@@ -8,7 +8,7 @@
 namespace ui
 {
 
-  class ErrorWindow : 
+  class ErrorWindow :
 		public ILoggerListener, public IOguiButtonListener,
 		public IOguiEffectListener
   {

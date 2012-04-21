@@ -24,7 +24,7 @@
 // Common datatypes
 #include "DatatypeDef.h"
 
-// Storm3D includes 
+// Storm3D includes
 #include "Storm3D_Common.h"
 #include "Storm3D_Datatypes.h"
 #include "IStorm3D_Texture.h"
@@ -50,7 +50,7 @@ class ST3D_EXP_DLLAPI IStorm3D_Light
 
 public:
 
-	enum LTYPE 
+	enum LTYPE
 	{
 		LTYPE_POINT			=0,
 		LTYPE_DIRECTIONAL	=1,

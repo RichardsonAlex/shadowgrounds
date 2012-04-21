@@ -108,7 +108,7 @@ public:
 	// sets events that will be sent to listener (defaults to click event only)
 	void SetEventMask(int allowedEvents);
 
-	// sets cursor buttons to which this button visually reacts to 
+	// sets cursor buttons to which this button visually reacts to
 	// that is, to which buttons presses the button down image is shown
 	// (also, defines whether button highlighting will occur or not)
 	void SetReactMask(int reactButtons);
@@ -201,7 +201,7 @@ private:
 	float rotation;
 	
 
-	// some internal hacks 
+	// some internal hacks
 	// (the real button implementation is hidden behind this pointer)
 	void *but;
 

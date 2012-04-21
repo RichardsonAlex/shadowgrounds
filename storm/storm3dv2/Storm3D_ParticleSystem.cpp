@@ -121,7 +121,7 @@ void releaseBuffers()
 	\param scene scene
 	\param distortion use distortion
 */
-void Storm3D_ParticleSystem::Render(Storm3D_Scene* scene, bool distortion) 
+void Storm3D_ParticleSystem::Render(Storm3D_Scene* scene, bool distortion)
 {
 	RenderImp(scene, distortion);
 	Clear();
@@ -132,7 +132,7 @@ void Storm3D_ParticleSystem::Render(Storm3D_Scene* scene, bool distortion)
 	\param scene scene
 	\param distortion use distortion
 */
-void Storm3D_ParticleSystem::RenderImp(Storm3D_Scene *scene, bool distortion) 
+void Storm3D_ParticleSystem::RenderImp(Storm3D_Scene *scene, bool distortion)
 {
 	frozenbyte::storm::setCulling(CULL_NONE);
 	glActiveTexture(GL_TEXTURE0);
@@ -189,7 +189,7 @@ void Storm3D_ParticleSystem::RenderImp(Storm3D_Scene *scene, bool distortion)
 		if(updatePointer)
 		{
 			std::vector<IParticleArray *>::iterator it = m_particleArrays.begin();
-			for(; it != m_particleArrays.end(); ++it) 
+			for(; it != m_particleArrays.end(); ++it)
 			{
 				if((*it)->isDistorted() == distortion)
 				{
@@ -240,7 +240,7 @@ void Storm3D_ParticleSystem::RenderImp(Storm3D_Scene *scene, bool distortion)
 	// Render arrays
 	{
 		std::vector<IParticleArray *>::iterator it = m_particleArrays.begin();
-		for(; it != m_particleArrays.end(); ++it) 
+		for(; it != m_particleArrays.end(); ++it)
 		{
 			if((*it)->isDistorted() == distortion)
 			{
@@ -273,10 +273,10 @@ void Storm3D_ParticleSystem::RenderImp(Storm3D_Scene *scene, bool distortion)
 }
 
 //! Clear
-void Storm3D_ParticleSystem::Clear() 
+void Storm3D_ParticleSystem::Clear()
 {
 	std::vector<IParticleArray *>::iterator it = m_particleArrays.begin();
-	for(; it != m_particleArrays.end(); ++it) 
+	for(; it != m_particleArrays.end(); ++it)
 			delete (*it);
 
 	m_particleArrays.clear();

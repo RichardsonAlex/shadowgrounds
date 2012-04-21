@@ -88,152 +88,152 @@ namespace ui
 		font = ogui->LoadFont("Data/Fonts/anirecorder.ogf");
 		smallFont = ogui->LoadFont("Data/Fonts/anirecorder_small.ogf");
 
-    closebut = ogui->CreateSimpleImageButton(win, 6, 6, 16, 16, 
-      "Data/GUI/Buttons/Anirecorder/close.tga", 
+    closebut = ogui->CreateSimpleImageButton(win, 6, 6, 16, 16,
+      "Data/GUI/Buttons/Anirecorder/close.tga",
 			"Data/GUI/Buttons/Anirecorder/close_down.tga",
-      "Data/GUI/Buttons/Anirecorder/close.tga", 
+      "Data/GUI/Buttons/Anirecorder/close.tga",
 			ANIRECW_CLOSE);
     closebut->SetListener(this);
 		closebut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    minibut = ogui->CreateSimpleImageButton(win, 512-16-6, 6, 16, 16, 
-      "Data/GUI/Buttons/Anirecorder/scroll_up.tga", 
+    minibut = ogui->CreateSimpleImageButton(win, 512-16-6, 6, 16, 16,
+      "Data/GUI/Buttons/Anirecorder/scroll_up.tga",
 			"Data/GUI/Buttons/Anirecorder/scroll_up_pressed.tga",
-      "Data/GUI/Buttons/Anirecorder/scroll_up.tga", 
+      "Data/GUI/Buttons/Anirecorder/scroll_up.tga",
 			ANIRECW_MINIMIZE);
     minibut->SetListener(this);
 		minibut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    cameraModeBut = ogui->CreateSimpleImageButton(win, 8, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/cammode.tga", 
-      "Data/GUI/Buttons/Anirecorder/cammode_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/cammode.tga", 
+    cameraModeBut = ogui->CreateSimpleImageButton(win, 8, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/cammode.tga",
+      "Data/GUI/Buttons/Anirecorder/cammode_down.tga",
+      "Data/GUI/Buttons/Anirecorder/cammode.tga",
 			ANIRECW_CAMERAMODE);
     cameraModeBut->SetListener(this);
 		cameraModeBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    cameraDumpBut = ogui->CreateSimpleImageButton(win, 8+40*1, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/camdump.tga", 
-      "Data/GUI/Buttons/Anirecorder/camdump_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/camdump.tga", 
-      "Data/GUI/Buttons/Anirecorder/camdump_disabled.tga", 
+    cameraDumpBut = ogui->CreateSimpleImageButton(win, 8+40*1, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/camdump.tga",
+      "Data/GUI/Buttons/Anirecorder/camdump_down.tga",
+      "Data/GUI/Buttons/Anirecorder/camdump.tga",
+      "Data/GUI/Buttons/Anirecorder/camdump_disabled.tga",
 			ANIRECW_CAMERADUMP);
     cameraDumpBut->SetListener(this);
     cameraDumpBut->SetDisabled(true);
 		cameraDumpBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraDumpBut->SetHotKey(KEYCODE_KEYPAD_1);
 
-    cameraTestBut = ogui->CreateSimpleImageButton(win, 8+40*2, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/camtest.tga", 
-      "Data/GUI/Buttons/Anirecorder/camtest_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/camtest.tga", 
-      "Data/GUI/Buttons/Anirecorder/camtest_disabled.tga", 
+    cameraTestBut = ogui->CreateSimpleImageButton(win, 8+40*2, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/camtest.tga",
+      "Data/GUI/Buttons/Anirecorder/camtest_down.tga",
+      "Data/GUI/Buttons/Anirecorder/camtest.tga",
+      "Data/GUI/Buttons/Anirecorder/camtest_disabled.tga",
 			ANIRECW_CAMERATEST);
     cameraTestBut->SetListener(this);
     cameraTestBut->SetDisabled(true);
 		cameraTestBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraTestBut->SetHotKey(KEYCODE_KEYPAD_2);
 
-    cameraInterpBut = ogui->CreateSimpleImageButton(win, 8+40*3, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/caminterp.tga", 
-      "Data/GUI/Buttons/Anirecorder/caminterp_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/caminterp.tga", 
-      "Data/GUI/Buttons/Anirecorder/caminterp_disabled.tga", 
+    cameraInterpBut = ogui->CreateSimpleImageButton(win, 8+40*3, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/caminterp.tga",
+      "Data/GUI/Buttons/Anirecorder/caminterp_down.tga",
+      "Data/GUI/Buttons/Anirecorder/caminterp.tga",
+      "Data/GUI/Buttons/Anirecorder/caminterp_disabled.tga",
 			ANIRECW_CAMERAINTERP);
     cameraInterpBut->SetListener(this);
     cameraInterpBut->SetDisabled(true);
 		cameraInterpBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraInterpBut->SetHotKey(KEYCODE_KEYPAD_3);
 
-    cameraDelBut = ogui->CreateSimpleImageButton(win, 8+40*4, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/camdel.tga", 
-      "Data/GUI/Buttons/Anirecorder/camdel_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/camdel.tga", 
-      "Data/GUI/Buttons/Anirecorder/camdel_disabled.tga", 
+    cameraDelBut = ogui->CreateSimpleImageButton(win, 8+40*4, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/camdel.tga",
+      "Data/GUI/Buttons/Anirecorder/camdel_down.tga",
+      "Data/GUI/Buttons/Anirecorder/camdel.tga",
+      "Data/GUI/Buttons/Anirecorder/camdel_disabled.tga",
 			ANIRECW_CAMERADELETE);
     cameraDelBut->SetListener(this);
     cameraDelBut->SetDisabled(true);
 		cameraDelBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraDelBut->SetHotKey(KEYCODE_KEYPAD_4);
 
-    addUnitBut = ogui->CreateSimpleImageButton(win, 256+40*0, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/addunit.tga", 
-      "Data/GUI/Buttons/Anirecorder/addunit_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/addunit.tga", 
-      "Data/GUI/Buttons/Anirecorder/addunit_disabled.tga", 
+    addUnitBut = ogui->CreateSimpleImageButton(win, 256+40*0, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/addunit.tga",
+      "Data/GUI/Buttons/Anirecorder/addunit_down.tga",
+      "Data/GUI/Buttons/Anirecorder/addunit.tga",
+      "Data/GUI/Buttons/Anirecorder/addunit_disabled.tga",
 			ANIRECW_ADDUNIT);
     addUnitBut->SetListener(this);
 		addUnitBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    removeUnitBut = ogui->CreateSimpleImageButton(win, 256+40*1, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/removeunit.tga", 
-      "Data/GUI/Buttons/Anirecorder/removeunit_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/removeunit.tga", 
-      "Data/GUI/Buttons/Anirecorder/removeunit_disabled.tga", 
+    removeUnitBut = ogui->CreateSimpleImageButton(win, 256+40*1, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/removeunit.tga",
+      "Data/GUI/Buttons/Anirecorder/removeunit_down.tga",
+      "Data/GUI/Buttons/Anirecorder/removeunit.tga",
+      "Data/GUI/Buttons/Anirecorder/removeunit_disabled.tga",
 			ANIRECW_REMOVEUNIT);
     removeUnitBut->SetListener(this);
 		removeUnitBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    recBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*2, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/rec.tga", 
-      "Data/GUI/Buttons/Anirecorder/rec_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/rec.tga", 
-      "Data/GUI/Buttons/Anirecorder/rec_disabled.tga", 
+    recBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*2, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/rec.tga",
+      "Data/GUI/Buttons/Anirecorder/rec_down.tga",
+      "Data/GUI/Buttons/Anirecorder/rec.tga",
+      "Data/GUI/Buttons/Anirecorder/rec_disabled.tga",
 			ANIRECW_REC);
     recBut->SetListener(this);
 		recBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		recBut->SetHotKey(KEYCODE_KEYPAD_5);
 
-    playBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*3, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/play.tga", 
-      "Data/GUI/Buttons/Anirecorder/play_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/play.tga", 
-      "Data/GUI/Buttons/Anirecorder/play_disabled.tga", 
+    playBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*3, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/play.tga",
+      "Data/GUI/Buttons/Anirecorder/play_down.tga",
+      "Data/GUI/Buttons/Anirecorder/play.tga",
+      "Data/GUI/Buttons/Anirecorder/play_disabled.tga",
 			ANIRECW_PLAY);
     playBut->SetListener(this);
 		playBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		playBut->SetHotKey(KEYCODE_KEYPAD_6);
 
-    pauseBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*4, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/pause.tga", 
-      "Data/GUI/Buttons/Anirecorder/pause_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/pause.tga", 
-      "Data/GUI/Buttons/Anirecorder/pause_disabled.tga", 
+    pauseBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*4, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/pause.tga",
+      "Data/GUI/Buttons/Anirecorder/pause_down.tga",
+      "Data/GUI/Buttons/Anirecorder/pause.tga",
+      "Data/GUI/Buttons/Anirecorder/pause_disabled.tga",
 			ANIRECW_PAUSE);
     pauseBut->SetListener(this);
 		pauseBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		pauseBut->SetHotKey(KEYCODE_KEYPAD_7);
 
-    rewindBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*5, 32, 32, 32, 
-      "Data/GUI/Buttons/Anirecorder/rewind.tga", 
-      "Data/GUI/Buttons/Anirecorder/rewind_down.tga", 
-      "Data/GUI/Buttons/Anirecorder/rewind.tga", 
-      "Data/GUI/Buttons/Anirecorder/rewind_disabled.tga", 
+    rewindBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*5, 32, 32, 32,
+      "Data/GUI/Buttons/Anirecorder/rewind.tga",
+      "Data/GUI/Buttons/Anirecorder/rewind_down.tga",
+      "Data/GUI/Buttons/Anirecorder/rewind.tga",
+      "Data/GUI/Buttons/Anirecorder/rewind_disabled.tga",
 			ANIRECW_REWIND);
     rewindBut->SetListener(this);
 		rewindBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		rewindBut->SetHotKey(KEYCODE_KEYPAD_8);
 
-    positionBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16, 
-      "Data/GUI/Buttons/Anirecorder/position.tga", 
+    positionBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16,
+      "Data/GUI/Buttons/Anirecorder/position.tga",
 			"Data/GUI/Buttons/Anirecorder/position.tga",
-      "Data/GUI/Buttons/Anirecorder/position.tga", 
+      "Data/GUI/Buttons/Anirecorder/position.tga",
 			ANIRECW_POSITION);
     positionBut->SetListener(this);
 
-    positionEndBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16, 
-      "Data/GUI/Buttons/Anirecorder/position_end.tga", 
+    positionEndBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16,
+      "Data/GUI/Buttons/Anirecorder/position_end.tga",
 			"Data/GUI/Buttons/Anirecorder/position_end.tga",
-      "Data/GUI/Buttons/Anirecorder/position_end.tga", 
+      "Data/GUI/Buttons/Anirecorder/position_end.tga",
 			ANIRECW_POSITION_END);
     positionEndBut->SetListener(this);
     positionEndBut->SetDisabled(true);
 		//positionEndBut->SetEventMask(OGUI_EMASK_PRESS|OGUI_EMASK_OVER|OGUI_EMASK_LEAVE|OGUI_EMASK_OUT|OGUI_EMASK_CLICK);
 
-    sliderBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, ANIRECW_SLIDER_WIDTH, 16, 
-      "Data/GUI/Buttons/Anirecorder/slider.tga", 
+    sliderBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, ANIRECW_SLIDER_WIDTH, 16,
+      "Data/GUI/Buttons/Anirecorder/slider.tga",
 			"Data/GUI/Buttons/Anirecorder/slider.tga",
-      "Data/GUI/Buttons/Anirecorder/slider.tga", 
+      "Data/GUI/Buttons/Anirecorder/slider.tga",
 			ANIRECW_SLIDER);
     sliderBut->SetListener(this);
 		sliderBut->SetEventMask(OGUI_EMASK_PRESS|OGUI_EMASK_OVER|OGUI_EMASK_LEAVE|OGUI_EMASK_OUT|OGUI_EMASK_CLICK);
@@ -260,152 +260,152 @@ namespace ui
 		font = ogui->LoadFont("data/gui/font/menu/anirecorder/anirecorder.ogf");
 		smallFont = ogui->LoadFont("data/gui/font/menu/anirecorder/anirecorder_small.ogf");
 
-    closebut = ogui->CreateSimpleImageButton(win, 6, 6, 16, 16, 
-      "data/gui/menu/anirecorder/button/close.tga", 
+    closebut = ogui->CreateSimpleImageButton(win, 6, 6, 16, 16,
+      "data/gui/menu/anirecorder/button/close.tga",
 			"data/gui/menu/anirecorder/button/close_down.tga",
-      "data/gui/menu/anirecorder/button/close.tga", 
+      "data/gui/menu/anirecorder/button/close.tga",
 			ANIRECW_CLOSE);
     closebut->SetListener(this);
 		closebut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    minibut = ogui->CreateSimpleImageButton(win, 512-16-6, 6, 16, 16, 
-      "data/gui/menu/anirecorder/button/scroll_up.tga", 
+    minibut = ogui->CreateSimpleImageButton(win, 512-16-6, 6, 16, 16,
+      "data/gui/menu/anirecorder/button/scroll_up.tga",
 			"data/gui/menu/anirecorder/button/scroll_up_pressed.tga",
-      "data/gui/menu/anirecorder/button/scroll_up.tga", 
+      "data/gui/menu/anirecorder/button/scroll_up.tga",
 			ANIRECW_MINIMIZE);
     minibut->SetListener(this);
 		minibut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    cameraModeBut = ogui->CreateSimpleImageButton(win, 8, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/cammode.tga", 
-      "data/gui/menu/anirecorder/button/cammode_down.tga", 
-      "data/gui/menu/anirecorder/button/cammode.tga", 
+    cameraModeBut = ogui->CreateSimpleImageButton(win, 8, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/cammode.tga",
+      "data/gui/menu/anirecorder/button/cammode_down.tga",
+      "data/gui/menu/anirecorder/button/cammode.tga",
 			ANIRECW_CAMERAMODE);
     cameraModeBut->SetListener(this);
 		cameraModeBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    cameraDumpBut = ogui->CreateSimpleImageButton(win, 8+40*1, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/camdump.tga", 
-      "data/gui/menu/anirecorder/button/camdump_down.tga", 
-      "data/gui/menu/anirecorder/button/camdump.tga", 
-      "data/gui/menu/anirecorder/button/camdump_disabled.tga", 
+    cameraDumpBut = ogui->CreateSimpleImageButton(win, 8+40*1, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/camdump.tga",
+      "data/gui/menu/anirecorder/button/camdump_down.tga",
+      "data/gui/menu/anirecorder/button/camdump.tga",
+      "data/gui/menu/anirecorder/button/camdump_disabled.tga",
 			ANIRECW_CAMERADUMP);
     cameraDumpBut->SetListener(this);
     cameraDumpBut->SetDisabled(true);
 		cameraDumpBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraDumpBut->SetHotKey(KEYCODE_KEYPAD_1);
 
-    cameraTestBut = ogui->CreateSimpleImageButton(win, 8+40*2, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/camtest.tga", 
-      "data/gui/menu/anirecorder/button/camtest_down.tga", 
-      "data/gui/menu/anirecorder/button/camtest.tga", 
-      "data/gui/menu/anirecorder/button/camtest_disabled.tga", 
+    cameraTestBut = ogui->CreateSimpleImageButton(win, 8+40*2, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/camtest.tga",
+      "data/gui/menu/anirecorder/button/camtest_down.tga",
+      "data/gui/menu/anirecorder/button/camtest.tga",
+      "data/gui/menu/anirecorder/button/camtest_disabled.tga",
 			ANIRECW_CAMERATEST);
     cameraTestBut->SetListener(this);
     cameraTestBut->SetDisabled(true);
 		cameraTestBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraTestBut->SetHotKey(KEYCODE_KEYPAD_2);
 
-    cameraInterpBut = ogui->CreateSimpleImageButton(win, 8+40*3, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/caminterp.tga", 
-      "data/gui/menu/anirecorder/button/caminterp_down.tga", 
-      "data/gui/menu/anirecorder/button/caminterp.tga", 
-      "data/gui/menu/anirecorder/button/caminterp_disabled.tga", 
+    cameraInterpBut = ogui->CreateSimpleImageButton(win, 8+40*3, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/caminterp.tga",
+      "data/gui/menu/anirecorder/button/caminterp_down.tga",
+      "data/gui/menu/anirecorder/button/caminterp.tga",
+      "data/gui/menu/anirecorder/button/caminterp_disabled.tga",
 			ANIRECW_CAMERAINTERP);
     cameraInterpBut->SetListener(this);
     cameraInterpBut->SetDisabled(true);
 		cameraInterpBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraInterpBut->SetHotKey(KEYCODE_KEYPAD_3);
 
-    cameraDelBut = ogui->CreateSimpleImageButton(win, 8+40*4, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/camdel.tga", 
-      "data/gui/menu/anirecorder/button/camdel_down.tga", 
-      "data/gui/menu/anirecorder/button/camdel.tga", 
-      "data/gui/menu/anirecorder/button/camdel_disabled.tga", 
+    cameraDelBut = ogui->CreateSimpleImageButton(win, 8+40*4, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/camdel.tga",
+      "data/gui/menu/anirecorder/button/camdel_down.tga",
+      "data/gui/menu/anirecorder/button/camdel.tga",
+      "data/gui/menu/anirecorder/button/camdel_disabled.tga",
 			ANIRECW_CAMERADELETE);
     cameraDelBut->SetListener(this);
     cameraDelBut->SetDisabled(true);
 		cameraDelBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		cameraDelBut->SetHotKey(KEYCODE_KEYPAD_4);
 
-    addUnitBut = ogui->CreateSimpleImageButton(win, 256+40*0, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/addunit.tga", 
-      "data/gui/menu/anirecorder/button/addunit_down.tga", 
-      "data/gui/menu/anirecorder/button/addunit.tga", 
-      "data/gui/menu/anirecorder/button/addunit_disabled.tga", 
+    addUnitBut = ogui->CreateSimpleImageButton(win, 256+40*0, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/addunit.tga",
+      "data/gui/menu/anirecorder/button/addunit_down.tga",
+      "data/gui/menu/anirecorder/button/addunit.tga",
+      "data/gui/menu/anirecorder/button/addunit_disabled.tga",
 			ANIRECW_ADDUNIT);
     addUnitBut->SetListener(this);
 		addUnitBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    removeUnitBut = ogui->CreateSimpleImageButton(win, 256+40*1, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/removeunit.tga", 
-      "data/gui/menu/anirecorder/button/removeunit_down.tga", 
-      "data/gui/menu/anirecorder/button/removeunit.tga", 
-      "data/gui/menu/anirecorder/button/removeunit_disabled.tga", 
+    removeUnitBut = ogui->CreateSimpleImageButton(win, 256+40*1, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/removeunit.tga",
+      "data/gui/menu/anirecorder/button/removeunit_down.tga",
+      "data/gui/menu/anirecorder/button/removeunit.tga",
+      "data/gui/menu/anirecorder/button/removeunit_disabled.tga",
 			ANIRECW_REMOVEUNIT);
     removeUnitBut->SetListener(this);
 		removeUnitBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-    recBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*2, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/rec.tga", 
-      "data/gui/menu/anirecorder/button/rec_down.tga", 
-      "data/gui/menu/anirecorder/button/rec.tga", 
-      "data/gui/menu/anirecorder/button/rec_disabled.tga", 
+    recBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*2, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/rec.tga",
+      "data/gui/menu/anirecorder/button/rec_down.tga",
+      "data/gui/menu/anirecorder/button/rec.tga",
+      "data/gui/menu/anirecorder/button/rec_disabled.tga",
 			ANIRECW_REC);
     recBut->SetListener(this);
 		recBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		recBut->SetHotKey(KEYCODE_KEYPAD_5);
 
-    playBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*3, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/play.tga", 
-      "data/gui/menu/anirecorder/button/play_down.tga", 
-      "data/gui/menu/anirecorder/button/play.tga", 
-      "data/gui/menu/anirecorder/button/play_disabled.tga", 
+    playBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*3, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/play.tga",
+      "data/gui/menu/anirecorder/button/play_down.tga",
+      "data/gui/menu/anirecorder/button/play.tga",
+      "data/gui/menu/anirecorder/button/play_disabled.tga",
 			ANIRECW_PLAY);
     playBut->SetListener(this);
 		playBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		playBut->SetHotKey(KEYCODE_KEYPAD_6);
 
-    pauseBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*4, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/pause.tga", 
-      "data/gui/menu/anirecorder/button/pause_down.tga", 
-      "data/gui/menu/anirecorder/button/pause.tga", 
-      "data/gui/menu/anirecorder/button/pause_disabled.tga", 
+    pauseBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*4, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/pause.tga",
+      "data/gui/menu/anirecorder/button/pause_down.tga",
+      "data/gui/menu/anirecorder/button/pause.tga",
+      "data/gui/menu/anirecorder/button/pause_disabled.tga",
 			ANIRECW_PAUSE);
     pauseBut->SetListener(this);
 		pauseBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		pauseBut->SetHotKey(KEYCODE_KEYPAD_7);
 
-    rewindBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*5, 32, 32, 32, 
-      "data/gui/menu/anirecorder/button/rewind.tga", 
-      "data/gui/menu/anirecorder/button/rewind_down.tga", 
-      "data/gui/menu/anirecorder/button/rewind.tga", 
-      "data/gui/menu/anirecorder/button/rewind_disabled.tga", 
+    rewindBut = ogui->CreateSimpleImageButton(win, 256+8+8+40*5, 32, 32, 32,
+      "data/gui/menu/anirecorder/button/rewind.tga",
+      "data/gui/menu/anirecorder/button/rewind_down.tga",
+      "data/gui/menu/anirecorder/button/rewind.tga",
+      "data/gui/menu/anirecorder/button/rewind_disabled.tga",
 			ANIRECW_REWIND);
     rewindBut->SetListener(this);
 		rewindBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 		rewindBut->SetHotKey(KEYCODE_KEYPAD_8);
 
-    positionBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16, 
-      "data/gui/menu/anirecorder/button/position.tga", 
+    positionBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16,
+      "data/gui/menu/anirecorder/button/position.tga",
 			"data/gui/menu/anirecorder/button/position.tga",
-      "data/gui/menu/anirecorder/button/position.tga", 
+      "data/gui/menu/anirecorder/button/position.tga",
 			ANIRECW_POSITION);
     positionBut->SetListener(this);
 
-    positionEndBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16, 
-      "data/gui/menu/anirecorder/button/position_end.tga", 
+    positionEndBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, 16, 16,
+      "data/gui/menu/anirecorder/button/position_end.tga",
 			"data/gui/menu/anirecorder/button/position_end.tga",
-      "data/gui/menu/anirecorder/button/position_end.tga", 
+      "data/gui/menu/anirecorder/button/position_end.tga",
 			ANIRECW_POSITION_END);
     positionEndBut->SetListener(this);
     positionEndBut->SetDisabled(true);
 		//positionEndBut->SetEventMask(OGUI_EMASK_PRESS|OGUI_EMASK_OVER|OGUI_EMASK_LEAVE|OGUI_EMASK_OUT|OGUI_EMASK_CLICK);
 
-    sliderBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, ANIRECW_SLIDER_WIDTH, 16, 
-      "data/gui/menu/anirecorder/button/slider.tga", 
+    sliderBut = ogui->CreateSimpleImageButton(win, 12, 80+16*6, ANIRECW_SLIDER_WIDTH, 16,
+      "data/gui/menu/anirecorder/button/slider.tga",
 			"data/gui/menu/anirecorder/button/slider.tga",
-      "data/gui/menu/anirecorder/button/slider.tga", 
+      "data/gui/menu/anirecorder/button/slider.tga",
 			ANIRECW_SLIDER);
     sliderBut->SetListener(this);
 		sliderBut->SetEventMask(OGUI_EMASK_PRESS|OGUI_EMASK_OVER|OGUI_EMASK_LEAVE|OGUI_EMASK_OUT|OGUI_EMASK_CLICK);
@@ -519,7 +519,7 @@ namespace ui
 			tickSelectList->addItem(tmpstr.c_str(), tmpstr2.c_str(), false);
 		}
 
-	
+
 		/*
 		for (int i = 1; i < ANIM_AMOUNT; i++)
 		{
@@ -531,220 +531,220 @@ namespace ui
 
 #ifdef LEGACY_FILES
 
-		recordPathBut = ogui->CreateSimpleImageButton(win, 8, 80+24+16*7, 32, 32, 
-			"Data/GUI/Buttons/Anirecorder/recpath.tga", 
-			"Data/GUI/Buttons/Anirecorder/recpath_down.tga", 
-			"Data/GUI/Buttons/Anirecorder/recpath.tga", 
-			"Data/GUI/Buttons/Anirecorder/recpath_disabled.tga", 
+		recordPathBut = ogui->CreateSimpleImageButton(win, 8, 80+24+16*7, 32, 32,
+			"Data/GUI/Buttons/Anirecorder/recpath.tga",
+			"Data/GUI/Buttons/Anirecorder/recpath_down.tga",
+			"Data/GUI/Buttons/Anirecorder/recpath.tga",
+			"Data/GUI/Buttons/Anirecorder/recpath_disabled.tga",
 			ANIRECW_RECORDPATH);
 		recordPathBut->SetListener(this);
 		recordPathBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		reloadBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+16*7, 32, 32, 
-			"Data/GUI/Buttons/Anirecorder/reload.tga", 
-			"Data/GUI/Buttons/Anirecorder/reload_down.tga", 
-			"Data/GUI/Buttons/Anirecorder/reload.tga", 
-			"Data/GUI/Buttons/Anirecorder/reload_disabled.tga", 
+		reloadBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+16*7, 32, 32,
+			"Data/GUI/Buttons/Anirecorder/reload.tga",
+			"Data/GUI/Buttons/Anirecorder/reload_down.tga",
+			"Data/GUI/Buttons/Anirecorder/reload.tga",
+			"Data/GUI/Buttons/Anirecorder/reload_disabled.tga",
 			ANIRECW_RELOAD);
 		reloadBut->SetListener(this);
 		reloadBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		addFewTicksBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*3, 80+24+16*7, 32, 32, 			
-		"Data/GUI/Buttons/Anirecorder/fewticks.tga", 
-		"Data/GUI/Buttons/Anirecorder/fewticks_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/fewticks.tga", 
-		"Data/GUI/Buttons/Anirecorder/fewticks_disabled.tga", 
+		addFewTicksBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*3, 80+24+16*7, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/fewticks.tga",
+		"Data/GUI/Buttons/Anirecorder/fewticks_down.tga",
+		"Data/GUI/Buttons/Anirecorder/fewticks.tga",
+		"Data/GUI/Buttons/Anirecorder/fewticks_disabled.tga",
 		ANIRECW_ADDFEWTICKS);
 		addFewTicksBut->SetListener(this);
 		addFewTicksBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		smoothPositionBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*4-2, 80+24+16*7, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/smoothposition.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothposition_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothposition.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothposition_disabled.tga", 
+		smoothPositionBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*4-2, 80+24+16*7, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/smoothposition.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothposition_down.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothposition.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothposition_disabled.tga",
 		ANIRECW_SMOOTHPOSITION);
 		smoothPositionBut->SetListener(this);
 		smoothPositionBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		smoothRotationBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*5-4, 80+24+16*7, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/smoothrotation.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothrotation_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothrotation.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothrotation_disabled.tga", 
+		smoothRotationBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*5-4, 80+24+16*7, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/smoothrotation.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothrotation_down.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothrotation.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothrotation_disabled.tga",
 		ANIRECW_SMOOTHROTATION);
 		smoothRotationBut->SetListener(this);
 		smoothRotationBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		smoothAimBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*6-6, 80+24+16*7, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/smoothaim.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothaim_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothaim.tga", 
-		"Data/GUI/Buttons/Anirecorder/smoothaim_disabled.tga", 
+		smoothAimBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*6-6, 80+24+16*7, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/smoothaim.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothaim_down.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothaim.tga",
+		"Data/GUI/Buttons/Anirecorder/smoothaim_disabled.tga",
 		ANIRECW_SMOOTHAIM);
 		smoothAimBut->SetListener(this);
 		smoothAimBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		addAnimBut = ogui->CreateSimpleImageButton(win, 8+24+40*11, 80+24+16*7, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/addanim.tga", 
-		"Data/GUI/Buttons/Anirecorder/addanim_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/addanim.tga", 
-		"Data/GUI/Buttons/Anirecorder/addanim_disabled.tga", 
+		addAnimBut = ogui->CreateSimpleImageButton(win, 8+24+40*11, 80+24+16*7, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/addanim.tga",
+		"Data/GUI/Buttons/Anirecorder/addanim_down.tga",
+		"Data/GUI/Buttons/Anirecorder/addanim.tga",
+		"Data/GUI/Buttons/Anirecorder/addanim_disabled.tga",
 		ANIRECW_ADDANIM);
 		addAnimBut->SetListener(this);
 		addAnimBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		undoBut = ogui->CreateSimpleImageButton(win, 8+40*0, 80+24+8+16*9, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/undo.tga", 
-		"Data/GUI/Buttons/Anirecorder/undo_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/undo.tga", 
-		"Data/GUI/Buttons/Anirecorder/undo_disabled.tga", 
+		undoBut = ogui->CreateSimpleImageButton(win, 8+40*0, 80+24+8+16*9, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/undo.tga",
+		"Data/GUI/Buttons/Anirecorder/undo_down.tga",
+		"Data/GUI/Buttons/Anirecorder/undo.tga",
+		"Data/GUI/Buttons/Anirecorder/undo_disabled.tga",
 		ANIRECW_UNDO);
 		undoBut->SetListener(this);
 		undoBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		redoBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+8+16*9, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/redo.tga", 
-		"Data/GUI/Buttons/Anirecorder/redo_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/redo.tga", 
-		"Data/GUI/Buttons/Anirecorder/redo_disabled.tga", 
+		redoBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+8+16*9, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/redo.tga",
+		"Data/GUI/Buttons/Anirecorder/redo_down.tga",
+		"Data/GUI/Buttons/Anirecorder/redo.tga",
+		"Data/GUI/Buttons/Anirecorder/redo_disabled.tga",
 		ANIRECW_REDO);
 		redoBut->SetListener(this);
 		redoBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		deletePositionBut = ogui->CreateSimpleImageButton(win, 8+8+40*2, 80+24+8+16*9, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/deleteposition.tga", 
-		"Data/GUI/Buttons/Anirecorder/deleteposition_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/deleteposition.tga", 
-		"Data/GUI/Buttons/Anirecorder/deleteposition_disabled.tga", 
+		deletePositionBut = ogui->CreateSimpleImageButton(win, 8+8+40*2, 80+24+8+16*9, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/deleteposition.tga",
+		"Data/GUI/Buttons/Anirecorder/deleteposition_down.tga",
+		"Data/GUI/Buttons/Anirecorder/deleteposition.tga",
+		"Data/GUI/Buttons/Anirecorder/deleteposition_disabled.tga",
 		ANIRECW_DELETEPOSITION);
 		deletePositionBut->SetListener(this);
 		deletePositionBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		addCommandsBut = ogui->CreateSimpleImageButton(win, 8+8+40*3, 80+24+8+16*9, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/commands.tga", 
-		"Data/GUI/Buttons/Anirecorder/commands_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/commands.tga", 
-		"Data/GUI/Buttons/Anirecorder/commands_disabled.tga", 
+		addCommandsBut = ogui->CreateSimpleImageButton(win, 8+8+40*3, 80+24+8+16*9, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/commands.tga",
+		"Data/GUI/Buttons/Anirecorder/commands_down.tga",
+		"Data/GUI/Buttons/Anirecorder/commands.tga",
+		"Data/GUI/Buttons/Anirecorder/commands_disabled.tga",
 		ANIRECW_ADDCOMMANDS);
 		addCommandsBut->SetListener(this);
 		addCommandsBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		dropOnGroundBut = ogui->CreateSimpleImageButton(win, 8+8+40*4, 80+24+8+16*9, 32, 32, 
-		"Data/GUI/Buttons/Anirecorder/droponground.tga", 
-		"Data/GUI/Buttons/Anirecorder/droponground_down.tga", 
-		"Data/GUI/Buttons/Anirecorder/droponground.tga", 
-		"Data/GUI/Buttons/Anirecorder/droponground_disabled.tga", 
+		dropOnGroundBut = ogui->CreateSimpleImageButton(win, 8+8+40*4, 80+24+8+16*9, 32, 32,
+		"Data/GUI/Buttons/Anirecorder/droponground.tga",
+		"Data/GUI/Buttons/Anirecorder/droponground_down.tga",
+		"Data/GUI/Buttons/Anirecorder/droponground.tga",
+		"Data/GUI/Buttons/Anirecorder/droponground_disabled.tga",
 		ANIRECW_DROPONGROUND);
 		dropOnGroundBut->SetListener(this);
 		dropOnGroundBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
 #else
 
-		recordPathBut = ogui->CreateSimpleImageButton(win, 8, 80+24+16*7, 32, 32, 
-			"data/gui/menu/anirecorder/button/recpath.tga", 
-			"data/gui/menu/anirecorder/button/recpath_down.tga", 
-			"data/gui/menu/anirecorder/button/recpath.tga", 
-			"data/gui/menu/anirecorder/button/recpath_disabled.tga", 
+		recordPathBut = ogui->CreateSimpleImageButton(win, 8, 80+24+16*7, 32, 32,
+			"data/gui/menu/anirecorder/button/recpath.tga",
+			"data/gui/menu/anirecorder/button/recpath_down.tga",
+			"data/gui/menu/anirecorder/button/recpath.tga",
+			"data/gui/menu/anirecorder/button/recpath_disabled.tga",
 			ANIRECW_RECORDPATH);
 		recordPathBut->SetListener(this);
 		recordPathBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		reloadBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+16*7, 32, 32, 
-			"data/gui/menu/anirecorder/button/reload.tga", 
-			"data/gui/menu/anirecorder/button/reload_down.tga", 
-			"data/gui/menu/anirecorder/button/reload.tga", 
-			"data/gui/menu/anirecorder/button/reload_disabled.tga", 
+		reloadBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+16*7, 32, 32,
+			"data/gui/menu/anirecorder/button/reload.tga",
+			"data/gui/menu/anirecorder/button/reload_down.tga",
+			"data/gui/menu/anirecorder/button/reload.tga",
+			"data/gui/menu/anirecorder/button/reload_disabled.tga",
 			ANIRECW_RELOAD);
 		reloadBut->SetListener(this);
 		reloadBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		addFewTicksBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*3, 80+24+16*7, 32, 32, 			
-		"data/gui/menu/anirecorder/button/fewticks.tga", 
-		"data/gui/menu/anirecorder/button/fewticks_down.tga", 
-		"data/gui/menu/anirecorder/button/fewticks.tga", 
-		"data/gui/menu/anirecorder/button/fewticks_disabled.tga", 
+		addFewTicksBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*3, 80+24+16*7, 32, 32,
+		"data/gui/menu/anirecorder/button/fewticks.tga",
+		"data/gui/menu/anirecorder/button/fewticks_down.tga",
+		"data/gui/menu/anirecorder/button/fewticks.tga",
+		"data/gui/menu/anirecorder/button/fewticks_disabled.tga",
 		ANIRECW_ADDFEWTICKS);
 		addFewTicksBut->SetListener(this);
 		addFewTicksBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		smoothPositionBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*4-2, 80+24+16*7, 32, 32, 
-		"data/gui/menu/anirecorder/button/smoothposition.tga", 
-		"data/gui/menu/anirecorder/button/smoothposition_down.tga", 
-		"data/gui/menu/anirecorder/button/smoothposition.tga", 
-		"data/gui/menu/anirecorder/button/smoothposition_disabled.tga", 
+		smoothPositionBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*4-2, 80+24+16*7, 32, 32,
+		"data/gui/menu/anirecorder/button/smoothposition.tga",
+		"data/gui/menu/anirecorder/button/smoothposition_down.tga",
+		"data/gui/menu/anirecorder/button/smoothposition.tga",
+		"data/gui/menu/anirecorder/button/smoothposition_disabled.tga",
 		ANIRECW_SMOOTHPOSITION);
 		smoothPositionBut->SetListener(this);
 		smoothPositionBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		smoothRotationBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*5-4, 80+24+16*7, 32, 32, 
-		"data/gui/menu/anirecorder/button/smoothrotation.tga", 
-		"data/gui/menu/anirecorder/button/smoothrotation_down.tga", 
-		"data/gui/menu/anirecorder/button/smoothrotation.tga", 
-		"data/gui/menu/anirecorder/button/smoothrotation_disabled.tga", 
+		smoothRotationBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*5-4, 80+24+16*7, 32, 32,
+		"data/gui/menu/anirecorder/button/smoothrotation.tga",
+		"data/gui/menu/anirecorder/button/smoothrotation_down.tga",
+		"data/gui/menu/anirecorder/button/smoothrotation.tga",
+		"data/gui/menu/anirecorder/button/smoothrotation_disabled.tga",
 		ANIRECW_SMOOTHROTATION);
 		smoothRotationBut->SetListener(this);
 		smoothRotationBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		smoothAimBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*6-6, 80+24+16*7, 32, 32, 
-		"data/gui/menu/anirecorder/button/smoothaim.tga", 
-		"data/gui/menu/anirecorder/button/smoothaim_down.tga", 
-		"data/gui/menu/anirecorder/button/smoothaim.tga", 
-		"data/gui/menu/anirecorder/button/smoothaim_disabled.tga", 
+		smoothAimBut = ogui->CreateSimpleImageButton(win, 8+16+8+40*6-6, 80+24+16*7, 32, 32,
+		"data/gui/menu/anirecorder/button/smoothaim.tga",
+		"data/gui/menu/anirecorder/button/smoothaim_down.tga",
+		"data/gui/menu/anirecorder/button/smoothaim.tga",
+		"data/gui/menu/anirecorder/button/smoothaim_disabled.tga",
 		ANIRECW_SMOOTHAIM);
 		smoothAimBut->SetListener(this);
 		smoothAimBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		addAnimBut = ogui->CreateSimpleImageButton(win, 8+24+40*11, 80+24+16*7, 32, 32, 
-		"data/gui/menu/anirecorder/button/addanim.tga", 
-		"data/gui/menu/anirecorder/button/addanim_down.tga", 
-		"data/gui/menu/anirecorder/button/addanim.tga", 
-		"data/gui/menu/anirecorder/button/addanim_disabled.tga", 
+		addAnimBut = ogui->CreateSimpleImageButton(win, 8+24+40*11, 80+24+16*7, 32, 32,
+		"data/gui/menu/anirecorder/button/addanim.tga",
+		"data/gui/menu/anirecorder/button/addanim_down.tga",
+		"data/gui/menu/anirecorder/button/addanim.tga",
+		"data/gui/menu/anirecorder/button/addanim_disabled.tga",
 		ANIRECW_ADDANIM);
 		addAnimBut->SetListener(this);
 		addAnimBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		undoBut = ogui->CreateSimpleImageButton(win, 8+40*0, 80+24+8+16*9, 32, 32, 
-		"data/gui/menu/anirecorder/button/undo.tga", 
-		"data/gui/menu/anirecorder/button/undo_down.tga", 
-		"data/gui/menu/anirecorder/button/undo.tga", 
-		"data/gui/menu/anirecorder/button/undo_disabled.tga", 
+		undoBut = ogui->CreateSimpleImageButton(win, 8+40*0, 80+24+8+16*9, 32, 32,
+		"data/gui/menu/anirecorder/button/undo.tga",
+		"data/gui/menu/anirecorder/button/undo_down.tga",
+		"data/gui/menu/anirecorder/button/undo.tga",
+		"data/gui/menu/anirecorder/button/undo_disabled.tga",
 		ANIRECW_UNDO);
 		undoBut->SetListener(this);
 		undoBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		redoBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+8+16*9, 32, 32, 
-		"data/gui/menu/anirecorder/button/redo.tga", 
-		"data/gui/menu/anirecorder/button/redo_down.tga", 
-		"data/gui/menu/anirecorder/button/redo.tga", 
-		"data/gui/menu/anirecorder/button/redo_disabled.tga", 
+		redoBut = ogui->CreateSimpleImageButton(win, 8+40*1, 80+24+8+16*9, 32, 32,
+		"data/gui/menu/anirecorder/button/redo.tga",
+		"data/gui/menu/anirecorder/button/redo_down.tga",
+		"data/gui/menu/anirecorder/button/redo.tga",
+		"data/gui/menu/anirecorder/button/redo_disabled.tga",
 		ANIRECW_REDO);
 		redoBut->SetListener(this);
 		redoBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		deletePositionBut = ogui->CreateSimpleImageButton(win, 8+8+40*2, 80+24+8+16*9, 32, 32, 
-		"data/gui/menu/anirecorder/button/deleteposition.tga", 
-		"data/gui/menu/anirecorder/button/deleteposition_down.tga", 
-		"data/gui/menu/anirecorder/button/deleteposition.tga", 
-		"data/gui/menu/anirecorder/button/deleteposition_disabled.tga", 
+		deletePositionBut = ogui->CreateSimpleImageButton(win, 8+8+40*2, 80+24+8+16*9, 32, 32,
+		"data/gui/menu/anirecorder/button/deleteposition.tga",
+		"data/gui/menu/anirecorder/button/deleteposition_down.tga",
+		"data/gui/menu/anirecorder/button/deleteposition.tga",
+		"data/gui/menu/anirecorder/button/deleteposition_disabled.tga",
 		ANIRECW_DELETEPOSITION);
 		deletePositionBut->SetListener(this);
 		deletePositionBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		addCommandsBut = ogui->CreateSimpleImageButton(win, 8+8+40*3, 80+24+8+16*9, 32, 32, 
-		"data/gui/menu/anirecorder/button/commands.tga", 
-		"data/gui/menu/anirecorder/button/commands_down.tga", 
-		"data/gui/menu/anirecorder/button/commands.tga", 
-		"data/gui/menu/anirecorder/button/commands_disabled.tga", 
+		addCommandsBut = ogui->CreateSimpleImageButton(win, 8+8+40*3, 80+24+8+16*9, 32, 32,
+		"data/gui/menu/anirecorder/button/commands.tga",
+		"data/gui/menu/anirecorder/button/commands_down.tga",
+		"data/gui/menu/anirecorder/button/commands.tga",
+		"data/gui/menu/anirecorder/button/commands_disabled.tga",
 		ANIRECW_ADDCOMMANDS);
 		addCommandsBut->SetListener(this);
 		addCommandsBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
 
-		dropOnGroundBut = ogui->CreateSimpleImageButton(win, 8+8+40*4, 80+24+8+16*9, 32, 32, 
-		"data/gui/menu/anirecorder/button/droponground.tga", 
-		"data/gui/menu/anirecorder/button/droponground_down.tga", 
-		"data/gui/menu/anirecorder/button/droponground.tga", 
-		"data/gui/menu/anirecorder/button/droponground_disabled.tga", 
+		dropOnGroundBut = ogui->CreateSimpleImageButton(win, 8+8+40*4, 80+24+8+16*9, 32, 32,
+		"data/gui/menu/anirecorder/button/droponground.tga",
+		"data/gui/menu/anirecorder/button/droponground_down.tga",
+		"data/gui/menu/anirecorder/button/droponground.tga",
+		"data/gui/menu/anirecorder/button/droponground_disabled.tga",
 		ANIRECW_DROPONGROUND);
 		dropOnGroundBut->SetListener(this);
 		dropOnGroundBut->SetEventMask(OGUI_EMASK_CLICK | OGUI_EMASK_OVER | OGUI_EMASK_LEAVE);
@@ -771,8 +771,8 @@ namespace ui
 			this->sliderHeight = 80+16*6;
 
 			createMiniDependantButtons();
-		} 
-		else if (!this->minimized && minimize) 
+		}
+		else if (!this->minimized && minimize)
 		{
 			this->minimized = true;
 
@@ -1108,7 +1108,7 @@ namespace ui
 				{
 					aniRecorder->seekEndToTime(seekTime);
 					sliderStatus();
-				}				
+				}
 			}
 		}
 
@@ -1349,7 +1349,7 @@ namespace ui
 				LinkedList<game::Unit*> *ulist = game->units->getAllUnits();
 				LinkedListIterator<game::Unit*> iter(ulist);
 				while (iter.iterateAvailable())
-				{ 
+				{
 					game::Unit *u = iter.iterateNext();
 					if (u->isActive())
 					{
@@ -1393,7 +1393,7 @@ namespace ui
 				if (selectedUnit != NULL)
 				{
 					recCounter = ANIRECW_RECORD_COUNT_TIME * GAME_TICKS_PER_SECOND;
-					game->setPaused(true);					
+					game->setPaused(true);
 				}
 			}
 			if (eve->triggerButton->GetId() == ANIRECW_PAUSE)
@@ -1472,7 +1472,7 @@ namespace ui
 					{
 						this->aniRecorder->smoothPosition(this->selectedUnit, currentSelectedTicks);
 					}
-				}				
+				}
 			}
 			if (eve->triggerButton->GetId() == ANIRECW_SMOOTHROTATION)
 			{
@@ -1482,7 +1482,7 @@ namespace ui
 					{
 						this->aniRecorder->smoothRotation(this->selectedUnit, currentSelectedTicks);
 					}
-				}				
+				}
 			}
 			if (eve->triggerButton->GetId() == ANIRECW_SMOOTHAIM)
 			{
@@ -1492,7 +1492,7 @@ namespace ui
 					{
 						this->aniRecorder->smoothAim(this->selectedUnit, currentSelectedTicks);
 					}
-				}				
+				}
 			}
 			if (eve->triggerButton->GetId() == ANIRECW_DELETEPOSITION)
 			{
@@ -1788,7 +1788,7 @@ namespace ui
 			{
 				cameraDelBox = NULL;
 			}
-			if (choice == 0) 
+			if (choice == 0)
 			{
 				aniRecorder->deleteCameraDump(this->selectedCamera);
 				this->selectedCamera = -1;

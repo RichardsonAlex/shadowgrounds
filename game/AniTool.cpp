@@ -890,7 +890,7 @@ namespace game
 				if (gameMap->isWellInScaledBoundaries(positions[i].x, positions[i].z))
 				{
 					positionsNew[i].y = gameMap->getScaledHeightAt(positions[i].x, positions[i].z);
-				} 
+				}
 			}
 		}
 

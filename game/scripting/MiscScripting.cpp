@@ -94,7 +94,7 @@ namespace game
 {
 	extern bool game_in_start_combat;
 
-	void MiscScripting::process(util::ScriptProcess *sp, 
+	void MiscScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game, bool *pause)
 	{
@@ -108,7 +108,7 @@ namespace game
 				gsd->waitRemainder = paramTimeMsec - (gsd->waitCounter * GAME_TICK_MSEC);
 				if (gsd->waitRemainder < 0) gsd->waitRemainder = 0;
 				assert(gsd->waitRemainder < GAME_TICK_MSEC);
-				gsd->waitCounter--; 
+				gsd->waitCounter--;
 				if (gsd->waitCounter < 0) gsd->waitCounter = 0;
 
 				if (intData <= 0)
@@ -130,7 +130,7 @@ namespace game
 				gsd->waitRemainder = paramTimeMsec - (gsd->waitCounter * GAME_TICK_MSEC);
 				if (gsd->waitRemainder < 0) gsd->waitRemainder = 0;
 				assert(gsd->waitRemainder < GAME_TICK_MSEC);
-				gsd->waitCounter--; 
+				gsd->waitCounter--;
 				if (gsd->waitCounter < 0) gsd->waitCounter = 0;
 			}
 
@@ -168,7 +168,7 @@ namespace game
 				// NEW: messages clear any previous messages!
 				game->gameUI->clearGameMessage(GameUI::MESSAGE_TYPE_NORMAL);
 
-				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL, 
+				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL,
 					1, 3000 + strlen(usestr) * 40, GameUI::MESSAGE_TYPE_NORMAL);
 			} else {
 				sp->error("GameScripting::process - message parameter missing.");
@@ -187,7 +187,7 @@ namespace game
 				// NEW: messages clear any previous messages!
 				game->gameUI->clearGameMessage(GameUI::MESSAGE_TYPE_NORMAL);
 
-				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL, 
+				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL,
 					1, 240000, GameUI::MESSAGE_TYPE_NORMAL);
 			} else {
 				sp->error("GameScripting::process - message parameter missing.");
@@ -206,7 +206,7 @@ namespace game
 				// NEW: messages clear any previous messages!
 				game->gameUI->clearGameMessage(GameUI::MESSAGE_TYPE_CENTER_BIG);
 
-				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL, 
+				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL,
 					3, 3000 + strlen(usestr) * 40, GameUI::MESSAGE_TYPE_CENTER_BIG);
 			} else {
 				sp->error("GameScripting::process - centerMessage parameter missing.");
@@ -225,7 +225,7 @@ namespace game
 				// NEW: messages clear any previous messages!
 				game->gameUI->clearGameMessage(GameUI::MESSAGE_TYPE_HINT);
 
-				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL, 
+				game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL,
 					1, 4000 + strlen(usestr) * 40, GameUI::MESSAGE_TYPE_HINT);
 			} else {
 				sp->error("GameScripting::process - hintMessage parameter missing.");
@@ -281,7 +281,7 @@ namespace game
 
 				game->gameUI->clearGameMessage(GameUI::MESSAGE_TYPE_EXECUTE_TIP);
 
-				game->gameUI->gameMessage(convertLocaleGuiString(usestr), NULL, 
+				game->gameUI->gameMessage(convertLocaleGuiString(usestr), NULL,
 					1, 700, GameUI::MESSAGE_TYPE_EXECUTE_TIP);
 			} else {
 				sp->error("GameScripting::process - executeTipMessage parameter missing.");
@@ -299,7 +299,7 @@ namespace game
 
 				game->gameUI->clearGameMessage(GameUI::MESSAGE_TYPE_EXECUTE_TIP);
 
-				game->gameUI->gameMessage(convertLocaleGuiString(usestr), NULL, 
+				game->gameUI->gameMessage(convertLocaleGuiString(usestr), NULL,
 					2, 700, GameUI::MESSAGE_TYPE_EXECUTE_TIP);
 			} else {
 				sp->error("GameScripting::process - executeTipMessage parameter missing.");
@@ -368,10 +368,10 @@ namespace game
 								sp->warning("GameScripting::process - Attempt to characterMessage when lipsync manager is inactive.");
 							}
 
-							game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), vis2d, 
+							game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), vis2d,
 								1, 240000, radioSide);
 						} else {
-							game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), img, 
+							game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), img,
 								1, 240000, GameUI::MESSAGE_TYPE_RADIO);
 						}
 					} else {
@@ -458,7 +458,7 @@ namespace game
 			break;
 
 		case GS_CMD_UNPAUSE:
-			// FIXME: warning! set scrolly on, regardless of 
+			// FIXME: warning! set scrolly on, regardless of
 			// what its state was before pause (as it might have
 			// been disabled by a cinematic script)
 			game->gameUI->setScrollyTemporarilyDisabled(true);
@@ -484,7 +484,7 @@ namespace game
 				gsd->waitRemainder = paramTimeMsec - (gsd->waitCounter * GAME_TICK_MSEC);
 				if (gsd->waitRemainder < 0) gsd->waitRemainder = 0;
 				assert(gsd->waitRemainder < GAME_TICK_MSEC);
-				gsd->waitCounter--; 
+				gsd->waitCounter--;
 				if (gsd->waitCounter < 0) gsd->waitCounter = 0;
 			}
 
@@ -572,7 +572,7 @@ namespace game
 			break;
 
 		case GS_CMD_ISSCRIPTPROCESSOFVALUECINEMATIC:
-			if (*lastValue >= SCRIPTPROCESS_MIN_ID 
+			if (*lastValue >= SCRIPTPROCESS_MIN_ID
 				&& *lastValue <= SCRIPTPROCESS_MAX_ID)
 			{
 				if (game->getCinematicScriptProcessId() == *lastValue)
@@ -641,7 +641,7 @@ namespace game
 			break;
 
 		case GS_CMD_STOPSCRIPTPROCESSBYID:
-			if (*lastValue >= SCRIPTPROCESS_MIN_ID 
+			if (*lastValue >= SCRIPTPROCESS_MIN_ID
 				&& *lastValue <= SCRIPTPROCESS_MAX_ID)
 			{
 				game->stopCustomScriptProcessById(*lastValue);
@@ -704,7 +704,7 @@ namespace game
 		case GS_CMD_DISABLEALLAI:
 			UnitLevelAI::setAllEnabled(false);
 			break;
-		
+
 		case GS_CMD_ENABLEALLAI:
 			UnitLevelAI::setAllEnabled(true);
 			break;
@@ -718,7 +718,7 @@ namespace game
 				}
 			}
 			break;
-		
+
 		case GS_CMD_ENABLEHOSTILEAI:
 			{
 				for (int i = 0; i < ABS_MAX_PLAYERS; i++)
@@ -772,11 +772,11 @@ namespace game
 						{
 							controller->setForcedEnable(ctrlnum, true);
 						} else {
-							sp->error("MiscScripting::process - forceControllerKeyEnabled parameter invalid, no such control name."); 
-							sp->debug(stringData);	
+							sp->error("MiscScripting::process - forceControllerKeyEnabled parameter invalid, no such control name.");
+							sp->debug(stringData);
 						}
 					} else {
-						sp->error("MiscScripting::process - forceControllerKeyEnabled parameter missing, control name expected.");	
+						sp->error("MiscScripting::process - forceControllerKeyEnabled parameter missing, control name expected.");
 					}
 				} else {
 					sp->error("MiscScripting::process - forceControllerKeyEnabled, null controller for given last value (controller number).");
@@ -812,11 +812,11 @@ namespace game
 							//if( controller_status == false )
 							//	controller->setControlsEnabled( controller_status );
 						} else {
-							sp->error("MiscScripting::process - isControllerKeyDown parameter invalid, no such control name."); 
-							sp->debug(stringData);	
+							sp->error("MiscScripting::process - isControllerKeyDown parameter invalid, no such control name.");
+							sp->debug(stringData);
 						}
 					} else {
-						sp->error("MiscScripting::process - isControllerKeyDown parameter missing, control name expected.");	
+						sp->error("MiscScripting::process - isControllerKeyDown parameter missing, control name expected.");
 					}
 				} else {
 					sp->error("MiscScripting::process - isControllerKeyDown, null controller for given last value (controller number).");
@@ -847,11 +847,11 @@ namespace game
 							else
 								*lastValue = 0;
 						} else {
-							sp->error("MiscScripting::process - wasControllerKeyClicked parameter invalid, no such control name."); 
-							sp->debug(stringData);	
+							sp->error("MiscScripting::process - wasControllerKeyClicked parameter invalid, no such control name.");
+							sp->debug(stringData);
 						}
 					} else {
-						sp->error("MiscScripting::process - wasControllerKeyClicked parameter missing, control name expected.");	
+						sp->error("MiscScripting::process - wasControllerKeyClicked parameter missing, control name expected.");
 					}
 				} else {
 					sp->error("MiscScripting::process - wasControllerKeyClicked, null controller for given last value (controller number).");
@@ -876,11 +876,11 @@ namespace game
 						{
 							controller->setControlOn(ctrlnum);
 						} else {
-							sp->error("MiscScripting::process - setControllerKeyDown parameter invalid, no such control name."); 
-							sp->debug(stringData);	
+							sp->error("MiscScripting::process - setControllerKeyDown parameter invalid, no such control name.");
+							sp->debug(stringData);
 						}
 					} else {
-						sp->error("MiscScripting::process - setControllerKeyDown parameter missing, control name expected.");	
+						sp->error("MiscScripting::process - setControllerKeyDown parameter missing, control name expected.");
 					}
 				} else {
 					sp->error("MiscScripting::process - setControllerKeyDown, null controller for given last value (controller number).");
@@ -905,11 +905,11 @@ namespace game
 						{
 							controller->setControlOff(ctrlnum);
 						} else {
-							sp->error("MiscScripting::process - setControllerKeyUp parameter invalid, no such control name."); 
-							sp->debug(stringData);	
+							sp->error("MiscScripting::process - setControllerKeyUp parameter invalid, no such control name.");
+							sp->debug(stringData);
 						}
 					} else {
-						sp->error("MiscScripting::process - setControllerKeyUp parameter missing, control name expected.");	
+						sp->error("MiscScripting::process - setControllerKeyUp parameter missing, control name expected.");
 					}
 				} else {
 					sp->error("MiscScripting::process - setControllerKeyUp, null controller for given last value (controller number).");
@@ -1008,7 +1008,7 @@ namespace game
 				game->gameUI->setEnvironmentLightning(gsd->position);
 			}
 			break;
- 
+
 		case GS_CMD_BIND:
 			if (*lastValue >= 0 && *lastValue < MAX_PLAYERS_PER_CLIENT)
 			{
@@ -1028,7 +1028,7 @@ namespace game
 						int splitpos = 0;
 						for (int i = 0; i < buflen; i++)
 						{
-							if (buf[i] == ',') 
+							if (buf[i] == ',')
 							{
 								buf[i] = '\0';
 								if (i > 0 && buf[i - 1] == ' ')
@@ -1051,19 +1051,19 @@ namespace game
 								{
 									controller->bindKey(ctrlnum, keycode, -1, false);
 								} else {
-									sp->error("MiscScripting::process - bind parameter invalid, no such keycode name.");	
-									sp->debug(&buf[splitpos]);	
+									sp->error("MiscScripting::process - bind parameter invalid, no such keycode name.");
+									sp->debug(&buf[splitpos]);
 								}
 							} else {
-								sp->error("MiscScripting::process - bind parameter invalid, keycode name expected after control name.");	
-								sp->debug(&buf[splitpos]);	
+								sp->error("MiscScripting::process - bind parameter invalid, keycode name expected after control name.");
+								sp->debug(&buf[splitpos]);
 							}
 						} else {
-							sp->error("MiscScripting::process - bind parameter invalid, no such control name.");	
-							sp->debug(&buf[0]); 
+							sp->error("MiscScripting::process - bind parameter invalid, no such control name.");
+							sp->debug(&buf[0]);
 						}
 					} else {
-						sp->error("MiscScripting::process - bind parameter missing, control and keycode name expected."); 
+						sp->error("MiscScripting::process - bind parameter missing, control and keycode name expected.");
 					}
 				} else {
 					sp->error("MiscScripting::process - bind, null controller for given last value (controller number).");
@@ -1089,18 +1089,18 @@ namespace game
 							controller->unbindKey(ctrlnum);
 						} else {
 							sp->debug("MiscScripting::process - unbind parameter was not a control name, assuming it is keycode name.");
-							sp->debug(stringData);	
+							sp->debug(stringData);
 							int keycode = controller->getKeycodeNumberForName(stringData);
 							if (keycode != -1)
 							{
 								controller->unbindKeyByKeycode(keycode);
 							} else {
-								sp->error("MiscScripting::process - unbind parameter invalid, no such control or keycode name."); 
-								sp->debug(stringData);	
+								sp->error("MiscScripting::process - unbind parameter invalid, no such control or keycode name.");
+								sp->debug(stringData);
 							}
 						}
 					} else {
-						sp->error("MiscScripting::process - unbind parameter missing, control or keycode name expected.");	
+						sp->error("MiscScripting::process - unbind parameter missing, control or keycode name expected.");
 					}
 				} else {
 					sp->error("MiscScripting::process - unbind, null controller for given last value (controller number).");
@@ -1187,13 +1187,13 @@ namespace game
 			if (stringData != NULL)
 			{
 				PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(stringData));
-				if (pt == NULL) 
-				{ 
+				if (pt == NULL)
+				{
 					sp->error("MiscScripting::process - addParticleSpawner, reference to unloaded part type.");
 				} else {
 					if (pt->isInherited(
 						getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap"))))
-					{ 
+					{
 						// WARNING: unsafe cast!
 						Weapon *weap = (Weapon *)pt;
 						VC3 particlepos = gsd->position;
@@ -1277,8 +1277,8 @@ namespace game
 				if (s != NULL)
 				{
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(s));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("MiscScripting::process - spawnProjectile, reference to unloaded part type.");
 					} else {
 						if (pt->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap"))))
@@ -1317,8 +1317,8 @@ namespace game
 				if (s != NULL)
 				{
 					PartType *pt = getPartTypeById(PARTTYPE_ID_STRING_TO_INT(s));
-					if (pt == NULL) 
-					{ 
+					if (pt == NULL)
+					{
 						sp->error("MiscScripting::process - spawnProjectileWithShooter, reference to unloaded part type.");
 					} else {
 						if (pt->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap"))))
@@ -1637,7 +1637,7 @@ namespace game
 						if( SimpleOptions::getBool( DH_OPT_B_1ST_PLAYER_ENABLED + c ) )
 						{
 							GameController* gameController = game->getGameUI()->getController( c );
-							
+
 							if( gameController->controllerTypeHasMouse() )
 							{
 								SimpleOptions::setBool( DH_OPT_B_1ST_PLAYER_HAS_CURSOR + c, true );
@@ -1653,7 +1653,7 @@ namespace game
 					{
 						game->gameUI->getController( *lastValue )->unloadConfiguration();
 					}
-			
+
 				} else {
 					sp->warning("GameScripting::process - setProfile value out of range.");
 				}
@@ -2017,7 +2017,7 @@ namespace game
 				game->gameUI->getCombatWindow( gsd->player )->openSubWindow( stringData, gsd->player );
 			}
 			break;
-		
+
 		case GS_CMD_closeCombatSubWindow:
 			if( stringData != NULL && game->gameUI->getCombatWindow( gsd->player ) )
 			{
@@ -2053,7 +2053,7 @@ namespace game
 				// NEW: messages clear any previous messages!
 				// game->gameUI->clearGameMessage(GameUI::MESSAGE_TYPE_NORMAL);
 
-				// game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL, 
+				// game->gameUI->gameMessage(convertLocaleSubtitleString(usestr), NULL,
 				// 	1, 3000 + strlen(usestr) * 40, GameUI::MESSAGE_TYPE_NORMAL);
 				// } else {
 				//	sp->error("GameScripting::process - message parameter missing.");
@@ -2077,7 +2077,7 @@ namespace game
 			break;
 
 		case GS_CMD_enableClaw:
-			game->getClawController()->setClawEnabled(true);			
+			game->getClawController()->setClawEnabled(true);
 			break;
 
 		case GS_CMD_disableClaw:
@@ -2085,7 +2085,7 @@ namespace game
 			break;
 
 		case GS_CMD_setClawToPosition:
-			game->getClawController()->setTargetPosition(gsd->position);			
+			game->getClawController()->setTargetPosition(gsd->position);
 			break;
 #endif
 
@@ -2265,7 +2265,7 @@ namespace game
 				sp->error("MiscScripting::process - getTerrainObjectMetaValueString parameter missing (terrain object meta key name expected).");
 				gsd->setStringValue(NULL);
 			}
-			break;			
+			break;
 
 		case GS_CMD_hasTerrainObjectMetaValueString:
 			if (stringData != NULL)
@@ -2299,7 +2299,7 @@ namespace game
 				sp->error("MiscScripting::process - hasTerrainObjectMetaValueString parameter missing (terrain object meta key name expected).");
 				*lastValue = 0;
 			}
-			break;			
+			break;
 
 		case GS_CMD_getTerrainObjectVariable:
 			if (stringData != NULL)
@@ -2336,7 +2336,7 @@ namespace game
 				sp->error("MiscScripting::process - getTerrainObjectVariable parameter missing (terrain object variable name expected).");
 				*lastValue = 0;
 			}
-			break;			
+			break;
 
 		case GS_CMD_setTerrainObjectVariable:
 			if (stringData != NULL)
@@ -2368,7 +2368,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - setTerrainObjectVariable parameter missing (terrain object variable name expected).");
 			}
-			break;			
+			break;
 
 		case GS_CMD_changeTerrainObjectTo:
 			if (stringData != NULL)
@@ -2403,7 +2403,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - changeTerrainObjectTo, parameter missing (terrain object variable name expected).");
 			}
-			break;			
+			break;
 
 		case GS_CMD_deleteTerrainObject:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -2423,7 +2423,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - deleteTerrainObject, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_setTerrainObjectDamageTextureFadeFactorToFloatValue:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -2443,7 +2443,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - setTerrainObjectDamageTextureFadeFactor, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_getUnifiedHandleObjectDistanceToPosition:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -2459,7 +2459,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - getUnifiedHandleObjectDistanceToPosition, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_getUnifiedHandleObjectDistanceToPositionFloat:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -2475,7 +2475,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - getUnifiedHandleObjectDistanceToPositionFloat, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_doesReplacementForTerrainObjectExist:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -2504,7 +2504,7 @@ namespace game
 				sp->error("MiscScripting::process - getReplacementForTerrainObject, invalid unified handle.");
 				*lastValue = 0;
 			}
-			break;			
+			break;
 
 		case GS_CMD_getReplacementForTerrainObject:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -2529,7 +2529,7 @@ namespace game
 				sp->error("MiscScripting::process - getReplacementForTerrainObject, invalid unified handle.");
 				gsd->unifiedHandle = UNIFIED_HANDLE_NONE;
 			}
-			break;			
+			break;
 
 		case GS_CMD_unifiedHandleToValue:
 			*lastValue = gsd->unifiedHandle;
@@ -2537,7 +2537,7 @@ namespace game
 
 		case GS_CMD_valueToUnifiedHandle:
 			gsd->unifiedHandle = *lastValue;
-			break;			
+			break;
 
 		case GS_CMD_findClosestTerrainObjectOfMaterial:
 			if (stringData != NULL)
@@ -2559,7 +2559,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - findClosestTerrainObjectOfMaterial parameter missing.");
 			}
-			break;			
+			break;
 
 
 		case GS_CMD_setTerrainObjectByIdString:
@@ -2580,7 +2580,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - setTerrainObjectByIdString parameter missing.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_getTerrainObjectPosition:
 			// NOTE: this is the same as getUnifiedHandleObjectPosition, but for terrain object only.
@@ -2603,7 +2603,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - getTerrainObjectPosition, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_getTerrainObjectIdString:
 			if (VALIDATE_UNIFIED_HANDLE_BITS(gsd->unifiedHandle))
@@ -2625,7 +2625,7 @@ namespace game
 			} else {
 				sp->error("MiscScripting::process - getTerrainObjectIdString, invalid unified handle.");
 			}
-			break;			
+			break;
 
 		case GS_CMD_savegameStats:
 			if (stringData != NULL)
@@ -2694,7 +2694,7 @@ namespace game
 			break;
 
 		case GS_CMD_moveWorldFoldToPosition:
-			if (*lastValue > 0) 
+			if (*lastValue > 0)
 			{
 				GameWorldFold::getInstance()->moveFold(*lastValue, gsd->position);
 			} else {
@@ -2703,7 +2703,7 @@ namespace game
 			break;
 
 		case GS_CMD_setWorldFoldAngle:
-			if (*lastValue > 0) 
+			if (*lastValue > 0)
 			{
 				float floatData = intFloat.f;
 				GameWorldFold::getInstance()->setFoldAngle(*lastValue, floatData);

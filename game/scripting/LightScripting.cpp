@@ -53,7 +53,7 @@ namespace game
 	static bool lightscripting_add_pointlight = true;
 
 
-	void LightScripting::process(util::ScriptProcess *sp, 
+	void LightScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
@@ -1730,7 +1730,7 @@ namespace game
 						dir.Normalize();
 						spotProps->direction = dir;
 					} else {
-						sp->error("LightScripting::process - spotTypeSetDirection parameter bad."); 
+						sp->error("LightScripting::process - spotTypeSetDirection parameter bad.");
 					}
 				} else {
 					sp->error("LightScripting::process - spotType..., not currently adding a spot type (use spotTypeAdd first).");
@@ -1752,7 +1752,7 @@ namespace game
 						COL col = COL(result.x, result.y, result.z);
 						spotProps->color = col;
 					} else {
-						sp->error("LightScripting::process - spotTypeSetColor parameter bad (should be r,g,b in range 0.0 - 1.0)."); 
+						sp->error("LightScripting::process - spotTypeSetColor parameter bad (should be r,g,b in range 0.0 - 1.0).");
 					}
 				} else {
 					sp->error("LightScripting::process - spotType..., not currently adding a spot type (use spotTypeAdd first).");
@@ -1774,7 +1774,7 @@ namespace game
 						COL col = COL(result.x, result.y, result.z);
 						spotProps->fakelightColor = col;
 					} else {
-						sp->error("LightScripting::process - spotTypeSetFakelightColor parameter bad (should be r,g,b in range 0.0 - 1.0)."); 
+						sp->error("LightScripting::process - spotTypeSetFakelightColor parameter bad (should be r,g,b in range 0.0 - 1.0).");
 					}
 				} else {
 					sp->error("LightScripting::process - spotType..., not currently adding a spot type (use spotTypeAdd first).");
@@ -1858,7 +1858,7 @@ namespace game
 					{
 						spotProps->positionOffset = result;
 					} else {
-						sp->error("LightScripting::process - spotTypeSetPositionOffset parameter bad."); 
+						sp->error("LightScripting::process - spotTypeSetPositionOffset parameter bad.");
 					}
 				} else {
 					sp->error("LightScripting::process - spotType..., not currently adding a spot type (use spotTypeAdd first).");

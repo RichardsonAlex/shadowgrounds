@@ -15,8 +15,8 @@ class Ogui;
 	#define SHOW_LOADING_BAR(i) ui::LoadingMessage::showLoadingBar(i);
 	#define SET_LOADING_BAR_TEXT(s) ui::LoadingMessage::setLoadingBarText(s);
 #else
-	#define SHOW_LOADING_BAR(i) 
-	#define SET_LOADING_BAR_TEXT(s) 
+	#define SHOW_LOADING_BAR(i)
+	#define SET_LOADING_BAR_TEXT(s)
 #endif
 #endif
 
@@ -25,7 +25,7 @@ namespace ui
 	class LoadingMessage
 	{
 		public:
-			static void setManagers(IStorm3D *s3d, 
+			static void setManagers(IStorm3D *s3d,
 				IStorm3D_Scene *scene, Ogui *ogui);
 
 			static void showLoadingMessage(const char *loadingMessage);

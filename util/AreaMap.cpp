@@ -76,12 +76,12 @@ namespace util
 
 	void AreaMap::setAreaValue(int x, int y, int areaMask, int value)
 	{
-		impl->areamap[x + y * impl->sizeX] = 
+		impl->areamap[x + y * impl->sizeX] =
 			((impl->areamap[x + y * impl->sizeX] & (~areaMask)) | value);
 	}
 
 	/*
-	// there's no point in this, as it is actually the same as setAreaValue, after the buggy setAreaValue has 
+	// there's no point in this, as it is actually the same as setAreaValue, after the buggy setAreaValue has
 	// been fixed. --jpk ;)
 	void AreaMap::resetAreaValue(int x, int y, int areaMask, int value)
 	{

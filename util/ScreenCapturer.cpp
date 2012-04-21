@@ -45,7 +45,7 @@ namespace util
     secstr[2] = '\0';
 
 #ifdef _MSC_VER
-    _mkdir(SCREENSHOT_DIR);     
+    _mkdir(SCREENSHOT_DIR);
 #endif
 
     FILE *f = NULL;
@@ -60,7 +60,7 @@ namespace util
       {
         fclose(f);
         alphabet++;
-        if (alphabet >= 'Z') 
+        if (alphabet >= 'Z')
         {
           Logger::getInstance()->warning("Overwriting last screenshot.");
           break;

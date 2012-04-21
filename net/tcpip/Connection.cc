@@ -6,12 +6,12 @@
 #else
 #include <unistd.h>
 #endif
-#include <stdio.h> 
+#include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
 #ifndef _MSC_VER
 #include <sys/socket.h>
-#include <netinet/in.h> 
+#include <netinet/in.h>
 #include <netdb.h>
 #endif
 #include <string.h>
@@ -31,9 +31,9 @@ void init_winsock()
     WORD wVersionRequested;
     WSADATA wsaData;
     int err;
- 
+
     wVersionRequested = MAKEWORD( 2, 2 );
- 
+
     err = WSAStartup(wVersionRequested, &wsaData);
 
     // TODO err handling
@@ -67,7 +67,7 @@ Connection::Connection()
 #else
   addr = (struct sockaddr_in) { AF_INET, 0 };
 #endif
-#endif  
+#endif
   sock = 0;
   connected = false;
   listening = false;
@@ -94,7 +94,7 @@ int Connection::connect(char *hostname, short port)
 
   if (hostname == NULL) return CONNECT_NULL_NAME;
   if (port == 0) return CONNECT_NULL_PORT;
-        
+
   hp = gethostbyname(hostname);
   if (hp == NULL)  return CONNECT_UNKNOWN_HOST;
 
@@ -112,13 +112,13 @@ int Connection::connect(char *hostname, short port)
 #endif
 
   if (::connect(sock, (sockaddr *) &addr, sizeof(addr)) == -1)
-  { 
+  {
 #ifdef _MSC_VER
     ::closesocket(sock);
 #else
     ::close(sock);
 #endif
-    return CONNECT_CONNECTION_REFUSED; 
+    return CONNECT_CONNECTION_REFUSED;
   }
 
   connected = true;
@@ -236,8 +236,8 @@ int Connection::accept(Connection *conn)
 }
 
 int Connection::setNonBlocking(bool value)
-{  
-  if (!connected && !listening) return SETNONBLOCKING_NO_SOCKET;  
+{
+  if (!connected && !listening) return SETNONBLOCKING_NO_SOCKET;
 #ifdef _MSC_VER
   if (value)
   {
@@ -256,7 +256,7 @@ int Connection::setNonBlocking(bool value)
     signal(SIGIO, SIG_IGN);
 
     fcntl(sock, F_SETOWN, getpid());
-    
+
 #ifdef SGI_CONNECTION
     if (::fcntl(sock, F_SETFL, FNONBLK) == -1)
       return SETNONBLOCKING_FAILED;
@@ -264,7 +264,7 @@ int Connection::setNonBlocking(bool value)
     if (::fcntl(sock, F_SETFL, O_ASYNC | O_NONBLOCK) == -1)
       return SETNONBLOCKING_FAILED;
 #endif
-  } else { 
+  } else {
     if (::fcntl(sock, F_SETFL, 0) == -1)
       return SETNONBLOCKING_FAILED;
   }
@@ -324,7 +324,7 @@ int Connection::recv(char *buf, int maxlen)
 #else
   int ret = ::recv(sock, buf, maxlen, MSG_NOSIGNAL);
 #endif
-  if (ret == -1) 
+  if (ret == -1)
   {
     if (errno == EAGAIN) return NONBLOCKING_EAGAIN;
     return RECV_FAILED;

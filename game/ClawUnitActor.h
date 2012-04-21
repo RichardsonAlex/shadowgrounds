@@ -15,7 +15,7 @@ namespace game
   {
   public:
     ClawUnitActor(Game *game);
-    
+
     //virtual ~ClawUnitActor() { };
 
 		void actDirectClawControls(Unit *unit);

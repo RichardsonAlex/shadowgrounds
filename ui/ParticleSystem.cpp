@@ -16,21 +16,21 @@ float ParticleSystem::random() {
 }
 
 ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
-															 ParticleSystemType type, 
-															 Vector vector1, 
-															 Vector vector2, 
+															 ParticleSystemType type,
+															 Vector vector1,
+															 Vector vector2,
 															 float lifeTime) : type_(type), vector1_(vector1),
 															                   vector2_(vector2), lifeTime_(lifeTime),
 																								 pointParticles_(0), lineParticles_(0),
 																								 particleNo_(0), velocities_(0), time_(0),
 																								 particleSystem_(particleSystem)
-																								 
+																								
 {
 	int i;
 
 
 
-	// Ah, yes this switch clause is kinda kludgy, but it'll have to do for now 
+	// Ah, yes this switch clause is kinda kludgy, but it'll have to do for now
   float sizeFactor = 1.0f;
   switch(type_) {
 
@@ -60,9 +60,9 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 				pointParticles_[i].alive=true;
 				float a;
 				if(random()<0.01f) {
-					a=0.5f * sizeFactor; 
+					a=0.5f * sizeFactor;
 					pointParticles_[i].center.size=0.8f * sizeFactor;
-				} else { 
+				} else {
 					a=0.15f * sizeFactor;
 				}
 				velocities_[i].x=(random()-0.5f)*a;
@@ -136,9 +136,9 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 				pointParticles_[i].alive=true;
 				float a;
 				if(random()<0.01f) {
-					a=0.5f; 
+					a=0.5f;
 					pointParticles_[i].center.size=0.3f;
-				} else { 
+				} else {
 					a=0.10f;
 				}
 				velocities_[i].x = vector2_.x + (random()-0.5f)*a;
@@ -257,7 +257,7 @@ ParticleSystem::ParticleSystem(IStorm3D_ParticleSystem *particleSystem,
 			break;
 
 		default:
-			abort(); // FIXME: This shouldn't propably be abort... 
+			abort(); // FIXME: This shouldn't propably be abort...
 	}
 }
 
@@ -291,7 +291,7 @@ void ParticleSystem::setMaterials(IStorm3D *s3d) {
 		c->SetBaseTexture(t);
 		c->SetColor( Color(1.0f, 0.4f, 0.1f) );
 	}
-  
+
 	if(!smokeMaterial) {
 		smokeMaterial=s3d->CreateNewMaterial("ParticleSystem::smokeMaterial");
 		c=smokeMaterial;
@@ -352,7 +352,7 @@ void ParticleSystem::setMaterials(IStorm3D *s3d) {
 // Never ever pass objects by value
 // The whole language was judged slow because of such misuse >;)
 //	-- psd
-void ParticleSystem::solver(const Vector &velocity, const Vector &forces, Vector *result, float mass, float step) 
+void ParticleSystem::solver(const Vector &velocity, const Vector &forces, Vector *result, float mass, float step)
 {
 	*result = velocity;
 	*result += (forces/mass) * step;
@@ -504,7 +504,7 @@ bool ParticleSystem::stepForwards(int tick) {
               if (pointParticles_[i].center.size>2.0f)
               {
                 velocities_[i].x=(random()-0.5f)*0.005f+0.004f;
-   			  	    velocities_[i].z=(random()-0.5f)*0.005f+0.002f; 
+   			  	    velocities_[i].z=(random()-0.5f)*0.005f+0.002f;
               }
             }
           }

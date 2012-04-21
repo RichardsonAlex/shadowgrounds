@@ -53,7 +53,7 @@ struct Unit
 
 struct ScriptHelper
 {
-	enum Type 
+	enum Type
 	{
 		Single = 0,
 		Path = 1

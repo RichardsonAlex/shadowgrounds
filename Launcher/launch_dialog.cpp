@@ -22,7 +22,7 @@
 #include <vector>
 #include "Resource/resource.h"
 
-#include <sys/types.h> 
+#include <sys/types.h>
 #include <sys/stat.h>
 
 using namespace game;
@@ -225,7 +225,7 @@ public:
 		{
 		case WM_INITDIALOG:
 			SetFocus( GetDlgItem( hwnd, IDOK ) );
-			break; 
+			break;
 
 		case WM_COMMAND:
 		{	

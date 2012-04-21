@@ -94,15 +94,15 @@ std::vector < std::string > StringSplit( const std::string& separator, std::stri
     std::vector <std::string> array;
 
     size_t position;
-    
+
     // we will find the position of first of the separators
     position = string.find( separator );
-    
+
     // We will loop true this until there are no separators left
     // in _string
     while ( position != string.npos )
     {
-    
+
         // This thing here checks that we dont push empty strings
         // to the array
         if ( position != 0 )

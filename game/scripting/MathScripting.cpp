@@ -19,7 +19,7 @@ using namespace ui;
 
 namespace game
 {
-	void MathScripting::process(util::ScriptProcess *sp, 
+	void MathScripting::process(util::ScriptProcess *sp,
 		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{

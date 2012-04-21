@@ -35,7 +35,7 @@ namespace game
 			}
 		}
 
-		// this has already been floodfilled 
+		// this has already been floodfilled
 		// (or just otherwise fully blocked)
 		return 0;
 	}

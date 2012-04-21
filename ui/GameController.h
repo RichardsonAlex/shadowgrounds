@@ -182,7 +182,7 @@ class Ogui;
 namespace ui
 {
 struct JoystickValues;
- 
+
 class GameController
 {
 public:
@@ -233,22 +233,22 @@ public:
 
 	bool isKeyDownByKeyCode( int keycode );
 
-	// returns true if the button bind to this control was clicked since last 
+	// returns true if the button bind to this control was clicked since last
 	// call (the key was pressed down and then released)
 	bool wasKeyClicked(int controlNum);
 
 	// return true if at least one key is assigned for this control
 	bool isAnyKeyBound(int controlNum);
 
-	// returns the keycode bound to given control 
-	// alternativeNum defines which alternative is returned 
+	// returns the keycode bound to given control
+	// alternativeNum defines which alternative is returned
 	// (alternativeNum values start from 0)
 	int getBoundKey(int controlNum, int alternativeNum);
 
 	// binds a keycode to given control
 	// if alternativeNum is not given (or it is -1), it is chosen automagically
 	// if clearFromOthers is set, bind will be removed from all other controls
-	void bindKey(int controlNum, int keycode, int alternativeNum = -1, 
+	void bindKey(int controlNum, int keycode, int alternativeNum = -1,
 		bool clearFromOthers = true);
 
 	// unbinds a keycode to given control

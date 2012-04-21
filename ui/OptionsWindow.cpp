@@ -258,7 +258,7 @@ namespace ui
 
 				playerOn = !playerOn;
 
-				// player 1 always enabled... 
+				// player 1 always enabled...
 				if (num == 0) playerOn = true;
 
 				if (num == 0)
@@ -271,7 +271,7 @@ namespace ui
 					game::SimpleOptions::setBool(DH_OPT_B_4TH_PLAYER_ENABLED, playerOn);
 
 				// HACK: prevent same keybinds
-				if (num == 1 
+				if (num == 1
 					&& game::SimpleOptions::getString(DH_OPT_S_1ST_PLAYER_KEYBINDS) != NULL
 					&& game::SimpleOptions::getString(DH_OPT_S_2ND_PLAYER_KEYBINDS) != NULL
 					&& strcmp(game::SimpleOptions::getString(DH_OPT_S_1ST_PLAYER_KEYBINDS), game::SimpleOptions::getString(DH_OPT_S_2ND_PLAYER_KEYBINDS)) == 0)
@@ -336,12 +336,12 @@ namespace ui
 
 				// HACK: prevent same keybinds...
 				keybindValid = true;
-				if (num == 0 
+				if (num == 0
 					&& game::SimpleOptions::getString(DH_OPT_S_2ND_PLAYER_KEYBINDS) != NULL
 					&& game::SimpleOptions::getBool(DH_OPT_B_2ND_PLAYER_ENABLED)
 					&& strcmp(keybinds, game::SimpleOptions::getString(DH_OPT_S_2ND_PLAYER_KEYBINDS)) == 0)
 					keybindValid = false;
-				if (num == 1 
+				if (num == 1
 					&& game::SimpleOptions::getString(DH_OPT_S_1ST_PLAYER_KEYBINDS) != NULL
 					&& game::SimpleOptions::getBool(DH_OPT_B_1ST_PLAYER_ENABLED)
 					&& strcmp(keybinds, game::SimpleOptions::getString(DH_OPT_S_1ST_PLAYER_KEYBINDS)) == 0)
@@ -382,7 +382,7 @@ namespace ui
 		{
 			int difficultyLevel = game->gameScripting->getGlobalIntVariableValue("general_difficulty_level");
 			// NOTE: unnecessarily complex to fix possible "round up" errors
-			// causing a possible very hard level skip. 
+			// causing a possible very hard level skip.
 			if (difficultyLevel == 100)
 			{
 				difficultyLevel = 0;

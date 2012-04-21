@@ -23,7 +23,7 @@ frozenbyte::ai::Path *PathSimplifier::getSimplifiedPath(
 		return NULL;
 	}
 
-	if (path->getSize() == 0) 
+	if (path->getSize() == 0)
 	{
 		// TODO: ???
 		//Logger::getInstance()->debug("PathSimplifier::getSimplifiedPath - Encountered a path with no points.");
@@ -86,9 +86,9 @@ frozenbyte::ai::Path *PathSimplifier::getSimplifiedPath(
 					assert(0);
 				}
 
-				// don't try to simplify near edges 
+				// don't try to simplify near edges
 				// (because the below checks presume that there is some border area)
-				if (tx <= 0 || ty <= 0 
+				if (tx <= 0 || ty <= 0
 					|| tx >= pathfinder->xSize - 1 || ty >= pathfinder->ySize - 1)
 				{
 					canSimplify = false;

@@ -2,9 +2,10 @@
 #define container_EmptyLinkedListException_h
 
 // #include "csp/CSPException.h"
+#include <stdexcept>
 
-class EmptyLinkedListException 
-{ 
+class EmptyLinkedListException
+{
 public:
 	EmptyLinkedListException() { }
 }; // extends CSPException { };

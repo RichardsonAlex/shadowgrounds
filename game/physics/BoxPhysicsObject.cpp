@@ -12,16 +12,16 @@
 
 namespace game
 {
-	BoxPhysicsObject::BoxPhysicsObject(GamePhysics *gamePhysics, const VC3 &sizes, float mass, int collisionGroup, const VC3 &position) 
+	BoxPhysicsObject::BoxPhysicsObject(GamePhysics *gamePhysics, const VC3 &sizes, float mass, int collisionGroup, const VC3 &position)
 		: AbstractPhysicsObject(gamePhysics)
-	{ 
+	{
 		this->position = position;
 		this->sizes = sizes;
 		this->mass = mass;
 		this->collisionGroup = collisionGroup;
 	}
 
-	BoxPhysicsObject::~BoxPhysicsObject() 
+	BoxPhysicsObject::~BoxPhysicsObject()
 	{
 		// nop, ~AbstractPhysicsObject handles everything of any interest...
 	}

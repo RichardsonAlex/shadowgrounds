@@ -430,7 +430,7 @@ void Storm3D_Mesh_LOD::UpdateVertices(Storm3D_Mesh *owner)
 						owner->vertexes[xi].texturecoordinates,
 						owner->vertexes[xi].texturecoordinates);
 				}
-			} 
+			}
 			else	// Other than DOT3 and TEX_EMBM_REF
 			{
 				if (owner->vbuf_fvf==FVF_VXFORMAT_TC0)
@@ -534,7 +534,7 @@ void Storm3D_Mesh_LOD::UpdateDOT3LightVectors(Storm3D_Mesh *owner,Storm3D_Scene_
 		}
 		else // Point/Spot
 		{
-			// Calculate direction from vertex position and ldir_orig 
+			// Calculate direction from vertex position and ldir_orig
 			ldir=ldir_orig-owner->vertexes[vix].position;
 		}
 

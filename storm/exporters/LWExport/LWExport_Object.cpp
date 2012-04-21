@@ -360,7 +360,7 @@ bool LWObject::collectWeights(const std::vector<LWBone> &bones)
 				// Set if greater than what's already in
 				for(int k = 0; k < LWVertex::MAX_WEIGHTS; ++k)
 				{
-					if(vertices[j].boneIndices[k] == -1 || fabs(vertices[j].boneWeights[k]) < fabsf(weight)) 
+					if(vertices[j].boneIndices[k] == -1 || fabs(vertices[j].boneWeights[k]) < fabsf(weight))
 					{	
 						// Store old value forward
 						if(k + 1 < LWVertex::MAX_WEIGHTS)
@@ -380,7 +380,7 @@ bool LWObject::collectWeights(const std::vector<LWBone> &bones)
 				bool set = false;
 				for(int k = 0; k < LWVertex::MAX_WEIGHTS; ++k)
 				{
-					if(vertices[j].boneIndices[k] == -1) 
+					if(vertices[j].boneIndices[k] == -1)
 					{
 						vertices[j].boneIndices[k] = i;
 						vertices[j].boneWeights[k] = weight;
@@ -397,7 +397,7 @@ bool LWObject::collectWeights(const std::vector<LWBone> &bones)
 				// Set if greater than what's already in
 				for(k = LWVertex::MAX_WEIGHTS - 1; k >= 0; --k)
 				{
-					if(fabs(vertices[j].boneWeights[k]) < fabsf(weight)) 
+					if(fabs(vertices[j].boneWeights[k]) < fabsf(weight))
 					{	
 						// Store old value forward
 						if(k + 1 < LWVertex::MAX_WEIGHTS)
@@ -425,7 +425,7 @@ bool LWObject::collectWeights(const std::vector<LWBone> &bones)
 
 void LWObject::collectTextureCoordinates(const std::vector<LWMaterial> &materials, const FBMatrix &transform)
 {
-	// This part is a bit messy. 
+	// This part is a bit messy.
 	// Can't help it since LW's gotta do what LW's gotta do etc.
 	LWTextureFuncs *textureFunctions = Manager::getSingleton()->getTextureFunctions();
 	LWObjectInfo *objectInfo = Manager::getSingleton()->getObjectInfo();

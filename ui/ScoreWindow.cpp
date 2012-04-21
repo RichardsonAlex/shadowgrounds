@@ -758,7 +758,7 @@ ScoreWindow::~ScoreWindow()
 
 ///////////////////////////////////////////////////////////////////////////////
 
-bool ScoreWindow::AllowLoading() const 
+bool ScoreWindow::AllowLoading() const
 {
 	fb_assert( impl );
 	return impl->AllowLoading();

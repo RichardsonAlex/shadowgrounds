@@ -10,7 +10,7 @@
 OguiSlider*		OguiSlider::updateThis = NULL;
 OguiSlider*		OguiSlider::updateThisIfHold = NULL;
 
-OguiSlider::OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h, 
+OguiSlider::OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 		const std::string& background_norm, const std::string& background_down, const std::string& background_high,
 		const std::string& foreground_norm, const std::string& foreground_down, const std::string& foreground_high, int id, float value ) :
   backgroundId( 1 ),
@@ -33,18 +33,18 @@ OguiSlider::OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 	assert( win );
 	assert( ogui );
 	
-	background = ogui->CreateSimpleImageButton( win, x, y, w, h, 
-		background_norm.empty()?NULL:background_norm.c_str(), 
+	background = ogui->CreateSimpleImageButton( win, x, y, w, h,
+		background_norm.empty()?NULL:background_norm.c_str(),
 		background_down.empty()?NULL:background_down.c_str(),
 		background_high.empty()?NULL:background_high.c_str(), backgroundId );
 	
-	foreground = ogui->CreateSimpleImageButton( win, x, y, w, h, 
-		foreground_norm.empty()?NULL:foreground_norm.c_str(), 
+	foreground = ogui->CreateSimpleImageButton( win, x, y, w, h,
+		foreground_norm.empty()?NULL:foreground_norm.c_str(),
 		foreground_down.empty()?NULL:foreground_down.c_str(),
-		foreground_high.empty()?NULL:foreground_high.c_str(), 
+		foreground_high.empty()?NULL:foreground_high.c_str(),
 		foreground_norm.empty()?NULL:foreground_norm.c_str(), foregroundId, NULL );
 
- 
+
 	FB_ASSERT( foreground );
 	
 	if( value > 1.0f ) value = 1.0f;
@@ -112,7 +112,7 @@ void OguiSlider::setValue( float value )
 		
 		this->value = value;
 
-		if( listener ) 
+		if( listener )
 		{
 			OguiSliderEvent* eve = new OguiSliderEvent( this, value, OguiSliderEvent::EVENT_TYPE_MOUSEDRAGGED );
 			listener->sliderEvent( eve );
@@ -197,7 +197,7 @@ void OguiSlider::CursorEvent( OguiButtonEvent *eve )
 		updateThis = this;
 		updateThisIfHold = this;
 
-		if( listener ) 
+		if( listener )
 		{
 			float x;
 			if(horizontal)
@@ -217,7 +217,7 @@ void OguiSlider::CursorEvent( OguiButtonEvent *eve )
 	{
 		updateThis = NULL;
 
-		if( listener ) 
+		if( listener )
 		{
 			OguiSliderEvent* eve = new OguiSliderEvent( this, value, OguiSliderEvent::EVENT_TYPE_RELEASE );
 			listener->sliderEvent( eve );
@@ -230,7 +230,7 @@ void OguiSlider::CursorEvent( OguiButtonEvent *eve )
 		updateThis = NULL;
 		updateThisIfHold = NULL;
 		
-		if( listener ) 
+		if( listener )
 		{
 			OguiSliderEvent* eve = new OguiSliderEvent( this, value, OguiSliderEvent::EVENT_TYPE_RELEASE );
 			listener->sliderEvent( eve );
@@ -276,7 +276,7 @@ void OguiSlider::resize(int _w, int _h)
 	foreground->Resize( w, h );
 }
 
-OguiGfxSlider::OguiGfxSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h, 
+OguiGfxSlider::OguiGfxSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 		const std::string& background_norm, const std::string& background_down, const std::string& background_high,
 		const std::string& foreground_norm, const std::string& foreground_down, const std::string& foreground_high, int id, float value ) :
 	OguiSlider( win, ogui, x, y, w, h, background_norm, background_down, background_high, foreground_norm, foreground_down, foreground_high, id, value )

@@ -84,7 +84,7 @@ void OguiTextLabel::SetText(const char *text)
 								lastbr = lastspace + 1;
 								lastspace = i;
 							} else {
-								if (tmpchar == ' ') 
+								if (tmpchar == ' ')
 								{
 									tmpchar = '\n';
 									lastbr = i + 1;
@@ -130,7 +130,7 @@ void OguiTextLabel::SetText(const char *text)
 							lastbr = lastspace + 1;
 							lastspace = i;
 						} else {
-							if (tmpchar == ' ') 
+							if (tmpchar == ' ')
 							{
 								tmpchar = '\n';
 								lastbr = i + 1;

@@ -15,7 +15,7 @@ namespace game
   {
   public:
     ArmorUnitActor(Game *game);
-    
+
     //virtual ~ArmorUnitActor() { };
 
     virtual void act(Unit *unit);

@@ -136,9 +136,9 @@ public:
 			Key* key = keys[mLockedKey];
 			if((key == keys.front()) || (key == keys.back())) {
 				key->y = dy;
-				if(key->y > ymax) 
+				if(key->y > ymax)
 					key->y = ymax;
-				if(key->y < ymin) 
+				if(key->y < ymin)
 					key->y = ymin;
 			} else {
 				
@@ -237,7 +237,7 @@ public:
 		mChannels[c].setNumKeys(n);
 	}
 
-	void setWindow(float _xmin, float _ymin, float _xmax, float _ymax, 
+	void setWindow(float _xmin, float _ymin, float _xmax, float _ymax,
 		float _xscl, float _yscl) {
 
 		xmin = _xmin;
@@ -333,7 +333,7 @@ public:
 
 	void drawGrid(HWND hwnd, HDC hdc) {
 
-		HFONT hf = CreateFont(8, 0, 0, 0, FW_REGULAR, FALSE, FALSE, FALSE, DEFAULT_CHARSET, 
+		HFONT hf = CreateFont(8, 0, 0, 0, FW_REGULAR, FALSE, FALSE, FALSE, DEFAULT_CHARSET,
 			OUT_DEFAULT_PRECIS, CLIP_DEFAULT_PRECIS, DEFAULT_QUALITY, DEFAULT_PITCH, "Arial");
 		
 		HFONT oldFont = SelectFont(hdc, hf);
@@ -353,13 +353,13 @@ public:
 			RECT r;
 			r.left = 0;
 			r.right = 100;
-			r.bottom = toScreenY(y); 
+			r.bottom = toScreenY(y);
 			r.top = r.bottom - 16;
 			DrawText(hdc, buffer, strlen(buffer), &r, DT_LEFT);
 			MoveToEx(hdc, rc.left, toScreenY(y), &pt);
 			LineTo(hdc, rc.right, toScreenY(y));
 			y += yscl;
-		} 
+		}
 
 		DeleteObject(pen);
 		SelectFont(hdc, oldFont);
@@ -466,8 +466,8 @@ public:
 			RECT rect;
 			GetClientRect(hwnd, &rect);
 			
-			if((xPos >= rect.left) && (xPos <= rect.right) && (yPos >= rect.top) && 
-				(yPos <= rect.bottom)) 
+			if((xPos >= rect.left) && (xPos <= rect.right) && (yPos >= rect.top) &&
+				(yPos <= rect.bottom))
 			{
 
 				float x = toGraphX(xPos);
@@ -586,7 +586,7 @@ LRESULT CALLBACK Graph::WindowProc(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lP
 
 	static Graph* graph = NULL;
 	
-	graph = (Graph*)GetWindowLong(hwnd, GWL_USERDATA); 
+	graph = (Graph*)GetWindowLong(hwnd, GWL_USERDATA);
 	
 	if(graph) {
 		graph->msgProc(hwnd, msg, wParam, lParam);
@@ -702,7 +702,7 @@ void Graph::setY(int c, int i, float f) {
 	m->getChannel(c).getKey(i)->y = f;
 }
 
-void Graph::setWindow(float _xmin, float _ymin, float _xmax, float _ymax, 
+void Graph::setWindow(float _xmin, float _ymin, float _xmax, float _ymax,
 					  float _xscl, float _yscl) {
 	m->setWindow(_xmin, _ymin, _xmax, _ymax, _xscl, _yscl);
 }

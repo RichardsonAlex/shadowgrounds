@@ -46,7 +46,7 @@ namespace game
 	}
 
 #define UPU_PHYSOBJTYPE_GAME 0
-#define UPU_PHYSOBJTYPE_FLUID_CONTAINMENT 1        
+#define UPU_PHYSOBJTYPE_FLUID_CONTAINMENT 1
 
 	void UnitPhysicsUpdater::createPhysics(Unit *unit, GamePhysics *physics, Game *game)
 	{
@@ -56,8 +56,8 @@ namespace game
 		for (int physobjtype = 0; physobjtype < 2; physobjtype++)
 		{
 			if ((physobjtype == UPU_PHYSOBJTYPE_GAME && unit->getUnitType()->hasPhysicsObject())
-				|| (physobjtype == UPU_PHYSOBJTYPE_FLUID_CONTAINMENT 
-					&& unit->getUnitType()->hasFluidContainmentPhysicsObject() 
+				|| (physobjtype == UPU_PHYSOBJTYPE_FLUID_CONTAINMENT
+					&& unit->getUnitType()->hasFluidContainmentPhysicsObject()
 					&& SimpleOptions::getBool(DH_OPT_B_PHYSICS_FLUIDS_ENABLED)))
 			{
 				const VC3 &pos = unit->getPosition();
@@ -200,7 +200,7 @@ namespace game
 			bool setposz = false;
 			if (fabs(diff.x) > threshold)
 			{
-				if (diff.x > 0) 
+				if (diff.x > 0)
 				{
 #ifdef PHYSICS_FEEDBACK
 					// -0.86 normal.x... is about 60 deg left...
@@ -213,10 +213,10 @@ namespace game
 //sprintf(buf, "L: %f", bp->getFeedbackNormalLeft().x);
 //Logger::getInstance()->error(buf);
 						setposx = true;
-						diff.x -= threshold; 
+						diff.x -= threshold;
 						if (vel.x > 0) vel.x = -0.01f;
 					}
-				} 
+				}
 				if (diff.x < 0)
 				{
 #ifdef PHYSICS_FEEDBACK
@@ -279,7 +279,7 @@ namespace game
 					}
 				}
 				diff.z += threshold;
-			} 
+			}
 			if (unit->isPhysicsObjectFeedbackEnabled())
 			{				
 				unit->setVelocity(vel);
@@ -537,7 +537,7 @@ if (unit->variables.getVariable("proning") > 30 &&
 								hackpos.y = unitPosWHeight.y;
 								bp->setPosition(hackpos);
 							}
-						} 
+						}
 					}
 
 					if (diff.GetSquareLength() > threshold*threshold)

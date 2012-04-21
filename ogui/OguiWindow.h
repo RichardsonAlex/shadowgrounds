@@ -104,9 +104,9 @@ public:
 	IOguiImage *getBackgroundImage() const;
 
 private:
-	
-	OguiButton *CreateNewButton(int x, int y, int sizex, int sizey, 
-		IOguiImage *img, IOguiImage *imgdown, IOguiImage *imghigh, IOguiImage *imgdisabled, bool withText, 
+
+	OguiButton *CreateNewButton(int x, int y, int sizex, int sizey,
+		IOguiImage *img, IOguiImage *imgdown, IOguiImage *imghigh, IOguiImage *imgdisabled, bool withText,
 		const char *text, int id, const void *argument, IOguiFont *font, bool clipToWindow = true );
 
 	Ogui *ogui;
@@ -129,7 +129,7 @@ private:
 	bool fadingOut;
 	bool movingIn;
 	bool movingOut;
-	
+
 	int windowPositionX;
 	int windowPositionY;
 
@@ -137,7 +137,7 @@ private:
 
 	LinkedList<OguiButton*> *buttonList;
 
-	// some internal hacks 
+	// some internal hacks
 	// (the real orvgui window implementation is hidden behind this pointer)
 	void *win;
 

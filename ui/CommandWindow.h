@@ -16,7 +16,7 @@ namespace ui
 
 // #define CommandWindow M;
   /**
-   * Command brigde window class. 
+   * Command brigde window class.
    * Presents the command brigde selections of player's mothership.
    *
    * @version 0.5, 25.6.2002
@@ -30,7 +30,7 @@ namespace ui
   public:
     CommandWindow(Ogui *ogui, game::Game *game, int player);
     ~CommandWindow();
-    
+
     void hide();
     void show();
     bool isVisible();
@@ -54,7 +54,7 @@ namespace ui
 		OguiButton *startButton;
 		OptionsWindow *optionsWindow;
 	
-	// Test 
+	// Test
 	OguiWindow* foreground;
   };*/
 

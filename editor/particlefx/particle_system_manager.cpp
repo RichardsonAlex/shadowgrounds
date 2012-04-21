@@ -44,7 +44,7 @@ struct ParticleSystemManagerData {
 		*/
 /*		while(it != mSystems.end())
 		{
-			if(!(*it)->tick(mScene, timeDif)) 
+			if(!(*it)->tick(mScene, timeDif))
 			{
 				it = mSystems.erase(it);
 				mNumParticleSystems--;
@@ -162,7 +162,7 @@ void ParticleSystemManager::tick(int timeDif) {
 		if(!(*it)->tick(m->scene, timeDif)) {
 			it = m->systems.erase(it);
 			m->numParticleSystems--;
-		} else 
+		} else
 			it++;
 	}
 	

@@ -74,8 +74,8 @@ namespace game
 
 		// notice: getting the heightmap in a bad manner here...
 		pathFinder = new frozenbyte::ai::PathFind();
-		pathFinder->setHeightMap(gameMap->pathfindHeightMap, 
-			gameMap->getHeightmapSizeX(), gameMap->getHeightmapSizeY(), 
+		pathFinder->setHeightMap(gameMap->pathfindHeightMap,
+			gameMap->getHeightmapSizeX(), gameMap->getHeightmapSizeY(),
 			GAMEMAP_PATHFIND_ACCURACY);
 		pathFinder->setHeuristicWeight(2.1f);
 		pathFinder->setCoverMap(gameMap->getCoverMap());
@@ -240,10 +240,10 @@ namespace game
 
 #ifdef PROJECT_CLAW_PROTO
 		// HACK: ...
-		stormTerrain->rayTrace(origin, direction, 
+		stormTerrain->rayTrace(origin, direction,
 			rayLength, terrainColl, obstacleColl, true, true);
 #else
-		stormTerrain->rayTrace(origin, direction, 
+		stormTerrain->rayTrace(origin, direction,
 			rayLength, terrainColl, obstacleColl, true, loscheck);
 #endif
 
@@ -272,7 +272,7 @@ namespace game
 #endif
 			return;
 		}
-		// in case of los check we must collide at least 3 obstacles for it 
+		// in case of los check we must collide at least 3 obstacles for it
 		// to block the view. Also, they must be at least in range of 15 meters.
 		// any obstacle closer to that won't have any effect.
 		// - this crap just won't apply to buildings and obstacles like that
@@ -337,14 +337,14 @@ namespace game
 				statLOStracePartialAmount++;
 				statLOStraceToObstacleAmount++;
 #endif
-				return; 			 
+				return; 			
 			}
 		}
 
 		// skip obstacles closer than 0.5meters, is a further one hit maybe?
 		//float minObstacleHitRange = 0.5f;
 		float minObstacleHitRange = 0.25f;
-		// HACK: small raytraces (used by grenade at least) still collide to t.obstacles 
+		// HACK: small raytraces (used by grenade at least) still collide to t.obstacles
 		// even at very near ranges...
 		if (rayLength <= 2.0f)
 		{
@@ -358,7 +358,7 @@ namespace game
 		if (obstacleColl.hit)
 		{
 			int checkAmount = MAX_OBSTACLE_COLLISIONS;
-			if (obstacleColl.hitAmount < checkAmount) 
+			if (obstacleColl.hitAmount < checkAmount)
 				checkAmount = obstacleColl.hitAmount;
 			for (int i = 0; i < checkAmount; i++)
 			{
@@ -385,7 +385,7 @@ namespace game
 
 		if(!terrainOnly)
 		{
- 			stormScene->RayTrace(origin, direction, 
+ 			stormScene->RayTrace(origin, direction,
 				sceneRayLength, sceneColl, accurate);
 		}
 
@@ -750,8 +750,8 @@ namespace game
 
 
 
-	bool GameScene::findPath(frozenbyte::ai::Path *path, float startX, float startY, 
-		float endX, float endY, float maxHeightDifference, float climbPenalty, 
+	bool GameScene::findPath(frozenbyte::ai::Path *path, float startX, float startY,
+		float endX, float endY, float maxHeightDifference, float climbPenalty,
 		int coverAvoidDistance, int coverBlockDistance, int depth, int lightAvoidAmount)
 	{
 #ifdef DUMP_GAMESCENE_STATS
@@ -785,7 +785,7 @@ namespace game
 
 		if (ret)
 		{
-			// FIXME: this does not work, as nowadays cover avoid is 
+			// FIXME: this does not work, as nowadays cover avoid is
 			// no longer blocking, it's just movement cost. (i think)
 			//if (coverAvoidDistance < 2)
 			//	pathFinder->setCoverAvoidDistance(2);
@@ -903,7 +903,7 @@ namespace game
 		int oy = gameMap->scaledToObstacleY(y);
 		if (pathFinder->isBlocked(ox, oy))
 		{
-			if (gameMap->getScaledHeightAt(x, y) 
+			if (gameMap->getScaledHeightAt(x, y)
 				+ (float)gameMap->getObstacleHeight(ox, oy) * gameMap->getScaleHeight()
 				> height)
 			{
@@ -929,12 +929,12 @@ namespace game
 	int GameScene::getBlockingCount(int x, int y, float height)
 	{
 		assert(pathFinder != NULL);
-		assert(x >= 0 && y >= 0 
+		assert(x >= 0 && y >= 0
 			&& x < gameMap->getObstacleSizeX() && y < gameMap->getObstacleSizeY());
 		int blockingCount = pathFinder->getBlockingCount(x, y);
 		if (blockingCount > 0)
 		{
-			if ((float)gameMap->getHeightmapHeightAt(x / GAMEMAP_PATHFIND_ACCURACY, 
+			if ((float)gameMap->getHeightmapHeightAt(x / GAMEMAP_PATHFIND_ACCURACY,
 				y / GAMEMAP_PATHFIND_ACCURACY) * gameMap->getScaleHeight()
 				+ (float)gameMap->getObstacleHeight(x, y) * gameMap->getScaleHeight()
 				> height)
@@ -959,7 +959,7 @@ namespace game
 			/*
 			int obstSizeX = gameMap->getObstacleSizeX();
 			unsigned short *ohmap = gameMap->getObstacleHeightMap();
-			if ((ohmap[x + y * obstSizeX] & (OBSTACLE_MAP_MASK_SEETHROUGH | OBSTACLE_MAP_MASK_UNHITTABLE)) 
+			if ((ohmap[x + y * obstSizeX] & (OBSTACLE_MAP_MASK_SEETHROUGH | OBSTACLE_MAP_MASK_UNHITTABLE))
 				!= (OBSTACLE_MAP_MASK_SEETHROUGH | OBSTACLE_MAP_MASK_UNHITTABLE))
 			{
 				blockingCount += 1;
@@ -975,7 +975,7 @@ namespace game
 			}
 			// END OF HACK
 
-			if ((float)gameMap->getHeightmapHeightAt(x / GAMEMAP_PATHFIND_ACCURACY, 
+			if ((float)gameMap->getHeightmapHeightAt(x / GAMEMAP_PATHFIND_ACCURACY,
 				y / GAMEMAP_PATHFIND_ACCURACY) * gameMap->getScaleHeight()
 				+ (float)gameMap->getObstacleHeight(x, y) * gameMap->getScaleHeight()
 				> height)
@@ -1006,7 +1006,7 @@ namespace game
 		int revisAmount = 0;
 		int remapAmount = 0;
 
-		// for caching the last model / buidingmap, so we don't need 
+		// for caching the last model / buidingmap, so we don't need
 		// to re-create the same buildingmap over and over again.
 		const char *lastModelFilename = NULL;
 		VisualObjectModel *lastVisualObjectModel = NULL;
@@ -1199,7 +1199,7 @@ namespace game
 				assert(!to->modelFilename.empty());
 				// have we the current buildingmap in the cache?
 				// if not, set it to cache
-				if (lastModelFilename == NULL 
+				if (lastModelFilename == NULL
 					|| strcmp(lastModelFilename, to->modelFilename.c_str()) != 0)
 			 {
 					revisAmount++;
@@ -1210,7 +1210,7 @@ namespace game
 						delete lastVisualObjectModel;
 
 					// NOTICE: not a copy, a direct pointer!
-					// so, don't delete the "to" object until we're done 
+					// so, don't delete the "to" object until we're done
 					lastModelFilename = to->modelFilename.c_str();
 					lastVisualObjectModel = new VisualObjectModel(lastModelFilename);
 					lastVisualObject = lastVisualObjectModel->getNewObjectInstance();
@@ -1324,9 +1324,9 @@ namespace game
 									if (add)
 									{
 										AREAMAP_DATATYPE mask = AREAVALUE_OBSTACLE_TERRAINOBJECT;
-										if (lastModelIsFirethru) 
+										if (lastModelIsFirethru)
 											mask |= AREAVALUE_OBSTACLE_UNHITTABLE_YES;
-										if (lastModelIsSeethru) 
+										if (lastModelIsSeethru)
 											mask |= AREAVALUE_OBSTACLE_SEETHROUGH_YES;
 
 										int heightval = (int)((float)heightMap[i][j] * lastBuildingMap->getHeightScale() / gameMap->getScaleHeight());
@@ -1337,7 +1337,7 @@ namespace game
 											&& (!sideways || heightval > (int)(TERR_OBJ_OBST_HEIGHT_BLOCK_THRESHOLD / gameMap->getScaleHeight())))
 										{
 											pathFinder->addObstacle(ox, oy);
-											if (lastModelIsBreakable 
+											if (lastModelIsBreakable
 												|| gameMap->getAreaMap()->isAreaAnyValue(ox, oy, AREAMASK_BREAKABLE))
 											{
 												gameMap->addObstacleHeight(ox, oy, heightval, mask);
@@ -1361,9 +1361,9 @@ namespace game
 									else// if(blocked)
 									{
 										AREAMAP_DATATYPE mask = AREAVALUE_OBSTACLE_TERRAINOBJECT;
-										if (lastModelIsFirethru) 
+										if (lastModelIsFirethru)
 											mask |= AREAVALUE_OBSTACLE_UNHITTABLE_YES;
-										if (lastModelIsSeethru) 
+										if (lastModelIsSeethru)
 											mask |= AREAVALUE_OBSTACLE_SEETHROUGH_YES;
 										pathFinder->removeObstacle(ox, oy);
 
@@ -1626,7 +1626,7 @@ namespace game
 				Logger::getInstance()->debug(const_cast<char *> (foo.c_str()));
 			}
 
-			// NOTE: this appears to be at this late stage in order to add portals, building ids etc. properly 
+			// NOTE: this appears to be at this late stage in order to add portals, building ids etc. properly
 			// (would be more effective at very early stage, at the beginning of this method)
 			if (gameMap->isObstacleAndAreaMapLoaded())
 				return;
@@ -1647,7 +1647,7 @@ namespace game
 
 			// Need this to fix problems with heightmap resolution != obstaclemap resolution
 			// as obstacle heights would be incorrect when the heightmap (floormap)
-			// is not what it is expected to be) - this is noticeable 
+			// is not what it is expected to be) - this is noticeable
 			// near steep floormap changes.
 			int obstsizex = gameMap->getObstacleSizeX();
 			int obstsizey = gameMap->getObstacleSizeY();
@@ -1808,14 +1808,14 @@ namespace game
 						// NOTICE: this may be called multiple times per
 						// one obstacle block (buildingmap x2 resolution) (?)
 
-						// flatten the map under the building by using the 
+						// flatten the map under the building by using the
 						// forcemap... (notice! forcemap is half the size of the
 						// heightmap)
 						int fox = gameMap->scaledToHeightmapX(xPosition);
 						int foy = gameMap->scaledToHeightmapY(yPosition);
 						//fox /= 2;
 						//foy /= 2;
-						int forceval = midheight + 
+						int forceval = midheight +
 							(int)(float(floorVal) * builder.getHeightScale() / gameMap->getScaleHeight());
 
 						if (floorVal < 0)
@@ -1831,7 +1831,7 @@ namespace game
 								forcemap[fox + foy * fsizex] = forceval;
 						}
 
-						// NEW BEHAVIOUR: 
+						// NEW BEHAVIOUR:
 						// add floormap to building area id...
 						int bax = static_cast<int> (scaledToPathX * i * builder.getMapResolution());
 						int bay = static_cast<int> (scaledToPathY * j * builder.getMapResolution());
@@ -1868,7 +1868,7 @@ namespace game
 			terrain->ForcemapHeight(pos2d, forceradius, true, false);
 
 			// then combine this forcemap with the old forcemap...
-			// WARNING: this is not really correct behaviour for negative 
+			// WARNING: this is not really correct behaviour for negative
 			// floor heights
 			for (int ofi2 = 0; ofi2 < fsizex * fsizey; ofi2++)
 			{

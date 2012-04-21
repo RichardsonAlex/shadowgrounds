@@ -98,7 +98,7 @@ class LinkedListIterator
 // not very effective though.
 template<typename T>
 class SafeLinkedListIterator
-    {
+{
   private:
     LinkedList<T> linkedList;
     ListNode<T>* walk_node;
@@ -142,11 +142,11 @@ inline void LinkedList<T>::append(const T& itm)
     last->next = node;
     last = node;
   }
-    }
+}
 
 template<typename T>
 inline void LinkedList<T>::prepend(const T& itm)
-    {
+{
   ListNode<T>* node = new ListNode<T>(itm);
 
   if (isEmpty())
@@ -338,22 +338,22 @@ inline LinkedListIterator<T>::~LinkedListIterator() {}
 template<typename T>
 inline T& LinkedListIterator<T>::iterateNext() throw (EmptyIteratorException*)
 {
-      #ifdef _DEBUG
-        // this is to catch unsafe node removals while iterating.
-        // (as that may cause undefined behaviour)
-        if (linkedList->remove_count != this->remove_count)
-        {
-          abort();
-        }
-      #endif
-  
+  #ifdef _DEBUG
+  // this is to catch unsafe node removals while iterating.
+  // (as that may cause undefined behaviour)
+  if (linkedList->remove_count != this->remove_count)
+  {
+    abort();
+  }
+  #endif
+
   if (!walk_node)
-      { 
-        throw(new EmptyIteratorException());
-      }
-  
+  {
+    throw(new EmptyIteratorException());
+  }
+
   T& ret = walk_node->item;
-      walk_node = walk_node->next;
+  walk_node = walk_node->next;
   return ret;
 }
 
@@ -374,7 +374,7 @@ inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const LinkedList<T>& ll
   }
   walk_node = linkedList.getFirstNode();
 }
-  
+
 template<typename T>
 inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const LinkedList<T>* ll)
 {
@@ -400,8 +400,8 @@ inline T& SafeLinkedListIterator<T>::iterateNext() throw (EmptyIteratorException
 
   T& ret = walk_node->item;
   walk_node = walk_node->next;
-      return ret;
-    }
+  return ret;
+}
 
 template<typename T>
 inline bool SafeLinkedListIterator<T>::iterateAvailable() const

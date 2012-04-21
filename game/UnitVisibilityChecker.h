@@ -7,7 +7,7 @@
 // visibility of one unit is checked in this many passes.
 // (one pass to apply changes when all units done.)
 // so value 2 means 2 game ticks = 20ms for one unit.
-// thus, if we have 100 units, it takes 2 seconds for visibilities to 
+// thus, if we have 100 units, it takes 2 seconds for visibilities to
 // to be updated.
 #define VISIBILITY_CHECK_IN_PASSES 1
 
@@ -16,8 +16,8 @@
 // for 100Hz)
 
 
-// TODO: visibility checker may not work properly if units are 
-// spawned in the middle of combat (= while in mission). 
+// TODO: visibility checker may not work properly if units are
+// spawned in the middle of combat (= while in mission).
 // Probably all new units will be checked during the last pass.
 // This may cause cpu usage spikes.
 // Or possibly they are not checked at all.
@@ -52,7 +52,7 @@ namespace game
     int unitsInPass;
     int passCount;
     game::Unit *currentUnit;
-		bool updateDisabled;
+	bool updateDisabled;
   };
 
 }

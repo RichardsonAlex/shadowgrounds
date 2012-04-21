@@ -481,7 +481,7 @@ Storm3D_Texture::Storm3D_Texture(Storm3D *s2,const char *_filename,Uint32 _texlo
           glMatrixMode(GL_PROJECTION);
           glPopMatrix();
           glMatrixMode(GL_MODELVIEW);
-          // Update texture mip map 
+          // Update texture mip map
           glBindTexture(GL_TEXTURE_2D,fboTexture);
           glGenerateMipmapEXT(GL_TEXTURE_2D);
           glBindTexture(GL_TEXTURE_2D,0);
@@ -845,12 +845,12 @@ Storm3D_Texture::Storm3D_Texture(Storm3D *s2,int _width,int _height,TEXTYPE ttyp
 	// Storm3D_SurfaceInfo ss=Storm3D2->GetScreenSize();
 	if (width<1) width=1;
 	if (height<1) height=1;
-	if (width>mwidth) 
+	if (width>mwidth)
 	{
 		igiosErrorMessage("GFX card doesn't support textures this big.");
 		width=mwidth;
 	}
-	if (height>mheight) 
+	if (height>mheight)
 	{
 		igiosErrorMessage("GFX card doesn't support textures this big.");
 		height=mheight;
@@ -1203,7 +1203,7 @@ bool Storm3D_Texture::IsRenderTarget()
 	return false;
 }
 
-void Storm3D_Texture::saveToFile( const char * filename ) 
+void Storm3D_Texture::saveToFile( const char * filename )
 {
 	igios_unimplemented();
 }

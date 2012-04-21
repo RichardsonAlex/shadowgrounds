@@ -58,13 +58,13 @@ void Keyb3_ReleaseMouseBorders();
 int Keyb3_DefaultMouseID();			// Mouse ID that is controlled by every mouse for RawInput. 0 for DirectInput.
 int Keyb3_GetMouseIDFromKeycode( int keycode ); // returns -1 if keycode doesn't belong to a mouse.
 
-// Direct mouse read (give a NULL-pointer if you don't want some information) 
+// Direct mouse read (give a NULL-pointer if you don't want some information)
 void Keyb3_ReadMouse(int *x,int *y,int *dx,int *dy, int mouseID = MOUSEHANDLER_ALL_MOUSES_ID);
 int Keyb3_GetNumberOfMouseDevices();	// NOTICE: counts the "every mouse" -handle as a device as well, which is the last mouseID. see MouseHandler.h for more info.
 
 // Direct joystick read. (Axis: [-1000,1000], 0=center)
 // (joynum: 0=first joystick, 1=second joystick)
-// (give a NULL-pointer if you don't want some information) 
+// (give a NULL-pointer if you don't want some information)
 void Keyb3_ReadJoystick(int joynum,int *x,int *y,int *rx,int *ry,int *throttle,int *rudder);
 
 // Add GameController callback

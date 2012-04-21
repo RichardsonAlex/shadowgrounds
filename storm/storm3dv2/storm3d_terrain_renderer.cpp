@@ -1714,7 +1714,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 						float d3 = 4.5f * dp;
 						float d4 = 6.5f * dp;
 
-						float buffer1[] = 
+						float buffer1[] =
 						{
 							// Position,          w,    uv1,           uv2,           uv3,           uv4
 							offset, height,  1.f, 1.f,  0.f-d1, 0.f,  0.f-d2, 0.f,  0.f-d3, 0.f,  0.f-d4, 0.f,
@@ -1723,7 +1723,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 							width,  offset,  1.f, 1.f,  xs-d1,  ys,   xs-d2,  ys,   xs-d3,  ys,   xs-d4,  ys,
 						};
 
-						float buffer2[] = 
+						float buffer2[] =
 						{
 							// Position,          w,    uv1,           uv2,           uv3,           uv4
 							offset, height,  1.f, 1.f,  0.f+d1, 0.f,  0.f+d2, 0.f,  0.f+d3, 0.f,  0.f+d4, 0.f,
@@ -1770,7 +1770,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 						float d3 = 4.5f * dp;
 						float d4 = 6.5f * dp;
 
-						float buffer1[] = 
+						float buffer1[] =
 						{
 							// Position,          w,    uv1,           uv2,           uv3,           uv4
 							offset, height,  1.f, 1.f,  0.f, 0.f-d1,  0.f, 0.f-d2,  0.f, 0.f-d3,  0.f, 0.f-d4,
@@ -1779,7 +1779,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 							width,  offset,  1.f, 1.f,  xs,  ys-d1,   xs,  ys-d2,   xs,  ys-d3,   xs,  ys-d4
 						};
 
-						float buffer2[] = 
+						float buffer2[] =
 						{
 							// Position,          w,    uv1,           uv2,           uv3,           uv4
 							offset, height,  1.f, 1.f,  0.f, 0.f+d1,  0.f, 0.f+d2,  0.f, 0.f+d3,  0.f, 0.f+d4,
@@ -1884,7 +1884,7 @@ void Storm3D_TerrainRenderer::renderTargets(Storm3D_Scene &scene)
 				height *= 0.5f;
 			}
 
-			float glowTex1[] = 
+			float glowTex1[] =
 			{
 				textureOffset, height,         1.f, 1.f, 0.f, 0.f,
 				textureOffset, textureOffset,  1.f, 1.f, 0.f, glowHeight,
@@ -2011,7 +2011,7 @@ void Storm3D_TerrainRenderer::renderBase(Storm3D_Scene &scene)
 
 	textureOffset = -.5f;
     /*
-	float bufferTex2[] = 
+	float bufferTex2[] =
 	{
 		textureOffset, height,         1.f, 1.f, 0.f, 1.f,
 		textureOffset, textureOffset,  1.f, 1.f, 0.f, 0.f,
@@ -2019,7 +2019,7 @@ void Storm3D_TerrainRenderer::renderBase(Storm3D_Scene &scene)
 		width, textureOffset,          1.f, 1.f, 1.f, 0.f
 	};
 
-	float bufferTex3[] = 
+	float bufferTex3[] =
 	{
 		textureOffset, height,         1.f, 1.f, 0.f, 1.f, 0.f, 1.f,
 		textureOffset, textureOffset,  1.f, 1.f, 0.f, 0.f, 0.f, 0.f,

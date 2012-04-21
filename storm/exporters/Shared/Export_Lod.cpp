@@ -50,7 +50,7 @@ namespace {
 		{
 			d3dHandle.Attach(Direct3DCreate9(D3D_SDK_VERSION));
 
-			D3DPRESENT_PARAMETERS presentInfo; 
+			D3DPRESENT_PARAMETERS presentInfo;
 			ZeroMemory(&presentInfo, sizeof(D3DPRESENT_PARAMETERS));
 			presentInfo.Windowed = TRUE;
 			presentInfo.SwapEffect = D3DSWAPEFFECT_DISCARD;

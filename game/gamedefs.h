@@ -6,7 +6,7 @@
 // absolute value for maximum players
 #define ABS_MAX_PLAYERS 4
 
-// absolute value for maximum players per client 
+// absolute value for maximum players per client
 // reserved for splitsceen! ;)
 #define MAX_PLAYERS_PER_CLIENT 4
 

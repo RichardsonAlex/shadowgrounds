@@ -132,7 +132,7 @@ namespace game
 				durforce2 = impl->durp->getObjectDurabilities()[durtype2].requiredForce;
 		}
 
-		if(durtype1 == OBJECTDURABILITYPARSER_NO_DURABILITY_INDEX 
+		if(durtype1 == OBJECTDURABILITYPARSER_NO_DURABILITY_INDEX
 			&& durtype2 == OBJECTDURABILITYPARSER_NO_DURABILITY_INDEX)
 		{
 			return;
@@ -177,7 +177,7 @@ Logger::getInstance()->error(buffoo2);
 			for (int i = 0; i < 2; i++)
 			{
 				AbstractPhysicsObject *o = o1;
-				if (i == 1) 
+				if (i == 1)
 				{
 					o = o2;
 				}
@@ -220,7 +220,7 @@ Logger::getInstance()->error(buffoo1);
 	{
 		AbstractPhysicsObject *o = o1;
 		float force = durforce1;
-		if (unitCollisionNumber == 0) 
+		if (unitCollisionNumber == 0)
 		{
 			force = durforce2;
 			o = o2;
@@ -244,8 +244,8 @@ Logger::getInstance()->error(buffoo1);
 
 					/*
 					// Seems like this makes polices sometimes immortal. (The game thinks the police is burning while it actually isn't?)
-					// So commented out for now. It breaks the hack, I think but it's much better this way. 
-					if(impl->game->gameScripting->getGlobalIntVariableValue("signal_return_value") != 0) 
+					// So commented out for now. It breaks the hack, I think but it's much better this way.
+					if(impl->game->gameScripting->getGlobalIntVariableValue("signal_return_value") != 0)
 					{
 						// (it was burning.)
 						return;
@@ -261,10 +261,10 @@ Logger::getInstance()->error(buffoo1);
 		{
 			bool velocityThresholdOk = true;
 
-			for (int i = 0; i < 2; i++) 
+			for (int i = 0; i < 2; i++)
 			{
 				AbstractPhysicsObject *o = o1;
-				if (i == 1) 
+				if (i == 1)
 				{
 					o = o2;
 				}
@@ -283,7 +283,7 @@ Logger::getInstance()->error(buffoo1);
 					{
 						if (i != unitCollisionNumber)
 						{
-							// HACK: if static, don't damage unless unit is grabbed in the claw 
+							// HACK: if static, don't damage unless unit is grabbed in the claw
 							if (!o->isDynamic())
 							{
 								if (some_unit != NULL && !some_unit->isPhysicsObjectLock())
@@ -312,7 +312,7 @@ Logger::getInstance()->error(buffoo1);
 				}
 			}
 
-			if (!velocityThresholdOk) 
+			if (!velocityThresholdOk)
 			{
 				makeDamage[0] = false;
 				makeDamage[1] = false;
@@ -366,7 +366,7 @@ Logger::getInstance()->error(buf);
 				{
 				*/
 					AbstractPhysicsObject *o = o1;
-					if (i == 1) 
+					if (i == 1)
 					{
 						// if something was destroyed, it just might be that the other object destroyed as well...
 						// for some peculiar reason... say, and explosion?
@@ -396,7 +396,7 @@ Logger::getInstance()->error(buf);
 								Bullet *damBullet = unit->getUnitType()->getPhysicsContactDamageBullet();
 								
 
-								if (impactDamage 
+								if (impactDamage
 									|| (unit != NULL && !unit->isPhysicsObjectLock()))
 								{
 									if (unit->getUnitType()->getPhysicsContactImpactDamageBullet() != NULL)
@@ -434,7 +434,7 @@ Logger::getInstance()->error(buf);
 								if(othervel.x == 0.0f && othervel.y == 0.0f && othervel.z == 0.0f)
 								{
 									if(!unit->isPhysicsObjectLock())
-									{ 
+									{
 										othervel = -unit->getVelocity();
 									}
 									else
@@ -442,7 +442,7 @@ Logger::getInstance()->error(buf);
 										othervel = -unit->getGamePhysicsObject()->getVelocity();
 									}
 #ifdef PROJECT_CLAW_PROTO
-									// Some claw hacks below. 
+									// Some claw hacks below.
 									VC3 unitPos = unit->getGamePhysicsObject()->getPosition();
 									float mapY = impl->game->gameMap->getScaledHeightAt(unitPos.x, unitPos.z);
 
@@ -452,7 +452,7 @@ Logger::getInstance()->error(buf);
 									if( o2 && fabsf( o2->getPosition().y - mapY) <= 0.05f )
 									{
 										if(!unit->isPhysicsObjectLock())
-										{ 
+										{
 											othervel = unit->getVelocity();
 										}
 										else
@@ -549,8 +549,8 @@ signal_this_terrain_object_break_hack = false;
 								bool broken = true;
 #ifdef PROJECT_CLAW_PROTO
 								/*
-								// quick hack to get rid of annoying terrobj-drops-drom-claw-when-broken bug: terrain objects doesn't break when in claw. 
-								if( impl->game->getClawController()->getTerrainObjectInstanceId() == terrObjInstanceId 
+								// quick hack to get rid of annoying terrobj-drops-drom-claw-when-broken bug: terrain objects doesn't break when in claw.
+								if( impl->game->getClawController()->getTerrainObjectInstanceId() == terrObjInstanceId
 								 && impl->game->getClawController()->getTerrainObjectModelId() == terrObjModelId)
 									broken = false;
 								*/
@@ -599,7 +599,7 @@ signal_this_terrain_object_break_hack = false;
 												{
 													if (pt->isInherited(
 														getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
-													{ 
+													{
 														// WARNING: unsafe cast! (check above)
 														Bullet *evebull = (Bullet *)pt;
 														Projectile *eveproj = new Projectile(NULL, evebull);
@@ -607,7 +607,7 @@ signal_this_terrain_object_break_hack = false;
 
 														VC3 evepos = objectEvents[i].position;
 
-														eveproj->setDirectPath(evepos, evepos, 
+														eveproj->setDirectPath(evepos, evepos,
 															evebull->getVelocity());
 
 														ProjectileActor pa = ProjectileActor(impl->game);
@@ -707,14 +707,14 @@ if (strncmp(objectEvents[i].effect.c_str(), "LONG_", 5) == 0)
 					// can't do it like this, as the surviving object may have also been destroyed..
 					// (by an explosion or something?)
 					AbstractPhysicsObject *o = o1;
-					if (survivingObject == 1) 
+					if (survivingObject == 1)
 					{
 						o = o2;
 					}
 					*/
 					AbstractPhysicsObject *o = o1;
 					int ohandle = o1handle;
-					if (survivingObject == 1) 
+					if (survivingObject == 1)
 					{
 						ohandle = o2handle;
 						o = o2;

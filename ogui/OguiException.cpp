@@ -15,7 +15,7 @@ const char *OguiException::GetErrorMessage()
 }
 
 OguiException::OguiException(const char *errmsg, void *errdata)
-{ 
+{
   msg = new char[strlen(errmsg) + 1];
   strcpy(msg, errmsg);
   ogui_last_exception = this;

@@ -60,7 +60,7 @@ namespace {
 	{
 		bool operator() (const TexturePass &a, const TexturePass &b) const
 		{
-			return a.getOrder() > b.getOrder(); 
+			return a.getOrder() > b.getOrder();
 		}
 	};
 

@@ -35,7 +35,7 @@ namespace ui
 {
   /**
    *
-   * Combat _UNIT_ window class. 
+   * Combat _UNIT_ window class.
    * (one unit's stuff inside the combat window)
    *
    * @version 0.5, 23.6.2002
@@ -78,7 +78,7 @@ namespace ui
      *                        false if the unit is to be unselected.
      */
     void setUnitSelection(bool selected);
-    
+
     void setWeaponState(int weaponNumber, WEAPON_STATE state);
     void setWeaponAmmoAmount(int weaponNumber, int ammoAmount);
 
@@ -111,7 +111,7 @@ namespace ui
     // NOTICE!!!
     // There is no point in loading these images seperately for each
     // unit window, as they all use the same images.
-    // For now, we'll just trust in storm3d to handle texture sharing 
+    // For now, we'll just trust in storm3d to handle texture sharing
     // properly.
 
     // background
@@ -142,7 +142,7 @@ namespace ui
     //IOguiImage **heatImages;
     //IOguiImage *heatOverlayImage;
     //IOguiImage *energyOverlayImage;
-    
+
     //IOguiImage *unitHPImages[COMBATUNITWINDOW_UNIT_HP_IMAGES];
     IOguiImage *unitHPBlockImage;
     IOguiImage *unitEmptyHPBlockImage;
@@ -153,9 +153,9 @@ namespace ui
     IOguiImage *unitClipBlockImage;
     IOguiImage *unitEmptyClipBlockImage;
 
-    IOguiImage *heatImages[COMBATUNITWINDOW_HEAT_IMAGES]; 
+    IOguiImage *heatImages[COMBATUNITWINDOW_HEAT_IMAGES];
 
-    IOguiImage *partHPImages[COMBATUNITWINDOW_PART_HP_IMGTYPES 
+    IOguiImage *partHPImages[COMBATUNITWINDOW_PART_HP_IMGTYPES
       * COMBATUNITWINDOW_PART_HP_IMAGES];
 
     // the background

@@ -62,7 +62,7 @@ void SidewaysUnitActor::stopUnit(Unit *unit)
 }
 
 
-frozenbyte::ai::Path *SidewaysUnitActor::solvePath(Unit *unit, const VC3 &startPosition, VC3 &endPosition, 
+frozenbyte::ai::Path *SidewaysUnitActor::solvePath(Unit *unit, const VC3 &startPosition, VC3 &endPosition,
 	int maxDepth)
 {
 	frozenbyte::ai::Path *path = new frozenbyte::ai::Path();
@@ -84,11 +84,11 @@ bool SidewaysUnitActor::setPathTo(Unit *unit, const VC3 &destination_)
 	{
 		unit->setPath(path);
 		unit->setPathIndex(unit->getPathIndex() + 1);
-		// (...path object is now contained within the unit, 
+		// (...path object is now contained within the unit,
 		// unit will handle it's proper deletion)
 		unit->setWaypoint(unit->getPosition());
-		unit->setFinalDestination(VC3(destination.x, 
-			game->gameMap->getScaledHeightAt(destination.x, destination.z), 
+		unit->setFinalDestination(VC3(destination.x,
+			game->gameMap->getScaledHeightAt(destination.x, destination.z),
 			destination.z));
 		return true;
 	} else {		
@@ -96,7 +96,7 @@ bool SidewaysUnitActor::setPathTo(Unit *unit, const VC3 &destination_)
 		unit->setFinalDestination(unit->getPosition());
 		unit->setWaypoint(unit->getPosition());
 		return false;
-	} 
+	}
 }
 
 
@@ -105,7 +105,7 @@ void SidewaysUnitActor::actDirectSidewaysControls(Unit *unit)
 {
 	UnitType *unitType = unit->getUnitType();
 
-	// get weapon animation type 
+	// get weapon animation type
 	int weapTypeNum = 0;
 	if (unit->getSelectedWeapon() != -1
 		&& unit->getWeaponType(unit->getSelectedWeapon()) != NULL)
@@ -526,7 +526,7 @@ if (unit->getIdString() != NULL
 static int fooRight = 0;
 static int fooLeft = 0;
 
-	if (newYRotation > oldYRotation + 1.0f 
+	if (newYRotation > oldYRotation + 1.0f
 		|| newYRotation < oldYRotation - 180.0f)
 	{
 		//animRequests.turnRight = true;

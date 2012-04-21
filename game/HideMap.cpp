@@ -87,7 +87,7 @@ namespace game
 	}
 
 
-	void HideMap::addHiddenessToArea(int x, int y, int radius, 
+	void HideMap::addHiddenessToArea(int x, int y, int radius,
 		int amount, HIDDENESS_TYPE hidType)
 	{
 		assert(x >= 0 && x < sizeX);

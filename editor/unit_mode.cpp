@@ -717,7 +717,7 @@ namespace {
 
 	public:
 		MouseTracker(SharedData &sharedData_, Mouse &mouse_, HelperCommand &helperCommand_, SideCommand &sideCommand_)
-		:	sharedData(sharedData_), 
+		:	sharedData(sharedData_),
 			mouse(mouse_),
 			helperCommand(helperCommand_),
 

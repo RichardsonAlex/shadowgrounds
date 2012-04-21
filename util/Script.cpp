@@ -29,7 +29,7 @@
 
 
 #ifdef LEGACY_FILES
-// legacy scripts are assumed to be much larger in size on average (due to massively using copy pasting and 
+// legacy scripts are assumed to be much larger in size on average (due to massively using copy pasting and
 // externIncludes instead of calls)
 #define SCRIPT_ALLOC_ARRAY_SIZE 1024
 #else
@@ -40,7 +40,7 @@
 
 #define USER_STACK_SIZE_LIMIT 1000
 
-// this marks a local variable, instead of sharedLocal when variable command has non-zero intData 
+// this marks a local variable, instead of sharedLocal when variable command has non-zero intData
 #define SCRIPT_LOCAL_VAR_BITMASK 0x40000000
 
 // (some hacky value to indicate unitialized value in stack.)
@@ -242,7 +242,7 @@ namespace util
 		stringDataArray = new char *[SCRIPT_ALLOC_ARRAY_SIZE];
 		varOptimizeDataArray = new VarOptimizeData *[SCRIPT_ALLOC_ARRAY_SIZE];
 		for (int i = 0; i < SCRIPT_ALLOC_ARRAY_SIZE; i++)
-		{ 
+		{
 			commandArray[i] = SCRIPT_CMD_NOP;
 			intDataArray[i].i = 0;
 			stringDataArray[i] = NULL;
@@ -268,7 +268,7 @@ namespace util
 		delete loopNumBuf;
 
 		for (int i = 0; i < allocedSize; i++)
-		{ 
+		{
 			if (stringDataArray[i] != NULL)
 			{
 				delete [] stringDataArray[i];
@@ -319,7 +319,7 @@ namespace util
 		if (arrIsRegIndex)
 		{
 			arrreg = 1;
-		} 
+		}
 		else if (arrIsValueIndex)
 		{
 			arridx = str2int(&tmp[arrIdxStart + 1]);
@@ -345,7 +345,7 @@ namespace util
 					// so using hashcode in intData instead...
 					if (arrvarhc == intDataArray[localSeek].i)
 					{
-						arrvarip = (stackNegator | SCRIPT_LOCAL_VAR_BITMASK); 
+						arrvarip = (stackNegator | SCRIPT_LOCAL_VAR_BITMASK);
 						break;
 					}
 				}
@@ -362,7 +362,7 @@ namespace util
 				VariableIPHashType::iterator iter = variableIPHash->find(arrvarhc);
 				if (iter != variableIPHash->end())
 				{
-					arrvarip = (*iter).second; 
+					arrvarip = (*iter).second;
 					// don't zero this, it is still used to mark a variable type index, even when local...
 					//arrvarhc = 0;
 				}
@@ -428,7 +428,7 @@ namespace util
 			{
 				if (firstMatchingStr == NULL)
 					firstMatchingStr = cmpval;
-				
+
 				// solve the max. length of match fill..
 				int cmpvallen = strlen(cmpval);
 				int firstlen = strlen(firstMatchingStr);
@@ -508,7 +508,7 @@ namespace util
 		ScriptProcess *sp = new ScriptProcess();
 		sp->script = this;
 		sp->ip = getSubIP(startSub);
-		if (sp->ip == -1) 
+		if (sp->ip == -1)
 		{
 			sp->ip = 0;
 			Logger::getInstance()->error("Script::createNewProcess - Start sub was not found.");
@@ -780,7 +780,7 @@ namespace util
 								if (ip == -1)
 								{
 									sp->error("Script::run - Wrong type of stack data, internal error while executing return from sub.");
-									sp->finished = true;                
+									sp->finished = true;
 								}
 								sp->leaveLocalScope();
 							}
@@ -833,7 +833,7 @@ namespace util
 									sp->ifDepth++;
 								else if (commandArray[ip] == SCRIPT_CMD_ENDIF)
 								{
-									if (sp->ifDepth == 1) 
+									if (sp->ifDepth == 1)
 									{
 										ip--;
 										if (saveToIp != 0)
@@ -894,7 +894,7 @@ namespace util
 									sp->ifDepth++;
 								else if (commandArray[ip] == SCRIPT_CMD_ENDIF)
 								{
-									if (sp->ifDepth == 1) 
+									if (sp->ifDepth == 1)
 									{
 										ip--;
 										if (saveToIp != 0)
@@ -956,7 +956,7 @@ namespace util
 							}
 							else if (commandArray[ip] == SCRIPT_CMD_ENDSELECT)
 							{
-								if (selectDepth > 0) 
+								if (selectDepth > 0)
 								{
 									// nop
 								} else {
@@ -1019,7 +1019,7 @@ namespace util
 							}
 							else if (commandArray[ip] == SCRIPT_CMD_ENDSELECT)
 							{
-								if (selectDepth > 0) 
+								if (selectDepth > 0)
 								{
 									if (selectDepth == 1)
 									{
@@ -1090,7 +1090,7 @@ namespace util
 						if (stringDataArray[ip] != NULL)
 						{
 							ip = getLabelIP(stringDataArray[ip]);
-							if (ip == -1) 
+							if (ip == -1)
 							{
 								sp->error("Script::run - Goto target label not found.");
 								sp->finished = true;
@@ -1138,7 +1138,7 @@ namespace util
               if (valueCheck != -1)
               {
 							  sp->error("Script::run - Wrong type of stack data, internal error while executing _externCallPop.");
-							  sp->finished = true;                
+							  sp->finished = true;
               }
 							// don't do this here. _externCallPush/Pop should not affect scope
 							//sp->leaveLocalScope();
@@ -1189,7 +1189,7 @@ namespace util
 								if (stringDataArray[ip] != NULL)
 								{
 									ip = getSubIP(stringDataArray[ip]);
-									if (ip == -1) 
+									if (ip == -1)
 									{
 										sp->error("Script::run - Call target sub not found.");
 										sp->finished = true;
@@ -1261,7 +1261,7 @@ namespace util
 						if (stringDataArray[ip] != NULL)
 						{
 							int hc = 0;
-							
+
 							if (varOptimizeDataArray[ip] != NULL)
 							{
 								hc = varOptimizeDataArray[ip]->hashCode;
@@ -1342,19 +1342,19 @@ namespace util
 										sp->error("Script::run - setVariable or getVariable or variant, attempt to use non-array (int) variable with array index.");
 									} else {
 										if (commandArray[ip] == SCRIPT_CMD_SETVARIABLE)
-											(*iter).second.intValue = sp->lastValue; 
+											(*iter).second.intValue = sp->lastValue;
 										else if (commandArray[ip] == SCRIPT_CMD_ADDVALUETOVARIABLE)
-											(*iter).second.intValue += sp->lastValue; 
+											(*iter).second.intValue += sp->lastValue;
 										else if (commandArray[ip] == SCRIPT_CMD_DECREASEVALUEFROMVARIABLE)
-											(*iter).second.intValue -= sp->lastValue; 
+											(*iter).second.intValue -= sp->lastValue;
 										else if (commandArray[ip] == SCRIPT_CMD_ADDVARIABLETOVALUE)
-											sp->lastValue += (*iter).second.intValue; 
+											sp->lastValue += (*iter).second.intValue;
 										else if (commandArray[ip] == SCRIPT_CMD_DECREASEVARIABLEFROMVALUE)
-											sp->lastValue -= (*iter).second.intValue; 
+											sp->lastValue -= (*iter).second.intValue;
 										else if (commandArray[ip] == SCRIPT_CMD_VARIABLEEQUALSVALUE)
 											sp->lastValue = ((sp->lastValue == (*iter).second.intValue) ? 1 : 0);
 										else
-											sp->lastValue = (*iter).second.intValue; 
+											sp->lastValue = (*iter).second.intValue;
 									}
 								}
 								else if ((*iter).second.dataType == SCRIPT_DATATYPE_ARRAY)
@@ -1392,7 +1392,7 @@ namespace util
 													{
 														if ((*iter2).second.dataType == SCRIPT_DATATYPE_INT)
 														{
-															arrayIndexValue = (*iter2).second.intValue; 
+															arrayIndexValue = (*iter2).second.intValue;
 														} else {
 															int tmp = sp->ip;
 															sp->ip = ip;
@@ -1411,7 +1411,7 @@ namespace util
 											} else {
 												if (varOptimizeDataArray[ip]->arrayIndexRegister != 0)
 												{
-													arrayIndexValue = sp->lastValue; 
+													arrayIndexValue = sp->lastValue;
 												}
 											}
 										}
@@ -1426,19 +1426,19 @@ namespace util
 											if (arrayIndexValue >= 0 && arrayIndexValue < (*iter).second.arraySize)
 											{
 												if (commandArray[ip] == SCRIPT_CMD_SETVARIABLE)
-													(*iter).second.arrayValue[arrayIndexValue] = sp->lastValue; 
+													(*iter).second.arrayValue[arrayIndexValue] = sp->lastValue;
 												else if (commandArray[ip] == SCRIPT_CMD_ADDVALUETOVARIABLE)
-													(*iter).second.arrayValue[arrayIndexValue] += sp->lastValue; 
+													(*iter).second.arrayValue[arrayIndexValue] += sp->lastValue;
 												else if (commandArray[ip] == SCRIPT_CMD_DECREASEVALUEFROMVARIABLE)
-													(*iter).second.arrayValue[arrayIndexValue] -= sp->lastValue; 
+													(*iter).second.arrayValue[arrayIndexValue] -= sp->lastValue;
 												else if (commandArray[ip] == SCRIPT_CMD_ADDVARIABLETOVALUE)
-													sp->lastValue += (*iter).second.arrayValue[arrayIndexValue]; 
+													sp->lastValue += (*iter).second.arrayValue[arrayIndexValue];
 												else if (commandArray[ip] == SCRIPT_CMD_DECREASEVARIABLEFROMVALUE)
-													sp->lastValue -= (*iter).second.arrayValue[arrayIndexValue]; 
+													sp->lastValue -= (*iter).second.arrayValue[arrayIndexValue];
 												else if (commandArray[ip] == SCRIPT_CMD_VARIABLEEQUALSVALUE)
 													sp->lastValue = ((sp->lastValue == (*iter).second.arrayValue[arrayIndexValue]) ? 1 : 0);
 												else
-													sp->lastValue = (*iter).second.arrayValue[arrayIndexValue]; 
+													sp->lastValue = (*iter).second.arrayValue[arrayIndexValue];
 											} else {
 												int tmp = sp->ip;
 												sp->ip = ip;
@@ -1501,7 +1501,7 @@ namespace util
 						if (stringDataArray[ip] != NULL)
 						{
 							int hc = 0;
-							
+
 							if (varOptimizeDataArray[ip] != NULL)
 							{
 								hc = varOptimizeDataArray[ip]->hashCode;
@@ -1603,7 +1603,7 @@ namespace util
 													{
 														if ((*iter2).second.dataType == SCRIPT_DATATYPE_INT)
 														{
-															arrayIndexValue = (*iter2).second.intValue; 
+															arrayIndexValue = (*iter2).second.intValue;
 														} else {
 															sp->error("Script::run - setArrayVariableValues, array index variable is not integer type.");
 														}
@@ -1614,7 +1614,7 @@ namespace util
 											} else {
 												if (varOptimizeDataArray[ip]->arrayIndexRegister != 0)
 												{
-													arrayIndexValue = sp->lastValue; 
+													arrayIndexValue = sp->lastValue;
 												}
 											}
 										}
@@ -1674,7 +1674,7 @@ namespace util
 											{
 												for (int eidx = 0; eidx < elementListSize; eidx++)
 												{
-													(*iter).second.arrayValue[arrayIndexValue + eidx] = elementListValues[eidx]; 
+													(*iter).second.arrayValue[arrayIndexValue + eidx] = elementListValues[eidx];
 												}
 											} else {
 												sp->error("Script::run - setArrayVariableValues, array range (start index / start index + element list size) out of bounds.");
@@ -1807,7 +1807,7 @@ namespace util
 				if (processor != NULL)
 				{
 					sp->ip = ip;
-					doPause = processor->process(sp, commandArray[ip] - keywordsAmount, 
+					doPause = processor->process(sp, commandArray[ip] - keywordsAmount,
 						intDataArray[ip], stringDataArray[ip], &sp->lastValue);
 				} else {
 					Logger::getInstance()->error("Script::run - Encountered external command, but no processor object.");
@@ -1853,17 +1853,17 @@ namespace util
 	int Script::getSubIP(const char *subName)
 	{
 		assert(subName != NULL);
-		
+
 		int hc;
 		SCRIPT_HASHCODE_CALC(subName, &hc);
 
 		SubIPHashType::iterator iter = subIPHash->find(hc);
 		if (iter != subIPHash->end())
 		{
-			int ip = (*iter).second; 
+			int ip = (*iter).second;
 			return ip;
 		}
-		return -1;		
+		return -1;
 	}
 
 	int Script::getLabelIP(char *labelName)
@@ -1880,13 +1880,13 @@ namespace util
 					}
 				}
 			}
-		} 
+		}
 		return -1;
 	}
 
 	bool Script::hasSub(const char *subName)
 	{
-		if (getSubIP(subName) != -1) 
+		if (getSubIP(subName) != -1)
 			return true;
 		else
 			return false;
@@ -1977,7 +1977,7 @@ namespace util
 							{
 								ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Label already defined within script.", true);
 								Logger::getInstance()->debug(cmd);
-								Logger::getInstance()->debug(data); 
+								Logger::getInstance()->debug(data);
 							}
 						}
 					}
@@ -2003,7 +2003,7 @@ namespace util
 								} else {
 									ScriptManager::getInstance()->scriptCompileError("Script::addCommand - More parameters expected.", true);
 									Logger::getInstance()->debug(cmd);
-									Logger::getInstance()->debug(data); 
+									Logger::getInstance()->debug(data);
 								}
 								isOk = true;
 							}
@@ -2012,7 +2012,7 @@ namespace util
 						{
 							ScriptManager::getInstance()->scriptCompileError("Script::addCommand - _paramGetVariable parameter invalid (internal error).", true);
 							Logger::getInstance()->debug(cmd);
-							Logger::getInstance()->debug(data); 
+							Logger::getInstance()->debug(data);
 						}
 					}
 				}
@@ -2072,7 +2072,7 @@ namespace util
 									// so using hashcode in intData instead...
 									if (hc == intDataArray[localSeek].i)
 									{
-										ip = (stackNegator | SCRIPT_LOCAL_VAR_BITMASK); 
+										ip = (stackNegator | SCRIPT_LOCAL_VAR_BITMASK);
 										break;
 									}
 								}
@@ -2090,7 +2090,7 @@ namespace util
 							VariableIPHashType::iterator iter = variableIPHash->find(hc);
 							if (iter != variableIPHash->end())
 							{
-								ip = (*iter).second; 
+								ip = (*iter).second;
 							}
 						}
 
@@ -2158,7 +2158,7 @@ namespace util
 						int ip = -1;
 						if (iter != variableIPHash->end())
 						{
-							ip = (*iter).second; 
+							ip = (*iter).second;
 						}
 
 						if (ip != -1)
@@ -2208,7 +2208,7 @@ namespace util
 					strcat(buf, int2str(num));
 					addCommand("label", buf);
 
-					commandAmount--; // will be incremented later... 
+					commandAmount--; // will be incremented later...
 					// (see end of this function)
 				}
 				else if (keyw == SCRIPT_CMD_ENDLOOP)
@@ -2236,7 +2236,7 @@ namespace util
 						strcat(buf, int2str(num));
 						addCommand("label", buf);
 
-						commandAmount--; // will be incremented later... 
+						commandAmount--; // will be incremented later...
 						// (see end of this function)
 					}
 				}
@@ -2260,7 +2260,7 @@ namespace util
 						strcat(buf, int2str(num));
 						addCommand("goto", buf);
 
-						commandAmount--; // will be incremented later... 
+						commandAmount--; // will be incremented later...
 						// (see end of this function)
 					}
 				}
@@ -2284,7 +2284,7 @@ namespace util
 						strcat(buf, int2str(num));
 						addCommand("goto", buf);
 
-						commandAmount--; // will be incremented later... 
+						commandAmount--; // will be incremented later...
 						// (see end of this function)
 					}
 				}
@@ -2413,7 +2413,7 @@ namespace util
 							strcpy(addbuf, int2str(upto));
 							addCommand("_upToCase", addbuf);
 
-							commandAmount--; // will be incremented later... 
+							commandAmount--; // will be incremented later...
 							// (see end of this function)
 						}
 					}
@@ -2639,7 +2639,7 @@ namespace util
 									} else {
 										ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Sub parameter format bad (expected type,subname(parameters...).", true);
 										Logger::getInstance()->debug(cmd);
-										Logger::getInstance()->debug(data); 										
+										Logger::getInstance()->debug(data);
 									}
 								} else {
 									parseParamFromHere = true;
@@ -2651,7 +2651,7 @@ namespace util
 								{
 									ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Sub parameter format bad (multiple starting parenthesis).", true);
 									Logger::getInstance()->debug(cmd);
-									Logger::getInstance()->debug(data); 										
+									Logger::getInstance()->debug(data);
 								}
 								containsParenthesis = j;
 								lastParamStart = j + 1;
@@ -2663,13 +2663,13 @@ namespace util
 								{
 									ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Sub parameter format bad (starting parenthesis missing before ending parenthesis).", true);
 									Logger::getInstance()->debug(cmd);
-									Logger::getInstance()->debug(data); 										
+									Logger::getInstance()->debug(data);
 								}
 								if (containsParenthesisEnd != -1)
 								{
 									ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Sub parameter format bad (multiple ending parenthesis).", true);
 									Logger::getInstance()->debug(cmd);
-									Logger::getInstance()->debug(data); 										
+									Logger::getInstance()->debug(data);
 								}
 								containsParenthesisEnd = j;
 								parseParamFromHere = true;
@@ -2708,7 +2708,7 @@ namespace util
 												std::string tmp_type2 = StringRemoveWhitespace(tmp_type);
 												std::string tmp_name = &tmpbuf[k + 1];
 												std::string tmp_name2 = StringRemoveWhitespace(tmp_name);
-												if (!tmp_type2.empty() 
+												if (!tmp_type2.empty()
 													&& !tmp_name2.empty())
 												{
 													if (tmp_type2 != "int")
@@ -2740,7 +2740,7 @@ namespace util
 							{
 								ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Sub parameter format bad (missing ending parenthesis).", true);
 								Logger::getInstance()->debug(cmd);
-								Logger::getInstance()->debug(data); 										
+								Logger::getInstance()->debug(data);
 							}
 						}
 						const char *subname = data;
@@ -2767,7 +2767,7 @@ namespace util
 							}
 							strncpy(newSubname, &data[containsComma + 1], subnamelen);
 							newSubname[subnamelen] = '\0';
-							
+
 							{
 								std::string tmp = subname;
 								std::string tmp2 = StringRemoveWhitespace(tmp);
@@ -2779,13 +2779,13 @@ namespace util
 							{
 								ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Sub parameter format bad (return datatype missing).", true);
 								Logger::getInstance()->debug(cmd);
-								Logger::getInstance()->debug(data); 										
+								Logger::getInstance()->debug(data);
 							}
 							if (containsComma > 0)
 							{
 								strncpy(rettypename, data, containsComma);
 								rettypename[containsComma] = '\0';
-								
+
 								std::string tmp = rettypename;
 								std::string tmp2 = StringRemoveWhitespace(tmp);
 								assert(tmp2.size() <= strlen(data));
@@ -2800,7 +2800,7 @@ namespace util
 						{
 							ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Sub already defined within script.", true);
 							Logger::getInstance()->debug(cmd);
-							Logger::getInstance()->debug(data); 
+							Logger::getInstance()->debug(data);
 						}
 						int hc;
 						SCRIPT_HASHCODE_CALC(subname, &hc);
@@ -2822,7 +2822,7 @@ namespace util
 							} else {
 								ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Unsupported sub return value type (only void or int supported).", true);
 								Logger::getInstance()->debug(cmd);
-								Logger::getInstance()->debug(data); 
+								Logger::getInstance()->debug(data);
 							}
 
 							std::string enterSubName = std::string("_call_enter_") + subname;
@@ -3030,7 +3030,7 @@ namespace util
 							int ip = -1;
 							if (iter != variableIPHash->end())
 							{
-								ip = (*iter).second; 
+								ip = (*iter).second;
 							}
 
 							if (ip == -1)
@@ -3059,7 +3059,7 @@ namespace util
 						{
 							createDatatype = SCRIPT_DATATYPE_INT;
 							skipstart = 4;
-						} 
+						}
 						else if (strncmp(data, "string,", 7) == 0)
 						{
 							createDatatype = SCRIPT_DATATYPE_STRING;
@@ -3084,7 +3084,7 @@ namespace util
 								if (tmp[tmpi] == ']'
 									|| (tmp[tmpi] == ' ' && tmp[tmpi+1] == ']'))
 								{
-									if (tmp[tmpi + 1] == ',' || 
+									if (tmp[tmpi + 1] == ',' ||
 										(tmp[tmpi+1] == ']' && tmp[tmpi + 2] == ','))
 									{
 										tmp[tmpi] = '\0';
@@ -3132,8 +3132,8 @@ namespace util
 							if (iter != globalVariableHash->end())
 							{
 								didExist = true;
-								existIsPermanent = (*iter).second.permanent; 
-								existType = (*iter).second.dataType; 
+								existIsPermanent = (*iter).second.permanent;
+								existType = (*iter).second.dataType;
 							}
 
 							bool createPermanent = false;
@@ -3225,7 +3225,7 @@ namespace util
 										splitbuf[spl] = '\0';
 									}
 									paramOk = true;
-									
+
 									char *p1 = splitbuf;
 									char *p2 = &splitbuf[splitp + 1];
 
@@ -3243,7 +3243,7 @@ namespace util
 											Logger::getInstance()->debug(data);
 											selfInc = true;
 											s = NULL;
-										}								
+										}
 									}
 									if (s != NULL)
 									{
@@ -3252,7 +3252,7 @@ namespace util
 											int subip = s->getSubIP(p2) + 1;
 
 											bool includedSubIsEmpty = false;
-											if (subip < s->commandAmount 
+											if (subip < s->commandAmount
 												&& (s->commandArray[subip] == SCRIPT_CMD_ENDSUB
 												|| s->commandArray[subip] == SCRIPT_CMD_RETURN))
 											{
@@ -3266,7 +3266,7 @@ namespace util
 												if (!dont_add_externcallpushpop)
 													addCommand("_externCallPush", NULL);
 												for (; subip < s->commandAmount; subip++)
-												{ 
+												{
 													if (s->commandArray[subip] == SCRIPT_CMD_ENDSUB)
 													{
 														break;
@@ -3302,8 +3302,8 @@ namespace util
 															char numstr[16];
 															sprintf(numstr, "%f", s->intDataArray[subip].f);
 															addCommand(s->processorKeywords[pkey], numstr);
-														} 
-														else 
+														}
+														else
 														{
 															script_doublequotes_warning = false;
 															addCommand(s->processorKeywords[pkey], s->stringDataArray[subip]);
@@ -3346,7 +3346,7 @@ namespace util
 				}
 
 				commandAmount++;
-				return true;	
+				return true;
 			}
 		}
 
@@ -3385,7 +3385,7 @@ namespace util
 					if (data != NULL)
 					{
 						intDataArray[commandAmount].i = str2int(data);
-						if (str2int_errno() != 0)	
+						if (str2int_errno() != 0)
 							numexp = true;
 					} else {
 						intDataArray[commandAmount].i = 0;
@@ -3422,7 +3422,7 @@ namespace util
 						{
 							ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Float expected.", false);
 							Logger::getInstance()->debug(cmd);
-							Logger::getInstance()->debug(data);							
+							Logger::getInstance()->debug(data);
 						}
 					}
 					intDataArray[commandAmount].f = val;
@@ -3491,7 +3491,7 @@ namespace util
 					Logger::getInstance()->debug(data);
 				}
 				commandAmount++;
-				return true;	
+				return true;
 			}
 		}
 
@@ -3500,7 +3500,7 @@ namespace util
 
 	void Script::optimizeJumps()
 	{
-		// a flag to mark "subExists" conditional calls 
+		// a flag to mark "subExists" conditional calls
 		// (just so that there will be no warning about them)
 		// not a flawless logic, but better than nothing.
 		bool conditionalCall = false;
@@ -3587,11 +3587,11 @@ namespace util
 		if (loglevel == LOGGER_LEVEL_ERROR)
 			Logger::getInstance()->error(message);
 		else if (loglevel == LOGGER_LEVEL_WARNING)
-			Logger::getInstance()->warning(message);	
+			Logger::getInstance()->warning(message);
 		else if (loglevel == LOGGER_LEVEL_INFO)
-			Logger::getInstance()->info(message); 
+			Logger::getInstance()->info(message);
 		else if (loglevel == LOGGER_LEVEL_DEBUG)
-			Logger::getInstance()->debug(message);	
+			Logger::getInstance()->debug(message);
 		else
 		{
 			assert(0);
@@ -3608,7 +3608,7 @@ namespace util
 			if (dbg != NULL)
 			{
 				Logger::getInstance()->debug(dbg);
-				delete [] dbg; 
+				delete [] dbg;
 			}
 		}
 	}
@@ -3740,7 +3740,7 @@ namespace util
 					strcat(intv, ")");
 				}
 			}
-				
+
 			ind[0] = '\0';
 			for (int j = 0; j < indent; j++)
 			{
@@ -3784,7 +3784,7 @@ namespace util
 		{
 			globalVariableHash = new VariableHashType();
 		}
-		
+
 		VariableDataType data;
 		data.dataType = SCRIPT_DATATYPE_INT;
 		data.permanent = permanent;
@@ -3793,11 +3793,11 @@ namespace util
 		// added the +1 to make it stable. Pete
 		data.name = new char[ name.size() + 1 ];
 		strcpy(data.name, name.c_str() );
-		
+
 		int hc;
 		SCRIPT_HASHCODE_CALC( (name.c_str()), &hc);
 
-		globalVariableHash->insert(std::pair<int, VariableDataType> (hc, data));		
+		globalVariableHash->insert(std::pair<int, VariableDataType> (hc, data));
 	}
 
 	void Script::newGlobalStringVariable( const std::string& name, bool permanent )
@@ -3812,7 +3812,7 @@ namespace util
 		{
 			globalVariableHash = new VariableHashType();
 		}
-		
+
 		VariableDataType data;
 		data.dataType = SCRIPT_DATATYPE_STRING;
 		data.intValue = 0;
@@ -3824,7 +3824,7 @@ namespace util
 		// added the +1 to make it stable. Pete
 		data.name = new char[ name.size() + 1 ];
 		strcpy(data.name, name.c_str() );
-		
+
 		int hc;
 		SCRIPT_HASHCODE_CALC( (name.c_str()), &hc);
 
@@ -3843,7 +3843,7 @@ namespace util
 		{
 			globalVariableHash = new VariableHashType();
 		}
-		
+
 		VariableDataType data;
 		data.dataType = SCRIPT_DATATYPE_ARRAY;
 		data.arraySize = size;
@@ -3856,7 +3856,7 @@ namespace util
 
 		data.name = new char[name.size() + 1];
 		strcpy(data.name, name.c_str());
-		
+
 		int hc;
 		SCRIPT_HASHCODE_CALC((name.c_str()), &hc);
 
@@ -4007,7 +4007,7 @@ namespace util
 					}
 					if (value != NULL)
 					{
-						(*iter).second.stringData = new char[strlen(value) + 1];					
+						(*iter).second.stringData = new char[strlen(value) + 1];
 						strcpy((*iter).second.stringData, value);
 					} else {
 						(*iter).second.stringData = NULL;
@@ -4069,7 +4069,7 @@ namespace util
 		{
 			globalVariableHash = new VariableHashType();
 		}
-		
+
 		VariableDataType data;
 		data.dataType = SCRIPT_DATATYPE_FLOAT;
 		data.permanent = permanent;
@@ -4078,11 +4078,11 @@ namespace util
 		// added the +1 to make it stable. Pete
 		data.name = new char[ name.size() + 1 ];
 		strcpy(data.name, name.c_str() );
-		
+
 		int hc;
 		SCRIPT_HASHCODE_CALC( (name.c_str()), &hc);
 
-		globalVariableHash->insert(std::pair<int, VariableDataType> (hc, data));		
+		globalVariableHash->insert(std::pair<int, VariableDataType> (hc, data));
 	}
 
 	bool Script::setGlobalFloatVariableValue(const char *variablename, float value)
@@ -4164,7 +4164,7 @@ namespace util
 		{
 			globalVariableHash = new VariableHashType();
 		}
-		
+
 		VariableDataType data;
 		data.dataType = SCRIPT_DATATYPE_POSITION;
 		data.permanent = permanent;
@@ -4173,11 +4173,11 @@ namespace util
 		// added the +1 to make it stable. Pete
 		data.name = new char[ name.size() + 1 ];
 		strcpy(data.name, name.c_str() );
-		
+
 		int hc;
 		SCRIPT_HASHCODE_CALC( (name.c_str()), &hc);
 
-		globalVariableHash->insert(std::pair<int, VariableDataType> (hc, data));		
+		globalVariableHash->insert(std::pair<int, VariableDataType> (hc, data));
 	}
 
 	bool Script::setGlobalPositionVariableValue(const char *variablename, float xValue, float yValue, float zValue)

@@ -17,7 +17,7 @@
 #include "../system/Timer.h"
 #include "../convert/str2int.h"
 
-// unwanted dependencies... 
+// unwanted dependencies...
 // (well actually terrain should be gameplay, but visual effects not)
 #include "../ui/Terrain.h"
 #include "../ui/VisualEffectManager.h"
@@ -33,7 +33,7 @@
 #include "../claw_proto/version.h"
 #elif PROJECT_SURVIVOR
 #include "../survivor/version.h"
-#else 
+#else
 #error "Game.cpp, Unknown project, don't know which version.h to include."
 #endif
 
@@ -218,12 +218,12 @@ public:
 		if (PARTTYPE_ID_STRING_VALID(idstr))
 		{
 			game::PartType *pt = game::getPartTypeById(PARTTYPE_ID_STRING_TO_INT(idstr));
-			if (pt == NULL) 
-			{ 
+			if (pt == NULL)
+			{
 				LOG_ERROR_W_DEBUG("GameProjectileTrackerFactory::createNewProjectileTrackerInstance - reference to unloaded part type.", idstr);
 			} else {
 				if (pt->isInherited(game::getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Bull"))))
-				{ 
+				{
 					// WARNING: unsafe cast!
 					bullet = (game::Bullet *)pt;
 				} else {
@@ -321,9 +321,9 @@ namespace {
 	class SaveParentEntry
 	{
 	public:
-		SaveParentEntry(int s, int children, GameObject *r) 
-		{ 
-			childleft = children; saved = s; real = r; 
+		SaveParentEntry(int s, int children, GameObject *r)
+		{
+			childleft = children; saved = s; real = r;
 		}
 		int saved;				// the ptr value saved to file
 		int childleft;		// amount of children expected, once 0 pop off
@@ -559,7 +559,7 @@ namespace {
 		delete game_anyBurnableTrackableObjectFactory;
 
 		delete unifiedHandleManager;
-		delete objectTracker; 
+		delete objectTracker;
 		objectTracker = NULL;
 		tracking::TrackableUnifiedHandleObject::cleanupPool();
 
@@ -684,7 +684,7 @@ namespace {
 				delete c;
 			}
 			// get rid of parts first
-			if (u->getRootPart() != NULL) 
+			if (u->getRootPart() != NULL)
 			{
 				deleteVisualOfParts(u, u->getRootPart());
 				detachParts(u, u->getRootPart());
@@ -824,7 +824,7 @@ namespace {
 		gameScripting->runMissionScript("user_autoexec", "runbefore");
 
 		MissionParser mp = MissionParser();
-		mp.parseMission(this, currentMission.c_str(), 
+		mp.parseMission(this, currentMission.c_str(),
 			MISSIONPARSER_SECTION_BEFORE);
 
 		if (sectionScript != NULL)
@@ -838,34 +838,34 @@ namespace {
 
 		// and some music!
 #ifdef LEGACY_FILES
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_MENUS, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_MENUS,
 			"Data/Music/Playlists/default_menus.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_ACTION, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_ACTION,
 			"Data/Music/Playlists/default_action.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CALM, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CALM,
 			"Data/Music/Playlists/default_calm.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_FAILURE, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_FAILURE,
 			"Data/Music/Playlists/default_failure.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_SUCCESS, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_SUCCESS,
 			"Data/Music/Playlists/default_success.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_INTRO, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_INTRO,
 			"Data/Music/Playlists/default_intro.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CREDITS, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CREDITS,
 			"Data/Music/Playlists/default_credits.txt");
 #else
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_MENUS, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_MENUS,
 			"data/audio/music/playlist/default_menus.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_ACTION, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_ACTION,
 			"data/audio/music/playlist/default_action.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CALM, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CALM,
 			"data/audio/music/playlist/default_calm.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_FAILURE, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_FAILURE,
 			"data/audio/music/playlist/default_failure.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_SUCCESS, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_SUCCESS,
 			"data/audio/music/playlist/default_success.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_INTRO, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_INTRO,
 			"data/audio/music/playlist/default_intro.txt");
-		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CREDITS, 
+		gameUI->getMusicPlaylist(singlePlayerNumber)->loadPlaylist(PLAYLIST_CREDITS,
 			"data/audio/music/playlist/default_credits.txt");
 #endif
 
@@ -895,7 +895,7 @@ static VC3 last_attemptedPos = VC3(0,0,0);
 	void Game::run()
 	{
 		// process game requests
-		while (!orderQueue->isEmpty() 
+		while (!orderQueue->isEmpty()
 			&& (orderQueue->peekFirst())->executeTime
 			<= gameTimer)
 		{
@@ -926,7 +926,7 @@ static VC3 last_attemptedPos = VC3(0,0,0);
 		// if we are allowed to continue (not yet reached sync time),
 		// advance one game tick...
 		if (gameTimer < syncToTimer)
-		{ 		 
+		{
 			if (inCombat)
 			{
 				if ( gameUI->getLoadingWindow() && paused && missionSuccessCounter != 0 )
@@ -991,7 +991,7 @@ static VC3 last_attemptedPos = VC3(0,0,0);
 						}
 						physics->setGroundFocusHeight(gfocuspos.y);
 					}
-	
+
 					// NEW: visibility check run only every 2nd tick!
 					if ((gameTimer & 1) == 0)
 					{
@@ -1190,7 +1190,7 @@ static VC3 last_attemptedPos = VC3(0,0,0);
 										fl->run(position);
 
 										VC3 vel = unit->getVelocity();
-										if (fabs(vel.x) > 0.5f / GAME_TICKS_PER_SECOND 
+										if (fabs(vel.x) > 0.5f / GAME_TICKS_PER_SECOND
 											|| fabs(vel.z) > 0.5f / GAME_TICKS_PER_SECOND)
 										{
 											fl->setSwayFactor(SimpleOptions::getFloat(DH_OPT_F_FLASHLIGHT_SWAY_FACTOR));
@@ -1271,7 +1271,7 @@ Logger::getInstance()->error(int2str(projAmount));
 								Unit *u = iter->iterateNext();
 								Bullet *touchBullet = u->getUnitType()->getTouchBullet();
 								if ((u->getUnitType()->getTouchBullet() != NULL) && u->isTouchProjectileEnabled()
-									&& (units->getIdForUnit(u)%TOUCHBULLET_INTERVAL == gameTimer%TOUCHBULLET_INTERVAL)) 
+									&& (units->getIdForUnit(u)%TOUCHBULLET_INTERVAL == gameTimer%TOUCHBULLET_INTERVAL))
 								{
 									if (u->getUnitType()->hasNoCollision())
 									{
@@ -1288,7 +1288,7 @@ Logger::getInstance()->error(int2str(projAmount));
 										u->getVisualObject()->setForcedNoCollision(true);
 									}
 
-									if (collisionInfo.hit) 
+									if (collisionInfo.hit)
 									{
 										Projectile *touchproj = new Projectile(NULL, touchBullet);
 										projectiles->addProjectile(touchproj);
@@ -1306,10 +1306,10 @@ Logger::getInstance()->error(int2str(projAmount));
 								}
 							}
 							delete iter;
-							
+
 						}
-					}		
-			
+					}
+
 					// run alien spawner
 					{
 						VC3 playerAvgPos = VC3(0,0,0);
@@ -1346,13 +1346,13 @@ Logger::getInstance()->error(int2str(projAmount));
 							delete cinematicScriptProcess;
 							cinematicScriptProcess = NULL;
 						} else {
-							gameScripting->runScriptProcess(cinematicScriptProcess, 
+							gameScripting->runScriptProcess(cinematicScriptProcess,
 								!skippingCinematic);
 						}
 					} else {
 						skippingCinematic = false;
 					}
-	
+
 					runCustomScriptProcesses();
 
 					// update triggers....
@@ -1376,7 +1376,7 @@ Logger::getInstance()->error(int2str(projAmount));
 						{
 							gameUI->gameMessage(getLocaleGuiString("gui_mission_MISSION_FAILED"), NULL, 3, 2*3000,
 								GameUI::MESSAGE_TYPE_CENTER_BIG);
-							missionFailureCounter = -1; 					 
+							missionFailureCounter = -1;
 						}
 						if (missionFailureCounter == -2 * GAME_TICKS_PER_SECOND)
 						{
@@ -1401,7 +1401,7 @@ Logger::getInstance()->error(int2str(projAmount));
 						missionSuccessCounter--;
 						if (missionSuccessCounter == 0)
 						{
-							gameUI->gameMessage(getLocaleGuiString("gui_mission_MISSION_COMPLETE"), NULL, 3, 2*3000, 
+							gameUI->gameMessage(getLocaleGuiString("gui_mission_MISSION_COMPLETE"), NULL, 3, 2*3000,
 								GameUI::MESSAGE_TYPE_CENTER_BIG);
 							missionSuccessCounter = -1;
 						}
@@ -1428,12 +1428,12 @@ Logger::getInstance()->error(int2str(projAmount));
 
 						// Opens loading screen and starts loading?
 						// 4 seconds passed since "mission success"
-						if ( ( missionSuccessCounter < -4 * GAME_TICKS_PER_SECOND ) && 
+						if ( ( missionSuccessCounter < -4 * GAME_TICKS_PER_SECOND ) &&
 							( gameUI->isScoreWindowInUse() == false || gameUI->scoreWindowAllowsLoading() ) )
 						{
 							if( gameUI->isScoreWindowOpen() )
 								gameUI->closeScoreWindow( singlePlayerNumber );
-							
+
 							score_window_opened_in_this_game = false;
 
 							assert(inCombat);
@@ -1576,7 +1576,7 @@ this->currentMission.swap(foocrap2);
 					SHOW_LOADING_BAR(25);
 
 					MissionParser mp = MissionParser();
-					mp.parseMission(this, currentMission.c_str(), 
+					mp.parseMission(this, currentMission.c_str(),
 						MISSIONPARSER_SECTION_AFTER);
 
 #ifdef LEGACY_FILES
@@ -1632,7 +1632,7 @@ this->currentMission.swap(foocrap2);
 					AniManager::createInstance(gameScripting);
 					// end of script cleanup
 
-					mp.parseMission(this, currentMission.c_str(), 
+					mp.parseMission(this, currentMission.c_str(),
 						MISSIONPARSER_SECTION_BEFORE);
 
 #ifdef LEGACY_FILES
@@ -1665,7 +1665,7 @@ this->currentMission.swap(foocrap2);
 					if (gameUI->commandWindows[singlePlayerNumber] != NULL)
 					{
 						gameUI->closeCommandWindow(singlePlayerNumber);
-						gameUI->openLoadingWindow(singlePlayerNumber); 
+						gameUI->openLoadingWindow(singlePlayerNumber);
 					}
 				}
 				*/
@@ -1709,7 +1709,7 @@ this->currentMission.swap(foocrap2);
 						}
 						MissionParser mp = MissionParser();
 
-						mp.parseMission(this, currentMission.c_str(), 
+						mp.parseMission(this, currentMission.c_str(),
 							MISSIONPARSER_SECTION_COMBAT);
 
 						SHOW_LOADING_BAR(25);
@@ -1897,7 +1897,7 @@ bool game_in_start_combat = false;
 
 		SHOW_LOADING_BAR(45);
 
-		gameScene = new GameScene(gameUI->storm3d, gameUI->scene, 
+		gameScene = new GameScene(gameUI->storm3d, gameUI->scene,
 			gameUI->renderTerrain, gameMap);
 		gameUI->getVisualEffectManager()->setGameScene(gameScene);
 
@@ -2107,21 +2107,21 @@ bool game_in_start_combat = false;
 				{
 					armorOk = false;
 				} else {
-					// TODO: this is copy paste programming from commandwindow. 
+					// TODO: this is copy paste programming from commandwindow.
 					// do proper method for this check...
 					int slotAmount = p->getType()->getSlotAmount();
-					for (int i = 0; i < slotAmount; i++) 
+					for (int i = 0; i < slotAmount; i++)
 					{
 						if (p->getSubPart(i) == NULL)
 						{
 							if (
-								p->getType()->getSlotType(i)->getPartTypeId() 
+								p->getType()->getSlotType(i)->getPartTypeId()
 								== PARTTYPE_ID_STRING_TO_INT("Head")
-								|| p->getType()->getSlotType(i)->getPartTypeId() 
+								|| p->getType()->getSlotType(i)->getPartTypeId()
 								== PARTTYPE_ID_STRING_TO_INT("Arm")
-								|| p->getType()->getSlotType(i)->getPartTypeId() 
+								|| p->getType()->getSlotType(i)->getPartTypeId()
 								== PARTTYPE_ID_STRING_TO_INT("Leg")
-								|| p->getType()->getSlotType(i)->getPartTypeId() 
+								|| p->getType()->getSlotType(i)->getPartTypeId()
 								== PARTTYPE_ID_STRING_TO_INT("Reac")
 								)
 							{
@@ -2155,10 +2155,10 @@ bool game_in_start_combat = false;
 			}
 			/*
 			VC3I pos = VC3I(
-				gameMap->getScaledSizeX() / 2, 
-				gameMap->, 
+				gameMap->getScaledSizeX() / 2,
+				gameMap->,
 				gameMap->getScaledSizeY() / 2);
-			u->setPosition(pos);			
+			u->setPosition(pos);
 			*/
 		}
 
@@ -2196,7 +2196,7 @@ gameUI->getTerrain()->calculateLighting();
 #ifndef PROJECT_SHADOWGROUNDS
 		gameScripting->runMissionScript("player_selection", "activation");
 #else
-		// NEW: now handled by a script... or maybe not...		
+		// NEW: now handled by a script... or maybe not...
 		Unit *firstUnit = NULL;
 		Unit *secondUnit = NULL;
 		Unit *thirdUnit = NULL;
@@ -2277,10 +2277,10 @@ gameUI->getTerrain()->calculateLighting();
 			}
 		}
 
-		// TODO: FIXME: why do we need the *2 here? 
+		// TODO: FIXME: why do we need the *2 here?
 		// *1 is not enough, but why is that... it should be. I think.
 
-		for (int visc = 0; visc < units->getAllUnitAmount() 
+		for (int visc = 0; visc < units->getAllUnitAmount()
 			* VISIBILITY_CHECK_IN_PASSES * 2; visc++)
 		{
 			visibilityChecker->runCheck();
@@ -2340,7 +2340,7 @@ gameUI->getTerrain()->calculateLighting();
 				gameUI->setFirstPerson(singlePlayerNumber, fourthUnit, 3);
 			//visibilityChecker->setUpdateEnabled(false);
 		}
-#endif		
+#endif
 
 		gameUI->missionStarted();
 
@@ -2502,7 +2502,7 @@ gameUI->getTerrain()->calculateLighting();
 		// retire units from the battlefield.
 
 		// delete unit level ai
-		// delete computer units 
+		// delete computer units
 		// clear targets and stuff
 		// uninit weapons
 		// clear spawn coordinates
@@ -2529,7 +2529,7 @@ gameUI->getTerrain()->calculateLighting();
 		gameUI->getVisualEffectManager()->setGameScene(NULL);
 
 		gameUI->setRenderMap(NULL, NULL);
-		
+
 		if (gameScene != NULL)
 		{
 			delete gameScene;
@@ -2577,7 +2577,7 @@ gameUI->getTerrain()->calculateLighting();
 		assert(!endingCombat);
 		endingCombat = false;
 
-		// OLD: game scripting was cleaned up here... 
+		// OLD: game scripting was cleaned up here...
 		// which was a bad place to do it, as the scripts get immediately reloaded by run_after mission scripts and stuff
 		/*
 		Timer::update();
@@ -2629,9 +2629,9 @@ gameUI->getTerrain()->calculateLighting();
 	bool Game::isComputerOpponent(int player)
 	{
 		// TODO, proper implementation
-		if (player == singlePlayerNumber) 
+		if (player == singlePlayerNumber)
 			return false;
-		else 
+		else
 			return true;
 	}
 
@@ -2704,7 +2704,7 @@ gameUI->getTerrain()->calculateLighting();
 			tfm.addAfterSelection(tmpbuf);
 
 			delete[] tmpbuf;
-		} 
+		}
 		else if (util::Script::getGlobalVariableType(varname) == SCRIPT_DATATYPE_STRING)
 		{
 			const char *varval = NULL;
@@ -2750,7 +2750,7 @@ gameUI->getTerrain()->calculateLighting();
 			tfm.addAfterSelection(tmpbuf);
 
 			delete[] tmpbuf;
-		} 
+		}
 		else if (util::Script::getGlobalVariableType(varname) == SCRIPT_DATATYPE_ARRAY)
 		{
 			int varsize = 0;
@@ -2784,7 +2784,7 @@ gameUI->getTerrain()->calculateLighting();
 
 				delete[] tmpbuf;
 			}
-		} 
+		}
 		// TODO: position, etc. types.
 	}
 
@@ -2991,7 +2991,7 @@ gameUI->getTerrain()->calculateLighting();
 		tmpmissfile += this->currentMission;
 		tmpmissfile += "\"\n";
 		tfm.addAfterSelection(tmpmissfile.c_str());
-		
+
 		tfm.setBothSelectionsToEnd();
 		std::string tmpmissid = "setMissionId \"";
 		tmpmissid += this->getMissionId();
@@ -3295,7 +3295,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				sum += calculatePurchasePrice(subp);
 			}
-		} 		 
+		}
 
 		return sum;
 	}
@@ -3318,7 +3318,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				sum += calculateRepairPrice(subp);
 			}
-		} 		 
+		}
 
 		return sum;
 	}
@@ -3336,7 +3336,7 @@ gameUI->getTerrain()->calculateLighting();
 			if (wo->getReloadPrice() > 0)
 			{
 				sum += wo->getReloadPrice();
-			} 		 
+			}
 		}
 		if (part->getType()->
 			isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Ammo"))))
@@ -3346,7 +3346,7 @@ gameUI->getTerrain()->calculateLighting();
 			if (apo->getReloadPrice() > 0)
 			{
 				sum += apo->getReloadPrice();
-			} 		 
+			}
 		}
 
 		int slots = part->getType()->getSlotAmount();
@@ -3357,7 +3357,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				sum += calculateReloadPrice(subp);
 			}
-		} 		 
+		}
 
 		return sum;
 	}
@@ -3375,7 +3375,7 @@ gameUI->getTerrain()->calculateLighting();
 				if (part->getOwner() != NO_PART_OWNER)
 					money[part->getOwner()] -= wo->getReloadPrice();
 				wo->reload();
-			} 		 
+			}
 		}
 		if (part->getType()->
 			isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Ammo"))))
@@ -3387,7 +3387,7 @@ gameUI->getTerrain()->calculateLighting();
 				if (part->getOwner() != NO_PART_OWNER)
 					money[part->getOwner()] -= apo->getReloadPrice();
 				apo->reload();
-			} 		 
+			}
 		}
 
 		int slots = part->getType()->getSlotAmount();
@@ -3398,7 +3398,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				reloadParts(subp);
 			}
-		} 		 
+		}
 	}
 
 
@@ -3423,7 +3423,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				purchaseParts(subp);
 			}
-		} 		 
+		}
 	}
 
 	void Game::repairParts(Part *part)
@@ -3441,7 +3441,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				repairParts(subp);
 			}
-		} 		 
+		}
 	}
 
 	void Game::payForPart(Part *part)
@@ -3477,7 +3477,7 @@ gameUI->getTerrain()->calculateLighting();
 				{
 					removeUnpurchasedParts(unit, subp);
 				}
-			} 		 
+			}
 		}
 	}
 
@@ -3493,7 +3493,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				detachParts(unit, subp);
 			}
-		} 		 
+		}
 
 		// next detach this part from it's parent
 		Part *parent = NULL;
@@ -3537,7 +3537,7 @@ gameUI->getTerrain()->calculateLighting();
 			{
 				removeParts(unit, subp);
 			}
-		} 		 
+		}
 
 		// next detach this part from it's parent
 		Part *parent = NULL;
@@ -3565,7 +3565,7 @@ gameUI->getTerrain()->calculateLighting();
 
 	void Game::createVisualForParts(Unit *unit, Part *part, bool keepBones)
 	{
-		// TODO: this is actually UI stuff, not gameplay... 
+		// TODO: this is actually UI stuff, not gameplay...
 		// (should be moved, at least when netgame is being made)
 
 		// if we're at root, create one visual for the unit
@@ -3628,7 +3628,7 @@ gameUI->getTerrain()->calculateLighting();
 			vo->setStaticRotationYAngle((float)unit->getUnitType()->getBaseRotation());
 
 			float scale = unit->getUnitType()->getScale();
-			
+
 			float randomScale = (float)((this->gameRandom->nextInt() % 201) - 100) / 100.0f;
 			randomScale *= unit->getUnitType()->getRandomScale();
 			scale += randomScale;
@@ -3693,11 +3693,11 @@ gameUI->getTerrain()->calculateLighting();
 									}
 								}
 								if (parentSlotpos == SLOT_POSITION_LEFT_ARM)
-								{ 
+								{
 									helperName = "HELPER_BONE_WeaponArmLeft";
 								}
 								if (parentSlotpos == SLOT_POSITION_RIGHT_ARM)
-								{ 
+								{
 									helperName = "HELPER_BONE_WeaponArmRight";
 									rightSide = true;
 								}
@@ -3778,18 +3778,18 @@ gameUI->getTerrain()->calculateLighting();
 			part->setVisualObject(vo);
 
 			// HACK: weapons not always visible (if not selected)
-			// FIXME: bugs if several weapons of same type 
+			// FIXME: bugs if several weapons of same type
 			// (all will be set to visible when only one actually selected)
 			bool isItVisible = true;
-			if (unit->getSelectedWeapon() != -1 
+			if (unit->getSelectedWeapon() != -1
 				|| unit->isDirectControl())
 			{
 				if (part->getType()->isInherited(getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap"))))
 				{
 					Weapon *selweap = NULL;
-					if (unit->getSelectedWeapon() != -1) 
+					if (unit->getSelectedWeapon() != -1)
 						selweap = unit->getWeaponType(unit->getSelectedWeapon());
-					if (selweap == NULL 
+					if (selweap == NULL
 						|| part->getType()->getPartTypeId() != selweap->getPartTypeId()
 						|| !unit->isWeaponVisible(unit->getSelectedWeapon()))
 					{
@@ -3898,7 +3898,7 @@ gameUI->getTerrain()->calculateLighting();
 			}
 
 			// need to reset fade value, as that has been lost when the model was recreated(?)
-			if (keepBones) 
+			if (keepBones)
 			{
 				if (unit->getVisualObject() != NULL)
 				{
@@ -4100,9 +4100,9 @@ gameUI->getTerrain()->calculateLighting();
 	void Game::requestEndCombat()
 	{
 		// FIXME: for some reason, the mission's failure script is being run when new game/load
-		// done in the middle of the mission (inCombat)... this is otherwise correct behaviour, but 
+		// done in the middle of the mission (inCombat)... this is otherwise correct behaviour, but
 		// mission (inCombat) has already been ended when the script runs... ???
-		// resulting into this assert failing. 
+		// resulting into this assert failing.
 		//assert(inCombat);
 		// just ignore it, things seems to be working just fine regardless :P  --jpk
 		// (possibly some memory leaks or whatever nasty things happening, but don't care about those)
@@ -4245,7 +4245,7 @@ gameUI->getTerrain()->calculateLighting();
 
 	bool Game::isMissionAboutToEnd()
 	{
-		if ( ( this->missionFailureCounter < 0 
+		if ( ( this->missionFailureCounter < 0
 			|| this->missionSuccessCounter < 0 ) )
 			return true;
 		else
@@ -4462,7 +4462,7 @@ gameUI->getTerrain()->calculateLighting();
 
 				if(gsd->originalUnit != unit)
 					continue;
-				
+
 				return true;
 			}
 		}
@@ -4584,7 +4584,7 @@ gameUI->getTerrain()->calculateLighting();
 		{
 			return false;
 		}
-		
+
 		if( getNumberOfPlayers() > 1 )
 		{
 			setCooperative( true );
@@ -4771,7 +4771,7 @@ gameUI->getTerrain()->calculateLighting();
 				if(filesystem::fb_feof(f))
 					break;
 			}
-			
+
 			savegame_mission_id.resize(id_length);
 
 			filesystem::fb_fclose(f);
@@ -4911,7 +4911,7 @@ gameUI->getTerrain()->calculateLighting();
 		const char *ver_buf = "SAVE1.0";
 		//int hdr_buf[5];
 		//uint8_t *data_buf;
-	
+
 		fwrite(ver_buf, sizeof(char), 8, f);
 
 		// TODODODODO!!!
@@ -5002,14 +5002,14 @@ gameUI->getTerrain()->calculateLighting();
 			}
 
 			GameObject *go = fact->create(chunkid, datasize, data_buf, realparent);
-			if (data_buf != NULL) 
+			if (data_buf != NULL)
 			{
 				delete [] data_buf;
 				data_buf = NULL;
 			}
 			if (go != NULL)
 			{
-				if (children > 0) 
+				if (children > 0)
 				{
 					parents.append(new SaveParentEntry(selfptr, children, go));
 				}
@@ -5044,7 +5044,7 @@ gameUI->getTerrain()->calculateLighting();
 			}
 			strcat(ret, inf);
 			strcat(ret, "\r\n");
-		}		
+		}
 		return ret;
 	}
 

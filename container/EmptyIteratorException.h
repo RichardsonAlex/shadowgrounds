@@ -3,8 +3,8 @@
 
 //#include "csp/CSPException.h"
 
-class EmptyIteratorException 
-{ 
+class EmptyIteratorException
+{
 public:
 	EmptyIteratorException() { };
 }; //extends CSPException { };

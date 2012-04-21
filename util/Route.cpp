@@ -13,7 +13,7 @@ uint16_t *HeightMapDebug;
 // Sets heightmap
 //******************************************************************
 
-void Router::SetHeightMap(uint16_t *Map,int Width,int Height) 
+void Router::SetHeightMap(uint16_t *Map,int Width,int Height)
 {
 	if (MapCost) delete MapCost;
 	MapCost=0;
@@ -39,7 +39,7 @@ Router::~Router()
 //******************************************************************
 // Finds a route from point A to point B crossing terrain
 // where height diffirence is below MaxHeight variable
-// 
+//
 // Returns number of routepoints and the route into PArray pointer
 // Note: route is written backwards into PArray
 //******************************************************************

@@ -29,7 +29,7 @@ namespace game
 	}
 
 
-	void BuildingAdder::addBuilding(Game *game, const VC3 &position, 
+	void BuildingAdder::addBuilding(Game *game, const VC3 &position,
 		const char *filename, GamePhysics *gamePhysics)
 	{
 		Building *b = new Building(filename);
@@ -44,7 +44,7 @@ namespace game
 		b->setPosition(pos);
 
     game->getGameScene()->addBuildingObstacle(b, buildingadder_enableterraincut);
-    
+
     VisualObject *vo = b->getVisualObject();
     if (vo != NULL)
     {
@@ -56,7 +56,7 @@ namespace game
 
 			b->addPhysics(gamePhysics);
 
-// NOTE: these resources should be freed. (but cannot be, because we might be in physics simulation/because 
+// NOTE: these resources should be freed. (but cannot be, because we might be in physics simulation/because
 // the actual mesh cooking is done at next sync, not right now... (applies to PhysX)
 // NOTE: also, ODE physics will pose same kind of problems (possibly even more due to multithreaded cooking)
 // MOVED THIS LATER ON...

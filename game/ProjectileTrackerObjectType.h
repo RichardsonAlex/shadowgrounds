@@ -31,7 +31,7 @@ namespace game
 			return &ProjectileTrackerObjectType::instance;
 		}
 
-		virtual int getTickInterval() const 
+		virtual int getTickInterval() const
 		{
 			return 1000;
 		}

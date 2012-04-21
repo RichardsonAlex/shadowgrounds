@@ -12,7 +12,7 @@
 namespace ui
 {
 
-  MessageBoxWindow::MessageBoxWindow(Ogui *ogui, const char *text, int choiceAmount, 
+  MessageBoxWindow::MessageBoxWindow(Ogui *ogui, const char *text, int choiceAmount,
     const char **choiceTexts, const char ***choiceFiles, int sizeX, int sizeY,
     int choiceSizeX, int choiceSizeY, const char *backgroundFilename,
     int id, IMessageBoxListener *listener)
@@ -28,7 +28,7 @@ namespace ui
     win = ogui->CreateSimpleWindow((1024-sizeX)/2, (768-sizeY)/2, sizeX, sizeY, backgroundFilename);
     win->Raise();
 
-    textArea = ogui->CreateTextArea(win, sizeX/16, 
+    textArea = ogui->CreateTextArea(win, sizeX/16,
       sizeY/16, sizeX*14/16, sizeY*14/16, text);
 
     OguiButton *b;
@@ -38,8 +38,8 @@ namespace ui
 
     for (int i = 0; i < choiceAmount; i++)
     {
-      b = ogui->CreateSimpleTextButton(win, choicesStartX + (choiceSizeX * i), 
-        choicesStartY, choiceSizeX, choiceSizeY, 
+      b = ogui->CreateSimpleTextButton(win, choicesStartX + (choiceSizeX * i),
+        choicesStartY, choiceSizeX, choiceSizeY,
         choiceFiles[i][0], choiceFiles[i][1],
         choiceFiles[i][2], choiceTexts[i], i);
       b->SetListener(this);
