@@ -685,8 +685,7 @@ namespace util
 				case SCRIPT_CMD_POPVALUE:
 					if (!sp->userStack->isEmpty())
 					{
-						// WARNING: void * -> int casts
-						sp->lastValue = (int)(intptr_t)sp->userStack->popLast();
+						sp->lastValue = sp->userStack->popLast();
 						sp->userStackSize--;
 #ifdef DEBUG_CHECK_FOR_UNINITIALIZED_SCRIPT_VALUE_USE
 						// HACK: check some magic value instead of 0 as indication of uninitialized...
@@ -743,8 +742,7 @@ namespace util
 										sp->error("Script::run - Call stack empty, internal error while executing returnMultiple.");
 										sp->finished = true;
 									} else {
-										// WARNING: void * -> int casts
-										if ((intptr_t)sp->ipStack->popLast())
+										if (sp->ipStack->popLast())
 											sp->thenBranch = true;
 										else
 											sp->thenBranch = false;
@@ -770,8 +768,7 @@ namespace util
 								// not actually an error, but an indication of highest level return (exit from highest level script sub)
 								sp->finished = true;
 							} else {
-								// WARNING: void * -> int casts
-								if ((intptr_t)sp->ipStack->popLast())
+								if (sp->ipStack->popLast())
 									sp->thenBranch = true;
 								else
 									sp->thenBranch = false;
@@ -1128,8 +1125,7 @@ namespace util
 							sp->error("Script::run - Call stack empty, internal error while executing _externCallPop.");
 							sp->finished = true;
 						} else {
-							// WARNING: void * -> int casts
-							if ((intptr_t)sp->ipStack->popLast())
+							if (sp->ipStack->popLast())
 								sp->thenBranch = true;
 							else
 								sp->thenBranch = false;
@@ -2196,7 +2192,6 @@ namespace util
 				{
 					int num = commandAmount;
 
-					// WARNING: int -> void * cast
 					loopNumBuf->append(num);
 
 					// don't overwrite this one.
@@ -2213,14 +2208,13 @@ namespace util
 				}
 				else if (keyw == SCRIPT_CMD_ENDLOOP)
 				{
-					// WARNING: void * -> int cast
 					if (loopNumBuf->isEmpty())
 					{
 						ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Missing loop before endLoop.", true);
 						Logger::getInstance()->debug(cmd);
 						Logger::getInstance()->debug(data);
 					} else {
-						intptr_t num = (intptr_t)loopNumBuf->popLast();
+						int num = loopNumBuf->popLast();
 
 						// don't overwrite this one.
 						commandAmount++;
@@ -2242,14 +2236,13 @@ namespace util
 				}
 				else if (keyw == SCRIPT_CMD_BREAKLOOP)
 				{
-					// WARNING: void * -> int cast
 					if (loopNumBuf->isEmpty())
 					{
 						ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Missing loop before breakLoop.", true);
 						Logger::getInstance()->debug(cmd);
 						Logger::getInstance()->debug(data);
 					} else {
-						intptr_t num = (intptr_t)loopNumBuf->peekLast();
+						int num = loopNumBuf->peekLast();
 
 						// don't overwrite this one.
 						commandAmount++;
@@ -2266,14 +2259,13 @@ namespace util
 				}
 				else if (keyw == SCRIPT_CMD_RESTARTLOOP)
 				{
-					// WARNING: void * -> int cast
 					if (loopNumBuf->isEmpty())
 					{
 						ScriptManager::getInstance()->scriptCompileError("Script::addCommand - Missing loop before restartLoop.", true);
 						Logger::getInstance()->debug(cmd);
 						Logger::getInstance()->debug(data);
 					} else {
-						intptr_t num = (intptr_t)loopNumBuf->peekLast();
+						int num = loopNumBuf->peekLast();
 
 						// don't overwrite this one.
 						commandAmount++;
