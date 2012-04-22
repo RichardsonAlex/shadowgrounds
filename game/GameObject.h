@@ -4,10 +4,11 @@
 
 #include <c2_sptr.h>
 
-#include "../container/LinkedList.h"
 #include "GameObjectList.h"
 #include "SaveData.h"
 
+
+template<typename T> class LinkedList;
 
 namespace game
 {
@@ -38,13 +39,7 @@ namespace game
 
   public:
     // removes this object from the object list it has been added to
-    virtual ~GameObject()
-    {
-      if (gameObjectList != NULL)
-      {
-        gameObjectList->remove(this);
-      }
-    }
+    virtual ~GameObject();
 
   };
 

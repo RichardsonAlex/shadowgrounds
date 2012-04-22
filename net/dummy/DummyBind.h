@@ -3,9 +3,10 @@
 
 // Copyright(C) Jukka Kokkonen, 2002
 
-#include "../../container/LinkedList.h"
 #include "../INetBind.h"
 #include "DummyConnection.h"
+
+template<typename T> class LinkedList;
 
 namespace net
 {
@@ -42,7 +43,7 @@ namespace net
       char *name;
       int acceptAmount;
 
-      LinkedList *acceptedConnections;
+      LinkedList<DummyConnection*> *acceptedConnections;
 
       void addAcceptedConnection(DummyConnection *connection);
 

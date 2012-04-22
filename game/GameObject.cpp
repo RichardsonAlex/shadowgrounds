@@ -26,15 +26,12 @@ namespace game
     }
   }
 
-  /*
   GameObject::~GameObject()
   {
-    if (gameObjectList != NULL)
-    {
-      gameObjectList->removeByNode(listSelfPointer, this);
-    }
+      if (gameObjectList != NULL)
+      {
+          gameObjectList->remove(this);
+      }
   }
-  */
-
 
 }

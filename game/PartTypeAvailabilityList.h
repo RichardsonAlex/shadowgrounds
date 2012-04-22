@@ -6,10 +6,10 @@
 // A list keeping all the part types that are available for each player
 //
 
-#include "../container/LinkedList.h"
 #include "GameObject.h"
 #include "PartType.h"
 
+template<typename T> class LinkedList;
 
 namespace game
 {

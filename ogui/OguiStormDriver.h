@@ -7,7 +7,6 @@
 #endif
 
 #include <Storm3D_UI.h>
-#include "../container/LinkedList.h"
 #include "IOguiDriver.h"
 #include "IOguiImage.h"
 #include "IOguiFont.h"
@@ -26,6 +25,7 @@
 
 class IStorm3D_StreamBuilder;
 class IStorm3D_Streamer;
+template<typename T> class LinkedList;
 
 namespace frozenbyte
 {

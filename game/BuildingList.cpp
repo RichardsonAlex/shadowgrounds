@@ -4,6 +4,7 @@
 #include "gamedefs.h"
 #include "BuildingList.h"
 
+#include "../container/LinkedList.h"
 #include "../util/Debug_MemoryManager.h"
 
 namespace game

@@ -2,10 +2,10 @@
 #ifndef PARTLIST_H
 #define PARTLIST_H
 
-#include "../container/LinkedList.h"
 #include "GameObject.h"
 #include "Part.h"
 
+template<typename T> class LinkedList;
 
 namespace game
 {

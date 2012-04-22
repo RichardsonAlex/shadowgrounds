@@ -2,8 +2,9 @@
 #ifndef GAMEOBJECTFACTORYLIST_H
 #define GAMEOBJECTFACTORYLIST_H
 
-#include "../container/LinkedList.h"
 #include "IGameObjectFactory.h"
+
+template<typename T> class LinkedList;
 
 namespace game
 {

@@ -9,8 +9,6 @@
 // v1.0 - 20.5.2002 - jpkokkon
 //
 
-#include "../container/LinkedList.h"
-
 #include "../ogui/Ogui.h"
 
 #include "../game/Game.h"

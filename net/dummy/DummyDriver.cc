@@ -49,11 +49,11 @@ namespace net
           "DummyDriver::connectTo - Invalid parameter (can only connect to dummy host).");
       }
 
-      LinkedListIterator iter = LinkedListIterator(portBindList);
+      LinkedListIterator<DummyBind*> iter(portBindList);
       while (iter.iterateAvailable())
       {
         const char *port = &to[6];
-        DummyBind *tmp = (DummyBind *)iter.iterateNext();
+        DummyBind *tmp = iter.iterateNext();
         if (strcmp(tmp->getName(), port) == 0)
         {
           if (tmp->isAcceptingConnections())
@@ -85,10 +85,10 @@ namespace net
           "DummyDriver::bind - Invalid parameter (can only bind to dummy host).");
       }
       */
-      LinkedListIterator iter = LinkedListIterator(portBindList);
+      LinkedListIterator<DummyBind*> iter(portBindList);
       while (iter.iterateAvailable())
       {
-        DummyBind *tmp = (DummyBind *)iter.iterateNext();
+        DummyBind *tmp = iter.iterateNext();
         if (strcmp(tmp->getName(), port) == 0)
         {
           throw new NetDriverException(NetDriverException::EXCEPTION_TYPE_BIND_FAILED,
@@ -132,6 +132,6 @@ namespace net
     }
 
 
-    LinkedList *DummyDriver::portBindList = new LinkedList();
+    LinkedList *DummyDriver::portBindList = new LinkedList<DummyBind*>();
   }
 }

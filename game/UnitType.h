@@ -6,7 +6,6 @@
 #pragma warning ( disable : 4786 )
 #endif
 
-#include "../container/LinkedList.h"
 #include "UnitActor.h"
 #include "Bullet.h"
 #include "goretypedefs.h"
@@ -42,6 +41,7 @@
 #define UNITTYPE_PHYSICS_OBJECT_IMPLEMENTATION_TYPE_NORMAL 1
 #define UNITTYPE_PHYSICS_OBJECT_IMPLEMENTATION_TYPE_SIDEWAYS 2
 
+template<typename T> class LinkedList;
 
 namespace game
 {

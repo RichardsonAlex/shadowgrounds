@@ -2,7 +2,6 @@
 #ifndef SCRIPTPROCESS_H
 #define SCRIPTPROCESS_H
 
-#include "../container/LinkedList.h"
 #include "CheckedIntValue.h"
 
 #define SCRIPTPROCESS_MIN_ID 1000
@@ -20,6 +19,7 @@ typedef intptr_t ScriptLastValueType;
 #endif
 
 
+template<typename T> class LinkedList;
 // HACK: ...
 namespace game
 {

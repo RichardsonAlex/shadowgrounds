@@ -2,6 +2,7 @@
 #include <assert.h>
 #include <string.h>
 #include "NetDriverManager.h"
+#include "../container/LinkedList.h"
 
 namespace net
 {
@@ -25,7 +26,7 @@ namespace net
     LinkedListIterator iter = LinkedListIterator(driverList);
     while (iter.iterateAvailable())
     {
-      INetDriver *tmp = (INetDriver *)iter.iterateNext();
+      INetDriver *tmp = iter.iterateNext();
 
       const char *tmpname = tmp->getDriverName();
       if (tmpname != NULL)

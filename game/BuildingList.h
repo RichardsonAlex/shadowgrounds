@@ -2,7 +2,7 @@
 #ifndef BUILDINGLIST_H
 #define BUILDINGLIST_H
 
-#include "../container/LinkedList.h"
+template<typename T> class LinkedList;
 #include "GameObject.h"
 #include "Building.h"
 

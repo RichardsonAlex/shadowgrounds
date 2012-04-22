@@ -6,6 +6,7 @@
 #include "UnitType.h"
 
 #include "../convert/str2int.h"
+#include "../container/LinkedList.h"
 #include "../sound/sounddefs.h"
 #include "Unit.h"
 #include "../system/Logger.h"

@@ -38,6 +38,7 @@
 #endif
 
 #include "../ui/LoadingMessage.h"
+#include "../container/LinkedList.h"
 
 
 #include "../system/Logger.h"

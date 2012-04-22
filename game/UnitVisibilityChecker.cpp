@@ -27,7 +27,6 @@
 
 #include "../util/Debug_MemoryManager.h"
 
-
 // first person sees to this distance max.
 #define FIRST_PERSON_VISION_RANGE 500
 

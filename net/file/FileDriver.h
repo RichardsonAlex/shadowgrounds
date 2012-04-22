@@ -4,7 +4,6 @@
 // Copyright(C) Jukka Kokkonen, 2002
 
 #include "../INetDriver.h"
-#include "../../container/LinkedList.h"
 
 namespace net
 {

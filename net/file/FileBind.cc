@@ -3,6 +3,8 @@
 
 #include "FileBind.h"
 #include "FileDriver.h"
+#include "../../container/LinkedList.h"
+
 
 #define FILEBIND_MAX_BACKLOG 1024
 
@@ -17,7 +19,7 @@ namespace net
       int slen = strlen(name);
       this->name = new char[slen + 1];
       strcpy(this->name, name);
-      acceptedConnections = new LinkedList();
+      acceptedConnections = new LinkedList<FileConnection*>();
       acceptAmount = -1;
     }
 
@@ -40,7 +42,7 @@ namespace net
       if (!acceptedConnections->isEmpty())
       {
         acceptAmount++;
-        FileConnection *conn = (FileConnection *)acceptedConnections->popFirst();
+        FileConnection *conn = acceptedConnections->popFirst();
         return conn;
       } else {
         return NULL;

@@ -6,7 +6,7 @@
 // This is the armor part type class. (the class of a part instance)
 //
 
-#include "../container/LinkedList.h"
+template<typename T> class LinkedList;
 #include "../ui/Visual2D.h"
 #include "../ui/VisualObjectModel.h"
 

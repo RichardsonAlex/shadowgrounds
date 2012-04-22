@@ -4,6 +4,7 @@
 #include "IGameObjectFactory.h"
 #include "GameObjectFactoryList.h"
 
+#include "../container/LinkedList.h"
 #include "../util/Debug_MemoryManager.h"
 
 namespace game

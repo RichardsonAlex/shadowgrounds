@@ -8,6 +8,7 @@
 #include "Script.h"
 #include "../system/Logger.h"
 #include "../util/Debug_MemoryManager.h"
+#include "../container/LinkedList.h"
 
 
 #define INITIAL_CALL_PARAM_STACK_ALLOC 16

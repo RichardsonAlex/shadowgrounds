@@ -2,11 +2,10 @@
 #ifndef PROJECTILEACTOR_H
 #define PROJECTILEACTOR_H
 
-#include "../container/LinkedList.h"
 
 struct TerrainObstacle;
 struct ExplosionEvent;
-
+template<typename T> class LinkedList;
 namespace game
 {
   class Game;

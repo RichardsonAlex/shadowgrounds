@@ -8,7 +8,6 @@
 
 #include <c2_vectors.h>
 
-#include "../container/LinkedList.h"
 #include "GameObjectFactoryList.h"
 #include "GameObjectList.h"
 #include "gamedefs.h"
@@ -28,6 +27,7 @@
 // 20 tick interval for unit act check (about 15*20=300 msec)
 #define GAME_UNIT_ACT_CHECK_COUNTER_INTERVAL 20
 
+template<typename T> class LinkedList;
 
 namespace frozenbyte
 {

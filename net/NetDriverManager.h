@@ -2,8 +2,9 @@
 #ifndef NET_NETDRIVERMANAGER_H
 #define NET_NETDRIVERMANAGER_H
 
-#include "../container/LinkedList.h"
 #include "INetDriver.h"
+
+template<typename T> class LinkedList;
 
 namespace net
 {
@@ -15,7 +16,7 @@ namespace net
     static INetDriver *getDriver(char *name);
 
   private:
-    static LinkedList *driverList;
+    static LinkedList<INetDriver*> *driverList;
   };
 }
 

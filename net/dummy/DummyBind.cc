@@ -3,6 +3,7 @@
 
 #include "DummyBind.h"
 #include "DummyDriver.h"
+#include "../../container/LinkedList.h"
 
 #define DUMMYBIND_MAX_BACKLOG 1024
 
@@ -17,7 +18,7 @@ namespace net
       int slen = strlen(name);
       this->name = new char[slen + 1];
       strcpy(this->name, name);
-      acceptedConnections = new LinkedList();
+      acceptedConnections = new LinkedList<DummyConnection*>();
       acceptAmount = -1;
     }
 
@@ -40,7 +41,7 @@ namespace net
       if (!acceptedConnections->isEmpty())
       {
         acceptAmount++;
-        DummyConnection *conn = (DummyConnection *)acceptedConnections->popFirst();
+        DummyConnection *conn = acceptedConnections->popFirst();
         return conn;
       } else {
         return NULL;

@@ -48,6 +48,7 @@
 #include "../game/scaledefs.h"
 #include "../sound/sounddefs.h"
 #include "../convert/str2int.h"
+#include "../container/LinkedList.h"
 
 #include "Forcewear.h"
 

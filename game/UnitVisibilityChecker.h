@@ -2,7 +2,7 @@
 #ifndef UNITVISIBLITYCHECKER_H
 #define UNITVISIBLITYCHECKER_H
 
-#include "../container/LinkedList.h"
+template<typename T> class LinkedList;
 
 // visibility of one unit is checked in this many passes.
 // (one pass to apply changes when all units done.)

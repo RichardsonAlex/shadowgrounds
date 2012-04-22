@@ -4,7 +4,8 @@
 // Copyright(C) Jukka Kokkonen, 2002
 
 #include "../INetDriver.h"
-#include "../../container/LinkedList.h"
+
+template<typename T> class LinkedList;
 
 namespace net
 {
@@ -42,7 +43,7 @@ namespace net
 	    static void setArtificialLag(int minPing, int maxPing, int variationSpeed);
 
     private:
-      static LinkedList *portBindList;
+      static LinkedList<DummyBind*> *portBindList;
       int modeFlags;
 
 			static int lagVariationSpeed;

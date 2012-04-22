@@ -5,6 +5,7 @@
 #include "PartList.h"
 
 #include "../util/Debug_MemoryManager.h"
+#include "../container/LinkedList.h"
 
 namespace game
 {

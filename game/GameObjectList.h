@@ -2,7 +2,7 @@
 #ifndef GAMEOBJECTLIST_H
 #define GAMEOBJECTLIST_H
 
-#include "../container/LinkedList.h"
+template<typename T> class LinkedList;
 
 namespace game
 {
