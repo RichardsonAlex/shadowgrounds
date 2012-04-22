@@ -26,23 +26,14 @@ namespace game
     delete objects;
   }
 
-  const ListNode<GameObject*> *GameObjectList::add(GameObject *obj)
+  void GameObjectList::add(GameObject *obj)
   {
     objects->append(obj);
-    return objects->getLastNode();
   }
 
   void GameObjectList::remove(GameObject *obj)
   {
     objects->remove(obj);
-  }
-
-  void GameObjectList::removeByNode(const ListNode<GameObject*>* node, GameObject* obj)
-  {
-    // TODO, check that objects list really contain node, else bug
-    // TODO, check that node really contains obj, else bug
-    obj = obj;
-    objects->removeNode(node);
   }
 
   // NOTE, iterator is not a seperate object -> not thread safe

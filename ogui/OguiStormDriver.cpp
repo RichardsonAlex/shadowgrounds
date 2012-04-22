@@ -42,7 +42,6 @@ extern int scr_size_y;
 OguiStormFont::OguiStormFont()
 {
 	parent = NULL;
-	listNode = NULL;
 	filename = NULL;
 	texfname = NULL;
 	tex = NULL;
@@ -69,7 +68,7 @@ OguiStormFont::~OguiStormFont()
 	if (texfname != NULL) delete [] texfname;
 	if (parent != NULL)
 	{
-		parent->removeFontByNode(listNode);
+		parent->removeFont(this);
 		if (fnt != NULL) fnt->Release();
 		if (tex != NULL) tex->Release();
 	}
@@ -155,7 +154,6 @@ int OguiStormFont::getHeight()
 OguiStormImage::OguiStormImage()
 {
 	parent = NULL;
-	listNode = NULL;
 	filename = NULL;
 	mat = NULL;
 	tex = NULL;
@@ -187,7 +185,7 @@ OguiStormImage::~OguiStormImage()
 
 	if (parent != NULL)
 	{
-		parent->removeImageByNode(listNode);
+		parent->removeImage(this);
 
 		if (mat != NULL) delete mat;
 //		if (tex != NULL) tex->Release();
@@ -238,20 +236,19 @@ OguiStormDriver::~OguiStormDriver()
 	// should we delete all loaded images or just set their contents
 	// to null pointers... now we'll just modify the contents so
 	// any pointers to them won't become invalid
+    //FIXME refcounted pointers
 	delete textureCache;
 
 	while (!fonts->isEmpty())
 	{
-		OguiStormFont *f = (OguiStormFont *)fonts->popLast();
+		OguiStormFont *f = fonts->popLast();
 		//delete f;
-		f->listNode = NULL;
 		f->parent = NULL;
 	}
 	while (!images->isEmpty())
 	{
-		OguiStormImage *im = (OguiStormImage *)images->popLast();
+		OguiStormImage *im = images->popLast();
 		//delete im;
-		im->listNode = NULL;
 		im->parent = NULL;
 	}
 
@@ -321,7 +318,6 @@ IOguiImage *OguiStormDriver::LoadOguiImage(const char *filename)
 
 	images->append(tmp);
 	tmp->parent = this;
-	tmp->listNode = images->getLastNode();
 
 	return tmp;
 }
@@ -354,7 +350,6 @@ IOguiImage *OguiStormDriver::LoadOguiImage(int width, int height)
 
 	images->append(tmp);
 	tmp->parent = this;
-	tmp->listNode = images->getLastNode();
 
 	return tmp;
 }
@@ -385,7 +380,6 @@ IOguiImage *OguiStormDriver::GetOguiRenderTarget(int index)
 
 	images->append(tmp);
 	tmp->parent = this;
-	tmp->listNode = images->getLastNode();
 
 	tmp->renderTargetIndex = index;
 
@@ -684,7 +678,6 @@ IOguiFont *OguiStormDriver::LoadFont(const char *filename)
 	fonts->append(tmp);
 	tmp->fnt = fnt;
 	tmp->parent = this;
-	tmp->listNode = fonts->getLastNode();
 
 	return tmp;
 }
@@ -715,7 +708,6 @@ IOguiImage* OguiStormDriver::LoadOguiVideo( const char* filename, IStorm3D_Strea
 
 	images->append(tmp);
 	tmp->parent = this;
-	tmp->listNode = images->getLastNode();
 
 	return tmp;
 }
@@ -745,7 +737,6 @@ IOguiImage* OguiStormDriver::ConvertVideoToImage( IStorm3D_VideoStreamer* video_
 
 	images->append(tmp);
 	tmp->parent = this;
-	tmp->listNode = images->getLastNode();
 
 	return tmp;
 }
@@ -959,15 +950,15 @@ void OguiStormDriver::updateVideos()
 }
 
 
-void OguiStormDriver::removeImageByNode(const ListNode<OguiStormImage*> *node)
+void OguiStormDriver::removeImage(OguiStormImage *node)
 {
-	images->removeNode(node);
+	images->remove(node);
 	// videos->removeNode(node);
 }
 
-void OguiStormDriver::removeFontByNode(const ListNode<OguiStormFont*> *node)
+void OguiStormDriver::removeFont(OguiStormFont *node)
 {
-	fonts->removeNode(node);
+	fonts->remove(node);
 }
 
 frozenbyte::TextureCache *OguiStormDriver::getTextureCache()

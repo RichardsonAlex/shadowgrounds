@@ -34,7 +34,6 @@ namespace game
     static GameObjectList *constructorList;
 
   protected:
-    const ListNode<GameObject*>* listSelfPointer;
     GameObjectList* gameObjectList;
 
   public:
@@ -43,7 +42,7 @@ namespace game
     {
       if (gameObjectList != NULL)
       {
-        gameObjectList->removeByNode(listSelfPointer, this);
+        gameObjectList->remove(this);
       }
     }
 

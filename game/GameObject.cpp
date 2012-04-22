@@ -22,7 +22,7 @@ namespace game
     if (constructorList != NULL)
     {
       gameObjectList = constructorList;
-      listSelfPointer = gameObjectList->add(this);
+      gameObjectList->add(this);
     }
   }
 

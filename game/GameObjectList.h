@@ -17,9 +17,8 @@ namespace game
     GameObjectList();
     ~GameObjectList();
 
-    const ListNode<GameObject*>* add(GameObject *obj);
+    void add(GameObject *obj);
     void remove(GameObject* obj);
-    void removeByNode(const ListNode<GameObject*>* node, GameObject* obj);
 
     void resetIterate();
     bool iterateAvailable();

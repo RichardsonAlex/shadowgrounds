@@ -43,7 +43,6 @@ public:
   IStorm3D_VideoStreamer* video;
   //int stormGeneration;
   OguiStormDriver *parent;
-  const ListNode<OguiStormImage*> *listNode;
 	int renderTargetIndex;
 
 	bool deleteVideoOnDestruction;
@@ -74,7 +73,6 @@ public:
   IStorm3D_Texture *tex;
   //int stormGeneration;
   OguiStormDriver *parent;
-  const ListNode<OguiStormFont*> *listNode;
 
   int cols;
   int rows;
@@ -130,8 +128,8 @@ public:
 
 	void updateVideos();
 
-  void removeImageByNode(const ListNode<OguiStormImage*> *node);
-  void removeFontByNode(const ListNode<OguiStormFont*> *node);
+  void removeImage(OguiStormImage *node);
+  void removeFont(OguiStormFont *node);
 
 private:
   int stormGeneration;

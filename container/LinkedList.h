@@ -64,7 +64,6 @@ class LinkedList
     // these are for real hacking... usually not recommended
     ListNode<T>* getFirstNode() const;
     ListNode<T>* getLastNode() const;
-    void removeNode(const ListNode<T>* node);
 
     // iteration
     // deprecated: use the seperate iterators instead
@@ -262,34 +261,6 @@ template<typename T>
 inline ListNode<T>* LinkedList<T>::getLastNode() const
 {
   return last;
-}
-
-template<typename T>
-inline void LinkedList<T>::removeNode(const ListNode<T>* node)
-{
-  #ifdef _DEBUG
-  ListNode<T> *tmp = first;
-
-  while (tmp != 0)
-  {
-    if (tmp == node)
-    {
-      break;
-    }
-    tmp = tmp->next;
-  }
-  if (tmp == 0)
-  {
-    abort();
-  }
-  #endif
-  assert(node != NULL);
-  if (node == first) first = first->next;
-  if (node == last) last = last->prev;
-  if (node->prev != 0) (node->prev)->next = node->next;
-  if (node->next != 0) (node->next)->prev = node->prev;
-  delete node;
-  remove_count++;
 }
 
 template<typename T>
