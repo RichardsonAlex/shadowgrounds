@@ -270,7 +270,11 @@ void TargetDisplayWindowUpdator::update()
 		{
 			//Point tmp = convertVC3toScreen( (*it)->getPosition(), game );
 			Item *item = *it;
-
+			if (item == NULL)
+			{
+			    fprintf(stderr, "TargetDisplayWindowUpdator::update(): item == NULL\n");
+			    continue;
+			}
 			float distance = calculateDistance( item->getPosition(), game );
 			if( distance < updateDistance )
 			{
@@ -414,6 +418,11 @@ void TargetDisplayWindowUpdator::update()
 		for( it = risingMessages.begin(); it != risingMessages.end(); )
 		{
 			Unit *unit = *it;
+            if (unit == NULL)
+            {
+                fprintf(stderr, "TargetDisplayWindowUpdator::update(): item == NULL\n");
+                continue;
+            }
 			float distance = calculateDistance( unit->getPosition(), game );
 			if(unit && unit->getVisualObject() && unit->getVisualObject()->getStormModel()
 				&& distance < updateDistance)

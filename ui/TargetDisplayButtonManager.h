@@ -106,7 +106,7 @@ public:
 
 		~ButtonData() { }
 
-		void operator=( const ButtonData& b )
+		ButtonData& operator=( const ButtonData& b )
 		{
 			buttons = b.buttons;
 			style = b.style;
@@ -131,6 +131,7 @@ public:
 			sliderLowLimit = b.sliderLowLimit;
 			sliderHighLimit = b.sliderHighLimit;
 			sliderCurrentImages = b.sliderCurrentImages;
+			return *this;
 		}
 
 		OguiButton*& operator[] (int i)

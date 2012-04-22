@@ -37,7 +37,7 @@ public:
 	// virtual
 	unsigned int updatedInTick;
 
-	void operator=( const TargetDisplayWindowButton& button );
+	TargetDisplayWindowButton& operator=( const TargetDisplayWindowButton& button );
 
 	virtual void updateRect(void);
 	virtual void setRect( int x, int y, int w, int h, float distance = 0.0f );

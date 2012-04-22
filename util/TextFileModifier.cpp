@@ -343,6 +343,7 @@ namespace util
 				else
 					return false;
 			} else {
+			    fclose(f);
 				return true;
 			}
 		}

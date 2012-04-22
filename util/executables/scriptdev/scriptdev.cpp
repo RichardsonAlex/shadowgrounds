@@ -499,7 +499,7 @@ int main(int argc, char *argv[])
 										buf[k] = '\0';
 										if (str2int(&buf[j + 5]) == 0)
 										{
-											printf("1: ", &buf[j + 5]);
+											printf("1: ");
 										} else {
 											printf("%s: ", &buf[j + 5]);
 										}

@@ -66,7 +66,7 @@ namespace frozenbyte {
 				texture->RemoveHighPriority();
 		}
 
-		const TemporaryTexture &operator = (const TemporaryTexture &other)
+		TemporaryTexture &operator = (const TemporaryTexture &other)
 		{
 			if(texture)
 				texture->RemoveHighPriority();

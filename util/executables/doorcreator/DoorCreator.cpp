@@ -6,7 +6,7 @@
 #include "../../../system/FileTimeStampChecker.h"
 #include "../../../convert/str2int.h"
 
-
+#include <boost/scoped_array.hpp>
 #include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -87,7 +87,7 @@ bool DoorCreator::createDoor(const char *name, const char *partType, const char 
 	unsigned int timeStamp = ltime;
 
 	int slen = strlen(partType);
-	char *partTypeLowerCase = new char[strlen(partType) + 1]; // (this leaks, so what.)
+	boost::scoped_array<char> partTypeLowerCase(new char[strlen(partType) + 1]);
 	for (int i = 0; i < slen; i++)
 	{
 		partTypeLowerCase[i] = tolower(partType[i]);

@@ -71,7 +71,7 @@ TargetDisplayWindowButton::~TargetDisplayWindowButton()
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void TargetDisplayWindowButton::operator=( const TargetDisplayWindowButton& button )
+TargetDisplayWindowButton& TargetDisplayWindowButton::operator=( const TargetDisplayWindowButton& button )
 {
 	b = button.b;
 	imageWidth = button.imageWidth;
@@ -80,6 +80,7 @@ void TargetDisplayWindowButton::operator=( const TargetDisplayWindowButton& butt
 	beginAnimInitialPosition = button.beginAnimInitialPosition;
 	style = button.style;
 	createTime = button.createTime;
+	return *this;
 }
 
 //=============================================================================
