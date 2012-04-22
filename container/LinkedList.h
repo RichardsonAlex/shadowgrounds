@@ -28,7 +28,7 @@ class ListNode
 {
   public:
     ListNode(const T& itm);
-
+  private:
     ListNode *next;
     ListNode *prev;
     T item;
@@ -48,6 +48,7 @@ class LinkedList
 
     int remove_count;
     friend class LinkedListIterator<T>;
+    friend class SafeLinkedListIterator<T>;
 
   public:
     LinkedList();
@@ -60,10 +61,6 @@ class LinkedList
     T& peekFirst() throw (EmptyLinkedListException*);
     T& peekLast() throw (EmptyLinkedListException*);
     bool isEmpty();
-
-    // these are for real hacking... usually not recommended
-    ListNode<T>* getFirstNode() const;
-    ListNode<T>* getLastNode() const;
 
     // iteration
     // deprecated: use the seperate iterators instead
@@ -252,18 +249,6 @@ inline bool LinkedList<T>::isEmpty()
 }
 
 template<typename T>
-inline ListNode<T>* LinkedList<T>::getFirstNode() const
-{
-  return first;
-}
-
-template<typename T>
-inline ListNode<T>* LinkedList<T>::getLastNode() const
-{
-  return last;
-}
-
-template<typename T>
 inline T& LinkedList<T>::iterateNext() throw (EmptyIteratorException*)
 {
   if (!walk_node)
@@ -291,14 +276,14 @@ inline void LinkedList<T>::resetIterate()
 template<typename T>
 inline LinkedListIterator<T>::LinkedListIterator(const LinkedList<T>& ll): linkedList(&ll)
 {
-  walk_node = linkedList->getFirstNode();
+  walk_node = linkedList->first;
   remove_count = linkedList->remove_count;
 }
 
 template<typename T>
 inline LinkedListIterator<T>::LinkedListIterator(const LinkedList<T>* llp): linkedList(llp)
 {
-  walk_node = linkedList->getFirstNode();
+  walk_node = linkedList->first;
   remove_count = linkedList->remove_count;
 }
 
@@ -337,25 +322,25 @@ inline bool LinkedListIterator<T>::iterateAvailable()
 template<typename T>
 inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const LinkedList<T>& ll)
 {
-  const ListNode<T> *tmp = ll.getFirstNode();
+  const ListNode<T> *tmp = ll.first;
   while (tmp != NULL)
   {
     linkedList.append(tmp->item);
     tmp = tmp->next;
   }
-  walk_node = linkedList.getFirstNode();
+  walk_node = linkedList.first;
 }
 
 template<typename T>
 inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const LinkedList<T>* ll)
 {
-  const ListNode<T> *tmp = ll->getFirstNode();
+  const ListNode<T> *tmp = ll->first;
   while (tmp != NULL)
   {
     linkedList.append(tmp->item);
     tmp = tmp->next;
   }
-  walk_node = linkedList.getFirstNode();
+  walk_node = linkedList.first;
 }
 
 template<typename T>
@@ -389,13 +374,13 @@ inline LinkedListIterator<T>::LinkedListIterator(const LinkedListIterator<T>& ot
 template<typename T>
 inline SafeLinkedListIterator<T>::SafeLinkedListIterator(const SafeLinkedListIterator<T>& other)
 {
-    const ListNode<T> *tmp = other.linkedList->getFirstNode();
+    const ListNode<T> *tmp = other.linkedList.first;
     while (tmp != NULL)
     {
       linkedList.append(tmp->item);
       tmp = tmp->next;
     }
-    walk_node = linkedList.getFirstNode();
+    walk_node = linkedList.first;
 }
 
 #endif
