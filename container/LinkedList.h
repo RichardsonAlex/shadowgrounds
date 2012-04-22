@@ -13,6 +13,7 @@
 
 #include <cassert>
 #include <list>
+#include <cstdlib>
 // #include "csp/compat.h"
 #include "EmptyLinkedListException.h"
 #include "EmptyIteratorException.h"
