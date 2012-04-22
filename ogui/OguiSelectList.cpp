@@ -313,7 +313,7 @@ void OguiSelectList::refresh()
 	*/
 }
 
-void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, void *argument)
+void OguiSelectList::init(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, const boost::any &argument)
 {
 	// old stuff...
 	//win->addTransparentButton(x, y, sizex - 16, sizey, cback_clk, this, listtabi);
@@ -596,7 +596,7 @@ int OguiSelectList::getId()
 	return id;
 }
 
-OguiSelectList::OguiSelectList(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, void *argument)
+OguiSelectList::OguiSelectList(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, const boost::any &argument)
 {
 	this->init(x, y, defsel, multisel, amount, values, descs, listButs, upBut, downBut, style, id, argument);
 }

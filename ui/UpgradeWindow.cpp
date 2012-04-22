@@ -223,7 +223,7 @@ namespace ui
 							int woffx = getLocaleGuiInt("gui_upgrades_slot_weapon_offset_x", 0);
 
 							int id = UPGRADEW_WEAPONBUT_FIRST + i;
-							weaponButtons[i] = ogui->CreateSimpleImageButton(win, wx + woffx, wy, sizex, sizey, NULL, NULL, NULL, NULL, id, (void *)partTypeId);
+							weaponButtons[i] = ogui->CreateSimpleImageButton(win, wx + woffx, wy, sizex, sizey, NULL, NULL, NULL, NULL, id, boost::any(partTypeId));
 							weaponButtons[i]->SetReactMask(0);
 							weaponButtons[i]->SetDisabled(false);
 							weaponButtons[i]->SetImage(weaponImages[i]);
@@ -284,14 +284,14 @@ namespace ui
 
 							x += firstpadx + j * padx;
 
-							upgradeSelections[i][j] = ogui->CreateSimpleImageButton(win, x, y, sizex, sizey, NULL, NULL, NULL, NULL, 0, NULL);
+							upgradeSelections[i][j] = ogui->CreateSimpleImageButton(win, x, y, sizex, sizey, NULL, NULL, NULL, NULL, 0, boost::any());
 							upgradeSelections[i][j]->SetReactMask(0);
 							upgradeSelections[i][j]->SetDisabled(true);
 
 							int id = UPGRADEW_UPGRADEBUT_FIRST + i*UPGRADEWINDOW_MAX_UPGRADES_PER_WEAPON+j;
 							assert(id >= UPGRADEW_UPGRADEBUT_FIRST && id <= UPGRADEW_UPGRADEBUT_LAST);
 							int upgid = upgIds[j];
-							upgradeButtons[i][j] = ogui->CreateSimpleImageButton(win, x, y, sizex, sizey, NULL, NULL, NULL, NULL, id, (void *)upgid);
+							upgradeButtons[i][j] = ogui->CreateSimpleImageButton(win, x, y, sizex, sizey, NULL, NULL, NULL, NULL, id, boost::any(upgid));
 							upgradeButtons[i][j]->SetReactMask(0);
 							upgradeButtons[i][j]->SetImage(upgradeImages[i][j]);
 							//upgradeButtons[i][j]->SetDisabledImage(upgradeDisabledImages[i][j]);
@@ -324,7 +324,7 @@ namespace ui
 			int bgsizey = getLocaleGuiInt("gui_upgrades_info_size_y", 0);
 			const char *image = getLocaleGuiString("gui_upgrades_info_background_image");
 
-			infoBackground = ogui->CreateSimpleImageButton(win, x, y, bgsizex, bgsizey, NULL, NULL, NULL, image, 0, NULL);
+			infoBackground = ogui->CreateSimpleImageButton(win, x, y, bgsizex, bgsizey, NULL, NULL, NULL, image, 0, boost::any());
 			//infoBackground->SetListener(this);
 			infoBackground->SetDisabled(true);
 
@@ -335,7 +335,7 @@ namespace ui
 				int sizex = getLocaleGuiInt("gui_upgrades_info_picture_size_x", 0);
 				int sizey = getLocaleGuiInt("gui_upgrades_info_picture_size_y", 0);
 
-				infoIcon = ogui->CreateSimpleImageButton(win, x + offx, y + offy, sizex, sizey, NULL, NULL, NULL, NULL, 0, NULL);
+				infoIcon = ogui->CreateSimpleImageButton(win, x + offx, y + offy, sizex, sizey, NULL, NULL, NULL, NULL, 0, boost::any());
 				infoIcon->SetDisabled(true);
 			}
 
@@ -527,6 +527,7 @@ namespace ui
 			{
 				if (upgradeButtons[i][j] != NULL)
 				{
+			        assert(upgradeButtons[i][j]->GetArgument().type() == typeid(int));
 					int upgid = boost::any_cast<int>(upgradeButtons[i][j]->GetArgument());
 					//int tmp = this->upgradesPendingCost;
 
@@ -695,6 +696,7 @@ namespace ui
 			{
 				highlightedWeaponSlot = (eve->triggerButton->GetId() - UPGRADEW_UPGRADEBUT_FIRST) / UPGRADEWINDOW_MAX_UPGRADES_PER_WEAPON;
 				highlightedUpgradeSlot = (eve->triggerButton->GetId() - UPGRADEW_UPGRADEBUT_FIRST) % UPGRADEWINDOW_MAX_UPGRADES_PER_WEAPON;
+				assert(eve->extraArgument.type() == typeid(int));
 				highlightedUpgradeId = boost::any_cast<int>(eve->extraArgument);
 				highlightOn = true;
 			}
@@ -733,6 +735,7 @@ namespace ui
 				bool playDoneSound = false;
 
 				// upgrade button
+                assert(eve->extraArgument.type() == typeid(int));
 				int upgid = boost::any_cast<int>(eve->extraArgument);
 
 				bool alreadyPending = false;

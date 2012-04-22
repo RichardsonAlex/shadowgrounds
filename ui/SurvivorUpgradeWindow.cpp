@@ -761,7 +761,7 @@ public:
 					int w = getLocaleGuiInt("gui_upgradewindow_characterupgrade_background_w", 0);
 					int h = getLocaleGuiInt("gui_upgradewindow_characterupgrade_background_h", 0);
 					IOguiImage *img = ogui->LoadOguiImage(getLocaleGuiString("gui_upgradewindow_characterupgrade_background"));
-					selected_button = ogui->CreateSimpleImageButton(window, 0, 0, w, h, NULL, NULL, NULL, NULL, 0, NULL, false);
+					selected_button = ogui->CreateSimpleImageButton(window, 0, 0, w, h, NULL, NULL, NULL, NULL, 0, boost::any(), false);
 					selected_button->SetDisabledImage(img);
 					selected_button->SetImageAutoDelete(true, false, false, false);
 					selected_button->SetDisabled(true);
@@ -949,7 +949,7 @@ public:
 							int w = getLocaleGuiInt("gui_upgradewindow_weaponupgrade_background_w", 0);
 							int h = getLocaleGuiInt("gui_upgradewindow_weaponupgrade_background_h", 0);
 							IOguiImage *img = ogui->LoadOguiImage(getLocaleGuiString("gui_upgradewindow_weaponupgrade_background"));
-							selected_button = ogui->CreateSimpleImageButton(window, 0, 0, w, h, NULL, NULL, NULL, NULL, 0, NULL, false);
+							selected_button = ogui->CreateSimpleImageButton(window, 0, 0, w, h, NULL, NULL, NULL, NULL, 0, boost::any(), false);
 							selected_button->SetDisabledImage(img);
 							selected_button->SetImageAutoDelete(true, false, false, false);
 							selected_button->SetDisabled(true);

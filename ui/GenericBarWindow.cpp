@@ -186,12 +186,12 @@ void GenericBarWindow::loadDataFromLocales( const std::string& locale_name )
 			OguiButton *button;
 			if(texttext != NULL && texttext[0] != 0)
 			{
-				button = ogui->CreateSimpleTextButton(win, x, y, w, h, NULL, NULL, NULL, texttext, 0, 0, false);
+				button = ogui->CreateSimpleTextButton(win, x, y, w, h, NULL, NULL, NULL, texttext, 0, boost::any(), false);
 				button->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
 			}
 			else
 			{
-				button = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, 0, false);
+				button = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 			}
 			button->SetDisabled(true);
 			if(font) button->SetFont(font);

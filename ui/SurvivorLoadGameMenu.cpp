@@ -222,13 +222,13 @@ SurvivorLoadGameMenu::SurvivorLoadGameMenu( MenuCollection* menu, MenuCollection
 
 		for(int i = 0; i < 4; i++)
 		{
-			missionInfos[i].button = ogui->CreateSimpleImageButton( win, x, y, w, h, NULL, NULL, NULL, NULL, COMMANDS_MISSION, 0, false );
+			missionInfos[i].button = ogui->CreateSimpleImageButton( win, x, y, w, h, NULL, NULL, NULL, NULL, COMMANDS_MISSION, boost::any(), false );
 			missionInfos[i].button->SetEventMask(OguiButtonEvent::EVENT_TYPE_CLICK | OguiButtonEvent::EVENT_TYPE_OVER | OguiButtonEvent::EVENT_TYPE_LEAVE );
 			missionInfos[i].button->SetListener(this);
 			missionInfos[i].button->SetClipToWindow(false);
 			missionInfos[i].button->Move(missionButtonStartPosX + missionButtonOffsetX * i, missionButtonStartPosY);
 			missionInfos[i].highlighted = false;
-			missionInfos[i].highlight_button = ogui->CreateSimpleImageButton( win, x, y, w, h, NULL, NULL, NULL, getLocaleGuiString("gui_survivorloadgamemenu_mission_highlight"), 0, 0, false );
+			missionInfos[i].highlight_button = ogui->CreateSimpleImageButton( win, x, y, w, h, NULL, NULL, NULL, getLocaleGuiString("gui_survivorloadgamemenu_mission_highlight"), 0, boost::any(), false );
 			missionInfos[i].highlight_button->SetDisabled(true);
 			loadMissionInfo(&missionInfos[i], firstMission + i);
 		}

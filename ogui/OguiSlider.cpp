@@ -42,7 +42,7 @@ OguiSlider::OguiSlider( OguiWindow* win, Ogui* ogui, int x, int y, int w, int h,
 		foreground_norm.empty()?NULL:foreground_norm.c_str(),
 		foreground_down.empty()?NULL:foreground_down.c_str(),
 		foreground_high.empty()?NULL:foreground_high.c_str(),
-		foreground_norm.empty()?NULL:foreground_norm.c_str(), foregroundId, NULL );
+		foreground_norm.empty()?NULL:foreground_norm.c_str(), foregroundId, boost::any() );
 
 
 	FB_ASSERT( foreground );

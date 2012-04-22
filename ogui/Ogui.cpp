@@ -416,7 +416,7 @@ OguiWindow *Ogui::CreateSimpleWindow(int x, int y, int sizex, int sizey,
 
 OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
 	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename,
-	const char *imageHighlightFilename, const char *imageDisabledFilename, int id, void *argument, bool clipToWindow )
+	const char *imageHighlightFilename, const char *imageDisabledFilename, int id, const boost::any &argument, bool clipToWindow )
 	throw (OguiException *)
 {
 	// these images loaded here get deleted by the button destructor
@@ -446,7 +446,7 @@ OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
 
 OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
 	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename,
-	const char *imageHighlightFilename, int id, void *argument)
+	const char *imageHighlightFilename, int id, const boost::any &argument)
 	throw (OguiException *)
 {
 	return this->CreateSimpleImageButton(win, x, y, sizex, sizey, imageFilename,
@@ -457,7 +457,7 @@ OguiButton *Ogui::CreateSimpleImageButton(OguiWindow *win, int x, int y,
 
 OguiButton *Ogui::CreateSimpleTextButton(OguiWindow *win, int x, int y,
 	int sizex, int sizey, const char *imageFilename, const char *imageDownFilename,
-	const char *imageHighlightFilename, const char *text, int id, const void *argument, bool clipToWindow )
+	const char *imageHighlightFilename, const char *text, int id, const boost::any &argument, bool clipToWindow )
 	throw (OguiException *)
 {
 	// these images loaded here get deleted by the button destructor
@@ -498,7 +498,7 @@ OguiTextLabel *Ogui::CreateTextLabel(OguiWindow *win, int x, int y,
 		defaultFontMissingWarningsPrinted++;
 	}
 
-	OguiButton *tmp = win->CreateNewButton(x, y, sizex, sizey, NULL, NULL, NULL, NULL, true, text, 0, NULL, defaultFont);
+	OguiButton *tmp = win->CreateNewButton(x, y, sizex, sizey, NULL, NULL, NULL, NULL, true, text, 0, boost::any(), defaultFont);
 	tmp->SetDisabled(true);
 
 	OguiTextLabel *ret = new OguiTextLabel(tmp);
@@ -520,7 +520,7 @@ OguiTextLabel *Ogui::CreateTextArea(OguiWindow *win, int x, int y,
 		defaultFontMissingWarningsPrinted++;
 	}
 
-	OguiButton *tmp = win->CreateNewButton(x, y, sizex, sizey, NULL, NULL, NULL, NULL, true, "", 0, NULL, defaultFont);
+	OguiButton *tmp = win->CreateNewButton(x, y, sizex, sizey, NULL, NULL, NULL, NULL, true, "", 0, boost::any(), defaultFont);
 
 	tmp->SetLineBreaks(true);
 	tmp->SetDisabled(true);
@@ -540,7 +540,7 @@ OguiTextLabel *Ogui::CreateTextArea(OguiWindow *win, int x, int y,
 
 OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y,
 	OguiSelectListStyle *style, int valueAmount, const char **values, const char **descs,
-	bool multiSelectable, int defaultSelection, int id, void *argument)
+	bool multiSelectable, int defaultSelection, int id, const boost::any &argument)
 	throw (OguiException *)
 {
 
@@ -561,7 +561,7 @@ OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y,
 	listb = new OguiButton *[needButs];
 	for (int i = 0; i < needButs; i++)
 	{
-		listb[i] = win->CreateNewButton(x, y + i * butSizeY, butSizeX, butSizeY, NULL, NULL, NULL, NULL, true, NULL, i, NULL, NULL);
+		listb[i] = win->CreateNewButton(x, y + i * butSizeY, butSizeX, butSizeY, NULL, NULL, NULL, NULL, true, NULL, i, boost::any(), NULL);
 		listb[i]->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
 		listb[i]->SetEventMask(OGUI_EMASK_ALL ^ OGUI_EMASK_HOLD);
 		//listb[i]->SetTextVAlign(OguiButton::TEXT_V_ALIGN_MIDDLE);
@@ -569,8 +569,8 @@ OguiSelectList *Ogui::CreateSelectList(OguiWindow *win, int x, int y,
 	}
 
 	// create scroll buttons
-	OguiButton *upsb = win->CreateNewButton(x + butSizeX, y, style->scrollSizeX, style->scrollSizeY, NULL, NULL, NULL, NULL, false, NULL, 0, NULL, NULL);
-	OguiButton *downsb = win->CreateNewButton(x + butSizeX, y + style->sizeY - style->scrollSizeY, style->scrollSizeX, style->scrollSizeY, NULL, NULL, NULL, NULL, false, NULL, 0, NULL, NULL);
+	OguiButton *upsb = win->CreateNewButton(x + butSizeX, y, style->scrollSizeX, style->scrollSizeY, NULL, NULL, NULL, NULL, false, NULL, 0, boost::any(), NULL);
+	OguiButton *downsb = win->CreateNewButton(x + butSizeX, y + style->sizeY - style->scrollSizeY, style->scrollSizeX, style->scrollSizeY, NULL, NULL, NULL, NULL, false, NULL, 0, boost::any(), NULL);
 	buttons.push_back(upsb);
 	buttons.push_back(downsb);
 

@@ -16,6 +16,7 @@
 #include <stdio.h>
 #include <Storm3D_UI.h>
 #include <keyb3.h>
+#include <boost/exception/diagnostic_information.hpp>
 #include <SDL.h>
 #include "SDL_sound.h"
 #include "igios.h"
@@ -1663,11 +1664,10 @@ try {
 
 	Sound_Quit();
 	SDL_Quit();
-
+    } catch(boost::exception & e ) {
+       std::cerr << diagnostic_information(e);
 	} catch (const std::exception &e) {
 		fprintf(stderr, "Caught std::exception %s.\n", e.what());
-	} catch (...) {
-		fprintf(stderr, "Caught unknown exception.\n");
 	}
 
 	return EXIT_SUCCESS;

@@ -101,7 +101,7 @@ namespace ui
 			{
 				if (selection == NULL)
 				{
-					selection = ogui->CreateSimpleImageButton(win, 0, 0, WEAPSELECT_SELECTION_SIZE, WEAPSELECT_SELECTION_SIZE, NULL, NULL, NULL, NULL, 0, 0, false);
+					selection = ogui->CreateSimpleImageButton(win, 0, 0, WEAPSELECT_SELECTION_SIZE, WEAPSELECT_SELECTION_SIZE, NULL, NULL, NULL, NULL, 0, boost::any(), false);
 					selection->SetReactMask(0);
 					selection->SetDisabled(true);
 					selection->SetDisabledImage(selectionImage);

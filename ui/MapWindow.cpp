@@ -389,14 +389,14 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 		playerSize.y = getLocaleGuiInt("gui_map_player_arrow_size_y", 0);
 		playerButton.reset(ogui.CreateSimpleTextButton(window.get(), 0, 0, playerSize.x, playerSize.y,
 			getLocaleGuiString("gui_map_player_arrow_image"), getLocaleGuiString("gui_map_player_arrow_image"),
-			getLocaleGuiString("gui_map_player_arrow_image_highlight"), 0, 0, 0, false));
+			getLocaleGuiString("gui_map_player_arrow_image_highlight"), 0, 0, boost::any(), false));
 		playerButton->SetListener(this);
 
 		checkpointSize.x = getLocaleGuiInt("gui_map_checkpoint_size_x", 0);
 		checkpointSize.y = getLocaleGuiInt("gui_map_checkpoint_size_y", 0);
 		checkpointButton.reset(ogui.CreateSimpleTextButton(window.get(), 0, 0, checkpointSize.x, checkpointSize.y,
 			getLocaleGuiString("gui_map_checkpoint_image"), getLocaleGuiString("gui_map_checkpoint_image"),
-			getLocaleGuiString("gui_map_checkpoint_image_highlight"), 0, 0, 0, false));
+			getLocaleGuiString("gui_map_checkpoint_image_highlight"), 0, 0, boost::any(), false));
 
 
 #ifdef PROJECT_SURVIVOR
@@ -406,7 +406,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 			int xs = getLocaleGuiInt("gui_map_map_overlay_size_x", 0);
 			int ys = getLocaleGuiInt("gui_map_map_overlay_size_y", 0);
 			const char *fname = getLocaleGuiString("gui_map_map_overlay_image");
-			mapOverlay.reset(ogui.CreateSimpleImageButton(window.get(), x, y, xs, ys, fname, fname, fname, fname, 0, 0, true));
+			mapOverlay.reset(ogui.CreateSimpleImageButton(window.get(), x, y, xs, ys, fname, fname, fname, fname, 0, boost::any(), true));
 			mapOverlay->SetDisabled(true);
 		}
 		{
@@ -415,7 +415,7 @@ struct MapWindow::Data : private IOguiButtonListener, private IOguiEffectListene
 			int xs = getLocaleGuiInt("gui_map_primary_background_size_x", 0);
 			int ys = getLocaleGuiInt("gui_map_primary_background_size_y", 0);
 			const char *fname = getLocaleGuiString("gui_map_primary_background_image");
-			primaryBackground.reset(ogui.CreateSimpleImageButton(window.get(), x, y, xs, ys, fname, fname, fname, fname, 0, 0, true));
+			primaryBackground.reset(ogui.CreateSimpleImageButton(window.get(), x, y, xs, ys, fname, fname, fname, fname, 0, boost::any(), true));
 			primaryBackground->SetDisabled(true);
 		}
 		closeButton.reset(ogui.CreateSimpleTextButton(window.get(), getLocaleGuiInt("gui_map_exit_position_x", 0), getLocaleGuiInt("gui_map_exit_position_y", 0),

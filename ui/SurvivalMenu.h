@@ -78,7 +78,7 @@ public:
 	static bool readLockedMissions(std::vector<std::string> &missions);
 
 private:
-	void addImageSelectionButton( const std::string& image_norm, const std::string& image_high, const std::string& image_down, const std::string& image_disabled, bool disabled, int command, IOguiFont* font, void* param = NULL );
+	void addImageSelectionButton( const std::string& image_norm, const std::string& image_high, const std::string& image_down, const std::string& image_disabled, bool disabled, int command, IOguiFont* font, const boost::any &param = boost::any() );
 	void createMissionButtons();
 	void createTexts();
 

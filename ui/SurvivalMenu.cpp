@@ -288,7 +288,7 @@ void SurvivalMenu::selectButton( int command )
 					int w = getLocaleGuiInt("gui_survivalmenu_ultimatestar_w", 0);
 					int h = getLocaleGuiInt("gui_survivalmenu_ultimatestar_h", 0);
 					const char *img = getLocaleGuiString("gui_survivalmenu_ultimatestar_img");
-					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, 0, false);
+					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 					but->SetDisabled(true);
 					starButtons.push_back(but);
 				}
@@ -299,7 +299,7 @@ void SurvivalMenu::selectButton( int command )
 					int w = getLocaleGuiInt("gui_survivalmenu_developerstar_w", 0);
 					int h = getLocaleGuiInt("gui_survivalmenu_developerstar_h", 0);
 					const char *img = getLocaleGuiString("gui_survivalmenu_developerstar_img");
-					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, 0, false);
+					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 					but->SetDisabled(true);
 					starButtons.push_back(but);
 				}
@@ -541,7 +541,7 @@ void SurvivalMenu::createTexts()
 	}
 }
 
-void SurvivalMenu::addImageSelectionButton( const std::string& image_norm, const std::string& image_high, const std::string& image_down, const std::string& image_disabled, bool disabled, int command, IOguiFont* font, void* param )
+void SurvivalMenu::addImageSelectionButton( const std::string& image_norm, const std::string& image_high, const std::string& image_down, const std::string& image_disabled, bool disabled, int command, IOguiFont* font, const boost::any& param )
 {
 	assert( ogui );
 	assert( win );

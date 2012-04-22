@@ -174,7 +174,7 @@ public:
 			img_down.empty()?NULL:img_down.c_str(),
 			img_high.empty()?NULL:img_high.c_str(),
 			"",
-			id, NULL, true );
+			id, boost::any(), true );
 
 		if( img_disa.empty() == false )
 			return_value->SetDisabledImage( LoadImage( img_disa ) );

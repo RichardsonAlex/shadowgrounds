@@ -193,13 +193,13 @@ public:
 				backgroundAlternativeButton = ogui->CreateSimpleImageButton(background,
 					getLocaleGuiInt("gui_menu_background_alternatives_x", 0), getLocaleGuiInt("gui_menu_background_alternatives_y", 0),
 					getLocaleGuiInt("gui_menu_background_alternatives_w", 0), getLocaleGuiInt("gui_menu_background_alternatives_h", 0),
-					NULL, NULL, NULL, NULL, 0, NULL, false);
+					NULL, NULL, NULL, NULL, 0, boost::any(), false);
 				backgroundAlternativeButton->SetDisabled(true);
 
 				backgroundAlternativeFader = ogui->CreateSimpleImageButton(background,
 					getLocaleGuiInt("gui_menu_background_alternatives_x", 0), getLocaleGuiInt("gui_menu_background_alternatives_y", 0),
 					getLocaleGuiInt("gui_menu_background_alternatives_w", 0), getLocaleGuiInt("gui_menu_background_alternatives_h", 0),
-					NULL, NULL, NULL, NULL, 0, NULL, false);
+					NULL, NULL, NULL, NULL, 0, boost::any(), false);
 				backgroundAlternativeFader->SetDisabled(true);
 
 				backgroundAlternatives.resize(alternatives);

@@ -16,6 +16,7 @@ class OguiWindow;
 class OguiCheckBox;
 class OguiSelectList;
 class OguiSelectListStyle;
+struct OguiButtonStyle;
 
 namespace game
 {

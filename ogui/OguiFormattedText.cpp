@@ -723,7 +723,7 @@ void OguiFormattedText::createTextButton( int button_x, int button_y, int button
 
 	OguiButton* b;
 	b = ogui->CreateSimpleTextButton( window, button_x, button_y, button_w, button_h,
-		NULL, NULL, NULL, button_text.c_str(), 0, NULL, false );
+		NULL, NULL, NULL, button_text.c_str(), 0, boost::any(), false );
 	if ( button_font ) b->SetFont( button_font );
 
 	// b->SetDisabledImage( ogui->LoadOguiImage( "Data/GUI/debug.tga" ) );
@@ -753,7 +753,7 @@ void OguiFormattedText::createImageButton( int button_x, int button_y, int butto
 
 	OguiButton* b;
 	b = ogui->CreateSimpleImageButton( window, button_x, button_y, button_w, button_h,
-		image.c_str(), image.c_str(), image.c_str(), image.c_str(), 0, NULL, false );
+		image.c_str(), image.c_str(), image.c_str(), image.c_str(), 0, boost::any(), false );
 
 	if( b )
 	{
@@ -773,7 +773,7 @@ void OguiFormattedText::createImageButton( int button_x, int button_y, int butto
 	FB_ASSERT( window );
 
 	OguiButton* b;
-	b = ogui->CreateSimpleImageButton( window, button_x, button_y, button_w, button_h, NULL, NULL, NULL, NULL, 0, NULL, false );
+	b = ogui->CreateSimpleImageButton( window, button_x, button_y, button_w, button_h, NULL, NULL, NULL, NULL, 0, boost::any(), false );
 
 	if( b )
 	{

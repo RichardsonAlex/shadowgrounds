@@ -1318,7 +1318,7 @@ void NewGameMenu::createBonusOptions(game::Game *game, OguiWindow *win, Ogui *og
 			if(game->bonusManager->shouldCreateAsButton(i))
 			{
 				OguiButton *b;
-				b = ogui->CreateSimpleTextButton(win, x+w, y+1, text_w, h, NULL, NULL, NULL, "", button_id_offset + i, 0, false);
+				b = ogui->CreateSimpleTextButton(win, x+w, y+1, text_w, h, NULL, NULL, NULL, "", button_id_offset + i, boost::any(), false);
 				b->SetFont(fonts->medium.highlighted);
 				b->SetHighlightedFont(fonts->medium.normal);
 				b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);

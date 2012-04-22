@@ -261,6 +261,7 @@ void MenuBaseImpl::highlightSelectButton( int i )
 
 			if( !it->second->GetArgument().empty() )
 			{
+		        assert(it->second->GetArgument().type() == typeid(SelectionButtonDescs*));
 				descs = boost::any_cast<SelectionButtonDescs*>(it->second->GetArgument());
 			}
 
@@ -295,6 +296,7 @@ void MenuBaseImpl::downlightSelectButton( int i )
 
 			if( !it->second->GetArgument().empty() )
 			{
+                assert(it->second->GetArgument().type() == typeid(SelectionButtonDescs*));
 				descs = boost::any_cast<SelectionButtonDescs*>(it->second->GetArgument());
 			}
 
@@ -575,7 +577,7 @@ void MenuBaseImpl::addCloseButton( const std::string& text, int command, IOguiFo
 	buttons.push_back( b );
 }
 
-void MenuBaseImpl::addSelectionButton( const std::string& text, int command, IOguiFont* font, void* param )
+void MenuBaseImpl::addSelectionButton( const std::string& text, int command, IOguiFont* font, const boost::any &param )
 {
 	assert( ogui );
 	assert( win );

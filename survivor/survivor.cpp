@@ -700,7 +700,7 @@ public:
 			const char *img = getLocaleGuiString("splash_screen_quit_img");
 			const char *img_down = getLocaleGuiString("splash_screen_quit_img_down");
 			const char *img_high = getLocaleGuiString("splash_screen_quit_img_high");
-			quit_button = ogui->CreateSimpleTextButton(win, x, y, w, h, img, img_down, img_high, "", BUTTON_ID_QUIT, 0, false);
+			quit_button = ogui->CreateSimpleTextButton(win, x, y, w, h, img, img_down, img_high, "", BUTTON_ID_QUIT, boost::any(), false);
 
 			IOguiFont *font_normal = ogui->LoadFont( getLocaleGuiString("splash_screen_quit_font_normal") );
 			IOguiFont *font_disabled = ogui->LoadFont( getLocaleGuiString("splash_screen_quit_font_disabled") );
@@ -726,7 +726,7 @@ public:
 			const char *img_high = getLocaleGuiString("splash_screen_next_img_high");
 			// const char *img_disabled = getLocaleGuiString("splash_screen_next_img_disabled");
 
-			next_button = ogui->CreateSimpleTextButton(win, x, y, w, h, img, img_down, img_high, getLocaleGuiString("splash_screen_next"), BUTTON_ID_NEXT, 0, false);
+			next_button = ogui->CreateSimpleTextButton(win, x, y, w, h, img, img_down, img_high, getLocaleGuiString("splash_screen_next"), BUTTON_ID_NEXT, boost::any(), false);
 			next_button->SetListener(this);
 
 			IOguiImage *image = NULL;
@@ -754,7 +754,7 @@ public:
 			const char *img_high = getLocaleGuiString("splash_screen_previous_img_high");
 			// const char *img_disabled = getLocaleGuiString("splash_screen_previous_img_disabled");
 
-			previous_button = ogui->CreateSimpleTextButton(win, x, y, w, h, img, img_down, img_high, getLocaleGuiString("splash_screen_previous"), BUTTON_ID_PREV, 0, false);
+			previous_button = ogui->CreateSimpleTextButton(win, x, y, w, h, img, img_down, img_high, getLocaleGuiString("splash_screen_previous"), BUTTON_ID_PREV, boost::any(), false);
 			previous_button->SetDisabled(true);
 			previous_button->SetListener(this);
 
@@ -2005,7 +2005,7 @@ int main(int argc, char *argv[]) {
 		int y = getLocaleGuiInt("splash_screen_quit_y", 720);
 		int w = getLocaleGuiInt("splash_screen_quit_w", 100);
 		int h = getLocaleGuiInt("splash_screen_quit_h", 50);
-		OguiButton *quit_button = ogui->CreateSimpleTextButton(win, x, y, w, h, "", "", "", "", 0, 0, false);
+		OguiButton *quit_button = ogui->CreateSimpleTextButton(win, x, y, w, h, "", "", "", "", 0, boost::any(), false);
 		IOguiFont *quit_font_normal = ogui->LoadFont( getLocaleGuiString("splash_screen_quit_font_normal") );
 		IOguiFont *quit_font_disabled = ogui->LoadFont( getLocaleGuiString("splash_screen_quit_font_disabled") );
 		quit_button->SetDisabled(true);

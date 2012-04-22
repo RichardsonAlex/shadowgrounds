@@ -362,7 +362,7 @@ public:
 					int w = getLocaleGuiInt("gui_scorewindow_ultimatestar_w", 0);
 					int h = getLocaleGuiInt("gui_scorewindow_ultimatestar_h", 0);
 					const char *img = getLocaleGuiString("gui_scorewindow_ultimatestar_img");
-					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, 0, false);
+					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 					but->SetDisabled(true);
 					starButtons.push_back(but);
 				}
@@ -373,7 +373,7 @@ public:
 					int w = getLocaleGuiInt("gui_scorewindow_developerstar_w", 0);
 					int h = getLocaleGuiInt("gui_scorewindow_developerstar_h", 0);
 					const char *img = getLocaleGuiString("gui_scorewindow_developerstar_img");
-					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, 0, false);
+					OguiButton *but = ogui->CreateSimpleImageButton(win, x, y, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 					but->SetDisabled(true);
 					starButtons.push_back(but);
 				}

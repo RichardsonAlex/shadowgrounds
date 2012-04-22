@@ -270,11 +270,11 @@ public:
 					int w = window->GetSizeX();
 					int h = (int)((1.0f - 1.0f / texcoord_multiplier) * window->GetSizeY() * 0.5f + 0.5f);
 					const char *img = getLocaleGuiString( ( prefix + "_window_img" ).c_str() );
-					wideScreenBars[0] = ogui->CreateSimpleImageButton(window, 0, 0, w, h, NULL, NULL, NULL, img, 0, NULL, false);
+					wideScreenBars[0] = ogui->CreateSimpleImageButton(window, 0, 0, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 					wideScreenBars[0]->SetDisabled(true);
 
 					int y = h + (int)(window->GetSizeY() / texcoord_multiplier + 0.5f);
-					wideScreenBars[1] = ogui->CreateSimpleImageButton(window, 0, y, w, h, NULL, NULL, NULL, img, 0, NULL, false);
+					wideScreenBars[1] = ogui->CreateSimpleImageButton(window, 0, y, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 					wideScreenBars[1]->SetDisabled(true);
 
 				}
@@ -982,7 +982,7 @@ public:
 				{
 					img = tf.image.c_str();
 				}
-				tf.button = ogui->CreateSimpleImageButton(window, x, y, w, h, NULL, NULL, NULL, img, 0, NULL, false);
+				tf.button = ogui->CreateSimpleImageButton(window, x, y, w, h, NULL, NULL, NULL, img, 0, boost::any(), false);
 				tf.button->SetDisabled(true);
 				if(tf.image.empty())
 				{

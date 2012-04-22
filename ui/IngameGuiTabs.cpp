@@ -233,7 +233,7 @@ public:
 		std::string text = getLocaleGuiString( ( name + "_text" ).c_str() );
 
 		OguiButton* result;
-		result = ogui->CreateSimpleTextButton( window, x, y, w, h, norm.c_str(), down.c_str(), high.c_str(), text.c_str(), id, NULL );
+		result = ogui->CreateSimpleTextButton( window, x, y, w, h, norm.c_str(), down.c_str(), high.c_str(), text.c_str(), id, boost::any());
 		result->SetFont( font );
 
 		result->SetListener( this );

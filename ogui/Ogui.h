@@ -10,6 +10,7 @@
 //#include <c2_sptr.h>
 
 #include <list>
+#include <boost/any.hpp>
 
 #include "OguiException.h"
 #include "IOguiDriver.h"
@@ -19,7 +20,6 @@
 #include "OguiButtonStyle.h"
 #include "OguiSelectListStyle.h"
 #include "OguiWindow.h"
-#include "OguiButton.h"
 #include "OguiTextLabel.h"
 #include "OguiSelectList.h"
 
@@ -54,6 +54,7 @@
 template<typename T> class LinkedList;
 class IStorm3D_StreamBuilder;
 class IStorm3D_VideoStreamer;
+class OguiButton;
 
 /**
  * C++ Wrapper class for orvgui
@@ -237,17 +238,17 @@ public:
   // Create a simple image button
   OguiButton *CreateSimpleImageButton(OguiWindow *win, int x, int y, int sizex, int sizey,
     const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename,
-    int id = 0, void *argument = NULL) throw (OguiException *);
+    int id = 0, const boost::any &argument = boost::any()) throw (OguiException *);
 
   // Create a simple image button w/ disabled image
   OguiButton *CreateSimpleImageButton(OguiWindow *win, int x, int y, int sizex, int sizey,
     const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename, const char *imageDisabledFilename,
-    int id = 0, void *argument = NULL, bool clipToWindow = true ) throw (OguiException *);
+    int id = 0, const boost::any &argument = boost::any(), bool clipToWindow = true ) throw (OguiException *);
 
   // Create a simple image+text button
   OguiButton *CreateSimpleTextButton(OguiWindow *win, int x, int y, int sizex, int sizey,
     const char *imageFilename, const char *imageDownFilename, const char *imageHighlightFilename,
-    const char *text, int id = 0, const void *argument = NULL, bool clipToWindow = true ) throw (OguiException *);
+    const char *text, int id = 0, const boost::any &argument = boost::any(), bool clipToWindow = true ) throw (OguiException *);
 
   // Create a text label
   OguiTextLabel *CreateTextLabel(OguiWindow *win, int x, int y,
@@ -263,7 +264,7 @@ public:
   OguiSelectList *CreateSelectList(OguiWindow *win, int x, int y,
     OguiSelectListStyle *style, int valueAmount, const char **values, const char **descs,
     bool multiSelectable = false, int defaultSelection = -1, int id = 0,
-    void *argument = NULL) throw (OguiException *);
+    const boost::any &argument = boost::any()) throw (OguiException *);
 
   /**
    * Loads an image.

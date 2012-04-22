@@ -9,10 +9,11 @@
 //
 
 #include "OguiException.h"
-#include "OguiButton.h"
 #include "IOguiImage.h"
 #include "IOguiFont.h"
 #include "IOguiEffectListener.h"
+
+#include <boost/any.hpp>
 
 // react to buttons, these must be the same as ones in orvgui.h
 #define OGUI_WIN_REACT_MASK_CURSOR_1 1
@@ -37,8 +38,8 @@
 
 
 class Ogui;
+class OguiButton;
 template<typename T> class LinkedList;
-
 
 class OguiWindow
 {
@@ -107,7 +108,7 @@ private:
 
 	OguiButton *CreateNewButton(int x, int y, int sizex, int sizey,
 		IOguiImage *img, IOguiImage *imgdown, IOguiImage *imghigh, IOguiImage *imgdisabled, bool withText,
-		const char *text, int id, const void *argument, IOguiFont *font, bool clipToWindow = true );
+		const char *text, int id, const boost::any &argument, IOguiFont *font, bool clipToWindow = true );
 
 	Ogui *ogui;
 	IOguiImage *image;

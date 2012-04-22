@@ -2,7 +2,6 @@
 #define INC_OGUICHECKBOX_H
 
 #include <string>
-#include "OguiButton.h"
 
 class Ogui;
 class OguiWindow;
@@ -14,6 +13,7 @@ class OguiTextLabel;
 class OguiCheckBox;
 
 #include "IOguiButtonListener.h"
+#include "OguiButton.h"
 
 class OguiCheckBoxEvent
 {

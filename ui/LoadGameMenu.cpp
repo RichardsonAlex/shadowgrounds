@@ -301,7 +301,7 @@ LoadGameMenu::LoadGameMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, 
 
 				descs->first = addDescription( savegame_description, desc_x_add, 0, fonts->little.normal );
 				descs->second = addDescription( savegame_time, time_x_add, 0, fonts->little.normal );
-				addSelectionButton( getMissionName( i ), i, fonts->medium.normal, descs );
+				addSelectionButton( getMissionName( i ), i, fonts->medium.normal, boost::any(descs) );
 
 				if( savegame_time > newst_str )
 				{
@@ -839,7 +839,7 @@ void LoadGameMenu::missionSelected( int m, int ex_selection )
 
 ///////////////////////////////////////////////////////////////////////////////
 
-void LoadGameMenu::addImageSelectionButton( const std::string& image_norm, const std::string& image_high, const std::string& image_down, const std::string& image_disabled, bool disabled, int command, IOguiFont* font, void* param )
+void LoadGameMenu::addImageSelectionButton( const std::string& image_norm, const std::string& image_high, const std::string& image_down, const std::string& image_disabled, bool disabled, int command, IOguiFont* font, const boost::any& param )
 {
 	assert( ogui );
 	assert( win );

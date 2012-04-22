@@ -386,6 +386,7 @@ namespace ui
       if (eve->triggerButton->GetId() >= ACW_PART_START
         && eve->triggerButton->GetId() <= ACW_PART_END)
       {
+          assert(eve->extraArgument.type() == typeid(Part*));
         Part *p = boost::any_cast<Part*>(eve->extraArgument);
         if (p == NULL)
           setInfoPartType(NULL);
@@ -410,6 +411,7 @@ namespace ui
         if (eve->triggerButton->GetId() >= ACW_PART_START
           && eve->triggerButton->GetId() <= ACW_PART_END)
         {
+            assert(eve->extraArgument.type() == typeid(Part*));
           p = boost::any_cast<Part*>(eve->extraArgument);
           pp = p->getParent();
           if (pp != NULL)
@@ -433,6 +435,7 @@ namespace ui
         {
           slotNum = eve->triggerButton->GetId() - ACW_SLOT_START;
           // this was the slots parent part
+          assert(eve->extraArgument.type() == typeid(Part*));
           pp = boost::any_cast<Part*>(eve->extraArgument);
           // this is valid part type to this slot...
           //pt = (PartType *)eve->extraArgument;
@@ -535,6 +538,7 @@ namespace ui
     }
     if (eve->triggerButton->GetId() == ACW_UNIT)
     {
+        assert(eve->extraArgument.type() == typeid(Unit*));
       setUnit(boost::any_cast<Unit*>(eve->extraArgument));
       // TODO: if split screen, solve player cursor number first
       ogui->SetCursorImageState(0, DH_CURSOR_ARROW);
@@ -684,7 +688,7 @@ namespace ui
     if (pp == NULL)
     {
       b = ogui->CreateSimpleImageButton(win, x-88, y-78, 176, 156,
-        NULL, NULL, NULL, ACW_SLOT_START + slotNumber, pp);
+        NULL, NULL, NULL, ACW_SLOT_START + slotNumber, boost::any(pp));
       b->SetStyle(slot1Style);
       slotSize = 1;
 
@@ -703,7 +707,7 @@ namespace ui
           getPartTypeById(PARTTYPE_ID_STRING_TO_INT("Weap")))
       {
         b = ogui->CreateSimpleImageButton(win, x-38, y-78, 75, 156,
-          NULL, NULL, NULL, ACW_SLOT_START + slotNumber, pp);
+          NULL, NULL, NULL, ACW_SLOT_START + slotNumber, boost::any(pp));
         b->SetStyle(slot2Style);
         slotSize = 2;
 
@@ -753,7 +757,7 @@ namespace ui
         }
       } else {
         b = ogui->CreateSimpleImageButton(win, x-38, y-46, 75, 92,
-          NULL, NULL, NULL, ACW_SLOT_START + slotNumber, pp);
+          NULL, NULL, NULL, ACW_SLOT_START + slotNumber, boost::any(pp));
         b->SetStyle(slot3Style);
         slotSize = 3;
 
@@ -819,15 +823,15 @@ namespace ui
       if (slotSize == 1)
       {
         b2 = ogui->CreateSimpleTextButton(win, x-80, y-80,
-          160, 160, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, p);
+          160, 160, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, boost::any(p));
       } else {
         if (slotSize == 2)
         {
           b2 = ogui->CreateSimpleTextButton(win, x-40, y-80,
-            80, 160, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, p);
+            80, 160, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, boost::any(p));
         } else {
           b2 = ogui->CreateSimpleTextButton(win, x-40, y-40-10,
-            80, 100, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, p);
+            80, 100, NULL, NULL, NULL, pricetext, ACW_PART_START + slotNumber, boost::any(p));
         }
       }
       b2->SetTextVAlign(OguiButton::TEXT_V_ALIGN_BOTTOM);
@@ -1032,7 +1036,7 @@ namespace ui
       }
 
       OguiButton *b = ogui->CreateSimpleTextButton(win, 62 + count * 100, 142,
-        94, 29, NULL, NULL, NULL, cname, ACW_UNIT, u);
+        94, 29, NULL, NULL, NULL, cname, ACW_UNIT, boost::any(u));
       if (u == unit)
         b->SetStyle(unitSelectActiveStyle);
       else
@@ -1052,7 +1056,7 @@ namespace ui
     for (; count < UNITS_PER_ACW; count++)
     {
       OguiButton *b = ogui->CreateSimpleTextButton(win, 62 + count * 100, 142,
-        94, 29, NULL, NULL, NULL, "(EMPTY)", ACW_UNIT, NULL);
+        94, 29, NULL, NULL, NULL, "(EMPTY)", ACW_UNIT);
       b->SetStyle(unitSelectStyle);
       b->SetListener(this);
       b->SetDisabled(true);
@@ -1126,7 +1130,7 @@ namespace ui
 
       // add purchase, repair and autocomplete buttons
       OguiButton *b = ogui->CreateSimpleTextButton(win, 850, 408,
-        170, 20, NULL, NULL, NULL, "PURCHASE", ACW_PURCHASE, NULL);
+        170, 20, NULL, NULL, NULL, "PURCHASE", ACW_PURCHASE);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       b->SetListener(this);
@@ -1138,7 +1142,7 @@ namespace ui
       buttons->append(b);
 
       b = ogui->CreateSimpleTextButton(win, 850, 433,
-        170, 20, NULL, NULL, NULL, "PURCHASE ALL", ACW_PURCHASE_ALL, NULL);
+        170, 20, NULL, NULL, NULL, "PURCHASE ALL", ACW_PURCHASE_ALL);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       b->SetListener(this);
@@ -1150,7 +1154,7 @@ namespace ui
       buttons->append(b);
 
       b = ogui->CreateSimpleTextButton(win, 850, 458,
-        170, 20, NULL, NULL, NULL, "REPAIR", ACW_REPAIR, NULL);
+        170, 20, NULL, NULL, NULL, "REPAIR", ACW_REPAIR);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       b->SetListener(this);
@@ -1162,7 +1166,7 @@ namespace ui
       buttons->append(b);
 
       b = ogui->CreateSimpleTextButton(win, 850, 483,
-        170, 20, NULL, NULL, NULL, "REPAIR ALL", ACW_REPAIR_ALL, NULL);
+        170, 20, NULL, NULL, NULL, "REPAIR ALL", ACW_REPAIR_ALL);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       b->SetListener(this);
@@ -1174,7 +1178,7 @@ namespace ui
       buttons->append(b);
 
       b = ogui->CreateSimpleTextButton(win, 850, 508,
-        170, 20, NULL, NULL, NULL, "AUTOCOMPLETE", ACW_AUTOCOMPLETE, NULL);
+        170, 20, NULL, NULL, NULL, "AUTOCOMPLETE", ACW_AUTOCOMPLETE);
       b->SetStyle(purchaseButtonStyle);
       b->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
       b->SetListener(this);
@@ -1216,7 +1220,7 @@ namespace ui
         charBioArea = ogui->CreateTextArea(win, 300, 300,
           450, 200, charbio);
         charBioImageButton = ogui->CreateSimpleImageButton(win, 80, 300,
-          160, 160, NULL, NULL, NULL, NULL, 0, NULL);
+          160, 160, NULL, NULL, NULL, NULL, 0);
         charBioImageButton->SetDisabled(true);
         if (c != NULL)
         {

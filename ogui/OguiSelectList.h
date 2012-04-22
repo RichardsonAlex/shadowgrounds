@@ -6,7 +6,6 @@
 #include "IOguiSelectListListener.h"
 #include "OguiSelectListStyle.h"
 #include "OguiSelectListEvent.h"
-#include "OguiButton.h"
 
 //
 // Select list
@@ -16,13 +15,14 @@
 
 
 class OguiWindow;
+class OguiButton;
 
 
 class OguiSelectList : public IOguiButtonListener
 {
   public:
     // never try to use the constructor directly, use ogui to contruct these
-    OguiSelectList(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, void *argument);
+    OguiSelectList(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, const boost::any &argument = boost::any());
 
     // oldstuff... dummy constructor / destructor
     //OguiSelectList();
@@ -80,7 +80,7 @@ class OguiSelectList : public IOguiButtonListener
 
   protected:
     // this is here to make things easier for extending classes (FileList)
-    void init(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, void *argument);
+    void init(int x, int y, int defsel, bool multisel, int amount, const char **values, const char **descs, OguiButton **listButs, OguiButton *upBut, OguiButton *downBut, OguiSelectListStyle *style, int id, const boost::any &argument = boost::any());
 
   private:
     void uninit(); // called by destructor
@@ -119,7 +119,7 @@ class OguiSelectList : public IOguiButtonListener
     int scrolly;
     char **values;
     char **descs;
-    void *argument;
+    boost::any argument;
 
     int id;
 };

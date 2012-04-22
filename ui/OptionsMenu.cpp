@@ -544,7 +544,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 
 			addControlDescription( getOptionsKeyName( i ), i, key_name_add_x, 0, fonts->little.normal, fonts->little.highlighted, fonts->little.down, fonts->little.disabled );
 			descs->first = controlDescriptions[ i ];
-			addSelectionButton( getOptionsButtonName( i ), i, fonts->medium.normal, descs );
+			addSelectionButton( getOptionsButtonName( i ), i, fonts->medium.normal, boost::any(descs) );
 			// selectButtons[ i ]->SetEventMask( OGUI_EMASK_PRESS );,
 			selectionButtonDescs.push_back( descs );
 		}
@@ -622,7 +622,7 @@ OptionsMenu::OptionsMenu( MenuCollection* menu, MenuCollection::Fonts* fonts, Og
 		int y = getLocaleGuiInt( "gui_optionsmenu_controllertype_y", 0 );
 		int w = getLocaleGuiInt( "gui_optionsmenu_controllertype_w", 0 );
 		int h = getLocaleGuiInt( "gui_optionsmenu_controllertype_h", 0 );
-		controllerTypeButton = ogui->CreateSimpleTextButton( win, x, y, w, h, NULL, NULL, NULL, "", COMMANDS_CONTROLLERTYPE, 0, false );
+		controllerTypeButton = ogui->CreateSimpleTextButton( win, x, y, w, h, NULL, NULL, NULL, "", COMMANDS_CONTROLLERTYPE, boost::any(), false );
 		controllerTypeButton->SetFont( fonts->medium.normal );
 		controllerTypeButton->SetDownFont( fonts->medium.down );
 		controllerTypeButton->SetHighlightedFont( fonts->medium.highlighted );
@@ -1742,7 +1742,7 @@ void OptionsMenu::createJoystickButtons()
 
 			addControlDescription( button_name, COMMANDS_JOYSTICK_MOVE_XAXIS, key_name_add_x, 0, fonts->little.normal, fonts->little.highlighted, fonts->little.down, fonts->little.disabled );
 			descs->first = controlDescriptions[ COMMANDS_JOYSTICK_MOVE_XAXIS ];
-			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_MOVE_XAXIS, fonts->medium.normal, descs );
+			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_MOVE_XAXIS, fonts->medium.normal, boost::any(descs) );
 			selectionButtonDescs.push_back( descs );
 		}
 		//.....................................................................
@@ -1754,7 +1754,7 @@ void OptionsMenu::createJoystickButtons()
 
 			addControlDescription( button_name, COMMANDS_JOYSTICK_MOVE_YAXIS, key_name_add_x, 0, fonts->little.normal, fonts->little.highlighted, fonts->little.down, fonts->little.disabled );
 			descs->first = controlDescriptions[ COMMANDS_JOYSTICK_MOVE_YAXIS ];
-			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_MOVE_YAXIS, fonts->medium.normal, descs );
+			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_MOVE_YAXIS, fonts->medium.normal, boost::any(descs) );
 			selectionButtonDescs.push_back( descs );
 		}
 		//.....................................................................
@@ -1766,7 +1766,7 @@ void OptionsMenu::createJoystickButtons()
 
 			addControlDescription( button_name, COMMANDS_JOYSTICK_DIR_XAXIS, key_name_add_x, 0, fonts->little.normal, fonts->little.highlighted, fonts->little.down, fonts->little.disabled );
 			descs->first = controlDescriptions[ COMMANDS_JOYSTICK_DIR_XAXIS ];
-			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_DIR_XAXIS, fonts->medium.normal, descs );
+			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_DIR_XAXIS, fonts->medium.normal, boost::any(descs) );
 			selectionButtonDescs.push_back( descs );
 		}
 		//.....................................................................
@@ -1778,7 +1778,7 @@ void OptionsMenu::createJoystickButtons()
 
 			addControlDescription( button_name, COMMANDS_JOYSTICK_DIR_YAXIS, key_name_add_x, 0, fonts->little.normal, fonts->little.highlighted, fonts->little.down, fonts->little.disabled );
 			descs->first = controlDescriptions[ COMMANDS_JOYSTICK_DIR_YAXIS ];
-			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_DIR_YAXIS, fonts->medium.normal, descs );
+			addSelectionButton( axis_key_name, COMMANDS_JOYSTICK_DIR_YAXIS, fonts->medium.normal, boost::any(descs) );
 			selectionButtonDescs.push_back( descs );
 		}
 		//.....................................................................
@@ -1828,6 +1828,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_MOVE_XAXIS );
 	if( i != selectButtons.end() )
 	{
+        assert(i->second->GetArgument().type() == typeid(SelectionButtonDescs*));
 		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );
@@ -1839,6 +1840,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_MOVE_YAXIS );
 	if( i != selectButtons.end() )
 	{
+        assert(i->second->GetArgument().type() == typeid(SelectionButtonDescs*));
 		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );
@@ -1850,6 +1852,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_DIR_XAXIS );
 	if( i != selectButtons.end() )
 	{
+        assert(i->second->GetArgument().type() == typeid(SelectionButtonDescs*));
 		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );
@@ -1861,6 +1864,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_DIR_YAXIS );
 	if( i != selectButtons.end() )
 	{
+        assert(i->second->GetArgument().type() == typeid(SelectionButtonDescs*));
 		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );

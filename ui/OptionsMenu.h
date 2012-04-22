@@ -15,6 +15,7 @@ class OguiWindow;
 class OguiCheckBox;
 class OguiSelectList;
 class OguiSelectListStyle;
+struct OguiButtonStyle;
 
 extern bool apply_options_request;
 

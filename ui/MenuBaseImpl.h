@@ -13,7 +13,6 @@
 
 class OguiWindow;
 class OguiButtonEvent;
-class OguiButton;
 class Ogui;
 class IOguiFont;
 class IOguiImage;
@@ -71,7 +70,7 @@ protected:
 	virtual void		addSeparator();
 	virtual OguiButton*	addImageButtton( const std::string& image_norm, const std::string& image_down, const std::string& image_high, const std::string& image_disa, int command, int x, int y, int w, int h );
 
-	virtual void addSelectionButton( const std::string& text, int command, IOguiFont* font = NULL, void* param = NULL );
+	virtual void addSelectionButton( const std::string& text, int command, IOguiFont* font = NULL, const boost::any& param = boost::any() );
 
 	virtual void addCloseButton( const std::string& text, int command, IOguiFont* font = NULL );
 

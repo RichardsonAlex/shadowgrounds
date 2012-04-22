@@ -535,7 +535,7 @@ public:
 
 			desc_text = ogui->CreateSimpleTextButton(win->getWindow(),
 				win->getText()->getX(), win->getText()->getY()-2,
-				win->getText()->getW(), win->getText()->getH(), NULL, NULL, NULL, description.c_str(), 0, 0, false);
+				win->getText()->getW(), win->getText()->getH(), NULL, NULL, NULL, description.c_str(), 0, boost::any(), false);
 			desc_text->SetFont(win->getText()->getFont());
 			desc_text->SetDisabled(true);
 			desc_text->SetTextHAlign(OguiButton::TEXT_H_ALIGN_LEFT);
@@ -1004,7 +1004,7 @@ public:
 				int w = game::getLocaleGuiInt("gui_grenadewindow_img1_w", 0);
 				int h = game::getLocaleGuiInt("gui_grenadewindow_img1_h", 0);
 				const char *txt = game::getLocaleGuiString("gui_grenadewindow_img1_img");
-				img1 = ogui->CreateSimpleImageButton(win->getWindow(), x, y, w, h, NULL, NULL, NULL, txt, 0, 0, false);
+				img1 = ogui->CreateSimpleImageButton(win->getWindow(), x, y, w, h, NULL, NULL, NULL, txt, 0, boost::any(), false);
 				img1->SetDisabled(true);
 			}
 
@@ -1014,7 +1014,7 @@ public:
 				int w = game::getLocaleGuiInt("gui_grenadewindow_img2_w", 0);
 				int h = game::getLocaleGuiInt("gui_grenadewindow_img2_h", 0);
 				const char *txt = game::getLocaleGuiString("gui_grenadewindow_img2_img");
-				img2 = ogui->CreateSimpleImageButton(win->getWindow(), x, y, w, h, NULL, NULL, NULL, txt, 0, 0, false);
+				img2 = ogui->CreateSimpleImageButton(win->getWindow(), x, y, w, h, NULL, NULL, NULL, txt, 0, boost::any(), false);
 				img2->SetDisabled(true);
 			}
 
@@ -1026,7 +1026,7 @@ public:
 				const char *txt = game::getLocaleGuiString("gui_grenadewindow_desc_text");
 				const char *fnt = game::getLocaleGuiString("gui_grenadewindow_desc_font");
 				desc_font = ogui->LoadFont(fnt);
-				desc = ogui->CreateSimpleTextButton(win->getWindow(), x, y, w, h, NULL, NULL, NULL, txt, 0, 0, false);
+				desc = ogui->CreateSimpleTextButton(win->getWindow(), x, y, w, h, NULL, NULL, NULL, txt, 0, boost::any(), false);
 				desc->SetDisabled(true);
 				desc->SetFont(desc_font);
 			}

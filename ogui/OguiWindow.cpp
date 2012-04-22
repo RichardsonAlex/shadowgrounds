@@ -263,7 +263,7 @@ void OguiWindow::SetUnmovable()
 
 OguiButton *OguiWindow::CreateNewButton(int x, int y, int sizex, int sizey,
 	IOguiImage *img, IOguiImage *imgdown, IOguiImage *imghigh, IOguiImage *imgdisabled, bool withText,
-	const char *text, int id, const void *argument, IOguiFont *font, bool clipToWindow )
+	const char *text, int id, const boost::any &argument, IOguiFont *font, bool clipToWindow )
 {
 	orvgui_but *but;
 
