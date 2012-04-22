@@ -1,7 +1,9 @@
 
 #include "precompiled.h"
 
-#include  "OguiTypeEffectListener.h"
+#include "OguiTypeEffectListener.h"
+#include "OguiEffectEvent.h"
+
 #include "../game/GameUI.h"
 #include "../game/Game.h"
 

@@ -20,7 +20,7 @@
 #include "../game/GameStats.h"
 
 #include "../ogui/OguiStormDriver.h"
-
+#include "../ogui/OguiEffectEvent.h"
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiWindow.h"
 #include "../ogui/OguiFormattedText.h"

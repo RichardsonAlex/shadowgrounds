@@ -16,6 +16,7 @@
 #include "../system/Timer.h"
 #include "CombatSubWindowFactory.h"
 #include "../ogui/OguiAligner.h"
+#include "../ogui/OguiEffectEvent.h"
 
 #include "../util/Debug_MemoryManager.h"
 

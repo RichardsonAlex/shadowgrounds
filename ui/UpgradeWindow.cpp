@@ -17,6 +17,7 @@
 #include "../system/Logger.h"
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/OguiEffectEvent.h"
 #include "../util/fb_assert.h"
 #include "../game/DHLocaleManager.h"
 
@@ -59,7 +60,7 @@ namespace ui
 		highlightedUpgradeId = -1;
 		highlightOn = false;
 
-		this->upgradesPending = new LinkedList<intptr_t>();
+		this->upgradesPending = new LinkedList<int>();
 		this->upgradesPendingCost = 0;
 
 		assert(unit != NULL);
@@ -526,7 +527,7 @@ namespace ui
 			{
 				if (upgradeButtons[i][j] != NULL)
 				{
-					intptr_t upgid = (intptr_t)upgradeButtons[i][j]->GetArgument();
+					int upgid = boost::any_cast<int>(upgradeButtons[i][j]->GetArgument());
 					//int tmp = this->upgradesPendingCost;
 
 					//if (game->upgradeManager->canUpgrade(unit, upgid, &tmp))
@@ -544,11 +545,10 @@ namespace ui
 
 					bool pending = false;
 
-					LinkedListIterator<intptr_t> iter(this->upgradesPending);
+					LinkedListIterator<int> iter(this->upgradesPending);
 					while (iter.iterateAvailable())
 					{
-						// WARNING: void * -> int cast
-						intptr_t other = iter.iterateNext();
+						int other = iter.iterateNext();
 						if (other == upgid)
 						{
 							pending = true;
@@ -695,7 +695,7 @@ namespace ui
 			{
 				highlightedWeaponSlot = (eve->triggerButton->GetId() - UPGRADEW_UPGRADEBUT_FIRST) / UPGRADEWINDOW_MAX_UPGRADES_PER_WEAPON;
 				highlightedUpgradeSlot = (eve->triggerButton->GetId() - UPGRADEW_UPGRADEBUT_FIRST) % UPGRADEWINDOW_MAX_UPGRADES_PER_WEAPON;
-				highlightedUpgradeId = (intptr_t)eve->extraArgument;
+				highlightedUpgradeId = boost::any_cast<int>(eve->extraArgument);
 				highlightOn = true;
 			}
 		}
@@ -733,15 +733,14 @@ namespace ui
 				bool playDoneSound = false;
 
 				// upgrade button
-				intptr_t upgid = (intptr_t)eve->extraArgument;
+				int upgid = boost::any_cast<int>(eve->extraArgument);
 
 				bool alreadyPending = false;
 
-				LinkedListIterator<intptr_t> iter(this->upgradesPending);
+				LinkedListIterator<int> iter(this->upgradesPending);
 				while (iter.iterateAvailable())
 				{
-					// WARNING: void * -> int cast
-					intptr_t other = iter.iterateNext();
+					int other = iter.iterateNext();
 					if (other == upgid)
 					{
 						alreadyPending = true;
@@ -767,11 +766,10 @@ namespace ui
 				{
 					this->upgradesPendingCost -= game->upgradeManager->getUpgradePartCost( upgid );
 
-					LinkedListIterator<intptr_t> iter(this->upgradesPending);
+					LinkedListIterator<int> iter(this->upgradesPending);
 					while (iter.iterateAvailable())
 					{
-						// WARNING: void * -> int cast
-					    intptr_t ptr = iter.iterateNext();
+					    int ptr = iter.iterateNext();
 						if (ptr == upgid)
 						{
 							upgradesPending->remove( ptr );
@@ -823,7 +821,7 @@ namespace ui
 		while (!upgradesPending->isEmpty())
 		{
 			// WARNING: void * -> int cast!
-			intptr_t upgid = upgradesPending->popLast();
+			int upgid = upgradesPending->popLast();
 
 			if (game->upgradeManager->canUpgrade(unit, upgid))
 			{

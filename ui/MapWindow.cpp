@@ -16,6 +16,8 @@
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiCheckBox.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/OguiEffectEvent.h"
+
 #include "../game/Game.h"
 #include "../game/GameUI.h"
 #include "../game/DHLocaleManager.h"

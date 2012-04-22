@@ -14,6 +14,8 @@
 #include "../game/GameUI.h"
 #include "../game/DHLocaleManager.h"
 #include "../ogui/OguiAligner.h"
+#include "../ogui/OguiEffectEvent.h"
+
 
 #include "../util/Debug_MemoryManager.h"
 

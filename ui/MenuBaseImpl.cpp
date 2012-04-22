@@ -259,9 +259,9 @@ void MenuBaseImpl::highlightSelectButton( int i )
 
 			SelectionButtonDescs* descs = NULL;
 
-			if( it->second->GetArgument() != NULL )
+			if( !it->second->GetArgument().empty() )
 			{
-				descs = (SelectionButtonDescs*)it->second->GetArgument();
+				descs = boost::any_cast<SelectionButtonDescs*>(it->second->GetArgument());
 			}
 
 			if( fontSelectDown )
@@ -293,9 +293,9 @@ void MenuBaseImpl::downlightSelectButton( int i )
 
 			SelectionButtonDescs* descs = NULL;
 
-			if( it->second->GetArgument() != NULL )
+			if( !it->second->GetArgument().empty() )
 			{
-				descs = (SelectionButtonDescs*)it->second->GetArgument();
+				descs = boost::any_cast<SelectionButtonDescs*>(it->second->GetArgument());
 			}
 
 			if( fontSelectNorm )

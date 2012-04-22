@@ -1828,7 +1828,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_MOVE_XAXIS );
 	if( i != selectButtons.end() )
 	{
-		SelectionButtonDescs* desc = (SelectionButtonDescs*)i->second->GetArgument();
+		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );
 
@@ -1839,7 +1839,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_MOVE_YAXIS );
 	if( i != selectButtons.end() )
 	{
-		SelectionButtonDescs* desc = (SelectionButtonDescs*)i->second->GetArgument();
+		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );
 
@@ -1850,7 +1850,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_DIR_XAXIS );
 	if( i != selectButtons.end() )
 	{
-		SelectionButtonDescs* desc = (SelectionButtonDescs*)i->second->GetArgument();
+		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );
 
@@ -1861,7 +1861,7 @@ void OptionsMenu::freeJoystickButtons()
 	i = selectButtons.find( COMMANDS_JOYSTICK_DIR_YAXIS );
 	if( i != selectButtons.end() )
 	{
-		SelectionButtonDescs* desc = (SelectionButtonDescs*)i->second->GetArgument();
+		SelectionButtonDescs* desc = boost::any_cast<SelectionButtonDescs*>(i->second->GetArgument());
 		delete desc;
 		selectionButtonDescs.erase( std::find( selectionButtonDescs.begin(), selectionButtonDescs.end(), desc ) );
 

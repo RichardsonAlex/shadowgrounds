@@ -2,7 +2,7 @@
 #ifndef IOGUIBUTTONLISTENER_H
 #define IOGUIBUTTONLISTENER_H
 
-#include "OguiButtonEvent.h"
+class OguiButtonEvent;
 
 class IOguiButtonListener
 {

@@ -14,6 +14,8 @@
 #include "../ogui/OguiWindow.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiLocaleWrapper.h"
+#include "../ogui/OguiEffectEvent.h"
+
 
 #include "../util/fb_assert.h"
 #include "../util/StringUtil.h"

@@ -9,6 +9,7 @@
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiSelectListEvent.h"
+#include "../ogui/OguiEffectEvent.h"
 #include "../ui/GUIEffectWindow.h"
 #include "../game/DHLocaleManager.h"
 #include "../util/assert.h"

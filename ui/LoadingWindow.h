@@ -5,8 +5,11 @@
 #include "../ogui/IOguiButtonListener.h"
 #include "../ogui/IOguiEffectListener.h"
 
+class OguiButtonEvent;
+class OguiEffectEvent;
 class Ogui;
 class OguiWindow;
+class OguiButton;
 class OguiTextLabel;
 class OguiFormattedText;
 class IOguiFont;

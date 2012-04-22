@@ -5,6 +5,7 @@
 #include "GUIEffectWindow.h"
 #include "../filesystem/file_package_manager.h"
 #include "../filesystem/input_stream.h"
+#include "../ogui/OguiEffectEvent.h"
 
 #include <string>
 #include <assert.h>

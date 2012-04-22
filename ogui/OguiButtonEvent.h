@@ -2,6 +2,8 @@
 #ifndef OGUIBUTTONEVENT_H
 #define OGUIBUTTONEVENT_H
 
+#include <boost/any.hpp>
+
 class OguiButton;
 class OguiWindow;
 
@@ -34,11 +36,11 @@ public:
 
   OguiButton *triggerButton;
   OguiWindow *triggerWindow;
-  const void *extraArgument;
+  boost::any extraArgument;
 
 
   OguiButtonEvent(EVENT_TYPE evt, int curnum, int scrx, int scry, int relx, int rely,
-    int but, int obut, OguiButton *trig, OguiWindow *trigwin, const void *arg);
+    int but, int obut, OguiButton *trig, OguiWindow *trigwin, const boost::any &arg);
 };
 
 #endif

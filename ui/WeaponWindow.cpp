@@ -20,6 +20,7 @@
 #include "../game/Weapon.h"
 
 #include "../ogui/OguiAligner.h"
+#include "../ogui/OguiEffectEvent.h"
 
 #include "../util/fb_assert.h"
 #include "../util/Debug_MemoryManager.h"

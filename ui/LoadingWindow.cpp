@@ -24,6 +24,7 @@
 #include "../game/options/options_video.h"
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/OguiEffectEvent.h"
 #include "../system/Logger.h"
 #include "../game/SimpleOptions.h"
 #include "../game/options/options_graphics.h"

@@ -15,6 +15,7 @@
 #include "CombatSubWindowFactory.h"
 #include "../util/Debug_MemoryManager.h"
 #include "../ogui/OguiAligner.h"
+#include "../ogui/OguiEffectEvent.h"
 
 #include <boost/lexical_cast.hpp>
 

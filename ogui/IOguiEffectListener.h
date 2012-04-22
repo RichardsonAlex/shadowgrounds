@@ -2,7 +2,7 @@
 #ifndef IOGUIEFFECTLISTENER_H
 #define IOGUIEFFECTLISTENER_H
 
-#include "OguiEffectEvent.h"
+class OguiEffectEvent;
 
 class IOguiEffectListener
 {

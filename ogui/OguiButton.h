@@ -10,11 +10,9 @@
 
 // These are pretty much just containers, functionality is in OguiWindow.
 #include <string>
+#include <boost/any.hpp>
 
-#include "IOguiButtonListener.h"
-#include "IOguiImage.h"
-#include "IOguiFont.h"
-#include "OguiButtonStyle.h"
+#include "OguiButtonEvent.h"
 
 
 // these must be the same as the button event type values
@@ -42,6 +40,10 @@
 // incomplete defs for friend operator
 class OguiWindow;
 class Ogui;
+class IOguiButtonListener;
+class IOguiFont;
+class IOguiImage;
+struct OguiButtonStyle;
 
 
 class OguiButton
@@ -62,7 +64,7 @@ public:
 	};
 
 	// never construct directly, use ogui to make instances of these
-	OguiButton(Ogui *ogui, int id, const void *argument);
+	OguiButton(Ogui *ogui, int id, const boost::any &argument);
 	~OguiButton();
 
 	// manually set images and fonts
@@ -144,7 +146,7 @@ public:
 	void SetId(int id);
 
 	// get argument
-	const void *GetArgument();
+	boost::any GetArgument();
 
 	void Focus(int withCursor);
 
@@ -181,7 +183,7 @@ private:
 	Ogui *ogui;
 	int id;
 	int eventMask;
-	const void *argument;
+	boost::any argument;
 	IOguiButtonListener *listener;
 	OguiWindow *parent;
 

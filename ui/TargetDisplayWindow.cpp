@@ -6,6 +6,7 @@
 #include "TargetDisplayWindowButton.h"
 
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiEffectEvent.h"
 #include "../util/assert.h"
 
 #include <sstream>

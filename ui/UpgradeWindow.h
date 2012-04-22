@@ -64,7 +64,7 @@ namespace ui
 			game::Unit *unit;
 			Ogui *ogui;
 
-			LinkedList<intptr_t> *upgradesPending;
+			LinkedList<int> *upgradesPending;
 			int upgradesPendingCost;
 
 			GUIEffectWindow *effectWindow;
@@ -113,7 +113,7 @@ namespace ui
 
 			int highlightedWeaponSlot;
 			int highlightedUpgradeSlot;
-			intptr_t highlightedUpgradeId;
+			int highlightedUpgradeId;
 			bool highlightOn;
 
 			int visible;

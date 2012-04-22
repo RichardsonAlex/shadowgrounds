@@ -5,6 +5,10 @@
 #include "OguiButton.h"
 #include "OguiWindow.h"
 #include "Ogui.h"
+#include "IOguiButtonListener.h"
+#include "IOguiImage.h"
+#include "IOguiFont.h"
+#include "OguiButtonStyle.h"
 
 #include "../util/fb_assert.h"
 
@@ -14,7 +18,7 @@
 #include "../util/Debug_MemoryManager.h"
 
 
-OguiButton::OguiButton(Ogui *ogui, int id, const void *argument) :
+OguiButton::OguiButton(Ogui *ogui, int id, const boost::any& argument) :
 	selected( false ),
 	imageSelected( NULL ),
 	imageSelectedHigh( NULL )
@@ -336,7 +340,7 @@ void OguiButton::SetId(int id_)
 	id = id_;
 }
 
-const void *OguiButton::GetArgument()
+boost::any OguiButton::GetArgument()
 {
 	return argument;
 }

@@ -14,6 +14,7 @@
 #include "MovieAspectWindow.h"
 #include "../system/Timer.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiEffectEvent.h"
 #include "../system/Logger.h"
 
 #include <Storm3D_UI.h>

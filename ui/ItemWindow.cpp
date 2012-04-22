@@ -6,6 +6,7 @@
 #include "../util/StringUtil.h"
 #include "../game/Game.h"
 #include "../game/DHLocaleManager.h"
+#include "../ogui/OguiEffectEvent.h"
 #include "CombatSubWindowFactory.h"
 
 using namespace game;

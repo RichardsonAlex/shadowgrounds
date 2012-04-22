@@ -7,6 +7,8 @@
 class Ogui;
 class OguiLocaleWrapper;
 class OguiTextLabel;
+class OguiButton;
+class OguiWindow;
 class IOguiImage;
 class IStorm3D_VideoStreamer;
 

@@ -8,6 +8,7 @@
 #include <string>
 
 class Ogui;
+class OguiButton;
 class IOguiImage;
 class IOguiFont;
 struct OguiButtonStyle;
