@@ -2,8 +2,10 @@
 
 #include "precompiled.h"
 
-#include <stdarg.h>
-#include <stdlib.h>
+#include <cstdarg>
+#include <cstdio>
+#include <cstring>
+#include <cstdlib>
 
 #include <boost/scoped_array.hpp>
 
@@ -104,6 +106,7 @@ void igiosWarning(const char *fmt, ...)
 #endif
 
 #include <execinfo.h>
+#include <cxxabi.h>
 #include <ucontext.h>
 #include <unistd.h>
 
@@ -111,18 +114,97 @@ void igiosWarning(const char *fmt, ...)
 
 
 //! Dump stack trace to stderr
-void igios_backtrace(void) {
+void igios_backtrace() {
 
-#ifndef FINAL_RELEASE_BUILD
+    FILE* out = stderr;
+    unsigned int max_frames = 63;
+//#ifndef FINAL_RELEASE_BUILD
 
-	void *frames[BACKTRACELEN];
+//	void *frames[BACKTRACELEN];
+//
+//	int num = backtrace(frames, BACKTRACELEN);
+//	backtrace_symbols_fd(frames, num, STDERR_FILENO);
+//	igiosWarning("\n");
 
-	int num = backtrace(frames, BACKTRACELEN);
-	backtrace_symbols_fd(frames, num, STDERR_FILENO);
-	igiosWarning("\n");
+//#endif  // FINAL_RELEASE_BUILD
 
-#endif  // FINAL_RELEASE_BUILD
+    //https://idlebox.net/2008/0901-stacktrace-demangled/
+    fprintf(out, "stack trace:\n");
 
+    // storage array for stack trace address data
+    void* addrlist[max_frames+1];
+
+    // retrieve current stack addresses
+    int addrlen = backtrace(addrlist, sizeof(addrlist) / sizeof(void*));
+
+    if (addrlen == 0) {
+        fprintf(out, "  <empty, possibly corrupt>\n");
+        return;
+    }
+
+    // resolve addresses into strings containing "filename(function+address)",
+    // this array must be free()-ed
+    char** symbollist = backtrace_symbols(addrlist, addrlen);
+
+    // allocate string which will be filled with the demangled function name
+    size_t funcnamesize = 256;
+    char* funcname = (char*)malloc(funcnamesize);
+
+    // iterate over the returned symbol lines. skip the first, it is the
+    // address of this function.
+    for (int i = 1; i < addrlen; i++)
+    {
+        char *begin_name = 0, *begin_offset = 0, *end_offset = 0;
+
+        // find parentheses and +address offset surrounding the mangled name:
+        // ./module(function+0x15c) [0x8048a6d]
+        for (char *p = symbollist[i]; *p; ++p)
+        {
+            if (*p == '(')
+                begin_name = p;
+            else if (*p == '+')
+                begin_offset = p;
+            else if (*p == ')' && begin_offset) {
+                end_offset = p;
+                break;
+            }
+        }
+
+        if (begin_name && begin_offset && end_offset
+            && begin_name < begin_offset)
+        {
+            *begin_name++ = '\0';
+            *begin_offset++ = '\0';
+            *end_offset = '\0';
+
+            // mangled name is now in [begin_name, begin_offset) and caller
+            // offset in [begin_offset, end_offset). now apply
+            // __cxa_demangle():
+
+            int status;
+            char* ret = abi::__cxa_demangle(begin_name,
+                                            funcname, &funcnamesize, &status);
+            if (status == 0) {
+                funcname = ret; // use possibly realloc()-ed string
+                fprintf(out, "  %s : %s+%s\n",
+                        symbollist[i], funcname, begin_offset);
+            }
+            else {
+                // demangling failed. Output function name as a C function with
+                // no arguments.
+                fprintf(out, "  %s : %s()+%s\n",
+                        symbollist[i], begin_name, begin_offset);
+            }
+        }
+        else
+        {
+            // couldn't parse the line? print the whole line.
+            fprintf(out, "  %s\n", symbollist[i]);
+        }
+    }
+
+    free(funcname);
+    free(symbollist);
 }
 
 
@@ -161,7 +243,7 @@ std::string strPrintf(const char *fmt, ...)
 	// glibc has a sane functions for this
 	char *buf = NULL;
 	int printedChars = vasprintf(&buf, fmt, args);
-	if (printedChars < 0)
+	if (printedChars < 0 || buf == NULL)
 	{
 		// failed, usually because out of memory
 		// is a fatal error
