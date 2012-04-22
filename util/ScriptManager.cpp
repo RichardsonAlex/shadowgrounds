@@ -64,7 +64,7 @@ namespace util
 
 		clearInternalPreprocessorMacros();
 #ifdef LEGACY_FILES
-		loadInternalPreprocessorMacros("data/scripts/internal_macros.dhh");
+		loadInternalPreprocessorMacros("Data/Scripts/internal_macros.dhh");
 #else
 		loadInternalPreprocessorMacros("data/script/internal_macros.dhh");
 #endif
