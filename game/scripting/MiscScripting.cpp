@@ -2614,7 +2614,7 @@ namespace game
 					{
 						if (game->gameUI->getTerrain()->doesTrackableUnifiedHandleObjectExist(gsd->unifiedHandle))
 						{
-							gsd->setStringValue(game->gameUI->getTerrain()->getTerrainObjectIdString(gsd->unifiedHandle));
+							gsd->setStringValue(game->gameUI->getTerrain()->getTerrainObjectIdString(gsd->unifiedHandle).c_str());
 						} else {
 							sp->error("MiscScripting::process - getTerrainObjectIdString, terrain object with given unified handle does not exist.");
 						}

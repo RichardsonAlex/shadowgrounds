@@ -3513,7 +3513,7 @@ UnifiedHandle Terrain::findClosestContainer(const VC3 &position, float maxRadius
 }
 
 
-const char *Terrain::getTerrainObjectIdString(UnifiedHandle unifiedHandle) const
+std::string Terrain::getTerrainObjectIdString(UnifiedHandle unifiedHandle) const
 {
 	int terrainModelId = 0;
 	int terrainInstanceId = 0;
@@ -3529,11 +3529,7 @@ const char *Terrain::getTerrainObjectIdString(UnifiedHandle unifiedHandle) const
 #endif
 
 
-	std::string &str = data->objects[terrainModelId].instances[terrainInstanceId].idString;
-	if (str.empty())
-		return NULL;
-	else
-		return str.c_str();
+	return data->objects[terrainModelId].instances[terrainInstanceId].idString;
 }
 #ifdef _MSC_VER
 #define strcasecmp(a, b) _stricmp((a), (b))

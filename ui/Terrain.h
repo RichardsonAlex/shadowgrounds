@@ -181,7 +181,7 @@ public:
 	// (the returned pointer points to internal data, should make a copy of it, if intended to be
 	// referred later on - currently, the pointer should be valid as long as the terrain instance
 	// exists, but should not rely on that.)
-	const char *getTerrainObjectIdString(UnifiedHandle unifiedHandle) const;
+	std::string getTerrainObjectIdString(UnifiedHandle unifiedHandle) const;
 
 	UnifiedHandle getReplacementForUnifiedHandleObject(UnifiedHandle unifiedHandle) const;
 
