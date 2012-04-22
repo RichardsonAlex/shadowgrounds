@@ -642,9 +642,7 @@ void Debug_MemoryManager::validateAllPointers()
 		AllocationLink *currentLink = hashMap[i].first;
 		while(currentLink != 0)
 		{
-			if(currentLink)
-				testIdentifiers(currentLink->allocationUnit);
-
+		    testIdentifiers(currentLink->allocationUnit);
 			currentLink = currentLink->next;
 		}
 	}
@@ -664,8 +662,7 @@ int Debug_MemoryManager::amountMemoryInUse(void *pointer)
 		AllocationLink *currentLink = hashMap[i].first;
 		while(currentLink != 0)
 		{
-			if(currentLink)
-				result += currentLink->allocationUnit->requestedSize;
+			result += currentLink->allocationUnit->requestedSize;
 
 			currentLink = currentLink->next;
 		}
