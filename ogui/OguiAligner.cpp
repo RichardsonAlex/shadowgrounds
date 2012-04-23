@@ -70,7 +70,7 @@ void OguiAligner::align(OguiButton *button, int flags, Ogui *ogui)
 		return;
 
 	int x,y,w,h;
-	orvgui_but *obut = (orvgui_but *)button->but;
+	orvgui_but *obut = button->but;
 	x = obut->put_x;
 	y = obut->put_y;
 	w = obut->sizex;

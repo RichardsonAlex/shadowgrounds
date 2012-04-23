@@ -33,6 +33,7 @@
 #include "../ogui/OguiCheckBox.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiWindow.h"
+#include "../ogui/OguiTextLabel.h"
 
 
 #include "CoopMenu.h"

@@ -40,6 +40,7 @@
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiCheckBox.h"
 #include "../ogui/OguiWindow.h"
+#include "../ogui/OguiTextLabel.h"
 #include "../ui/LoadingMessage.h"
 
 #include "CharacterSelectionWindow.h"

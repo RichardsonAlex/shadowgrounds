@@ -44,7 +44,7 @@ class IOguiButtonListener;
 class IOguiFont;
 class IOguiImage;
 struct OguiButtonStyle;
-
+struct orvgui_but;
 
 class OguiButton
 {
@@ -203,9 +203,8 @@ private:
 	float rotation;
 
 
-	// some internal hacks
 	// (the real button implementation is hidden behind this pointer)
-	void *but;
+	orvgui_but *but;
 
 	// added by Pete for the text type effect
 	std::string text;

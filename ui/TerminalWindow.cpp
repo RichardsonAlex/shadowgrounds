@@ -10,6 +10,8 @@
 #include "../ui/uidefaults.h"
 #include "../system/Timer.h"
 #include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
+
 #include <sstream>
 
 using namespace game;

@@ -7,6 +7,7 @@
 #include "../game/Game.h"
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiButton.h"
+#include "../ogui/OguiWindow.h"
 
 #define WEAPSELECT_WINDOW_SIZE 256
 #define WEAPSELECT_SELECTION_SIZE 72

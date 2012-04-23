@@ -10,6 +10,8 @@
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiWindow.h"
+#include "../ogui/OguiTextLabel.h"
+
 #include "../game/Game.h"
 #include "../game/GameProfiles.h"
 #include "../game/GameProfilesEnumeration.h"

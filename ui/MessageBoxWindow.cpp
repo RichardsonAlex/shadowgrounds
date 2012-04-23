@@ -6,6 +6,7 @@
 #include "../ogui/OguiButtonEvent.h"
 #include "../ogui/OguiButton.h"
 #include "../ogui/OguiWindow.h"
+#include "../ogui/OguiTextLabel.h"
 
 #include "MessageBoxWindow.h"
 

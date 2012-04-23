@@ -737,7 +737,7 @@ void Ogui::UpdateEffects(int timeDelta)
 				while( i.iterateAvailable() )
 				{
 					OguiButton* button = i.iterateNext();
-					buttons.insert( std::pair< int, OguiButton* >( ( (orvgui_but*)( button->but ) )->put_y, button ) );
+					buttons.insert( std::pair< int, OguiButton* >( button->but->put_y, button ) );
 					number_of_buttons++;
 				}
 			}
