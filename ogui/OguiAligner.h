@@ -1,7 +1,7 @@
 #ifndef OGUI_ALIGNER_H
 #define OGUI_ALIGNER_H
 
-class OguiTextLabeL;
+class OguiTextLabel;
 class OguiWindow;
 class OguiButton;
 class Ogui;

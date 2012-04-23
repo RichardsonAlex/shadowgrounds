@@ -3,6 +3,7 @@
 #define ARMORCONSTRUCTWINDOW_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiButtonListener.h"
 
 #include "../game/Game.h"
 #include "../game/Unit.h"

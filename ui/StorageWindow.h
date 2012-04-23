@@ -3,6 +3,8 @@
 #define STORAGEWINDOW_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiButtonListener.h"
+#include "../ogui/IOguiSelectListListener.h"
 #include "../game/Game.h"
 #include "../game/PartType.h"
 

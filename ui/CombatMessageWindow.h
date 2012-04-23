@@ -3,6 +3,7 @@
 #define COMBATMESSAGEWINDOW_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiEffectListener.h"
 #include <vector>
 
 namespace game

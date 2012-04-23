@@ -6,6 +6,7 @@
 #include <sstream>
 
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiWindow.h"
 #include "../game/Game.h"
 #include "../game/GameUI.h"
 #include "../game/DHLocaleManager.h"

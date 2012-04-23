@@ -5,6 +5,7 @@
 
 #include "../util/assert.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiSelectList.h"
 #include "../ui/MenuCollection.h"
 #include "../game/DHLocaleManager.h"
 #include "../game/Game.h"
@@ -18,6 +19,8 @@
 #include "../game/options/options_game.h"
 #include "../ui/GameController.h"
 #include "../ogui/OguiCheckBox.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 #include "../game/userdata.h"
 
 #include <boost/lexical_cast.hpp>

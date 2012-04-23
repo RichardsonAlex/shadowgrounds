@@ -18,6 +18,7 @@
 #include "../game/PartType.h"
 #include "../game/UnitList.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiWindow.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../game/DHLocaleManager.h"
 #include "../game/SimpleOptions.h"

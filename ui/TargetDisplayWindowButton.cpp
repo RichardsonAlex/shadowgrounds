@@ -6,6 +6,7 @@
 
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiSlider.h"
+#include "../ogui/OguiButton.h"
 #include "../util/assert.h"
 #include "../system/Timer.h"
 

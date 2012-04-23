@@ -18,6 +18,8 @@
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiEffectEvent.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 #include "../util/fb_assert.h"
 #include "../game/DHLocaleManager.h"
 

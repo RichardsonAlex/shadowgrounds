@@ -5,6 +5,8 @@
 #include <assert.h>
 #include <sstream>
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 #include "../game/DHLocaleManager.h"
 #include "../game/Game.h"
 #include "../game/GameUI.h"

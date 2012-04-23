@@ -40,6 +40,7 @@
 #include "../ogui/OguiLocaleWrapper.h"
 #include "../ogui/OguiCheckBox.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/OguiWindow.h"
 
 using namespace game;
 

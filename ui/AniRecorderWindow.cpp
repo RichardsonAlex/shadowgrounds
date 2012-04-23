@@ -24,6 +24,11 @@
 #include "MessageBoxWindow.h"
 #include "GameConsole.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiSelectList.h"
+#include "../ogui/OguiWindow.h"
+
 #include "../system/Logger.h"
 #include "../convert/str2int.h"
 

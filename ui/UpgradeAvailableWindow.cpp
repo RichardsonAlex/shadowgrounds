@@ -17,6 +17,8 @@
 #include "CombatSubWindowFactory.h"
 #include "../ogui/OguiAligner.h"
 #include "../ogui/OguiEffectEvent.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiWindow.h"
 
 #include "../util/Debug_MemoryManager.h"
 

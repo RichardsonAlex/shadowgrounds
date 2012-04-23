@@ -17,12 +17,6 @@
 #include "IOguiFont.h"
 #include "IOguiImage.h"
 
-#include "OguiButtonStyle.h"
-#include "OguiSelectListStyle.h"
-#include "OguiWindow.h"
-#include "OguiTextLabel.h"
-#include "OguiSelectList.h"
-
 #define OGUI_CURSOR_CTRL_MOUSE 1							// Controlled by every mouse.
 #define OGUI_CURSOR_CTRL_KEYBOARD1 2
 #define OGUI_CURSOR_CTRL_KEYBOARD2 4
@@ -55,7 +49,11 @@ template<typename T> class LinkedList;
 class IStorm3D_StreamBuilder;
 class IStorm3D_VideoStreamer;
 class OguiButton;
-
+struct OguiButtonStyle;
+class OguiWindow;
+class OguiTextLabel;
+class OguiSelectList;
+class OguiSelectListStyle;
 /**
  * C++ Wrapper class for orvgui
  *

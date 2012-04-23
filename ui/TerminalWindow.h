@@ -5,6 +5,7 @@
 #include <vector>
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/IOguiButtonListener.h"
 
 namespace game
 {

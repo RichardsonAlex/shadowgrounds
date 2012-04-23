@@ -3,6 +3,8 @@
 #define COMBATRADAR_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiButtonListener.h"
+
 
 //#define COMBAT_RADAR_DIRECTION_IMAGES 8
 #define COMBAT_RADAR_DIRECTION_IMAGES 1

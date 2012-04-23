@@ -35,6 +35,7 @@
 
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiStormDriver.h"
+#include "../ogui/OguiWindow.h"
 
 #include "../ui/uidefaults.h"
 #include "../ui/Visual2D.h"

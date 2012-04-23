@@ -6,6 +6,9 @@
 #include "../filesystem/file_package_manager.h"
 #include "../filesystem/input_stream.h"
 #include "../ogui/OguiEffectEvent.h"
+#include "../ogui/OguiWindow.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiTextLabel.h"
 
 #include <string>
 #include <assert.h>

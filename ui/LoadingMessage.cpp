@@ -10,6 +10,8 @@ using namespace std;
 #include <Storm3D_UI.h>
 #include "uidefaults.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiWindow.h"
+#include "../ogui/OguiTextLabel.h"
 #include "../convert/str2int.h"
 #include "../game/DHLocaleManager.h"
 #include "../storm/storm3dv2/Iterator.h"

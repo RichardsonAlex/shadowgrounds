@@ -37,6 +37,8 @@
 #include "../game/scripting/GameScripting.h"
 #include "../game/Flashlight.h"
 #include "../game/PlayerWeaponry.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiWindow.h"
 // #include "FlashlightWindow.h"
 #include "HealthWindow.h"
 // #include "HealthWindowCoop.h"

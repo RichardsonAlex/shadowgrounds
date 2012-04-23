@@ -16,6 +16,9 @@
 #include "../util/Debug_MemoryManager.h"
 #include "../ogui/OguiAligner.h"
 #include "../ogui/OguiEffectEvent.h"
+#include "../ogui/OguiWindow.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiTextLabel.h"
 
 #include <boost/lexical_cast.hpp>
 

@@ -4,6 +4,7 @@
 
 #include "../ogui/Ogui.h"
 #include "ICombatSubWindow.h"
+#include "../ogui/IOguiEffectListener.h"
 
 namespace game
 {

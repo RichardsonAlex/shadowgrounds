@@ -13,7 +13,6 @@
 #include "CoopMenu.h"
 
 #include "../system/Timer.h"
-#include "../ogui/Ogui.h"
 #include "../game/Game.h"
 #include "../game/savegamevars.h"
 #include "../game/GameUI.h"
@@ -26,19 +25,21 @@
 #include "../game/GameStats.h"
 #include "../game/scripting/GameScripting.h"
 #include "../game/BonusManager.h"
+#include "../game/options/options_locale.h"
 
 #include "../editor/file_wrapper.h"
 #include "../util/fb_assert.h"
 #include "../util/Debug_MemoryManager.h"
 #include "../util/StringUtil.h"
 #include "../util/Parser.h"
-#include "../game/options/options_locale.h"
 #include "../filesystem/input_stream_wrapper.h"
+#include "../filesystem/file_package_manager.h"
 
+#include "../ogui/Ogui.h"
 #include "../ogui/OguiLocaleWrapper.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiCheckBox.h"
-#include "../filesystem/file_package_manager.h"
+#include "../ogui/OguiWindow.h"
 #include "../ui/LoadingMessage.h"
 
 #include "CharacterSelectionWindow.h"

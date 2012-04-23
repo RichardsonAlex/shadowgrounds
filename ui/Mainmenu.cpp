@@ -13,6 +13,7 @@
 #include "MenuCollection.h"
 #include "../game/DHLocaleManager.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/OguiWindow.h"
 #include "../ogui/OguiTypeEffectListener.h"
 #include "../game/options/options_game.h"
 // #include "../ogui/OguiFormatedText.h"

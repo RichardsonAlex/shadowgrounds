@@ -3,7 +3,9 @@
 #include "../system/Logger.h"
 
 #include "OguiButtonEvent.h"
+#include "OguiButton.h"
 #include "OguiWindow.h"
+#include "IOguiButtonListener.h"
 #include "orvgui2.h"
 
 #include "Ogui.h"

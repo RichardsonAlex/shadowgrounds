@@ -3,6 +3,7 @@
 
 #include "GUIEffectWindow.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiWindow.h"
 #include "../system/SystemRandom.h"
 
 #include <math.h>

@@ -2,7 +2,8 @@
 #include "precompiled.h"
 
 #include "OguiSlider.h"
-#include "../ogui/Ogui.h"
+#include "Ogui.h"
+#include "OguiButton.h"
 #include "../util/assert.h"
 
 // #include <assert.h>

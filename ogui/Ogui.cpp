@@ -11,6 +11,7 @@
 
 #include "OguiButton.h"
 #include "OguiWindow.h"
+#include "OguiTextLabel.h"
 #include "OguiEffectEvent.h"
 #include "OguiSelectList.h"
 #include <keyb3.h>

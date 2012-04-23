@@ -10,6 +10,8 @@
 #include "../game/GameUI.h"
 #include "../game/SimpleOptions.h"
 #include "../game/options/options_tactical.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiWindow.h"
 #include "uidefaults.h"
 #include "cursordefs.h"
 

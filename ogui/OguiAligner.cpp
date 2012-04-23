@@ -3,6 +3,9 @@
 #include "Ogui.h"
 #include "orvgui2.h"
 #include "OguiAligner.h"
+#include "OguiButton.h"
+#include "OguiWindow.h"
+#include "OguiTextLabel.h"
 
 #include "../game/options/options_gui.h"
 

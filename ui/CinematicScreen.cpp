@@ -10,6 +10,7 @@
 #include "CinematicScreen.h"
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/OguiWindow.h"
 #include "../ui/CreditsMenu.h"
 
 #include "../game/Game.h"

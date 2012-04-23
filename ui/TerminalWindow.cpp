@@ -9,7 +9,7 @@
 #include "../game/GameUI.h"
 #include "../ui/uidefaults.h"
 #include "../system/Timer.h"
-
+#include "../ogui/OguiTextLabel.h"
 #include <sstream>
 
 using namespace game;

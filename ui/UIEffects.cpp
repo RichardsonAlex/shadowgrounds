@@ -15,6 +15,8 @@
 #include "../system/Timer.h"
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiEffectEvent.h"
+#include "../ogui/OguiWindow.h"
+#include "../ogui/OguiTextLabel.h"
 #include "../system/Logger.h"
 
 #include <Storm3D_UI.h>

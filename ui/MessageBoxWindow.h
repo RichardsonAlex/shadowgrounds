@@ -3,6 +3,8 @@
 #define MESSAGEBOXWINDOW_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiButtonListener.h"
+#include "../ogui/IOguiEffectListener.h"
 #include "IMessageBoxListener.h"
 
 namespace ui

@@ -3,6 +3,7 @@
 #define HEALTHWINDOW_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiEffectListener.h"
 #include "ICombatSubWindow.h"
 
 namespace game

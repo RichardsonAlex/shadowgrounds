@@ -9,6 +9,9 @@
 #include "../util/Debug_MemoryManager.h"
 #include "../game/SimpleOptions.h"
 #include "../game/options/options_debug.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 
 #define ERRORWINDOW_MSG_TEXTS 16
 

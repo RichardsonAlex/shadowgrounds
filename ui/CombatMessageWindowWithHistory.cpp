@@ -4,6 +4,7 @@
 #include "CombatMessageWindowWithHistory.h"
 #include "../system/Timer.h"
 #include "../game/DHLocaleManager.h"
+#include "../ogui/OguiTextLabel.h"
 
 using namespace game;
 

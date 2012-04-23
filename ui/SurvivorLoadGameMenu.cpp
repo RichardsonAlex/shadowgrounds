@@ -11,7 +11,6 @@
 #include "LoadGameMenu.h"
 
 #include "../system/Timer.h"
-#include "../ogui/Ogui.h"
 #include "../game/Game.h"
 #include "../game/savegamevars.h"
 #include "../game/GameUI.h"
@@ -29,9 +28,12 @@
 
 #include "../ui/LoadingMessage.h"
 
+#include "../ogui/Ogui.h"
 #include "../ogui/OguiLocaleWrapper.h"
 #include "../ogui/OguiCheckBox.h"
 #include "../ogui/OguiFormattedText.h"
+#include "../ogui/OguiWindow.h"
+
 
 #include "CoopMenu.h"
 #include "NewGameMenu.h"

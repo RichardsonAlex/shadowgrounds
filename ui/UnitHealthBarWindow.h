@@ -3,6 +3,8 @@
 
 #include "ICombatSubWindow.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiEffectListener.h"
+
 
 class OguiSlider;
 

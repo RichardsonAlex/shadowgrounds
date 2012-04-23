@@ -4,6 +4,7 @@
 #include "BlackEdgeWindow.h"
 
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiWindow.h"
 #include "../util/Debug_MemoryManager.h"
 
 

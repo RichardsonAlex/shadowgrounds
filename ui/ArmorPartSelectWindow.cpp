@@ -13,6 +13,11 @@
 #include "../game/PartTypeAvailabilityList.h"
 #include "../game/Unit.h"
 #include "../game/GameUI.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiSelectList.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
+
 #include "uidefaults.h"
 
 #include "../util/Debug_MemoryManager.h"

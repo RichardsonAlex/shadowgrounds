@@ -8,6 +8,7 @@
 #include "GuiItem.h"
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiEffectListener.h"
 #include "ICombatSubWindow.h"
 
 namespace game

@@ -10,6 +10,8 @@
 #include "../game/GameScene.h"
 #include "cursordefs.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiButtonEvent.h"
 #include "../container/LinkedList.h"
 
 

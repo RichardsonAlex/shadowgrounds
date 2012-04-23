@@ -2,6 +2,7 @@
 #define INC_GENERICBARWINDOW_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiEffectListener.h"
 #include "ICombatSubWindow.h"
 #include <string>
 

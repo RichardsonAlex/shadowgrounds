@@ -3,6 +3,9 @@
 
 #include "../container/LinkedList.h"
 #include "../system/Logger.h"
+#include "../ogui/OguiButtonEvent.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiWindow.h"
 
 #include "MessageBoxWindow.h"
 

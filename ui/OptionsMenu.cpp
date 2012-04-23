@@ -17,6 +17,9 @@
 #include "../sound/SoundMixer.h"
 #include "../game/OptionApplier.h"
 #include "../ogui/OguiCheckBox.h"
+#include "../ogui/OguiSelectList.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 #include "../game/options/options_all.h"
 #include "../storm/keyb3/keyb3.h"
 #include "CombatWindow.h" // for getNumberOfPlayers()

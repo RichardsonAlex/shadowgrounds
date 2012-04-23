@@ -21,6 +21,9 @@
 
 #include "../ogui/OguiAligner.h"
 #include "../ogui/OguiEffectEvent.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 
 #include "../util/fb_assert.h"
 #include "../util/Debug_MemoryManager.h"

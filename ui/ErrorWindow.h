@@ -4,6 +4,8 @@
 
 #include "../system/Logger.h"
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiButtonListener.h"
+#include "../ogui/IOguiEffectListener.h"
 
 namespace ui
 {

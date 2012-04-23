@@ -5,6 +5,7 @@
 #include "../util/assert.h"
 #include "../ogui/Ogui.h"
 #include "../ogui/OguiSlider.h"
+#include "../ogui/OguiButton.h"
 
 #include <sstream>
 #include <boost/lexical_cast.hpp>

@@ -13,7 +13,10 @@
 #include "../game/PartList.h"
 #include "../game/Part.h"
 #include "../game/GameUI.h"
-
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiSelectList.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 #include "../util/Debug_MemoryManager.h"
 
 // button id's for storage window

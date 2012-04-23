@@ -10,6 +10,7 @@
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiLocaleWrapper.h"
 #include "../ogui/OguiEffectEvent.h"
+#include "../ogui/OguiWindow.h"
 #include "../system/Timer.h"
 #include <boost/lexical_cast.hpp>
 

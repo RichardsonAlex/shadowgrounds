@@ -4,6 +4,7 @@
 
 #include <c2_vectors.h>
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiButtonListener.h"
 #include "../game/gamedefs.h"
 #include "../game/UnitSelections.h"
 

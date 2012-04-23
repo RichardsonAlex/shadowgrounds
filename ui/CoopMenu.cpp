@@ -22,6 +22,9 @@
 #include "../game/options/options_game.h"
 #include "../ui/GameController.h"
 #include "../ogui/OguiCheckBox.h"
+#include "../ogui/OguiSelectList.h"
+#include "../ogui/OguiTextLabel.h"
+#include "../ogui/OguiWindow.h"
 
 #include <boost/lexical_cast.hpp>
 

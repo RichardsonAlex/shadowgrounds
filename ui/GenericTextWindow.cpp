@@ -9,6 +9,7 @@
 #include "../ogui/OguiButton.h"
 #include "../ogui/OguiFormattedText.h"
 #include "../ogui/OguiLocaleWrapper.h"
+#include "../ogui/OguiWindow.h"
 #include "../system/Timer.h"
 
 #include "../game/DHLocaleManager.h"

@@ -13,6 +13,8 @@
 #include "../game/Character.h"
 #include "../game/UnitSelections.h"
 #include "../game/DHLocaleManager.h"
+#include "../ogui/OguiButton.h"
+#include "../ogui/OguiWindow.h"
 #include "../convert/str2int.h"
 #include "GameController.h"
 #include "uidefaults.h"
@@ -1000,7 +1002,7 @@ namespace ui
 			if (u->isDestroyed())
 				highestAllowedLevel = 1;
 
-      // THE ÜBERCODE!
+      // THE ï¿½BERCODE!
       // GET RID OF THIS WHOLE CRAP IF YOU WANT TO DO ANY CHANGES
       // TO HP BARS!!!
       // update hp meters

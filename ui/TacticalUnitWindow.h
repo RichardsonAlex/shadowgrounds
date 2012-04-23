@@ -2,6 +2,7 @@
 #define INCLUDED_TACTICALUNITWINDOW_H
 
 #include "../ogui/Ogui.h"
+#include "../ogui/IOguiButtonListener.h"
 #include <c2_vectors.h>
 #include <vector>
 

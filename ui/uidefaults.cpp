@@ -4,6 +4,8 @@
 #include "uidefaults.h"
 #include "../filesystem/input_stream_wrapper.h"
 #include "../util/Debug_MemoryManager.h"
+#include "../ogui/OguiButtonStyle.h"
+#include "../ogui/OguiSelectListStyle.h"
 
 namespace ui
 {

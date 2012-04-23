@@ -10,6 +10,8 @@
 #include "../system/Timer.h"
 #include "../ui/uidefaults.h"
 #include "OguiSelectList.h"
+#include "OguiButton.h"
+#include "OguiButtonEvent.h"
 #include "../util/Debug_MemoryManager.h"
 #include "../util/assert.h"
 
