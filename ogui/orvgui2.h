@@ -103,7 +103,7 @@
 
 #define OG_SCALE_MULTIPLIER 1024
 
-typedef struct {
+struct orvgui_win {
 	unsigned char type;
 	unsigned char react_cursor;
 	unsigned char visible;
@@ -133,9 +133,9 @@ typedef struct {
 	float bg_repeat_factor_x;
 	float bg_repeat_factor_y;
 	bool wrap;
-} orvgui_win;
+};
 
-typedef struct {
+struct orvgui_but {
 	unsigned char type;
 	unsigned int react_but;
 	unsigned char enabled;
@@ -213,7 +213,7 @@ typedef struct {
 	vertex *vertices;
 	int num_vertices;
 
-} orvgui_but;
+};
 
 extern void *og_arg;
 

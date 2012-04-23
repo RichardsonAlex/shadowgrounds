@@ -798,7 +798,7 @@ void Ogui::UpdateEffects(int timeDelta)
 			int fadeValue = (100 * win->effectFadeTimeLeft / win->effectFadeTimeTotal);
 			if (win->fadingOut)
 				fadeValue = 100 - fadeValue;
-			og_set_transparency_window(((orvgui_win *)win->win), fadeValue);
+			og_set_transparency_window((win->win), fadeValue);
 			if (win->effectFadeTimeLeft == 0)
 			{
 				OguiEffectEvent::EVENT_TYPE eveType;
@@ -849,8 +849,8 @@ void Ogui::UpdateEffects(int timeDelta)
 				movePerc = 100 - movePerc;
 
 			// TODO: move to closest edge, now always moving to upper edge
-			int moveAmount = ((win->windowPositionY + ((orvgui_win *)win->win)->sizey) * movePerc) / 100;
-			og_force_move_window(((orvgui_win *)win->win), win->windowPositionX, win->windowPositionY - moveAmount);
+			int moveAmount = ((win->windowPositionY + (win->win)->sizey) * movePerc) / 100;
+			og_force_move_window((win->win), win->windowPositionX, win->windowPositionY - moveAmount);
 
 			if (win->effectMoveTimeLeft == 0)
 			{

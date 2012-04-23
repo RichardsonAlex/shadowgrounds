@@ -39,6 +39,7 @@
 
 class Ogui;
 class OguiButton;
+struct orvgui_win;
 template<typename T> class LinkedList;
 
 class OguiWindow
@@ -140,7 +141,7 @@ private:
 
 	// some internal hacks
 	// (the real orvgui window implementation is hidden behind this pointer)
-	void *win;
+	orvgui_win *win;
 
 	friend class Ogui;
 	friend class OguiAligner;

@@ -34,7 +34,7 @@ void OguiAligner::align(OguiWindow *win, int flags, Ogui *ogui)
 		return;
 
 	int x,y,w,h;
-	orvgui_win *owin = (orvgui_win *)win->win;
+	orvgui_win *owin = win->win;
 	x = owin->put_x;
 	y = owin->put_y;
 	w = owin->sizex;

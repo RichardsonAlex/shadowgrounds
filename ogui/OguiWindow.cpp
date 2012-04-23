@@ -95,13 +95,13 @@ OguiWindow::OguiWindow(Ogui *ogui, int x, int y, int sizex, int sizey, IOguiImag
 		mat = ((OguiStormImage *)img)->mat;
 
 	this->win = og_create_window(OG_WIN_SIMPLE, x, y, sizex, sizey, mat);
-	//og_hide_window((orvgui_win *)win);
-	og_set_movable_window((orvgui_win *)win, OG_WIN_MOVABLE);
+	//og_hide_window(win);
+	og_set_movable_window(win, OG_WIN_MOVABLE);
 
 	// NOTE: cannot use x,y directly, as screen boundaries may affect
 	// actual position
-	this->windowPositionX = ((orvgui_win *)win)->put_x;
-	this->windowPositionY = ((orvgui_win *)win)->put_y;
+	this->windowPositionX = win->put_x;
+	this->windowPositionY = win->put_y;
 
 	this->effectListener = NULL;
 
@@ -136,7 +136,7 @@ OguiWindow::~OguiWindow()
 		og_set_only_active(NULL);
 		is_only_active = false;
 	}
-	og_delete_window((orvgui_win *)win);
+	og_delete_window(win);
 	if ( release_bg_image )
 		delete image;
 	image = NULL;
@@ -151,30 +151,30 @@ void OguiWindow::buttonDeleted(OguiButton *b)
 
 void OguiWindow::Raise()
 {
-	og_raise_window((orvgui_win *)win);
+	og_raise_window(win);
 }
 
 void OguiWindow::Lower()
 {
-	og_lower_window((orvgui_win *)win);
+	og_lower_window(win);
 }
 
 void OguiWindow::Show()
 {
 	is_visible = true;
-	og_show_window((orvgui_win *)win);
+	og_show_window(win);
 }
 
 void OguiWindow::Hide()
 {
 	is_visible = false;
-	og_hide_window((orvgui_win *)win);
+	og_hide_window(win);
 }
 
 bool OguiWindow::IsVisible() const
 {
 	// orvgui popups may change visibility status without telling us...
-	if (((orvgui_win *)win)->visible != 0)
+	if (win->visible != 0)
 		is_visible = true;
 	else
 		is_visible = false;
@@ -183,22 +183,22 @@ bool OguiWindow::IsVisible() const
 
 void OguiWindow::SetPopup()
 {
-	og_set_popup_window((orvgui_win *)win, OG_WIN_POPUP);
+	og_set_popup_window(win, OG_WIN_POPUP);
 }
 
 void OguiWindow::SetPopupNoClose()
 {
-	og_set_popup_window((orvgui_win *)win, OG_WIN_POPUPNOCLOSE);
+	og_set_popup_window(win, OG_WIN_POPUPNOCLOSE);
 }
 
 void OguiWindow::SetPopupNoCloseOnButton()
 {
-	og_set_popup_window((orvgui_win *)win, OG_WIN_POPUPNOCLOSEONBUTTON);
+	og_set_popup_window(win, OG_WIN_POPUPNOCLOSEONBUTTON);
 }
 
 void OguiWindow::SetOnlyActive()
 {
-	og_set_only_active((orvgui_win *)win);
+	og_set_only_active(win);
 	is_only_active = true;
 }
 
@@ -213,52 +213,52 @@ void OguiWindow::RestoreAllActive()
 
 void OguiWindow::SetReactMask(int reactCursors)
 {
-	og_set_react_window((orvgui_win *)win, reactCursors);
+	og_set_react_window(win, reactCursors);
 }
 
 void OguiWindow::MoveTo(int x, int y)
 {
-	og_move_window((orvgui_win *)win, x, y);
+	og_move_window(win, x, y);
 
 	// NOTE: cannot use x,y directly, as screen boundaries may affect
 	// actual position
-	this->windowPositionX = ((orvgui_win *)win)->put_x;
-	this->windowPositionY = ((orvgui_win *)win)->put_y;
+	this->windowPositionX = win->put_x;
+	this->windowPositionY = win->put_y;
 }
 
 int OguiWindow::GetPositionX()
 {
-	return ((orvgui_win *)win)->put_x;
+	return win->put_x;
 }
 
 int OguiWindow::GetPositionY()
 {
-	return ((orvgui_win *)win)->put_y;
+	return win->put_y;
 }
 
 int OguiWindow::GetSizeX()
 {
-	return ((orvgui_win *)win)->sizex;
+	return win->sizex;
 }
 
 int OguiWindow::GetSizeY()
 {
-	return ((orvgui_win *)win)->sizey;
+	return win->sizey;
 }
 
 void OguiWindow::Resize(int x, int y)
 {
-	og_resize_window((orvgui_win *)win, x, y);
+	og_resize_window(win, x, y);
 }
 
 void OguiWindow::SetMovable()
 {
-	og_set_movable_window((orvgui_win *)win, OG_WIN_MOVABLE);
+	og_set_movable_window(win, OG_WIN_MOVABLE);
 }
 
 void OguiWindow::SetUnmovable()
 {
-	og_set_movable_window((orvgui_win *)win, OG_WIN_UNMOVABLE);
+	og_set_movable_window(win, OG_WIN_UNMOVABLE);
 }
 
 OguiButton *OguiWindow::CreateNewButton(int x, int y, int sizex, int sizey,
@@ -292,10 +292,10 @@ OguiButton *OguiWindow::CreateNewButton(int x, int y, int sizex, int sizey,
 			fontheight = font->getHeight();
 		}
 
-		but = og_create_button((orvgui_win *)win, OG_BUT_PIC_AND_TEXT, x, y, sizex, sizey, clipToWindow);
+		but = og_create_button(win, OG_BUT_PIC_AND_TEXT, x, y, sizex, sizey, clipToWindow);
 		og_set_text_button(but, fnt, fnt_color, OG_H_ALIGN_CENTER, OG_V_ALIGN_MIDDLE, text, pixwidth, pixheight, fontwidth, fontheight);
 	} else {
-		but = og_create_button((orvgui_win *)win, OG_BUT_PIC, x, y, sizex, sizey, clipToWindow);
+		but = og_create_button(win, OG_BUT_PIC, x, y, sizex, sizey, clipToWindow);
 	}
 
 	IStorm3D_Material *mat = NULL;
@@ -362,8 +362,8 @@ void OguiWindow::StartEffect(int windowEffect, int effectDuration)
 		}
 		if (this->effectMoveTimeLeft == 0)
 		{
-			this->windowPositionX = ((orvgui_win *)win)->put_x;
-			this->windowPositionY = ((orvgui_win *)win)->put_y;
+			this->windowPositionX = win->put_x;
+			this->windowPositionY = win->put_y;
 		}
 		this->effectMoveTimeLeft = effectDuration;
 		this->effectMoveTimeTotal = effectDuration;
@@ -392,8 +392,8 @@ void OguiWindow::EndAllEffects()
 	this->movingOut = false;
 	this->fadingIn = false;
 	this->fadingOut = false;
-	og_set_transparency_window(((orvgui_win *)win), 0);
-	og_move_window(((orvgui_win *)win), this->windowPositionX, this->windowPositionY);
+	og_set_transparency_window(win, 0);
+	og_move_window(win, this->windowPositionX, this->windowPositionY);
 }
 
 
@@ -407,13 +407,13 @@ void OguiWindow::ResetData()
 	if (image != NULL)
 	{
 		IStorm3D_Material *mat = ((OguiStormImage *)image)->mat;
-		og_set_background_window((orvgui_win *)win, mat);
+		og_set_background_window(win, mat);
 	}
 }
 
 void OguiWindow::SetTransparency(int transparencyPercentage)
 {
-	og_set_transparency_window((orvgui_win *)win, transparencyPercentage);
+	og_set_transparency_window(win, transparencyPercentage);
 }
 
 
@@ -425,33 +425,33 @@ void OguiWindow::SetEffectListener(IOguiEffectListener *listener)
 
 void OguiWindow::setBackgroundScroll(float scrollX, float scrollY)
 {
-	((orvgui_win *)win)->scroll_x = scrollX;
-	((orvgui_win *)win)->scroll_y = scrollY;
-	((orvgui_win *)win)->wrap = true;
+	win->scroll_x = scrollX;
+	win->scroll_y = scrollY;
+	win->wrap = true;
 }
 
 void OguiWindow::setBackgroundRepeatFactor(float x, float y)
 {
-	((orvgui_win *)win)->bg_repeat_factor_x = x;
-	((orvgui_win *)win)->bg_repeat_factor_y = y;
-	((orvgui_win *)win)->wrap = true;
+	win->bg_repeat_factor_x = x;
+	win->bg_repeat_factor_y = y;
+	win->wrap = true;
 }
 
 void OguiWindow::setBackgroundRepeatAuto()
 {
-	orvgui_win *owin = (orvgui_win *)win;
+	orvgui_win *owin = win;
 	if(this->image && this->image->getTexture())
 	{
 		Storm3D_SurfaceInfo si = this->image->getTexture()->GetSurfaceInfo();
 		owin->bg_repeat_factor_x = (owin->sizex / (float)si.width);
 		owin->bg_repeat_factor_y = (owin->sizey / (float)si.height);
 	}
-	((orvgui_win *)win)->wrap = true;
+	win->wrap = true;
 }
 
 void OguiWindow::SetMoveBoundaryType(MOVE_BOUND btype)
 {
-	((orvgui_win *)win)->move_bound = btype;
+	win->move_bound = btype;
 }
 
 void OguiWindow::setBackgroundImage( IOguiImage* image )
@@ -467,7 +467,7 @@ void OguiWindow::setBackgroundImage( IOguiImage* image )
 	if ( image != NULL)
 		mat = ((OguiStormImage *)image)->mat;
 
-	((orvgui_win*)win)->bg_pic = mat;
+	win->bg_pic = mat;
 }
 
 IOguiImage *OguiWindow::getBackgroundImage() const
