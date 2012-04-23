@@ -319,6 +319,7 @@ MACRO( CompileList result )
 ENDMACRO( CompileList )
 
 IF( CMAKE_COMPILER_IS_GNUCXX )
+    MESSAGE( "Using g++" )
     CompileList( SG_WARNINGS        -Wall
                                     -Wextra
                                     # -pedantic
@@ -337,6 +338,23 @@ IF( CMAKE_COMPILER_IS_GNUCXX )
     SET( CMAKE_CXX_FLAGS_DEBUG      "-O0 -g" )                  # ( waiting for COMPILE_OPTIONS_<CONFIG> )
     SET( CMAKE_CXX_FLAGS_RELEASE    "-O2" )     # TODO O3       # ( waiting for COMPILE_OPTIONS_<CONFIG> )
     SET( CMAKE_CXX_FLAGS            "-fno-strict-aliasing" )
+ELSEIF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+    MESSAGE( "Using clang++" )
+    CompileList( SG_WARNINGS        -Wall
+                                    -Wextra
+                                    # -pedantic
+                                    #-Wcast-align
+                                    #-Wcast-qual
+                                    # -Wconversion
+                                    #-Woverloaded-virtual
+                                    # -Wnon-virtual-dtor
+                                    #-Wcomment
+                                    #-Wstrict-null-sentinel
+                                    #-Winit-self
+                                    -Wno-array-bounds
+                                    -Wno-unused-parameter
+                                    # -Werror
+    )
 ELSE( CMAKE_COMPILER_IS_GNUCXX )
     MESSAGE( "WARNING: using default options for non-GCC compiler" )
 ENDIF( CMAKE_COMPILER_IS_GNUCXX )
