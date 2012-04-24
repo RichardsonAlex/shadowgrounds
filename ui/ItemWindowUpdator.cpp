@@ -130,4 +130,4 @@ void ItemWindowUpdator::doUpdate( ItemWindow* itemwindow )
 
 ///////////////////////////////////////////////////////////////////////////////
 
-}; // end of namespace ui
+} // end of namespace ui

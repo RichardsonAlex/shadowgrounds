@@ -197,7 +197,7 @@ public:
 	{
 		CollisionStatic,
 		CollisionDynamic,
-		CollisionAll,
+		CollisionAll
 	};
 
 	bool checkOverlapOBB(const VC3 &center, const VC3 &radius, const QUAT &rotation, CollisionType collisionType) const;

@@ -16,7 +16,7 @@ public:
 		// maintain aspect ratio in widescreen by aligning to left edge
 		WIDESCREEN_FIX_LEFT = 0x00000002,
 		// maintain aspect ratio in widescreen by aligning to horizontal center
-		WIDESCREEN_FIX_CENTER = 0x00000004,
+		WIDESCREEN_FIX_CENTER = 0x00000004
 	};
 
 	static void align(OguiWindow *win, int flags, Ogui *ogui);

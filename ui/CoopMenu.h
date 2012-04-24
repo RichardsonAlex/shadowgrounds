@@ -59,7 +59,7 @@ public:
 
 	enum OPTIONS {
 		OPTION_FRIENDLY_FIRE = 0,
-		NUM_OPTIONS = 1,
+		NUM_OPTIONS = 1
 	};
 
 	//.........................................................................

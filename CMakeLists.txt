@@ -342,7 +342,7 @@ ELSEIF("${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
     MESSAGE( "Using clang++" )
     CompileList( SG_WARNINGS        -Wall
                                     -Wextra
-                                    # -pedantic
+                                    -pedantic
                                     #-Wcast-align
                                     #-Wcast-qual
                                     # -Wconversion

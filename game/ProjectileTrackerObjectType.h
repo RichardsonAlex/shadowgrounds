@@ -11,7 +11,7 @@ namespace game
 	namespace tracking
 	{
 		class ITrackerObject;
-	};
+	}
 
 	class ProjectileTrackerObjectType : public tracking::ITrackerObjectType
 	{

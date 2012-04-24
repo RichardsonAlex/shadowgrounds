@@ -33,7 +33,7 @@ using namespace boost;
 
 namespace {
 	static const int MAX_SIZES = 2;
-};
+}
 
 extern int active_visibility;
 

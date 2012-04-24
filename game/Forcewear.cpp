@@ -49,10 +49,10 @@ int Forcewear::SendEffect(unsigned int ef, unsigned int side)
 }
 
 // TEMPORARY ROUTINES. Delete when actual API is available
-int SetUpJacket( void ) { return  GLIB_OK; };
-void TearDownJacket( void ) {  };
-int SetEffect( int nEffect ) { return GLIB_OK; };
-int SetEffect2( int nLen, int nID ) { return GLIB_OK; };
-int GetErrorCode (void) { return GLIB_OK; };
-const char *GetErrorText (void ) { return "..."; };
+int SetUpJacket( void ) { return  GLIB_OK; }
+void TearDownJacket( void ) {  }
+int SetEffect( int nEffect ) { return GLIB_OK; }
+int SetEffect2( int nLen, int nID ) { return GLIB_OK; }
+int GetErrorCode (void) { return GLIB_OK; }
+const char *GetErrorText (void ) { return "..."; }
 

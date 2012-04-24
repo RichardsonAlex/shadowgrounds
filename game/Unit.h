@@ -175,7 +175,7 @@ namespace game
 			FireTypeSecondary = 1,
 			FireTypeBasic = 2,
 			FireTypeHeavy = 3,
-			FireTypeAll = 4,
+			FireTypeAll = 4
 		};
 
 		/**

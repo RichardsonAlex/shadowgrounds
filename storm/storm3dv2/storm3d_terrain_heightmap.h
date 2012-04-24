@@ -46,7 +46,7 @@ public:
 	{
 		Lighting,
 		Depth,
-		Projection,
+		Projection
 	};
 
 	void renderDepth(Storm3D_Scene &scene, Storm3D_Camera *camera, RenderMode mode, IStorm3D_Spotlight::Type spot_type, Storm3D_Spotlight *spot);

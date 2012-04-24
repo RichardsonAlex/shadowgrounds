@@ -12,7 +12,7 @@ namespace sfx {
 
 namespace game {
 	class GameUI;
-};
+}
 
 namespace ui
 {
