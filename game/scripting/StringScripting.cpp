@@ -125,7 +125,7 @@ namespace game
 		case GS_CMD_APPENDVALUETOSTRING:
 			if (gsd->stringValue != NULL)
 			{
-				char *valstr = int2str(*lastValue);
+				const char *valstr = int2str(*lastValue);
 				char *tmp = new char[strlen(gsd->stringValue) + strlen(valstr) + 1];
 				strcpy(tmp, gsd->stringValue);
 				strcat(tmp, valstr);

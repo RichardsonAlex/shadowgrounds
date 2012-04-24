@@ -3286,7 +3286,7 @@ namespace util
 														if (s->processorDatatypes[pkey] == SCRIPT_DATATYPE_INT)
 														{
 															// WARNING: passing pointer to static variable here...
-															char *numstr = int2str(s->intDataArray[subip].i);
+															const char *numstr = int2str(s->intDataArray[subip].i);
 															addCommand(s->processorKeywords[pkey], numstr);
 														}
 														else if (s->processorDatatypes[pkey] == SCRIPT_DATATYPE_FLOAT)

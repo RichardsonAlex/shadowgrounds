@@ -18,7 +18,7 @@ char convert_strbuf[16];
 
 int _last_str2int_errno = 0;
 
-char *int2str(int value)
+const char *int2str(int value)
 {
   int tmp;
   int expv;

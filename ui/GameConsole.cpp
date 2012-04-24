@@ -383,7 +383,7 @@ namespace ui
 					}
 					else if (opt->getVariableType() == game::IScriptVariable::VARTYPE_INT)
 					{
-						char *val = int2str(opt->getIntValue());
+						const char *val = int2str(opt->getIntValue());
 						strcat(logbuf, " (");
 						strcat(logbuf, val);
 						strcat(logbuf, ")");

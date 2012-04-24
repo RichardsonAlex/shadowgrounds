@@ -25,7 +25,7 @@ namespace game
     while (deleteMore)
     {
       char namebuf[128];
-      char *tmp = int2str(i);
+      const char *tmp = int2str(i);
       strcpy(namebuf, "ScriptDebug/console_cmd_");
       strcat(namebuf, tmp);
       strcat(namebuf, ".txt");
@@ -38,7 +38,7 @@ namespace game
   void ScriptDebugger::run(GameScripting *gs)
   {
     char namebuf[128];
-    char *tmp = int2str(historyNumber);
+    const char *tmp = int2str(historyNumber);
     strcpy(namebuf, "ScriptDebug/console_cmd_");
     strcat(namebuf, tmp);
     strcat(namebuf, ".txt");
