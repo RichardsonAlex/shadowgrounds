@@ -671,7 +671,8 @@ void GameController::saveConfiguration( const char *filename )
 				// TODO: should handle keys with no name using the #xxx notation...
 				if (keycodeName[ binds[k][j] ][0] == '\0')
 				{
-					keys += "#" + binds[k][j];
+					keys += "#";
+					keys += int2str(binds[k][j]);
 				} else {
 					keys += keycodeName[ binds[k][j] ];
 				}
