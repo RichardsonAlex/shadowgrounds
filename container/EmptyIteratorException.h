@@ -6,7 +6,7 @@
 class EmptyIteratorException
 {
 public:
-	EmptyIteratorException() { };
+	EmptyIteratorException() { }
 }; //extends CSPException { };
 
 #endif

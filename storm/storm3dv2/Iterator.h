@@ -47,7 +47,7 @@ public:
 
 	~IteratorIM_Set()
 	{
-	};
+	}
 };
 
 
@@ -105,7 +105,7 @@ public:
 
 	~IteratorIM_PtrList()
 	{
-	};
+	}
 };
 
 

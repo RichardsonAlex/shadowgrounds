@@ -51,7 +51,7 @@ namespace game
 
 			virtual bool isReadOnly() = 0;
 
-			virtual ~IScriptVariable() {};
+			virtual ~IScriptVariable() {}
 	};
 }
 

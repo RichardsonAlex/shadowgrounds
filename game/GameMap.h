@@ -119,8 +119,8 @@ namespace game
     float getScaleX();
     float getScaleY();
 
-	 inline int getSizeX() const { return sizeX; };
-	 inline int getSizeY() const { return sizeY; };
+	 inline int getSizeX() const { return sizeX; }
+	 inline int getSizeY() const { return sizeY; }
 
     // returns scale height
     float getScaleHeight();

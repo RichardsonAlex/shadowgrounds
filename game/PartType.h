@@ -320,7 +320,7 @@ namespace game
       if (slotPositions != NULL) { delete [] slotPositions; slotPositions = NULL; }
       if (slotLevelMask != NULL) { delete [] slotLevelMask; slotLevelMask = NULL; }
       if (bonesFilename != NULL) { delete [] bonesFilename; bonesFilename = NULL; }
-    };
+    }
 
 
     friend class PartTypeParser;

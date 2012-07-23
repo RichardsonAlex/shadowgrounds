@@ -5,7 +5,7 @@
 class IOguiFont
 {
 public:
-  virtual ~IOguiFont() {};
+  virtual ~IOguiFont() {}
 
   // should return the pixel width of the given text when using this font
   virtual int getStringWidth(const char *text) = 0;

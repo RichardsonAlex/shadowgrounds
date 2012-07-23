@@ -100,7 +100,7 @@ class Storm3D_Scene : public IStorm3D_Scene
 #endif
 public:
 
-	inline IStorm3D * getStorm() { return (IStorm3D*) Storm3D2; };
+	inline IStorm3D * getStorm() { return (IStorm3D*) Storm3D2; }
 
 	// Polygon counter add (v3)
 	void AddPolyCounter(int amount) {poly_counter+=amount;}

@@ -115,7 +115,7 @@ namespace ui
     void setForcedNoCollision(bool forcedNoCollision) { this->forcedNoCollision = forcedNoCollision; }
 
     void setVisible(bool visible);
-	 inline bool isVisible() { return this->visible; };
+	 inline bool isVisible() { return this->visible; }
 
     void setSphereCollisionOnly(bool sphereCollisionOnly);
 

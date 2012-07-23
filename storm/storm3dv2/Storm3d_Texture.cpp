@@ -308,13 +308,13 @@ Storm3D_Texture::Storm3D_Texture(Storm3D *s2,const char *_filename,Uint32 _texlo
 		surfaceContainer(SDL_Surface *_s) :
 			s(_s)
 		{
-		};
+		}
 
 		~surfaceContainer() {
 			SDL_FreeSurface(s);
-		};
+		}
 
-		SDL_Surface *operator->() { return s; };
+		SDL_Surface *operator->() { return s; }
 
 	};
 

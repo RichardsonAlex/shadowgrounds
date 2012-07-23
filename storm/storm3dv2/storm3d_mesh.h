@@ -193,7 +193,7 @@ public:
 	const Storm3D_Face *GetFaceBufferReadOnly(int lodIndex);
 	const Storm3D_Vertex *GetVertexBufferReadOnly();
 	int GetFaceCount();
-	int GetRenderFaceCount() const { return render_face_amount[0]; };
+	int GetRenderFaceCount() const { return render_face_amount[0]; }
 	int GetFaceCount(int lodIndex);
 	int GetVertexCount();
 	void ChangeFaceCount(int new_face_count);

@@ -109,7 +109,7 @@ struct D3DXPLANE {
 
 	operator const double* () const {
 		return p;
-	};
+	}
 };
 
 
@@ -130,7 +130,7 @@ struct D3DMATRIX {
 		_21(0), _22(1), _23(0), _24(0),
 		_31(0), _32(0), _33(1), _34(0),
 		_41(0), _42(0), _43(0), _44(1)
-	{};
+	{}
 
 	D3DMATRIX operator*(const D3DMATRIX &other) const {
 		D3DMATRIX n;
@@ -162,7 +162,7 @@ struct D3DMATRIX {
 
 struct D3DXMATRIX : public D3DMATRIX {
 
-	D3DXMATRIX() {};
+	D3DXMATRIX() {}
 
 
 	D3DXMATRIX(const float *raw_)
@@ -183,14 +183,14 @@ struct D3DXMATRIX : public D3DMATRIX {
 		_21 = __21; _22 = __22; _23 = __23; _24 = __24;
 		_31 = __31; _32 = __32; _33 = __33; _34 = __34;
 		_41 = __41; _42 = __42; _43 = __43; _44 = __44;
-	};
+	}
 
 	D3DXMATRIX(const MAT &mat) {
         _11 = mat.Get(0); _12 = mat.Get(4); _13 = mat.Get(8);  _14 = mat.Get(12);
         _21 = mat.Get(1); _22 = mat.Get(5); _23 = mat.Get(9);  _24 = mat.Get(13);
         _31 = mat.Get(2); _32 = mat.Get(6); _33 = mat.Get(10); _34 = mat.Get(14);
         _41 = mat.Get(3); _42 = mat.Get(7); _43 = mat.Get(11); _44 = mat.Get(15);
-	};
+	}
 
 	float operator[](int i) const {
 		int row = i / 4;

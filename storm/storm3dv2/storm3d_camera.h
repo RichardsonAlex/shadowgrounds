@@ -117,7 +117,7 @@ public:
 
 	Storm3D_Camera(Storm3D *Storm3D2, const VC3 &_position=VC3(1,0,0), const VC3 &_target=VC3(0,0,0), float _vis_range=1000, float _fov=PI/3, const VC3 &_upvec=VC3(0,1,0));
 
-	inline bool GetForcedOrthogonalProjectionEnabled() { return forcedOrthogonalProjection; };
+	inline bool GetForcedOrthogonalProjectionEnabled() { return forcedOrthogonalProjection; }
 
 	friend class Storm3D_Scene;
 	friend class Storm3D_Scene_LightHandler;

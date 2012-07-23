@@ -227,7 +227,7 @@ public:
 	void SetAntiAliasing(int quality) { antialiasing_level = quality; }
 	void AllocateProceduralTarget(bool enable) { allocate_procedural_target = enable; }
 	void SetReflectionQuality(int quality);
-	void UseReferenceDriver(bool /*refdriver*/) {};
+	void UseReferenceDriver(bool /*refdriver*/) {}
 	void forceReset() { force_reset = true; }
 
 	bool hasHighQualityTextures() const { return high_quality_textures; }
@@ -235,11 +235,11 @@ public:
 	void addAdditionalRenderTargets(const VC2 &size, int amount);
 	void setProceduralTextureSize(const VC2I &size);
 	IStorm3D_Texture *getRenderTarget(int index);
-	Storm3D_ProceduralManager &getProceduralManagerImp() { return proceduralManager; };
-	IStorm3D_ProceduralManager &getProceduralManager() { return proceduralManager; };
+	Storm3D_ProceduralManager &getProceduralManagerImp() { return proceduralManager; }
+	IStorm3D_ProceduralManager &getProceduralManager() { return proceduralManager; }
 
 	void enableLocalReflection(bool enable, float height);
-	IStorm3D_Texture *getReflectionTexture() { if(enableReflection) return reflectionTarget.texture; else return 0; };
+	IStorm3D_Texture *getReflectionTexture() { if(enableReflection) return reflectionTarget.texture; else return 0; }
 
 	// Gamma and other color settings
 	// --jpk

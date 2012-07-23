@@ -12,7 +12,7 @@ namespace tracking
 	class ITrackableUnifiedHandleObjectIterator
 	{
 	public:
-		virtual ~ITrackableUnifiedHandleObjectIterator() { };
+		virtual ~ITrackableUnifiedHandleObjectIterator() { }
 
 		virtual bool iterateAvailable() = 0;
 		virtual UnifiedHandle iterateNext() = 0;

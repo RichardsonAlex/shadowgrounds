@@ -147,8 +147,8 @@ public:
 	bool GetNoRender() const;
 	bool IsLightObject() const;
 	void SetAsLightObject();
-	void SetForceAlpha(float value) { force_alpha = value; };
-	void SetForceLightingAlpha(bool enable, float value) { force_lighting_alpha_enable = enable; force_lighting_alpha = (enable) ? value : 0.f; };
+	void SetForceAlpha(float value) { force_alpha = value; }
+	void SetForceLightingAlpha(bool enable, float value) { force_lighting_alpha_enable = enable; force_lighting_alpha = (enable) ? value : 0.f; }
 	void SetLight(int index, int id)
 	{
 		if(index >= 0 && index < LIGHT_MAX_AMOUNT)
@@ -165,7 +165,7 @@ public:
 	virtual int GetRenderPassMask();
 	virtual void SetRenderPassMask(int renderPassMask);
 
-	void SetSpotTransparencyFactor(float factor) { spot_transparency_factor = factor; };
+	void SetSpotTransparencyFactor(float factor) { spot_transparency_factor = factor; }
 
 	// Child fuctions
 	void AddChild(IStorm3D_Model_Object *object);

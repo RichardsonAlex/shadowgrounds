@@ -62,7 +62,7 @@ public:
 		{
 		}
 
-		bool isDistorted() const { return distortion; };
+		bool isDistorted() const { return distortion; }
 
 		int getMaxParticleAmount() const;
 		int lock(VXFORMAT_PART *pointer, int vertexOffset, Storm3D_Scene *scene);
@@ -116,7 +116,7 @@ public:
 			}
 		}
 
-		bool isDistorted() const { return distortion; };
+		bool isDistorted() const { return distortion; }
 
 		int getMaxParticleAmount() const;
 		int lock(VXFORMAT_PART *pointer, int particleOffset, Storm3D_Scene *scene);
@@ -168,7 +168,7 @@ public:
 			}
 		}
 
-		bool isDistorted() const { return distortion; };
+		bool isDistorted() const { return distortion; }
 
 		int getMaxParticleAmount() const;
 		int lock(VXFORMAT_PART *pointer, int particleOffset, Storm3D_Scene *scene);

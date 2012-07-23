@@ -27,7 +27,7 @@ namespace game
       range = 0;
 			terrainInstanceId = -1;
 			terrainModelId = -1;
-    };
+    }
     bool hit; // hit somewhere on map or some unit
     bool hitGround; // hit to the ground
     bool hitBuilding; // hit to a building

@@ -10,7 +10,7 @@ namespace ui
 			virtual void readKey(char ascii, int keycode,
 				const char *keycodeName) = 0;
 
-			virtual ~IGameControllerKeyreader() {};
+			virtual ~IGameControllerKeyreader() {}
 	};
 }
 

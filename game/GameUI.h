@@ -148,7 +148,7 @@ namespace game
 	class SceneSelection
 	{
 	public:
-		SceneSelection() { hit=false; scaledMapX=0; scaledMapY=0; unit=NULL; };
+		SceneSelection() { hit=false; scaledMapX=0; scaledMapY=0; unit=NULL; }
 		bool hit; // hit somewhere on map or some unit
 		float scaledMapX; // map coordinates (of unit if not null, else just map)
 		float scaledMapY;
@@ -511,7 +511,7 @@ namespace game
 
 		void enableAlphaTestPass(bool enabled);
 
-		inline boost::shared_ptr<LoadingWindow> getLoadingWindow() const { return loadingWindow; };
+		inline boost::shared_ptr<LoadingWindow> getLoadingWindow() const { return loadingWindow; }
 
 		void setTimeFactor(float factor);
 

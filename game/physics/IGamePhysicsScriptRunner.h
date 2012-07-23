@@ -12,7 +12,7 @@ namespace game
 
 		virtual void *getGamePhysicsScriptRunnerImplementation() = 0;
 
-		virtual ~IGamePhysicsScriptRunner() {};
+		virtual ~IGamePhysicsScriptRunner() {}
 	};
 }
 

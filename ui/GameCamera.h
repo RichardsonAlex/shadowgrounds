@@ -298,7 +298,7 @@ namespace ui
     inline void setMiddleZoom(float middleZoom) { this->middleZoom = middleZoom; }
 
 	 // Used by setMapView script command.
-	 inline void setForceMapView( bool a_forceMapView, int a_areaX = 0, int a_areaY = 0, int width = 0, int height = 0, float a_screenAspect = 1024.0f / 768 ) { forceMapView = a_forceMapView; screenAspect = a_screenAspect; mapviewAreaX = a_areaX; mapviewAreaY = a_areaY; mapviewWidth = width; mapviewHeight = height; };
+	 inline void setForceMapView( bool a_forceMapView, int a_areaX = 0, int a_areaY = 0, int width = 0, int height = 0, float a_screenAspect = 1024.0f / 768 ) { forceMapView = a_forceMapView; screenAspect = a_screenAspect; mapviewAreaX = a_areaX; mapviewAreaY = a_areaY; mapviewWidth = width; mapviewHeight = height; }
   };
 
 }
