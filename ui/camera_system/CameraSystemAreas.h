@@ -41,7 +41,7 @@ public:
 	CameraSystemAreas();
 	virtual ~CameraSystemAreas();
 
-	virtual void clearCameraAreas() {};
+	virtual void clearCameraAreas() {}
 	virtual void addCameraArea(ICameraArea *cameraArea);
 
 	 // Sets the position of interest and elapsed time for the camera system. Must be used before querying

@@ -25,10 +25,10 @@ public:
 	};
 
 	// Constructors
-	Vec4() : x(0), y(0), z(0), w(0) {};
-	Vec4(A d) : x(d), y(d), z(d), w(d) {};
-	Vec4(A _x, A _y, A _z, A _w) : x(_x), y(_y), z(_z), w(_w) {};
-	Vec4(A a[4]) : x(a[0]), y(a[1]), z(a[2]), w(a[3]) {};
+	Vec4() : x(0), y(0), z(0), w(0) {}
+	Vec4(A d) : x(d), y(d), z(d), w(d) {}
+	Vec4(A _x, A _y, A _z, A _w) : x(_x), y(_y), z(_z), w(_w) {}
+	Vec4(A a[4]) : x(a[0]), y(a[1]), z(a[2]), w(a[3]) {}
 
     // Operators
 	Vec4<A> operator-() const
@@ -55,10 +55,10 @@ public:
 	A x,y,z;
 
 	// Constructors
-	Vec3() : x(0),y(0),z(0) {};
-	Vec3(A d) : x(d),y(d),z(d) {};
-	Vec3(A _x,A _y,A _z) : x(_x),y(_y),z(_z) {};
-	Vec3(A a[3]) : x(a[0]),y(a[1]),z(a[2]) {};
+	Vec3() : x(0),y(0),z(0) {}
+	Vec3(A d) : x(d),y(d),z(d) {}
+	Vec3(A _x,A _y,A _z) : x(_x),y(_y),z(_z) {}
+	Vec3(A a[3]) : x(a[0]),y(a[1]),z(a[2]) {}
 
 	// Operators
 	Vec3<A> operator-() const
@@ -221,10 +221,10 @@ public:
 	A x,y;
 
 	// Constructors
-	Vec2() : x(0),y(0) {};
-	Vec2(A d) : x(d),y(d) {};
-	Vec2(A _x,A _y) : x(_x),y(_y) {};
-	Vec2(A a[2]) : x(a[0]),y(a[1]) {};
+	Vec2() : x(0),y(0) {}
+	Vec2(A d) : x(d),y(d) {}
+	Vec2(A _x,A _y) : x(_x),y(_y) {}
+	Vec2(A a[2]) : x(a[0]),y(a[1]) {}
 
 	// Operators
 	Vec2<A> operator-() const

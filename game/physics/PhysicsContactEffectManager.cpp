@@ -21,13 +21,13 @@ namespace game
 		PhysicsContactEffectManagerImpl()
 		{
 			soundmp = new util::SoundMaterialParser();
-		};
+		}
 
 		~PhysicsContactEffectManagerImpl()
 		{
 			//deleteAllEffects();
 			delete soundmp;
-		};
+		}
 
 		/*
 		void deleteAllEffects()

@@ -44,7 +44,7 @@ namespace game
 	{
 	public:
 		virtual void physicsContact(const PhysicsContact &contact) = 0;
-		virtual ~IPhysicsContactListener() {};
+		virtual ~IPhysicsContactListener() {}
 	};
 }
 

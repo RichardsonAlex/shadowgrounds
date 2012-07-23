@@ -153,7 +153,7 @@ public:
 	{
 		if(index >= 0 && index < LIGHT_MAX_AMOUNT)
 			light_index[index] = id;
-	};
+	}
 
 	virtual void EnableRenderPass(int renderPassBit);
 	virtual void SetRenderPassParams(int renderPassBit, const VC3 &offset, const VC3 &scale);

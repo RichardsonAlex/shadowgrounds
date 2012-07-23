@@ -154,7 +154,7 @@ namespace filesystem {
 			fileId = unzOpen(archive.c_str());
 			if(fileId)
 				findFiles();
-		};
+		}
 
 		~ZipData()
 		{

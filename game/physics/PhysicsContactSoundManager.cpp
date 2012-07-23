@@ -20,12 +20,12 @@ namespace game
 		PhysicsContactSoundManagerImpl()
 		{
 			soundmp = new util::SoundMaterialParser();
-		};
+		}
 
 		~PhysicsContactSoundManagerImpl()
 		{
 			delete soundmp;
-		};
+		}
 
 		util::SoundMaterialParser *soundmp;
 		GameUI *gameUI;

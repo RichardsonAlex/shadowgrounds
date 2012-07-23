@@ -11,7 +11,7 @@ namespace tracking
 	class ITrackableObjectIterator
 	{
 	public:
-		virtual ~ITrackableObjectIterator() { };
+		virtual ~ITrackableObjectIterator() { }
 
 		virtual bool iterateAvailable() = 0;
 		virtual ITrackableObject *iterateNext() = 0;

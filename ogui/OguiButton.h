@@ -170,7 +170,7 @@ public:
 	// manually adjust the pressing state of the button
 	void PressButton( bool press );
 
-	inline std::string * getText() { return &text; };
+	inline std::string * getText() { return &text; }
 
 	struct Vertex
 	{

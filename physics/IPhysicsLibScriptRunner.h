@@ -13,7 +13,7 @@ namespace physics
 		// returns true if successful
 		virtual bool runPhysicsLibScript(const char *scriptname, const char *subname) = 0;
 
-		virtual ~IPhysicsLibScriptRunner() {};
+		virtual ~IPhysicsLibScriptRunner() {}
 	};
 
 }

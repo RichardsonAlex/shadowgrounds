@@ -24,7 +24,7 @@ public:
 	// Creation...
 
 	// I-Quaternion (0,0,0,1)
-	Quat() : x(0),y(0),z(0),w((A)1) {};
+	Quat() : x(0),y(0),z(0),w((A)1) {}
 
 	// Euler angles
 	Quat(A xang,A yang,A zang)

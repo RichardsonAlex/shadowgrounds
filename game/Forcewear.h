@@ -35,11 +35,11 @@ class Forcewear
 
 public:
 
-	static inline bool enable() { if(!enabled) { enabled = true; return (::SetUpJacket() == GLIB_OK ? true : false ); } return false; };
-	static inline bool disable() { if(enabled) { enabled = false; ::TearDownJacket(); return true; } return false; } ;
+	static inline bool enable() { if(!enabled) { enabled = true; return (::SetUpJacket() == GLIB_OK ? true : false ); } return false; }
+	static inline bool disable() { if(enabled) { enabled = false; ::TearDownJacket(); return true; } return false; }
 
-	static inline int SetEffect( int nEffect ) { if(enabled) return ::SetEffect( nEffect); return 0; };
-	static inline int SetEffect2( int nLen, int nID ) { if(enabled) return ::SetEffect2( nLen, nID); return 0; };
+	static inline int SetEffect( int nEffect ) { if(enabled) return ::SetEffect( nEffect); return 0; }
+	static inline int SetEffect2( int nLen, int nID ) { if(enabled) return ::SetEffect2( nLen, nID); return 0; }
 
 	// Takes ID got from stringToInt as an argument, side is either FW_BACK or FW_FRONT.
 	static int SendEffect( unsigned int ef, unsigned int side );

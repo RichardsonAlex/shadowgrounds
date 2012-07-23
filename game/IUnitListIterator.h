@@ -9,7 +9,7 @@ namespace game
 	class IUnitListIterator
 	{
 		public:
-			virtual ~IUnitListIterator() { };
+			virtual ~IUnitListIterator() { }
 
 			virtual Unit *iterateNext() = 0;
 

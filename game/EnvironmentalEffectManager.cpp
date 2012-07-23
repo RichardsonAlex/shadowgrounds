@@ -89,7 +89,7 @@ struct EnvironmentalEffectManagerImpl
 		sunlightColor = COL(0,0,0);
 		sunlightEnabled = false;
 		sunlightSpot = NULL;
-	};
+	}
 
 	~EnvironmentalEffectManagerImpl()
 	{
