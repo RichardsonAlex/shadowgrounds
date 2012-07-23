@@ -10,6 +10,7 @@
 #include <direct.h>
 #else
 #include <sys/stat.h>
+#include <unistd.h>
 #include <errno.h>
 #define _mkdir(x) mkdir(x, S_IRWXU | S_IRWXG)
 #define Sleep usleep
