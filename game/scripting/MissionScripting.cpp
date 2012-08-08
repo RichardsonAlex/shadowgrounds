@@ -44,7 +44,7 @@ using namespace ui;
 namespace game
 {
 	void MissionScripting::process(util::ScriptProcess *sp,
-		int command, floatint intFloat, char *stringData, ScriptLastValueType *lastValue,
+		int command, floatint intFloat, const char *stringData, ScriptLastValueType *lastValue,
 		GameScriptData *gsd, Game *game)
 	{
 		int intData = intFloat.i;
@@ -421,26 +421,28 @@ namespace game
 			{
 				unsigned int splitPos = 0;
 				unsigned int i = 0;
+				char* copy = strdup(stringData);
 				while(true)
 				{
-					if(stringData[i] == 0) break;
-					if(stringData[i] == ',')
+					if(copy[i] == 0) break;
+					if(copy[i] == ',')
 					{
 						splitPos = i;
-						stringData[i] = 0;
+						copy[i] = '\0';
 						break;
 					}
 					i++;
 				}
 				if(splitPos > 0)
 				{
-					SimpleOptions::setFloat(DH_OPT_F_PHYSICS_WATER_HEIGHT, (float)atof(stringData));
-					SimpleOptions::setFloat(DH_OPT_F_PHYSICS_WATER_DAMPING, (float)atof(stringData + splitPos + 1));
+					SimpleOptions::setFloat(DH_OPT_F_PHYSICS_WATER_HEIGHT, (float)atof(copy));
+					SimpleOptions::setFloat(DH_OPT_F_PHYSICS_WATER_DAMPING, (float)atof(copy + splitPos + 1));
 				}
 				else
 				{
 					sp->error("GameScripting::process - setPhysicsWaterSettings expects two parameters; \"height,damping\".");
 				}
+				free(copy);
 			} else {
 				sp->error("GameScripting::process - setPhysicsWaterSettings parameter missing.");
 			}

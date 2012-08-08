@@ -4,6 +4,7 @@
 
 #include "IGamePhysicsObject.h"
 #include "DatatypeDef.h"
+#include <boost/any.hpp>
 
 namespace game
 {
@@ -55,8 +56,8 @@ namespace game
 		virtual int getLastEffectSoundTick() { return this->lastEffectSoundTick; }
 		virtual void setLastEffectSoundTick( int tick ) { lastEffectSoundTick = tick; }
 
-		virtual void *getCustomData();
-		virtual void setCustomData(void *customData);
+		virtual boost::any getCustomData();
+		virtual void setCustomData(const boost::any& customData);
 
 		virtual void restorePreviousVelocities(float previousVelocityRatio = 1.0f, float currentVelocityRatio = 0.0f);
 		virtual bool isDynamic();
@@ -129,7 +130,7 @@ protected:
 		int durabilityType;
 		int lastEffectTick;
 		int lastEffectSoundTick;
-		void *customData;
+		boost::any customData;
 
 #ifdef PHYSICS_FEEDBACK
 		bool feedbackEnabled;

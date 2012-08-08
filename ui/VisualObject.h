@@ -62,7 +62,7 @@ namespace ui
   {
   public:
 	  virtual ~IVisualObjectData() {}
-	  virtual void *getVisualObjectDataId() const = 0;
+	  virtual const void* getVisualObjectDataId() const = 0;
   };
 
   class VisualObject : public IStorm3D_Model_Data
@@ -79,18 +79,18 @@ namespace ui
 		// call this after every game tick (if interpolation is used)
     void advanceHistory();
 
-    virtual void *GetID();
+    virtual const void* GetID();
 
-		void setSideways(bool sideways);
+    void setSideways(bool sideways);
 
     void setPosition(const VC3 &position);
     void addPosition(const VC3 &position);
     void setScale(const VC3 &scale);
     void setRotation(float xAngle, float yAngle, float zAngle);
 
-		// hacked to allow straight quaternion rotations
-		// overrided the setRotation euler angles
-		void setRotationQuaternion( const QUAT& quat );
+	// hacked to allow straight quaternion rotations
+	// overrided the setRotation euler angles
+	void setRotationQuaternion( const QUAT& quat );
 
     //void addRotation(QUAT &rotation);
     void setSelfIllumination(const COL &color);
@@ -105,7 +105,7 @@ namespace ui
     // attach point is the helper name to attach to (null if none)
     void combine(VisualObject *sourceObject, const char *newObjectName, const char *attachTo);
 
-		void removeObject(const char *objectName);
+	void removeObject(const char *objectName);
 
     // sets this object to be rendered to scene or not, affects raytrace
     void setInScene(bool inScene);
@@ -115,7 +115,7 @@ namespace ui
     void setForcedNoCollision(bool forcedNoCollision) { this->forcedNoCollision = forcedNoCollision; }
 
     void setVisible(bool visible);
-	 inline bool isVisible() { return this->visible; }
+    inline bool isVisible() { return this->visible; }
 
     void setSphereCollisionOnly(bool sphereCollisionOnly);
 

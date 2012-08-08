@@ -2753,7 +2753,7 @@ static util::ObjectDurabilityParser durp;
 
 				int instanceId = i;
 				// WARNING: unsafe int to void * cast!
-				bp->setCustomData((void *)game::PhysicsContactUtils::calcCustomPhysicsObjectDataForTerrainObject(modelId, instanceId));
+				bp->setCustomData(game::PhysicsContactUtils::calcCustomPhysicsObjectDataForTerrainObject(modelId, instanceId));
 
 				instance.physicsObject.reset(bp);
 			}
@@ -2799,8 +2799,7 @@ static util::ObjectDurabilityParser durp;
 				cp->setDurabilityType(durp.getDurabilityTypeIndexByName(data.durabilityType));
 
 				int instanceId = i;
-				// WARNING: unsafe int to void * cast!
-				cp->setCustomData((void *)game::PhysicsContactUtils::calcCustomPhysicsObjectDataForTerrainObject(modelId, instanceId));
+				cp->setCustomData(game::PhysicsContactUtils::calcCustomPhysicsObjectDataForTerrainObject(modelId, instanceId));
 
 				instance.physicsObject.reset(cp);
 			}

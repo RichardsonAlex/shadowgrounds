@@ -809,9 +809,8 @@ VC2I Storm3D_TerrainRendererData::glowSize;
 //! Constructor
 Storm3D_TerrainRenderer::Storm3D_TerrainRenderer(Storm3D &storm, Storm3D_TerrainHeightmap &heightMap, Storm3D_TerrainGroup &groups, Storm3D_TerrainModels &models, Storm3D_TerrainDecalSystem &decalSystem)
 {
-	boost::scoped_ptr<Storm3D_TerrainRendererData> tempData(new Storm3D_TerrainRendererData(storm, *this, heightMap, groups, models, decalSystem));
-	data.swap(tempData);
 
+	data.reset(new Storm3D_TerrainRendererData(storm, *this, heightMap, groups, models, decalSystem));
 	setFog(false, 150.f, -50.f, COL(1.f, 0.5f, 0.5f));
 }
 

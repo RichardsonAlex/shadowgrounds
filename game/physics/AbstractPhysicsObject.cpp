@@ -478,12 +478,12 @@ namespace game
 		this->durabilityType = durabilityTypeIndex;
 	}
 
-	void *AbstractPhysicsObject::getCustomData()
+	boost::any AbstractPhysicsObject::getCustomData()
 	{
 		return this->customData;
 	}
 
-	void AbstractPhysicsObject::setCustomData(void *customData)
+	void AbstractPhysicsObject::setCustomData(const boost::any& customData)
 	{
 		this->customData = customData;
 	}

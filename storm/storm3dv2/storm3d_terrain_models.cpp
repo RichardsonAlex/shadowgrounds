@@ -1072,7 +1072,7 @@ struct Storm3D_TerrainModelsData : public DataBase
 
 	bool applyTexture(IStorm3D_Texture *texture, int stage) const
 	{
-		Storm3D_Texture *t = static_cast<Storm3D_Texture *> (texture);
+		Storm3D_Texture *t = dynamic_cast<Storm3D_Texture *> (texture);
 		if(t)
 		{
 			t->AnimateVideo();

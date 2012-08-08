@@ -818,7 +818,7 @@ namespace game
 #ifdef PARTTYPE_ID_STRING_EXTENDED
   int partTypeIdStringToIntConv(const char *idstr)
   {
-    int ret = *((int *)idstr);
+    int ret = *((const int *)idstr);
 
     if (idstr[4] == '\0' || idstr[3] == '\0')
 			return ret;
@@ -836,29 +836,29 @@ namespace game
 		if (idstr[5] == '\0'
 			|| idstr[6] == '\0')
 		{
-			ret ^= ((*((int *)&idstr[2])) >> 16);
+			ret ^= ((*((const int *)&idstr[2])) >> 16);
 			return ret;
 		}
 
 		if (idstr[7] == '\0'
 			|| idstr[8] == '\0')
 		{
-			ret ^= (*((int *)&idstr[4]));
+			ret ^= (*((const int *)&idstr[4]));
 			return ret;
 		}
 
 		if (idstr[9] == '\0'
 			|| idstr[10] == '\0')
 		{
-			ret ^= (*((int *)&idstr[4]));
-			ret ^= ((*((int *)&idstr[6])) >> 16);
+			ret ^= (*((const int *)&idstr[4]));
+			ret ^= ((*((const int *)&idstr[6])) >> 16);
 			return ret;
 		}
 
 		assert(idstr[11] == '\0' || idstr[12] == '\0');
 
-		ret ^= (*((int *)&idstr[4]));
-		ret ^= (*((int *)&idstr[8]));
+		ret ^= (*((const int *)&idstr[4]));
+		ret ^= (*((const int *)&idstr[8]));
 
 		return ret;
 	}

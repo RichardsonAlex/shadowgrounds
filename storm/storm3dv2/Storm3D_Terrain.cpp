@@ -53,8 +53,7 @@ struct Storm3D_TerrainData
 
 Storm3D_Terrain::Storm3D_Terrain(Storm3D &storm)
 {
-	boost::scoped_ptr<Storm3D_TerrainData> tempData(new Storm3D_TerrainData(storm));
-	data.swap(tempData);
+	data.reset(new Storm3D_TerrainData(storm));
 }
 
 Storm3D_Terrain::~Storm3D_Terrain()

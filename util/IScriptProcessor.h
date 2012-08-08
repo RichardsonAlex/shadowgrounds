@@ -16,8 +16,8 @@ namespace util
   public:
 
 	  virtual ~IScriptProcessor() {}
-    virtual bool process(ScriptProcess *sp, int command, floatint intData,
-      char *stringData, ScriptLastValueType *lastValue) = 0;
+	  virtual bool process(ScriptProcess *sp, int command, floatint intData,
+      const char *stringData, ScriptLastValueType *lastValue) = 0;
   };
 
 }

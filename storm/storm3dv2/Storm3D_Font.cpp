@@ -275,13 +275,13 @@ COL &Storm3D_Font::GetColor()
 	\param length length of string
 	\return character width
 */
-int Storm3D_Font::GetCharacterWidth(wchar_t *string, int length) const
+int Storm3D_Font::GetCharacterWidth(const wchar_t *string, int length) const
 {
 	int w, h;
 	if(font)
 	{
 		if (sizeof(wchar_t) == 2) {
-			TTF_SizeUNICODE(font, (Uint16*)string, &w, &h);
+			TTF_SizeUNICODE(font, (const Uint16*)string, &w, &h);
 			return w;
 		} else {
 			Uint16 *tmp = new Uint16[length+1];

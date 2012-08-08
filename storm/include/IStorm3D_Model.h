@@ -248,6 +248,5 @@ public:
 	// Creator
 	virtual ~IStorm3D_Model_Data() { }
 
-	// Use pointer of static variable as class id
-	virtual void *GetID() = 0;
+	virtual const void* GetID() = 0;
 };

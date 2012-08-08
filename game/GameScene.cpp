@@ -483,20 +483,20 @@ namespace game
 			if (d != NULL)
 			{
 #ifndef NDEBUG
-				void *id = d->GetID();
-				assert(id == (void *)&ui::visualObjectID);
+				const void* id = d->GetID();
+				assert(id == &ui::visualObjectID);
 #endif
 
 				VisualObject *hitvo = (VisualObject *)d;
 				IVisualObjectData *d2 = hitvo->getDataObject();
 				if (d2 != NULL)
 				{
-					void *id2 = d2->getVisualObjectDataId();
-					if (id2 == (void *)&game::unitDataId)
+					const void* id2 = d2->getVisualObjectDataId();
+					if (id2 == &game::unitDataId)
 					{
 						hitu = (Unit *)d2;
 					}
-					else if (id2 == (void *)&game::buildingDataId)
+					else if (id2 == &game::buildingDataId)
 					{
 						hitu = NULL;
 						//hitb = (Building *)d2;

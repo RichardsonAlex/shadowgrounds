@@ -59,9 +59,9 @@ namespace game
     return "Building";
   }
 
-  void *Building::getVisualObjectDataId() const
+  const void* Building::getVisualObjectDataId() const
   {
-    return (void *)&buildingDataId;
+    return &buildingDataId;
   }
 
 	/*
