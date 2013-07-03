@@ -20,7 +20,7 @@ class TReader;
 
 void initTextureBank(IStorm3D_Logger *logger);
 void freeTextureBank();
-std::string findTexture(const char *name);
+std::string findTexture(const std::string& name);
 
 //------------------------------------------------------------------
 // Storm3D_Texture

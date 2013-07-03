@@ -13,8 +13,9 @@
 #include <iostream>
 #include <boost/scoped_array.hpp>
 #include <boost/lexical_cast.hpp>
-#include <SDL.h>
-#include <SDL_image.h>
+#include <boost/algorithm/string.hpp>
+#include <SDL/SDL.h>
+#include <SDL/SDL_image.h>
 #include <GL/glew.h>
 
 #include "storm3d_terrain_utils.h"
@@ -33,25 +34,13 @@
 using namespace frozenbyte;
 
 namespace {
-    bool s3dFileExists(const char *name)
-    {
-        if (!name)
-            return false;
-        filesystem::InputStream is =
-                filesystem::FilePackageManager::getInstance().getFile(name, filesystem::FilePackageManager::OPTIONAL);
-        return !is.isEof();
-    }
-
     struct FileSeeker {
         // filename -> fullpath
         std::map<std::string, std::string> fileNames;
         IStorm3D_Logger *logger;
 
-        std::string      removePath(const char *file_) const
+        std::string removePath(const std::string& file) const
         {
-            assert(file_);
-            std::string file = file_;
-
             size_t index = file.find_last_of("/\\");
             if (index == file.npos)
                 index = 0;
@@ -87,52 +76,43 @@ namespace {
 
             for (unsigned int i = 0; i < files.size(); ++i) {
                 std::string fileName = files[i];
-                std::string baseName = removePath( fileName.c_str() );
-
-                for (unsigned int i = 0; i < baseName.size(); ++i) {
-                    if (baseName[i] == '\\')
-                        baseName[i] = '/';
-
-                    baseName[i] = tolower(baseName[i]);
-                }
-
-                for (unsigned int j = 0; j < fileName.size(); ++j) {
-                    if (fileName[j] == '\\')
-                        fileName[j] = '/';
-
-                    fileName[j] = tolower(fileName[j]);
-                }
+                std::string baseName = removePath(fileName);
+                //lowercase and replace \ with /
+                std::replace(baseName.begin(), baseName.end(), '\\', '/');
+                std::replace(fileName.begin(), fileName.end(), '\\', '/');
+                boost::algorithm::to_lower(baseName);
+                boost::algorithm::to_lower(fileName);
 
                 if (!fileNames[baseName].empty() && logger) {
-                    std::string error("Ambiguous filename: ");
-                    error += baseName;
-
-                    logger->error( error.c_str() );
+                    logger->error2("Ambiguous filename: %s", baseName.c_str());
                 }
 
                 fileNames[baseName] = fileName;
             }
         }
 
-        std::string findPath(const char *file_) const
+        std::string findPath(const std::string& file_) const
         {
-            assert(file_);
             std::string file = removePath(file_);
-
-            for (unsigned int i = 0; i < file.size(); ++i) {
-                if (file[i] == '\\')
-                    file[i] = '/';
-
-                file[i] = tolower(file[i]);
-            }
+            boost::algorithm::to_lower(file);
+            assert(!boost::algorithm::contains(file, "/\\"));
 
             std::map<std::string, std::string>::const_iterator it = fileNames.find(file);
-            if ( it == fileNames.end() ) {
-                logger->error2("Could not find Texture: %s\n", file_);
-                return file_;
+            if (it != fileNames.end()) {
+                return it->second;
             }
-
-            return it->second;
+            //we couldn't find it, but if file name ends with .avi also check for .ogg
+            //when porting to linux all .avi files were replaced with .ogg files, but are still referenced as .avi
+            if (boost::algorithm::ends_with(file, ".avi")) {
+                boost::algorithm::replace_last(file, ".avi", ".ogg");
+                logger->debug2("FindTexture: .avi file not found -> checking for .ogg instead: %s\n", file_.c_str());
+                std::map<std::string, std::string>::const_iterator it = fileNames.find(file);
+                if (it != fileNames.end()) {
+                    return it->second;
+                }
+            }
+            logger->error2("Could not find Texture: '%s', searched for '%s'\n", file.c_str(), file_.c_str());
+            return file_;
         }
     };
 
@@ -153,9 +133,8 @@ void initTextureBank(IStorm3D_Logger *logger)
     fileSeeker->addFiles("*.tga");
     fileSeeker->addFiles("*.jpg");
     fileSeeker->addFiles("*.avi");
-#ifndef LEGACY_FILES
+    fileSeeker->addFiles("*.ogg");
     fileSeeker->addFiles("*.png");
-#endif
 }
 
 //! Free texture bank
@@ -170,9 +149,9 @@ void freeTextureBank()
     \param name name of texture
     \return path of texture
  */
-std::string findTexture(const char *name)
+std::string findTexture(const std::string& name)
 {
-    if ( s3dFileExists(name) )
+    if (filesystem::FilePackageManager::getInstance().exists(name))
         return name;
 
     assert(fileSeeker);
@@ -231,7 +210,7 @@ Storm3D_Texture::Storm3D_Texture(Storm3D *s2, const char *_filename, Uint32 _tex
 {
     std::string resolvedName;
 
-    if ( data == NULL && !s3dFileExists(_filename) ) {
+    if ( data == NULL && !filesystem::FilePackageManager::getInstance().exists(_filename) ) {
         assert(fileSeeker);
         resolvedName = fileSeeker->findPath(_filename);
     } else {
@@ -244,7 +223,7 @@ Storm3D_Texture::Storm3D_Texture(Storm3D *s2, const char *_filename, Uint32 _tex
         newName += "_lowdetail";
         newName += resolvedName.substr(resolvedName.size() - 4, 4);
 
-        if ( s3dFileExists( newName.c_str() ) )
+        if ( filesystem::FilePackageManager::getInstance().exists(_filename) )
             resolvedName = newName;
     }
 
