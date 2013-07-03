@@ -16,7 +16,8 @@
 #endif
 
 #include <GL/glew.h>
-#include "SDL_ttf.h"
+#include <SDL/SDL_ttf.h>
+#include <boost/algorithm/string.hpp>
 #include "storm3d.h"
 #include "Iterator.h"
 #include "storm3d_adapter.h"
@@ -240,13 +241,7 @@ Storm3D::Storm3D(bool _no_info, filesystem::FilePackageManager *fileManager, ISt
     glew_initialized(false),
     fbo(NULL) // this can only be created after glewInit()
 {
-    if (fileManager) {
-        filesystem::FilePackageManager::setInstancePtr(fileManager);
-    } else {
-        boost::shared_ptr<filesystem::IFilePackage> standardPackage( new filesystem::StandardPackage() );
-        filesystem::FilePackageManager &manager = filesystem::FilePackageManager::getInstance();
-        manager.addPackage(standardPackage, 0);
-    }
+    assert(fileManager);
 
     initTextureBank(logger);
 
@@ -1019,49 +1014,16 @@ IStorm3D_Texture *Storm3D::CreateNewTexture(const char *originalFilename,
                                             size_t      data_size)
 {
     Storm3D_Texture *ex_tex = 0;
-    std::string originalString = originalFilename;
+    std::string actualName = findTexture(originalFilename);
+    const char* const filename = actualName.c_str();
 
-    {
-        for (unsigned int i = 0; i < originalString.size(); ++i) {
-            if (originalString[i] == '\\')
-                originalString[i] = '/';
-
-            originalString[i] = tolower(originalString[i]);
-        }
-
-        std::string::size_type aviPos = originalString.rfind(".avi");
-        if (aviPos != std::string::npos)
-            originalString.replace(aviPos, 4, ".ogg");
-
-        for (set<IStorm3D_Texture *>::iterator it = textures.begin(); it != textures.end(); it++) {
-            // Typecast to simplify code
-            Storm3D_Texture *tx = (Storm3D_Texture *)*it;
-
-            // Ask the texture if it's identical as the new texture
-            if ( tx->IsIdenticalWith(originalString.c_str(), texloadcaps, texidentity) ) {
-                ex_tex = tx;
-                break;
-            }
-        }
-    }
-
-    std::string newFileName = originalString;
-    const char *filename = newFileName.c_str();
-
-    if (!ex_tex) {
-        newFileName = findTexture( newFileName.c_str() );
-        filename = newFileName.c_str();
-
-        for (set<IStorm3D_Texture *>::iterator it = textures.begin(); it != textures.end(); it++) {
-            // Typecast to simplify code
-            Storm3D_Texture *tx = (Storm3D_Texture *)*it;
-
-            // Ask the texture if it's identical as the new texture
-            if ( tx->IsIdenticalWith(filename, texloadcaps, texidentity) ) {
-                ex_tex = tx;
-                break;
-            }
-
+    //check if texture has already been loaded, if yes use it
+    for (set<IStorm3D_Texture *>::iterator it = textures.begin(); it != textures.end(); it++) {
+        Storm3D_Texture* tx = static_cast<Storm3D_Texture*>(*it);
+        // Ask the texture if it's identical as the new texture
+        if ( tx->IsIdenticalWith(filename, texloadcaps, texidentity) ) {
+            ex_tex = tx;
+            break;
         }
     }
 
@@ -1070,42 +1032,31 @@ IStorm3D_Texture *Storm3D::CreateNewTexture(const char *originalFilename,
         // Add texture's reference count first
         ex_tex->AddRef();
         return ex_tex;
-    } else {
-        if (data == NULL) {
-            // Test if texture exists
-            filesystem::FB_FILE *f = filesystem::fb_fopen(filename, "rb");
-            if (f) {
-                filesystem::fb_fclose(f);
-            } else {
-                if (logger != NULL) {
-                    logger->error("Storm3D::CreateNewTexture - File does not exist or is zero length.");
-                    logger->debug(filename);
-                }
-                return NULL;
-            }
-        }
-
-        // Test if it's AVI texture
-        bool is_avi = false;
-        int sl = strlen(filename);
-        if (sl > 4)
-            if ( ( (filename[sl - 3] == 'a') || (filename[sl - 3] == 'o') ) &&
-                 ( (filename[sl - 2] == 'v') || (filename[sl - 2] == 'g') ) &&
-                 ( (filename[sl - 1] == 'i') || (filename[sl - 1] == 'g') ) )
-                is_avi = true;
-
-        // Load the new texture
-        Storm3D_Texture *tex = 0;
-        if (is_avi) {
-            assert(data == NULL);
-            tex = new Storm3D_Texture_Video(this, filename, texidentity);
-        } else {
-            tex = new Storm3D_Texture(this, filename, texloadcaps, texidentity, data, data_size);
-        }
-
-        textures.insert(tex);
-        return tex;
     }
+    if (data == NULL) {
+        // Test if texture exists (we have to load from file since data is null)
+        if (!filesystem::FilePackageManager::getInstance().exists(filename)) {
+            if (logger != NULL) {
+                logger->error2("Storm3D::CreateNewTexture - File does not exist or is zero length: %s\n", filename);
+            }
+            return NULL;
+        }
+    }
+
+    // Test if it's AVI texture
+    bool is_avi = boost::algorithm::ends_with(actualName, ".avi") || boost::algorithm::ends_with(actualName, ".ogg");
+
+    // Load the new texture
+    Storm3D_Texture *tex = 0;
+    if (is_avi) {
+        assert(data == NULL);
+        tex = new Storm3D_Texture_Video(this, filename, texidentity);
+    } else {
+        tex = new Storm3D_Texture(this, filename, texloadcaps, texidentity, data, data_size);
+    }
+
+    textures.insert(tex);
+    return tex;
 }
 
 //! Creates a new dynamic texture

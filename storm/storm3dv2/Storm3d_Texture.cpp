@@ -105,7 +105,7 @@ namespace {
             //when porting to linux all .avi files were replaced with .ogg files, but are still referenced as .avi
             if (boost::algorithm::ends_with(file, ".avi")) {
                 boost::algorithm::replace_last(file, ".avi", ".ogg");
-                logger->debug2("FindTexture: .avi file not found -> checking for .ogg instead: %s\n", file_.c_str());
+                //logger->debug2("FindTexture: .avi file not found -> checking for .ogg instead: %s\n", file_.c_str());
                 std::map<std::string, std::string>::const_iterator it = fileNames.find(file);
                 if (it != fileNames.end()) {
                     return it->second;
