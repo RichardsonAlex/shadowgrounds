@@ -551,6 +551,11 @@ namespace frozenbyte {
 
                         return inputStream;
                     }
+                    bool ZipPackage::exists(const std::string & fileName) const {
+                        ZipFileList::iterator it;
+                        return data->zipData->findFile(fileName, it);
+                    }
+
 
                     unsigned int ZipPackage::getCrc(const std::string & fileName) {
                         ZipFileList::iterator it;

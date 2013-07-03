@@ -17,6 +17,7 @@ namespace frozenbyte {
 
             virtual void findFiles(const std::string &dir, const std::string &extension, IFileList &result) = 0;
             virtual InputStream getFile(const std::string &fileName) = 0;
+            virtual bool exists(const std::string &fileName) const = 0;
 
             // FIXME: should this be abstract?
             virtual unsigned int getCrc(const std::string & /* fileName*/)

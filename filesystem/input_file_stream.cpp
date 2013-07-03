@@ -36,8 +36,7 @@ namespace frozenbyte {
 
         InputFileStreamBuffer::InputFileStreamBuffer(const std::string &fileName)
         {
-            boost::scoped_ptr<InputFileStreamBufferData> tempData( new InputFileStreamBufferData(fileName) );
-            data.swap(tempData);
+            data.reset(new InputFileStreamBufferData(fileName));
         }
 
         InputFileStreamBuffer::~InputFileStreamBuffer()

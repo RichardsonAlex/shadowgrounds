@@ -25,6 +25,7 @@ namespace frozenbyte {
 
             void findFiles(const std::string &dir, const std::string &extension, IFileList &result);
             InputStream getFile(const std::string &fileName);
+            bool exists(const std::string &fileName) const;
             unsigned int getCrc(const std::string &fileName);
         };
 

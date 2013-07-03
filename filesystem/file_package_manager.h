@@ -37,6 +37,7 @@ namespace frozenbyte {
                                                    bool               caseSensitive = false);
             /** Open a file as an InputStream. If @p mode is not OPTIONAL an error will be logged. */
             InputStream getFile(const std::string &fileName, Mode mode = REQUIRED);
+            bool exists(const std::string& fileName) const;
             unsigned int getCrc(const std::string &fileName);
 
             void setInputStreamErrorReporting(bool logNonExisting);
