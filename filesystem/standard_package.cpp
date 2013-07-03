@@ -12,6 +12,7 @@
 #include "../editor/FindFileWrapper.h"
 #include <string>
 #include <unistd.h>
+#include <boost/algorithm/string/case_conv.hpp>
 #include "../util/Debug_MemoryManager.h"
 
 #include "../util/crc32.h"
@@ -29,10 +30,14 @@ namespace frozenbyte {
                 searchString += extension;
 
                 editor::FindFileWrapper wrapper(searchString.c_str(), editor::FindFileWrapper::File);
+                //printf("finding files in %s, filter = %s\n", dir.c_str(), extension.c_str());
+                //int count = 0;
                 for ( ; !wrapper.end(); wrapper.next() ) {
                     std::string fileName = dir + std::string("/") + wrapper.getName();
+                    //count++;
                     result.addFile(fileName);
                 }
+                //printf("found %d files\n", count);
             }
 
             void iterateDir(const std::string &dir, const std::string &extension, IFileList &result)
@@ -66,6 +71,11 @@ namespace frozenbyte {
         void StandardPackage::findFiles(const std::string &dir, const std::string &extension, IFileList &result)
         {
             iterateDir(dir, extension, result);
+            //also check the directory name in lower case
+            std::string lower = boost::algorithm::to_lower_copy(dir);
+            if (lower != dir) {
+                iterateDir(lower, extension, result);
+            }
         }
 
         InputStream StandardPackage::getFile(const std::string &fileName)
