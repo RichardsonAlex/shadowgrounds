@@ -48,7 +48,7 @@ struct Storm3D_TerrainLightManager::Data
 	FakeSpotList &fakeSpots;
 	FakeLightList &fakeLights;
 
-	frozenbyte::storm::VertexShader coneAtiVertexShader;
+	//frozenbyte::storm::VertexShader coneAtiVertexShader;
 	frozenbyte::storm::VertexShader coneNvVertexShader;
 
 	Data(Storm3D &storm_, IStorm3D_TerrainRendererBase &renderer_, StormSpotList &spots_, FakeSpotList &fakeSpots_, FakeLightList &fakeLights_)
@@ -58,11 +58,14 @@ struct Storm3D_TerrainLightManager::Data
 		fakeSpots(fakeSpots_),
 		fakeLights(fakeLights_),
 
-		coneAtiVertexShader(),
+//		coneAtiVertexShader(),
 		coneNvVertexShader()
 	{
-		coneAtiVertexShader.createAtiConeShader();
+//	    glErrors();
+//		coneAtiVertexShader.createAtiConeShader();
+		glErrors();
 		coneNvVertexShader.createNvConeShader();
+		glErrors();
 	}
 
 	void renderSpotBuffers(Storm3D_Scene &scene, bool renderShadows)
@@ -341,7 +344,7 @@ struct Storm3D_TerrainLightManager::Data
 			renderFakeSpotLights(scene, renderShadows);
 		else if(type == RealSolid || type == RealAlpha)
 		{
-			renderSpotLights(scene, renderShadows, type);
+			//renderSpotLights(scene, renderShadows, type);
 		}
 	}
 
@@ -471,8 +474,9 @@ struct Storm3D_TerrainLightManager::Data
 //! Constructor
 Storm3D_TerrainLightManager::Storm3D_TerrainLightManager(Storm3D &storm, IStorm3D_TerrainRendererBase &renderer, StormSpotList &spots, FakeSpotList &fakeSpots, FakeLightList &fakeLights)
 {
-	scoped_ptr<Data> tempData(new Data(storm, renderer, spots, fakeSpots, fakeLights));
-	data.swap(tempData);
+    glErrors();
+    data.reset(new Data(storm, renderer, spots, fakeSpots, fakeLights));
+    glErrors();
 }
 
 //! Destructor

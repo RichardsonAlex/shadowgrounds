@@ -11,10 +11,12 @@
 #include "empty_buffer.h"
 #include "file_list.h"
 #include <map>
+#include <iostream>
 
 #include "../system/Logger.h"
 
 #include "../util/Debug_MemoryManager.h"
+#include "../storm/include/igios.h"
 
 
 // HACK: bad dependency (for error reporting...)
@@ -102,6 +104,8 @@ struct FilePackageManagerData
 			//::Logger::getInstance()->debug(fileName.c_str());
       // igiosWarning("FilePackageManager::getFile - File does not exist or is zero length. (%s)\n",fileName.c_str());
 		}
+		std::cerr << "FilePackageManager::getFile - File does not exist or is zero length. " << fileName.c_str() << std::endl;
+        //igios_backtrace();
 
 		InputStream inputStream;
 		boost::shared_ptr<EmptyBuffer> inputBuffer(new EmptyBuffer());

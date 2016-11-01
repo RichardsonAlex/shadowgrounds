@@ -72,6 +72,7 @@ class Framebuffer
 	};
 	std::vector<struct renderBuffer> renderbuffers;
 	GLuint fbo;
+	bool enabled;
 
 	static Framebuffer *activeFBO;
 public:

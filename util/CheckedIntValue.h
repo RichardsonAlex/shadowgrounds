@@ -123,7 +123,7 @@ class CheckedIntValue
     operator int() const;
     //operator float() const;
     //operator bool() const; // (bool not allowed)
-    operator void*() const;
+    //operator void*() const;
 
 
 		// for error checking...

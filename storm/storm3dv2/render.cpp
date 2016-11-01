@@ -147,11 +147,12 @@ void setVertexDeclaration(const std::vector<Element> &elements) {
 	glDisableClientState(GL_COLOR_ARRAY);
 	glDisableClientState(GL_NORMAL_ARRAY);
 	glDisableClientState(GL_VERTEX_ARRAY);
-
+	glErrors();
 	for (int i = 0; i < 8; i++) {
 		glClientActiveTexture(GL_TEXTURE0 + i);
 		glDisableClientState(GL_TEXTURE_COORD_ARRAY);
 	}
+	glErrors();
 
 	for (unsigned int i = 0; i < vertexDecl.size(); i++) {
 		switch (vertexDecl[i].usage) {
@@ -577,62 +578,71 @@ Framebuffer *Framebuffer::activeFBO = NULL;
 
 Framebuffer::Framebuffer() :
 renderbuffers(),
-fbo(0)
+fbo(0),
+enabled(false)
 {
-	glGenFramebuffersEXT(1, &fbo);
+    glErrors();
+
+	glGenFramebuffers(1, &fbo);
 
 	glErrors();
 }
 
 
 Framebuffer::~Framebuffer() {
+    glErrors();
 	if (activeFBO == this) {
 		disable();
 	}
-	glDeleteFramebuffersEXT(1, &fbo);
+	glDeleteFramebuffers(1, &fbo);
 	fbo = 0;
 
 	for (vector<struct renderBuffer>::iterator it = renderbuffers.begin(); it < renderbuffers.end(); it++) {
-		glDeleteRenderbuffersEXT(1, &(it->rbo));
+		glDeleteRenderbuffers(1, &(it->rbo));
 		it->rbo = 0;
 	}
-
+	glErrors();
 }
 
 //! return to normal fb
 void Framebuffer::disable() {
+    glErrors();
 	if (activeFBO == this) {
+	    assert(this->enabled);
+	    activeFBO = NULL;
 		// for unknown reasons this blow up on some ati cards
 		// shitty drivers?
-		/*
-		glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, GL_TEXTURE_2D, 0, 0);
-		glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_TEXTURE_2D, 0, 0);
-		glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_STENCIL_ATTACHMENT_EXT, GL_TEXTURE_2D, 0, 0);
-		*/
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, 0);
-		activeFBO = NULL;
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, 0, 0);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, 0, 0);
+		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_TEXTURE_2D, 0, 0);
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+
 	}
+	enabled = false;
+	glErrors();
 }
 
 
 //! activate with last bound textures/renderbuffers
 void Framebuffer::activate() {
 	if (activeFBO != this) {
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo);
+	    assert(!this->enabled);
+		glBindFramebuffer(GL_FRAMEBUFFER, fbo);
 		glErrors();
 		activeFBO = this;
 	}
+	else {
+	    assert(this->enabled);
+	}
+	enabled = true;
 }
 
 
 void Framebuffer::setRenderTarget(GLuint tex, GLuint width, GLuint height, GLenum textarget) {
 	glErrors();
 
-	if (activeFBO != this) {
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo);
-		glErrors();
-		activeFBO = this;
-	}
+	activate();
 
 	GLuint depthstencil = 0;
 	// see if we have right-sized depthstencil
@@ -649,19 +659,19 @@ void Framebuffer::setRenderTarget(GLuint tex, GLuint width, GLuint height, GLenu
 
 		// create one
 		struct renderBuffer rbo;
-		glGenRenderbuffersEXT(1, &rbo.rbo);
+		glGenRenderbuffers(1, &rbo.rbo);
 		depthstencil = rbo.rbo;
-		glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, depthstencil);
+		glBindRenderbuffer(GL_RENDERBUFFER, depthstencil);
 		rbo.w = width; rbo.h = height;
 
 		// Set depthstencil size equal to the texture size
-		glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, GL_DEPTH_STENCIL_EXT, width, height);
+		glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_STENCIL, width, height);
 		renderbuffers.push_back(rbo);
 	}
 
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, textarget, tex, 0);
-	glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, depthstencil);
-	glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_STENCIL_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, depthstencil);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, textarget, tex, 0);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthstencil);
+	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, GL_RENDERBUFFER, depthstencil);
 
 	glErrors();
 }
@@ -702,8 +712,8 @@ void Framebuffer::setRenderTarget(boost::shared_ptr<glTexWrapper> tex, boost::sh
 		igios_backtrace();
 	}
 
-	if (depthstencil->fmt != GL_DEPTH24_STENCIL8_EXT) {
-		igiosWarning("setRenderTarget: depthstencil->fmt(0x%x) != GL_DEPTH24_STENCIL8_EXT\n", depthstencil->fmt);
+	if (depthstencil->fmt != GL_DEPTH24_STENCIL8) {
+		igiosWarning("setRenderTarget: depthstencil->fmt(0x%x) != GL_DEPTH24_STENCIL8\n", depthstencil->fmt);
 		igios_backtrace();
 	}
 
@@ -741,26 +751,30 @@ void Framebuffer::setRenderTarget(boost::shared_ptr<glTexWrapper> tex, boost::sh
 	}
 	glBindTexture(textarget, 0);
 
-	if (activeFBO != this) {
-		glBindFramebufferEXT(GL_FRAMEBUFFER_EXT, fbo);
-		glErrors();
-		activeFBO = this;
-	}
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_COLOR_ATTACHMENT0_EXT, textarget, tex->handle, 0);
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, textarget, depthstencil->handle, 0);
-	glFramebufferTexture2DEXT(GL_FRAMEBUFFER_EXT, GL_STENCIL_ATTACHMENT_EXT, textarget, depthstencil->handle, 0);
+	activate();
+
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, textarget, tex->handle, 0);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, textarget, depthstencil->handle, 0);
+	glFramebufferTexture2D(GL_FRAMEBUFFER, GL_STENCIL_ATTACHMENT, textarget, depthstencil->handle, 0);
+	glErrors();
+	validate();
 }
 
 bool Framebuffer::validate() {
 	if (activeFBO == this) {
-		GLenum ret = glCheckFramebufferStatusEXT(GL_FRAMEBUFFER_EXT);
-		if (ret != GL_FRAMEBUFFER_COMPLETE_EXT) {
+	    assert(this->enabled);
+	    glErrors();
+		GLenum ret = glCheckFramebufferStatus(GL_FRAMEBUFFER);
+		if (ret != GL_FRAMEBUFFER_COMPLETE) {
 			igiosWarning("framebuffer not complete at %d: %x\n", __LINE__, ret);
-			*((volatile char *) NULL) = '\0'; //TODO __builtin_trap() ?
+			//*((volatile char *) NULL) = '\0'; //TODO __builtin_trap() ?
 			igios_backtrace();
 
 			return false;
 		}
+	}
+	else {
+	    assert(!this->enabled);
 	}
 	return true;
 }
@@ -771,13 +785,17 @@ width(w),
 height(h),
 fmt(0)
 {
+    glErrors();
 	glGenTextures(1, &handle);
 	glBindTexture(GL_TEXTURE_2D, handle);
+	glErrors();
 }
 
 glTexWrapper::~glTexWrapper() {
+    glErrors();
 	glDeleteTextures(1, &handle);
 	handle = 0; fmt = 0;
+	glErrors();
 }
 
 boost::shared_ptr<glTexWrapper> glTexWrapper::rgbaTexture(GLint w, GLint h) {
@@ -809,8 +827,8 @@ boost::shared_ptr<glTexWrapper> glTexWrapper::depthStencilTexture(GLint w, GLint
 
 	boost::shared_ptr<glTexWrapper> tex(new glTexWrapper(w, h));
 
-	tex->fmt = GL_DEPTH24_STENCIL8_EXT;
-	glTexImage2D(GL_TEXTURE_2D, 0, tex->fmt, w, h, 0, GL_DEPTH_STENCIL_EXT, GL_UNSIGNED_INT_24_8_EXT, NULL);
+	tex->fmt = GL_DEPTH24_STENCIL8;
+	glTexImage2D(GL_TEXTURE_2D, 0, tex->fmt, w, h, 0, GL_DEPTH_STENCIL, GL_UNSIGNED_INT_24_8, NULL);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 

@@ -579,7 +579,7 @@ CheckedIntValue::operator float() const
 	return (float)this->value;
 }
 */
-
+/*
 CheckedIntValue::operator void*() const
 {
 	if (!initialized)
@@ -588,6 +588,7 @@ CheckedIntValue::operator void*() const
 	}
   return (void*)(this->value);
 }
+*/
 
 // for error checking...
 bool CheckedIntValue::wasInitialized()

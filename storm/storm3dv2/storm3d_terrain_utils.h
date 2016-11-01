@@ -86,7 +86,7 @@ public:
 	void createNvTerrainShadowShaderPoint();
 	void createNvTerrainShadowShaderFlat();
 
-	void createAtiConeShader();
+	//void createAtiConeShader();
 	void createNvConeShader();
 	void createConeStencilShader();
 	void createDecalShader();

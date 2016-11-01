@@ -183,7 +183,6 @@ namespace filesystem {
 					continue;
 
 				ZipFileData zipFile;
-				zipFile.filename = file;
 				zipFile.size = fileInfo.uncompressed_size;
 				zipFile.crc = fileInfo.crc;
 				unzGetFilePos(fileId, &zipFile.filePosition);
@@ -204,6 +203,7 @@ namespace filesystem {
 						++c;
 					}
 				}
+                zipFile.filename = file;
 				std::string filename = file;
 				fileList[filename] = zipFile;
 			}

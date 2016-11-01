@@ -16,7 +16,7 @@
 
 // random data will be loaded once, and never freed until program terminates
 static int *gamerandom_static_data = NULL;
-static int *gamerandom_instance_count = 0;
+static int gamerandom_instance_count = 0;
 
 using namespace frozenbyte;
 

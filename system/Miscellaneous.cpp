@@ -311,12 +311,15 @@ bool gl_initialized = false;
 
 bool igiosCheckGlErrors(const char *file, int line) {
 	if (gl_initialized) {
-		int err = glGetError();
-		if (err != GL_NO_ERROR) {
+		GLenum err = glGetError();
+		bool ret = false;
+		while (err != GL_NO_ERROR) {
 			igiosWarning("gl error at %s:%d: %x %s\n", file, line, err, gluErrorString(err));
 			igios_backtrace();
-			return true;
+			err = glGetError();
+			ret = true;
 		}
+		return ret;
 	}
 
 	return false;
